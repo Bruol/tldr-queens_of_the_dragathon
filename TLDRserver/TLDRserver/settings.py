@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-aa#m#gjk^lrrzm!9mko^f)uj$!b10t-c&_=%4b-g580u@r+@&3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['team-2.viscon-hackathon.ch']
 
 
 # Application definition
