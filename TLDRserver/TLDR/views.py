@@ -40,6 +40,8 @@ def summary(request, summary_id):
     
     topics = vid.topics.all()
 
+    tps = []
+
     for topic in topics:
         bps = topic.bulletpoints.split(" -")
         bps = [i.split("\n-") for i in bps]
@@ -49,22 +51,36 @@ def summary(request, summary_id):
             if not (bp.isspace() or bp == "" or istitle(bp)):
                 bp = bp.replace("\n", "")
                 filtered_bps.append(bp)
+
+        chunk1 = topic.chunk1
+        chunk2 = topic.chunk2
+        chunk3 = topic.chunk3
+
+        chunks = []
+
+        if chunk1 != None:
+            chunks.append(chunk1)
+        if chunk2 != None:
+            chunks.append(chunk2)
+        if chunk3 != None:
+            chunks.append(chunk3)
+
+        tps.append(
+            {
+                "title": topic.title,
+                "bulletpoints": filtered_bps,
+                "summary": topic.summary,
+                "chunks": chunks,
+            }
+        )
                
 
-    tp_dict = {
-        "title": vid.infered_titel,
-        "topics": topics,
-        "bulletpoints": filtered_bps,
-        "presenter": vid.presenters[:-1],
-        "date": vid.presentation_date,
-        "transcript": vid.transcript,
-        "source": vid.source_url,
-    }
+    # Iterate over topic_list by doing for topic in topic_list and then access topic fields with topic.title, topic.bulletpoints, topic.summary, topic.chunks
 
     context = {
         "lecture": lecture,
         "video": vid,
-        "topics": tp_dict,
+        "topic_list": tps,
     }
     
     return HttpResponse(template.render(context, request))
