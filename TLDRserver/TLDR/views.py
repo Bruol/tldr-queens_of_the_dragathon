@@ -3,16 +3,16 @@ from django.http import HttpResponse
 from django.template import loader
 
 from .models import Lecture
+from django.template import loader
+
+from .models import Lecture
 
 # Create your views here.
 
 def index(request):
-    latest_lecture = Lecture.objects.order_by("-lecture_number")[1]
-    template = loader.get_template("views/index.html")
-    context = {
-        "lecture": latest_lecture,
-    }
-    return HttpResponse(template.render(context, request))
+    lectures = Lecture.objects.all()
+    template = loader.get_template('views/index.html')
+    return HttpResponse(template.render({'lectures': lectures}, request))
 
 def videos(request, class_id):
     latest_lecture = Lecture.objects.order_by("-lecture_number")[1]

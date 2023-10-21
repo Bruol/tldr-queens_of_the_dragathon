@@ -138,5 +138,5 @@ import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATICFILES_DIRS = [
-    "TLDRserver/TLDR/components",
+    "TLDRserver/TLDR/templates/styles",
 ]
