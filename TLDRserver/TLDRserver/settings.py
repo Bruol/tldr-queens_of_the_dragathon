@@ -56,6 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['TLDRserver/TLDR/templates/views', 'TLDRserver/TLDR/templates/styles', 'TLDRserver/TLDR/templates'],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
