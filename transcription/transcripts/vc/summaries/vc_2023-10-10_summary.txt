@@ -1,6 +1,6 @@
 # Summary
 
-## Topic 1: Edge detection and feature extraction
+## Edge detection and feature extraction
 ### Sourced from Summary 2
 - **Edge detection**:
    - Kani edge detector identifies high gradient regions in an image to connect pixels in connected edges.
@@ -14,19 +14,19 @@
    - Transforms pixel coordinates into parameter space.
    - Detects lines by accumulating votes for different parameter values.
 
-## Topic 2: Aliasing and Proper Handling
+## Aliasing and Proper Handling
 ### Sourced from Summary 3 and Summary 4
 - **Aliasing**:
    - Sub-sampling an image can lead to patterns appearing at different scales (aliasing).
    - Proper handling of aliasing is important to avoid distortions and matching errors.
 
-## Topic 3: Fourier Transform and Basics
+## Fourier Transform and Basics
 ### Sourced from Summary 5
 - **Fourier Transform**:
    - Discrete case: Image represented as a matrix transformed into a long vector.
    - Continuous case: Basis transform using integrals with complex basis functions.
 
-## Topic 4: Linear and Nonlinear Systems in Electrical Engineering
+## Linear and Nonlinear Systems in Electrical Engineering
 ### Sourced from Summary 6
 - **Linear and nonlinear systems**:
    - Linear systems behave proportionally, while nonlinear systems can exhibit chaotic behavior.
@@ -34,18 +34,18 @@
 
 # In-Depth Summaries
 
-## Topic 1: Edge detection and feature extraction
+## Edge detection and feature extraction
 
 The lecture covers the concepts of edge detection and feature extraction. The Kani edge detector is introduced as a method for identifying high gradient regions in an image and connecting pixels in connected edges. The lecturer emphasizes the importance of finding the steepest part of the slope to accurately localize the edge. Region growing is discussed as a technique to extend edges from strong edges to less clear edges, involving the setting of thresholds to determine which edges to extend. The lecture also introduces the Hough transform, which transforms pixel coordinates into parameter space and can be used to detect lines by accumulating votes for different parameter values. Additionally, the lecture touches on corners, which are areas where multiple gradients converge, indicating the presence of a corner. The lecture mentions the SIFT transform as a method for detecting blob-like features in an image by finding local maxima in both spatial position and scale. Understanding these traditional techniques can provide inspiration for designing more efficient network structures for machine learning-based feature detection.
 
-## Topic 2: Aliasing and Proper Handling
+## Aliasing and Proper Handling
 
 The lecture emphasizes the importance of properly handling aliasing in image processing. Aliasing occurs when sub-sampling an image leads to the appearance of patterns at different scales. The lecture provides an example of a building image where sub-sampling creates an artificial pattern that is not present in the original image. Proper handling of aliasing is crucial to avoid distortions and matching errors. The lecture mentions the need to handle aliasing both before digitizing an image and when resampling it. The lecture also briefly touches on temporal aliasing, which is demonstrated in a video. The correct approach to handle aliasing is to represent the high frequencies as grayscale, rather than inventing patterns that are not present in the original image. The lecture introduces the concept of the Fourier transform as a tool to describe images in terms of broad patterns and addresses open questions regarding noise differentiation and the difference between discrete and continuous images. Overall, understanding and properly handling aliasing is essential in image processing and analysis.
 
-## Topic 3: Fourier Transform and Basics
+## Fourier Transform and Basics
 
 The lecture focuses on the concept of the Fourier Transform. In the discrete case, an image can be represented as a matrix of numbers. This matrix can be transformed into a long vector of numbers, which is analogous to a basis transform in linear algebra. Moving to the continuous domain, the lecture explains that a basis transform can also be done using integrals instead of sums. By integrating over the entire x and y space, a new function is obtained in the u and v space, representing the Fourier Transform. The lecture highlights that the basis functions used in the transform are complex, allowing for the representation of sine and cosine functions with different phases and amplitudes. The lecture concludes by mentioning the importance of the Fourier Transform and briefly discussing the one-dimensional case. The Fourier Transform will be formally introduced in the next session.
 
-## Topic 4: Linear and Nonlinear Systems in Electrical Engineering
+## Linear and Nonlinear Systems in Electrical Engineering
 
 The lecture discusses the behavior of linear and nonlinear systems in electrical engineering. Linear systems behave proportionally, while nonlinear systems can exhibit chaotic behavior. The concept of eigenfunctions is introduced, with Fourier functions being eigenfunctions for linear dynamic systems. The lecture mentions how Fourier transforms are used in electrical engineering to analyze frequency responses. It then transitions to discussing basis functions and their representation in the XY and UV spaces. The magnitude and orientation of basis functions correspond to frequency and pattern size in images. The lecture provides examples of different basis functions and their relationship between frequency and pattern size. The lecture concludes by introducing special functions like sine and delta functions and discussing their relationship in the frequency domain. Understanding linear and nonlinear systems, as well as the basics of Fourier analysis, is crucial for studying sampling and analyzing signals in electrical engineering applications.

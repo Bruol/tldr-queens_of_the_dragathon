@@ -1,6 +1,8 @@
 
 import openai
 import os
+import re
+import json
 
 import nltk
 nltk.download('punkt')
@@ -157,6 +159,66 @@ def generate_title(lecture_summary, outfile, prompt):
 
         return lecture_title
 
+def remove_first_and_empty_lines(input_string):
+    lines = input_string.split('\n')
+    
+    # Find the index of the first non-empty line after the first line
+    for i, line in enumerate(lines[1:], start=1):
+        if line.strip():
+            break
+    else:
+        # Handle the case where there are no non-empty lines after the first line
+        i = len(lines)
+    
+    # Join the lines and return the result
+    return '\n'.join(lines[i:])
+
+
+def strings_to_dict(lecture_title, chunks, summary):
+    temp_topics = []
+    topics = []
+
+    sections = summary.split("# In-Depth Summaries")
+
+    # Split the summary into sections
+    short_topics = sections[0].split("\n## ")
+    long_topics = sections[1].split("\n## ")
+
+
+    # Iterate through each section, skipping the first one (Summary)
+    for short_topic in short_topics[1:]:
+        topic_title = short_topic.split("\n")[:3][0]
+
+        matches = re.findall(r'Summary (\d+)', short_topic)
+        sources = []
+        for match in matches:
+            for group in match:
+                sources.append(group)
+        temp = short_topic.split("\n")[3:]
+        temp_topics.append((topic_title, '\n'.join(temp), sources))
+        
+    i = 0
+    for long_topic in long_topics[1:]:
+        long_topic = remove_first_and_empty_lines(long_topic)
+
+        #try:
+        # Add the topic to the topics list
+        #except Exception as e:
+        print()
+        print(i)
+        print()
+        print(temp_topics)
+        topics.append((temp_topics[i][0], temp_topics[i][1], long_topic, temp_topics[i][2]))
+        i += 1
+
+    # Create the dictionary
+    lecture_dict = {
+        "lecture_title": lecture_title,
+        "chunks": chunks,
+        "topics": topics
+    }
+
+    return lecture_dict
     
 if __name__ == "__main__":
 
@@ -179,12 +241,12 @@ if __name__ == "__main__":
                     chunkfile = os.path.join(cur_dir, "chunks", file.replace(".txt", "_chunks.txt"))
                     outfile = os.path.join(cur_dir, "summaries", file.replace(".txt", "_summary.txt"))
 
-                    tr = [infile, chunkfile, outfile]
+                    tr = [infile, chunkfile, outfile, dir]
 
                     transcript_files.append(tr)
-
-    print(transcript_files)
     
+
+    jsons = []
 
     for i in range(0,len(transcript_files)):
         tr = transcript_files[i]
@@ -194,6 +256,8 @@ if __name__ == "__main__":
         infile = tr[0]
         chunkfile = tr[1]
         outfile = tr[2]
+        filename = infile.split("/")[-1][:-4] + ".json"
+
         outfile_title = tr[2].replace("_summary.txt", "_title.txt")
 
         chunk_summaries = get_chunks(infile, chunkfile)
@@ -201,3 +265,8 @@ if __name__ == "__main__":
         lecture_summary = summarize_chunks(chunk_summaries, outfile, summary_prompt)   
 
         lecture_title = generate_title(lecture_summary, outfile_title, title_prompt)
+        video_dict = strings_to_dict(lecture_title, chunk_summaries, lecture_summary)
+        # write dict to json
+        with open("jsons/" + filename, 'w') as json_file:
+            json.dump(video_dict, json_file)
+
