@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['team-2.viscon-hackathon.ch', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'TLDR.apps.TldrConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
