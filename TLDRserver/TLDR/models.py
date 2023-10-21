@@ -16,7 +16,6 @@ class Video(models.Model):
     presenters = models.TextField()
     lecture_id = models.ForeignKey(Lecture, on_delete=models.CASCADE)
     topics = models.ManyToManyField("Topic", related_name = "discussed_in")
-    video_file_path = models.FilePathField("/home/admin/videos")
     video_source_url = models.URLField()
 
 class Topic(models.Model):
