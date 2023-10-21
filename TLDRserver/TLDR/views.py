@@ -43,12 +43,19 @@ def summary(request, summary_id):
     tps = []
 
     for topic in topics:
+        # find bulletpoints in string
         bps = topic.bulletpoints.split(" -")
+        # find bulletpoints after newline
         bps = [i.split("\n-") for i in bps]
+        
         bps = flatten_list(bps)
+
+        # filter out empty strings and strings that are only whitespace and titles
         filtered_bps = []
         for bp in bps:
             if not (bp.isspace() or bp == "" or istitle(bp)):
+                if bp.startswith("-"):
+                    bp = bp[1:]
                 bp = bp.replace("\n", "")
                 filtered_bps.append(bp)
 
