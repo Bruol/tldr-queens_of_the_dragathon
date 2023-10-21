@@ -32,11 +32,25 @@ def summary(request, summary_id):
     
     topics = vid.topics.all()
 
+    for topic in topics:
+        bps = topic.bulletpoints.split("-")
+        filtered_bps = []
+        for bp in bps:
+            if not (bp.isspace() or bp == "" or istitle(bp)):
+                filtered_bps.append(bp)
+               
+
+    tp_dict = {}
+
     context = {
         "lecture": latest_lecture,
-
+        "topics": tp_dict, 
     }
     return HttpResponse(template.render(context, request))
 
 def get_dict():
     print("test")
+
+
+def istitle(string):
+    return True

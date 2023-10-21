@@ -32,7 +32,7 @@ def populate_videos():
     for js in os.listdir(vid_dir):
         data = json.load(open(vid_dir + js))
         video = Video()
-        video.inferred_title = data["lecture_title"]
+        video.infered_titel = data["lecture_title"]
 
         lecture_folder = js[:2]
         
