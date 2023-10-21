@@ -26,19 +26,39 @@ def populate_lectures():
 
 def populate_videos():
     print("populating videos")
-    vid_dir = "../transcriptions/jsons/"
+    vid_dir = "../transcription/jsons/"
+
+
     for js in os.listdir(vid_dir):
         data = json.load(open(vid_dir + js))
         video = Video()
         video.inferred_title = data["lecture_title"]
 
+        lecture_folder = js[:2]
+        
+        meta_data = json.load(open(dir + lecture_folder + "/metadata.json"))
+
+        video.source_url = meta_data["URL"]
+        video.presentation_date = js[3:-5]
+        
+        pres = ""
+        for lecturer in meta_data["Lecturer"]:
+            pres = pres+lecturer+","
+
+        video.presenters = pres
+
+        ln = meta_data["CourseNumber"]
+
+        video.lecture_id = Lecture.objects.filter(lecture_number=ln).first()
+
+        video.save()
         for t in data["topics"]:
             top = Topic()
             top.title = t[0]
             top.bulletpoints = t[1]
             top.summary = t[2]
 
-            lenght = len(t[3])
+            length = len(t[3])
             if (length > 0):
                 top.chunk1 = data["chunks"][int(t[3][0])]
             if (length > 1):
@@ -49,10 +69,12 @@ def populate_videos():
             top.save()
             video.topics.add(top)
 
-        with open ("../transcriptions/transcripts/" + js[:2] + "/" + js[:-5] + ".txt", "r") as f:
+        with open ("../transcription/transcripts/" + js[:2] + "/transcripts/" + js[:-5] + ".txt", "r") as f:
             file = f.read()
+
         video.transcript = file
-        
+        video.save()
+
 
 
 
@@ -74,5 +96,6 @@ def delete_duplicates():
     
 
 
-
+populate_lectures()
+populate_videos()
 delete_duplicates()
