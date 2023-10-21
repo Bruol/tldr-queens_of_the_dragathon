@@ -14,7 +14,7 @@
           TLDR; <sub>Lectures</sub>
         </a></div>
         <div class="account-login-wrapper">
-          <div class="welcome-text">Welcome, Patricia!</div>
+          <div class="welcome-text">Welcome, Patricia ✨</div>
           <img class="log-out-icon" src="img/log-out-icon.svg" />
         </div>
       </div>
@@ -28,7 +28,7 @@
           {% if names %}
             {# Create Course Cards #}
             {% for video in names %}
-            <div class="course-card", onclick="window.location='/transcripts/{{video.0.id}}/';">
+            <div class="course-card" onclick="window.location='/transcripts/{{ video.0.id }}/';">
                 <div class="title-frame">
                   <div class="text-wrapper">{{ video.0.infered_titel }}</div>
                 </div>
@@ -40,7 +40,7 @@
                     {% endfor %}
                   </div>
                   <div class="text-wrapper-2">
-                      <a href={{video.0.source_url}}>ETH Videoportal</a>
+                      <a href="{{ video.0.source_url }}">ETH Videoportal</a>
                   </div>
                 </div>
               </div>
