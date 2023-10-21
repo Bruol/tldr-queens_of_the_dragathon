@@ -10,14 +10,17 @@
 
   <body>
     <header class="header">
-      <div class="page-title">
-        TLDR; <sub>Lectures</sub>
-      </div>
-      <div class="account-login-wrapper">
-        <div class="welcome-text">Welcome, Patricia!</div>
-        <img class="log-out-icon" src="img/log-out-icon.svg" />
-      </div>
-    </header>
+        <div class="first-row">
+          <div class="page-title">TLDR; <sub>Lectures</sub></div>
+          <div class="account-login-wrapper">
+            <div class="welcome-text">Welcome, Patricia!</div>
+            <img class="log-out-icon" src="img/log-out-icon.svg" />
+          </div>
+        </div>
+        <nav class="breadcrumbs">
+          <div class="breadcrumbs-text"><a href="/">Home</a> » <a href="/classes/{{ video.lecture_id.id }}">{{ lecture.lecture_name }}</a> » {{ video.infered_titel }}</div>
+        </nav>
+      </header>
     <main class="main">
       <div class="content">
         <h1>Automatically Generated Lecture Title</h1>

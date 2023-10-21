@@ -12,7 +12,10 @@ from .models import Lecture
 def index(request):
     lectures = Lecture.objects.all()
     template = loader.get_template('views/index.html')
-    return HttpResponse(template.render({'lectures': lectures}, request))
+    context = {
+        'lectures': lectures,
+        }
+    return HttpResponse(template.render(context, request))
 
 def videos(request, class_id):
     latest_lecture = Lecture.objects.order_by("-lecture_number")[1]
@@ -23,16 +26,16 @@ def videos(request, class_id):
     return HttpResponse(template.render(context, request))
 
 def summary(request, summary_id):
-    latest_lecture = Lecture.objects.order_by("-lecture_number")[1]
     template = loader.get_template("views/summary.html")
     
     vid = Video.objects.get(pk=summary_id)
+    lecture = Lecture.objects.get(id=vid.lecture_id.id)
     
     topics = vid.topics.all()
 
     context = {
-        "lecture": latest_lecture,
-
+        "lecture": lecture,
+        "video": vid,
     }
     return HttpResponse(template.render(context, request))
 
