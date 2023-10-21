@@ -1,0 +1,918 @@
+ Okay, good morning everyone. So today we'll talk mostly about segmentation.
+ This week we'll talk about image segmentation. Really a problem of
+ segmenting, for example, foreground from background. As you see in this example
+ here, this optical illusion. Actually also interesting is you can actually look
+ at these two ways, but you can kind of see both at the same time. Your brain will
+ kind of switch from seeing a vase or seeing two faces looking at each other.
+ You can kind of see both, but not at the same time. It's kind of interesting
+ effect of how our brain is interpreting images. Before going there, we'll
+ finish. So last lecture, I'll skip through this, so this last time, but maybe as a
+ reminder, so we have different types of resolutions for images. How many pixels
+ we have in this case covering the same amount of pixels per meter or per
+ centimeter in the image on the real world, but just different than fields of
+ view, different number of pixels. Here we have the same image, but sampled with the
+ different number of samples of pixels on the image from 144 square to in the end
+ just four square. We also looked at radiometric resolution, so this is not how
+ many pixels we have in the image to represent a scene, but it's how many bits
+ do we spend per pixel to express the property, the function value that we
+ have measured. Going from here eight bits, so 256 values, 0 to 55, which is
+ actually the standard that you will find, you know, for almost every image
+ you'll work with. It will be this, but you can actually go down. You can kind of
+ also notice that this screen doesn't really represent eight bits, doesn't have
+ eight bits of contrast, in a sense you probably barely see the difference until
+ we get, you know, roughly here, maybe a little bit there already, but it's probably
+ not much more than 50 values that you can actually see with the limited
+ contrast on the screen, given the environment light, given everything else.
+ Typically on your laptop screen you'll see a bit more contrast actually.
+ Okay, we had looked at this also. So I said so mostly you have eight bits, so two
+ to the eight color images, it's for, you know, three channels, R, G and B. You can
+ have, depending on the sensors, you could have more bits being spent. Also it can be
+ non-linear. Many cameras will actually use a non-linear warping for
+ representing things in most image formats, except if you actually, on some cameras,
+ you will be able to have raw sensor access. Then it turns out the sensor
+ technology itself is actually linear. At least not the event cameras, they
+ actually have a logarithmic behavior, but the normal CMOS or CCD sensors are
+ essentially linear in their behavior, at least over the range that they work.
+ You can choose a certain exposure, you choose a certain gain. This is an
+ amplification between how much electricity comes in and then you're,
+ how much you, you know, you amplify that and then transform it to digital. But
+ within that range, once you do that, it's actually a linear range. Intrinsically,
+ it's a linear behavior, but it's often interesting, for example, here to do so
+ called tone mapping, which is to somehow adjust the image. This image here has,
+ you know, would have a huge contrast between, you know, dark regions where you
+ still see some details here and then brightly lit regions. You can actually,
+ there are techniques that we'll look at somehow preserving, compressing something
+ that might need many orders of magnitude, so, you know, tens of bits or
+ definitely way more than eight bits to compress that into preserving details in
+ all the regions. But then you are actually talking about doing really
+ nonlinear warps and not only a nonlinear warp that's common to all the pixels,
+ but actually different warps in different parts of the image so that you
+ actually do something different in this region that's very dark compared to
+ regions that have a lot more light, for example. You will actually map them
+ differently to grayscale tones. Okay. Not something we'll get in detail to, but
+ something that's, you know, had quite some interesting graphics, for example, and so
+ on. Nowadays also, not going to talk about that, but more and more TVs actually
+ have high dynamic range capabilities. This means that instead of only being able
+ to show maybe eight bits of contrast, they can show more. This typically works
+ either by having, you know, actually, so a panel like my laptop here, the way it
+ works is that it actually has a backlight, so there's a light behind the screen
+ that illuminates everything, and then I have an LCD panel that will switch, that
+ will kind of modulate how much light gets through. That has an intrinsically
+ limited contrast. However, there are screens that will have not one common
+ illumination behind, but will have more localized LEDs behind, so they can
+ actually have one part of the screen be much brighter than the other part. That
+ way you can get to high dynamic range, or you can have technology like OLED or
+ micro LED or other technologies that can actually really have individual light
+ sources locally per pixel, and then, you know, you have essentially, you can go to
+ unlimited ranges of contrast, especially with LEDs. Essentially, you get a
+ particular amount of light, typically by switching it on and off, and you can do
+ that in the megahertz ranges, giving it all eyes, you know, integrate light over
+ about 10 milliseconds. The range between 10 milliseconds and the megahertz or
+ more range that you can actually switch those things on and off, you can
+ actually create very large amounts of contrast on display technology nowadays.
+ So you can have HDR TVs, you know, and screens, etc. Okay, but this projector is
+ definitely not HDR, okay. You barely get 50, so that's like six bits of, six, seven
+ bits of contrast on this. Okay, image noise. So, you know, images can have,
+ ideally, you would just measure, you know, exactly the amount at a particular
+ location in practice for multiple reasons. We've seen actually already earlier
+ that there were some, sometimes there were some fluctuations on the measurements.
+ There could be this dark current, for example, there can be other effects that
+ can create that the actual value you measure is not exactly the one you want,
+ you know, like the one that was actually physically there, but that there's some
+ perturbations on your measurement, like actually any measurement device. Okay, so
+ it will be important to somehow incorporate that and model that in a
+ certain way. The typical way to model it is actually saying, well, every pixel will
+ be perturbed, every measurement will be perturbed by some random perturbation,
+ independent per pixel, zero mean and some distribution and we'll
+ follow some kind of Gaussian distribution, for example. Okay, so average is zero, but
+ it kind of, you know, spreads itself out. Small deviations are much more likely than
+ large deviations and they fit within some kind of sigma of deviation. So that's a
+ typical scenario is you would measure the actual value plus or minus some kind
+ of Gaussian distribution that perturbs. So the noise is then modeled as a Gaussian,
+ additive Gaussian noise. Additive means that you have the value plus minus, you
+ know, the noise. In some cases, there are other models of noise that are more
+ appropriate. For example, one challenge with just using additive Gaussian noise on
+ potentially a very dark image or a situation where you have, you expect only
+ very, very, very small measurements with some significant amount of noise, for
+ example, is that you could actually get negative values, right? If you just add a
+ symmetric function that's both positive and negative, so the Gaussian, then you
+ could actually end with negative light, which doesn't exist. Yes?
+ Why is there no square root in the Gaussian distribution?
+ The pi is usually in a square root.
+ No, it's, no, no, it's just divided. So it's divided by that, but no, there's no
+ square root. The sigma, I mean, here is the, no, I mean, I don't think so. I mean, I
+ need to check, but I don't think so. But maybe there's a typo. I haven't checked it.
+ But anyway, so it's just a Gaussian formula, whatever. So sometimes, in some
+ situations, you actually have, you want a non-symmetric noise. So you want a noise
+ that would, for example, that only is positive, but cannot be negative. So for
+ example, in those cases, a Poisson noise could be more relevant. So what, what
+ scenario is that? For example, a scenario like this one, where you're taking an image
+ at the limit of exposure time, so very limited exposure time, so that in the end,
+ you really only get a few electrons. So the, the, the key thing is that, a few
+ photons, the key thing is that in the end, you're looking at a stochastic process,
+ and light is not a continuous flux at the most, you know, in very short time. It's
+ actually a set of discrete particles, discrete photons that will actually hit
+ your sensor, and those will transform in discrete electrons. Okay? That means that
+ if you're in very dark light, you might or might not have, you know, captured one
+ photon, or two, or maybe three, or something like this, but you're in this kind of
+ ranges here, where you essentially have, if you put, if you want to model that
+ distribution with a Gaussian, you'll actually also predict some negative
+ photons, or you know, you would have a distribution that would also cover a
+ negative amount of light. So, so in these cases, you would actually go to Poisson,
+ which is kind of the Poisson distribution as you see once, so let me
+ actually explain this distribution here. Lambda, in this distribution, so in this
+ formula here, lambda represents the expected amount of times a rare event
+ should happen. Okay? So for example, lambda equals one means that based on my
+ expectation, I will, I should essentially, on average, for a particular
+ duration of time, I should see, for example, I should get one photon. Okay? So it
+ turns out that if you expect one photon, and the distribution follows a Poisson
+ distribution, then if your expectation is one, the likelihood to have zero is
+ about, you know, whatever, 37%, that you have no, no photons yet, although on
+ average, you should get one. You have 37% chance to have no photon, about 37%
+ chance to have exactly one photon, and then you have about, you know, a bit
+ below 20% chance to have two photons, about, you know, let's say 6% chance to
+ have already had three photons, although on average, you should only get one, and
+ you see it goes down from there, maybe 1% chance to already have accumulated four
+ photons, and you know, then it gets very negligible after that. Okay? So on average,
+ I should get one, sometimes I will have zero, sometimes, you know, it's like if
+ you play with dices, you know that you will not, you know, let's say get double
+ six exactly every 36 times, right, that you throw the dices, sometimes you'll be
+ lucky and you'll get a few more early on, sometimes it will take a lot longer
+ before one shows up. Okay, same thing here. If you go to larger numbers, for
+ example, you've sampled long enough or you waited long enough, you opened your
+ exposure long enough, that you would have expected to see 10 photons, okay? Lambda
+ equals 10, then you see that the distribution you get starts looking a
+ lot like a Gaussian. Okay, so for large numbers, this just becomes a Gaussian
+ distribution, okay? But for small numbers, it actually deviates very significantly
+ from it, right? This is highly asymmetric, it doesn't go negative, so
+ everything kind of gets here. And you see also here, it is kind of still
+ asymmetric, it doesn't have the negative thing for expectation of four, for
+ example, okay? Anyway, so in some regimes, that model up there, the additive
+ Gaussian noise model is not appropriate. As you see here, these are actually
+ examples of very low light conditions where, you know, you could get one or
+ this or that, and so you see that you get very speckled kind of effects here. As
+ you go further, you see that you start getting into more remote like this here,
+ where most of the weight is, you know, even here you still have a big distribution,
+ so a lot of noise. You'll be somewhere around here, right? So lambda equals one
+ would be somewhere here or here. Sometimes it's on, sometimes it's off, you know. Let's
+ say lambda equals 10, you have a big distribution, there's a lot of noise.
+ It might vary, you know, practically between five and 15. That's something you
+ see maybe here or here. As you go to, you know, you expect a hundred photons or,
+ you know, a thousand photons, then you get an image here where this distribution
+ gets a lot more peaked versus the range, okay? And then, you know, you kind of have
+ a Gaussian, but also you'll have very little noise actually. The ratio of the
+ variability, you know, instead of a thousand, you expect a thousand, for example,
+ lambda equals thousand. You expect a thousand photons, okay, maybe you'll only
+ have 997. Another time you'll have 1015, etc., but this would barely change one
+ level of your image intensity, right? So, but so in these really low light
+ conditions, you get very noisy imagery essentially. There are some other
+ situations. We won't go into detail here, but for example, for MRI images, it turns
+ out that this model here is more appropriate. So, if you do some special
+ imaging techniques and so on, you might have to check, you know, what is the right
+ noise model. In practice, we'll essentially always assume Gaussian noise.
+ [inaudible]
+ This is essentially simulated, so you can simulate this process of sampling, you
+ know, with these different distributions. So, this is essentially, you have, you
+ have your, you know, the function of like how much light comes in. So, you have, let's
+ say, an image that's kind of good quality image, and then you can simulate how would
+ it look like, and you could kind of easily run that, run this yourself. You can
+ simulate how it would look like by sampling from one of those distributions
+ here according to different exposures. So, this is, this is synthetic, these are
+ synthetic images that are drawn from a, you know, and you could play with this
+ yourself. They are drawn from a Poisson distribution, but they model quite well
+ this process of essentially only having a few photons show up, so very low
+ exposures can easily be modeled this way. Okay? There's also some situations where
+ the noise can be multiplicative. Again, we won't get, we won't encounter those too
+ much in, in what we do, but some situations, the noise could intrinsically be
+ proportional to the signal. So, when it's a very low noise, low signal, there might
+ be very little noise. When it's a big signal, there might be noise that
+ proportional to it. That would be modeled like with a product, so then it's not
+ additive, but multiplicative. There's of course quantization errors. Quantization
+ errors, actually, anybody has an idea of what the distribution of a quantization
+ error is? Would it be a Gaussian? So, let's say we have, you know, we, so we, we have
+ quantization in eight, you know, eight bits, so zero to 255 values. What would the
+ quantization error look like? Anybody has an idea? So, so what is going to happen?
+ So, you should think of, I, you know, my function could have an arbitrary value, and
+ let's ignore the saturation, so zero or 255, but I could have an arbitrary value,
+ and then quantization, what do we do? We will just round it to the closest value.
+ Okay, so if my initial, let's assume for simplicity that my initial distribution
+ would be uniform, and now I will essentially do quantization, so after
+ quantization I just get, you know, one, two, I don't get wrong, I don't get, you
+ know, anything behind the comma anymore, so I just round it to the closest integer.
+ So, what could it be? Exactly, right, so you would essentially have this kind of
+ distribution that, because the rounding is always just within the range of plus or
+ minus 0.5, that's exactly the distribution you'll get, this kind of a flat
+ distribution plus or minus a half, okay? So that's what this quantization error
+ would actually correspond to in terms of distribution, so not a Gaussian, just a
+ little square, essentially, right, rectangle. Some situations you can also have
+ salt and pepper noise, you know, so salt and pepper essentially means that on the
+ image, like you see here, on the image you could have part of the image, some
+ pixels could for whatever reason just be completely saturated, or vice versa, some
+ could just be completely black, so something goes wrong and you, you know,
+ like some effects, for example, could be some pixels have problems and they kind
+ of flip one way, you know, they're either fully, they don't respond at all or they
+ saturate right away because something's wrong with them, you can also have
+ sometimes effects where there's some particles in the, in the air or something
+ that reflect a lot of light and so suddenly you have, you're trying to take
+ an image but there's some kind of points that kind of reflect much more light and
+ so they kind of locally blind the sensor, things like this, so there are
+ number of situations where this kind of saturated either fully black or fully
+ white pixels can show up. Then something important is how do we characterize how
+ much noise there is in the image, okay, as a very simple thing, we'll essentially
+ describe the signal to noise ratio, so we'll compare the size of the signal
+ versus the size of the noise and hopefully, you know, there's a lot more
+ signal than noise, of course, so the, so, and this is a measure, it's an index of
+ image quality essentially, right, if there's very little noise compared to the
+ image, the signal in the image, then we have a high quality image, if there's a
+ lot of noise compared to the actual image signal, it would be pretty bad, right,
+ so if you look at this here, for example, here clearly there's a lot of noise
+ compared to the signal, in this case, the ratio is much better. So, so it's signal
+ divided by noise, when we have a Gaussian distribution, this would be this, the
+ sigma from the Gaussian distribution, f would be essentially the normalized
+ amount of signal, so this is the image values that you read off divided by how
+ many, you know, the size of the image, so it's the average signal strength, okay.
+ In practice, people instead of using the SNR, use the PSNR, the peak signal to
+ noise ratio, why is that? It's because, let's say you do video compression or
+ something like this, let's say somehow you would compress so that you would, you
+ know, on average, you know, encode things so that you maybe round plus minus five
+ values, let's say, after compression that you reconstruct the image with within
+ like plus or minus five, but then suddenly you have part of the sequence is very dark,
+ you don't see much anyways, but it's very dark, if you do signal to noise ratio
+ and you have a dark image, then there's almost no signal anymore and then your
+ noise would suddenly look very big in proportion, okay. So typically people will
+ say, well, I can represent my image between, I can represent all the values
+ between 0 and 255, so I will actually use 255, the maximum signal that I can
+ represent as this, you know, representative of my signal, where my signal
+ lives between 0 and 255 and I will compare that to the amount of noise, so
+ you would typically take the maximum signal, so typically 255 and compare that
+ to the amount of noise, okay. That's the peak signal to noise ratio, that's
+ typically we'll come back to that when we talk about video compression in the
+ sixth week of the semester, okay. Okay, recap of all of this, pixels are, you know,
+ point measurements of the function value that we want to represent in
+ discretized image. We looked at different types of resolution, we just
+ covered image noise, so I skipped that, so now let's look very briefly at the
+ human eye also. These are some, that's a picture of the human eye, this is more of
+ a model of it, but what's important is essentially, let me get the cursor up here
+ somewhere, okay, so this is the eye, the light comes in this way here, you have the
+ cornea, you have the, here you have a lens, then you have the iris, you see the
+ iris actually partially covers the lens, okay, so it can actually, this can
+ actually grow or shrink, so you can actually let, you know, use a bigger part
+ or a smaller part of your eye, or of the lens to capture more or less light, so
+ essentially what happens there is that if you're, if you're at night in the dark,
+ you know, you wake up, you go to bathroom, something like that, your pupil will
+ kind of delay as much as possible, so essentially this iris will a little bit
+ shrink, will kind of open up so that you get more light in so that you can still
+ see something, but then if you go outside, or let's say also you're inside, and then
+ you go outside, you know, your pupil will kind of shrink so that you get less
+ light and you're not blinded by the sunlight outside, so we have some way to
+ adjust to the amount of light that way, literally how much light actually gets
+ inside the eye, the eye also has more of a nonlinear response, a logarithmic
+ response to light, the sensitive area is back here, and then essentially it varies,
+ but most, you're essentially most, you can see most details at the fovea, this is an
+ area of about two degrees of the field, visual field of view, so there you can
+ actually read and see high resolution, in the rest of the retina you see a lot
+ less details, and actually at this point here, where the visual nerves kind of go
+ out, you even have a blind spot, so there's a small part where you don't see
+ anything, but you won't actually realize that, it's just that as you look around,
+ you kind of build essentially a kind of, in your head, a kind of panoramic view of
+ what's around you, as your eyes kind of also has saccades and moves around, but
+ there's actually one area where if there would be exactly something happening
+ in that blind spot, you wouldn't actually see it, but as your eye moves around all
+ the time, you would actually tend to pick it up, you know, at some point anyways.
+ You can actually also, you see there's muscles here, you can actually pull on
+ the lens, this works better when you're young than when you're a bit older, so
+ you can actually adjust the focus, so I can, you know, when I have my hand here,
+ I can try to focus on my hand, and then everything behind looks blurred, and I
+ can see details on my hand, if I now look at, you know, at you guys, then
+ suddenly my hand is completely blurred here, that's because my lens will actually
+ change shape, and all of your lenses will change shape as you focus at different
+ distances, so that's that's what these muscles are, so it's actually a quite
+ complicated system, and of course the whole eye can rotate around with also
+ muscles pulling on the eye to look at different directions and focus, okay.
+ Then also in terms of the light, we're not just sensing like, you know, in the whole,
+ you know, in the whole spectrum of light, we actually only sensitive to a very
+ small part here of the spectrum, you know, you have radio waves,
+ microwave, infrared, the visible spectrum, ultraviolet, x-rays, gamma rays, etc.,
+ right, so we only, and this exponential by the way, like this, or like
+ logarithmic scale essentially, so we're just sensitive here, now this is also the
+ part of the light of the sun that actually gets through the atmosphere, so
+ it's not by, you know, I mean there's a bit more, of course, there's some
+ infrared, there's some ultraviolet, but this is a particularly useful part of the
+ spectrum, it goes from red to, you know, violet essentially, over green in
+ particular, this is how we perceive those colors, those different wavelengths, we
+ actually don't sample this spectrum exhaustively, we really have essentially
+ here these three kind of, you know, these different sensors that are
+ essentially sensitive to slightly different, you know, frequencies of the
+ light, so essentially, you know, we have blue cones, green cones and red cones that
+ are essentially more sensitive to red light or to blue light or to green light
+ and so if we get light coming to us, those different cones will
+ respond differently based on the color of the light, the frequency of the light
+ and we'll associate to that a particular color, okay, but what's important and
+ you'll see that more in detail when you get to colors with markers, the key
+ thing is that we don't really see every possible color, we can only really
+ distinguish three different types of color and therefore you can have
+ different spectra that will actually look the same to us, okay, this is called
+ metamerism actually, so we might notice the difference between some colors and
+ others, also people might have slightly shifted sensitivities, meaning that some
+ people might see difference between two spectra that another person doesn't see
+ the difference between, because of slightly different sensitivities and so on.
+ Also the distributions vary a lot here, so you see the fovea here, so lots of cones
+ here and then, you know, much more of the rods in the periphery and also this blind
+ spot here, so also an area where you don't see anything, this is not, this is just
+ one little area in the two-dimensional visual field and also the rods and the
+ cones have different temporal responses also in a sense, so the rods are
+ actually faster in their response and sensitive also to less light, so you need
+ less light to activate them, but in terms of resolution you need the cones
+ and for color you need the cones, that's also why at night you don't see colors,
+ it's because then you're actually really using more, so the rods are more
+ light sensitive, but then you actually can't distinguish colors anymore, so
+ that's why at night everything looks kind of gray, okay, if you're interested in
+ this type of things, this is an interesting book where you can see that in
+ nature there's many many different principles, so we have one principle
+ for our eye and you know mammals and so on all have the same roughly the same
+ principle, but different animals can have actually very different mechanisms of
+ actually perceiving the world from you know compound eyes like insects here
+ and so on, with or without lenses you know etc etc etc, okay then you know now
+ back to how do we represent things, well really a color image is really an R, a G
+ and a B image that you superimpose and on the display you know you would
+ essentially make that one you know that's be red, green and blue and then mix it
+ together in an image like this here, you can really see them as independent
+ images and if you look here you can kind of see that you know the skin here for
+ example has very little blue in it, not too much green and a lot of red for
+ example in the skin right, you can kind of see that you see that when it's white
+ or light gray it's in all the channels, you can see that the green stuff here is
+ particularly bright over here and kind of dark in the blue and the red etc etc,
+ okay so how do we perceive color, a few different ways, different mechanisms, so
+ here's the first one, you can actually use if you want high quality and very
+ good light sensitivity, you can actually use prisms, there's a combination of
+ typically two prisms that you know you can, you have light coming in and
+ essentially based on the angle you know if you have a prism it will separate out
+ it will kind of bend light differently based on the frequency and in
+ particular some light passes certain angle, some light might be almost totally
+ reflected while past you know like on the other side of that angle it might
+ mostly go through, okay and so different frequencies behave differently and so
+ essentially if you choose this, the shape of these prisms and also of course the
+ n, the optical density of those prisms, you choose all of these exactly right,
+ then you can have all the light, all the red light for example here that comes
+ through, all of that light will kind of you know more like essentially most of
+ it will bounce and then here again for internal reflection will essentially land
+ on a sensor over here that will essentially get all of the red light
+ will just land on that sensor and then the blue one, the blue light the other
+ side of the spectrum kind of goes through this one but then reflects on this
+ one for example and internally reflects here and then ends up on that sensor and
+ the green light, the light not exactly one frequency right but the part in the
+ middle of the spectrum which kind of all goes straight through essentially or
+ most of it, I think I have a video I hope it's okay it doesn't play anymore, so
+ there was a video where you actually you know you can look at a prism and you can
+ kind of see how different colors of light will will bend to different sides, the
+ so the key is the advantage of this mechanism is that you're not throwing a
+ way light so this can actually if you really want good quality and good
+ light sensitivity, this is a great mechanism of course you can see that
+ intrinsically this is like you know physical block of you know two prisms
+ glued together etc etc you need three sensors so this is clearly going to be
+ expensive but in the early days there were a lot of video cameras that were
+ actually three CCD or three CMOS cameras those were essentially you know using
+ this type of prism inside to get the most light sensitivity possible. The
+ standard mechanism what you also find in your phone etc is actually a bare
+ pattern and so so this bare filter so what's the mechanism here well first
+ you're already sacrificing a little bit of resolution because you're essentially
+ going to say well this pixel I sense blue color and then this one green color
+ and this one red color etc and it's going to essentially filter away all of the
+ light that's not the right color okay so in a very simple simplified situation
+ what are we doing we essentially throwing away at every location we're
+ throwing two-thirds of the light away to just keep the light that we actually
+ want to measure the of the right color okay so you see that intrinsically in
+ terms of light sensitivity we're three times worse you know in a simplified
+ setting we're three times worse than this setting here because here we use all
+ the light well now we need three sensors to do it but we kind of measured all the
+ light that was coming in where in this case we actually at every location we're
+ going to filter away most of the light and only let a particular you know limited
+ spectrum light come through that's a factor of three right there kind of it's
+ actually even a bit worse because the just the fact that you put a filter there
+ and so on it absorbs also some of the green red or blue light itself even if
+ it preserves more of it additional challenge for those things here is let's
+ say you have a nice black and white higher contrast kind of image you know
+ let's say you take a picture of this corner here right with your camera like
+ this RGB bear pattern then strictly speaking this is what your image will
+ look like okay so what what happens here well I mean in with a simplified
+ mechanism right simplified mechanism that would for example for the red pixel
+ here would say well I don't have a green or blue measurement here but hey let me
+ just take the average of those four green values and place it here and same
+ average of the blue values and what do you see what you see that this one if the
+ edge is I'm not sure exactly if the edge was supposed to be here or here I think
+ it's here anyways this would have red fully sorry it's black so no red because
+ it's in the dark side so no red it would have you know one green and one blue if
+ you look at this one it would have you know one green but it would already have
+ two blues okay and it would have no red etc and so that's why you see
+ essentially these strange color patterns appear here if you do a simple you know
+ simple averaging of the neighbors to get the local value and so on you will get
+ these type of strange artifacts okay so you get essentially some kind of color
+ aliasing going on because of the discrepancy between the resolution you
+ try to rebuild the image at and and the rate at which you sample the colors okay
+ so there's additional challenges now of course there's now modern algorithms we'll
+ try to use some machine learning and other things some some more advanced
+ algorithms that will try to you know fix this and recognize hey this is like a
+ black and white pattern most likely based on what I see here it's most likely
+ a pattern and so I will kind of restore an image that is more likely than you know
+ this kind of strange color patterns yes first there very good question let's
+ actually go here so if you look here at the color sensitivity all up you see
+ that in the green range if you look at the kind of how all the curves behave
+ this is where we are most light sensitive you know the green is has sees
+ this of course very well but also the red is very much overlapping there and
+ also the rods also have a strong response there so we actually more
+ sensitive to green we perceive the green light better and so that's the reason to
+ actually if you have four and you only have three colors to make two greens for
+ that reason you also had a question here yeah it it I as far as I know it mostly
+ heats it up but you know that's negligible okay here's an example in
+ kind of reality you know this this part of the image here you kind of see these
+ effects of red and you know of bluish and reddish kind of responses here people
+ have also experimented with adding additional colors so not to have you
+ know have two greens but then figured out hey maybe I could add something else
+ there's also some that have you know would actually have a clear no filter at
+ all here's the sign a sign filter you could have no filter at all people have
+ experiment you know played around with this but mostly mostly people use the
+ classical bear pattern that's what you find mostly if you then want even more
+ flexibility to measure color you know this is a very flexible mechanism more
+ used in scientific apparatus and so on where you would actually have a sensor
+ high-quality sensor there's also more settings where you have a static object
+ or static scene that you want to take pictures of and then you can actually
+ just rotate different filters through you could install new filters with
+ exactly the properties you want to measure things here alright so here's
+ kind of a comparison a little bit of the different advantages as I said this
+ really for more scientific applications niche essentially nowadays pretty much
+ everything is this way because you can digitally correct a lot of things and
+ isn't that and so this is the simplest and cheapest to manufacture in some high
+ end camera systems you will still find this here and then there was this there's
+ this very interesting technology that's actually stacking pixels vertically on
+ top of each other based on the fact that if you look at the full spectrum in
+ terms of absorption in the material or penetration of photons in the material it
+ turns out that based on the amount of energy of the photons they will
+ penetrate on average at different depths in the material and so they figure hey
+ if if this is the surface if inside the surface we measure
+ differentially at different locations in depth we can actually perceive color a
+ little bit that way because you know you see essentially red red will go on
+ average deeper it will also you know sometimes so this this essentially means
+ that in the chip let's say in the CMOS chip if this is the surface here red will
+ kind of also mostly be absorbed here but if you actually have red light you will
+ see penetration you will still measure something here where if you have blue
+ light you pretty much will measure nothing here and so by measuring
+ separately here here and here you can then run algorithms that will reconstruct
+ like how much red green and blue was in the incoming light at this location so
+ you don't need a bear pattern anymore you can at one location measure all three
+ colors by having three different depths of sensing and then you know some
+ algorithmic stuff on top of that these avoid this kind of color aliasing in
+ situations where you have essentially color patterns or you have patterns that
+ are very close to the macrists frequency that we discussed last week this kind of
+ the limit of where you can sample and when you have kind of effects of kind of
+ because we sample color in a sense with the bear pattern we sample color at half
+ the resolution of sampling the light essentially we can have when we really
+ operating at the limit in terms of texture details this can this can create
+ funny effects okay so we'll take a break now and then we'll continue with
+ segmentation okay so now let's continue with segmentation so there's many
+ different concepts that can help us in segmentation it is often task-specific
+ it depends on the context what belongs together one of the you know key
+ principles and this actually comes from psychology so based on human vision
+ essentially and trying to understand how people tend to group things together and
+ so on these are the Gestalt phenomena so kind of figure ground segmentation
+ proximity so if you look in B here you will visually kind of naturally tend to
+ you know separate out the ones that are a little bit further etc so you see also
+ similarity here you would tend to have the you know the the disks and the
+ crosses kind of as see them as two separate groups continuation in D here
+ you see essentially we tend to group the ones that are along kind of a same path
+ together and and same here so but you know like this one is not necessarily
+ associated with this one in a sense like we would tend to associate those and
+ those guys this one overlaps in both but but we have kind of this continuity also
+ that we imagine and then we associate also based on that closure in a sense
+ here you can kind of more or less associate also the in kind of separate
+ insight from the outside here come on fate if things move if this would
+ illustrate motion the ones that move in the same direction could be perceived
+ to be part of the same group where ones that would move in the opposite
+ direction would immediately stand out and be kind of visually seen as separate
+ ones symmetries these two guys look a lot more associated with each other than
+ those two for example etc. here's kind of again a kind of an interesting illusion
+ you can kind of again see two figures here who doesn't see two figures okay
+ which which one do you see like for one of the so there is essentially you know
+ the nose could either be over here or the nose could be over here so this could
+ be the nose the mouth etc. okay still someone doesn't see it or everybody
+ see but notice again with your brain you can see one or you can see the other you
+ can flip from one to the other you can never kind of perceive both at the same
+ time so your brain does kind of a holistic interpretation of the whole
+ image and needs a kind of consistent interpretation so it will really look
+ either it's either seeing one and kind of you know like has that picture or or
+ sees the other but so in some ways you know you can you can say this here
+ essentially segmentation ultimate classification problem if you solve this
+ then all problems in computer vision if you could just have a perfect solution
+ to every segmentation problem then essentially all computer vision is kind
+ of solved this really a fundamental problem but it's also very task-specific
+ so we look now at a bit more narrow classification segmentation problems so
+ it partitions an image in two regions of interest it's the first stage in many
+ automatic image analysis systems a complete segmentation of an image I is a
+ finite a finite set of regions are on to our ends such that if you put all the
+ regions together the union of all the regions is the whole image and there's
+ no overlap between regions they're strictly exclusive okay so that's a
+ complete segmentation definition of complete segmentation here's an example
+ of an image how should we segment this right so probably something like this
+ right it's probably you know we don't know what a task is but we can imagine
+ that's probably something like this okay so how would we do this well we could
+ kind of you know if you look at this image here essentially the pixels of
+ interest these regions they all have they all brighter than the background in a
+ sense so we could kind of look at it as follows kind of reading those images you
+ can look at it the notice this although it's a gray scale image is actually a
+ color image here that was loaded in you can look at a histogram which is
+ actually this thing here so what's the histogram it's simply right so here it's
+ just that function but the the histogram is actually a distribution of the
+ intensities okay so we have 255 levels of intensity in a gray scale image and
+ so we're just counting how many pixels of each color we have okay so so then you
+ would get for that image you would get something like this here so what do we
+ see here well we see that there's a lot of very dark pixels no surprise actually
+ maybe a surprise is that the dark pixels are not just black okay you see they
+ actually they actually distributed here in a range from let's say 0 to 20 but
+ definitely 0 to 5 there's lots of I mean of course it's clipped here so it it's
+ maybe a lot higher but essentially lots of values here 0 1 2 3 4 5 kind of and
+ then still some values larger you know like still a few thousand pixels that
+ are a little bit larger than that then kind of nothing and then you know a few
+ pixels here that are kind of in the gray in the middle of you know they're not
+ white they're not black but they're kind of in the middle of the of the intensity
+ range between mostly between 100 and 150 roughly so that's a histogram that's a
+ histogram of this this picture here and so you could imagine or actually let me
+ ask you how would you now find you know we wanted to essentially separate these
+ these pixels right so like we would like to find these regions here so how would
+ you kind of do that
+ so essentially we could say well let's say 50 so we could just do a Boolean
+ kind of logical operation on the image and save it's larger than 50 you know
+ it's true and otherwise it's false so you just do a comparison with the image
+ intensity for every pixel you evaluate that function and then you know all the
+ ones that end up with a one that had essentially larger than 50 above that
+ threshold are the pixels of interest and the ones with zero are the pixels we
+ don't care about are the background pixels right so that would be indeed a
+ simple segmentation for this here now you know let's say we had an image like
+ this here suddenly the problem gets a little bit more challenging how would we
+ segment this also we you know like okay this could be one segmentation as an
+ example but it's not immediately clear really if somebody asked you to segment
+ that you probably immediately would say but you know like what do you want me to
+ segment like what you know like at what level you know do you want to segment this
+ in two three regions do you want to segment this and they want to get like
+ every separate object somehow every flower separately or just the better
+ flowers you know all of those could be possible right so the quality of
+ segmentation depends on what you want to do with it segmentation algorithm will
+ be chosen and evaluated with the application in mind so another example
+ you know maybe like this so so segmentation is kind of an ill-posed
+ problem you like it really depends on what definition now people can still
+ meaningfully segment in the absence of a question but you know it's not always
+ clear so here's some early work in trying to address that you know more as a
+ more as an experimental science essentially just ask people to lots of people
+ online to build segmentations how they see fit without a question and then you
+ know some people will segment it like this other people will you know find
+ additional regions and so on but essentially by getting many many
+ different people to segment they can essentially build up these kind of
+ distribution where if it's very dark it means everybody systematically all the
+ subjects that had to segment the image always systematically put a boundary
+ here separated through the regions there while this one that's a lot weaker you
+ know some people did some people didn't it's it's representing that so it's
+ capturing kind of what would be the right segmentations essentially the
+ distribution of segmentations in some sense I don't know the same thing
+ I don't have a slide about it but a few months ago the latest work in this kind
+ of broader space came from Meta where they essentially proposed a learned
+ model that would essentially have been learned on somehow these type of things
+ and then lots of things beyond that they call segment anything and so that one
+ you know you can kind of provide it any imagery and it will do some reasonable
+ job based on you know knowing kind of from people and from other inputs what
+ typically should be done so there's been a lot of progress in that space and
+ there are quite advanced deep learning models that will be very you know quite
+ powerful you could have a look at it of course in this lecture we'll start from
+ the basics we'll look at we'll introduce them the main important concepts
+ concepts that generalize all the way to these most advanced methods but it's
+ important to start to really understand the fundamental principles really well
+ so here's the algorithm that we just discussed earlier for this kind of very
+ simple segmentation task a simple thresholding also see it as a very
+ simple decision function but you know other algorithms could have you know
+ would have much more involved decision functions and so on or combinations of
+ many decision functions that you try to combine together etc here we look at
+ just a very single very simple decision function but that has a parameter so it's
+ a thresholding function right so as we discussed we we have essentially a
+ binary image here that for every pixel will either have one or zero one if we
+ are above the threshold zero if we below the threshold so it generates a binary
+ image so given an image as input a grayscale image as input it will generate
+ a binary image as output that binary image is essential classification one is
+ inside zero is outside or one is foreground zero is background and what's
+ important is of course that we have one parameter in this decision algorithm and
+ that's the parameter T where do we put the threshold so you've seen for this
+ example here you know anywhere between here and here we could arbitrarily choose
+ the threshold we'd have the same solution because there was a very nice
+ separation but now let's look at a slightly more complicated image still
+ quite simple here a duck or a geese maybe it's a duck but it could be a geese
+ anyways so you have this picture here and so it seems easy enough to segment
+ for us right so we could do same threshold as before threshold equals 50
+ okay that's not good enough so let's try to find a better threshold right so
+ this would be the segmentation yellow inside blue outside okay so not 50 let's
+ try 100 okay a bit better almost there so this now segmentation okay we're almost
+ there so maybe we can tweak it a bit more 150 okay now we got rid of most of the
+ stuff that should be outside but if you actually look carefully we're starting to
+ lose here part of the of this bird okay so hmm it looks like we won't quite be
+ able to to get this with a simple algorithm will not be good enough to
+ actually really solve our problem here and then if we go further it gets only
+ worse right okay so still how do we choose our threshold what would be the
+ right threshold so of course you could just try the narrow right you have a
+ this is quite fast to compute you could try it out try different values and
+ choose what you like most but that's not very principled of course the typical
+ way to do it is to compare to ground truth this is actually you know what you
+ do in more advanced setting in its in machine learning is when you have you
+ have ground truth data you have data with answers provided with not only the
+ input but also the output given and so there you can tune your algorithm in
+ this case it's very simple just one threshold but you can tune your
+ threshold to do the best possible response whatever way you define best
+ but best possible response and so so we'll kind of look at the ground truth
+ but in an automated way and we'll get to that a little bit later with so-called
+ ROC curves the receiver operator characteristics will get to that a
+ little bit later okay ideally we had a situation like this one here with you
+ know a distribution of negatives in in this one dimension in this case the
+ intensity and then we have a threshold this could also be in other dimensions
+ you could imagine a particular feature for an algorithm a learning algorithm
+ and in that for that one feature you have all of your so in this case that
+ features just intensity but it could also be the result of another function you
+ have a one-dimensional you map your pixels you map your images parts of
+ your images to this one-dimensional thing and then use if it's if you're lucky
+ you know you have a perfect separation between the two distributions the one
+ you know the ones you want to keep so the foreground let's say and the
+ background if that's the case it's easy that was the one we had in the first
+ example right we put a threshold at 50 we get a perfect separation right so
+ this two set distribution a separated it's easy now there are situations where
+ you might be able to achieve that here's an example this was actually a class
+ project long ago it's kind of this chroma so-called chroma king so this is
+ separation of foreground and background but in a in a place where you actually
+ take the picture with the purpose of separate you know like you instrument the
+ world in a way to make the problem easy in particular here for color picture you
+ will actually have a subject and then the background you make it as simple as
+ possible and as different of the foreground as possible you've seen that
+ there's not much green or blue in the colors we typically I mean or like human
+ colors human skin so also for animals and so on there wouldn't be much green for
+ example so if you instrument the background you can make that segmentation
+ problem simpler so this is like so-called chroma keying and so you could for
+ example here you have a color so the result of your decision of keeping a
+ pixel or not would be for example you have you make the background on purpose
+ green and then you would look at a difference between is it different in
+ that is it close to green or is it far from green if it's close to green then
+ this is this is not satisfied and then you have a zero here but if it's if it's
+ far from green then you would say okay this is clearly not background so it
+ must be foreground so if you're above this threshold here then you would switch
+ this to one so one example would be 20 color values the green color this for
+ color image now would be 0 to 55 and 0 remember remember R, G and B so red, green
+ and blue so this would be the kind of perfectly green saturated green zero for
+ the other colors now there's some problems with this variation is not
+ necessarily the same in all three channels so meaning that a fixed threshold
+ that's applied in all directions the same it's not necessarily the right thing to
+ do also this would generate a hard alpha mask so it would really per pixel
+ decide its foreground or its background but it cannot be a blend of
+ foreground and background because of the lens blur or other effects or also
+ let's say you see you know if you have hair in front of let's say a green
+ background the hair will kind of be semi-transparent essentially and there
+ will be a green hue from the what's in the background you know going being
+ visible through your hair so that's that would be modeled as this alpha channel
+ not being binary but actually being a continuous number of its 50 percent
+ foreground or its 30 percent foreground or stuff like that okay but that's
+ beyond what we'll we'll see here okay so let's see we have something here I don't
+ display the color cube RGB three-dimensional color cube but just a
+ two-dimensional red and green so just one slice through that cube so this is the
+ amount of intensity green intensity this is the amount of red intensity so you
+ know imagine if you have a face of a person it's going to be high in the red
+ and low in the green so it's going to be somewhere up there and then the background
+ of a chroma keying would be pixels that hopefully have a lot of green and and
+ only green so no red so you know if we have a if everything is this simple it
+ would be easy but let's say we have something like this here these are kind
+ of the background pixels we observe and then the question is okay this this
+ particular pixel with these values is this foreground or background okay you
+ can see that compared to the average here these points are as far from the
+ average as this point roughly so you might actually want a model that's a
+ little bit more refined than a single you know uniform spherical spherical
+ distribution modeling the background so you might actually want to fit an ellipse
+ here that somehow better represents the background distribution the background
+ color distribution so that you can better make a decision between these all
+ being background pixels and then this one is far enough so that you can
+ classify it as being a foreground pixel it's essentially the binary decision
+ would be essentially you know this this ellipse here right so inside the ellipse
+ you'd say it's foreground outside the ellipse you'd say so sorry outside the
+ ellipse is foreground and inside the ellipse is background
+ okay so most here cartoon version of the Gaussian just as a reminder you get
+ about two thirds within plus or minus one sigma and you get about 95% within
+ plus or minus two sigma so let's look here at an example here
+ of these colors so this now is just the blue-green colors here that will we'll
+ see this sorry so here you have essentially the ratios are red divided by
+ the full intensity green divided by the full intensity and blue divided by the
+ full intensity and then it looks like this here okay so it's kind of normalized
+ and so you see you could kind of nicely segment all of these green pixels
+ compared to others that's one way that you can do slightly more the you know
+ here's kind of a challenge with these mixed pixels that were mentioned so
+ mixed pixels can both be because you have hair for example that's semi-transparent
+ that you can also see the background through the hair but actually also it
+ can be temporal motion blur if the hand moves fast then for part of the time you
+ taking the picture the hand is in the way and there's no light coming through
+ but then part of the time the hand might be somewhere else and you actually see
+ background so now it's it could be 50/50 but it's because half the time your hand
+ was there or part of your hand was overlapping that pixel was visible in
+ that pixel in the other half you were just looking at background the other half
+ of the exposure time the time that you started looking and then until you stopped
+ looking integrating the light at that pixel right so clearly they also
+ challenges of you know doing this and so again the way to model that would
+ actually be by having this be non-binary okay so those are a few examples of
+ kind of a simple where you actually instrument the problem to make the
+ problem simpler let's let's get back to our to our duck kind of problem here so
+ we want to you know we want to automate choosing the right threshold the the
+ right threshold the best possible threshold the best trade-off it is
+ going to be a trade-off in practice to do that you want to not you know have to
+ tweak yourself or so you actually want to do a more principled way you actually
+ want some ground truth you know this is the answer that I would like to have and
+ now I will tweak my parameters to get as close as possible to this and as close
+ as possible again is defined in certain ways we'll get to that okay so this is
+ the ground truth so this is the solution we would like to have and now we'll
+ essentially try to characterize how well different different parameter settings
+ do in this and what type of mistakes they make or as really makes with different
+ settings okay so for that we'll use the ROC curve so the receive operating
+ characteristic it's a curve that characterize the performance of a binary
+ classifier and essentially binary classifiers coming many types here is
+ the question is foreground background that's the one we're interested in but
+ it can be many other things it can be cancer screening any automated decision
+ mechanism you will essentially try you know have a binary answer cancer you
+ know cancer or no cancer pregnant not pregnant is the object there or is it
+ not there you know foreground background as in our example so we'll continue with
+ the last one here so essentially we have ground truth that tells us what is
+ foreground and what is background and then we'll run our algorithm with a
+ particular setting and now I will also tell us what is things is foreground and
+ what it thinks is background so we have kind of two times two possibilities okay
+ we have true positives so that's one that is our algorithm said was positive and
+ it was actually if we go check the ground truth it is actually positive okay so
+ if both states positive then that's a true positive so our algorithm predicts
+ its positive and it was actually the right answer the ground truth the right
+ answer was positive there's the same with negatives so true negatives so the we
+ know the answer should be negative and our algorithm actually also predicts
+ negative but then you have two undesired situations a false positive false
+ negative so this is one that the true solution should be positive but our
+ algorithm thought it was negative okay so it made a mistake there same thing a
+ false positive ground truth say it should be negative but our algorithm thought
+ it was positive okay so those are so there's four cases two of those are good
+ and two or those are problematic okay also if we look at those are the
+ correctly classified ones those are the incorrectly classified ones by our
+ algorithm compared to ground truth and then this is the total number of
+ positives that our algorithm generates and these are a total number of negatives
+ that our algorithm is generated okay so now if we look at you know our example
+ and I think this is for the 150 threshold we can compare now we can use
+ the ground truth and compare and classify essentially in a sense we've
+ not classified the image in four different regions this you know we have
+ essentially the ground truth is a binary classifier our algorithm is a binary
+ classifier so we have two binary classifier combines that gives us you
+ know essentially four bits two bits so four possibilities right so we classify
+ now the region in these four possibilities the true positives that's
+ great the false positives that's not so good the true negatives that's all good
+ and then the false negatives the one that we should have labeled positive but
+ algorithm label negative okay so what we'll do is the RSE curve here it is
+ going to plot the true positive fraction versus against the full positive
+ fraction okay so the true positive is is essentially the sensitivity so the true
+ positive divided by the total number of positives is like how many of the
+ positives did we already pick up and then the here the false positive fraction
+ is the false positive count over the actual negatives okay so if we plot
+ is how it tends to look something like this okay so these are the false
+ positives the false positive ratio and this is the true positive ratio so it's
+ the true positive count divided by the the positives right so typically the
+ curve looks like this because typically initially remember right if we sweep or
+ actually this curve let me actually this one more thing I need to explain
+ actually so this curve corresponds to different threshold values okay so if I
+ start from you know let's say the positives are you know like I have the
+ I start from the very bright pixels because the brightest pixels are
+ definitely on the duck okay so if I do that you know if if they're really
+ definitely on the duck then it means that initially I will start going straight
+ up here because the first few pixels that I classify will be true positives
+ that I classify as positives so that means that I will do really well here
+ while having no false positives okay so I will start going straight up typically
+ but then after a while you know once you get to the underbelly of the of the
+ duck you start getting it's getting more difficult for every you know trying to
+ get more of the belly of the duck in starts getting more and more of the
+ false negatives at the false positive story getting me more and more false
+ positives so initially it's easy typically but then as I go from the
+ threshold at 255 you know initially threshold 255 means I have you know
+ everything is negative essentially so that's not good in general but it means
+ that the first few one that I pick will definitely be good one so I skyrocket
+ up here but then after a while it gets more difficult and then if I every time
+ I start including additional positives so I lower my threshold I get more I want
+ to get all the positives this comes at a cost of including more and more and
+ proportionately more and more of the negatives also in and getting more and
+ more false negatives that's when this number starts going up the ratio of the
+ false negatives that I'm kind of getting in so so typically a curve will start
+ going straight up then kind of flatten out and then of course eventually as I
+ lower the threshold all the way to zero eventually I just add everything in and
+ so then of course I'm at the upper right corner which is well now all the
+ positives are labeled positive but all the negatives are also labeled positive
+ because I move my threshold to zero right so in the limit I always end up
+ there in a sense the interesting part to be is of course somewhere in the upper
+ left corner that's where I want to be so I want to be somewhere as close as
+ possible this is the perfect situation right that's where I have all my
+ positives and nothing of my negatives yet right this is the ratio of the
+ negatives that are falsely labeled as positive right so if I'm up in the corner
+ there if I can find a point you know a classifier that's up in the corner there
+ then I got all my positives I'm a hundred percent of my positives without
+ having included any negative so that's the perfect classifier notice that's
+ what we could achieve on the first example where it was really both
+ distributions were strictly separated in the one-dimensional threshold space
+ okay so here's some of the key properties of our RC curves they always pass to
+ 0 0 and 1 1 that's you know the extreme thresholds like everything's in or
+ everything's out that gives you 0 0 or 1 1 okay and that's like the beginning and
+ the end of each of those curves I kind of already said this what is the RC of the
+ perfect system
+ anyone exactly right and the perfect place is of course at that corner that's
+ where you want to operate another question what if instead of being straight
+ up and straight to the right you actually have a line that goes diagonal from 0 0
+ to 1 1 what would that mean
+ exactly random guesses so you're it doesn't matter like it's you're doing
+ just as well on the positive as a negative you have no idea what you're
+ doing the classifiers this random stuff questions can you do even worse let's
+ say you know the curve so this is kind of random guessing what what if you have a
+ curve that does something like this here like a terrible classifier does
+ everything wrong essentially what should you do then exactly right so essentially
+ you will never have a classifier that's worse than this here because then you
+ would just flip it around to use it the other way around and say whatever
+ predicts I'll say the opposite I'll take the opposite right and then you'd
+ actually have a decent classifier okay okay so if you go back to these
+ distributions as we sweep as we go around along that curve if we have
+ actually the the true positives I mean so we have the ground truth here and the
+ ground truth would have on our gray level here would have the foreground would
+ for example in this case be red and the background be blue notice here the
+ background the foreground is actually dark and the background is is lighter in
+ this example then if we choose a particular threshold here what are we
+ doing we essentially saying okay all of these ones are correctly classified as
+ foreground but all of these ones on that side of the threshold the ones that
+ should have been classified like they're misclassified and vice versa for the
+ blue curve the background pixels there's these ones here that are incorrectly
+ classified the other way right so essentially these are true positives
+ these are true negatives these are false negatives and these are false
+ positives right or four classes here so how should we modify the like where
+ should we choose our threshold like given those curves where would you operate
+ this here
+ correct let's say absolutely correct but let's say it's kind of the same you
+ know like you just don't want to make wrong decisions so you want to minimize
+ the amount of misclassified things like the false positive and false negatives
+ are equally costly so where where would that be essentially exactly so that
+ would be at intersection point because the marginal amount of misclassifications
+ that you would as you slightly move this around is kind of the length of that you
+ know of that like if you it's like an integral right if you move a small
+ amount here it's kind of that width times the height that you know you are
+ flipping from one side to the other and so clearly here at the intersection
+ point will be exactly where you know you start having less mistakes from one but
+ more of the other that's where they cross over so that's the crossover point so
+ this would be the base minimum risk detector would operate there but
+ exactly as you were saying this is not always the right thing because depending
+ on the decision a false negative could be much worse than a false positive
+ think of cancer for example a false positive would just mean that you would
+ get a second test and then you know would be scared you would get a second
+ test and then you know it that would then likely that might be a more expensive
+ test and a more discriminatory test and so on and so probably then that would
+ just turn out negative and you'd be say you would have been scared for a week and
+ then you'd be fine and everything would be sorted out and so the cost would only
+ be the cost of that additional test and a little bit of being scared the false
+ negative would mean that you have cancer you're labeled as not having cancer you
+ don't get treatment and you know a little bit later you might die from your
+ cancer by not having been treated right so that it's very asymmetric in some
+ situation so indeed in those cases you really have to you know weigh those
+ different costs in an appropriate way as shown here and that essentially
+ typical corresponds to choosing like a particular that you want to operate at a
+ particular orientation of the curve there okay so let's look again here at the
+ classification was it here so here a few different examples this is the actual
+ curve or you know like sampled by the few discrete locations here that's the
+ actual curve you get and so as you can see it's really literally it's trade up
+ here in this case because you literally would have made no mistakes in the first
+ you know up to a certain range right in these examples here initially there
+ would be no mistakes and then only gradually would you kind of start making
+ misclassifications that's where you start flattening out here so you you're
+ kind of perfect you get it first 85% of the pixels classified correctly but
+ everyone's you try to push beyond that that's where you start making more and
+ more mistakes until very quickly you're kind of making many more mistakes for
+ very few additional good pixels that you classify in this is like the gray level
+ histogram and so you can kind of you know see here that there's this is the
+ range where you probably want to put the threshold but if you actually now
+ separate this if we have ground truth we can separate in distribution of foreground
+ and the distribution of background and then you kind of see that essentially
+ there's this whole region of overlap so essentially as you start sweeping down
+ here everything is great until here right about 150 and then you start actually
+ getting a lot of you know to get the additional yellow ones you need to get
+ in a lot of blue ones and very quickly the last few once you get here here it's
+ about equal but then once you get here to get those few extra yellow ones the
+ foreground ones you are starting to really throw in a lot of bad ones okay
+ okay so there's essentially clear limitations the so you could so limit
+ so so a single simple feature like in this case how bright is the pixel how
+ bright is this particular point is intrinsically very limited maybe you know
+ we could look at a few neighboring pixels either actually just say like well
+ if all my neighbors are you know look like a duck then maybe I'm also the kind
+ of pixel so that's like surface coherence to have neighbors kind of if
+ neighbors are very correlated then you can use that and this is something we'll
+ look a little bit at you can also do more advanced features not just the
+ brightness but you could actually and we'll see this later you could actually
+ you know if you look at the picture of the duck here if there's particular
+ characteristics for example the duck is not only locally bright but also it's
+ kind of a whole region is typically bright so you could kind of look for that
+ you could look at a number of different texture properties that you know the
+ local appearance in a region looks different on the duck than on the
+ reflection here of the duck for example you could start bringing multiple
+ features together and then use a combination of those a non-linear
+ combination of those then we're starting to get really into more advanced
+ machine learning algorithms that then have many thresholds and many parameters
+ that you would all adjust together okay so we'll leave it at that for today and
+ we'll continue with this on Thursday
+ (audience applauding)
+ [APPLAUSE]

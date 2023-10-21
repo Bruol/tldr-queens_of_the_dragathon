@@ -1,0 +1,1474 @@
+ Wir wollen uns heute weiter mit dem Thema Klassen und Objekte beschäftigen.
+ Wenn die Lautstärke nicht genug ist oder dann schreiben Sie bitte in den Chat und
+ dann versuchen wir das so richtig zu machen.
+ Okay, wir wollen, dass das Thema Klassen selber entwickeln, als Sie zum ersten Mal ansehen.
+ Das Thema wird uns einige Vorlesungen und sogar noch einige weitere Wochen beschäftigen.
+ Aber wir werden heute versuchen, die Grundlagen der Klassen und des Glaskonstrukts zu diskutieren.
+ Aber ich dachte, ich zeige Ihnen auch kurz das Ergebnis der letzten Poll, wo Sie mit diesen
+ Array-Parametern arbeiten mussten und erfreulicherweise haben, dass diesjahr 60 Prozent der Studierenden,
+ die daran teilnahm, es waren wen, die diesmal letztes Jahr die Antwort richtig gemacht.
+ Also die anderen 40 Prozent, bitte gucken Sie sich es genauer an.
+ Im Allgemeinen schätzen wir hier den Romanfond.
+ Ich bin nicht ein Experte in allen anderen Fonds, mein japanisches leider auch nicht mehr so gut.
+ Also von daher, wenn Sie was schreiben, bitte, so dass ich es verstehen kann, hilft es mir.
+ Okay, warum brauchen wir jetzt Klassen?
+ Was ist die Grundidee dahinter?
+ Stellen Sie sich vor, Sie haben das Problem, das hatten wir schon mal angefangen,
+ dass Sie da für einen Verein die Körpergröße für die Mitglieder von verschiedenen Personen bearbeiten wollen.
+ Und jetzt, nachdem Sie das gemacht haben, kommt die Zusatzaufgabe, dass Sie zum Beispiel zusätzlich
+ das Gewicht für jede Person einlesen sollten.
+ Also für die sechs Mitglieder Ihrer Gruppe würden Sie erst die Größe in Zentimetern
+ und dann das Gewicht in Kilogramm angeben.
+ Das ist also eine Aufgabe, die Sie hätten und das könnten Sie eigentlich mit dem,
+ was Sie bisher gelernt haben, eigentlich ganz gut machen.
+ Weil Sie wollen nach den Daten analysieren oder irgendwas anderes machen, sehen,
+ wer größer als der Durchschnitt ist und so weiter.
+ Also würden Sie die Daten einlesen, das würden wir so machen, dass wir eben halt den einen Scanner uns besorgen.
+ Den nennen wir mal Input und dann lesen wir die Anzahl der Input, die wir verarbeiten wollen.
+ Und dann für jede Person lesen wir einmal die Höhe und einmal das Gewicht,
+ indem wir halt hier die Speichermann im Erreher und hier lesen wir also die Höhe,
+ die Speichermann im Errehen und dann lesen wir das Gewicht in Kilogramm und speichern es am anderen Erreher.
+ Also wir haben jetzt zwei Erreys, in denen wir die Größe und das Gewicht jeder Person abspeichern.
+ Und was für eine Dimension, also für die Größe, vor einer Woche oder vor anderthalb Wochen noch eine gute Idee war,
+ jetzt mit zwei verschiedenen Dimensionen ist das eine sehr schlechte Lösung.
+ Aber wenn Sie das so machen, dann haben Sie verschiedene Probleme, die Sie bearbeiten müssen.
+ Zum Beispiel haben Sie das Problem, dass Sie jetzt sehr sich anstrengen müssten,
+ wenn Sie die Personen, deren Daten Sie jetzt eingelesen haben,
+ die wollen Sie einmal nach der Größe sortieren und einmal nach dem Gewicht.
+ Und da ist es sehr schwer aufzupassen oder nicht die Übersicht zu verlieren.
+ Es ist sehr schwer dafür zu sorgen, dass die Personen dann noch in der richtigen Reihenfolge in beiden Erreys auftreten.
+ Also das ist irgendwie einfach etwas sehr, sehr schwierig wäre zu machen,
+ wenn Sie eben halt zwei Erreys hätten, die Sie selber managen müssten.
+ Und ich meine, das ist nur ein einfaches Beispiel mit zwei Dimensionen.
+ Jetzt stellen Sie sich vor, zusätzlich wollen Sie für die Personen die Adresse,
+ das Semester und alles andere dazu speichern.
+ Da wird das sehr, sehr schwierig.
+ Und das ein ähnliches Problem hat, wenn Sie zum Beispiel mit denen eine Datei haben,
+ in der Sie Informationen über Orte in der Schweiz oder irgendwo speichern.
+ Und der erste Wert gibt dann wieder die Anzahl der Orte an, so wie die Anzahl der Personen.
+ Und dann kämen für die Orte, die Sie interessieren,
+ die Koordinaten in diesen Schweizer Landeskoordinaten, die Sie vielleicht auch mal irgendwo kennengelernt haben.
+ Und das ist ein Punkt, der uns sagt, wo in der X-Y-Ebene wir diesen Ort finden würden.
+ So, und jetzt sollten Sie ein Programm schreiben,
+ das eben nebenan, es gäbe ein Tiefdruckgebiet, so was soll es ja geben,
+ hat ein Zentrum mit gewissen Koordinaten.
+ Und dann sollten Sie rausfinden, welche Orte sind innerhalb eines gewissen Radiuses,
+ um diesen Ort herum entfernt.
+ Auch da hätten wir das Problem, dass Sie eben halt die X-Koordinaten und die Y-Koordinaten,
+ die in zwei unterschiedlichen Erreyspeichern wieder mal,
+ haben es schwer, da den Bezug zu verbehalten und auch schwer dann rauszufinden,
+ wer gehört mit wem zusammen.
+ Also, muss ich Ihnen angucken, im ersten Fall hatten wir Daten,
+ die eine Gruppe von Personen beschrieben,
+ also die uns Informationen über irgendwelche Personen geben.
+ Und wenn wir solche Daten speichern, dann sollten wir die vielleicht als Personenobjekte speichern,
+ also nicht als ein Objekt, das Informationen über die Personen hat.
+ Und im zweiten Fall, da hatten wir eine Menge von Punkten,
+ also topografische Punkte oder andere Punkte,
+ könnte es brauchen, dreidimensionaler Raum sein,
+ wenn wir die Höheninformation mit dazunehmen wollen.
+ Und solche Informationen sollten vielleicht als Punktobjekte
+ oder wenn wir verschiedene Punkte analysieren wollen als Topo-Point-Objekte,
+ da brauchen wir auch Punkte in einem Raum, den wir übermodellieren.
+ Also, da hätten wir praktisch diese Informationen für einen Punkt zusammen in einem Objekt.
+ Oder wir hätten die Informationen für eine Person in einem Objekt.
+ Also, die Idee wäre, dass jedes Objekt eben halt diese Information für einen Punkt
+ oder für eine Person oder was immer uns interessiert eben zusammenbündeln würde.
+ Also, so ein Personenobjekt würde dann eben das Gewicht der Personen,
+ die Größe der Personen, wenn das jetzt hier relevant ist, speichern.
+ Und das hätte viele Vorteile für uns.
+ Weil jetzt könnten wir uns überlegen, wie wir Personen vergleichen.
+ Wir könnten sie einmal vergleichen nach der Größe,
+ könnten wir sagen, jetzt suche die Größe oder die Keinseperson,
+ oder wir könnten sie vergleichen nach Gewicht.
+ Wenn ich da irgendeinen Team zusammenstelle,
+ dann gibt es da Regeln, wie schwer das sein darf oder nicht.
+ Oder ich könnte, wenn ich das wollte, die Größe,
+ die ich ursprünglich in Zentimetern erfahren bekommen habe,
+ in eine andere Messeinheit zwischen Zoll, diese Inch ist da,
+ könnten wir die umrechnen.
+ Oder irgendeine andere, oder von Zentimeter in Millimeter, oder was auch immer.
+ Das alles könnten wir machen.
+ Und das wäre so vielleicht machbar,
+ dass der Rest der Welt davon gar nicht so viel mitbekommen muss,
+ sondern nur die Teile des Systems, die damit arbeiten,
+ die wären davon betroffen.
+ Wenn ich jetzt diese Topografie-Pointe hätte,
+ da hätte ich dann eben für jeden Ort die XY-Koordinaten
+ in diesen Schweizer Landeskoordinaten.
+ Und dann könnte ich, wenn ich wollte,
+ vielleicht zur sich die Höhe speichern,
+ oder ich könnte die Vegetation speichern,
+ oder ich könnte andere Informationen speichern,
+ in welcher politischen Gemeinde
+ sich der Ort befindet, oder sowas.
+ Und natürlich, wir könnten auch Berechnungen jetzt machen.
+ Wir könnten mit dem Abstand zu einem anderen Ort berechnen.
+ Für dieses einfache Beispiel,
+ dass sie mit dem Tieflochgebiet hatte,
+ wir das für die Möglichkeit, das zu machen.
+ Oder einfach auch um Reiseplanung zu machen.
+ Und das Gute, wenn wir das so machten,
+ dann könnten wir vielleicht dafür sorgen,
+ dass jeder dieser Punkte weiß,
+ wie er auf einer Landkarte gezeichnet werden sollte.
+ Also, wenn ich der Gäbs dann irgendeine Operation sagen würde, hier,
+ zeichne Punkt, bitte zeichnen.
+ Und dann wüsste der, wie der in irgendeiner Landkarte
+ gezeichnet werden müsste.
+ Was für Schafur, oder was für Farbe,
+ oder was auch immer da genommen werden müsste.
+ Also, wenn wir diesen Ansatz wählen,
+ dass wir diese Informationen für jede Person,
+ oder jeden Punkt, in einer zusammen abspeichern,
+ dann können wir damit arbeiten.
+ Und die Programme, die damit arbeiten,
+ die könnten einfacher und kürzer werden.
+ Warum? Die müssten jetzt sich nicht immer überlegen,
+ halt, das ist dieser Array.
+ Und in diesem Array ist es diese Position.
+ Und wenn ich jetzt das hier ändere,
+ muss ich auch im anderen Array was machen.
+ Und ich kann einfach mit diesem Personenobjekt,
+ oder mit diesem Punktobjekt arbeiten.
+ Natürlich, der Unterschied zwischen Personen und Punkten
+ ist auch gegeben.
+ Das heißt, wir werden dann sehen,
+ dass wir vielleicht die eine Art von Objekten
+ anders konstruieren müssen.
+ Die Topografiepunkte werden sich wahrscheinlich nicht sehr ändern.
+ Die anderen Punkte haben vielleicht andere.
+ Die Personenpunkte, da sind vielleicht Änderungen möglich.
+ Aber das ist ein separates Problem,
+ das eigentlich mehr die Anwender interessiert.
+ Uns von der Informatikprogrammieseite interessiert
+ mehr, was diese beiden Probleme zusammen haben.
+ Nämlich, dass sie eben halt die Information
+ für eine Person, einen Gegenstand,
+ einen Ort, ein Konzept,
+ irgendetwas zusammenspeichern.
+ Und dafür gibt es eben halt den Java,
+ diesen Class-Konstrukt.
+ Den haben wir schon einmal kennengelernt,
+ um diesen namenlosen Service implementieren zu können.
+ Wo wir dann eben halt diese Methode Main hatten.
+ Und die Methode Main hat für uns die Arbeit erledigt.
+ Das war dann das Programm.
+ Aber jetzt wollen wir weitergehen
+ und wollen eben auch sehen,
+ dass wir damit was anderes machen können.
+ Wir können nämlich mit diesem Class-Konstrukt
+ eine neue Art oder einen neuen Typ, sagen wir genauer,
+ die die Klassengebiete der Projekte beschreiben.
+ Und bisher haben wir nur Objekte genommen,
+ die bereits von anderen vorbeschrieben worden waren.
+ Diese eben die Klassengendungen Scanner.
+ Aber die mussten ja auch mal irgendwann erstellt werden.
+ Anfang waren die ja auch was Neues.
+ Und eben damals hatten wir dieses Rendum-Objekt,
+ das eben Zuverzahlen generierte
+ oder der Scanner der Werte abliefert.
+ Diese Klassengendungen waren eben uns gegeben.
+ Und jetzt wollen wir eben da selber weiter machen
+ und selber Klassen überlegen, die sowas machen können.
+ Und was wir jetzt benutzen mit diesem Ausdruck-Objekt,
+ um ein Gebilde zu bezeichnen,
+ das einen Zustand hat, also einen State,
+ und das auch Verhalten hat.
+ Und dieser Class-Konstrukt wird uns erlauben,
+ das den Zustand mit dem Verhalten zu verbinden.
+ Also das Verhalten auszudrücken,
+ vielleicht den Abhängigkeit vom Zustand
+ oder den Zustand auszudrücken,
+ das ist abhängig davon,
+ was für verschiedene Operationen da gemacht worden waren.
+ Und dann konnte eben dieses Objekt Services zur Verfügung stellen.
+ Bei dem Scanner hatten wir gesehen,
+ der hatte Next-Int zur Verfügung gestellt.
+ Der Zuverzahlen-Generator hatte auch ein Next-Int zur Verfügung gestellt.
+ Das war eine gute Wahl, ja.
+ Okay, also wir wollen also hier Zustand
+ und Verhalten miteinander verbinden.
+ Und dann gibt es dann eben diese Objekte,
+ geben dann uns eben Services.
+ Und da im Fall von Rendem und Scanner war halt zuvergeweise,
+ oder war bewusst der Name so gewählt,
+ dass der Name der gleiche ist.
+ Aber das muss nicht sein,
+ das ist uns völlig frei überlassen,
+ was wir da machen wollen.
+ Also und das ist so die Grundlage
+ oder eine der Hauptideen des objektorientierten Programmierens.
+ Das ist ein Programmmodell,
+ das sich so ein Programm als eine Menge von Objekten organisiert.
+ Also eine Menge natürlich von Objekten,
+ die nicht so zusammengewirfelt sind,
+ sondern eine Menge von Objekten,
+ die eben miteinander was bewirken,
+ also die auf einander Einwirkenden sagen wir, ja.
+ Da kann das ein Objekt, was wir über andere Objekte tun
+ und Informationen austauschen.
+ Also ein Objekt ruft Methoden auf.
+ Methoden haben wir gesagt in Services,
+ die ein anderes Objekt zur Verfügung stellt.
+ Und dann liefern diese Methoden oder diese Operationen,
+ die liefern irgendwelche Werte zurück,
+ die dann je nachdem, was wir machen,
+ entweder in einem neuen Objekt gespeichert werden
+ oder ein Objekt verändern.
+ Und das ist das Modell,
+ das wir hier im Laufe der Foliesung verwenden,
+ das wird auch von vielen anderen Leuten verwendet
+ und ist daher eine hoffentlich gute Investition in die Zukunft.
+ Also jetzt haben wir die Idee,
+ dass wir so ein Objekt erstellen wollen,
+ die Zustand und Verhalten verbinden.
+ Und dafür brauchen wir die Klasse.
+ Die Klasse ist der Weg, wie wir beschreiben,
+ wie diese Objekte aussehen.
+ Sie können sich so eine Klasse vorstellen,
+ also eine Mustervorlage oder eine Schablone.
+ Die sagt hier, ein Objekt wollen wir haben
+ und das soll diesen möglichen Zustände haben
+ oder das soll diese möglichen Operationen haben.
+ Und wenn wir dann ein Objekt erstellen,
+ dann wird ein Objekt gemäß der Vorlage erschaffen.
+ Also ein Objekt wird erstellt,
+ dass dann die entsprechenden Zustände zulässt.
+ Die Frage über den namenlosen Service
+ ist, dass der Service nochmal,
+ das haben wir letzte Folie an sich behandelt,
+ dass wir, wenn wir eine Klasse haben,
+ wo wir die Main-Methode benutzen,
+ um auszudrücken, was wir machen wollen,
+ dass es sich dem Service keinen Namen geben ist.
+ Es ist der Name des Programms.
+ Und das Programm macht dann was.
+ Und deswegen ist das namenlos.
+ Aber eben, wir wollen natürlich darauf hinarbeiten,
+ dass wir irgendwann verschiedene Services anbieten können.
+ Und wenn wir hier verschiedene Services anbieten können,
+ dann müssen wir einen Weg finden,
+ zwischen diesen Services unterscheiden zu können.
+ Und daher diese ...
+ Also, die Klassen beschreiben die Form
+ oder die Funktionalität von Objekten.
+ Das heißt, die sagen, was für Zustände die haben können,
+ die sagen, was für Operationen möglich sind,
+ die sagen auch vielleicht, was für Fehler auftreten können und so weiter.
+ Und jetzt habe ich also die Klasse, die das beschreibt.
+ Und dann sprechen wir von den einzelnen Objekten,
+ entweder von Objektexemplaren oder einfach Exemplaren.
+ Im Englischen heißt das Instances.
+ Aber das deutsche Wort Instanz heißt was ganz anderes.
+ Deswegen sollten Sie das Wort eigentlich nicht verwenden,
+ weil das eigentlich irreführend ist.
+ Wenn wir von einzelnen Objekten sprechen,
+ sprechen wir von Exemplaren oder Objektexemplaren
+ und was genau machen wollen.
+ Das ist einfach unterm Erstellen der Objekte.
+ Und alle Objekte, die jetzt aufgrund einer Klasse gebildet wurden,
+ die bilden einen Typ.
+ Die haben bestimmte Eigenschaften zusammen,
+ nämlich die Eigenschaft,
+ dass sie die gleichen Zustände haben können
+ und dass die gleichen Services angeboten werden
+ oder dass die gleichen Operationen mit diesen Objekten gemacht werden können.
+ Das ist der Ansatz, den wir hier verwenden.
+ Man kann auch Objekteorientiert programmieren ohne Klassen machen.
+ Es gibt ein paar Programmiersprachen, die machen das ohne Klassen.
+ Aber sehr viele Programmiersprachen, die heute im Einsatz sind
+ oder im verbreiteten Einsatz sind, die sind klassenbasiert.
+ Und was Sie hier für über Java hören, gilt ähnlich, ähnlich,
+ nicht identisch für C++ oder C#.
+ Aber wir wollen eigentlich weniger die Details
+ oder die Unterschiede zwischen den Programmiersprachen uns angucken.
+ Das gibt es dann später mal.
+ Wir wollen jetzt einfach nur sehen,
+ wie wir damit eben unsere Programme etwas besser strukturieren können.
+ Und darum nehmen wir als erstes Beispiel eine ganz triviale Aufgabe.
+ Nämlich wir wollen eine ganz einfache Klasse programmieren,
+ die wir Point nennen, die dazu da sein soll,
+ XY-Koordinaten in einer zweidimensionalen Ebene festzuhalten.
+ Also die XY-Koordinaten in der üblichen Ebene mit einem Nullpunkt da,
+ werden wir als Basis nehmen.
+ Und jeder Punkt, der jetzt hier ist,
+ der kann durch irgendein Punkt-Objekt dann später repräsentiert werden.
+ Das hat dann X und Y-Koordinaten.
+ Und diese Koordinaten, die nennen wir die Attribute dieses Punktes.
+ Das sind alles Attribute.
+ Dieses Attribut ist dann eben halt die X- und Y-Koordinate,
+ oder was, die wir da eben haben wollen.
+ Und dann wird es irgendwelche Operationen geben,
+ die wir mit diesem Punkt machen können.
+ Wir können zum Beispiel damit überlegen,
+ dass wir den Abstand, den gerade Abstand zum Nullpunkt,
+ kann ich den gleich berechnen.
+ So wäre also eine Art von möglichen Verhalten,
+ dass wir vielleicht für diese Objekte zur Verfügung stellen wollen.
+ Also jetzt brauche ich diese Punktobjekte,
+ und die können natürlich dann von anderen Programmen verwendet werden.
+ Also unsere Punktobjekte selber geben uns nur die Punkte.
+ Aber ein Programm, das jetzt eben damit arbeitet,
+ meinetwegen die Fläche eines Recht-X berechnet oder so,
+ das würde mit den Punktobjekten arbeiten und müsste etwas mehr machen.
+ Und diese anderen Programme sind natürlich auch wieder durch Klassen beschrieben.
+ Und da gucken wir uns die nachher mal an,
+ aber jetzt gucken wir erst mal an, wie diese Punktobjekte genauer definiert werden müssen.
+ So, und all die Klassen, die mit diesen Punktobjekten arbeiten,
+ die nennen wir die Klienten der Punktklasse.
+ Das werden wir nachher noch mal genauer gucken, was genau das heißt.
+ Aber das ist ein Weg für uns, einfach zusammenfassend zu sagen,
+ alle Klassen oder alle Programme, die mit diesen Punktobjekten arbeiten.
+ Das sind die Klienten.
+ Und dann werden wir vielleicht nächste Woche sehen,
+ wie eine Klasse ihr eigener Klient sein kann.
+ Das ist eine interessante Art von Klassen,
+ indem ihr in einer Klasse selber ihr eigener Klient sein kann.
+ Und das wird dann eine Vorbereitung auf etwas interessanter Datenstrukturen sein.
+ So, okay, also, Sie haben mal diese Punktobjekte.
+ Und um mit denen zu arbeiten, da braucht man natürlich wieder eine Variable.
+ Wir können ja nicht auf das Objekt selber zugreifen.
+ Wir müssen irgendwie eine Variable haben.
+ Und das muss natürlich eine Referenzvariable sein,
+ weil Referenzvariablen können sich auf Objekte beziehen.
+ Das hatten wir auch bei den Erreys so gesehen.
+ Und natürlich gilt für die Variablen alles, was wir auch sonst gelernt haben,
+ die muss deklariert sein, bevor wir das erste Mal mit ihr arbeiten können.
+ Und natürlich diese Variablen, die sind an den Typ Point gebunden.
+ Das heißt, die können nur auf Pointobjekte verweisen.
+ Die können nicht auf beliebige Objekte verweisen.
+ Genauso wie bei den Erre-Refahrensvariablen,
+ eben hatten Erreys, die mit Int Elementen gefüllt sind.
+ Oder Erreys, die mit Strings gefüllt sind.
+ Oder Erreys, die mit Doubles gefüllt sind.
+ Dafür gab es unterschiedliche Referenzvariablen.
+ Und die eine konnte nicht für die andere verwendet werden.
+ Es gibt einen Unterschied zwischen Methoden und Funktionen.
+ Wo wir jetzt hier sind, können wir diese Worte noch austauschbar verwenden.
+ Also Methode, Service, Funktionen, Prozedur.
+ Das sind Begriffe, die wir eigentlich ziemlich gleich verwenden.
+ Später werden Sie vielleicht sehen, dass man unterscheidet zwischen Methoden,
+ die was verändern und Funktionen, die nichts verändern.
+ Aber für uns ist das jetzt erst mal noch ein und dasselbe.
+ Also, wie würden wir so eine Referenzvariable deklarieren?
+ Genauso wie wir das vorher gemacht haben.
+ Wir nehmen den Typ und danach einen Namen, um diese Variable zu deklarieren.
+ Also, P1 wäre eine Referenzvariable, die sich auf Points Objekte beziehen kann.
+ Oder Home wäre eine Referenzvariable, die sich auch auf Point Objekte beziehen kann.
+ So, also, die Deklaration macht den Namen bekannt.
+ Aber die Deklaration macht halt nur den Namen bekannt.
+ Da gibt es noch kein Objekt, genauso wie wir eine Array-Referenzvariable deklariert haben.
+ Da gab es ja auch eben nicht sofort einen Array.
+ Das ist ja nicht so schwer.
+ Wenn wir eben mit einem Exemplar arbeiten wollen,
+ dann müssen wir das Exemplar erst einmal erschaffen oder erstellen.
+ Und dafür brauchen wir eben wieder den New-Operator.
+ Also, hier habe ich den Point P1 und den lasse ich jetzt gleich auf einen neuen Point verweisen,
+ den ich hier mittels des New-Operators erstellt habe.
+ Oder ich gehe hierhin und weise später dieser einmal deklarierten Variable,
+ um eine neue Referenz zu.
+ Das war genauso wie mit den Arrays.
+ Wir hatten einen Array, entweder sofort initialis- hatten die Array die Referenzvariable sofort initialisiert
+ und ließen sie auf diesen Array mit zehn Elementen verweisen.
+ Oder aber wir deklarierten die Variable und machten dann später eine Zuweisung,
+ um sie auf einen konkreten Array verweisen zu lassen.
+ Das ist mit diesen Point Objekten nicht anders.
+ Das geht genauso.
+ Okay, also was wir so als Erstes festhalten sollten,
+ Zustand plus Operationen ergibt einen Typ.
+ Und der Datentyp beschreibt dann oder Typ beschreibt,
+ welche Operationen zulässig sind und welche Werte zulässig sind.
+ Oft machen wir das nicht so, machen wir das so, dass wir sagen,
+ hier diese Art von Werten kann da sein.
+ Wir schränken das nicht weiter ein.
+ Wenn wir so eine X-Y-Koordinaten haben, dann werden wir einfach vielleicht zulassen,
+ dass jeder mögliche X- und jede mögliche Y-Koordinate zulässig ist.
+ Machen also keine Aussage über die Größe der Fläche.
+ Das könnte man auch machen, aber machen wir im Allgemeinen nicht.
+ Wir sagen einfach halt, zulässige Werte sind alle X- oder Y-Koordinaten, die hier möglich sind.
+ Und wie bei den Arrays, wenn ich also eine Referenzvariable habe,
+ kann ich mit der Referenzvariable eben arbeiten.
+ Dann kann ich mit dieser Referenzvariable die Punkte entweder mir angucken oder verändern
+ oder als Argument einer Methode übergeben.
+ Da kann ich alles mitmachen, was ich will, genauso wie mit den Arrays.
+ Ich kann mit denen arbeiten.
+ Also, diese Punktobjekte, was für Zustände wollen wir jetzt da konkret haben.
+ Und ich sagte, so ein Punktobjekt kann jeden Punkt in der zweidimensionalen Ebene annehmen.
+ Das heißt, wir müssen uns erstmal überlegen, wie wollen wir die nennen.
+ Und da bieten sich natürlich X und Y als Namen an.
+ Und das müssen wir festhalten, was sollen denn diese Attribute sein?
+ Diese Attribute sollen eben sein, die X-Koordinate oder Y-Koordinate.
+ Und wenn ich so was mit den Points haben will, dann muss jetzt eben das System dafür sorgen,
+ dass dieses Objekt, wenn es gespeichert wird, eben Platz für diese Attribute hat
+ und was sonst alles noch dazukommt.
+ Und das lässt sich als Aufgabe der Klasse.
+ In der Klasse werden wir sagen können, nicht heute, aber im Laufe der Woche,
+ die nächsten Woche, welche dieser Attribute vielleicht für jeden zugänglich sind,
+ welche der Attribute geändert werden können.
+ Jetzt am Anfang machen wir es ganz einfach.
+ Wir haben eine Referenzvariable.
+ Und mit dieser Referenzvariable können wir hier uns auf ein konkretes Pointobjekt beziehen.
+ Und dann können wir damit arbeiten.
+ So, jetzt müsst ihr natürlich irgendein Weg finden,
+ dass diese Pointobjekte auf konkrete Punkte sich verweisen zu lassen.
+ Da muss es irgendein Weg geben, vielleicht mit einer Methode oder was anderem,
+ die diesen Pointobjekten Werte gibt, damit wir eben damit arbeiten können.
+ Und dann können die Operationen damit eben weiterarbeiten.
+ Und wenn wir uns diese, angucken, wenn wir so ein Pointobjekt erstellen,
+ dann kommt das ja eigentlich nicht ganz ohne irgendeinen Zustand raus.
+ Das muss ja einen legalen Zustand haben,
+ weil das war ja eine unserer Aussagen über Objekte.
+ Das heißt, irgendwelche Werte werden da von dem New-Operator bereits vorinstalliert.
+ Und das werden wir sehen im Laufe der Zeit, wie wir das genauer kontrollieren können.
+ Jetzt für Punkte wäre zum Beispiel der Origin,
+ denn Nullpunkt, ein guter Wert, mit dem wir Punkte initialisieren können.
+ Also, das müssen wir überlegen, was sollte denn so der Punkt,
+ der von dem New-Konstaktor gebaut wird, der von dem New-Operator erstellt wird,
+ was soll der denn überhaupt für Werte haben?
+ Und dann natürlich wollen wir auch irgendwelches Verhalten haben,
+ das also beschreibt, was mit diesen Objekten gemacht werden kann.
+ Und eben, da wird es wahrscheinlich irgendeine Operation geben,
+ mit der wir die Koordinaten setzen können.
+ Vielleicht können wir den Punkt auch verschieben.
+ Vielleicht wollen wir den Abstand zum Nullpunkt haben.
+ Und ja, wenn das vielleicht ein Topografiepunkt ist,
+ dann wollen wir irgendeinen Weg haben, den zu zeichnen oder sonst irgendwie klarzumachen.
+ Also, wenn Sie sehen, diese Topografiepunkte sind ähnlich den Punkten.
+ Aber wenn wir jetzt einen Topografiepunkt erstellen wollten,
+ dann sollte der wahrscheinlich für die Schweiz nicht Null als Ursprung oder als Origin haben.
+ Weil in der Schweiz sind die Werte innerhalb eines gewissen Bereichs.
+ Und wenn Sie sich noch erinnern, in der Schweiz, der Ursprungspunkt da,
+ der ist ein ausgewählter Ort in einem anderen Kanton.
+ Also, irgendwie müssen wir festhalten können, was eben die Werte sein sollen,
+ wenn wir so ein Objekt erstellen.
+ Und dann eben natürlich wollen wir auch Operationen haben,
+ die könnten jetzt sehr ähnlich den Operationen sein,
+ die wir eben für die anderen 2D-Punkte für unsere Ebene hatten.
+ Also, diese Information, wenn wir also in die Klasse reinstecken.
+ Und das hatte ich gesagt, ist so der, das ist die Schablone oder das Muster.
+ Das ist das Muster, das uns sagt, also Punkte haben hier einen X und Y-Zustand.
+ Also, das beschreibt, dass X und Y-Dimensionen dieses Punkt ist.
+ Und dann gibt es verschiedene Arten von verschiedenen Schritte, die da gemacht werden könnten.
+ Und wenn wir jetzt verschiedene Punkte erstellt wurden,
+ dann können die irgendwelche unterschiedliche Werte für X und Y haben.
+ Der eine Punkt hat hier X-18 und Y-42 und der andere hat X-5 und Y-2.
+ Das sind zwei unterschiedliche Punkte, die sich in ihren Zuständen unterscheiden,
+ aber die Zustände sind immer noch ähnlich.
+ Und die haben dann eben halt alle, weil es alles von derselben Schablone hergestellt wurden,
+ haben dasselbe Verhalten dieselben Operationen, die damit gemacht werden können.
+ Also, die Klasse erlaubt es uns eben so, ein Gebilde zu konstruieren.
+ Das ist die Vorlage.
+ Und dann wird, wenn wir das Objekt brauchen, wird ein Objekt gemäß dieser Vorlage erstellt.
+ Also, müssen Sie das so vorstellen, wenn die Klasse jetzt eben das Objekt herstellen muss,
+ dann wird das Objekt eben nach dieser Vorlage erschaffen.
+ Das werden wir auch mal genauer angucken.
+ Und dann wird das System dafür sorgen, dass die Operationen, die wir machen wollen, möglich sind.
+ Und das wird dadurch erfeilen, dass es eben für diese Operationen,
+ die wir ausführen wollen, Methoden gibt.
+ Und wir hatten gesagt, dass alle Objekte, die wir erstellen, haben einen Zustand.
+ Sie sehen sie, ist das noch da unten sichtbar.
+ Ja, Zustand.
+ Und diesen Zustand, das nennen wir die Attribute.
+ Das sind die Attribute, die dieses Objekt beschreiben.
+ Also, im Fall der einfachen Punkte, wären das eben die x, y Koordinaten.
+ Und im Fall eines Personenobjekts wären das vielleicht der Name und die Größe
+ oder irgendwelche anderen Aspekte, die uns interessieren.
+ Also, Klasse ist dafür da, diese Gemeinsamkeiten zu beschreiben und das zu erstellen.
+ Und damit kommen wir jetzt zu den ersten beiden Teilen, die diese Klasse da beschreiben,
+ die Attribute und die Methoden.
+ Also, hatte gesagt, wir wollten für jedes Objekt zwei Aspekte festhalten,
+ nämlich die x und die y Koordinaten.
+ Denn die bestimmen den Zustand des Exemplars.
+ Das heißt, diese Daten müssen halt irgendwo gespeichert werden.
+ Und das sind die Attribute, die eben Teil des Zustandes sind.
+ Das ist vielleicht noch mehr vom System unterhalten, das wir nicht wissen.
+ Aber das sind die Zustände, die das Programm als richtig oder wichtig herausgehoben hat.
+ Und darum muss unser System in der Lage sein, diese zu speichern.
+ Und es ist interessant oder wichtig zu sehen, dieses Attribut wird in der Klassenbeschreibung
+ einmal für alle Objekte deklariert.
+ Also, wir sagen, jedes Objekt, das nach dieser Klasse deklariert wird,
+ das soll eben ein x Koordinat und eine y Koordinat speichern, was da einmal deklariert wurde.
+ Aber dann, wenn wir einzelne Objekte erstellen oder Objektexemplare erstellen,
+ dann werden die Attribute für jedes einzelne Objektexemplar separat gespeichert.
+ Also, die Operationen haben die alle gemeinsam,
+ aber die werden trotzdem die Information, die mit dem Objekt zusammengehört,
+ wird für dieses Objekt gespeichert.
+ Also, Attribut wird gespeichert.
+ Und wir werden auch später sehen, dass zumindest im Prinzip die Operation
+ auch für die an dieses Objekt gebunden ist.
+ Das ist der Grund, warum wir dann in der Lage sind, so flexibel mit diesen Sachen zu arbeiten.
+ Also, unsere Klasse, wir würden eigentlich das Keyword "Klar" verwenden,
+ um so eine Klasse zu deklarieren.
+ Also, diese Gruppe von Pointobjekten wird durch diese Klassendefinition beschrieben.
+ Und wenn wir eben halt diese Attribute angeben, dann müssen wir den Attributen auch wieder einen Typ geben.
+ Sonst weiß das System nicht, was für mögliche Zustände da erlaubt sind.
+ Und wir sagen eben halt in diesem einfachen Beispiel, dass wir als Typ "ins" nehmen.
+ Also, wir haben hier eine beliebige, irgendeinen Wert, der sich durch eine "int" darstellen.
+ Kann man Klasse nachträglich anpassen.
+ Machen wir sie erst mal.
+ Und danach werden wir sehen, was wir danach ändern können.
+ So, diese Code, diese Code, die ich Ihnen hier gezeigt habe, der muss in einer ganz bestimmten Datei abgelegt sein.
+ Die muss nämlich den Namen Point.java haben.
+ Wenn sie den Namen nicht hat, dann beschwert ihr das System.
+ Das kennen Sie ja schon vom Beginn des Semesters.
+ Das sind Regeln, an die wir uns halten müssen.
+ Und die wir natürlich mit einem Aufwand umgehen könnten.
+ Und ich empfehle Ihnen das gar nicht erst zu machen.
+ Und darum, so eine Klasse würde jetzt hier in Point.java abgelegt sein.
+ Also, wenn wir das gemacht haben, dann gibt es eben für unser Programm einen neuen Typ.
+ Der Typ hat den Namen Point.
+ Und jedes Point-Objekt oder jedes Point-Objekt-Exemplar enthält zwei Daten, zwei Attribute,
+ eine ganze Zahl "int", die wir "x" nennen, und eine andere ganze Zahl, die wir "y" nennen.
+ Das ist unser Point-Klasse, mit der wir arbeiten können.
+ Das ist die Arbeit.
+ Und jetzt haben wir, also wenn wir das so machen, haben wir diese Klasse definiert.
+ Aber wir haben noch kein Verhalten definiert. Darauf komme ich dann gleich.
+ Aber erst mal haben wir hier gucken, das haben wir die Klasse definiert.
+ Das ist manchmal eine sinnvolle Sache, weil ich so kann ich halt immer zwei Punkte zusammenarbeiten.
+ Also eben die "x" und "y", das sind eben die Attribute jedes Point-Objekt.
+ Das ist das, wenn wir von der Attributen reden, die sind das, was das Objekt beschreiben.
+ So, jetzt hatte ich gesagt, um darauf zuzugreifen, brauchen wir wieder eine Referenzvariable.
+ Und die Referenzvariable legt den Typ des Objekts fest, auf das ich mit dieser Referenzvariable arbeiten kann.
+ Also eben, wie ich vorhin schon zeigte, mit Point-P1 kann ich halt den, eine Referenzvariable deklarieren,
+ die sich auf Point-Objekte beziehen kann.
+ Und dann kann ich eine andere nehmen und die auf einen konkreten Point verweisen lassen.
+ So, jetzt, diese Attribute sind also Variablen, die innerhalb eines Objekts,
+ als Teil des Objektzustandes gespeichert sind.
+ Also wichtig ist, dass Sie dieses Innerhalb verinnerlichen.
+ Die Variable, also das Attribut, ist in, im Objekt.
+ Das gehört, das ist sozusagen ein Objektumschlungen.
+ Das Objekt ist wichtig.
+ Ohne das Objekt kommen wir an diese Werte nicht heran.
+ Und die werden halt deklariert im Text zwischen den geschweiften Klammern.
+ Und die Sündtagsdeklaration, also die Sündtags für diese Deklaration ist genauso,
+ wie wir die Variablen im Methoden deklariert hatten.
+ Wir geben einen Typ an, wir geben einen Namen an, ganz einfach.
+ So, mir fragt, eben fragt jemand, müssen jetzt diese Klassen innerhalb des Hauptprogramms Main sein?
+ Nein, ganz und gar nicht.
+ Ihr Programm besteht jetzt hier aus einer Public Class,
+ nennen wir die mal Main oder nennen wir die irgendwas, MAX.
+ Und dann haben Sie, dann kommt da was, und dann haben Sie hier eine andere Public Class.
+ Und dann haben wir die vielleicht hier, dann haben wir die hier Pointe.
+ Und sehen Sie, ich hätte gesagt, die müssen in unterschiedlichen Dateien sein.
+ Der muss in der, diese Klasse muss in der Datei Max.Java sein.
+ Und wenn Sie das nicht machen wollen, beschwert sich das System.
+ Sie können das auch anders einstellen, aber warum wollen Sie sich das Leben schwierig machen?
+ Also, so haben Sie die verschiedenen Klassen.
+ Wir werden später noch sehen, dass man das auch erweitern kann.
+ Dann kann auch das noch etwas komplizierter machen.
+ Aber das wollen wir jetzt anfangs gar nicht machen.
+ Wir haben einfach Klassen, die alle sozusagen auf der obersten Ebene sind.
+ Und mit denen wir arbeiten können.
+ So, also so habe ich das dann in meinem Programm.
+ Also, die Attribute, das sind eben die Zustandsvariabeln.
+ Und auf die, die können alles Mögliche sein.
+ Die können String sein, die können Double sein, die können auch Errace sein und so weiter.
+ Alles ist da ohne weiteres möglich.
+ Und wenn ich jetzt mit so einem Attribut arbeiten will,
+ als wenn ich das entweder lesen oder verändern will,
+ das sind ja die beiden Wege, die wir kennen, um mit Variabeln zu arbeiten,
+ dann muss ich eben eine Referenzvariable nehmen.
+ Ich nehme die Referenzvariable und dann habe ich diesen berühmten Punkt, den haben wir ja schon mal gesehen.
+ Und danach kommt das Attribut.
+ So kann ich auf den das Attribut lesen.
+ Oder wenn ich das Attribut setzen will, mache ich das genauso,
+ nur dass ich das eben auf die linke Seite schreibe.
+ Und dann habe ich hier eben eine Zuweisung.
+ Das ist eine Zuweisung.
+ Und dieser Value muss natürlich dem Typ entsprechen,
+ den wir als Typ für diese Attribute definiert hatten.
+ Wenn da ein Int verlangt ist, dann muss diese Value,
+ das da berechnet wird, eben diesen Typ ergeben.
+ Also, zum Beispiel, wenn wir mit diesen Punktkoordinaten arbeiten,
+ haben wir hier eine Referenzvariable P1,
+ die verweist auf einen Punkt, der hier konstruiert wird.
+ Und dann haben wir hier P2.
+ Und wenn ich jetzt kann ich hier auf das X-Attribut zugreifen,
+ und dann würde das eben gedruckt werden.
+ Oder ich kann hier auf das Y-Attribut des Objekts zugreifen,
+ dass ich mittels P2 erreiche und das auf irgendeinen Wert setze.
+ Damit kann ich also ganz normal ohne Umstände arbeiten.
+ Wir werden später sehen, dass man das noch ein bisschen schwieriger machen kann,
+ also dass man das genauer kontrollieren kann,
+ wer was lesen darf und so weiter.
+ Aber das wollen wir heute noch nicht machen.
+ So, und wenn wir so eine Situation haben,
+ also hier haben wir eine Referenzvariable,
+ wir haben hier den Punkt und wir haben hier ein Attribut,
+ dann sagen wir, dass die Referenzvariable dereferenziert wurde.
+ Also wir nehmen die Referenzvariable und benutzen die jetzt,
+ um ein Objekt zu finden.
+ Und dann gucken wir uns hier das Attribut, dieses Objekt an,
+ oder wir setzen das Attribut.
+ Das nennen wir D-Referenzieren.
+ Also das D weist darauf hin,
+ dass wir uns für das Objekt selber interessieren,
+ nicht für die Attribute des Objekts zu interessieren,
+ nicht für das Objekt als Ganzes.
+ Dafür würden wir ja mit den Referenzvariabeln arbeiten,
+ nein, für einen Aspekt dieses Objekts,
+ eben für eines der Attribute.
+ Und dieser gleiche Weg,
+ Referenzvariable, Punkt und Attribut,
+ den können wir später auch benutzen, um Methoden aufzurufen.
+ Auch da werden wir wieder eine Referenzvariable brauchen,
+ wir werden den Punkt brauchen,
+ und natürlich brauchen wir dann keinen Attribut,
+ sondern den Namen einer Methode gegebenenfalls mit Parametern.
+ Also diese Dot-Notation, die wir auch früher schon mal gesehen haben,
+ das ist der Weg, wie ich auf einzelne Attribute
+ dieses irgendeines Objekts zugreifen kann.
+ Und Sie erinnern sich jetzt vielleicht, warum,
+ jetzt wird es auch klar, warum, wenn wir,
+ als wir die Länge eines Erreys wollten,
+ warum das eben ohne Klammern war.
+ Weil dieses Längsattribut ist ein Attribut des Erreys.
+ Das ist ein Attribut,
+ wenn ich hier irgendein Erreihabe,
+ kann ich eben mittels dieser Notation auf die Länge zugreifen
+ und die Länge mir eben anschauen.
+ Und das ist jetzt ein Attribut, wo wir das lesen können,
+ dass wir aber nicht ändern können.
+ Es ist nicht möglich, durch die Ändern des Längenattributs
+ die Länge des Erreys anzupassen.
+ Das geht nicht, das unterstützt das System nicht.
+ Deswegen war das eben ein Attribut,
+ deswegen waren da auch keine Klammern.
+ Und was wir jetzt sagen würden,
+ ist, dass er die Referenzvariable "my array",
+ das ist die Referenzvariable, mit der wir hier arbeiten.
+ Die wurde dereferenziert, um auf das Attribut längst zuzugreifen.
+ Also haben wir das damals gemacht.
+ Also, die Klasse beschreibt, also die Klas,
+ beschreibt, wie die Objekte aussehen sollen.
+ Und wenn jetzt eben ein Objekt erstellt wird,
+ dann macht der New Operator das,
+ der New Operator weiß, wo die Information über die Klasse zu finden ist
+ und erstellt dann ein konkretes Objekt,
+ dass wir eben ein Exemplar der Klasse ist
+ oder von manchen Leuten wird es auch ein Repräsentant der Klasse nennen.
+ Aber ein Zugriff auf die Attribute ist nur möglich,
+ wenn es eben so ein Exemplar auch gibt.
+ Genauso wie bei den arrays, wir mussten einen konkreten array erstellt haben,
+ auf dessen Elemente wir zugreifen konnten.
+ Wenn das Sinn machen sollte, die Referenzvariable alleine,
+ gab uns noch keinen array.
+ Und genauso ist es hier mit Referenzvariablen,
+ die für eine Klasse oder für einen den Typ,
+ der durch die Klasse bestimmt wird, erstellt werden.
+ Die Klasse ist nur die Vorlage.
+ Die Klasse macht nichts selber.
+ Deswegen können wir auch in der Klasse keine Anweisungen haben,
+ außer vielleicht Initialisierung.
+ Und natürlich Methoden.
+ Wir werden das noch sehen, dass wir Methoden definieren können,
+ die uns sagen, wie wir mit der Klasse arbeiten wollen.
+ Aber sonst gibt es in einer Klasse eigentlich keine Operationen.
+ Das ist einfach nicht vorgesehen.
+ Und daher gibt es so was für uns jetzt einfach auch nicht.
+ Also, erste Zusammenfassung.
+ New liefert uns einen Verweis auf ein Exemplar,
+ der dann in dieser Verweis kann eine Referenzvariable gespeichert werden.
+ Und das ist halt der Weg, wie wir zu Objektortributen kommen.
+ Wir gehen hin und erstellen ein Objekt mit dem New-Operator
+ und greifen dann auf die einzelnen Attribute zu,
+ indem wir die Referenzvariable in dieser Dot-Notation
+ mit der Attribut verknüpfen.
+ Und weil das Referenzvariable sind, gelten natürlich die Referenzsementics.
+ Die gleichen Regeln, die wir für Errace hatten, gelten hier auch.
+ Ich habe hier einen Punkt, eine Referenzvariable p1,
+ die sich hier auf diesen Punkt bezieht.
+ Auf diesen Punkt habe ich die x- und y-Attribute auf 3 und 2 gesetzt.
+ Jetzt habe ich hier eine zweite Referenzvariable p2,
+ die sich auch auf den selben Punkt bezieht, auf das selbe Objekt.
+ Wenn ich jetzt hier mir das x-Attribut von p2 angucke,
+ dann finde ich natürlich die 3.
+ Und wenn ich mir das y-Attribut von p2 angucke,
+ dann finde ich da natürlich die 2.
+ Und wenn ich jetzt hingehe und das x-Attribut ändere,
+ also das x-Attribut, das ich über p2 erreiche, in vier ändere,
+ dann natürlich ist das x-Attribut, dass ich da sehe, 4.
+ Und das y-Attribut ist unverändert.
+ Aber genauso gilt, dass wenn ich jetzt das x-Attribut von p1 mir angucke,
+ dass das auch 4 ist. Warum?
+ Weil x, p1 und p2 beziehen sich auf das selbe Objekt.
+ Wenn ich also diese Zuweisung gemacht habe, dann hat sich das geändert.
+ Und danach eben auch p1, wenn ich dann das x-Attribut mir angucke,
+ hat den Wert 4.
+ Das ist wie seinerzeit das bei den Erreys war.
+ Und wenn wir jetzt nicht mehr auf dieses,
+ wenn wir jetzt wollen, dass dieses p1 oder p2 nicht mehr auf das Objekt verweist,
+ dann machen wir das, was wir auch schon mal gesehen haben.
+ Wir setzen diese Referenzvariable auf diesen besonderen Wert, Null.
+ Null ist dieser besondere Wert, der ist gut für alle Klassen.
+ Und wenn ich das einmal ausgeführt habe, dann eben ist p2 nicht mehr in der Lage,
+ auf dieses Objekt Exemplar zuzugreifen.
+ Und Null noch p1 greift darauf zu.
+ Okay, haben wir jetzt Punkt für die Pause.
+ Machen wir jetzt hier Pause.
+ Und danach machen wir weiter.
+ Also, wenn wir dafür sorgen wollen, dass eben diese Referenzvariable
+ auf keinen Objekt verweist, dann verwenden wir diesen besonderen Wert Null.
+ Das ist ein Wert, den jede Referenzvariable haben kann.
+ Also jede Variable, die die Referenz hermentlich unterstützt,
+ sowohl also die Referenzvariable für Erreys,
+ als auch für die Referenzvariable für Typen, die wir selbst deklarieren.
+ Nachdem ich das einmal auf Null gesetzt habe, verweist das nichts.
+ Ich habe das natürlich auch mit Strings.
+ Da kann ich, wenn ich will, dass dieser String auch auf keinen anderen String mehr verweist,
+ auch diesen String zu Null setzen.
+ Und wenn eine Referenzvariable den Wert Null hat, dann sagen wir es eine Nullreferenz.
+ Und Null kann eben nicht dereferenziert werden.
+ Der Wert einer Referenzvariable, die auf keinen Objekt verweist.
+ Wenn die auf keinen Objekt verweist, dann sind manche Sachen nicht möglich.
+ Also wenn es einen Objekt gibt, dann kann ich das X-Attribut mir angucken.
+ Aber wenn es kein Objekt gibt, nachdem ich hier das zu Null gesetzt habe,
+ dann kann ich mir keinen Attribut angucken.
+ Dann kann ich nicht sehen, was das Y-Attribut ist,
+ weil das eben nicht definiert ist.
+ Genauso war das bei Erreys.
+ Wenn es einen Errey gibt, dann kann ich das Element mit Index Null auf einen bestimmten Wert setzen.
+ Ich kann die Länge abfragen.
+ Aber wenn ich einmal diese Referenzvariable auf Null gesetzt habe,
+ dann kann ich nicht mehr die Länge abfragen.
+ Und ich kann auch nicht irgendeines der Elemente auf irgendeinen Wert setzen,
+ weil es eben halt keine Elemente gibt.
+ Und dieses Null, das daran erinnern sich, wird auch benutzt,
+ wenn ein neuer Erreyer stellt wird.
+ Dann wurde damals jedes Element auf einen Wert gesetzt, der dieser Null entspricht.
+ Für Zahlen waren das eben Null oder Null.0.
+ Aber für Strings hatten wir gesehen, war das dieser besondere Wert Null.
+ Und das gilt jetzt auch für Erreys, die eben auf Objekte verweisen können.
+ Gilt das genauso.
+ Da wird eben das Element, da wird jetzt auf den Wert gesetzt, der eben Null entspricht.
+ Und das heißt, wenn also ein Erreyelement auf irgendein Objekt verweisen kann,
+ dann wird dieses Erreyelement bei der Konstruktion auch auf Null gesetzt.
+ Null ist der Wert, den wir vorfinden in unseren Erreys,
+ bevor wir eben da konkret andere Werte abspeichern.
+ Wenn wir einen Wert Erreyer stellen,
+ wenn wir also einen Erreyer stellen, der hier ein Erreyer von Strings ist,
+ dann gibt es einen Erreyer zurück.
+ Und jedes dieser Elemente hat den Wert Null.
+ Wogegen, als wir einen Int Erreyer stellten, hatte jeder diesen Wert Null.
+ Diesen Wert Null.
+ Aber jetzt für Strings oder irgendwelche anderen Objektreferenzen
+ wird das Element auf Null gesetzt.
+ Und das heißt, dass wir dann erst danach mit arbeiten können.
+ Also hier habe ich diesen Erreye Words,
+ der eben ein Erreyes der Platz für fünf Stringsreferenzen hat.
+ Da habe ich also hier diesen Erreye oder einen anderen Erreye,
+ den ich für den Zeichnen brauche.
+ Und wenn ich den Erreyer stelle, sind die Anfangs alle Null.
+ Und wenn ich jetzt so einen Erreyer habe,
+ ich kann das auch wieder mit so einer Direkten Initialisierung machen,
+ dann kann ich selektiv zum Beispiel das Element mit dem Index 1 auf Null setzen.
+ Und dann ist das eben halt auf Null gesetzt
+ und hat eben zurzeit keine Referenz auf irgendeinen Strings.
+ Also, hat eine Referenz variabel in Wert Null,
+ dann können wir sie nicht de-referenzieren,
+ weil es verweist ja auf kein Objekt.
+ De-referenzieren heißt, wir gehen zum Objekt
+ und sehen uns dann da das Attribut an
+ oder später rufen eine entsprechende Methode auf.
+ Und wenn eben eine Erreferenz variabel den Wert Null hat,
+ dann gab es eben keine Länge.
+ Die Länge gibt es nur, wenn der Wert un- gleich Null ist.
+ Wenn der Wert Null ist, dann geht das nicht mehr,
+ nur wenn der Wert Null ist, geht es nicht.
+ Der Wert muss un- gleich Null sein.
+ Und das war der Grund auch, warum wir das Längenattribut nur abfragen können,
+ wenn es einen wirklichen Erre- gibt.
+ Und wenn Sie jetzt doch versuchen sollten,
+ den mit dem Null die Null-Ref- renz zu de-referenzieren,
+ dann beschwert sich das System.
+ Dann beschwert sich das System und sagt, das geht nicht.
+ Dann gibt es zur Ausführungszeit, also zur Laufzeit, einen Fehler.
+ Das kann man ja erst zur Laufzeit feststellen,
+ weil dann sieht man ja, dass da kein Objekt ist.
+ Also hier zum Beispiel haben wir P2 auf Null gesetzt.
+ P2 ist eine Referenz, die auf denselben Punkt verweist wie P1.
+ Und jetzt setzt sich danach auf Null.
+ Und wenn ich jetzt versuchen sollte, auf das X-Attribut oder Öfterattribut zuzugreifen,
+ dann gibt es eben einen Fehler.
+ Und dann sagt das System "exception",
+ das ist der Standardausdruck für Laufzeitfehler.
+ Hier ist eine Exception.
+ Und es gibt eine Null-Pointer-Exception.
+ Das ist, wenn wir später nochmal genauer angucken.
+ Also Null ist eben, dieses Null ist nicht ein besonderes Objekt,
+ sondern ist einfach ein Objekt, das sagt,
+ dass eine Referenz, die sagt, dass diese Variable sich auf kein Objekt
+ oder keinen Array, kein Objekt irgendeiner Klasse zur Zeit bezieht.
+ Und das sollen wir nicht machen, dann gibt es eben entsprechenden Fehler.
+ Nun ist es so, weil das, jemand fragte mich in der Pause,
+ gibt es in Java Pointers?
+ Und die Antwort war damals, die sagte, nein, gibt es eigentlich nicht.
+ So was machen wir nicht.
+ Natürlich gibt es irgendwo Pointers tief im System.
+ Und wenn Sie so was versuchen,
+ wo Sie also versuchen, mit einer Null-Refenz zu de-referenzieren,
+ dann gibt es eben eine Null-Pointer-Exception,
+ weil das System dann eben feststellt, dass hier etwas nicht in Ordnung ist.
+ Also sehen Sie so ein bisschen, in der Implementation gibt es natürlich schon Pointer,
+ aber für uns als Programmierer, oder Programmiererin,
+ gibt es keine solche Probleme.
+ Also das ist einfach die Regel, die wir hier haben.
+ Also, jetzt, da diese Null-Referenzen ja eben so ärgerlich sind,
+ muss unser Programm normalerweise prüfen,
+ ob eine Variable oder ein Array-Element, was auch immer Null ist.
+ Oder wenn ich eine Methode habe, die eine Referenzvariable entgegen nimmt,
+ wenn ich nichts anderes weiß,
+ muss die Methode eigentlich prüfen, ob die übergebende Variable Null ist.
+ Weil die könnt ihr in Werten Null haben, und dann geht vieles nicht.
+ Und was erlaubt ist, Sie können, was wir machen können ist,
+ wir können mittels dieses Gleichheitsoperators checken,
+ ob eben ein Array-Element oder eine Variable optional sind.
+ Das kann ich checken, und wenn das Null ist, dann mache ich eben etwas nicht.
+ Wenn das Null ist, dann kann ich eben etwas machen.
+ Wir werden später noch mehr über Exceptions lernen.
+ Zurzeit wollen wir die einfach mal verhindern,
+ und wollen, wenn es geht, mit denen nichts zu tun haben.
+ Aber wir können die eben nicht ganz ignorieren,
+ und wenn Sie eben versehentlich eine Null-Referenz de-referenzieren sollten,
+ dann gibt es eben eine Exception.
+ Und eben ein stabiles Programm sorgt dafür,
+ dass eben gecheckt wird, bevor eine Variable de-referenziert wird.
+ Also, können natürlich checken, ob so eine Referenz Null ist oder nicht.
+ Also, Sie haben hier einen Loop, der geht durch so ein Array von Words durch.
+ Und wenn dieses Element ungleich Null ist,
+ dann erst wollen wir hingehen, und die Methode ToUpperCase eben aufrufen.
+ Wenn das Element Null wäre, dann würden wir natürlich das nicht machen wollen,
+ weil das wäre eben dann gar nicht erlaubt.
+ Also, könnten wir so einen Exkluziten-Test haben, der sagt eben hier,
+ wenn das Element ungleich Null ist, dann bitte diesen Block ausführen.
+ Aber das kann man noch ein bisschen kompakter schreiben,
+ und so sehen Sie es auch in vielen realistischen Programmen,
+ dass wir halt eben, oder könnten sogar auch hingehen und checken,
+ ob das einen bestimmten Wert hat.
+ Weil wir gucken nach, ist es nicht Null.
+ Wenn es nicht Null ist, gucken wir nach, ob es einen bestimmten Wert hat.
+ Und wenn das der Fall ist, dann gehen wir hin und setzen es auf ToUpper,
+ setzen es in Großbuchstaben.
+ Aber jetzt sehen Sie es schon, jetzt haben wir hier ein If, noch ein If und so weiter.
+ Das ist eigentlich nicht das, was wir gerne wollen.
+ Das sieht ja unübersichtlich aus.
+ Und das erinnern wir uns vielleicht daran,
+ dass es bei der bedingten Auswertung doch so ist,
+ dass die Auswertung aufhört, sobald wir wissen, was das Ergebnis ist.
+ Also, wenn ich einen logischen Und-Operator habe,
+ sobald einer der operanten Falls ist, hört die Auswertung auf,
+ weil wir wissen ja, das bleibt Falls.
+ Und daher kann ich so eine Folge von Tests doch viel einfacher so machen.
+ Ich checke erst, ob das Element, das ich mit dem R.A. mit dem ich arbeiten will,
+ Null ist oder Ungleich Null ist.
+ Und wenn es Ungleich Null ist, dann gehe ich hin und mache weiter.
+ Dann gehe ich hin und checke danach, ob das Element eben diesen String hat,
+ für den ich etwas bestimmt einen Schritt durchführen will oder etwas machen will.
+ Also, dann, wenn das eben Null sein sollte wie hier,
+ dann ist das hier Falls und dann wird dieser andere Teil gar nicht erst ausgeführt.
+ Das heißt, ich habe so kompakt geschrieben, dass ich das nur ausführen will,
+ wenn diese Bedingungen erfüllt sind.
+ Die Referenz muss Ungleich Null sein und der String, auf den diese Referenz verweist,
+ die muss gleich dem String gut bei sein.
+ Und dann erst will ich diese Operation machen.
+ So können Sie, das werden Sie in vielen Programmen sehen,
+ und so können Sie auch selber ohne eine Schachtelung von If-Statements machen,
+ zu müssen selber kompakt checken, ob diese Referenz eine Null-Refreenz ist oder nicht.
+ Hallo.
+ Und eben sehr oft übergeben wir das Null als Parametern eine Methode,
+ wenn wir der irgendwie nur einen bestimmten, wenn wir eben selber nicht
+ ein weiteres Objekt geben wollen, mit dem sie arbeiten soll.
+ Wenn ich eine Methode habe, die eine Referenzvariable erwartet,
+ sei es eine Referenzvariable für einen Array, sei es eine Referenzvariable
+ für irgendein Punkt-Objekt oder sowas, kann ich immer Null übergeben.
+ Und damit sage ich dann eben, in diesem Fall gibt es kein Array
+ oder keinen Point-Objekt usw.
+ Und daher muss dann die Methode eventuell prüfen, ob der Parameter Null ist.
+ Manchmal sagen unsere Aufgabenstellungen, sie können sicher sein,
+ dass die Referenzvariable oder dass der Parameter ungleichen Null ist.
+ Dann brauchen sie nicht mehr checken.
+ Aber wenn wir nichts sagen, ist es eine gute Idee, im Programm zu checken,
+ ob die Referenzvariable Null ist.
+ Und dann können Sie eben auch, was Sie auch oft sehen, Null zurückgeben.
+ Wenn Sie Null zurückgeben, dann ist das vielleicht so eine Fehleranzeige.
+ Normalerweise gibt die Methode einen Array zurück,
+ aber jetzt gibt sie eben halt Null zurück, um zu sagen, da ist irgendwas schief gelaufen.
+ Also, noch mal eine Zusammenfassung.
+ Die Referenzvariablen erlauben den Zugriff auf einen Array- oder ein Objektexemplar.
+ Und die Referenzvariable muss auf einen konkreten Array
+ oder muss auf ein konkretes Objekt verweisen, um so etwas,
+ um eben so einen Zugriff zu erlauben.
+ Und erst, wenn wir eben Referenzvariable mit einem Objekt,
+ also einem Array oder einem Exemplar,
+ dass wir durch eine Klasse konstruiert haben, verknüpft haben,
+ dann erst können wir auf die Attribute zugreifen,
+ auf die Elemente zugreifen und so weiter.
+ Sonst geht das alles nicht.
+ Die Verknüpfung kann passieren, indem wir nachher so eine Zuweisung ausführen
+ oder dass wir eine Zuweisung ausführen,
+ wo wir auf der rechten Seite eine Referenzvariable haben,
+ auf der linken Seite und die natürlich beide auf dieselbe Art von Objekten verweisen müssen.
+ Das kann wir mit den Arrays auch gesehen, wenn ich in ein Interray,
+ wenn ich eine Referenzvariable habe, die sich auf einen Array von ganzen Zahlen beziehen kann,
+ dann kann die sich auf einen beliebigen Array von ganzen Zahlen beziehen.
+ Egal, welcher Länge.
+ Und das ist eben halt die Einschränkung, die die Typ-Deklaration zur Folge hat.
+ So, und Referenzvariable verwenden immer Referenz-Semitics.
+ Und das heißt, zwei können oder mehr Referenzvariable können auf derselbe Objekt verweisen.
+ Ich habe hier dieses P1, das konstruiert so ein Punktobjekt
+ und ich habe hier P2, dass ich auf dieselbe Objekt verweisen lasse,
+ dass hier konstruiert wurde und indem jetzt hier nachträglich die x und y Attribute geändert wurden.
+ Und wenn ich jetzt eben auf dieses Objekt zugreife, auf mittels P2,
+ bekomme ich dieselben Attributwerte, die ich bekomme, wenn ich mittels P1 darauf zuweile.
+ Und wenn eben P2, die Referenzvariable P2 verwendet wird,
+ um irgendein Attribut zu ändern, dann ist das auch durch die andere Referenzvariable sichtbar.
+ Genauso, wie das bei den Errays war.
+ Genauso war kein bisschen anders.
+ Und wenn wir eben Elemente eines Errays haben, die Referenztypen sind,
+ also einen Erray von Strings oder einen Erray von Points oder einen Erray von irgendwelchen Panels oder was auch immer,
+ so speichert natürlich diese Erray-Elemente nicht das Objekt selber,
+ sondern auch wieder nur einen Verweis auf das Objekt.
+ Nur bei Basestypen, da wird der Wert direkt gespeichert.
+ Bei allen Referenztypen speichert dann der Erray eine Referenz.
+ Und deswegen brauchen wir für die Initialisierung im allgemeinen zwei Schritte.
+ Erst werden wir den Erray erstellen und initialisieren
+ und dann gegebenenfalls die Referenzvariable auf diesen Erray verweisen lassen.
+ Also wenn ich eben halt den Erray habe, am Anfang haben die Elemente alle den Wert 0 oder 0.0 oder auch Null,
+ wenn es eine Referenz auf Objekte ist, dann kann ich da in zweiten Schritt hingehen
+ und konkrete Objektreferenzen unterbringen.
+ Oder beim String, das ist ein einfaches Beispiel eines Objekts.
+ Am Anfang besteht der Orray aus vier Mal-Null-Refrenzen
+ und dann kann ich hingehen, in diesem Fall mache ich das so,
+ dass ich in jedes dieser Elemente eine Referenz auf den String reinsetze, den ich je konstruiere
+ und ich konstruiere halt hier den String, der dadurch gefronten wird, dass ich diesen String wurt,
+ mit dem String konkateniere, der den durch den Loopzäler angegeben wird.
+ Dann habe ich das Wort Null, eins Wort zwei und so weiter.
+ Und da das eben Referenzvariable sind, was ich letzte Woche über die,
+ oder auch am Dienstag über die Erray-Refrenzen als Parameter gesagt habe,
+ das gilt jetzt auch für diese Objekte, weil ich hatte damals ja gesagt,
+ Errays sind, Erray-Refrenzen sind auch wieder Referenzen auf Objekte.
+ Und die können wir natürlich als Parameter übergeben und es gelten wieder die Referenzsementix-Regeln.
+ Das heißt also, wenn ich ein Objekt übergebe, übergebe ich eine Referenz auf ein Objekt
+ und eben übergebe das bei Referenz.
+ Also die Methode bekommt die Referenz und die kann dann eben mit diesem Objekt arbeiten.
+ Wenn das System das zulässt, das Objekt verändert.
+ Wie beim Erray-Parameter, wenn ich ein Erray-Parameter übergebe,
+ kann die Methode die einzelne Elemente des Errays lesen und auch verändern.
+ Und das können Sie einmal ausnutzen, wenn Sie mich wegen an verschiedenen Stellen
+ in Ihrem Programm vom Keyboard lesen wollen, dann es macht Sinn,
+ so einen Scanner mit dem Input nur einmal zu konstruieren.
+ Wenn Sie das mehrfach konstruieren, dann können andere Probleme auftreten.
+ Dann haben Sie halt eine Referenz-Variable-Konsole, die jetzt eben eine Referenz auf ein Scanner-Exemplar ist
+ und die können Sie jetzt eben als Parameter für diese Methode oder für eine andere Methode verwenden.
+ Und dann kann jede dieser Methode von Ihnen, von dem der Konsole lesen und dementsprechend weiterarbeiten.
+ Und hier diese Methode, die Sie irgendwo haben, das ist eine Methode hier,
+ weil aesthetics sind das Methoden in Ihrem Hauptprogramm.
+ Die erwarten eine Referenz auf einen Scanner, das der jetzt Konsole heißt,
+ es ist reine, weil man kein besserer Name eingefallen ist, der Name spielt keine Rolle
+ und diese Methode erwartet auch wieder eine Referenz auf einen Scanner.
+ Und jede von denen kann dann entsprechend lesen und damit arbeiten.
+ Also Objekt als Parameter, Wiederreferenz-Variable
+ und dann ist es die Sache des Objekts zu entscheiden, was für Operationen
+ und gegebenenfalls Methoden möglich sind, was für Attribute existieren.
+ Bei den Array-Elementen hatten wir gesehen, dass die verändert werden können.
+ Aber wir hatten auch gesehen bei den Strings, dass Strings können nicht verändert werden.
+ Wenn ich einen String übergebe, dann muss die Methode mit dem String arbeiten
+ und kann sonst nichts anderes machen.
+ Sie kann den String nicht verändern.
+ Sie kann neuen Strings konstruieren, aber sie kann nichts verändern.
+ Aber das war eine Entscheidung, die das Objekt gefällt hat
+ oder die festgelegt wurde von den Leuten, die das Objekt erstellt haben.
+ Die haben das so aufgesetzt, dass eben halt Änderungen nicht möglich sind.
+ Und Strings können eben nicht verändert werden, weil man die eben besonders optimiert hat.
+ Es gibt schon einen Weg, wie man auch das umgehen kann,
+ aber das ist kein Thema für die Einführung in die Programmierung.
+ Und sie sollten auch nicht das versuchen, weil Programme, die das machen,
+ sind sehr schnell unübersichtlich und vor allen Dingen, die funktionieren dann auch nicht immer überall.
+ So, das habe ich zum Thema Objekte und Attribute
+ und jetzt wollte ich auch zum Thema Klassen und ihre Klienten sagen.
+ Nun ist es aber so, bei unseren Übungsaufgaben, die wir haben,
+ wird es immer schwieriger, Aufgaben zu finden, die halbwegs interessant sind.
+ Und deswegen haben wir uns gedacht, müssten wir Ihnen ein bisschen mehr über I/O erzählen,
+ einfach weil sonst einfach das zu langweilig wird.
+ Oder Sie verbringen zu viel Zeit damit, dass Sie eben Zahlen eingeben.
+ Und deswegen haben wir, wie gesagt, irgendwo bringen wir diese Kapitel 5 schubweise unter,
+ ein bisschen was mit I/O wollen wir ja machen.
+ Und als erstes wollte ich Ihnen kurz zeigen, wie Sie statt von der Konsole einzulesen,
+ mit Dateien arbeiten können. Das macht Ihr Leben vielleicht etwas leichter.
+ Und daher mache ich das jetzt als Einschub. Die Slides finden Sie,
+ falls Sie jetzt die runtergeladen haben, sollten gegen Ende der anderen Slides,
+ weil ich nicht genau wusste, wann ich den Einschub mache.
+ Die finden Sie auch alle auf dem Netz.
+ Und wenn Sie mal je sehen, dass Slides nicht auf dem Netz sind,
+ schicken Sie mir Mail oder posten Sie es im Kurskanal, dann ist irgendwas schief gelaufen
+ und wir versuchen das zu fixen.
+ Also, jetzt wollen wir also nicht mehr nur von der Konsole lesen,
+ sondern mit irgendwelchen Dateien arbeiten.
+ Und da gibt es in Java eine klasse File, die erlaubt Operationen mit Dateien,
+ also mit Files.
+ Und damit können wir solche Dateien lesen und schreiben.
+ Und jetzt, wo wir wissen, was eine Klasse ist, können wir uns ungefähr vorstellen,
+ was dahintersteckt.
+ Und wir können dann auch verschiedene Operationen ausführen.
+ Eine der Operationen ist zum Beispiel, dass wir herausfinden, wie groß ist die File.
+ Und natürlich, das ist ein scharfes Messer, mit dem wir arbeiten.
+ Wir können diese Dateien umbenennen.
+ Wir können die Dateien löschen.
+ Sie können damit sich viel Freude bereiten.
+ So, jetzt, wie machen wir das?
+ Nun, um das zu machen, müssen wir dem System sagen,
+ dass wir mit Files arbeiten wollen.
+ Das heißt, Sie müssen einen Importstatement haben.
+ Es sagt, importiere diese Fileservices.
+ Und wenn ich das einmal gemacht habe, dann, wie bei dem Scanner,
+ dann erstelle ich ein neues Exemplar dieses FileManagers
+ und dem gebe ich als Tring den Namen der Datei, die ich gerne öffnen will
+ oder mit der ich arbeiten will.
+ Das sieht man natürlich nicht, aber das können wir ja fixen.
+ Also, dann gebe ich hier, der als Tring den Namen der Datei, mit der ich arbeiten will.
+ Und dann brauche ich natürlich wieder eine Referenzvariable.
+ Die Referenzvariable ist eben vom Typ File.
+ Also, die bezieht sich auf FileObjekte.
+ Und dann kann ich jetzt mit dieser Datei arbeiten.
+ Und zum Beispiel könnte ich jetzt sagen, wenn diese File existiert
+ und die File einen länger größer als 1000 bytes hat,
+ dann möchte ich sie deliten.
+ Vielleicht, ja.
+ Aber dann ist sie weg.
+ Ist sie weg und da gibt es keinen Backup, die ist einfach weg.
+ Deswegen, passen Sie auf, welches Beispiel Sie mit welchem da anwenden
+ und was Sie da machen.
+ So, jetzt diese File, das ist nicht diese Referenzvariable File,
+ die erlaubt es mir, mit dieser File zu arbeiten.
+ Das ist nicht die File selber.
+ Das ist eine Referenzvariable, die es mir erlaubt,
+ mit dieser File zu arbeiten.
+ Und was heißt arbeiten?
+ Ich kann eine von verschiedenen Methoden ausführen
+ oder Operationen ausführen.
+ Ich kann also checken, ob die File überhaupt existiert.
+ Ich kann checken, ob ich die File lesen kann.
+ Je nach Betriebssystem gibt es da die Möglichkeit,
+ das einzuschränken.
+ Ich kann den Namen bekommen.
+ Ich kann die Länge bekommen, wie viele Elemente da sind.
+ Ja, wir können die deliten, wenn wir wollen.
+ Und wir können die auch umbenennen.
+ So, jetzt wichtig ist diese Operationen,
+ die machen Sie auf der Datei, aber die bestimmen Sie
+ mit dem File-Objekt, das Sie hier erstellt haben.
+ Diese Konstrukte, der New-Operator,
+ gibt Ihnen ein File-Objekt, mit dem Sie jetzt arbeiten können.
+ Und ein solches File-Objekt nennt man eine Handel.
+ Also dieser Ausdruck, File-New-File, mit dem entsprechenden Namen,
+ der erstellt nicht die Datei,
+ der erstellt nur ein Objekt, mit dem Sie arbeiten können,
+ das für die entsprechende Datei steht.
+ Und so ein Objekt nennt man die Handel.
+ Ich kenne kein gutes deutsches Wort dafür.
+ Also ist die Handel, mit der können Sie diese Datei
+ entweder manipulieren oder inspizieren oder irgendwas machen.
+ Damit können Sie Operationen mit der Datei machen.
+ Dass diese New-Operator hier erstellt eben nur die Handel,
+ erstellt nicht die Datei selber.
+ Und deswegen gibt es eben eine Methode,
+ mit der Sie feststellen können, ob die Datei existiert.
+ Deswegen gibt es diese Exist-Methode,
+ weil ich kann ein File-Objekt, also so ein Objekt,
+ für eine Datei, die es gar nicht gibt.
+ Ich kann hier die Datei Fubar, den Namen Fubar als Namen angeben,
+ den gibt es wahrscheinlich auf meinem Computer nicht.
+ Das ist okay, weil jetzt habe ich eine Handel,
+ mit der ich die Fubar-Datei, wenn sie existieren sollte, manipulieren kann.
+ Das ist nicht diese Fubar-Datei.
+ Wenn ich die erstellen will,
+ dann muss ich andere Schritte machen,
+ auf die komme ich nachher noch zu sprechen.
+ Wichtig ist, dass Sie wissen, dass exist ist wichtig,
+ damit Sie feststellen können, ob die Datei,
+ der Namen Sie da oben angeben haben, bereits existiert.
+ So, jetzt haben wir so eine Datei und jetzt wollen wir aus der Lesen.
+ Und jetzt sehen Sie, das können Sie schon.
+ Das haben Sie schon gelernt.
+ Sie sehen Sie, wir haben das schon mal Input gemacht.
+ Wir hatten doch den Scanner, hatten wir einen neuen Scanner produziert,
+ der hier eben für uns den Input machte, das eben richtig gemachte.
+ Und dann haben wir von dem Scanner gelesen.
+ Und was, wenn ich jetzt von einer Datei lesen will, das mache ich dann,
+ dann muss ich meinem Scanner halt sagen,
+ der Scanner möge doch bitte nicht von dem Konsole lesen,
+ von System.in, sondern von einem anderen Ort.
+ Und wie mache ich das?
+ Ich gehe hierhin, ich gebe zum Beispiel den Dateinamen Input.txt an,
+ ich erstelle eine Handel, ein neues File Management Objekt
+ und dann übergebe ich dieses Objekt an den Konstruktor,
+ der den Scanner erstellen will.
+ Und dann geht der hin und erstellt einen entsprechenden Scanner für uns,
+ der jetzt aus dieser Datei eben die Daten ist.
+ Und eben, wie jemand fragte,
+ File ist eben auch eine Klasse, der New Operator erstellt eine Referenz
+ auf irgend so ein File Objekt, das File Objekt,
+ das sagt dann irgendwo eines der Attribute,
+ wird dann sein eben welchen Namen der Betreffende angegeben hat,
+ ob man das lesen oder schreiben darf, wie lang das ist,
+ vielleicht eine Million Bytes oder so was,
+ das alles wird in dieser Handel festgehalten.
+ Und die gebe ich dem Scanner und das Scanner hat dann eben so einen Pointer
+ und der weiß dann von wo er die nächste Zahl oder was auch immer abliefern muss.
+ Und jetzt da das viele, das sind jetzt hier drei,
+ zwei Schritte, die eben halt hier sehr oft zusammengefasst werden,
+ die werden so zusammengefasst, ich will einen neuen Scanner,
+ einen neuen Scanner, der soll hier für diese Datei erstellt werden,
+ die hier durch diese File Handel, die ich jetzt hier on the fly konstruiere,
+ erstellen möchte.
+ So was finden Sie häufig in Programmen
+ und dann können Sie natürlich da den Allfallnamen Ihrer Wahl einsetzen.
+ Wo finden Sie jetzt mehr Dokumentation über den Scanner?
+ Ja, können Sie eben den Dokumentation finden,
+ sei es über irgendein Search Service oder irgendwas,
+ der Java 11 Scanner ist der gleiche wie der Java 17 Scanner,
+ da finden Sie dann Informationen über die Klasse Scanner
+ und da finden Sie dann eben halt Informationen und so weiter,
+ wie man damit arbeitet und so weiter.
+ So, dann gibt es einiges mehr, da gibt es doch viel, viel mehr Text,
+ den ich Ihnen gar nicht zeigen will.
+ So, jetzt gibt es halt verschiedene Möglichkeiten,
+ so einen Scanner zu konstruieren.
+ Und da gibt es eben unterschiedliche Inputquellen
+ und diese Inputquellen haben wir ja gesehen,
+ die wurden dem Scanner als Parameter übergeben.
+ Wir hatten einmal System.in, dem Scanner gesagt,
+ wir wollen von System.in lesen
+ und dann hat der Scanner aufgesetzt worden,
+ um von der Konsole zu lesen
+ oder wir sagen, der Scanner soll von der Datei lesen,
+ die durch dieses File-Objekt beschrieben ist.
+ So, und wenn wir das jetzt machen, da sehen wir halt hier,
+ da sind verschiedene Optionen.
+ Wir können eben einen Scanner haben, der uns aus einer File liest,
+ wir können die Character-Sets ändern,
+ wir können das ziemlich kompliziert,
+ wir können unser System mit einem Western Key Set,
+ also Buchstaben Set schreiben
+ und dann Buchstaben in einem anderen Alphabet lesen.
+ Da kann man alle viele Sachen machen,
+ ist eigentlich nicht unser Problem.
+ Wir nehmen den einfachsten Fall,
+ dass wir einfach aus einer Datei lesen wollen.
+ So, dann gucken wir uns an, aha, hier gibt es also die Regel,
+ weitere Informationen über diesen Scanner,
+ und da sind wir konstruiert, ein Scanner,
+ der Werte dann eben liefern wird und so weiter.
+ Und wenn wir das jetzt weitergucken, da sehen wir hier unten so eine Warnung.
+ File Not Found Exceptions, die wird raus, wird geworfen,
+ wenn die Quelle nicht gefunden wurde, was bedeutet das?
+ Naja, jetzt können wir ja sagen, oh, mal gucken, was das ist.
+ Wir könnten ja ein Programm schreiben, das sowas macht.
+ Wir haben hier ein Programm, unser Main-Programm,
+ unser anonymes Service-Programm, haben wir File I/O genannt.
+ Hier haben wir die Main-Methode,
+ und in dieser Main-Methode machen wir, was ich eben vorgestellt habe,
+ und wir versuchen eben da, ein Scanner für diese Datei zu erstellen.
+ Und wenn wir das machen, dann beschwert sich das System.
+ Der beschwert sich konkreter Compiler
+ und sagt, unhandled exception type, file not found exception.
+ Und da gibt erfreulicherweise Eclipse bereits zwei Hilfsmöglichkeiten,
+ und die erste da, add to host declaration,
+ die werde ich jetzt noch gerade erklären.
+ Die zweite Option, die muss später kommen.
+ Da muss man noch ein paar mehr Sachen erklären,
+ um das später anders zu machen.
+ So, was geht hier vor oder was passiert?
+ Also, Exceptions, hat ich schon mal gesagt,
+ ist ein Fehler, der während der Laufzeit auftritt.
+ Das ist eine Ausnahme.
+ Es ist die Folge eines Fehlers,
+ der erst zur Laufzeit festgestellt werden kann.
+ Zum Beispiel, das hatten wir auch schon mal gesehen,
+ wenn wir versuchen, eine ganze Zahl, also eine Int,
+ durch 0 zu dividieren, das haut nicht hin.
+ Da gibt es eben einen Fehler.
+ Oder wenn wir versuchen, auf ein Array-Element zuzugreifen,
+ das nicht existiert.
+ Das haut auch nicht hin.
+ Da gibt es auch einen Fehler.
+ Oder wenn wir versuchen sollten,
+ eine Nullreferenz zu de-referenzieren,
+ dann gibt es auch einen Fehler.
+ In all diesen Situationen,
+ oder lesendes falschen Types,
+ wenn wir in der Datei oder im Input eine Int erwarten,
+ also eine ganze Zahl erwarten,
+ und es kommt irgendein Text,
+ dann gibt es auch eine Exception.
+ In all diesen Situationen beschwert sich das System
+ und genauso in dem Fall,
+ wenn wir versuchen, aus einer Datei zu lesen,
+ die nicht existiert.
+ Und wenn wir jetzt versuchen sollten,
+ aus so einer Datei zu lesen,
+ dann stellt das System fest zur Laufzeit,
+ dass die Datei gar nicht existiert.
+ Und dann wird eine Exception generiert,
+ das genauer, denn wir später,
+ das ist auch wieder ein Objekt.
+ Ein Objekt, das eben die Exception modelliert.
+ Und diese Exception wird weitergereicht,
+ bis irgendein Teil des Programms
+ diese Exception bearbeiten kann.
+ Vielleicht kann das das Programm selber,
+ oder wenn das Programm das nicht kann,
+ dann gibt es vielleicht jemand anders in der Umgebung,
+ der das behandeln kann.
+ Und das ist das, was wir Werfen nennen.
+ Das Programm generiert die Exception
+ und reicht sie weiter.
+ Das nennen wir Werfen.
+ Die Exception wird geworfen.
+ Und jetzt gucken wir mal,
+ welcher Teil des Programms ist in der Lage,
+ diese Exception zu behandeln,
+ also ist es in der Lage, die aufzufangen.
+ Also hier haben wir ein Beispiel,
+ so wie es bisher, unser Main-Programm.
+ Da haben wir eine Methode FU.
+ Die Methode FU ruft eine Methode BAR auf.
+ Und jetzt geht unser Programm hin
+ und führt das Main aus, ruft FU auf,
+ dann wird erst Main aufgerufen, dann FU,
+ dann wird BAR aufgerufen
+ und dann wird das Programm ausgeführt.
+ Und dann geht es eben wieder zurück
+ und dann geht es zurück und dann geht es zurück
+ und dann sind wir fertig.
+ Und jetzt ist der normale Fluss
+ unseres Methoden aufruft.
+ Wenn wir jetzt aber hingingen
+ und diese Methode hier ändern
+ und zwar dahingehend ändern,
+ dass wir hier versuchen,
+ durch Null zu dividieren,
+ dann, naja, was passiert?
+ Am Anfang ist alles noch genau so.
+ Und wir kommen jetzt zu dem Punkt,
+ dass die Division durch Null gemacht wird.
+ Da wird eben eine Exception festgestellt.
+ Da ist ein Fehler aufgetreten.
+ Und jetzt im nächsten Moment,
+ wenn jemand von diesen anderen Methoden in der Lage ist,
+ diesen Fehler zu beheben,
+ springen wir sofort zu einem Punkt,
+ außerhalb dieser drei Methoden hin.
+ Das heißt, da wird dann hoffentlich jemand sein,
+ der diese Exception aufhängt.
+ Und das ist das Thema hoffentlich so aufgesetzt,
+ dass da die Exception gefangen werden kann.
+ Und Java bemüht sich eben zu verhindern,
+ dass da irgendwelche Kontrolltransfer stattfinden,
+ die man nicht vorher gesehen hat.
+ Und daher ist das System so aufgesetzt,
+ dass wir für jede Exception
+ irgendwo einen Handler haben müssen,
+ also einen Programmsegment haben müssen,
+ dass diese Exception bearbeitet.
+ Es gibt bei den Exceptions zwei große Gruppen.
+ Da gibt es einmal Exceptions,
+ die müssen vom Programm aufgefangen werden.
+ Und die müssen einfach aufgefangen werden.
+ Es gibt andere Exceptions,
+ wie zum Beispiel, dass die Batterie aufgehört hat,
+ oder dass irgendwie der Prozessor nicht mehr funktioniert.
+ Da kann das Programm nichts machen.
+ Und da erwarten wir auch nichts.
+ Aber viele Exceptions, so wie Nullreferenz oder so,
+ da erwarten wir, dass das Programm die eigentlich aufhängt.
+ Jetzt gibt es Exceptions, die können überall auftreten.
+ Eben wie die Division durch Null,
+ oder das De-referenzieren von Null, oder solche Sachen.
+ Und auf diese Exceptions ist das Java-System vorbereitet.
+ Das heißt, das Java-System hat dafür gesorgt,
+ dass wenn sie durch Null dividieren,
+ irgendwer geht hin und wird das dann entsprechend auffangen
+ und damit bearbeiten.
+ Und dann gibt es andere Exceptions,
+ und das sind die, die eben was komplizierteren sind,
+ da weiß das System nicht,
+ dass so eine Exception auftreten kann.
+ Das heißt, das System braucht Hilfe,
+ um zu wissen, wie eine solche Exception behandelt wird.
+ Es ist nicht so, dass alle Programme aus einer Datei lesen.
+ Daher die Exception, dass die Datei nicht da ist,
+ ist nicht eine von den Exceptions,
+ auf die das System bereits vorbereitet ist.
+ Daher müssen wir dem System helfen, diese Exception zu managen.
+ So, und diese Exceptions, für die das System mehr Informationen braucht,
+ die nennen wir CheckedExceptions, überprüfte Ausnahmen.
+ Das sind Ausnahmen, die das System noch überprüfen wird,
+ bevor es zulässt, dass wir mit solchen Ausnahmen arbeiten.
+ Und wer prüft hier natürlich der Compiler?
+ Der Compiler prüft, ob eine Exception entweder lokal aufgefangen wird,
+ dann ist der Compiler zufrieden.
+ Oder, dass die aufgerufene Methode angibt,
+ dass eine Exception auftreten kann.
+ Dann ist der Compiler auch zufrieden,
+ weil, wenn eine Methode sagt, ich bin in der Lage,
+ ich reiche diese Exception weiter
+ und irgendjemand anders ist bereit, die zu bearbeiten,
+ dann weiß der Compiler, dass es irgendwo einen Teil gibt,
+ der das bearbeiten wird.
+ Daher muss der Checked der Compiler,
+ ob solche Exceptions richtig aufgesetzt wurden.
+ Wenn das nicht der Fall ist,
+ dann beschwert sich der Compiler und sagt,
+ dieses Programm können wir nicht übersetzen.
+ Das haben Sie gesehen.
+ Vorhin gibt es eben diese Error Message,
+ UnhandledExceptionType, FileNotFoundException,
+ wissen wir nicht, was wir damit machen können,
+ und da müssen wir irgendetwas unternehmen.
+ Wir müssen festlegen, wie unser Programm
+ mit I/O-Problemen umgeht,
+ weil sonst weiß das ja das System nicht.
+ Jetzt gibt es eben zwei Möglichkeiten,
+ die eine ist, selber lokal zu machen
+ oder einfach die Arbeit zu delegieren,
+ an jemand anders.
+ Das ist dieser Vorschlag, eine AdSrose-Deklaration,
+ eine AdSrose-Deklaration dazu zu fügen.
+ Das ist eine Ankündigung,
+ die ich bei der Deklaration einer Methode mache,
+ wo ich sage, diese Methode könnte diese Exception
+ eben generieren,
+ oder die könnte von woanders her kommen,
+ und diese Methode wird diese Exception
+ nicht selber auffangen.
+ Das heißt, wer immer diese Methode aufruft,
+ muss dafür sorgen, dass die Exceptions bearbeitet wird.
+ Wer die Methode aufruft,
+ muss diese Exception entweder fangen
+ oder wiederum ankündigen,
+ bis es eben ganz nach oben geht
+ und ganz nach oben, also im Jahressystem,
+ ist man natürlich vorbereitet,
+ alle Arten von Exceptions,
+ die behandelt werden können,
+ in irgendeiner Form aufzufangen.
+ Das heißt also, in unserer Methode,
+ wenn wir eine Methode, eine Static Methode haben,
+ dann würden wir dahinterher schreiben,
+ "Srose-Type",
+ oder genauso, wenn wir irgendeine andere Methode
+ später mal schreiben,
+ die wir auch ankündigen müssen,
+ da würden wir eben schreiben,
+ dass diese Methode eine solche Exception generieren kann.
+ Und dann danach erst kommen die Geschweifeklammern,
+ in denen der Body der Methode ist.
+ Und dann ist eben halt,
+ und natürlich Type muss ein Exception-Typ sein,
+ da kann nicht irgendein beliebiger Typ sein,
+ sondern eben die Art der Exception,
+ die geworfen werden kann.
+ Das gilt für Methode, gilt für die Art,
+ wie wir Objekte konstruieren und so weiter.
+ Da muss das eben, wenn das angekündigt wird,
+ müssen wir damit arbeiten.
+ Also wenn ich sage, hier gibt es einen Weg,
+ eine Objekt zu deklarieren,
+ dann kann ich sagen, aber diese Deklaration
+ wirft eventuell eine solche Exception.
+ Und das ist das, was wir vorher gesehen haben.
+ Als wir gesehen haben,
+ dass dieser Weg den Scanner zu konstruieren,
+ indem wir eben halt,
+ wenn wir eine Datei als Datenquelle übergeben,
+ da ist es eben möglich,
+ der Versuch, einen solchen Scanner zu konstruieren,
+ dass der eben eine solche Exception generieren wird.
+ Und das heißt eben,
+ die wird auftreten,
+ wenn diese Datei, mit der wir arbeiten wollen,
+ nicht existiert.
+ Da steht dieses Thrust,
+ das heißt, wer immer den New-Operator
+ mit dieser Form von Konstruktionsanweisung verbinden will,
+ dann muss sich eben um diese Exceptions kümmern.
+ Und das können wir einfach machen,
+ indem wir einfach hier dieses dazufügen.
+ Wir sagen unsere Methode Main,
+ die wirft auch möglicherweise eine FileNotFoundException.
+ Wir hoffen ja nicht, dass das passiert,
+ weil wir werden ja hoffentlich immer nur Dateinamen geben,
+ die auch existieren.
+ Aber sollte es mal einen Dateinamen geben, der nicht existiert,
+ dann wird das passieren und das System ist darauf vorbereitet.
+ Dann ist der Compiler zufrieden, das System ist zufrieden,
+ die Methode funktioniert, alles wird richtig aufgesetzt und so weiter.
+ Nicht alle Konstruktoren hatten das Problem.
+ Deswegen, wenn wir einen Input-Stream hatten,
+ wie den System.in, da kann das nicht passieren.
+ Und deswegen konnten wir eben auch ein Scanner
+ vor System.in erstellen.
+ Und jetzt doch ganz einfach drei Worte zum Thema Output.
+ Jetzt haben wir so eine Datei.
+ Wie können wir da schreiben?
+ Da gibt es auch wieder einen guten Service, den wir auch benutzen können.
+ Nämlich die Printstream-Klasse.
+ Das ist eine andere Service, der es uns erlaubt,
+ Daten elegant und einfach in eine Datei auszugeben.
+ Und all die Operationen, die wir von System.out kennen,
+ die funktionieren auch mit Printstream.
+ Also Print, PrintLine.
+ Das ist das, was wir vorher gesehen haben.
+ Müssen wir natürlich importieren.
+ Aber ich gehe hierhin, ich habe wieder meinen
+ Filehandel für die File, die ich haben will.
+ Und dann gehe ich hin und möchte gerne einen neuen
+ Printstream haben.
+ Ein Printstream, der mit dieser File arbeitet.
+ Oder eben kompakt hier, alles auf einer Stile.
+ Ein Printstream, der mit dieser Datei arbeitet.
+ Wenn ich das habe, dann ja, wie hatten wir vorgedruckt?
+ Wir hatten hier unseren Loop, der zum Beispiel
+ irgendwas zehnmal das trockt.
+ Das ging durch System.out.
+ Und jetzt gehen wir hin und definieren uns eben
+ einen entsprechenden Printstream, den wir vielleicht den Namen
+ FileOutput geben.
+ Und jetzt brauchen wir hingehen und ersetzen das System.out
+ durch den FileOutputstream, den wir hier oben konstruiert haben.
+ Und dann können wir genauso wie wir zum Standard Output,
+ also zum Konsolidrucken, können wir jetzt
+ eine Datei auserschreiben.
+ Und der Schöne ist, wenn die Datei nicht existiert,
+ dann wird sie erstellt.
+ So können wir also unsere eigenen Daten da schreiben.
+ Natürlich nichts ist umsonst.
+ Was passiert nämlich, wenn sie existiert?
+ Naja, wenn sie existiert, die Datei, dann wird sie überschrieben.
+ Und dann wird sie auf die Datei gesagt.
+ Wir wollen hier auf diese Datei, wollen wir jetzt schreiben.
+ Und darum eben müssen wir aufpassen.
+ Wenn wir eben sehen wollen, was da gemacht ist,
+ müssen wir in Eclipse refresh machen.
+ Dann wird die Datei, wird,
+ refreshed das System sich.
+ Und dann können wir auf die Datei gucken.
+ Und dann sollte die Datei, wenn die jetzt Output text hieß,
+ dann wird sie auf die Datei geöffnet.
+ Da würden sie die dann finden und würden die dann entsprechend
+ aus, würden sie dann sehen.
+ Da würden sie dann das 10 mal sehen.
+ Also, wie gesagt, Prinzt Trem, ja, ist sehr komfortabel.
+ Beliebter Fehler ist,
+ eine Datei zum Schreiben öffnen, die Methode mehrfach ausführen,
+ dann wird die Datei mehrfach geöffnet.
+ Aber der alte Inhalt G von Ohren,
+ die wir hier gefunden haben, ist sehr komfortabel.
+ Das ist ein sehr komfortabeles Problem.
+ Das ist ein sehr komfortabeles Problem.
+ Das ist ein sehr komfortabeles Problem.
+ Das ist ein sehr komfortabeles Problem.
+ Das ist ein sehr komfortabeles Problem.
+ Das ist ein sehr komfortabeles Problem.
