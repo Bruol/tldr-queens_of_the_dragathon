@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import Lecture
+from .models import *
 from django.template import loader
 
 from .models import Lecture
@@ -25,7 +25,16 @@ def videos(request, class_id):
 def summary(request, summary_id):
     latest_lecture = Lecture.objects.order_by("-lecture_number")[1]
     template = loader.get_template("views/summary.html")
+    
+    vid = Video.objects.get(pk=summary_id)
+    
+    topics = vid.topics.all()
+
     context = {
         "lecture": latest_lecture,
+
     }
     return HttpResponse(template.render(context, request))
+
+def get_dict():
+    print("test")
