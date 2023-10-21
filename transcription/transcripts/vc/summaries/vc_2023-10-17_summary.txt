@@ -1,32 +1,32 @@
 # Summary
 
-## Topic 1: Unitary Transformations in Image Processing
+## Unitary Transformations in Image Processing
 ### Sourced from Summary 1
 - Unitary transformations are changes of basis from pixels to the Fourier space.
 - They preserve vector lengths and do not change the energy of vectors.
 - Can be applied to a single image or a collection of images.
 - Applied to a collection of images by stacking them into a matrix and computing the auto correlation function.
 
-## Topic 2: Eigenvalues and Eigenvectors in Image Recognition
+## Eigenvalues and Eigenvectors in Image Recognition
 ### Sourced from Summary 3
 - Choosing the right transformation can reduce correlation between coefficients and concentrate energy in fewer coefficients.
 - Allows for a more efficient representation of images and reduces computational cost.
 - Eigenimages are eigenvectors that represent images in a higher-dimensional space.
 
-## Topic 3: Dimensionality Reduction for Nearest Neighbor Search
+## Dimensionality Reduction for Nearest Neighbor Search
 ### Sourced from Summary 4
 - Transforming images into a lower-dimensional space while preserving most of the energy reduces computational cost of comparing images.
 - Tailoring the transformation using techniques like the Karhunen-Loeve transform helps capture most energy in a small number of coefficients.
 - Subtracting the average vector centers the distribution around zero and avoids biasing the correlation towards the average vector.
 
-## Topic 4: Facial Recognition using Linear Models
+## Facial Recognition using Linear Models
 ### Sourced from Summary 6
 - Linear model involves detecting and normalizing a face image, subtracting the average face, and multiplying by templates to obtain coefficients.
 - Coefficients are compared to pre-computed numbers to determine similarity.
 - Can be extended to 3D face scans and manipulating facial attributes using linear combinations of faces.
 - Morphable model can reconstruct 3D shape and texture from a single photograph.
 
-## Topic 5: Normalizing Data and Intrinsic Dimensionality for Neural Networks
+## Normalizing Data and Intrinsic Dimensionality for Neural Networks
 ### Sourced from Summary 7
 - Normalizing data removes variations such as pose and lighting, reducing the required number of samples.
 - Determining the intrinsic dimensionality of the problem using singular value decomposition is important.
@@ -34,22 +34,22 @@
 
 # In-Depth Summaries
 
-## Topic 1: Unitary Transformations in Image Processing
+## Unitary Transformations in Image Processing
 
 In image processing, unitary transformations are used as changes of basis from pixels to the Fourier space. Summary 1 mentions that these transformations preserve vector lengths and do not change the energy of vectors. Unitary transformations can be applied to a single image or a collection of images. When applied to a collection of images, they are computed by stacking the images into a matrix and computing the auto correlation function. This process helps measure the correlation between pixels within the images and diagonalize the auto correlation matrix. The advantage of diagonalization is that it makes the correlation between coefficients completely uncorrelated. By choosing a transformation that diagonalizes the auto correlation matrix, the length of vectors is conserved, allowing for more efficient image representation and processing.
 
-## Topic 2: Eigenvalues and Eigenvectors in Image Recognition
+## Eigenvalues and Eigenvectors in Image Recognition
 
 Eigenvalues and eigenvectors play a significant role in image recognition. Summary 3 explains that by choosing the right transformation, such as a rotation in a higher-dimensional space, the correlation between coefficients can be reduced, and the energy can be concentrated in a smaller number of coefficients. This allows for a more efficient representation of images and reduces the computational cost of operations like nearest neighbor search. Eigenimages, which are eigenvectors representing images in a higher-dimensional space, are used to capture most of the energy in a small number of coefficients. This enables more efficient image recognition tasks.
 
-## Topic 3: Dimensionality Reduction for Nearest Neighbor Search
+## Dimensionality Reduction for Nearest Neighbor Search
 
 Summary 4 discusses the concept of dimensionality reduction in image databases to make nearest neighbor operations more efficient. By transforming images into a lower-dimensional space while preserving most of the energy or information, the computational cost of comparing images can be reduced. Techniques like the Karhunen-Loeve transform (PCA or SVD) can be tailored to a specific set of images for recognition tasks. The lecturer emphasizes the importance of approximating an image in the database using a smaller set of coefficients and an eigenbasis. In databases with high correlation between pixels, a good approximation can be achieved with a limited set of singular values. Subtracting the average vector centers the distribution around zero and avoids biasing the correlation towards the average vector. Overall, dimensionality reduction improves the efficiency of nearest neighbor operations.
 
-## Topic 4: Facial Recognition using Linear Models
+## Facial Recognition using Linear Models
 
 Summary 6 introduces facial recognition using linear models. The process involves detecting and normalizing a face image, subtracting the average face to remove individual variations, and multiplying the image by templates to obtain coefficients. These coefficients are then compared to pre-computed numbers for database images to determine similarity. A threshold is set to determine if the recognized face is a match or not. The method can be extended to 3D face scans where six values (RGB and XYZ coordinates) are used instead of one. The alignment of the 3D faces is crucial for accurate recognition. Linear combinations of faces can be used to generate transitions and manipulate facial attributes. The morphable model can reconstruct 3D shape and texture from a single photograph, allowing for versatile manipulations and improvements in facial recognition using linear models.
 
-## Topic 5: Normalizing Data and Intrinsic Dimensionality for Neural Networks
+## Normalizing Data and Intrinsic Dimensionality for Neural Networks
 
 Summary 7 discusses the importance of normalizing data and determining the intrinsic dimensionality for effective training of neural networks. Normalizing the space by removing variations such as pose and lighting reduces the required number of samples and captures the desired variability more efficiently. For neural networks, it is essential to determine the intrinsic dimensionality of the problem. This can be done using techniques like singular value decomposition to analyze the singular values and decide how many dimensions are necessary to capture the desired information. The lecture highlights that variations in illumination can have a more significant impact on recognition than differences between faces, emphasizing the importance of appropriate normalization and dimensionality considerations in training neural networks.

@@ -30,24 +30,6 @@
 - Overview of research labs and institutes at ETH focusing on visual computing
 - Zurich as a hub for computer vision and mixed reality research and development
 
-## Topic 6: Computer Vision and Mixed Reality in Zurich
-### Sourced from Summary 6
-- Zurich as a leading city for computer vision research and development
-- Examples of projects in the field, including 3D mapping and self-driving car technology
-- Use of GPUs for image processing and reconstruction, and combination of geometric reconstruction and semantic interpretation of scenes
-
-## Topic 7: Inverse Problems in Computer Vision
-### Sourced from Summary 7
-- Inverse problems involve reconstructing models based on given data
-- The importance of combining data with prior assumptions and using simpler, smoother solutions
-- Use of semantic information and deep neural networks for more efficient solutions
-
-## Topic 8: Computer Vision Projects and Startups in Zurich
-### Sourced from Summary 8
-- Success of the Ross robotic operating system and Mobileye startup
-- Mention of projects such as stereo camera system, optical flow in tracking, and obstacle detection
-- Importance of computer vision in autonomous drones and AR experiences
-
 # In-Depth Summaries
 
 ## Topic 1: Image Processing and Analysis
