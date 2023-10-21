@@ -1,0 +1,96 @@
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: left;
+    gap: 20px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+}
+
+
+.course-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 200px;
+    max-width: 300px;
+    flex-grow: 1;
+    height: 100px;
+    padding: 20px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 5px;
+    /* border: 1px solid;
+    border-color: #000000; */
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.course-card .title-frame {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    position: relative;
+    align-self: stretch;
+    flex: 0 0 auto;
+    /* border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #000000; */
+}
+
+.course-card .text-wrapper {
+    position: relative;
+    flex: 1;
+    font-family: "Merriweather-BoldItalic", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: var(--variable-collection-font-size-large);
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.course-card:hover .text-wrapper {
+    text-decoration: underline;
+}
+
+.course-card .lectures-frame {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    align-self: stretch;
+    padding: 0 10px;
+    justify-content: space-between;
+    flex: 0 0 auto;
+}
+
+.course-card .div {
+    position: relative;
+    flex: 1;
+    margin-top: -1px;
+    font-family: "Source Sans Pro-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: var(--variable-collection-font-size-medium);
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.course-card .text-wrapper-2 {
+    position: relative;
+    width: 50px;
+    margin-top: -1px;
+    font-family: "Source Sans Pro-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: var(--variable-collection-font-size-medium);
+    text-align: right;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
