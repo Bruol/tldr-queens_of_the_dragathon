@@ -1,7 +1,7 @@
 
 .cards {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: left;
@@ -17,10 +17,8 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    min-width: 200px;
-    max-width: 300px;
+    width: 100%;
     flex-grow: 1;
-    height: 100px;
     padding: 20px;
     position: relative;
     background-color: #ffffff;
@@ -83,7 +81,6 @@
 
 .course-card .text-wrapper-2 {
     position: relative;
-    width: 50px;
     margin-top: -1px;
     font-family: "Source Sans Pro-Regular", Helvetica;
     font-weight: 400;
@@ -93,4 +90,10 @@
     letter-spacing: 0;
     line-height: normal;
 }
+ .course-card .link-box {
+    position: relative;
+    padding: 1rem;
+    box-shadow: inset 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
+ }
+ 
 
