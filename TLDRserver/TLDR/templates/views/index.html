@@ -20,7 +20,7 @@
           {% if lectures %}
             {# Create Course Cards #}
             {% for lecture in lectures %}
-              <div class="course-card">
+            <div class="course-card", onclick="window.location='/classes/{{lecture.id}}/';">
                 <div class="title-frame">
                   <div class="text-wrapper">{{ lecture.lecture_name }}</div>
                 </div>
