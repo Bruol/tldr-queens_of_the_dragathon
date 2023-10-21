@@ -1,0 +1,960 @@
+ Okay, so good afternoon.
+ So today we'll continue with the Fourier transform.
+ So let me dive in there.
+ Maybe first, any questions from last week?
+ Otherwise, we'll go through, sorry, from Tuesday.
+ So anyways, we'll briefly go over what we saw.
+ So we saw the definition of the Fourier transform,
+ in particular in the continuous domain.
+ So we essentially will transform,
+ or the Fourier transform will transform
+ the in our case, the two dimensional image space,
+ where we directly talk about image locations.
+ So X and Y represent
+ specific image locations in a 2D image plane.
+ And we essentially apply transformation.
+ In a sense, we eliminate,
+ we integrate over both the X and the Y,
+ over the full two dimensional plane.
+ We multiply the function with basis functions of the Fourier transform.
+ Those basis functions are essentially in the continuous domain.
+ They are continuous set of functions that are
+ parameterized with also two parameters, U and V.
+ That you see there.
+ These exponential functions are actually
+ a combination of a cosine and a sine.
+ They are complex.
+ So essentially, we go from an image would be typically real.
+ We would assume it's a real function,
+ but we transform it in complex numbers.
+ And the reason really being that we would need
+ this linear combination between cosine and
+ sine to be expressed in kind of with single numbers,
+ and being able to shift the phase just as
+ a linear combination in our basis functions and so on.
+ Here's a few example in a discrete case.
+ In this case, just four basis functions in every direction in U and V.
+ Essentially, zero, zero corresponds to putting a one here, zero, there.
+ Which means that essentially, we get zero and zero.
+ So we get zero and zero.
+ So we get just a zero here and a zero there.
+ So this zero here cosine of essentially zero is of course one.
+ And here sine of zero is of course zero.
+ So essentially in that case, we just have a constant flat,
+ bright picture as our basis function.
+ And then again, if we multiply that with the image,
+ we just get the average image intensity up to normalization.
+ The other ones essentially will be also the product of
+ those basis functions with the image.
+ In this case, different signs and cosines and then notice
+ the orientation that changes depending on things.
+ So here, this has actually no vertical or is essentially constant
+ over the vertical direction,
+ only varies in the horizontal direction and so on.
+ We looked at a few key properties of the Fourier transform
+ and of the Fourier transform pair.
+ So Fourier transforms are linear.
+ That means that if you have a multiple of a function or
+ a linear combination of images, for example,
+ then the output will be the same linear combination of the Fourier
+ transforms of the original functions or the original images.
+ There is its invertible, which we mostly conceptually just showed
+ in the, as these are basis, if we look in the discrete domain,
+ it's discrete basis.
+ So we've seen it's both fully defined.
+ We've seen the definition in a continuous domain,
+ but essentially there's an equivalent summation in the discrete domain.
+ There is simpler to understand the invertibility, for example.
+ A key thing is, key properties, if we have smaller details,
+ that actually corresponds to a higher frequency and therefore
+ actually to things being spaced further apart in the Fourier domain.
+ So it is kind of inverse relationship between the spatial domain
+ where if we shrink things, we actually increase things,
+ we space things further out in the frequency domain.
+ And vice versa.
+ If we space things out, things vary more slowly,
+ then we actually are moving things closer together in the frequency domain.
+ A very important function here, as in many other areas, is the Gaussian.
+ So double exponential falloff function, the Fourier transform of a Gaussian
+ is also a Gaussian.
+ Of course, the property we just described above,
+ if we make a wider Gaussian in the spatial domain,
+ that actually goes for a finer Gaussian in the frequency domain.
+ And vice versa.
+ We can also compare it to kind of the simple function in the spatial domain here.
+ One that's constant, up to a certain extent, and then force to zero, exactly to zero.
+ So it's essentially as compact as possible, so it's constant,
+ and then it's exactly to zero, so it's as compact as possible.
+ In the spatial domain, that results in an actually kind of very slowly dying out
+ function in the frequency domain.
+ So essentially, if we are very compact here, as a rule of thumb,
+ if we're very compact here, then we'll kind of very slowly die out there,
+ and vice versa.
+ And so in that case, the best trade-off, and we'll look at this when we do
+ reconstructions, for example, image reconstructions, after sampling and
+ representing discretely, and then going back to the continuous domain,
+ this function is kind of useful because it both is reasonably compact.
+ It goes to zero quite fast with the double exponential.
+ It's compact in the spatial domain, but it's also compact in the frequency domain.
+ It's kind of the best trade-off of being compact in both.
+ Here's a few more.
+ We started also at the end of last lecture.
+ Essentially, if we have just a sine function, we'll get essentially,
+ in the frequency domain, just peaks at both positive and negative
+ values in the frequency domain.
+ So really only that frequency is then known zero, the frequency of that sine wave.
+ We briefly discussed the delta function.
+ So we'll discuss that more in detail a bit later, but essentially it's a function
+ that's zero everywhere except at one point.
+ And to essentially get such a function, and then at that point we'll somehow choose
+ a value which essentially will be infinity, but chosen such that at least the
+ integral is well defined.
+ So we'll discuss that more in detail.
+ A bit later, but the interesting part of that is it's infinitely compact
+ in the spatial domain.
+ And based on what I told you, if we make it very compact in a spatial domain,
+ that means we kind of expect it to really be spread out in the frequency domain.
+ And indeed, in the frequency domain, essentially all of the frequencies are
+ needed, you have essentially a constant in the frequency domain for that.
+ So all frequencies are actually needed there.
+ And then the interesting thing is a combination of these delta functions.
+ So essentially, delta functions repeated at a regular repetition of these delta
+ functions, both essentially infinite repetition of those delta functions.
+ The Fourier transform of that is actually the same function.
+ But it's also an infinite repetition of this delta function in the Fourier domain.
+ But of course, again, if it's spaced by distance t here,
+ it's going to be spaced by the instance 1 over t in the frequency domain.
+ We have frequencies expressed in hertz, for example.
+ So now we're particularly talking in a single dimension.
+ These are examples in a single dimension.
+ So hertz, that cycles per second.
+ So you have seconds on one side, cycles per second on the other side.
+ In the image domain, let's say you have centimeters,
+ then it's 1 over centimeter as a frequency.
+ So how many periods do you have per centimeter, per unit of length?
+ And so of course, inversely proportional, so
+ you move these closer together here, then they would move further apart over there.
+ And vice versa.
+ This will be very, very important.
+ This is how we'll mathematically model sampling.
+ This function will exactly be able to measure things at exact locations,
+ and not at all be influenced by things that are not at that location.
+ We just saw this on the slide before, this one also, the Gaussian.
+ And then what's interesting is actually the reverse of this one is that if you
+ have essentially something that's flat, so constant frequency response
+ for a certain extent, and then goes exactly to zero, so it's as compact as
+ possible in the frequency domain, which we'll see is actually very useful for
+ reconstruction.
+ We see that sadly enough, this gives us a really large extent and
+ slowly reducing function in the spatial domain.
+ So that means that if we want to implement this reconstruction filter
+ in the spatial domain, we'll need a very large convolution.
+ A convolution with a very large filter to approximate this one.
+ We'll get to that more in detail.
+ Okay, so this is the last slide we saw last time.
+ So this is really an important slide.
+ It will essentially allow us to understand and model.
+ It's the base of understanding and modeling two really important effects here.
+ So the convolution theorem can be used in both directions here.
+ So the first one is that the Fourier transform of the convolution of two
+ functions is a product of the Fourier transforms.
+ So you've seen that you can model filtering operations.
+ As convolutions of let's say the image with kernels that represent the filter
+ operation, like a blurring filter or other things.
+ So that's the operation of convolving an image with a filter, for example.
+ And you've seen these linear filters, then it's actually just a chain of those,
+ and so on.
+ Okay, now if we go, so here of course, the operations,
+ the convolution operations are in a sense non-local.
+ Right, a particular pixel doesn't only, in the output image,
+ doesn't only depend on a single pixel in the input image,
+ it depends on a whole bunch of pixels, and if you have a very large kernel,
+ it's actually really many pixels, potentially the whole image.
+ So you have to recombine pixels from the whole image, take all of them into account
+ to determine how one pixel looks in the output image after convolution.
+ What's nice is that in the frequency domain,
+ whether we see, we have a component per component multiplication.
+ Okay, so in other words, the effect of a filter is very, very simple
+ in the frequency domain to represent and to understand in a frequency domain.
+ It's really just frequency per frequency.
+ The only question you have to ask is for this frequency, what does my filter do?
+ Oh, it multiplies it by scaler, essentially, it multiplies it by one, for example.
+ So it keeps exactly that frequency untouched.
+ Or this other frequency, oh, that frequency goes by 0.5, you know,
+ so it gets reduced, everything that's present at that frequency band
+ will get reduced by, you know, a factor of 0.5, for example.
+ And then other parts might just go to zero.
+ So the filter might completely kill some frequencies, okay?
+ So then those are going to zero.
+ It means that those frequency, whatever you had in the image,
+ if you do the Fourier transform, so you get, for example, gay,
+ if you, if the filter would kill off those frequencies,
+ then you take that component and multiply it by zero, okay?
+ So it's really a frequency per frequency.
+ So filtering in the spatial domain is something that involves, you know,
+ impact on lots of pixels taking potential,
+ all the pixels of the image into account to compute every single,
+ the output on every single pixel.
+ In the frequency domain, it's really separated frequency per frequency.
+ You don't have to look at other frequencies.
+ You only have to look at a single frequency at a time,
+ and you get essentially a scalar of how much does, you know,
+ how does this frequency get affected by this, right?
+ Remember, it's a little bit like in, you know,
+ on some music things where you're an equalizer
+ and you can shift frequencies up and down and do stuff like that.
+ That's really what we're talking about here.
+ It's, that's what filters do, okay?
+ The, and then the other side, the other direction,
+ this is what will allow us to express a sampling,
+ to model mathematically accurately what sampling is doing, okay?
+ And again, like in a sense, the sampling, as I said,
+ it will use essentially this representation,
+ this, these kind of measuring at discrete locations here, okay?
+ So we'll model that as a product of this, you know,
+ function that expresses that is non-zero only at the final set,
+ no, not final, infinite set of discrete locations,
+ and we'll multiply that with the original function, okay?
+ So that's how we'll model sampling is we'll say, okay,
+ we only care about, you know, the point measurements
+ at this discrete set of locations,
+ and we have a function for that,
+ a function that's zero everywhere except in those discrete locations,
+ and we'll just multiply that function.
+ That function will multiply with the original function, okay?
+ And now we get a new function where we have these special functions
+ rescaled essentially based on,
+ rescaled based on the function we're interested in, okay?
+ Initially they were all the same scale,
+ and then after we multiply by j,
+ it will essentially rescale that delta function
+ so that the integral now corresponds to the function value
+ at that exact location, okay?
+ So here in this case it's just a product,
+ but in the frequency domain it's a convolution now.
+ So we get a convolution of the original function
+ with the function, with the Fourier transform of this function,
+ of our sampling function.
+ Now we saw before this actually also a very simple function, okay?
+ So we get these peaks that will be convolved
+ with the original spectrum of our function, okay?
+ We'll explain this in a lot more detail in the next few slides, okay?
+ But essentially here we have something that explains us,
+ that will show us what happens in the frequency domain
+ given our modeling or functions.
+ So we have a way to model in the spatial domain
+ the sampling process.
+ In particular we have a way to go from a continuous function
+ in a mathematically accurate way,
+ go from a continuous representation, a continuous function,
+ to now something that only has measurements at discrete locations, okay?
+ That's the key part here.
+ And then we say, okay, if we model things this way,
+ and this is a correct way to model it,
+ then we can immediately understand what happens
+ in the frequency domain thanks to this theorem here, okay?
+ And we'll see and then we'll understand,
+ that's where essentially when a few slides
+ we'll understand how aliasing comes about
+ and what we can do about it and really understand that phenomenon.
+ Okay.
+ So to go from the continuous world to the discrete world,
+ so from function to vector in one dimension,
+ or we'll see also in two dimension in examples in a second,
+ we take those samples typically on a regular grid,
+ so we just measure the function at discrete locations,
+ as we said before, and get something like this, okay?
+ In 2D we get something like this, right?
+ 2D function and we then get discrete samples.
+ So we start from a continuous function,
+ and we'd like to be able to essentially approximate these integrals
+ in a sensible way because for the Fourier transform and so on,
+ we'll need to be able to do integrals and so on.
+ So this will lead us to the delta function.
+ So that's essentially a function like this,
+ and so the sampling function will just be a repetition of these delta functions
+ that are shifted to a particular location and then essentially our xy, our original function.
+ And because these shifted delta functions,
+ so this is essentially the representation of I have my function,
+ I shift my delta function, so my function at center of zero,
+ I shift it to a particular location and that's the place where I measure.
+ That's the discrete integer location, that's this function,
+ and then that function that's now the shifted peak function
+ will multiply it at that location, will multiply it with the function,
+ so we essentially just read out this value here,
+ and then we'll sum that up over all locations, from minus infinity to plus infinity,
+ because this function is always the same one, it's always f of xy,
+ this is the one that varies over the summation, this function we can move out,
+ and we really have now these two functions, the original function,
+ and then here this repetition of all these peaks.
+ But if we want to be able to do a proper Fourier transform,
+ we'll need those peaks to be able to go properly for an integral,
+ that's what's written up there, because our Fourier transform is expressed as a double integral,
+ so we need to have a function that we can properly, that will integrate properly.
+ If you just have something that's a finite, that's zero everywhere,
+ and then a finite, let's say, one value at a location, at the sampling location,
+ then we have a problem, because that's a function with zero surface,
+ so it will integrate to zero, essentially.
+ So the simple function at zero everywhere, and then one at the particular location of interest,
+ that function is not going to work, because it integrates to zero.
+ So that's why we'll define something as a limit,
+ so the key thing we want is that our integral is one,
+ but it also needs to be infinitely thin, but we'll take it as a limit of essentially a function
+ like this here, that's at a particular height, and then the width is essentially,
+ from its start, minus one over two h, and it goes to one over two h, so the width is actually
+ one over h, and the height is h, and therefore the integral is just one.
+ And of course we can change h to make h higher and then the width smaller,
+ and if essentially we go in the limit so that this has no extent anymore,
+ so that it's really zero everywhere except at a particular given location,
+ for the delta function except at zero, then essentially we have a function that now,
+ in the limit also has an integral of one, but that has an infinitely small extent.
+ Width, therefore it's also infinitely high, but it's infinitely high in a controlled fashion,
+ it's infinitely high in a sense that when you do the integral it will give you exactly one,
+ because that's the limit here of this function, h times one over h.
+ Okay, does that make sense to everyone?
+ Any questions?
+ Okay, so this is kind of important, at least at a conceptual level, right?
+ So you need to understand that, you're not going to have to derive that particularly.
+ Okay, so we get back to this model, right? Now it's actually something we can do an integral from,
+ so we can actually do the Fourier transform of this thing. In particular we can do the Fourier
+ transform of this thing, which is the combination of the product, it speaks at all the locations of
+ interest, all the sampling locations, and then multiplied with the function. So with a product
+ of two functions of which we want to take the Fourier transform, we now apply our convolution
+ theorem, which separates the function here, that's just the Fourier transform of that function,
+ that's easy, and then the Fourier transform of this thing here. Okay, and because we've defined
+ the delta function to be something we can actually integrate over properly and so on,
+ this will actually work, and I will spare you the derivation, but essentially, as we've seen before,
+ here, where was it, here, that if you actually do all the math you will essentially figure out
+ that this is the output of it, right? We're not deriving that here, but this is something that
+ you can assume, that if you do the math properly and we know, we just checked that it was something
+ we would be able to actually pass through the integral, which was this integral here, right?
+ That this would actually yield a meaningful result and not zeros.
+ Then we get that function over there, t, one over t, and so,
+ okay, so, sorry, one more, okay, so this will make sense, and so essentially,
+ as we take this Fourier transform, the Fourier transform of this was also this peak,
+ and then if you convolve a peak, remember what did I tell you? The convolution
+ is essentially, you know, actually, does anybody remember what did I say the convolution was?
+ We had these two things, convolution and correlation. Does anybody remember what?
+ No, I meant like, before we discussed free space,
+ there were essentially two effects. There's correlation is one thing and convolution was the other thing.
+ Exactly, so I called it a point spread function, but essentially, it's exactly as you said,
+ is that you have a value in one location and you kind of distribute it. The kernel describes
+ how you take that value and how you distribute it, how you spread it out over the neighboring pixels,
+ right? If you remember that, that was the concept there.
+ This is essentially a concept from one pixel in the input image. You spread it to many pixels in
+ the output image, which is not the way that computers typically are being used. Typically,
+ you use, it's not the other way around, you say, okay, I want to write the output for this function,
+ I want to compute the output value for this function, how do I compute it? Then we ended up
+ reversing the kernel and essentially picking all the right pixels and so on to do that. But
+ conceptually, and that's what I want you to remember, so it seems a lot of you have not
+ remembered it, so you have time. The exam is not now, but do remember it by the time you get to
+ the exam. It's this kind of spread, from a central pixel kind of deciding how you spread things out.
+ That's a convolution. Again, as we said, in convolutional neural nets and other things,
+ they actually mean correlations, so it's all a bit confusing. But the key is to really remember
+ those two concepts. Here, for example, you can now, if you remember that, that is, I have a
+ central pixel and I decide how that pixel gets distributed to the rest. Well, we have actually
+ this very nice centralized function, which is a peak, this infinite peak. And so if you do the
+ convolution of that peak, we're not doing convolution in the continuous domain, right? So we
+ when we learn it, we learn it in the discrete domain. Here we do it in the continuous domain,
+ but essentially from a single peak, here, I mean a single peak actually, many peaks,
+ but for each peak, what we'll do is we take that peak, this infinitely high peak, but with integral
+ one, and we decide how we distribute it. And how do we distribute it? So the convolution is how do
+ we distribute it? Well, we distribute it according to this function here. This function is what?
+ What is the Fourier transform of our signal, of our function, the function we're interested in,
+ our image, for example, right? So it's a Fourier transform of our function. So when we sample it,
+ when, so this was our model for sampling, right? So when we sample it, what we do is we normally
+ have the function itself, but we'll actually build, we'll, you know, add the one peak. So remember
+ the function here, right? It's in this space that we'll take all these peaks, and for each peak,
+ we'll replace the peak with this, the Fourier transform of our function. And the next peak over,
+ at one over t further, we again copy that thing. Okay? So actually, I have it on slide, so I'll show
+ you in a second here. Okay, so it looks like this. We have our signal. You always, so this is one
+ of these signals for simplicity of illustration. We have the spatial domain here. We have the
+ frequency domain there. And so you can go from one to the other through the Fourier transform,
+ or inverse Fourier transform. And so we now model sampling simply by multiplying this function
+ with this function here. These are all Dirac, our delta functions. So, you know, which
+ illustrates this little arrow here. That's actually to mean that it's a delta function,
+ and not just something that goes to that value. Okay, so this is, but they rescale delta functions.
+ They rescale by, you know, the local value of the function. So that's what we get here. Okay? And
+ then, of course, ideally, we'd also be able to do a reconstruction and reconstruct the original
+ signal. Okay? Now, so we've seen sometimes we get challenges, we get issues aliasing, and so on.
+ So like, we'd like to understand a little bit better. So let's look at the frequency domain.
+ Okay, so let's say we have a signal here. We can do the Fourier transform. We get some kind of
+ spectrum. And as you've seen in the pictures that we showed of this tiger and this, no, was it
+ leopard, and I think zebra, right? Essentially, most of the natural images have kind of a lot
+ of low frequency, and then less and less high frequency. So typically, you get kind of a blob
+ in general. Okay, so that's why here it's illustrated as a blob of a certain, let's say in this case,
+ of a certain finite extent. So it has some frequency content, it's lower and lower, and at some point
+ it's zero. Okay? So it doesn't essentially, beyond this point and this point, it's essentially zero.
+ Okay? So now, here we simply multiply it. Here we convolve. So convolving is really, at every peak,
+ we just place a copy. So, right, the peak is the, we distribute the peak, so it's like placing a copy
+ of the original spectrum there. Okay? So convolving this with this here, just making a bunch of copies.
+ So it's copy and shift. That's what we do. We copy and shift, and essentially, it depends now on this
+ distance here, if that copy and shift will overlap or not. Okay? It depends on how wide is my blob,
+ and on how far apart are the peaks. That depends if they actually overlap or not. In this case,
+ luckily for us, they just nicely fit next to each other. Okay? So if they nicely fit next to each
+ other, it means that if we can somehow, if we take this function now, this is our discrete, so this
+ is the Fourier transform of this function, right? Of our discrete function. This is now a discrete
+ function. It just has function values at discrete locations. Right? So this is our sample signal.
+ This is now a mathematical representation, a bit complicated one, but it's a mathematical
+ representation of, you know, essentially just a sample, a discretely sampled function.
+ Okay? That's the spectrum that we have for it. That's actually a continuous thing, interestingly
+ enough. Right? This is continuous. So it doesn't only have values at discrete locations. It's a
+ continuous spectrum. Now, the concept of reconstructing the signal is actually quite easy,
+ in a sense. How are we reconstructing? How could we reconstruct this? Like, what operations could
+ we carry out to reconstruct from this here, from this signal to get back to the original function?
+ And think in the, you know, so here you could kind of try to fit a function through. We've
+ actually seen already a little bit of this, of these reconstruction filters. How you could do
+ that? Take the closest value, for example, and so on, right? Or things like this. But if you think
+ in a frequency domain, how could you kind of do this? Okay, so essentially we would want to pick,
+ let's say, the one in the middle there, the original one, right? And get rid of the other ones.
+ That's correct, but how do we do this? Any idea? A mask, yes, but a mask in a frequency domain.
+ So that's a low pass filter, yes, exactly. So it's essentially a filter. It's a filter that we
+ would like to preserve the frequencies in this range here. Right? So we want essentially all of
+ these frequencies up there. We want to exactly preserve those. We don't want to, you know,
+ like make them stronger or weaker. We want to exactly preserve those. And everything outside
+ went to get to zero. If we go back to our pairs, okay? It's kind of like we want this thing here,
+ right? In a sense, like conceptually, if we take, if we have this, that's exactly what we want.
+ Filtering is a product in the frequency space. So we multiply with one here, and then outside of
+ the blob, like outside of the blob, we multiply exactly with zero. So that's what we could do.
+ Now, as you remember, this is actually a convolution with something of this type
+ in the spatial domain. So it's kind of a convolution with really large filters,
+ so it's not great. But this would be actually theoretically, you know,
+ would allow us a perfect reconstruction. Okay. Oops. Here. Okay. So that works, yes?
+ [ Inaudible ]
+ Uh-huh. This here. Yeah.
+ [ Inaudible ]
+ Oh, sorry. This is zero, right? So low pass is limited from both sides.
+ Okay. So high pass would actually be keeping this and keeping this. That's what a high pass is,
+ actually, in this case. Okay. So it'd be kind of something like this here that preserves everything
+ going forward here and everything going forward that way. That's what a high pass would be.
+ Okay. So for everyone to be clear, this is zero. So low is around here, and high is, you know,
+ around the other side, on the extremes, on both extremes, actually. Okay. That's good. You know,
+ ask questions. I'm sure there's others that were thinking exactly the same way and didn't dare to
+ ask the question. Okay. So now we get to the interesting part. I mean, I hope you found
+ what was before also interesting. But now we essentially get to actually understand,
+ you know, what ailiasing is. Okay. So essentially, same thing here. But now we decided to, you
+ know, spend a few more bits, let's bits, you know, a few less bits here and sample less frequently.
+ Okay. So we sample our signal less frequently. You see here, we have less samples. What does
+ that mean in the frequency domain? Well, it means that there we, you know, if we're spacing things
+ out in the spatial domain, it means we're squeezing things together in the frequency domain. So now,
+ as we make for each of those, we make a copy of the spectrum, we end up with this here. Okay.
+ And actually, we don't end up with this. We actually end up with, you know, like essentially
+ that here, those two just get summed together. They, you know, they just get added together.
+ And so you don't know anymore what came from what. And so you get a function that, you know,
+ instead of nicely being like this, go to zero and then go to the next one. Now it's essentially
+ doing something like this. And a big part is essentially overlapping. Okay. So now if you do
+ this perfect cutout even, you know, you get something like this here where you see that this
+ is really different from the original. Okay. It's essentially these other frequencies that are now
+ being folded in and overlapping with our original frequencies. And we get a mix of both. And
+ you know, there's no way to separate those anymore. Okay. Once it's like this, it's too late.
+ Okay. So that's essentially the phenomenon of aliasing. Right. So this is the issue that we saw
+ a few lectures ago where we had these strange artifacts showing up and so on. And essentially
+ these high frequency pattern that suddenly showed up as these big kind of blobs spread over the
+ image and so on. That's essentially what we have here. Okay. So what it means is that if we want to
+ to work with, you know, on real signals, the upper line is the original signal
+ which is high frequency. Before we sample it, we actually want to make sure that we band limit it.
+ So it's important that before you sample, because as soon as you sample,
+ you know, sampling corresponds to doing that. Okay. That's what sampling is. Right. So that's
+ sampling. So once you put those two together, you get this, then it's too late. You can try to
+ filter whatever you want. You can have a perfect filter. It will not work. It's too late. So,
+ so the key is in the proper filter, proper sampling, you actually, and this is what I
+ mean, is before you sample, you need to first apply low pass filter on, you need to apply
+ low pass filter so that you avoid these high frequencies. Because if you have high frequencies,
+ they'll get folded over on your low frequencies. And then you don't know actually if this was a
+ low frequency or if there's a high frequency that got folded over your low frequency. You cannot
+ separate this anymore. Okay. So essentially, first apply low pass filter so that now you have band
+ limited. So essentially, as we saw in the first lecture, you essentially, you know, you know,
+ based on your sampling, or actually, you know, you can also see here, it's kind of easy. Based on
+ your sampling, you know how far your peaks are going to be apart. And so even with a perfect
+ filter, you know, to the, which is the tightest you can make it, you kind of need those peaks to be
+ a factor of two apart from the, this is your, the width of your signal, the bandwidth of your signal,
+ up to this frequency. You need the next peak to be at least twice as far. Okay. Maybe you remember
+ in the first lecture or second lecture, we had this Nyquist sampling theorem that said that you
+ have to have your sampling frequency be at least twice the frequency of your signal. Right. Anybody
+ remember that? Yeah. Okay. So now you see why two is similar is those peaks, if they're two apart,
+ a factor two apart, then we can exactly place copies next to each other without them overlapping.
+ Okay. Now that still implies you need a perfect filter to actually make it work.
+ So if we don't use a perfect filter, we might want to take a little bit more margin
+ to allow us to go from, you know, not distorting the signal, so keeping almost exactly one,
+ and then have it go down at some extent and be close enough to zero when, when the next copy
+ kind of shows up. Right. So that you don't have this, this high frequencies kind of coming.
+ Okay. So this was aliasing. So here if it overlaps, it's too late.
+ Okay. So essentially we first low pass filter the signal. We low pass filter it so that it's
+ essentially just the width that will fit between our peaks. Okay. That's what we're talking about.
+ Then we can sample, then we can safely sample essentially. And then from this, we have the
+ potential to perfectly reconstruct where of course we're talking about perfectly reconstructing the
+ low pass signal. Okay. The high, the high pass, we sure way it's gone. Okay. But, you know, if you
+ look at this image, for example, you know, it's fine to go from this to this. And then as long as
+ you can reconstruct this, it's kind of okay. So that's essentially what we'll be doing.
+ So here's a few things about, a few things about filtering and so on. So the message is a free
+ transform is that high frequencies lead to trouble with sampling. So the solution is to suppress
+ those high frequencies before sampling. This can be done by multiplying the free transform
+ of the signal with something that suppresses high frequencies. So low pass filter.
+ So in other words, convolved with a low pass filter.
+ A filter whose free transform is a box is bad because the filter kernel has infinite support.
+ Right. So this would be the perfect filter, except that it's expensive or, you know,
+ and brings other artifacts. The problem is for starters that the images are not infinite.
+ And so you're kind of making assumptions about what happens beyond the image, etc., etc.
+ Common solution is this Gaussian because as we saw, the Gaussian is the one that's most compact on
+ both sides. And so in that sense, it's very practical for this. So multiplying by the free,
+ the free transform by a Gaussian is equivalent to convolving the image with a Gaussian, which can
+ also be done in a good approximation quite efficiently. So here's a little bit of an example
+ of what happens. We already roughly saw this example before. You have here function to
+ 256 by 256 and then we sub-sample without filtering. And so everything goes well for a while
+ until we go too far. And this is essentially when we get those two things to overlap. And of course,
+ you know, then we do the reconstruction and we just consider everything as low frequencies as we
+ reconstruct. And so essentially we get these things to pop up here, these strange things to pop up.
+ What you see is here, it's not great because of renormalization, but essentially if you look
+ at this here, this is the part that has, this is the frequency representation of this. So you see
+ most of the energies in this little square in the middle. Then we sub-sample and we take the
+ Fourier transform of this guy. Now what's interesting is we see at the edge these copies of this
+ showing up here. That's what we see. And here and here and here. So in 2D, of course, it's a two
+ dimensional repetition. Next one here. But you see that the core signal here, which is this part,
+ is still nicely separated from the next one. Next thing, and then here in the renormalization,
+ I think when these slides were made, it just automatically renormalized the image.
+ This patch and this patch should be just as bright because there's no dark patches anymore and the
+ image was just renormalized to have the same average intensity. It doesn't look very good.
+ But essentially, you see that this box, it's kind of still nicely in there. It actually just fits.
+ But then the next step, that's when it really goes wrong because now you essentially put a full copy
+ on top of the other copy and they really start overlapping. And no surprise, you start seeing
+ that essentially the, qualitatively, the image looks completely different now, suddenly, because
+ you get like this really strong high frequency signal to just be interpreted as a low frequency.
+ Signal and so it looks completely different at that resolution. Now here's what happens
+ if you do some smoothing. So in this case, we smooth with a Gaussian with a sigma of one pixel
+ and we do that in a, every time from one image to the next, we apply that. So for in this image,
+ before sampling, we will actually blur this image, the 256 by 256, with a Gaussian with a sigma of
+ one pixel. So that means that a sigma of a Gaussian, I think at one pixel, you're about,
+ from one, you go to about two thirds and then it still has, you know, like two or three sigma,
+ you get to something quite small. So maybe you have kind of something significant up to maybe
+ two pixels for sure and then three pixels, it becomes close to zero. Okay.
+ And then once we blur the image, which you know, you don't really see that this image was blurred,
+ but once you blur the image, you then sub-sample. And so again, at this, this image here, we blur,
+ we blur first and then we sub-sample. And then we blur and we sub-sample, we blur and we sub-sample.
+ Okay. So it means that we've always been kind of blurring at different locations.
+ You kind of see what happens here, but so essentially we'll be suppressing
+ things. And in the end, you know, what you see here is that here it starts being affected. So your
+ signal is actually in a sense less nice than it was here, maybe, although there's actually already
+ some effects here. But in particular, once you can't represent the signal anymore, it's been blurred
+ out by then. Okay. So there's high frequencies that are too much to represent at that resolution,
+ 16 by 16. They're just gone now. Okay. Okay. So and then we'll continue after the break.
+ Okay. So let us continue.
+ The, so this was one example. You still see a little bit of effects here, for example, and so on.
+ Here's if we choose a slightly different Gaussian. So the different, the only difference is
+ essentially here. Okay. So it's a slightly larger Gaussian. What does that mean? It means that it's
+ filtering a little bit more aggressively, suppressing a little bit more the high frequencies.
+ So this should actually, you know, avoid a little bit more artifacts, but of course,
+ also blur things out a little bit more. So suppress the signal itself also a bit more.
+ Okay. And that's kind of what you see here. So as you go, less artifacts, but essentially most of
+ the images blurred out at the end. Right. You can also see here, it's kind of strongly.
+ So before things get copied on top of each other, it kind of strongly suppresses them. And so
+ it doesn't overlap, but you've kind of already erased a good part of the signal also. Right.
+ This was the one before. So here you get most, you know, like you get little of a gap between.
+ So there's, you use most of what you can represent with the 16 by 16 pixels. Here you've blurred more
+ the signal away. You've kind of, you were over-protective like this. Essentially most of the stuff here is
+ kind of erased. Okay. Just an example of what practically you would do with Gaussians. Okay.
+ So now we get here to revisit the Nyquist sampling theorem. By now, ideally, this should kind of
+ be relatively trivial. It should be obvious. You know, it's just double the space so that, you know,
+ two copies just touch each other, but you can still keep them separate. That's this, the fact
+ that the sampling frequency must be at least twice. So larger or equal to twice the highest
+ frequency in the signal. Okay. The highest frequency in the signal is the extent up to where you have
+ non-zero, you know, frequencies or non-zero presence, non-zero values for your frequency
+ representation. So in other words, you Fourier transform of your original function. Okay. Or
+ of the function after you prepared it. For example, as we showed here, after you prepared it, so after
+ you low-pass filtered it, so that now, you know, like you need to ensure that that frequency is
+ lower than twice this frequency, lower than half of this frequency.
+ Oops. Okay. And so if this is not the case, then you need to apply ideally a low-pass filter.
+ If not, you are likely to face, or actually if this is not satisfied, then you will face
+ aliasing, essentially. Then that higher frequency will be somehow mapped to some, added up to some
+ lower frequencies. Okay. This is an example. At some point, this was captured on live TV.
+ So now the question is what happened here. Does anybody have a hypothesis?
+ No. It's actually not a compression here.
+ Okay. So who remembers how color cameras typically work? How did we sample for color?
+ All right. So we said if we want high quality, we'll have three different sensors and so on,
+ but in most cases, we actually don't. So we just have a single sensor.
+ And then we sample color by actually, you know, sampling, you know, instead of for the actual
+ pixels, we have some pixels very measure red and somewhere you measure green and somewhere you
+ measure blue, et cetera. But so the sampling frequency is actually lower in the color
+ than in the grayscale. So the grayscale image looks nice like this. No artifacts here,
+ but here we have strong artifacts in the colors.
+ So essentially, we're kind of in that factor of two between the grayscale image, which looks just
+ fine, and the color image, which, you know, is sampling at only half the frequency.
+ And so there you kind of get pretty strong aliasing, essentially color aliasing in this case.
+ Okay. So it's this guy here. Okay. So now, so we've discussed a lot that part of the pipeline,
+ the first part. By the way, you know, if you're the person, you know, behind the camera
+ and you see this happening, or, you know, like, you know, like, what can you do?
+ Yes. Yes, but that will be a little bit awkward.
+ Anything else that's less drastic that you could do?
+ Exactly. So you can actually a little bit change the focus, not the zoom, preferably,
+ but the focus. People will barely notice you would just blur a little bit the image,
+ but if you do that by factor of two, so that essentially now instead of seeing every pixel,
+ you know, really sharply, you just have like two pixels kind of you blur to two pixels,
+ then this would actually disappear. So that's, I don't have the video or so, but that's probably
+ what a cameraman, you know, or women would quickly have done, essentially,
+ on in this case here, if they noticed. Okay, so now after I looked at this, so in other words,
+ again, like, if you actually, if this is in the space, if this is in the continuous domain,
+ and then you sample here, this operation, this low pass filtering operation, has to happen in
+ the continuous domain. So for example, in the physical domain, and so you can have the camera
+ blur the signal. So in other words, the camera, the focus becomes a low pass filter on your,
+ on your incoming, you know, light, you cannot sample first and then worry about this later,
+ right? So remember, this is actually really critical. You once you sample is too late.
+ Of course, you can already be in the digital in the discrete domain. In other words, in the
+ digital domain. And if you're already there, but now you have a high resolution image, but you have
+ a low resolution screen, for example, and you need to now sample your image to bring it on the screen,
+ then it's okay. Then you're in this, in the, in the already in digital representation, and then you
+ can apply essentially just, you know, digital filters to do the transformation. That's what we
+ showed before was applying these gaussians, for example, which are discrete gaussians, discrete
+ low pass filters that will apply and that will do that. So, but if we are, if this is the first time
+ we sample, so the, if this is the point where we go from continuous from analog to like actually
+ sample with a sensor, then we have to do something before, which for example is make sure that our
+ lens is not too good, that our lens is kind of matched to the resolution of our pixels, but doesn't
+ let through higher frequencies than, you know, what we can actually sample. So actually this is,
+ there are actually filters in cameras and the lens is actually tuned to typically to the, to the
+ sensor. There's no point in having a super sharp lens in front of a, you know, a low resolution
+ sensor, because you're actually going to create more problems than anything else, essentially.
+ Except if you wanted to do super resolution or things like that, then maybe there is something
+ to be done there, but okay. So now we'll focus on the second part here. We have a sample signal.
+ How do we reconstruct now the original signal? Okay. We've seen conceptually we can apply this
+ perfect kind of reconstruction filter, this box filter, which becomes this very, you know,
+ this sink in the spatial domain, but that's as we've, as we already briefly discussed, this is
+ actually not the good way to do it. We'll also throw in some human vision in the middle.
+ Who can recognize this person? Okay. So many of you can recognize him. Let me, okay. So this
+ actually also showed up in art. So that person is the same as this person. This might already,
+ so who recognizes that person? Still the same amount. Okay. Let me do this. Who recognizes
+ now this person here? Okay. I see a few more hands at least. Okay. So that's what I was expecting.
+ So of course this, you know, this is Lincoln, but it's actually easier to recognize him this way
+ than it is to recognize him that way, right? Or not, like, who agrees that this was actually easier?
+ Right? Okay. So most people. So why is that actually? Any idea?
+ Yes. So essentially that's correct. And the reason is that essentially here,
+ what you really have is you actually have thrown in a bunch of high frequencies that really are not,
+ you know, like should not be there. Right? So this is really each of those edges here is actually
+ a high frequency. So it's a very poor reconstruction. The reconstruction that throws in a bunch of
+ high frequencies that really shouldn't be here in the reconstruction. Right? So you have a value
+ measured at each of those discrete locations. And now you kind of copy those over, but that means
+ you're actually, you're actually creating very high frequency content here of a very specific type.
+ And so our brain is like getting confused by all these additional irrelevant high frequency content
+ here. Okay. So let's look a little bit at a few possible reconstruction filters.
+ So the first one is, you know, like the square pixel kind of filter. That's the closest.
+ That's the nearest neighbor. That's essentially this one. Right? So it's simply,
+ you know, it's essentially just applying for each value. You are copied to all the nearest pixels
+ you copy over the value. In the Fourier domain, this essentially has all of these lobes here.
+ Right? So in the Fourier domain, it means that you're now adding all of these high frequencies
+ at this repeated thing. So that's what you have here. You add all these high frequencies. Those
+ are not in the original signal, but you kind of add them in the reconstruction process.
+ So those high frequencies are essentially these additional lobes, artificial lobes. Those actually
+ shouldn't be there, but you're just adding them in, you know, just by using this nearest neighbor,
+ essentially copy the value over to all your neighbors. Okay. The next one is by linear
+ interpolation. Okay. So this was essentially, it's a function that looks like it's maximal
+ also at the value itself, but then it linearly decreases until, you know, like where you hit
+ the next pixel. So the first one was like this, right? Until half the pixel on both sides, it would
+ be constant and then zero. This one is linear from where the pixel is to the next pixel it
+ linearly degrades. Same in both directions. And so it ends up with this kind of function,
+ actually, you know, like, so that the, so in two dimensions it's a bit more complicated,
+ but essentially it ends up with that effect. Okay. In the Fourier domain, it looks like this here,
+ which is not perfect. You can't see very much here, but essentially we'll see on the next
+ slide, actually, you may get there. Okay. The first one was just a box, but if we actually
+ take a box and convolve it with a box, okay, so we convolve a box with a box, then we get
+ actually this here. If you actually look at this, so this was the original reconstruction filter,
+ the nearest neighbor, right, from half a pixel to minus half to plus half. So it's really this
+ constant. If you convolve that with itself, you actually get this function, which interestingly
+ enough goes, you know, starts from twice as far. So from like the next pixel value, it starts going
+ up until it's maximal here, and then it decreases from there linearly to the next pixel. So it's
+ one here, but it's so at this place, you just really have that value. You copy over that value,
+ but from there it linearly decreases until you get to the next pixel.
+ So we've seen, so this is, you know, the, by the way, so this graph that you see, right, it's
+ this, so the blue is the pixel centered here. The red is a convolution with, you know, it's
+ what you will convolve with, with the same box. And then the yellow area is the area in common,
+ and that's essentially the overlapping area. So when you multiply, when you convolve at every
+ value, you kind of overlap, you do the integral, you get, and so the yellow is the integral,
+ and so that's the, the value, and so you see kind of as the integral grows and shrink,
+ you get the function to go up and down. Okay, so that's essentially a visualization
+ of the convolution operation here, with, in the very simple case of two boxes, you know,
+ one box convolving with another box. Okay, so this is the area under the product of the functions.
+ Here, the yellow here. Okay, so what did we learn from the convolution theorem?
+ If we convolve in the spatial domain, it's a product in the frequency domain, right? That was
+ one of the two sides of the convolution theorem. So in other words, if we take that function,
+ that decreases, you know, that is this sine function that decreases with one over x, that was
+ what that function was. If, if we convolve that with itself, then in the frequency domain,
+ it's a product with itself. Okay, so we get that sine function squared. Okay, so instead of going
+ down slowly, it now go down, you know, like it ends, it ends up being suppressed, not by one over x,
+ but one over x squared. Okay, so it goes much faster to zero. Okay, so that's what you kind of see
+ here. There you still see a few of the extra lobes, although they're smaller, but you still see them.
+ Here you don't see them anymore, at least not, I think, I can barely see them here also, but
+ anyway, certainly on this here with, you know, barely any contrast here, you can't see them at
+ all anymore, these secondary lobes. Okay, then if you actually think of the Gaussian, what is a Gaussian?
+ Anybody of you here of the central limit theorem? That's also a way to get to the Gaussian, right?
+ So the Gaussian is actually convolution of infinite amount of convolutions of boxes or other things
+ with it, like you convolve every possible shape, like you keep convolving, eventually you'll end up
+ with a Gaussian. In particular, if you would keep convolving boxes, oops, sorry, if you keep convolving,
+ you know, so you get like this and you reconvolve that with itself and you reconvolve that with
+ and so on, you keep going, you'll eventually have a Gaussian. That's what the central limit theorem says.
+ So in a sense, if we keep going from, you know, the original square and then we
+ convolve it with itself and then we would keep convolving in the limit, that's what we get.
+ Interestingly enough. And then of course we have the, even further, so this one is the one that is
+ kind of as compact as possible in both domains, right? This one is very compact in a spatial domain,
+ but very non-compact in the frequency domain. This one is the opposite, the one that's the
+ best trade-off between both is the Gaussian. So it's spatially a Gaussian, it's in the Fourier
+ domain also a Gaussian. And then here is the perfect reconstruction filter, except that it's,
+ it has a really large extent. And to not make errors, you need to actually, so it's not a
+ practical one. So practically people would either use this or use the Gaussian.
+ Okay, so here's an example of designing the perfect low-pass filter. Okay, so it's not very
+ complicated. So here you have the original, an image here with some, you know, some specific
+ patterns and this and that. You take the, this is only MATLAB, you take the Fourier transform,
+ you get this. Notice that these strong edges in certain orientations are also showing up here
+ in those frequencies, with high frequencies in those particular orientations, so on.
+ Then if you want to low-pass filter this, well, you would want to essentially
+ multiply this with a low-pass filter, a perfect low-pass filter. In this case in 2D, it would be,
+ you could do a circle. And then essentially the product would be this. Okay, so that's a
+ perfect low-pass filter. Essentially everything here is preserved, everything outside of a
+ particular frequency range is exactly moved to zero. That's essentially the result here.
+ So this also shows that the kind of perfect low-pass filter is not only by suppressing these
+ low-pass, by suppressing these high frequencies, we see that we do get some kind of funny artifacts
+ here. So we get kind of ghost boundaries to show up and so on. So just doing a perfect low-pass
+ filtering is maybe also not what we want. The problem is that this filter has an infinite extent.
+ And so it's kind of, if you want to suppress something like this strong edge here, you kind
+ of create ghost edges kind of in parallel, like here also, because of this infinite extent of
+ this filter. So although conceptually it might seem like the thing you want has a really nice
+ property of exactly zeroing out those frequencies. The fact that the frequencies actually often,
+ when you have a hard edge, it's a correlation of high and low frequencies. And then being too abrupt
+ in killing frequencies off actually creates also some, you know, undesired effects or so. The
+ fact that it's highly non-local. So that's where also the Gaussian typically comes out better.
+ Here's a little video. Let me show that.
+ Okay. So what you see here is essentially the kind of perfect filter
+ applied. And so not only a perfect low-pass filter, but also band-pass filter. Okay.
+ Literally, it was just keeping a particular, you know, frequency exactly. Let me replay it.
+ Actually, I'm going to do like this.
+ So you see this kind of initially just blurred image, but then you start seeing these artifacts
+ that move around. Right? This is now band-pass. Very narrow band-pass. So you see that each of
+ those is exactly one kind of frequency of patterns in all orientations mixed together. That shows up.
+ Okay. Then, so one way to model or, you know, like we discussed earlier,
+ essentially one way to, if you have a sharp image to model kind of blur,
+ can be done with filters. What it kind of physically corresponds to is something else
+ drawn here. So say that you have a point here in space. As we discussed, to get enough light
+ to the sensor. So the sensor is here. This is the lens. If you just do a pinhole camera with
+ a very small hole here, you get one light ray and then the image would be sharp from any distance,
+ essentially, but you'd get a very dark image. So if you want to aggregate not light in a single
+ ray, single direction, but you actually want to take a bigger cone of light. I mean, it's a very
+ small cone of light, but a cone of light from the point where you are to the size of the lens,
+ that kind of cone. And then, you know, and take that as kind of the light coming from this point
+ here in the scene, then you need to make sure that you're, you know, the distance between the lens
+ and the sensor is such that ideally you would actually, for this point, you would actually
+ move your sensor a little bit closer so that it's here and you get a perfectly sharp image.
+ Like in this case, if it's a little bit off, then you essentially get a little bit of blurring.
+ You get a light to be spread out over a region. And so that's this blurring, but so in a sense for
+ blurring that would correspond to this effect, you can obtain that by doing in the image a
+ filtering operation, a convolution of this blurring kernel with the image, and then you go from that
+ image to that image. This would be kind of if you had it for a pixel that's at the right distance
+ for this focal length, you would have a sharp image, for example. And that's actually, it's
+ actually symmetric the other way around, it would also be spread out, right? So that was the focus
+ blur, then you can also have motion blur as we already briefly discussed. So here we'll assume
+ we have a very simple model. So again, how do we mathematically represent this? And then potentially
+ how can we undo the effect? So here we look at how we can restore that image. So that was like,
+ let's say the original, or that would be the image we would like to have. This would be,
+ we'd assume that somewhere underlying this pattern, but the image we get is this. And then what we'd
+ like is from this image to go back to this image here, to extract this image from that image,
+ or as close as possible. So to do that, what we'll do is we'll first model the effect that models
+ from the image we wanted, how we ended up with an image like this here. We tried to physically
+ model that. We model that with, we use these symbols, we assume that it's just in one dimension
+ that it's blurred out in the horizontal dimension. And we'll use this step function here in this
+ way to model it's zero. It goes to one for a while, and then it goes back to zero because we subtract
+ minus one the step function after a while. So this way you see here, you get plus L here,
+ and then minus, and then the function with minus L here. And so the combination is that
+ from minus L to plus L, you have one, and outside of that you have zero. So you have a finite
+ region here that's over which you integrate. In the other dimension, in the x2 dimension,
+ the vertical direction, so this is blurring this way, modeling blurring this way. In the vertical
+ direction, you essentially have still a Dirac impulse, so there's just a single, essentially
+ a single pixel after sampling. You'll have a single pixel here. Okay, so that's our model for what's
+ happening. And so we assume that there is such a function here, the one we would like to find back,
+ but there was this filter applied to it that generated this image. This is the one we observed,
+ the blurred image. And now what we would like is to get, apply another filter that actually somehow
+ inverts the effect of the first filter. Okay, so what we're interested in is to compensate the
+ effect of the image degradation. And so essentially we want that one filter convolved through the other
+ filter should actually just give us perfectly preserved the function, so essentially just be
+ the original sampling function. So you could kind of try to think of, okay, I have this
+ convolution with this block, so how do I find the function that will, another function with
+ another shape that if I apply one after the other, I convolve one with the other, I now get back the
+ original function back, so that I get the Dirac impulse. Okay, so in the spatial domain,
+ it's, you know, like there would be, I wouldn't know how to start it or so.
+ But in the frequency domain, it's actually pretty straightforward, because in the frequency domain,
+ it's just an individual frequency per frequency product. Okay, so if we don't look at h and h
+ tilde, but we look in the frequency domain, we just have the constraint, right, instead of this
+ constraint, which I really don't know how to solve, we now have this constraint, which is
+ the Fourier transform of our filter times the Fourier transform, so the filter, the
+ restoration filter run to apply, times the Fourier transform of the degradation filter,
+ the blurring filter, the product of those two should be one. Okay, so that essentially, if we
+ know this filter and we know its frequency response, we just have to do one over that number for each
+ of the separate frequencies. This is why it's important, every frequency is treated fully
+ separately, right? So it's very easy, you know, okay, for this frequency, the original filter
+ divided this frequency by two, well, I just multiply it by two and done, right? And so you
+ can immediately construct this function, I simply run over that function, and you would be done,
+ essentially. Okay, yeah, so these could be different functions depending on for also,
+ also these other effects before, we'll do it here for that, but you could also apply it for this one,
+ for example. If you know this filter, you know, you're looking at Fourier domain, you do one over
+ the filter, etc. Okay, but let's now look concretely at this one, okay? If we take the Fourier,
+ we compute the Fourier transform and so on, we get, actually no surprise, we already looked at it
+ many times, a box, this was just a box, right, in this one dimension. The Fourier transform of the
+ box is this function here, this thing function, so the, you know, the sine divided by, so sine
+ divided, you know, of sine of x divided by x, essentially, right? So it's this function that
+ goes like this and slowly extinguishes out, and now we just do one over this function, easy, done.
+ Okay, so that was the original function, now we do one over it, okay, so this is actually,
+ we have a problem, because obviously there's a lot of zeros in this function, and well, one over
+ zero is not a great idea, so essentially, we, like, we have a problem there, there are some values
+ that actually, some frequencies we actually completely lost, some frequencies are just gone,
+ they've been numerically eliminated, and so those we can just not recuperate, and trying to recuperate
+ this is, them is a pretty bad idea, because value is pretty close to this here, to this, this value
+ that's zero, but it's pretty close to that, it will also be, you know, they've been almost suppressed,
+ so there's the value that's suppressed, that's one thing, but then there's the value that's not
+ fully disappeared, but it's divided by a thousand, so now you take the number and you multiply by a
+ thousand, then you get something very unstable, right, if there was any noise, boom, you know,
+ it explodes, you multiply your noise by a thousand, so that's a bad idea, okay, so how do we address
+ this in practice, you can do something like this here, okay, so to kind of regularize a bit, instead
+ of doing one over F as the filter, the reconstruction filter, you do F divided by F squared plus a small
+ number, okay, for example, you know, something that essentially is one twentieth or so, okay,
+ for example, I think it's something like this that was used here, so like five percent or so,
+ zero point zero five or so, and then it means that when this number gets very close to zero,
+ this one starts dominating, and so you saturate at the ratio of those two numbers,
+ and, or so, sorry, when this one gets very small, you know, this one disappears to zero,
+ and then you get a small number divided by epsilon, okay,
+ and so essentially that function then looks like something like this here,
+ okay, so you see it saturates at the particular value, and so it will kind of avoid these,
+ the kind of the, to blow up some values to something too large,
+ and so essentially for the, yeah, so that's essentially what you get here,
+ okay, so that, actually sorry, so does that make sense to everyone?
+ So this essentially in the frequency domain, we can very easily do the inverse,
+ the only problem is that there's actually, if the frequency disappears, it's gone,
+ and so you have to drop it, okay, this is kind of what you are seeing here actually, right,
+ these lost frequencies here, because of the finite extent of the shutter,
+ this would essentially really have some frequencies completely disappear,
+ and so there's no way to recuperate that pattern, that frequency,
+ that's kind of the artifacts you saw here, here by actually having a mix of many different boxes,
+ what you get is that, sorry, this function here, you know, you get like the zeros,
+ like this has zeros in some places, but because you do many of different sizes,
+ it means different widths, and you sum them all up and so on,
+ and so you end up not having zeros, so the way that they did it here,
+ it somehow avoids having zeros, okay, so let me now talk a little bit about
+ space-time super resolution as an example,
+ so you know, this shows a little bit the issues that we also saw with the wheel, right,
+ so things look like they start turning in the other direction and so on, so you get everything,
+ the here, this was an example where they would record with normal videos,
+ normal video camera from many different, almost, you know, like cameras put next to each other,
+ so they have many copies, and then they try to essentially reconstruct, you know, the signal,
+ right, so I don't know if there's, yeah, okay, so if you look at these here, it's really completely
+ blurred, I mean, it's, one is quite blurred, but it's also very sparse, it's here and then here and so on,
+ but they managed to essentially align this, maybe actually was doing it, no, okay, anyway, so
+ anyway, so here they managed to reconstruct the continuous nice full temporal resolution signal,
+ this is a little bit, you know, what's going on here, so the input is blurry frame,
+ but many of those, what you see here is kind of the input images, this is kind of the aperture
+ of a single image, so it's kind of blurred out over, so the red here is, so the red here is the
+ exposure you want to generate in the end, okay, so you want a sharp video at high frame rate in the
+ end, and what they get is frames of these low frame rate and also in particular limited exposure
+ time here, and so essentially they want to reconstruct at this frame rate here, okay,
+ the, I think here they required 15 cameras to be able to do this reconstruction, it gets easier if
+ the difference between the input exposure and the output is not too big, but essentially they were
+ able to do a really good job here, and then if you remember we saw briefly an example and I show
+ an example afterwards, if you do super resolution in the spatial domain, it turns out to be a lot
+ harder, okay, so here in a temporal domain they managed to actually get really high quality
+ reconstruction, so they get this as input and they can generate this as output, you see actually
+ it's a factor of five, they only need 15 images, 15 cameras, and they managed to up sample by a factor
+ of five the actual temporal resolution, okay, I kind of did it when we saw it in the first
+ or second lecture that when you try to do super resolution spatially it's very hard to get beyond
+ the factor of one or two or two or three at most or so, here with 15 images they get a factor of
+ five in this example here, now why is that? Well it's because the, if you look at the temporal blur
+ it's actually has very hard edges because it's actually something that you, you know, you switch
+ the camera on and off or you have a shutter or you have something, but it's not that you kind of
+ have opened the pixel, like smoothly open the pixel and then smoothly close it, it's actually on/off,
+ so in other words, although this is blurred out here, it's actually a very sharp edge here and a
+ very sharp edge here, you can kind of see how if you subtract this from another one that shifted
+ a little bit, you can kind of easily reconstruct this or so, like as a difference between the two
+ in some sense, so that's essentially what's happening here because it's a very sharp peak here
+ they actually have, you know, in the frequency domain something with these additional lobes here
+ and so these frequencies are not suppressed, they're still kind of there, okay, in the signal,
+ so you do somehow measure things that higher frequencies are preserved essentially here, right,
+ so you, the temporal blur does this, it means that it doesn't really suppress some of those higher
+ frequencies, so you lose, you lose some of them as we saw, but essentially you, you do preserve
+ things also in the higher frequencies, in the spatial case the, we actually have the, the combination
+ of the lens and the pixels and all of this, actually even on purpose, we make sure that this is
+ essentially blurring a little bit and so that we have our sampling rate kind of essentially
+ correspond to, so we essentially have a smooth, a smooth line here and typically we'll have some,
+ if you look at the optical lens on, we'll have a kind of essentially something that looks like a
+ Gaussian in terms of suppressing high frequency, so in the sampling of the pixels we don't have like
+ very sharp boundaries there, we actually have something that's,
+ we have something that has a very smooth extinction here and quite fast and so the Fourier transform
+ ends up being something that is actually quite sharp and
+ so this, of the spatial blur and so it doesn't have these secondary lobes and so on
+ and now if you want to do super resolution we'll try to take essentially this frequency here
+ and boost it back, you know, to the original one which, okay if I go a little bit here I can
+ still do it but you can see that if I try from here and I try to take whatever value I have here
+ and boost it back to here it's just going to be impossible, okay, so here's kind of essentially
+ a slide on spatial super resolution, so we have essentially a combination, so our filter looks
+ like a combination of the point spread function, the focus of the lens not being perfect, so the
+ light that comes in from a certain point will kind of spread itself a little bit out on the sensor
+ and we actually also have the pixel itself, the sensor is kind of a, you know, a typically
+ rectangular, small rectangular array, the combination of those two, the convolution of those two
+ will essentially give us, you know, something that also looks like a Gaussian, something that looks
+ like this, okay, so this is kind of our spatial filter sampling or, you know, before the sampling,
+ so before we sample we'll have the original signal kind of somehow convolved with this here,
+ that's our model essentially, a slight blur of the lens plus the fact that we actually aggregate
+ over a pixel, that combination gives us a filter that looks like this roughly, so the original
+ signal gets perturbed by this, if we want to do super resolution we want to invert that H filter
+ essentially, okay, so the, and so if we do low resolution you can see this, the low resolution
+ image can be modeled as a decimation filter times this filter here, times then, and then there's,
+ okay, so there's the original high resolution image, a geometric warp that would, depending on
+ the random image you take would have been slightly shifted, so it's exactly where you sample for a
+ particular image, so you have the high res image, you shift it so that it's in front of the pixels
+ of the lowest image, that's the gate here, and then the H is this blurring filter, and then the D
+ is the decimation, it's only taking one out of two pixels or so, so going from the high resolution
+ image to the low resolution image, okay, simplified, you could write it like this here,
+ and you can actually permute those, these filters, it's, it's, they can be permuted,
+ doesn't change anything in the operations, gay shift invariant, the, and commutes with H,
+ so we can switch them, and so first we, so we have, what we try to do is to compute
+ the high resolution image convolved with this, this pixel, you know, sensing essentially,
+ so we'll try to reconstruct that first, and then after that we'll try to do the inversion of the H,
+ the H blurring kernel, okay, so, so to compute this here, what we'll do is we have all these
+ slightly shifted images, so first thing we need to do is actually compute that relative shift
+ between all those images, so to do super resolution, there was a, I showed you a video in one of the
+ first slides, essentially it's kind of, they took it, for example, you have, with a camera you move
+ a little bit, so you, it shifts a little bit, it means that the exact samples are moving a little
+ bit around, what you try to do is to reconstruct this combined image here, as precisely as possible,
+ right, so you first need to make sure you somehow can figure out how to align those images, now,
+ if it's really the same image with just a slight shift of the sensor of the camera,
+ then all those should be the same, and you can do a global warp and compute that for sub pixel
+ shifts so that they all align as well as possible to each other, so assuming you can do that well,
+ and you've been able to compute, let's say, the exact positioning of all those slightly shifted
+ images with respect to each other, then you can accumulate them all on top of each other,
+ and average out the results, okay, by averaging out the results, you can essentially get rid of
+ noise, you can get more precise measurement of the values, but the problem is you'll only improve
+ the signal to noise ratio, as you know from combining measurements, you only ameliorate
+ at square root of n type of rate of improving your measurements, right, if you take the average of a
+ thousand numbers, of a hundred numbers, you'll only be ten times as good as taking the original
+ measurement or so, right, so if you average a hundred measurements, you'll be ten times as good
+ as the, in terms of uncertainty as the, as a single measurement by itself, right, it goes with the
+ square root in terms of the variance, reduces only with the square root, so by adding, averaging
+ out many images, you get a better and better estimate, but only improvement at this rate here,
+ by adding many images together, the problem is that if you look at this blurring kernel here,
+ as we've seen, it actually decreases with a kind of a double exponential, and so the value is as
+ you go further down from your Gaussian peak, you know, here it's still easy and a little bit up to
+ here, but then it actually goes down very, very fast from there, and so if you want to go from a
+ factor of two increase in resolution to a factor of three or four in resolution, you need to overcome
+ the fact that it's gone down from, you know, 66% to 5% to 1% to a thousand, you know, to a thousand,
+ etc., in, in, you know, every time you go a little bit further, and so that's kind of the intrinsic
+ limit is you can keep adding more images, but you only get, you know, if you now need to go from
+ three sigma to four sigma, you know, the gap is so big that you need to take, you know,
+ orders of magnitude more images to average, and then it's assuming that you can all perfectly
+ align them and so on and so on and so on, and so essentially this is really kind of hopeless
+ beyond a certain point of factor two or three, except some military cameras and satellites and so on,
+ they can of course make sure that they don't have something that looks like this,
+ but that they have actual special lenses and things that actually will preserve a lot of
+ high frequencies, and then you can actually do super resolution potentially, right? Okay, so that's
+ it for today. In terms of next week, we'll look at beyond the Fourier transform to other types of
+ transforms, both wavelet transforms, which we've seen kind of this problem with Fourier, that
+ there's actually for hard edges and things like this, and in real scenes you often have hard edges
+ and so on. It's a challenge because all those, those are all the frequencies together, so you have
+ a lot of frequencies that are correlated that you exactly have to align to reconstruct the image
+ properly and so on. Wavelets are in a sense going to try to avoid that. Wavelets are both have a
+ frequency component, but also a location component. Remember Fourier was global over the whole image.
+ Here will do things, wavelets are a combination of they're both local, but they're also, they're
+ both local in the frequency domain and in the spatial domain, typically. They have this, they
+ bound in both spaces. Those are generic ones. We'll also look very specifically at can we find
+ transformations for particular types of image collections? For example, faces. Can we, by
+ knowing we look at faces that our image collection is about faces, can we do something more interesting
+ than just assuming that it's generic images of, you know, anytime? So that's what we'll look at next
+ week. Okay, I'll leave you with that.

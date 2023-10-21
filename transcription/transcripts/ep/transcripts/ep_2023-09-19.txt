@@ -1,0 +1,1278 @@
+ Also herzlich willkommen zu dieser Einführung in die Programmierung.
+ Ich bin Thomas Groß und ich gebe diese Vorlesung.
+ Aber natürlich machen wir hier mehr als nur Vorlesungen.
+ Wie Sie wissen, haben wir hier im Hörsaal eine Präsenzvorlesung.
+ Und wenn ich schon da bin, dann können Sie mich auch Fragen stellen.
+ Wie ich das mache, sage ich Ihnen gleich.
+ Aber wir übertragen das auch in den MLE12.
+ Ja, ist der wieder weg?
+ Ah, das ist natürlich nicht das, was wir wollen.
+ Jetzt ist er da.
+ Also falls Sie meinen Namen noch nicht gesehen haben sollten.
+ Also wir machen eine Präsenzvorlesung.
+ Und wenn ich schon da bin, können Sie gerne Fragen stellen.
+ Wir übertragen es auch in den MLE12.
+ Und für diejenigen, die hier nicht an der ETH sein können, im Livestream.
+ Insbesondere wenn Sie in diesen Remote-Räumen sind und Sie Probleme haben,
+ dann bitte ich Sie, sich da unbedingt zu melden.
+ Weil sonst wissen wir nicht, dass irgendwas schief läuft.
+ Also wenn etwas schief läuft, dann melden Sie sich sofort.
+ Danke, wenn mir jemand sagt, dass irgendwas nicht funktioniert.
+ Und außerdem zeichnen wir die Vorlesung auf.
+ Und Sie können sie dann ein oder zwei Tage später, manchmal auch früher,
+ im ETH-Video-Portal machen.
+ Wir machen das vor allen Dingen, damit auch die Leute, die nicht in den Hörsaal können,
+ die Gelegenheit haben, zu sehen, was wir da machen.
+ Und wie können Sie mir Fragen stellen?
+ Da gibt es die EDU-App und da gibt es einen Kurs-Channel.
+ Und da erlauben wir auch anonyme Postings.
+ Also wenn Sie eine Frage haben und Sie wollen nicht, dass alle anderen sehen,
+ dass Sie die Frage gestellt haben, dann können Sie die da stellen.
+ Ich bemühe mich, die während der Vorlesung anzugucken und versuche dann darauf einzugehen.
+ Und Sie brauchen keine Angst haben.
+ Es gibt keine dummen Fragen.
+ Wenn Sie meinen, ach, das wäre eine dumme Frage, dann gibt es wahrscheinlich zehn Leute
+ im Hörsaal oder in der Vorlesung, die die Antwort auch gerne hätten.
+ Und wenn Sie eine kluge Frage haben, weil Sie kennen schon eine XY-Programmiersprache
+ und wollten wissen, wie es da geht, Pech gehabt.
+ Das interessiert uns hier nicht so sehr.
+ Also die Fragen können Sie mir dann per E-Mail schicken oder so.
+ Aber die einfachen Fragen, die sehen wir gerne hier im Verlauf der Vorlesung.
+ So, jetzt zum Thema weiter.
+ Weil hier der Hörsaal doch relativ voll ist, bitte ich Sie, keine persönlichen Gespräche
+ zu führen.
+ Weil da ist da noch mehr Lärm und das macht es schwieriger für uns alle zu sehen, um
+ was es dabei geht.
+ Sie haben vielleicht schon herausgefunden, dass wir eine Webseite haben, auf der wir
+ so ziemlich viele Informationen über die Vorlesungen bekannt geben.
+ Dies ist die Webseite, die finden Sie auch im Vorlesungsverzeichnis.
+ Und wie gesagt, Vorlesungen und Übungen sind ein Angebot.
+ Das ist hier ein unverbindliches Angebot.
+ Es gibt keine Anwesenheitspflicht, weder für die Vorlesung noch die Übung.
+ Letztlich, Sie sind selbst für Ihre Ausbildung verantwortlich.
+ Wenn Sie den Stoff schon kennen, dann bitte nutzen Sie die Zeit für was anderes.
+ Nutzen Sie die Zeit für Algorithmen und Datenstrukturen oder diskrete Mathematik oder so.
+ Also Sie müssen hier nicht hinkommen.
+ So und auf der Webseite finden Sie dann die Folien.
+ Im Allgemeinen bemühe ich mich, die Folien vor der Veranstaltung zu posten.
+ Nach der Veranstaltung, wenn ich irgendwelche Folien gab, auf denen ich was geschrieben
+ habe, dann werde ich manchmal auch die noch da posten.
+ Dann habe ich im Allgemeinen da auch Links zu den verschiedenen anderen Sachen.
+ Also alles das, was da ist.
+ Und die Aufzeichnung eben kommt auf das Videoportal.
+ Das heißt, die Folie wird aufgezeichnet.
+ Und daher bittet die Rechtsabteilung mich, Ihnen zu sagen, dass wenn Sie nicht auf einem
+ Video erscheinen wollen, dann sollen Sie sich bitte so in den Hörer setzen, dass Sie nicht
+ aufgezeichnet werden.
+ Und dieses Semester haben wir eine neue Position für die Kamera.
+ Die Kamera ist genau da oben.
+ Jetzt gucken Sie alle in die Kamera.
+ Danke.
+ Wenn Sie also da nicht drauf sein wollen, dann gibt es da andere Plätze.
+ Das ist einfach halt die Regel.
+ Und dann der letzte Punkt.
+ Viele von Ihnen haben sich schon eingetragen und haben die Vorlesung in MyStudies, so heißt
+ das auf Ihrer Seite, eingetragen.
+ Das ist wichtig, weil nur so kann ich Ihnen E-Mail schicken.
+ Ganz wichtige Sachen posten wir zwar auch auf dem Web, aber da müssen Sie immer gucken
+ und allgemein versuchen wir Ihnen E-Mail zu schicken, wenn irgendwas relevant ist und
+ so weiter.
+ Und eben auf lange Sicht kommen Sie letztlich nicht weiter.
+ Sie haben keinen Zugang zu den Übungsaufgaben, wenn Sie nicht da registriert sind, weil wir
+ verteilen die.
+ Und bitte bemühen Sie sich, das unbedingt bis zum Freitag den 22.
+ zu machen.
+ Wenn Sie jetzt Studienfachwechsel sind und so weiter, dann geht das ein bisschen länger.
+ Aber die große Masse der Leute, hoffe ich, schafft das doch eben bis Ende der Woche zu
+ machen.
+ So, also was ist unser Programm für heute?
+ Da habe ich ein Zitat von Alan Perlis, einem Ex-Kollegen, der sehr schön sagte, eben Professoren,
+ Generäle und so weiter und Eltern, die programmieren und Armeen, Studenten und andere Gesellschaften
+ werden programmiert.
+ Und natürlich, was für eine Programmierung uns interessiert, für uns ist die allgemeinste
+ Form des Programmierens das Programmieren von Computern.
+ Wir werden also nicht damit bemühen, Leute zu programmieren, sondern uns damit bemühen,
+ zu verstehen, was es heißt, einen Computer zu programmieren und wie wir das am besten
+ machen.
+ Und damit ist das Programm für heute, dass wir erst mal sehen, was ist überhaupt Programmieren,
+ dann ob man überhaupt Programmieren lernen soll, dann den Bezug zum Informatikstudium
+ an der ETH und dann, wie wir da überhaupt hinkommen, diese Ziele zu erreichen.
+ So, also Programmieren, können Sie sich denken, hängt mit dem Wort Programm zusammen, das
+ aus dem Griechischen kommt.
+ Und letztlich, wenn Sie im Duden nachsehen, da steht da, ein Programm ist eine schriftliche
+ Bekanntmachung, ein Aufruf, eine Tagesordnung und was auch ähnliches mehr.
+ Und für uns in der Informatik gibt es jetzt noch einen besonderen Twist.
+ Für uns ist es eben nicht nur Bekanntmachung, sondern letztlich sind es Anweisungen, die
+ von jemand ausgeführt werden.
+ Also das sind Anweisungen, die ausgeführt werden, die also irgendetwas bewirken oder
+ irgendwelche Effekte haben könnten und damit uns erlauben, viel viel mehr zu machen, als
+ nur etwas bekannt zu geben.
+ Wir müssen gucken, ob ich da hinkomme.
+ Ob da schon die Fragen sind?
+ Nein, noch keine.
+ Okay, gut.
+ Also das ist das, was uns in der Informatik da besonders interessiert.
+ Denn diese Programmausführung, die manipuliert dann wieder Symbole.
+ Und wir müssen jetzt eben verstehen und Symbole könnten sein, Text, Zahlen, Bilder, irgendwas.
+ Wir müssen jetzt verstehen, was sind Symbole und wie kann man das machen.
+ Und wenn Sie sich jetzt das angucken, dann sehen wir als erste Approximation, diese Approximation
+ ist das Programmieren, das Erstellen von Programmen.
+ Und dazu gehört natürlich auch, dass wir irgendwann ein Programm in irgendeiner Form
+ in den Computer eingeben.
+ Aber allgemein benutzen wir diesen Begriff Programmieren eigentlich auch als Zusammenfassung
+ für alle Tätigkeiten, die irgendwie mit Softwareentwicklung zusammengehören.
+ Und deswegen werden wir uns nicht nur so allein damit beschäftigen, wie man irgendeine Aufgabe
+ löst, sondern auch eben mit Aspekten wie Entwurf, Debugging, eine Umgebung, die das
+ alles löst, in der wir arbeiten und so weiter.
+ Und so ein Programm realisiert dann einen Algorithmus und darüber, was Algorithmen sind,
+ lernen Sie mehr in einer anderen Vorlesung kennen.
+ Der Algorithmus beschreibt dann Schritt für Schritt, wie die Aufgabe gelöst werden soll.
+ Aber das genaue Wie, das ist dann eben durch das Programm festgelegt.
+ Und wenn wir programmieren, müssen wir halt hingehen und sehen, dass wir diesen Teil verstehen.
+ So, ja, sollen wir über Programmieren lernen?
+ Also so vor zehn Jahren hat mir mein Nachbar eine Zeitung geschickt, NZZ, eine in der Schweiz
+ erscheinende Zeitung.
+ Und da stand so schön Programmieren oder Programmiert werden.
+ Das war so die Überlegung, die man damals hatte.
+ Und das war auch der Grund, warum dann eben Informatik in den Mittelschulen eingeführt
+ wurde.
+ Programmieren oder Programmiert werden?
+ Das ist eine gute Frage, denn an sich würden wir vielleicht lieber gerne programmieren
+ als programmiert werden.
+ Wenn Sie dann weiter sehen, in einer anderen Zeitung steht dann brutal, wer nicht programmiert,
+ muss putzen.
+ Okay, und der Präsident hat vor Kurzem gesagt, wenn man eben in einem Beruf arbeitet, der
+ keine Zukunft hat, wie eben in der Erde nach Kohle zu suchen, dann sollte man doch bitte
+ lernen zu kodieren.
+ Ob das sehr einfach ist, die Umstellung weiß ich nicht.
+ Aber das war die Meinung, die eben so vor den letzten zehn Jahren da war.
+ Aber wenn Sie jetzt so in letzter Zeit die Zeitung verfolgen, dann hört man da auch
+ andere Meinungen.
+ Zum Beispiel sagen manche Leute, wir haben das Ende der Programmierung erreicht.
+ Und es gibt jetzt eben Programme, die uns helfen könnten, das Programmieren viel, viel
+ einfacher zu machen.
+ So einfach, dass eben gar keiner mehr Schwierigkeiten haben wird, es zu machen.
+ Da gibt es also AI-based Tools, die eben uns helfen sollten.
+ Sie können auch in Vorträgen dann sehen, dass eben die Large Language Models und das
+ Ende der Programmierung da ist.
+ Das wäre doch schön.
+ Da sollte ich die Vorlesung nicht mehr zu geben.
+ Na ja, also natürlich beschäftigt uns das auch.
+ Und da haben wir uns also eines dieser Werkzeuge mal angeguckt.
+ Da gibt es den GitHub Copilot.
+ Da ist die Idee, die, dass der Benutzer eine Spezifikation eingibt und dass dann Copilot
+ ein Programm liefert, sorry, Copilot liefert dann ein Programm.
+ Wenn wir Glück haben, ist es auch ein korrektes.
+ Und dann ist im Grunde genommen das Problem gelöst.
+ Das wäre schön.
+ Also es ist eigentlich eine gute Idee und die sollte man eigentlich auch benutzen, wenn
+ man eben halt mit, wenn man eben Programme erstellen muss.
+ Und haben wir aber auch gemacht, da haben wir uns also mal so eine einfache Spezifikation
+ genommen.
+ Da sollen wir also ein Programm schreiben, das guckt, ob die Buchstaben C, O, irgendwas
+ und ein E in einem Text aufhalten.
+ Und da haben wir hier die Spezifikation, die haben wir eingegeben.
+ Und dann sagt Copilot hier, ich schlage mal diese Methode vor und gebe dann ein mögliches
+ Argument da an.
+ Und dann, wenn man sagt, das finde ich gut und dem stimmt mal zu, dann kommt eben die
+ Methode, die das eben entwickeln möchte.
+ Mal wollen wir, okay.
+ Und dann schlägt das Programm, ist ein bisschen abgeschnitten hier, dann schlägt Copilot
+ so ein Programm vor.
+ Und das ist also der Body der Methode.
+ Und wenn wir denen zustimmen, dann wird der akzeptiert.
+ Und ich zeige dir das ganze Programm, der ist eigentlich sehr gut.
+ Perfekt.
+ Er ist perfekt mit dem kleinen Haken dieser Parameter hier oben.
+ Das war falsch, das ist nicht sinnvoll, da muss man auch sagen, was man da haben will.
+ Aber eigentlich ist das ziemlich gut.
+ Also das ist doch super.
+ Also brauchen wir nicht mehr so viel Mühe.
+ Naja, da gibt es ein kleines Problem, wir machen die Vorlesung ja auf Deutsch.
+ Ja gut, ist dann Deutsch vielleicht der Grund, warum wir das nicht machen können?
+ Naja, haben wir halt, es gibt so eine große Sammlung von einfachen Programmieraufgaben,
+ haben wir uns die vorgenommen, haben wir geguckt, okay, dann gehen wir auch mal den Text auf
+ Deutsch an und sehen, was dann passiert.
+ Und ja, das Programm hat uns sofort nicht nur das richtige Programm geliefert, sondern
+ auch gleich einen guten Namen für dieses Programm gewählt.
+ Und das ist gar nicht mal so einfach, ein guter Namenfeld.
+ Und das ist eigentlich schon mal auch sehr ermutigend.
+ Naja, der Student, mit dem ich das mache, kommt aus dem Tessin, okay, guckt mal nach,
+ was passiert, und was auf Italienisch machen.
+ Geht genauso, ja.
+ Also das geht genauso gut.
+ Für alle Aufgaben, die wir probierten, funktionierte das bestens.
+ Und andere, in anderen Professoren und Kollegen von mir in anderen Universitäten, die haben
+ ähnliche Erfahrungen gemacht.
+ Und da kann man sich fragen, ist Programmieren eigentlich gar kein Problem mehr?
+ Ist Programmieren das Latein des 21.
+ Jahrhunderts?
+ Wir lernen das, weil es irgendwie interessant ist und so weiter, genauso wie man noch dieses
+ Jahr in Gymnasien hier im Kanton Zürich Latein lernt, obwohl die Römer ja schon vor längerer
+ Zeit hier verschwunden sind.
+ Weil das Argument ist da, es stärkt das logische Denken angeblich.
+ Aber sonst ist es ja nicht wirklich wichtig.
+ Naja, gilt das jetzt auch für das Programmieren?
+ Macht GitHub Copilot jetzt die Arbeit für uns?
+ Und jetzt so, ich hatte Ihnen gesagt, da haben wir Beispiele aus Programmsammlungen genommen.
+ Naja, nähen wir ein bisschen unter da weiter, vor, sieht man, dass dieses Copilot lernte,
+ wenn wir diesen Ausdruck verwenden wollen, lernte in öffentlichen Repositories und Programmieraufgaben.
+ Und interessanterweise kennt eben GitHub nicht nur die Lösungen, sondern weiß auch, was
+ das nächste Problem ist, schlägt dann bereits das nächste Problem vor.
+ Und in der Tat, Copilot kennt gute Lösungen zu beliebten Aufgaben, die Sie vielleicht mal
+ irgendwann im Informatikunterricht gesehen haben, wie die Türme von Hanoi oder die Fibonacci
+ Zahlen und ähnliche Sachen.
+ Und das ist gut, weil wenn man da eben anfängt und kommt nicht weiter, kann einem sowas durchaus
+ helfen.
+ Naja, jemand hat dann eben festgestellt, dass eben angeblich auf all den Intro Programming
+ Assignments aller Universitäten, an die man rankam, trainiert worden ist.
+ So hat das das gelernt.
+ Und das ist gut.
+ Nur, jetzt kommt die Frage, die wir uns natürlich hier in der Uni stellen müssen.
+ Wer will denn die Lösungen zu diesen Aufgaben?
+ Ich meine, klar, Studenten wollen die, ja.
+ Aber ich will Ihnen sagen, es gibt nicht viele Jobs, in denen Sie gebeten werden, die Towers
+ von Hanoi oder die Fibonacci Zahlen zu berechnen.
+ Das finden Sie eh unten am Hauptbahnhof in der Halle angeschlagen.
+ Aber damit finden das nicht die interessanten Jobs.
+ Und darum haben wir gesagt, okay, gehen wir doch mal hin und nehmen wir mal die Aufgaben,
+ die wir den Studenten zur Prüfungsvorbereitung geben und lassen Copilot mal an denen ein
+ bisschen arbeiten.
+ Und dann haben wir eben erster Schritt.
+ Wir geben die Spezifikation ein und dann haben wir hier so eine, im Allgemeinen bekommen Sie
+ später von uns auch, so eine Test-Suite, die Ihnen dann sagt, was Sie da machen müssen.
+ Haben wir im ersten Schritt gesehen, dass von den Aufgaben, die wir hier haben, es geht
+ von der Woche her, nicht sofort die erste Woche, dass eigentlich fast alle von denen im ersten
+ Durchgang nicht gelöst wurden.
+ Interessanterweise die schwierigste Aufgabe, die, die wir in der letzten Woche des Semesters
+ stellten, die hat Copilot sofort richtig hinbekommen.
+ Aber das ist ja so, ist das jetzt überraschend?
+ Nicht wirklich.
+ Weil diese Programme behaupten ja, sie sind ihr AI-Perprogrammer.
+ Also es ist ja nicht so, dass die das einfach ganz automatisch machen und Copilot erwartet
+ ja sogar auch Hinweise.
+ Eben einfügen von Variablen, Änderungen des Kontrollflusses, Hilfe bei der Implementation
+ einer Datenstruktur, Attribut und Methoden von Objekten und so weiter.
+ All das müssen Sie machen.
+ Und wenn man jetzt diese Hilfestellung Copilot gibt, dann sieht es etwas besser aus.
+ Dann sieht es eigentlich sogar gut aus, wenn man entsprechend die Zahlen für 2018.
+ Wenn man jetzt die sieht, dann sieht man da schon eine ganze Menge von Hilfestellungen
+ nötig ist, mal vier, mal zwölf.
+ Hier sehen wir das schöne Beispiel mit Null, das wir am Anfang hatten.
+ Und in all denen hat dann am Ende Copilot das richtige Ergebnis geliefert, bis auf das
+ hier.
+ Und warum es damit nicht weiter kam, da hat es sich dann irgendwie aufgehängt und kam
+ einfach nicht weiter.
+ Also da ist Copilot gut.
+ Aber eben ihre Ergebnisse ändern sich von Jahr zu Jahr.
+ Da haben wir die einundzwanziger Jahre mal genommen und da haben wir auch wieder Hinweise.
+ Am Anfang kam wenig raus, haben wir auch wieder Hinweise gegeben.
+ Jetzt sehen Sie, hier ist das Bild nicht ganz so eindeutig.
+ Also für vier Programme kriegt Copilot mit genügendem Hinweisen ein richtiges Programm,
+ richtig im Sinne von alle die Beispiele, die wir Ihnen gegeben haben, werden da korrekt
+ behandelt.
+ Aber es gibt ein paar mehr Beispiele, das ist ein anderes Thema.
+ Aber eben es gibt auch hier fünf Programme, für die Copilot in diesem Fall nicht die
+ richtige Lösung und nicht die entgegültige Lösung gefunden hat.
+ Und es ist eigentlich noch nichts darüber, dass diese Copilot vielleicht auch noch Bugs
+ eingefügt haben könnte.
+ Es gibt Studien, die zeigen, dass die Sicherheitsprobleme von Programmen, die durch Copilot erzeugt
+ wurden, genauso groß sind, wie die, die von Menschen produziert wurden.
+ Also das alles, so weit kommen Sie, wenn Sie eben Hinweise geben.
+ Und jetzt müssen Sie wissen, ja wie machen wir das überhaupt?
+ Was heißt das Variable?
+ Was heißt Kontrollfluss?
+ Was für Probleme gibt es bei der Einführung einer Datenstruktur?
+ Und dann eben Attribute und Methoden von Objekten.
+ Vielleicht kennen Sie diese Ausdrücke noch gar nicht.
+ Das ist überhaupt gar kein Problem.
+ Sie wissen gar nicht, was Vergleichspredikate sind und so weiter.
+ Das ist überhaupt kein Problem.
+ Aber wenn Sie diese Hinweise geben wollen, müssen Sie halt programmieren gelernt haben.
+ Und das ist der Grund, warum wir hier die Vorlesung machen.
+ Weil Sie auf diese Weise eben lernen, wie Sie auch mit solchen Systemen umgehen können,
+ weil Sie verstehen, was die Konzepte sind und weil Sie dann hoffentlich auch gelernt haben,
+ Fehler, die da auftreten, zu erkennen und entsprechend zu lösen.
+ So, also eben Programmierung ist für lange Zeit ein Kernthema der Informatik gewesen
+ und es sieht so aus, es wird es auch noch bleiben.
+ Es wird noch einige Zeit ein wichtiges Thema für uns bleiben.
+ Und wenn Sie natürlich Informatik machen wollen, müssen Sie mehr können als nur programmieren.
+ Es gibt auch andere Sachen, die Sie sich angucken sollten, wenn Sie da vernünftig Programme
+ entwickeln wollen.
+ Sie müssen insbesondere auch irgendwann sehen, dass es Probleme gibt, für die es gar keine
+ Lösung geben kann.
+ Und Sie müssen auch lernen, dass die Kosten der Berechnung manchmal sehr wichtig ist.
+ So, könnte ich die Lautstärke im Übertragungszimmer erhöhen?
+ Gucken wir mal nach, ob das möglich ist.
+ Es gibt hier ein dolles Mikrofon.
+ Ich habe das Mikrofon.
+ Ich habe das BP1.
+ Also, ich weiß nicht, können Sie die Lautstärke erhöhen von da oben, wenn das ginge, so dass
+ aber keine Trommelfeldschäden auftreten?
+ Der Livestream führt nirgendwo hin.
+ Ja, tut mir leid, das kann ich nicht von hier behandeln.
+ Das müssen wir offline klären.
+ Also, können Sie ... also, wenn der Livestream nicht geht, ist das dumm, aber das kann ich
+ leider von hier aus nicht kontrollieren.
+ An sich sollte der Livestream alles enthalten, was auf diese Wand projiziert wird.
+ So, also, ist eben ein zentrales, wichtiges Thema.
+ Und da gibt es einen sehr schönen Artikel von WindSurf, schon vor ein paar Jahren erschienen.
+ Programming as a universal activity.
+ Das ist eine ganz zentrale Tätigkeit in vielen, vielen Bereichen.
+ Und zwar gibt es da vier Schritte.
+ Der erste ist, dass wir eben ein Problem analysieren müssen.
+ Wenn wir das einmal analysiert haben, dann müssen wir das Problem in Teilprobleme zerlegen
+ und der interessante Aspekt ist eben in beherrschbare Teilprobleme.
+ Wenn die Teilprobleme auch wieder so groß sind, dass wir sie nicht lösen können, dann müssen
+ wir weiter arbeiten.
+ Dann müssen wir für diese Teilprobleme Lösungen finden und nachdem wir also Lösungen für
+ die Teilprobleme gefunden haben, müssen wir diese Ergebnisse zusammenfügen und in irgendeiner
+ Form kombinieren.
+ Diese vier Schritte, die werden Sie in der Programmierung brauchen, die werden Sie in
+ vielen anderen Gelegenheiten auch brauchen und die sind daher ... jetzt ist es ein bisschen
+ zu laut.
+ Okay.
+ Wir können das tunen.
+ Wir haben ein adaptives System.
+ Also das sind diese vier zentralen Schritte.
+ Und ich weiß nicht, ob Ihnen der Name WindSurf was sagt.
+ Der WindSurf war früher mal Assistenzprofessor in Stanford und dann hat er da nicht mehr
+ Spaß gehabt und ist dann letztlich zu einer Regierungsorganisation gegangen, wo er zusammen
+ mit ein paar anderen Leuten eine Protokoll-Suite namens TCP/IP entwickelt hat, von der Sie
+ vielleicht schon mal gehört haben, aber die Sie auf jeden Fall sicher benutzt haben.
+ Und nach 1982 hat er dann an verschiedenen anderen Positionen außerhalb der Regierung
+ gearbeitet und 1998, das ist schon fast 25 Jahre her, hat er hier von der ETH einen Ehrendoktor
+ bekommen.
+ Er war wiederholt hier, hat da Vorträge gegeben und ist also jemand, der sehr, sehr
+ gute Kommentare nicht nur zum, können Sie im Internet nachlesen, nicht nur zu den technischen
+ Problemen, sondern auch zu darüber hinausgehenden anderen Problemen gemacht hat.
+ So, also diese vier Schritte sollten wir uns merken.
+ Probleme analysieren, zerlegen, Lösungen finden und die Ergebnisse zusammenfügen.
+ Wenn wir das machen, haben wir eigentlich alles, was wir brauchen, um hier in diesem
+ Semester erfolgreich durchzukommen.
+ Also, wenn wir jetzt sagen, Lösungen finden, da gibt es zwei Aspekte, die manchmal einfach
+ ignoriert sind.
+ Der erste ist für andere Menschen, das erwähne ich bewusst zuerst, weil wir müssen beschreiben,
+ wie eine Lösung aussehen soll, andere müssen das nachvollziehen können, müssen sehen, ob
+ das wirklich die Lösung ist, die sie wollen und dann müssen sie die entsprechend auch
+ machen.
+ Und dann wollen wir eine Lösung finden für eine Maschine, eine Lösung, die für einen
+ Computer sinnvoll ist und die dann vom Computer in irgendeiner Form ausgeführt werden kann.
+ Und um sowas zu machen, müssen wir diese Lösung natürlich beschreiben.
+ Wir brauchen irgendeinen Weg, um das zu beschreiben.
+ Sowas nennen wir eine Sprache, eines der ganz wichtigen Konzepte, die wir haben.
+ Und wir müssen irgendwie unsere Lösungen in irgendeiner Sprache entsprechend eingeben
+ können.
+ So, also, ich hatte gesagt, die erste Approximation von Programmieren war die Erstellung eines
+ Programms und ein Programm ist dann eben so eine Folge von Anweisungen, die von einem
+ Computer ausgeführt werden können oder von einem Computer ausgeführt werden.
+ Das sind die beiden Optionen, ob wir entweder für den Menschen das beschreiben oder ob
+ wir das für die Maschine beschreiben.
+ Und um das eben zu lernen, um das eben weiter zu machen, müssen wir natürlich verstehen,
+ welche Anweisungen der Computer überhaupt verstehen kann.
+ Weil sonst oder wenn er sich versteht und welche er dann ausführen kann.
+ Und das ist eben, wenn der Computer es nicht versteht, dann macht er nicht das, was wir
+ wollen oder er macht gar nichts.
+ Und diese Anweisungen, die der Computer ausführen kann, die sind dann normalerweise in einem
+ Programm in einer Programmiersprache festgehalten.
+ Das ist die Sprache, in der wir eben unsere Programme dann ausdrücken.
+ Also, wenn Sie das sehen, wir haben hier die Notwendigkeit, eine besondere Sprache zu wenden,
+ eine Programmiersprache.
+ Und das ist die Sprache für den Computer, die der ausführen kann.
+ Der kann es auch schreiben, aber das ist jetzt nicht so relevant.
+ Und es ist eine Sprache für Menschen.
+ Und weil der Mensch, der kann das dann eben lesen und auch natürlich schreiben, seltener
+ führt heute jemand das aus, aber kann auch vorkommen.
+ Wenn wir heute sagen, ein Programm wird ausgeführt, dann denken wir eigentlich heute fast immer
+ nur daran, dass das vom Computer ausgeführt wird.
+ Aber das war nicht immer so.
+ Also früher war Computer ein Berufstitel.
+ Das war ein Titel für jemand, der Berechnungen durchführt.
+ Es gibt eine Bemerkung, dass ein Mann, der Charles Pierce vom Küstenschutz angestellt
+ worden war als Assistent Computer.
+ Und wahrscheinlich gab es auch noch ein Associate Computer und ein Full Computer, weiß ich nicht.
+ Aber auf jeden Fall gab es Assistent Computer, war sein Subtitel, für damals 35 Dollar pro
+ Monat.
+ Der Dollar war damals auch mehr wert, aber das ist eine andere Sache.
+ Also beide Zielgruppen sind letztlich wichtig, auch wenn wir heute den Computer zur Ausführung
+ verwenden.
+ Lesen und schreiben müssen wir vieles noch selbst.
+ So, jetzt wenn wir eine Programmiersprache verwenden müssen, dann müssen wir auch eine
+ auswählen.
+ Und wir haben uns entschieden, die Programmiersprache Java zu verwenden.
+ Und das haben wir gemacht, weil auch die Algorithmen- und Datenschrukturkollegen diese
+ Programmiersprache verwenden, weil dadurch brauchen sie nicht zwei verschiedene Programmiersprachen
+ im ersten Semester für diese beiden Vorlesungen lernen.
+ Das hat Vor- und Nachteile.
+ Diese Programmiersprache ist eine richtige Programmiersprache, in der es auch Jobs gibt
+ und in der viele Leute arbeiten.
+ Und es ist eine Industrial Strengths Sprache.
+ Die hat viele Konzepte.
+ Und wir können natürlich unmöglich in der Einführung in die Programmierung alle von
+ denen behandeln.
+ Also weder stellen wir die vor, noch verwenden wir die Konzepte, noch erwarten wir, dass
+ sie diese Konzepte kennen.
+ Also das ist halt die Einführung.
+ Weil diese Konzepte wichtig sind, werden wir einige Konzepte hier behandeln und andere
+ weiterführende Vorlesungen werden sich dann später mehr mit diesen Konzepten beschäftigen.
+ Also es ist so eine gemischte Sache.
+ Auf der einen Seite ist es gut, weil werden sie die Basis können, können sie dann selber
+ weitermachen und irgendwelche anderen Sachen auf diese Weise erkunden.
+ Auf der anderen Seite ist es manchmal nicht ganz einfach, den Einstieg zu finden, weil
+ eben halt alles sofort sehr komplex ist und für alle nicht ganz einfach ist.
+ Aber wir bemühen uns das so zu machen, dass es eben langsam, schrittweise an die Sachen
+ herangeht und ja, dann müssen wir mal sehen, wie wir das machen.
+ So, jetzt, wie kann man das Programmieren lernen?
+ Wenn wir uns entschieden haben, dass wir Programmieren lernen wollen, wie kann man das lernen?
+ Ist das so eine Sache, wo man eine besondere Begabung braucht?
+ So wie Mittelstürmer in der Fußballmannschaft oder Mitteltorwartin oder sowas?
+ Kann das jeder machen?
+ Im Prinzip programmieren kann jeder.
+ Es gibt natürlich ein paar Talente, die vielleicht besonders gut sind, aber es ist eben nicht
+ der Fall, dass es ein besonderes Tablett braucht.
+ Es gilt eigentlich für vieles, dass man alles lernen kann.
+ Und vielleicht erinnern Sie sich an diesen Mann, der hatte die Auffassung, dass jeder
+ kann kochen lernen.
+ Das war seine Meinung.
+ Und selbst dieser kleine Kerl hier hat das gelernt oder hat das akzeptiert.
+ Und so ist mit Programmieren auch.
+ Nicht jeder wird ein 3-Sterne-Michelin-Koch werden, aber es kann reichen, um gute Sachen
+ zu machen.
+ Und so ist mit Programmieren auch.
+ Programmieren ist etwas, was im Prinzip jeder lernen kann, weil unser Ziel ist es,
+ ihnen Kompetenz zu vermitteln.
+ Sie sollen korrekte Programme systematisch erstellen können.
+ Das ist etwas, was wir versuchen, Ihnen hier beizubringen.
+ Und wenn Sie bereit sind, da mitzumachen, dann geht das.
+ Es braucht eigentlich nur drei Sachen.
+ Also Aufmerksamkeit, Imagination und Fantasie und Übung.
+ Aufmerksamkeit, das heißt also auch genau lesen.
+ Auch die Webseite genau lesen.
+ Ich nehme alle Fragen gerne entgegen.
+ Aber wenn ich schon mal die Antwort auf der Webseite habe, ist meine Begeisterung, weil
+ ich naturgemäß faul bin, ist meine Begeisterung, die auch nochmal zu beantworten, nicht so
+ groß.
+ Darum gucken sich die Webseiten an, gucken sich an, was hier steht.
+ Aufmerksamkeit ist wichtig.
+ Natürlich Imagination und Fantasie sind auch wichtig, weil sie müssen irgendeinen Weg
+ finden, ein Problem zu zerlegen, müssen es angucken.
+ Und das wird besser mit Übung.
+ Übung hilft und was hilft noch mehr?
+ Mehr Übungen.
+ Also Übung, Übung, Übung ist wirklich essentiell.
+ Programmieren erfordert Übung.
+ Programmieren erfordert Übung, denn nur Übung macht perfekt.
+ Sie werden nicht programmieren lernen, wenn Sie hier der Vorlesung, wenn Sie nur der Vorlesung
+ folgen.
+ Sie müssen wirklich die Übungsaufgaben lösen oder zumindest versuchen.
+ Wenn Sie das nicht machen, dann ist das für Sie nicht von Vorteil, dann ist es für Sie
+ schwer, das zu lernen.
+ Vor zwei Jahren hat der FIS, vielleicht glauben Sie mir nicht, ich habe vielleicht Inside-Informationen
+ über die Prüfung, aber trotzdem, vielleicht glauben Sie mir nicht.
+ Aber vor zwei Jahren hat der FIS, das ist der Studentenverband, mal sowas zusammengestellt,
+ Basisprüfungstrips.
+ Und da steht eben Einführung und die Programmierung, gilt als relativ einfaches Fach, mit welchem
+ man gut kompensieren kann.
+ Es ist ja gut, wenn Informatiker programmieren können.
+ Jedoch sollte es nicht unterschätzt werden, denn es benötigt genügend Übung.
+ Und dann weiter, das gilt auch dann, wenn Sie schon etwas programmieren können.
+ Themen wie Vererbung und Polymorphismus, die wir jetzt noch nicht sofort am ersten Tag
+ behandeln, sind relativ komplex.
+ Ist also nicht ganz, ganz einfach.
+ Darum, Programmieren ist vor allem Übungssache.
+ Nehmen Sie sich Zeit für die Übungen.
+ Aber das lohnt sich, denn Überraschung, der FIS stellt fest, programmieren zu können,
+ zahlt sich aus im Informatikstudium.
+ Okay, gut, ist also wohl doch nicht ganz so von ohne.
+ So, also, jetzt wie kommen Sie zu Übungen?
+ Also wir publizieren Aufgabenblätter, die wir über die Webseite publizieren und dann
+ gibt es Übungsgruppen, in denen die bei Bedarf vor- oder auch nachgesprochen werden.
+ Diese sind eine Gelegenheit zu lernen und die kommen in zwei Varianten.
+ Da gibt es einmal diese Praxisübungen und dann haben wir die Bonusübungen.
+ Und beide sind wichtig, aber sind eben in vielem etwas anders.
+ Ich erkläre gleich, was das im Einzelnen bedeutet.
+ Und die Teilnahme an den Übungsgruppen ist empfohlen, aber nicht verbindlich.
+ Also wenn Sie mal einen Tag nicht kommen können, ist das kein Problem.
+ Es gibt auch Leute, die eben, kann ich Ihnen sagen, von den 500 Leuten, die letztes Jahr,
+ letzten Herbst die Prüfung abgelegt haben, da waren knapp 15, die in keiner Übungsgruppe
+ waren.
+ Geht auch, ist für uns kein Problem.
+ Aber Sie sollten eigentlich dahin gehen und mit Ihren Kollegen und Kolleginnen diskutieren,
+ weil es gibt selten nur eine Lösung.
+ Oft gibt es mehrere Lösungen und auch wenn Sie eine Selbstanlösung gefunden haben, profitieren
+ Sie davon, wenn Sie sehen, wie Ihre Kollegin das Thema angegangen ist und daher entsprechend
+ kriegen Sie mehr Übungen zerlegen.
+ Darum üben Sie das diskutieren und vergleichen verschiedene Lösungen.
+ Das werden Sie später im Leben, also in der Arbeit viel häufiger machen.
+ Diese Aufgaben werden teilweise automatisch korrigiert.
+ Darüber reden wir später nochmal ein bisschen mehr, wie das genau geht und so weiter.
+ Und eben, wir haben, wie ich sagte, Praxisübungen und Bonusübungen.
+ Jetzt diese Praxisübungen sind Übungen, die können Sie im Internet wahrscheinlich finden.
+ Mit mittleren oder gar keinem Aufwand oder wenn Sie eine Kollegin kennen, die letztes
+ Jahr die Forderung gemacht hat, da war ein Teil der Praxisübungen ähnlich oder gleich.
+ Also solche Aufgaben, Sie können das gerne irgendwo nachgucken, aber wenn Sie da eine
+ Lösung finden, das langweilt sowohl die Assistierenden als auch Co-Pilot.
+ Also Sie sollten wirklich die Übungen selber machen.
+ Die sind eine Gelegenheit zu lernen.
+ Es geht uns nicht darum, das Programm zu bekommen, das irgendein Thema erledigt.
+ Das ist nicht so kritisch.
+ Wichtig ist, dass Sie eben üben.
+ Üben, üben, üben.
+ So, die Bonusübungen, die kommen ab der vierten oder fünften Woche, das hängt ein bisschen
+ davon ab, wie gut wir es schaffen, das alles aufzusetzen.
+ Da gibt es die Möglichkeit, Bonuspunkte zu sammeln.
+ Diese Bonuspunkte helfen Ihnen, die Note anzuheben, um maximal 0,25 Punkte.
+ In dem System hier von 1 bis 6, das eben 6 die beste, 1 die schlechteste Note ist, können
+ Sie maximal ein Viertelpunkt bekommen.
+ Das ist nicht zwingend.
+ Sie müssen das nicht machen.
+ Die Maximalnote ist auch ohne Bonus erreichbar und wir haben jedes Jahr ein paar Studierende,
+ die müssen wir abrunden, abrunden auf die 6.
+ Die hätten also mit Prüfungsleistung und Bonus etwas besser als eine 6 verdient, aber 6
+ ist das Beste, was Sie bekommen können.
+ Also, es ist eben eine Möglichkeit für Sie, da etwas zu machen.
+ Aber eben diese Bonusprüfungen sind eben auch wieder nur ein Anreiz.
+ Der Anreiz ist, dass wenn Sie die Arbeit machen, dass Sie dann die Aufgaben etwas besser verstehen,
+ aber Sie müssen die Aufgaben selber lösen.
+ Das ist einmal mein persönlicher didaktischer Vorschlag.
+ Sie lernen nichts, wenn Sie die Aufgaben von woanders abschreiben.
+ Es ist auch der offizielle ETH-Politik, dass das Abschreiben oder Abschreiben lassen, gilt
+ als unehrliches Verhalten und wird von der ETH nach der ETH-Disziplinarordnung geahndet.
+ Also bitte ersparen Sie es mir, dass ich meine Zeit darauf verwenden muss, da solche Fälle
+ zu behandeln ist in Ihrem Interesse.
+ Und eben, wenn Sie mir nicht glauben, ich habe immer Zahlen.
+ Hier haben wir schon ein bisschen länger her, aber so schnell ändert sich ja nichts.
+ Ich habe hier von meinen Assistenten zusammenstellen lassen, an wie vielen Hausaufgaben, also Übungen,
+ hat eine Studentin oder ein Student gearbeitet und was für eine Note hat er oder sie bekommen.
+ Haben wir hier bei 2,5 freundlicherweise abgeschnitten.
+ Und da sehen wir, dass Leute, die in 10 oder 12 dieser Übungsaufgaben gearbeitet haben,
+ dass da ein großer Teil hier eben in diesem Quartal ist, da wo wir eben bestanden haben.
+ Es gibt natürlich auch ein paar Leute, das wollen wir nicht verheimlichen, die haben
+ an wenig Aufgaben gearbeitet und trotzdem eine gute Note bekommen.
+ Aber es sind vielleicht Wiederholungskunden, die vielleicht aus anderen Gründen das machen
+ mussten.
+ Jetzt habe ich die gesagt, gucken wir uns doch mal nach, wie sieht es denn mit den Leuten
+ aus, die den 100 Prozent Bonus hatten.
+ Also die hatten, Leute hatten, oder welchen Bonus haben die Leute überhaupt gewonnen
+ und welche, was für Noten haben die bekommen.
+ Also Sie sehen, 75 Prozent der Studierenden bekommen den vollen 0,25 Bonus.
+ Und wenn Sie jetzt eben weniger abgeben, wird das eben linear runtergerundet.
+ Und Sie sehen also hier zwei Sachen.
+ Erstmal Leute, die weniger als 50 Prozent der Übungen gemacht haben, denen geht es
+ nicht sehr gut.
+ Hier, Sie können denken, dass die Grenze für bestanden, also hier ist die 4,0 und hier
+ drunter nicht, die ist ungefähr da.
+ Also Leute, die weniger als 50, 60 Prozent gemacht haben, haben selten eine gute Programmierleistung
+ abgelegt.
+ Jetzt ein bisschen besorgniserregend für mich ist, dass hier sind die Leute, die alle,
+ die all die Bonuspunkte bekommen haben und trotzdem gibt es da einige, nicht zu wenige,
+ die den in der Prüfung, in der Programmierprüfung muss man genau sagen, doch nicht so gut abgeschnitten
+ haben.
+ Ich nehme jetzt mal diese und habe mir die mal rausgenommen.
+ Also wir sehen hier, dass unter den Leuten, die den vollen Bonus hatten, da waren schon
+ ein paar Leute, die haben recht gut in der Anzahl jetzt.
+ Die haben dann in der Prüfung 70 Prozent, 80 Prozent, 90 Prozent, 100 Prozent der Programmierpunkte
+ erreicht.
+ Und auch die, die sagen wir mal bis zu 40 Prozent hatten, haben immer noch bestanden.
+ Das waren die Guten und da sie bei ungefähr 40 Prozent sagen wir, ist ungefähr die Bestehensgrenze.
+ Aber wir haben hier auch diese Gruppe von Leuten, diese Gruppe von Leuten, die haben in Semester
+ 100 Prozent Bonus erwirkt und dann in der Programmierprüfung haben sie 30 Prozent,
+ 20 Prozent und so weiter oder weniger an Prozentpunkten gemacht.
+ Also das ist natürlich ein bisschen besorgniserregend und Sie sehen also in der Prüfung die Grundvoraussetzung
+ ist, dass Sie den Stoff beherrschen.
+ Da kommen noch andere Faktoren dazu.
+ Vielleicht sind Sie nervös, vielleicht sind Sie gestresst, vielleicht ist irgendwas nicht
+ inoptimal.
+ Vielleicht haben Sie auch nicht gelernt, dass in der Prüfung Sie unter Zeitdruck arbeiten
+ werden.
+ Es gibt eine bestimmte Anzahl an Stunden, die wir die Prüfung abhalten lassen können,
+ nicht eben die ganze Woche, wie wir es haben.
+ Und darum haben wir dann im letzten Jahr mal angefangen, ein paar dieser Bonusaufgaben
+ mit Zeitbeschränkungen auszugeben.
+ Wir haben Ihnen freiwillig die Möglichkeit gegeben, sich einer Zeitbeschränkung zu unterwerfen.
+ Und da haben wir gesehen, dass nur noch sehr wenige Leute, die hier weniger als 40 Prozent,
+ die eben weniger als 40 Prozent, die weniger, das sind alle die Leute, die haben alle 100
+ Prozent Bonus gehabt.
+ Es gibt wenige Leute, die hatten 100 Prozent von dem Bonus und eine schlechte Leistung
+ in der Prüfung.
+ Also eine Handvoll.
+ Natürlich gibt es immer noch ein paar, kann immer noch was schief laufen.
+ Aber es ist für mich ein klares Zeichen, dass Sie wirklich die Aufgaben selber machen
+ müssen, nicht daran die ganze Woche arbeiten sollen, sondern sich selber ein bisschen Zeit
+ geben, die ganze Zeit.
+ Sie müssen sich wirklich Zeit nehmen zum Üben und auch üben mit Zeitbeschränkungen,
+ damit Sie das eben vernünftig hinbekommen.
+ Also, Bonusaufgaben sind ein Anreiz.
+ Nur die Bonusaufgaben lösen ist für mich meiner Meinung nach riskant.
+ Aber vor allen Dingen müssen Sie die Aufgaben selber lösen.
+ Wenn Ihre Kollegin die Aufgaben für Sie löst, haben Sie nichts gewonnen.
+ Da haben Sie nichts bekommen.
+ Ich sehe hier ein paar Fragen.
+ Zur Prüfung komme ich dann gleich noch drauf.
+ So, also jetzt, um diese Übungsgruppen durchzuführen, bieten wir dieses Jahr neu drei Arten von
+ Fokusgruppen an.
+ Da gibt es einmal Fokusgruppen, was das heißt, sage ich gleich, und es gibt gemischte Gruppen,
+ was das heißt, sage ich auch gleich.
+ Und dann haben wir noch dieses Jahr eine Gruppe für die Repetierenden.
+ Also, eine Fokusgruppe versucht, sich einzustellen auf Studierende ohne Vorkenntnisse und ohne
+ vorherige Programmiererfahrung, egal welcher Programmiersprache.
+ Die Fokusgruppe, wenn Sie in eine Fokusgruppe gehen, können Sie davon ausgehen, dass die
+ anderen auch keine Programmiererfahrung haben und dass Sie eben ein Umfeld finden, in dem
+ Sie hoffentlich alle gemeinsam gut programmieren lernen.
+ In der gemischten Gruppe, deswegen heißt die auch gemischte, sind alle Vorkenntnistufen.
+ Sie können, wenn Sie wollen, auch als Anfängerin oder Anfänger in eine gemischte Gruppe gehen.
+ Ich könnte noch als Experte in eine Fokusgruppe gehen, aber das würde ich nicht wissen, warum.
+ Aber in die gemischten Gruppen kann jeder rein.
+ Und dann haben wir die Repetierendengruppe und die unterscheidet sich von der anderen
+ Gruppe dadurch, dass sie einen etwas schnelleren Einstieg macht.
+ Also, die ersten vier Wochen werden wir ja relativ einfache Sachen machen.
+ Auch die Leute, die repetieren, also das heißt, die haben die Prüfung schon einmal abgelegt,
+ haben im Allgemeinen den Teil gut verstanden und darum wollen wir das für die ein bisschen
+ anders machen.
+ Wenn sich genügend Leute dafür finden, die Studenten haben mir gesagt, sie wollten das
+ und dann habe ich jetzt eine Studentin gefunden, die die Gruppe leiten kann und dann denke
+ ich mal, wird das vielleicht auch hinhauen, aber es müssen genügend Leute sein.
+ Jetzt wissen wir natürlich nicht am Anfang, wie viele Leute wollen die eine oder die andere
+ Gruppe.
+ Deswegen ist die Einschreibung heute Nachmittag und dann eben dynamisch.
+ Also ich sehe dann, was für Gruppen sie wollen.
+ Also wir haben freie Wahl, sie können wählen, was sie wollen.
+ Alle Gruppen behandeln denselben Stoff, alle Gruppen haben dieselben Aufgaben, alle Gruppen
+ haben dieselben Bonusaufgaben und so weiter.
+ Das ist alles der gleiche Inhalt.
+ Es ist nicht so, dass die gemischten Gruppen sie besser auf die Prüfung vorbereiten, dass
+ sie Fokusgruppen, das kann man nicht sagen.
+ Also einschreiben können sie heute Nachmittag, ab heute Nachmittag und wenn eben die bevorzugte
+ Art von Gruppe nicht verfügbar ist, dann warten sie bitte.
+ Ich erhöhe dann die Anzahl der Gruppen und die Anzahl der Plätze in den Gruppen, weil
+ ich eben nicht vorher weiß, das ist dieses Jahr das zweite Jahr, dass wir sowas machen,
+ da ich nicht genau weiß, wie viele Leute da hinkommen.
+ Also eben, wenn Sie als Team mit anderen Studierenden in eine Gruppe rein wollen, dann müssen Sie
+ halt zusammen zeitgleich einschreiben.
+ Und bitte, wenn es geht, bis Freitag.
+ Nachzügler sind möglich, aber besser ist, wenn wir es vorher machen.
+ Wenn Sie jetzt mit Ihren Übungsaufgaben oder Setup, irgendwas Probleme haben, ist die erste
+ Anlaufstelle das Treffen der Übungsgruppe.
+ Und wenn das nicht möglich ist, bieten wir so einen Studycenter an.
+ Da haben wir dann Coaches, die Ihnen one on one helfen können.
+ Aber der Studycenter ist kein Ersatz für die Übungsgruppe.
+ Und auf dem Web finden Sie da mehr Informationen.
+ Also normalerweise sieht das so aus, bis Mittwochmorgen publizieren wir die Praxis und später die
+ Bonusaufgaben.
+ Am Mittwoch Nachmittag erste Treffen, aber diese Woche gibt es kein Treffen.
+ Erst ab nächster Woche ist das Treffen der Übungsgruppe, da wird dann besprochen, Fragen
+ gestellt und so weiter.
+ Und am Mittwoch der Folgewoche, da müssen Sie dann die Lösungen abgeben.
+ Das machen wir in den ersten zwei Wochen, wie wir das am besten machen.
+ Und dann eben für diese Woche 9 und 11 gelten besondere Regeln, wo wir eben die Bonusaufgaben
+ publizieren, aber Sie die Antwort innerhalb einer bestimmten begrenzten Zeit abgeben müssen.
+ So, also, jetzt wie geht es weiter?
+ Nächste Vorlesung ist am Freitag, dann wieder am Dienstag.
+ Dann nächste Woche findet das erste Treffen statt.
+ Dann in der nächsten Woche eine Vorlesung im ETA R5.
+ Das ist ein Ersatz für Algorithmen und Datenstrukturen, die findet da nicht statt, damit wir hier
+ am Anfang die Programmierthemen etwas schneller durchbekommen.
+ Und dann geht es halt wieder weiter in der Woche drauf.
+ Nochmal dasselbe und später bekommen die dann Zeit von uns zurück.
+ So, und die erste Übung habe ich schon aufgeschaltet.
+ Das ist die Übung 0.
+ Wir fangen mit 0 an.
+ Es ist einrichten der Arbeitsumgebung, da gibt es keine Abgabe, sollen das nur machen,
+ damit Sie möglichst bald eben arbeiten können, sollten Sie eigentlich heute Nachmittag damit
+ anfangen, wenn Sie es nicht schon gemacht haben.
+ Wenn Sie jetzt auf Probleme stoßen, diese Woche am Mittwoch und Freitag von 4 bis 6
+ am Mittwoch und über Mittag von 11 bis 2 haben wir das Studycenter geöffnet und da
+ können Sie dann Hilfe bekommen.
+ Und dann die erste echte Übung, die gibt es dann eben halt in der nächsten Woche und
+ da werden wir da mal durchspielen, was es heißt, eine Abgabe zu machen und so weiter.
+ Und das geht dann entsprechend weiter.
+ So, das ist, was ich an administrativen, organisatorischen Sachen Ihnen erzählen wollte.
+ Jetzt sehe ich hier eine Frage.
+ Bekommen wir an der Prüfung eine schweizerische Tastatur oder dürfen wir auch eine deutsche
+ beantragen?
+ Tut mir leid.
+ Die Tastaturen sind bei uns zurzeit noch nicht im Angebot.
+ Wir können Ihnen aber die wichtigen, richtigen Tastaturen besorgen, nämlich wir können Ihnen
+ eine US-Tastatur besorgen.
+ Also in der Vergangenheit haben wir immer Leute, die eine US-Tastatur wollten, eine solche
+ besorgen können.
+ Sie dürfen keine eigene Tastatur mitbringen, ist ja denn, Sie haben einen besonderen Nachteilsausgleich
+ oder so, das muss aber früher beantragt werden.
+ Aber die Computer im Hauptgebäude sehen Sie auch demnächst, die haben die Tastaturen,
+ die Sie da brauchen und ich persönlich rate eh davon ab, umlaute, darauf komme ich später
+ nochmal, umlaute irgendwo zu verwenden.
+ Also für mich das Alphabet ist ASCII, nichts anderes.
+ Werden einige schwierige Themen in den Fokusgruppen vernachlässigt?
+ Die Antwort ist nein, es werden keine schwierigen Themen in den Fokusgruppen vernachlässigt.
+ Ganz im Gegenteil, die werden vielleicht sogar da noch gründlicher besprochen, weil eben
+ alle vielleicht damit Schwierigkeiten haben.
+ Also die Fokusgruppen sind wirklich genauso gut, ich kann Ihnen auch zeigen, dass da Leute,
+ also Assistentinnen oder Assistenten dieses Jahr im Team, die in der Vergangenheit in
+ der Fokusgruppe waren.
+ Also es ist keine, es liegt so, dass diese Leute weniger können oder weniger machen konnten.
+ So, nach den neuen ETH-Regeln haben wir jetzt Zeit für eine Pause bis Viertel nach 11.
+ Ich gucke mal nach, ob wir herausfinden können, was mit dem Livestream läuft.
+ Okay, also Pause bis Viertel nach 11.
+ Okay, da können wir jetzt anfangen.
+ Sie kennen das Konzept der Nachspielzeit von der letzten FIFA-Weltmeisterschaft in Australien
+ und Neuseeland.
+ Also wenn wir spät anfangen, dann müssen wir halt entweder Sachen wegwerfen oder nachher
+ länger bleiben.
+ Also ich habe ein paar Fragen bekommen, dachte ich, gehe ich kurz auf die ein.
+ Slides, ich weiß nicht, warum die Slides vom letzten Jahr unter diesem Link aufgeführt
+ werden.
+ Ich muss gucken, normalerweise kriegen Sie die Slides für eine Vorlesung am Abend davor.
+ Nicht absolut die richtigsten, endgültigen Slides, aber die, die ziemlich sicher dran,
+ nah dran sind.
+ Und nur am ersten Tag heute werde ich die Slides dann eben nach der Vorlesung aufs
+ Web bringen, damit Sie dann eben die dort sich angucken können, weil das heutige Thema
+ doch noch ziemlich einfach ist, dass das auch ohne zu großen Aufwand ist.
+ Gerade bei Programmbeispielen ist es eigentlich gut, wenn Sie sich das im, in den Slides Notizen
+ machen können.
+ Ich bin gefragt worden, ja, es gibt eine Prüfung und ja, die Prüfung enthält auch
+ ein Programmierkomponente.
+ Ein Drittel Ihrer Zeit und Punkte werden Sie schriftliche Aufgaben lösen auf Papier und
+ die anderen zwei Drittel der Zeit werden Sie Programmieraufgaben lösen, weil wir denken,
+ wenn wir Ihnen beibringen, was zu programmieren, dann wollen wir auch sehen, ob Sie das wirklich
+ kennen.
+ Wenn Sie zu einem Arzt gehen, dann hoffen Sie, dass Sie nicht der erste Patient sind,
+ sondern dass der auch schon mal woanders das, was er jetzt macht, oder die Ärztin was
+ macht, eben unter Beweis stellt.
+ Daher, es gibt eine Prüfung und sie enthält eine Programmierkomponente.
+ Darüber reden wir später noch.
+ Der Livestream sollte jetzt funktionieren.
+ Ich hoffe, dass der Fall.
+ Ich habe eine Frage für Sie.
+ Welche Version von Java lernen wir?
+ Also Sie lernen hier keine Version von Java.
+ Wir benutzen, wir benutzen Java, um Programmierkonzepte zu darzustellen und zu üben.
+ Und wir benutzen immer die letzte langzeitstabile Version, die Sie auch auf allen anderen Systemen
+ hier, die die Informatikdienste betreuen, finden.
+ Das ist zurzeit Version 17.
+ Aber wenn Sie mich fragen, also de facto 11 ist gut, also alles, wir benutzen eigentlich
+ selten ein Konzept, das nicht schon in 11 drin war, weil, wie gesagt, wir können nicht
+ alles machen.
+ Und weil die Prüfung eine Programmierprüfung ist, dann brauchen Sie dazu ein Keyboard mit
+ 200 Leuten im Raum.
+ Können wir nicht Voice-Input zulassen.
+ Wenn Sie da ein besonderes Keyboard brauchen, müssen Sie das bei der Stelle Studium und
+ Behinderung beantragen.
+ Und mich wurde auch gefragt über das IDE.
+ Also Sie können machen, was Sie wollen.
+ Wir benutzen Eclipse.
+ Das hat in der Vergangenheit immer gut funktioniert.
+ Es erlaubt es uns auch von da, die Aufgaben abzugeben.
+ Aber letztlich ist es ihr, ist das die Aufgabenabgabe ist da integriert.
+ Aber Sie können das auch anders machen, wenn Sie wollen.
+ Uns interessiert nicht, wie Sie die Programme schreiben.
+ Sie können die auch von mir auf Stein erst mal einkritzen und dann, also Ihre Sache.
+ So, jetzt kommt dann eine akustische Frage.
+ Die Hörsäle sind eigentlich nicht darauf gebaut, dass Sie zu mir reden, sondern ich
+ zu Ihnen rede.
+ Dann machen Sie es uns mal trotzdem.
+ Deswegen ist der Kurskennel gut.
+ Fangen Sie mal an.
+ Ich habe das eben gesagt.
+ Es steht Ihnen ein Standard Keyboard zur Verfügung, das oben im Hauptgebäude in den Computerräumen
+ auch eingesetzt ist.
+ Das können Sie da haben.
+ Und wir haben uns in der Vergangenheit bemüht, es ist kein Versprechen, bemüht, ein US-Keyboard
+ zur Verfügung zu stellen.
+ Es ist kein Tippwettbewerb.
+ Es geht darum, Konzepte zu erkennen, Probleme zu zerlegen.
+ Die Keyboard hat da eigentlich nie einen wirklichen Einfluss auf die Güte des Programms.
+ Ja, natürlich.
+ Sie haben ein System mit Linux und Sie haben dann eben das IDE mit all der Java-Dokumentation.
+ Wenn wir dieses Jahr noch mehr Dokumentation zur Verfügung stellen, alle Features von Eclipse
+ wie Code Completion und Suggestion und alles ist da drin.
+ Der Sinn der Sache ist es nicht, Ihre Fähigkeiten im Umgang mit dem Computer zu testen, sondern
+ Sie sollen ein Programm entwickeln und das zerlegen können.
+ Und wenn Sie die Übungsaufgaben und die Bonusaufgaben machen, dann haben Sie im Verlauf des Semesters
+ genügend Gelegenheit, mit diesem System zu üben.
+ In der Prüfung gibt es eben auch das Eclipse-System.
+ Wenn Sie ein anderes System bevorzugen, ist das Ihre Sache, aber wir können leider nicht
+ in der Prüfung jedem Studierenden oder jeder Studierenden ein eigenes System zur Verfügung
+ stellen.
+ Okay?
+ Okay, andere Fragen noch?
+ Am besten der Vorteil von Fragen über den Kurs-Channel ist, dass ich sie auch nachher
+ beantworten kann.
+ Aber eben gerade wenn es noch so Code-Beispiele sind, ist es viel einfacher für mich zu sehen,
+ dass Sie fragen wollen, als wenn Sie es mir akustisch hier mitteilen müssen.
+ Okay, keine weiteren Fragen?
+ Gut, das finde ich gut.
+ Dann können wir nämlich jetzt auch das machen, weswegen wir eigentlich hier sind, nämlich
+ uns inhaltlich mit dem Thema beschäftigen.
+ Also, hatten gesagt, dass eben eine Programmiersprache, die gibt uns vor, wie wir Lösungen eines
+ Problems beschreiben können.
+ Und natürlich, solche Programmiersprachen haben dann mehr Einschränkungen in der Sprache,
+ als sie es zum Beispiel im Deutschen oder Englischen haben.
+ Das heißt, auf der einen Seite machen dann mehr Einschränkungen die Kommunikation leichter,
+ weil es gibt weniger Argumentationen, aber auch etwas schwieriger, weil Sie müssen halt
+ die Ausdrucksweise finden, die von der Programmiersprache unterstützt wird.
+ Und die genaue Beschreibung einer Programmiersprache ist ein wichtiges Thema, weil die muss ja genau
+ sein, sodass sowohl die Programmiererin als auch der Computer sich darüber einig sind,
+ was jetzt gesagt werden kann und auch was das, was gesagt wird, eigentlich bedeutet.
+ Und diese Programmiersprachen bestimmen dann letztlich die Anweisungen, die ein Programm
+ enthalten kann.
+ Und ein einfaches Beispiel ist, dass sogar die Programmiersprache auch sagt, was für
+ Formate, für Inputzahlen zum Beispiel erlaubt sind oder was für Wertebereiche erlaubt sind,
+ mit denen ihr Programm arbeiten kann.
+ Sie als Programmierinnen und Programmierer haben die Verantwortung dafür zu sorgen,
+ dass dieses Programm, das Sie schreiben, sich innerhalb dieses Wertebereichs aufhält.
+ Zum Beispiel stellen Sie sich vor, Sie wollen ein Programm schreiben, das für jeden Stellungspflichtigen
+ die Körpergröße einlässt.
+ Sowas ist nicht rein akademisch, gibt da auch eine Studie, wo man eben gesehen hat, wie
+ sich die Leute in den verschiedenen Kantonen unterscheiden und über Zeit.
+ Und wenn man das ein einfaches Problem, und trotzdem ist ja die Frage, wird die Körpergröße
+ in Zentimeter angegeben oder als Meter oder wenn es Meter sind, dann gibt es ja auch wieder
+ die Möglichkeit, das mit Dezimalpunkt oder Komma zu machen oder vielleicht sogar in Millimeter.
+ Und welche Genauigkeit, sind die alle auf vier Ziffern genau oder gibt es da auch Fälle,
+ hat da einer vielleicht 18 Dezimeter, rundet das einfach auf die Zehnergruppe ab.
+ Und sind das immer dieselbe Genauigkeit für alle, vielleicht ist für den einen geschrieben
+ 178 Zentimeter und für den anderen 178.0.
+ Ist das der Fall, weil nicht gerundet wurde oder wurden nur drei Ziffern gemessen oder
+ also es ist wirklich ein ganz einfaches Problem.
+ Und auch dann, wenn wir uns entscheiden sollten, was wir in Millimeter als Größen anzunehmen,
+ wird das in so einer wissenschaftlichen Schreibweise geschrieben oder so oder mit so einem Hochkomma,
+ auch da gibt es wieder Möglichkeiten.
+ Und das ist wirklich ein ganz einfaches Problem.
+ Und da haben Sie sofort viele, viele Optionen, was erlaubt sein kann oder was vorgeschrieben
+ ist und so weiter.
+ Und wir müssten jetzt einen Weg suchen, einen Weg, wie wir solche erlaubten Formate beschreiben
+ können.
+ Und das sind zwei wichtige Anforderungen an so eine Beschreibung.
+ Es muss präzise sein und die Beschreibung muss präzise sein und sie muss verständlich
+ sein.
+ Präzise, damit wir uns alle einig sind, was wir da sagen und verständlich, damit
+ sowohl Sie als Leserin als auch der Computer wissen, um was es dabei geht.
+ So, diese erlaubten Werte mit dem eben festgelegten Format oder den Formaten sind letztlich auch
+ wieder eine Sprache, eine sehr einfache Sprache, wenn Sie so wollen, eine Sprache, in der nur
+ Zahlen auftreten.
+ Und die müssen wir jetzt irgendwie beschreiben.
+ Und das könnten wir durch Text machen, also durch Deutsch oder Englisch oder sonstigen
+ Text.
+ Aber wenn wir das machen, hat die Vergangenheit gezeigt, dass Missverständnisse möglich
+ sind.
+ Ich gebe da leider traurige Beispiele, wo die einen meinten, die Zahlen sähen so aus,
+ die anderen anders und dann war die Rakete weg.
+ Also sowas ist wirklich ärgerlich.
+ Und darum wollen wir eine formale Beschreibung.
+ Die hat nämlich dann den Vorteil, dass sie automatisch überprüft werden kann.
+ Die ist viel viel besser als irgendeine Textbeschreibung.
+ Und dieses Problem, dass wir eben so ein Format beschreiben wollen oder dass wir die
+ Programmiersprache beschreiben wollen, das tritt häufiger aus.
+ Und idealerweise gibt es eben einen Formalismus, der Formalismus ist halt eine Menge an Regeln,
+ gibt es einen Formalismus, mit dem wir solche Sprachen beschreiben können.
+ Und gibt es da einen, der sich sehr eingebürgert hat.
+ Das ist eben diese E, B, N, F Notation zur Beschreibung von Sprachen.
+ Und es geht auch für Programmiersprachen, aber damit machen wir nicht.
+ Das machen wir nicht heute am ersten Tag.
+ Diese drei, diese vier Buchstaben, die bedeuten das Folgende.
+ Das E steht für erweitert, extended.
+ Das ganz am Ende sage ich Ihnen, warum das extended ist.
+ Extended, Bacchus, Naur oder Bacchus-Normalform.
+ Bacchus und Naur waren zwei Leute, die in der frühen Entwicklung der Programmiersprachen
+ mitgemacht haben und da viel gemacht haben.
+ Der Bacchus, der war in den USA und hat da an einer Programmiersprache namens Fortran
+ gearbeitet. Das ist eine Formulatranslatorsprache.
+ Und der Naur, der war hier in Europa und der hat an einer Programmiersprache namens Algolle,
+ ist kein Akkonym, gearbeitet.
+ Der Naur war ein sehr zurückhaltender Mensch und der bevorzugte, dass man das Normal nennt,
+ also gar nicht an seinen Namen denkt.
+ Und dann F steht für Form.
+ Also die E, B, N, F Notation ist eben eine Notation, die die Syntax einer Sprache beschreibt.
+ Die sagt nichts über die Bedeutung.
+ Wir sehen damit irgendwie Zahlen geschrieben werden, aber da sagt das nichts, ob das jetzt
+ Dollarbeträge oder Frankenbeträge oder Körpergrößen oder irgendwas ist.
+ Das ist nur ein Weg für uns, das Format zu beschreiben.
+ Und die, die ein bisschen gelangweilt sind, können sich überlegen, während ich die Sprache
+ einführe, was man eigentlich alles mit dieser Sprache beschreiben kann.
+ So, jetzt warum machen wir E, B, N, F hier?
+ Einmal, das ist ein guter Weg für uns, praktische Eigenschaften dieses von Sprachen eben anschaulich
+ zu machen und auch zu lernen, wie man mit diesen Sprachen eben arbeitet und umgeht.
+ Und da kommen gleich ein paar mehr Beispiele.
+ Denn jede dieser E, B, N, F Beschreibungen hat zwei Seiten.
+ Und zwar einmal liefert so eine Beschreibung eine Menge von Symbolen, die dieser E, B,
+ N, F Beschreibung genügen, also eine Menge.
+ Symbol sind eben Zeichen oder Zeichenfolgen, können wir jetzt mal heute am ersten Tag so
+ definieren.
+ Diese E, B, N, F Beschreibung liefert so eine Menge von Symbolen, die eben nach dieser
+ Beschreibung gültig sind oder der Beschreibung genügen.
+ Und das heißt, während wir diese Beschreibung machen, programmieren wir in ganz kleinen.
+ Wir programmieren mit den Optionen dieser E, B, N, F Regeln und beschreiben so mögliche
+ Sprachen.
+ Und zum anderen erlaubt es uns, diese Beschreibung zu prüfen, ob ein gegebenes Symbol dieser
+ E, B, N, F Beschreibung genügt oder nicht.
+ Also wir haben einmal die Möglichkeit der Konstruktion, wir haben einen Weg zu beschreiben,
+ was für Symbole in dieser Sprache sind und wir haben die Möglichkeit der Verifikation.
+ Also wir wollen gucken, ob das Symbol, das ich bekomme, der Beschreibung genügt oder
+ nicht.
+ Dann geht entweder Daumen rauf oder Daumen runter.
+ Und das ist der Grund, warum so eine E, B, N, F Beschreibung für uns sehr praktisch
+ ist.
+ So und in der heutigen und den nächsten zwei, drei Vorlesungen lernen wir jetzt die vier
+ elementaren Ausdrucksmöglichkeiten in E, B, N, F kennen.
+ Und dann werden wir lernen, wie man so eine E, B, N, F Beschreibung liest und versteht.
+ Und dann lernt man, das ist der Teil des Schreibens dann, ja, und dann kommt der zweite Teil, die
+ Verifikation.
+ Dann lernen wir zu entscheiden, ob ein Symbol legal ist.
+ Also ob ein Symbol für eine gegeben E, B, N, F Beschreibung eben genügt, der genügt
+ oder nicht genügt.
+ So und wie jetzt, was sind diese vier elementaren Ausdrucksmöglichkeiten?
+ Das sind vier Ausdrucksmöglichkeiten oder Kontrollforms auf Englisch, die Sie auch in
+ Java wiederfinden werden.
+ Also die Idee, die Sie da, die wir hier darstellen, die werden Sie auch in der Programmiersprache
+ Java wiederfinden.
+ Natürlich sehen die da ein bisschen anders aus, aber die Ideen treten da auch auf.
+ Also E, B, N, F ist wirklich eine Programmierung im ganz Kleinen, ja, weil wir können wirklich
+ nur Symbole beschreiben und sonst eben nichts dahinter und können dann eben sagen, ob diese
+ Symbole in diese Sprache, die von der Programmiersprache oder von dieser Beschreibung beschrieben
+ wird, ob die da drinnen ist oder nicht.
+ So, also vier habe ich gesagt gibt es und die ersten drei haben Sie sicher schon mal gesehen
+ und die vierte wahrscheinlich auch.
+ Also die erste ist die Aufreihung, erzähle ich gleich, was das ist.
+ Dann kommt die Entscheidung, die Möglichkeit, eine Auswahl zu treffen oder eine Option
+ zu wählen.
+ Dann gibt es die Wiederholung, also die Möglichkeit, etwas nochmal wieder zu verwenden und dann
+ gibt es die Rekursion, eine weitere Form der Wiederholung.
+ So, also diese Beschreibungen, die haben dann einen Namen, dann sagen wir, ach die E, B,
+ N, F Beschreibung für dieses Statement oder die E, B, N, F Beschreibung für diese Zahlen
+ oder die E, B, N, F Beschreibung für irgendwas.
+ Und dieser Name erlaubt es uns dann, das, was wir einmal festgelegt haben, wieder zu
+ verwenden.
+ Wir können also einmal das, was wir eben geschrieben haben, wieder verwenden, um kompliziertere
+ Beschreibungen zu erstellen.
+ Also wir können den Namen nehmen und sagen, wir haben hier ein Symbol und wir möchten
+ gerne gucken, ob dieses Symbol dieser Beschreibung genügt.
+ Also das Erstellen der E, B, N, F Beschreibung und das Programmieren in Java sind also ähnlich.
+ In allen Fällen überlegen wir uns, was müssen wir machen, um einen gewünschten Effekt zu
+ haben, also um gewisse Werte berechnet zu bekommen später oder hier jetzt einfach,
+ um die Anwesenheit bestimmter Strings in einer Sprache zu erlauben.
+ Und E, B, N, F ist eben, das ist das Gute, eine formale Beschreibung, die erfreulicherweise
+ eben präzise und verständlich ist.
+ Wobei eben für die, die schon länger im Geschäft sind, das präzise ist einfach, das hier ist
+ das Problem, etwas zu haben, das eben verständlich ist, das andere Leute und auch das System selber
+ eben entsprechend zulässt.
+ Also, fangen wir also die E, B, N, F Regeln an.
+ So eine E, B, N, F Beschreibung besteht also aus einer Menge von E, B, N, F Regeln.
+ So Menge kennen Sie aus der, aus der, aus Ihrer Vorbildung, ist eine Ansammlung, wo
+ die, in der die Reihenfolge der Regeln unwichtig ist.
+ Also die Menge enthält eben verschiedene E, B, N, F Regeln und die Reihenfolge der Regeln
+ ist unwichtig.
+ Es gibt ein bisschen bevorzugte Reihenfolge, aber letztlich ist die Reihenfolge unwichtig.
+ Und jeder Regel gibt an, welche Symbole erlaubt sind.
+ Gegebenfalls natürlich unter Zuhilfenahme anderer Regeln.
+ Also kann es eine Regel geben, die für Ziffern, und diese Regel würde eben die Ziffer 0,
+ 1, 2, 3 und so weiter zulassen oder auch nur 0 und 1 oder auch 9, a, b, c, d, e, f und
+ so weiter.
+ Wir würden sie auch zulassen.
+ Das hängt davon ab, mit was für Zahlen wir uns später beschäftigen wollen.
+ Das entscheidet dann, was die Ziffern sind.
+ Und diese E, B, N, F Regeln, die erlauben dann oder beschreiben, welche Symbole wir da eben
+ verwenden können.
+ Und alle Symbole sind erlaubt, wenn sie den Riegeln entsprechend gebildet sind.
+ Und das, was das heißt, werden wir hier noch genauer präzisieren.
+ Zum Beispiel, wenn ich Regeln für Ziffern habe, könnte ich auch dann eine Regel für
+ zweistellige positive ganze Zahlen erstellen, indem ich dann eben auch mit der Regel der
+ Ziffern weitermache und daraus eben Regeln für Zahlen erstelle.
+ So, also wie sieht jetzt so eine E, B, N, F Regel aus?
+ Sie hat drei Bestandteile.
+ Da ist eine linke Seite, das ist diese hier, links muss ich mal aufpassen, eine rechte
+ Seite, das ist diese.
+ Und dieses Symbol dazwischen, das ist so ein nach links zeigender Pfeil.
+ Und diesen Pfeil sprechen wir aus, als ist definiert als.
+ Also, sie haben da eben die linke Seite, ist definiert als die rechte Seite.
+ So ist die, so sieht eine E, B, N, F Regel aus.
+ So, und auf der linken Seite, also die, da ist nur ein Wort, das ist erfahrungs-, einbahrungsgemäß
+ kohosiv und kleingeschrieben.
+ Was man macht, wenn man keine kohosive Handschrift eingelernt hat, dann habe ich nachher eine
+ Aushilfsmöglichkeit da.
+ Und das ist der Name der E, B, N, F Regel.
+ Das ist also eine Regel und sie hat diesen Namen und das ist der Name, der durch dieses
+ Wort gegeben ist.
+ Und natürlich, wenn ich so eine Menge habe, dann sollte jeder Name nur einmal auf der
+ linken Seite auftreten, sonst haut das Ganze nicht hin.
+ So, jetzt, rechte Seite ist das, was der interessantere Teil ist, nämlich das ist die genaue Beschreibung
+ des Namens, für den Namen, nicht der, für den Namen, der auf der linken Seite auftritt.
+ Und das ist jetzt die, wird also die Beschreibung geliefert und die kann verschiedene Sachen
+ enthalten.
+ Also im einfachsten Fall enthält die einfach Zeichen.
+ Und wenn da ein Zeichen ist, dann erwarten wir dieses Zeichen und kein anderes.
+ Wenn da also eine Null steht, dann erwarten wir eine Null.
+ Wenn da eine Eins steht, erwarten wir eine Eins.
+ Wenn da der String, wenn da steht Hello, dann erwarten wir Hello.
+ H, E, L, L, O.
+ So, das ist das Zeichen, das wir erwarten.
+ Also im einfachsten Fall steht dann eben da ein Zeichen.
+ Zunächst habe ich eine Regel hier, ein Beispiel, Menge 1, das ist die Menge, Ziffer 0, die
+ lässt eben nur eine Ziffer zu und das ist eben die Null.
+ Und eine andere Menge, M2, die lässt ein anderes Zeichen zu, nämlich die Ziffer 1.
+ Und mehr gibt es ja auch gar nicht.
+ Und natürlich kann ich die jetzt auch beide in eine Menge stecken, in der Menge M3, da
+ habe ich die jetzt zusammen und das ist also eine Menge, die lässt sowohl eine Null als
+ auch eine Eins zu.
+ Das ist also der allereinfachste Fall einer ebnf-Regel.
+ So, jetzt, also Zeichen, das war der einfachste Fall.
+ Jetzt interessant wird es, dass diese Regel auf der rechten Seite auch Namen enthalten
+ kann, nämlich Namen von anderen ebnf-Regeln, die entweder in dieser Menge auftreten, da
+ müssen wir vielleicht sind sie schon aufgetreten, vielleicht treten sie noch auf, spielt keine
+ Rolle, da es eine Menge ist, können die ja in beliebiger Reihenfolge erscheinen.
+ Das sind also Namen von ebnf-Regeln.
+ Also kann ich jetzt zum Beispiel hingehen und sagen, aha, ich könnte hier den Namen
+ dieser Regel verwenden, Ziffer 0, ja Ziffer 0 habe ich gesehen, es gibt hier eine Regel
+ mit dem Namen Ziffer 0 und die würde eine Null liefern.
+ Also für diese Menge hier keine sehr interessante Menge, aber für heute vielleicht gar nicht,
+ sorry, für heute nicht ganz so schlecht.
+ Die Zahl 0 besteht eben, die lässt nur diese eine Ziffer 0 zu.
+ Also, erste Möglichkeit ist, auf der rechten Seite tritt ein Zeichen auf, zweite Möglichkeit
+ ist, auf der rechten Seite tritt ein der Name einer existierenden Regel auf.
+ Dritte Möglichkeit, und jetzt wird es interessant, hoffe ich vielleicht, Kombinationen von Kontrollelementen.
+ Also von den vier Kontrollelementen, die ich einmal erwähnte, die werden kombiniert und
+ damit kann ich dann eben kompliziertere Sachen oder interessanter Sachen erstellen.
+ Und wie würde ich das jetzt machen?
+ Also die habe ich dann eben halt hier auf der rechten Seite und da kommt jetzt ein Beispiel.
+ Jetzt eine Frage, bevor ich zum Beispiel gehe, die in der Vergangenheit öfter gestellt
+ wurde ist, müssen wir eigentlich ein Alphabet angeben oder kann ich einfach so, wie ich es
+ hier vorne gemacht habe, einfach hier 0, 1 und so weiter angeben?
+ Und die Antwort ist, eigentlich brauchen wir kein Alphabet anzugeben.
+ Es ist eigentlich nicht zwingend, weil das Alphabet, wenn wir sowas wollen, wird bestimmt
+ durch die Zeichen, die als Zeichen auf der rechten Seite einer Regel auftreten.
+ Wenn die Regel eben nur 0, 1 hat, dann ist das eben unser Alphabet.
+ Oder wenn die Regel eben kleine Buchstaben hat, dann sind das eben die Zeichen unseres
+ Alphabets.
+ Manche Leute fühlen sich besser, wenn sie sagen, hier für diese Regel oder für diese
+ Beschreibung kommen nur diese Zeichen vor.
+ Ist aber nicht zwingend vorgeschrieben.
+ Und der zweite Punkt ist, wie sieht es denn aus mit Zwischenräumen?
+ Zwischenräume gibt es eigentlich nicht.
+ Wenn ich hier die 0 und die 1 habe, die können so nebeneinander stehen oder die können ganz
+ dicht nebeneinander stehen oder die können ganz weit auseinander stehen.
+ Das ist für mich in dieser Welt alles immer ein und dasselbe.
+ Zwischenräume gibt es nicht.
+ Wenn Sie einen Zwischenraum wollen, kann ja sein, dass Sie darauf Wert legen, dass Sie
+ einen Zwischenraum verwenden, dann müssen Sie den selber definieren.
+ Dann müssten Sie irgendeine Regel haben.
+ Zwischenraum, ja jetzt sehen Sie schon mein kursives Schreiben ist leider nicht sehr gut.
+ Zwischenraum ist definiert als, ja so und wie zeigen wir den?
+ Eine Konvention ist, dass wir dann sowas zeichnen und dann meinen wir, das ist ein Zwischenraum.
+ Aber es gibt auch andere Möglichkeiten, den zu zeigen und es gibt auch andere Möglichkeiten,
+ wir sagen Tab oder andere Linefeed und so weiter, ist für uns eigentlich im Allgemeinen kein
+ Thema.
+ Wenn wir Zwischenräume bräuchten oder brauchen, dann werden wir irgendwie definieren, dass
+ es jetzt hier einen Zwischenraum gibt.
+ Aber für das, was wir jetzt erstmal machen am Anfang, ist das eigentlich gar nicht mal
+ nötig.
+ So, das sehen Sie hier unten.
+ Jetzt wollte ich das Beispiel Zwischenraum schreiben.
+ Was mache ich denn da?
+ Weil wenn ich jetzt Handschrift machen sollte, wäre das schlimm.
+ Darum haben sich zwei Konventionen eingebürgert.
+ Also die eine ist eben, klar im Normalfall sollten wir eigentlich alles mit Kleinbuchstaben
+ machen.
+ Die andere Möglichkeit ist eben hier solche eckigen Klammern zu verwenden und auf diese
+ Weise zu sagen, hier Spitze klammern, zu sagen, das sollte ja eigentlich kursiv sein.
+ Und das ist dann praktisch der Weg, wie ich zeigen kann, hier ist eine ebnf-Regel für
+ Digit 9.
+ Das ist also der Weg, das zu machen.
+ Mich werden Sie meistens, wenn ich von der Hand schreiben muss, werde ich eigentlich das
+ so machen, weil da ist es für mich am einfachsten, aber das ist nicht zwingend und es gibt auch
+ noch andere Möglichkeiten, aber dies ist die Hauptmöglichkeit, die am einfachsten funktioniert.
+ Also, ich hatte gesagt, wir haben auf der rechten Seite eben entweder einen Zeichen, entweder
+ den Namen einer Regel oder eben eine Kombination der Formen, die in ebnf zugelassen sind.
+ Und diese vier Möglichkeiten sind eben Aufreihe, Entscheidung, Wiederholung, Rekursion.
+ Mit denen können wir unsere ebnf rechten Seiten definieren.
+ Und die finden Sie auch in Java.
+ Und da wir noch nicht die Details besprochen haben, kann ich die Frage, wie man das genau
+ in der Programmierung von Java anwendet, erst später beantworten.
+ So, fangen wir mit der einfachsten Form der Kontrollformen an, der Aufreihung, der Sequenz.
+ Das ist nichts anderes als eine Folge von Zeichen.
+ Das können also Buchstaben sein oder Ziffern sein oder irgendwas.
+ Und die werden bei uns von links nach rechts gelesen.
+ Das ist bei uns die hier übliche Form der Leserichtung.
+ Und daher ist dann die Reihenfolge der Zeichen wichtig.
+ Also, ein A gefolgt von einem B ist etwas anderes als ein B gefolgt von einem A.
+ Und ein einfaches Beispiel wäre jetzt hier in der verschiedenen Beschreibungen, die alle
+ dasselbe Zeichen ergeben.
+ Also fangen wir mal an mit der hier, diese hier Raum 1.
+ Raum 1 ist Buchstabe D gefolgt von Buchstabe 2, gefolgt von Buchstabe 8.
+ Buchstabe 8 ist der, Buchstabe 2 ist der, Buchstabe D ist der.
+ Also das ergäbe D2/8.
+ Und hier haben wir das besser gemacht.
+ Hier haben wir nämlich das gemacht, was eigentlich die allgemeine Konvention ist, dass wir die
+ Regel, die der Beschreibung den Namen gibt, ans Ende setzen.
+ Also die Beschreibung heißt die Raum 1 Beschreibung und die hat eben diese drei einfachen Regeln,
+ die die Buchstaben D2 und 8 definieren.
+ Und dann haben wir eine Kombination, wo wir die drei hintereinander reihen und so bekommen
+ wir dann eben D2/8.
+ Und das ist ein und dasselbe.
+ Und können natürlich auch die Reihenfolge der Regeln ändern, ist nicht unbedingt, hat
+ keinen Einfluss auf das, was rauskommt.
+ Oder in diesem einfachen Fall können wir sagen, hier geben wir doch gleich den Raum an, in
+ dem wir diese Vorlesung geben.
+ Alle vier Beschreibungen liefern dasselbe Ergebnis.
+ So, also damit haben wir schon die erste Sache Aufreihung hinter uns.
+ Jetzt gibt es die Auswahl.
+ Die Auswahl erlaubt es uns, aus verschiedenen Alternativen eine auszuwählen.
+ Die Reihenfolge der Alternativen ist auch wieder unwichtig.
+ Also welcher Reihenfolge sie schreiben, spielt gar keine Rolle.
+ Und diese Alternativen werden durch diesen senkrechten Strich, den Stroke, getrennt.
+ Also wenn ich hier, hier habe ich eine Regel für Digit und Digit gibt uns die Möglichkeit
+ auszuwählen aus diesen zehn auf der rechten Seite erscheinenden Alternativen.
+ Entweder eine 1 oder eine 2 oder eine 3 und so weiter.
+ Und für jede dieser Alternativen gelten jetzt wieder dieselben Regeln, die für die rechte
+ Seite einer ebnf-Regel galten.
+ Also die Alternativen folgen den Regeln, die für die rechte Seite galten.
+ Und hier haben wir eben die 1, das ist nichts anderes als ein einfaches Zeichen.
+ Hatten die gesagt, eine Möglichkeit für die rechte Seite ist, dass eben ein einfaches
+ Zeichen angegeben wird.
+ Oder die 6 ist auch wieder ein einfaches Zeichen.
+ Oder hier habe ich eine Aufreihung auf der rechten Seite.
+ Hier habe ich als eine Alternative den E12, ich hoffe, Sie sind auch mit dabei, und den
+ 8D28 als Raum, in dem Sie die Sache, diese Vorlesung verfolgen können.
+ Und Sie können auch genauso gut die natürlich anders gruppieren.
+ Wir könnten da sagen, wir haben hier einfach nur einen Raum und Raum, gibt es zwei Alternativen.
+ Die eine ist Raum 1 oder die andere ist Raum 2 und Raum 1 und Raum 2 sind dementsprechend
+ beschrieben und dann kann man hier aus diesen Regeln die genauen Raumnummern erstellen.
+ So, jetzt wenn wir schon die Möglichkeit haben, Alternativen und Aufreihung zu kombinieren,
+ gibt es natürlich die Frage, was mache ich denn, wenn ich hier sowas sehe?
+ A, B, mit A und B sind jetzt B und C, seien also die Zeichen, mit denen wir arbeiten wollen,
+ für die A, B oder Struck C.
+ Was ist das?
+ Heißt das jetzt, dass wir die Auswahl haben zwischen A, B und C?
+ Oder haben wir eine Auswahl zu machen zwischen A gefolgt von C oder A gefolgt von B?
+ Also, dass sich die Auswahl auf B und C beschränkt.
+ Und um Unklarheiten zu vermeiden, wir wollen ja schließlich verständlich sein, um Unklarheiten
+ zu vermeiden, verwenden wir Klammern.
+ Das ist etwas abweichend von der Konvention, die alle Leute verwenden.
+ Wir könnten es auch ohne Klammern machen, aber es ist einfacher mit Klammern und darum
+ benutzen wir Klammern, um zu unterscheiden, ob wir das meinen.
+ In dem Fall hätten wir also hier diesen Fall, dass wir in A gefolgt von entweder B oder
+ C oder ob wir im zweiten Fall A, B oder C haben wollen.
+ Also die Möglichkeit, wir haben also entweder A gefolgt von B oder ein C alleine.
+ Mit Klammern wissen wir sofort, um was es geht, haben wir Klarheit, gibt es keine Schwierigkeiten.
+ So, also, diese haben wir also die Alternativen gesehen.
+ Jetzt werden die Alternativen oft verbunden mit einer Möglichkeit, eine Option zu wählen.
+ Eine Option, die wird in eckige Klammern, also ich meine hier diese eckigen Klammern,
+ nicht die Spitzen, sondern die eckigen Klammern gesetzt, die Square Brackets.
+ Und diese eckigen Klammern, die zeigen an, dass etwas, was gewählt werden kann, aber
+ nicht gewählt werden muss.
+ Also zum Beispiel meine Initialen, je nachdem, wo ich bin und wie ich gelaunt bin, benutze
+ ich entweder alle drei, dann wäre das eben TRG oder ich benutze nur erste und zweite,
+ dann wäre es TG.
+ Und wie gesagt, Zwischenräume spielen bei uns jetzt ja mal keine Rolle.
+ Oder bei Räumen, wir haben immer, wir haben den Raum im ML und danach kommt eben entweder
+ D28 oder E12.
+ Das sind die beiden Raumbeschreibungen, die wir durch diese Regel zulassen.
+ Oder eben unsere Zahlen sehen so aus, dass da am Anfang einmal die Ziffer 0, dann das
+ X, dann nochmal eine 0 steht und dass dann irgendeine dieser folgenden Zeichen da steht.
+ So, was immer ich in diesen eckigen Klammern habe, ähnlich wie vorher, muss den Regeln,
+ also was immer ich da drin stehen habe, muss den Regeln für die rechte Seite folgen.
+ Also es kann sein entweder ein Zeichen oder eine Name einer Regel oder eine Kombination
+ von anderen Formen, also wieder eine Kombination von den Möglichkeiten, die ich hier gerade
+ aufzähle.
+ Das, was in diesen eckigen Klammern steht, muss diesen Regeln folgen.
+ Und in der Praxis finden Sie eben, deswegen führe ich die beiden gemeinsam ein, Auswahl
+ und Option zusammen, wenn die kombiniert eingesetzt werden.
+ Also ich habe zum Beispiel hier eine Regel, die heißt Digit und die hat, die erlaubt es
+ mir, die Zahlen, die Ziffern, nicht Zahlen, Ziffern, Entschuldigung, die Ziffern, die
+ wir normalerweise im Zähnersystem hier bei uns verwenden, anzugeben.
+ Und da habe ich eine Regel, die heißt Vorzeichen und die erlaubt mir die Auswahl aus Plus oder
+ Minus.
+ Und auch, weil es eben Option ist, kann ich es auch ganz weglassen, weil ich meine, es
+ ist ja eine Option, ich muss das nicht wählen.
+ Und die Konvention, die wir haben, ist, dass wenn kein Vorzeichen da ist, dann nehmen wir
+ an, dass es sicher eine positive Zahl handelt.
+ Und jetzt habe ich dann die Regel für Zahl.
+ Die Regel für Zahl besteht eben aus einer Aufreihung zweier anderer Regeln, der Vorzeichenregel
+ gefolgt von der Digitregel.
+ Und das ist meine einfache Regel für Zahl.
+ Und dann ist 1 eine Zahl, weil 1, Aha, Vorzeichen gar nicht gewählt.
+ Und dann hat man da die 1 ausgewählt.
+ Oder Plus 2, da ist das Vorzeichen Plus gewählt.
+ Und dann die Ziffer 2 oder Minus 3 oder Plus 0 ist hier auch erlaubt, weil ich habe hier
+ das Vorzeichen ausgewählt, die Plus und dann die 0.
+ Ist bei uns jetzt hier erlaubt.
+ Jetzt, wenn wir das weitermachen, müssen wir hin und wieder eben sagen, ha, hier haben
+ wir eine Option gehabt, aber wir haben die Option gar nicht genommen.
+ Wir haben das gar nicht ausgewählt.
+ Und das wird dann interessant, wenn wir mal zeigen wollen, dass ein Symbol legal ist.
+ Dann wollen wir sagen, okay, dieses Symbol ist legal, weil mit dieser Folge von ebnf-Regeln
+ können wir dieses Symbol produzieren.
+ Und dann muss man sagen, jetzt nehme ich die Regel und dann sind Sachen weg.
+ Und darum verwenden wir, weil man das nicht so schlecht sieht, dieses griechische Zeichen,
+ Epsilon wird das ausgesprochen, das ist unsere Kurzform, um zu sagen, hier ist eine leere
+ Zeichenfolge, hier ist nichts.
+ Und dieses erscheint natürlich daher nicht in Symbolen.
+ Wenn wir da in Symbolen was machen wollten, müssten wir uns was anderes einfallen lassen.
+ Das also ist der Weg, wie wir ausdrücken.
+ Jetzt jemand bemerkt, bei Digit können wir aber nur einzahlige Zahlen dargestellt werden.
+ Und die Antwort ist richtig, weil wir sind hier in der Einführungsvorlesung.
+ Und daher machen wir erst mal nur einfache Sachen und wir sehen dann ein paar Slides weiter,
+ wie wir mehrzifferige Zahlen auch darstellen können.
+ Gute Bemerkung, gute Bemerkung.
+ Digit hier, also Zahl, erlaubt hier nur einzifferige Zahlen.
+ Also nehmen wir an, wir wollen jetzt checken, ob dieses Plus-Vier legal entsprechend der
+ EBNF-Beschreibung Zahl ist, die ich hier unten noch mal kopiert habe.
+ Und da sehen wir, ja, könnten wir ja machen, wir fangen an mit Zahl, ist definiert als Vorzeichen
+ oder Digit, Vorzeichen ist definiert als ein Plus, Digit ist definiert als Vier, also können
+ wir das hier abhaken und sagen, das ist, dieses Symbol ist legal.
+ Und wenn wir jetzt zeigen wollen, ist Vier legal, ja, da sagen wir auch, okay, Zahl ist
+ definiert als Vorzeichen gefolgt von Digit.
+ Und jetzt wollen wir diese Vorzeichen, hier unten sehen Sie das ja, Vorzeichen ist eben
+ die optionale Auswahl zwischen Plus und Minus, das heißt, wir nehmen das gar nicht, weil
+ es ja optional ist und dann benutzen wir hier das Epsilon, um zu zeigen, dass wir hier diese
+ Option, dass wir keine von den Optionen gewählt haben, dass wir die Optionen nicht gewählt
+ haben und damit keine Auswahl treffen mussten.
+ Darum nehmen wir Epsilon als Zeichen, um zu sagen, die Vorzeichen-Option wurde nicht gezogen
+ und daher ist da ein Epsilon und das Epsilon sieht man natürlich nachher nicht, das haben
+ wir nur hier, um uns zu zeigen, dass diese Entscheidung da gefällt wurde und dann haben
+ wir das Digit, das eben wie im letzten Mal die Vier ist.
+ Also, wenn etwas gewählt werden kann, kann es, also wenn da so eine Option erscheint,
+ dann kann die gewählt werden, aber muss nicht gewählt werden.
+ So, und jetzt haben wir hier diese Regel für Zahlen, in der wir vielleicht mehr zifferige
+ Zahlen zu lassen und überlegen Sie sich doch mal für eine Minute, ob Sie was für mögliche
+ Zahlen denn dadurch erzeugt werden können.
+ Und dann habe ich noch für alle, kurz bevor Sie nach Hause gehen oder zumindest in die
+ Mittagspause gehen, eine Umfrage auf dem Klicker aufgestellt, wer jetzt gerade seinen Klicker
+ parat hält, der möge doch bitte antworten, wo er oder sie sitzt und was da für Umstände
+ sind.
+ Wenn Sie das machen, überlegen Sie sich mal, was für mögliche Zahlen denn da überhaupt
+ auf diese Weise oder was für mögliche Symbole auf diese Weise erstellt werden können.
+ Denken Sie dran, wir haben heute zwei Minuten Nachspielzeit, weil Sie die erste Pause etwas
+ länger wollten.
+ Wer kommt denn von Ihnen nicht auf den Klicker auf?
+ Und warum ist das der Fall?
+ Also bei mir, ich habe sie gestartet, kommen Sie überhaupt auf den Kurs Channel rauf?
+ Ja, also gesagt, das ist halt Infrastruktur, die nicht von uns gemacht wird und ja, da müssen
+ wir sehen, warum die nicht funktioniert, an der Sicht wollten wir im Laufe der Vorlesung
+ wiederholt Klicker einsetzen.
+ Warum hatte ich eine, ich sagte mir das System, dass eine Person abgestimmt hätte.
+ Und das ist auch wieder, macht mich immer misstrauisch, also wenn Sie alle sagen, Sie
+ kommen nicht raus.
+ Na gut, aber jetzt haben Sie ja überlegt in der Zwischenzeit, was hier mögliche Antworten
+ sind.
+ Also hier Zahlen, hier sind eckige Klammern und dazwischen haben wir hier eckige Klammern
+ und lassen Sie mich die anderen, also hier haben wir einmal eckige Klammern und hier
+ haben wir andere eckige Klammern und natürlich, wenn Sie das sehen, also eine Möglichkeit
+ wäre sicher 0 2 z, 0 3 z oder 1 2 z oder 1 3 z, aber genauso gut wäre es auch möglich,
+ 0 z, dass man dann sagt, ich nehme das gar nicht hier, ich nehme diese Option gar nicht,
+ ich nehme diese Option gar nicht raus.
+ Und natürlich kann man beide Optionen ignorieren und dann wäre nur das z als ein mögliches
+ System.
+ Also diese Optionen sind eine sehr zweckmäßige Sache, mit der wir eben ausdrücken können,
+ dass etwas genommen werden kann, aber nicht genommen werden muss.
+ Und weil das manchmal ein bisschen komisch aussieht, hier, das könnte man so beschreiben,
+ hier haben Sie die Auswahl, eine Alternative ist plus, die andere ist minus und hier steht
+ eben, dass Sie auch nichts nehmen können.
+ Und da ist das Epsilon eben sehr zweckmäßig, weil dann sieht man sofort, ah, eine Möglichkeit
+ ist es auch nicht zu nehmen, das ist leichter zu machen, als wenn ich eben halt dieses eben
+ da nichts stehen habe und einfach den leeren Raum da stehen habe.
+ So, damit haben wir das für heute erreicht.
+ Ich werde die Slides von heute, ah jetzt habe ich vier Stimmen, okay, also vielleicht
+ ist Clicker ein bisschen noch nicht auf den Wachstum an Studierenden eingestellt.
+ Ja, wir werden nach nächsten Wochen, nächste Frösung mal versuchen, vielleicht funktioniert
+ es bis dann etwas besser.
+ Ich wünsche Ihnen einen schönen Tag und fangen Sie an, U0 zu machen.
+ Bis nächstes, bis Freitag.
+ [Beifall bei der CDU und dem BÜNDNIS 90/DIE GRÜNEN]

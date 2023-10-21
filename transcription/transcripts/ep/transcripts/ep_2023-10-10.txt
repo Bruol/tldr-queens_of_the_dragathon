@@ -1,0 +1,1093 @@
+ So, einen schönen guten Morgen.
+ Eigentlich will ich jetzt die Vorlesung halten, aber das Gerät, das ich hier habe, funktioniert nicht ganz.
+ Das blinkt für mich, das heißt, ich sehe immer nur zeitweilig, was ich, was Sie sehen.
+ Es wird jetzt jemand kommen, wir versuchen das mal mit einem Ventilator zu beheben.
+ Wenn das nicht geht, muss ich auf das andere Gerät umsteigen.
+ Und mal gucken, wie das geht.
+ Also, wir hatten noch immer das Problem, einfach Java, oder immer ein Thema, einfach Java-Programme zu schreiben.
+ Und da bin ich noch übrig zum Thema Methoden, das Thema der Namensräume.
+ Und der Idee der Namensräume ist, dass wir den Bereich, in dem ein Name sichtbar ist, irgendwie angeben wollen, bezeichnen wollen und irgendwie mit dem arbeiten wollen.
+ Und da eben der Inselm Namensraum kann die Variable gelesen und modifiziert werden.
+ Und eine Methode kann auch aufgerufen werden, wenn sie irgendwo definiert ist.
+ Und das ist hier unser erster Versuch, das Innenleben von Methoden etwas genauer anzugucken.
+ Also, der Scope, so heißt das, ist der Sichtbarkeitsbereich.
+ Manche Programmiersprachen unterscheiden noch zwischen Sichtbarkeit und haben dann noch genauere Unterscheidungen für uns eigentlich in Java,
+ wenn Java benutzt und genügt ist, zu wissen, wann eine Variable sichtbar ist.
+ Und natürlich, Variable müssen deklariert sein, bevor sie sichtbar sind.
+ Und die Deklarationen müssen eindeutig sein, oder dürfen nicht wiederholt deklarieren.
+ Und wenn eine Variable einmal deklariert wurde, dann ist sie sichtbar bis zum Ende des Blocks, für den die Variable deklariert ist.
+ Naja, und Blöcke, das haben Sie jetzt vielleicht mitbekommen, werden durch diese geschweiften Klammern begrenzt.
+ Also, hier einfachstes Beispiel, ich habe hier eine Methode, die einen Intparameter j hat.
+ Und dieser Intparameter j ist im ganzen Body der Methode sichtbar.
+ Dann wird eine Variable i deklariert, die ist ab der Deklaration sichtbar bis zum Ende der Methode.
+ Und eine Variable k ist auch sichtbar bis zum Ende.
+ Und wenn Sie eben eine Variable innerhalb eines if-Blocks deklarieren,
+ dann ist sie auch, oder eines elfs-Blocks, sichtbar bis zum Ende genau dieses Block.
+ Und natürlich ist sichtbar in allen eingeschlossenen Blöcken.
+ Also, wenn Sie jetzt eben so wie ich das vorgestellt hatte, bravo, jetzt wollen wir mal gucken, ob das funktioniert.
+ Die Lautstärke im Oberfloraum sollte erhöht werden.
+ Könnten Sie das machen?
+ Lautstärke im Oberfloraum erhöhen.
+ Also, wir hoffen mal, dass das jetzt gut geht.
+ Und wenn nicht, habe ich mein altes iPad als Reserveboot aufgerichtet.
+ So, okay, versuchen wir es mal.
+ Also tut mir leid, jetzt hoffen wir, dass hier die Kühlung das System so weit bringt, dass wir weitermachen können.
+ Also, wenn Sie hier einen Loop haben und einen Vorloop benutzen, so wie wir das gesagt haben,
+ dann ist der Schleifenzähler, der hier oben definiert wird, auch im Loop sichtbar.
+ Und wenn Sie eben einen weiteren Loop haben, in dem Sie ein anderes eben noch mal i verwenden, dann ist das eben da sichtbar.
+ Also, der Scrope ist eben der Teil, in dem die Variable sichtbar ist.
+ Und eine Variable, die der Vorschleif deklariert wurde, kann halt nur im Rumpf verwendet werden.
+ Und das ist eigentlich gut, weil wenn Sie verseht nicht auf die Autohattesrumpfes zugreifen, wird das System sich bei Ihnen beschweren.
+ So, und natürlich das Ganze ist interessant, weil Blöcke können geschachtelt sein.
+ Und dann eine Variable, die in einem Block sichtbar ist, auch allen eingeschlossenen Loop sichtbar.
+ Und genauso geht das mit Loops und so weiter.
+ Glücklicherweise können wir in Java Methoden nicht innerhalb Methoden schachteln, dadurch ist das Problem für uns gelöst.
+ Also, hier haben wir eine einfache Methode, die eben halt eben eine Variable x hat.
+ Das ist die, die wird da deklariert und deren Scrope geht eben vom Beginn nach der Deklaration bis zum Ende des Loops.
+ Dann haben wir hier den Loop und da gibt es eine Variable i und die ist halt nur innerhalb dieses Loop-Bodies sichtbar.
+ Ja, da sind beide sichtbar.
+ So, und natürlich, wenn wir mehrere Variables haben, geht das so, wie Sie sich das entsprechend denken.
+ Also, was sind die Folgen dessen?
+ Die erste Sache ist, dass wenn die Tür auch mal repariert wäre, dann wäre die Klimaanlage glücklicher und vielleicht wird es dann nicht ganz so warm.
+ Also, wenn Sie eben eine Variable deklarieren und die Sichtbarkeitsbereiche überlappen nicht, dann können die Variables in denselben Namen haben, so wie wir das da gesehen haben.
+ Aber wenn eben die Sichtbarkeitsbereiche überlappen, dann geht das eben nicht.
+ Das können Sie also nicht machen.
+ Die Variable i nochmal im Loop, nochmal neu deklarieren, wenn schon der Loop-Counter i ist, das geht nicht.
+ Und Sie können auch nicht auf die Variable i außerhalb des Sichtbarkeitsbereichs zugreifen.
+ Das würde dann eben auch entsprechend nicht gehen.
+ So, und natürlich, Sie können keine Mehrfach-Deklarationen haben, das sage ich immer wieder.
+ Und diese ganzen Regeln gelten genauso für die Parametervariable, die Sie in Ihrem Programm, in Ihrer Führer-Regel-Methode deklariert haben.
+ Hier habe ich eine Methode mit einer Parameter k, ist im ganzen Methode sichtbar und eben das y ist erst sichtbar, nachdem es eben deklariert wurde.
+ Und wenn wir eben eine andere Funktion haben, die hat da wieder andere Variable, die sind auch nicht überlappend.
+ Wir können auch denselben Parameternamen verwenden, das sind aber verschiedene Cars mit unterschiedlichen Sichtbarkeitsbereichs, natürlich in Scopes.
+ Also, weil das so eine, das sollte eigentlich einfach sein und dafür hätte ich eigentlich eine Poll, aber die Technologie, die wir jetzt benutzen,
+ da glaube ich nicht mehr, dass Sie diese Poll vernünftig beantworten können.
+ Und darum lasse ich die einfach für Sie, für Selbststudium.
+ Und Sie können das bei Gelegenheit machen und ich lege dann die Antwort mit aufs Web.
+ So, jetzt war rum all diese Regeln.
+ Es ist nicht dazu da, um Ihnen das Leben schwierig zu machen, sondern im Gegenteil soll Ihnen und dem System das Leben leichter machen.
+ Wir wollen also die Lesbarkeit der Programme erhöhen.
+ Wenn eben Variable überall sichtbar wären, dann hieß es auch, dass wir als Leser uns immer diese Variablen da merken müssen.
+ Und der zweite Effekt ist, dass auf diese Weise die Verwaltung des Speichers vereinfacht wird.
+ Also Platz für eine Variable muss nur in dem Block gefunden werden, indem sie deklariert wird.
+ Und Werte, die dann da gespeichert werden, die verschwinden am Ende des Blockes.
+ Also, brauchen uns nicht, um das ganze Management der Daten zu kümmern, das ist alles nicht nötig.
+ Und der scheitern wir zwischen Shadowing und Hiding.
+ Hat jemand das Wort Shadowing hier gehört?
+ Also, ja, wo haben Sie das gehört?
+ Sie müssen Ihre Ohren rein.
+ Also, ich habe das Wort hier nicht verwendet.
+ Im Vorkurs.
+ Ja, aber es ist hier.
+ Wir setzen in dem Kurs nicht voraus, dass Sie den Vorkurs gemacht haben.
+ Also bitte, speichern Sie das schön ab, was Sie da gelernt haben, setzen Sie es ein.
+ Aber ja, wir werden darüber noch zu...
+ Die Antwort ist darauf, kommen wir noch zu reden.
+ Darüber reden wir später.
+ Einen Schritt nach dem anderen.
+ So, bevor wir das machen, wollen wir ein bisschen mehr über Strings erfahren.
+ Auch für die Leute im Vorkurs ist das wahrscheinlich eine Wiederholung.
+ Aber trotzdem möchte ich es noch kurz machen,
+ weil mit Strings lassen sich viele interessante Beispiele rechnen.
+ Also, wir hatten gesagt, ein String ist eine Folge von Buchstaben oder Zeichen.
+ Und dieser Typ ist in der Standardbibliothek definiert.
+ Und die können wir deklarieren.
+ Und die können wir initialisieren, so was gesehen haben.
+ Wir nehmen einen Namen und setzen dann den String, den wir zur Initialisierung wollen,
+ auf die rechte Seite einer Zuweisung.
+ Oder aber für die, die das eben...
+ Aber eben dann darf eben da kein...
+ Dann darf in dem String kein Zeilenumschub sein.
+ Für die Leute, die das eben...
+ die trotzdem so was machen wollen, gibt es irgendeiner Revision die Möglichkeit,
+ mit 3... 3-mal diesem Zeichen, das ist 3-mal dieses doppelte Anführungszeichen,
+ wenn wir das haben, dann beginnt ein Textblock.
+ Und in diesem Textblock ignoriert Java alle Leerzeichen.
+ Können Sie sich merken oder auch nicht, ist nämlich relativ unwichtig.
+ Für das, wenn Sie viel Textverarbeitung machen, ist das gut.
+ Aber wir eben brauchen das eigentlich kaum so.
+ Jetzt hatte ich schon mal darauf hingewiesen,
+ dass dieser Plus-Operator kann auch für String verwendet werden,
+ weil der konkateniert dann String.
+ Also wenn ich hier eine variable x habe, dann wird hier der Wert von x eingesetzt
+ und dann wird ein String erzeugt, der eben 3...
+ der oben kann man auf 3, dann kommt hier 5
+ und dann kommt hier eine schließende Klammer
+ und dann kommt wieder ein Ende des Anführungszeichen.
+ So ein String wird auf diese Weise konstruiert.
+ Und das geht, weil eben für alle Typen gibt es eine Standarddarstellung,
+ die gefunden werden kann und dann ist das eben halt der Fall.
+ Wenn Sie jetzt irgendein Typ in String umwandeln wollen,
+ z.B. für diese variable x, die Sie hier oben haben,
+ wollen Sie jetzt eben den String haben.
+ Ein einfacher Weg, das zu machen ist, wir nehmen epsilon, den leeren String,
+ konkatenieren das mit dem Wert.
+ Der Wert 3 wird umgewandelt in einen String 3
+ und dann wird eben der leere String mit dem dreier String,
+ zu eben dem genau dreier String, konkateniert.
+ Das ist ein sinnvolles Idiom,
+ das Sie in vielen Situationen gut gebrauchen können.
+ Okay, jetzt, weil String so besonders wichtig sind,
+ weil viele Programme ja doch irgendwo mit Text arbeiten,
+ werden Sie vom Compiler und dem Laufzeitssystem besonders behandelt.
+ Und es ist halt leider so, dass wir, wir können halt nicht alles rein,
+ so machen, wie es vielleicht elegant ist, am elegantesten wäre,
+ praktische Überlegungen, nämlich die Geschwindigkeit,
+ die was ausführen können und die, die, die,
+ der Komfort im Programmieren sind halt wichtig.
+ Und die müssen dann von der Programmiersprache irgendwie unter einen Hut gebracht werden.
+ So, was ich einmal schon erwähnte, aber ich noch immer wieder aufs Neue erwähnen kann,
+ alle Methoden lassen Strings unverändert.
+ Strings können nicht geändert werden.
+ Wenn ein String einmal erstellt ist,
+ dann bleibt er so bis das System als zur Ende ist.
+ Also, und Strings sind, das ist der erste Blick auf Objekte, die wir werfen.
+ Strings sind Objekte und daher brauchen wir diese Dot-Notation,
+ um eben Operationen auszuführen.
+ Das hatten wir ja schon mal in der vorhergesehen, ja.
+ Ich kann eben den String nehmen und dann mit Dot und dann die,
+ die Methode dahinter erwähnen, aufschreiben,
+ dann wird die Operation ausgeführt.
+ Und viele, viele von diesen Operationen,
+ und ich kann die auch nicht alle auswändeckern,
+ wichtig ist, dass Sie wissen, wo Sie dann gegebenenfalls nachgucken
+ und so ein paar wichtige sollten Sie vielleicht kennen.
+ Und eine wichtige Operation ist, mit der wir für jeden String die Länge rausfinden können.
+ Dafür gibt es eben diese Längs-Methode, die liefert für einen String die aktuelle Länge.
+ Und Länge ist die Anzahl der Zeichen, also fünf Zeichen sind hier drin, ja.
+ Und darum ist dann die Antwort fünf, ja.
+ So, das ist die erste Sache.
+ Zweite ist, wir können natürlich auf das Innenleben des Trings zugreifen, ja.
+ Wir können die Teile des, die Buchstaben, die den String ausmachen,
+ auf die können wir zugreifen.
+ Und zwar können wir auf die zugreifen mittels eines Indexes.
+ Das Index, der fängt an mit der Basis Null, also der erst,
+ das erste Zeichen hat den Index Null, und dann geht das so weiter.
+ Wenn ich hier diesen String hätte, ja, die Länge davon wäre acht, ja.
+ Daher gibt es dann eben Stringpositionen von Null bis Sieben, ja.
+ Und daher kann ich dann auf jeden dieser Buchstaben kann ich zugreifen.
+ Wie kann ich daher, oder auf Teile des Strings kann ich zugreifen.
+ Ich kann auf den String Rest zugreifen, der von hier nach da geht.
+ Jetzt für die, die schon mal woanders einen Kurs oder Java gehört haben
+ oder programmieren gehört haben.
+ Strings sind in Java keine Errays.
+ Wenn Sie nicht wissen, was Errays sind, fast noch besser,
+ dann sind Sie nämlich da nicht verwirrt.
+ Aber falls Sie wissen sollten, was Errays sind, ja, Strings sind es nicht.
+ Strings sind keine Errays.
+ Auf Errays kommen wir später noch genügend zu sprechen,
+ aber Strings sind eben keine Errays.
+ So, jetzt wie greife ich auf die Teile des Strings zu?
+ Naja, da eben auch wieder mit vor definierten Methoden,
+ die eben halt uns erlauben, ein wieder einzelne Teile des Strings rauszuholen
+ oder ein einziges Zeichen rauszuholen.
+ Wenn wir sagen, wir haben so eine Methode,
+ sagen wir manchmal, wir führen die Methode, den wir so was haben,
+ wir haben hier einen String S und dann den Punkt und dann eben den Name einer Operation.
+ Dann sagen wir, wir führen die Methode für den String aus
+ oder wir wenden diese Methode auf den String an
+ oder wir rufen die Methode für S auf.
+ Das ist alles, bedeutet ein, dasselbe, es heißt halt nur,
+ dass wir diese Operation jetzt durchführen.
+ Und diese Operationen können natürlich dann verschiedenste Arten von Rückgabewerten liefern.
+ Also eine Reihe von Strings liefern eben wieder Strings zurück.
+ Und da sind ganz wichtig die Substring Methode, die gibt es in zwei Varianten.
+ Die nimmt die erste, nimmt zwei Positionen und die zweite Variante nimmt eine Position.
+ Und die erste, die zwei Positionen hat, die gibt mir den Teil des Strings,
+ ich habe gleich ein Beispiel, der durch diese Positionen beschrieben wird.
+ Und wenn ich den zweiten Teil habe, dann nimmt er alles ab dieser Position.
+ Also hier in der zweiten Variante wäre alles von hier bis zum Ende des Strings
+ und das wäre eben ein Teil des Strings, der durch diese Positionen bestimmt ist.
+ Und dann gibt es diese Operationen wie Tolor Case, to Upper Case und so weiter,
+ die wir schon mal gesehen haben.
+ Also hier hätte ich jetzt noch mal einen String.
+ Und ich möchte jetzt zum Beispiel den Substring, der an der Position 8 anfängt.
+ Die Position 8 ist diese.
+ Also wenn ich sage Substring ab Position 8, ist das alles von hierhin.
+ Oder wenn ich hingehe und sage, ich hätte gerne den Substring von 0 bis 1.
+ 0 bis 1, das heißt, ich fange an bei der Position, der ersten Position, das ist die 0,
+ aber nicht bis zur 1. Also 1 gehört nicht mit dazu.
+ In diesem Fall ist das eben halt nur dieses Zeichen hier.
+ Das 1 ist die Obergrenze, die nicht erreicht wird.
+ Der zweite ist ausgeschlossen.
+ Oder wenn ich eben hier Index, die als Position 3 und 7 angebe,
+ ich fange hier in der Position 3 an und es geht bis hierhin,
+ weil die Position 7 gehört ja nicht mit dazu.
+ Und ich kann natürlich ein einziges Zeichen bekommen,
+ das ist genau so, in dem ich eben zwei Indexwerte habe.
+ Der eine ist gerade, ist eins größer als der andere.
+ Wenn ich das mache, dann bekomme ich hier genau diesen Punkt.
+ Ich fange an mit 1 und erreiche 2 nicht.
+ So, dann gibt es eben Methoden, die die eben ins liefern.
+ Die Längtsoperation, die habe ich Ihnen schon mal gesagt.
+ Dann gibt es die Möglichkeit, nach einem bestimmten String zu suchen.
+ Ich kann gucken, an welcher Position fängt in diesem String,
+ auf den ich die Methode anwende, der dieser Parameterwert,
+ den ich einen zweiten String angebe, wo fängt der an.
+ Natürlich kann ich das auch noch verallgemeinern
+ und sagen, ich fange nicht von Anfang an, das wäre angefangen von 0.
+ Ich könnte auch stattdessen sagen, ich möchte erst an dieser Position
+ anfangen, nach diesem String zu suchen.
+ Also, wenn ich hier gucken möchte, wo fängt dieser String B, E, C, K an,
+ der fängt hier an, da ist die Antwort da 3.
+ Und was ist die Position des Strings E?
+ Na ja, die erste Position ist 4.
+ Und wenn ich jetzt anfangen möchte, das war von 0 ausgerechnet,
+ und wenn ich stattdessen von 5 aus erst anfange,
+ na ja, dann gibt es hier nochmal ein E und das ist 7.
+ Das ist nicht überraschend und so weiter.
+ Ich habe noch ein paar mehr Beispiele, aber ich weiß nicht,
+ ob alle da durchgehen wollen.
+ So, wenn Sie hier dieses Wort extrahieren wollten,
+ gucken Sie nach, weder finden Sie die Position oder Sie zählen,
+ wo finden wir den A, Position 15.
+ Also, wie lange ist der String?
+ Drei Buchstaben, also können wir auch stattdessen genauso hingehen
+ und sagen, wir holen uns diese Position
+ und dann wollen wir die nächsten drei Zeichen haben.
+ Und das funktioniert dann wirklich bestens.
+ So, jetzt gibt es auch weitere Möglichkeiten,
+ ein Bullion zurückzubekommen.
+ Wenn ich herausfinden möchte, ob zwei Strings
+ dieselben Buchstaben enthalten, dann benutze ich die E-Quilts-Methode.
+ Ich habe also hier, wenn ich, also hier habe ich das Beispiel,
+ ich habe den String S und dann habe ich hier einen anderen String T,
+ den habe ich hier dadurch bekommen,
+ dass ich das S in Großbuchstaben umgewandelt habe.
+ Und wenn ich hier hingehe, dann kann ich jetzt hier sehen,
+ ob dieses S gleich dem T ist.
+ Das kann ich nur so machen.
+ Gibt keinen anderen Weg, der zuverlässig funktioniert,
+ der für Strings funktioniert.
+ Der, und in dem Fall würde das System eben nicht equal ausdrucken,
+ weil eben der eine S-to-upper-Case gibt uns den String Hello.
+ So, und in Java unterscheiden wir zwischen kleinen und großen Buchstaben,
+ und daher sind diese beiden eben nicht gleich.
+ Und natürlich, wir können auch statt einer variable Konstante nehmen,
+ das haben wir auch schon mal gemacht,
+ das haben wir auch gemacht, also hier gehen wir hin,
+ wir nehmen die Konstante und wir checken jetzt,
+ ob dieser String gleich dem String ist, den ich mit S erreiche,
+ und da ist die Antwort ja, der ist gleich, das ist equal.
+ So, und jetzt, wie kommen Sie jetzt auf die wirklichen Grundelemente
+ des Strings zugreifen wollen, weil hier sehen Sie,
+ wenn ich so etwas mache, wo ich hingehe und einen String heraushole,
+ einen String, sorry, hier, wo ich hier hingehe,
+ da bekomme ich einen String, die Antwort hier ist,
+ vom Substring ist ein String, ein String, der einen Punkt hat.
+ Wenn ich jetzt mit den Buchstaben, die den Zeichen,
+ die den String ausmachen wollen, dann auf die zugreifen will,
+ dann gibt es eine Möglichkeit, die einzelnen Buchstaben da zu erreichen,
+ mit der Methode CharacterAdd, die ist nicht überraschend,
+ die gibt uns des Zeichen, dass an der Position 1 ist,
+ also hier wäre das eben ein Punkt.
+ Und seht ihr, der fein Punkt ist hier, die Buchstaben,
+ einzelne Buchstaben werden durch eine einzelne Hochkommar angezeigt.
+ Das zeigt, also das hier ist der Buchstabepunkt,
+ und das ist was ganz anderes, als der String, mit dem,
+ mit dem, der einen Punkt hat.
+ Die beiden können Sie nicht vergleichen,
+ genau so, ob Sie eben einen an das auf dem Tisch haben
+ oder einen an das in der Dose, völlig unvergleichbar,
+ der eine ist so verpackt, der andere anders.
+ Also wenn Sie so, wenn Sie mit diesem Basis,
+ das ist ja ein Basistyp, wenn Sie mit einem Basistyp arbeiten,
+ dann können Sie dieses Gleichheitszeichen,
+ dieses doppelte Gleichheitszeichen verwenden.
+ Aber das geht nur für Basistypen.
+ Versuchen Sie das nicht mit Strings,
+ wir werden später sehen, wann wir dieses Gleichheitsvergleich
+ zu einer anderen Zeit mit anderen Arten von,
+ von Objekten verwenden können.
+ So, also zur Erinnerung,
+ Zuweisungen an den String verändern nicht den,
+ verändern nicht den String selber.
+ Es ist einfach, es wird ein neuer String erzeugt.
+ Das müssen Sie immer wieder im Kopf haben.
+ Hier wird der String erzeugt, er wird initialisiert irgendwann
+ oder bekommt einen Wert zugewiesen.
+ Und danach eben halt wird ein anderer Wert zugewiesen.
+ Und dann wird dieses Referenz, verweist ihr auch daran.
+ Und dieses, dieses String hier, der bleibt.
+ Das ist nicht unser Problem.
+ Das ist das Schöne der Programmiersprache Java
+ im Gegensatz zu anderen Programmiersprachen,
+ wo Sie als Programmiererin sich den Kopf zerbrechen können,
+ wo Sie denn jetzt diese anderen Strings gelassen haben
+ und was mit denen passiert.
+ In Java kommt irgendwann die Müllabfuhr
+ und holt den, wimmt den weg.
+ Und Sie brauchen sich da nicht rumzukümmern.
+ Das ist eine so, eine große Erleichterung.
+ Ich meine, aber so kleinen Programmen, wie wir sie jetzt hier haben,
+ ist es ja nicht wichtig.
+ Aber schreiben Sie mal ein Programm,
+ das eben wesentlich größer ist,
+ indem viele Leute mitarbeiten
+ und überlegen Sie sich dann,
+ wie da die Daten gemanagt werden müssen.
+ Das kann echt schwierig werden.
+ Nur, das muss ich immer wieder aufs Neue,
+ darauf hinweisen.
+ Zuweisungen zu Strings ändern nicht den String.
+ Ein Neuer wird erstellt
+ und der Name bezieht Sie auf den neuen String.
+ Und jede Methode liefert eben einen neuen String.
+ Und den kann ich dann eben weiterverarbeiten.
+ Also hier habe ich den String S.
+ Ich mache, ich wende die Methode
+ "to uppercase of S" an,
+ das produzierte neuen String,
+ ich werde es weiter kümmerer.
+ Und wenn ich auf S mir ansehe,
+ ist das immer noch unverändert.
+ Das hat keine Veränderung.
+ Wenn ich mit dem Wab arbeiten will,
+ dann muss ich das in irgendeiner anderen Stringvariabel speichern.
+ Oder ich kann es auch in derselben Variabel speichern.
+ Das ist okay.
+ Ich kann es in der Variable S speichern
+ und kann das da haben.
+ Und was passiert jetzt,
+ wenn wir Strings als Parameter haben?
+ Ja, nichts anderes.
+ Hier habe ich eine ganz einfache Methode.
+ Die hat, ihr seht, da oben, das ist auch noch was,
+ was wir noch nicht besprochen haben.
+ Das ist aus einem guten Grund blau.
+ Hier habe ich die Methode "say hello",
+ statt blau nämlich das so.
+ Und die nimmt als Parameter einen String.
+ Und hier habe ich eine Stringvariable
+ und die benutze ich, um diese Methode
+ "to say hello" aufzurufen.
+ Und was passt, und danach benutze ich,
+ statt der Variable, benutze ich einen String.
+ Und was passiert in dem Programm?
+ Na ja, was, wie wir erwarten,
+ erst sagt dieses Methode "say hello"
+ macht nicht viel, die druckt halt nur.
+ Erst wird eben der Wert dieses Variable genommen,
+ wird "welcome mark" gedruckt
+ und danach "welcome peter".
+ So, das ist überhaupt kein Unterschied.
+ Läuft best.
+ Und was ist, wenn wir jetzt eben hier in der Methode
+ diesen Parameter einen neuen String zuweisen?
+ Was passiert denn dann?
+ Also hier habe ich hier oben erst, wie bisher,
+ rufe ich auf die Methode "say hello"
+ mit der Variable "frend" dem String.
+ Also am sicher Druck der Anfang mark aus.
+ Und was so druckt das zweite Mal aus?
+ Sie erinnern sich, Sie können variablen
+ innerhalb eines, einer Methode beliebig irgendwas zuweisen.
+ Außerhalb der Methode haben wir letzte Woche bei INT gesehen.
+ Außerhalb der Methode tut sich nichts, hat sich nichts geändert.
+ Daher in diesem Fall drucken wir zweimal "welcome mark".
+ Weil hier hat "frend" bezieht sich hier auf den String mark
+ und natürlich hier auch noch.
+ Und die Tatsache, dass das hier geändert wurde,
+ hat überhaupt keinen Einfluss auf den Rest des Programms.
+ Weil eben halt, was immer da in der Methode passiert,
+ betrifft nur die Parametervariable "name", die wir hier haben
+ und nicht sonst irgendetwas.
+ So, okay.
+ Jetzt haben wir eben vorher schon mal gehört,
+ wenn wir so eine Aufgabe haben,
+ dann sollten wir die in Teilaufgaben zerlegen.
+ Und unser idealer Weise können wir das so machen,
+ dass wir die Teilaufgaben vielleicht wieder verwenden können.
+ Und da hatten wir dann eben gesagt,
+ ein Weg, dass die Wiederverwendung einer Teilaufgabe zu erreichen,
+ ist diese mit eine Methode zu entwickeln.
+ Dann haben wir also hier unsere Aufgabe zerlegt in Teilaufgabe.
+ Sie sehen hier, die Teilaufgabe wird zweimal verwendet.
+ Und in beiden Fällen wird zum Beispiel diese Methode M2 aufgehoben.
+ Allgemein gibt es noch Hilfsmethoden und so weiter.
+ Und das ist eigentlich gut und schön.
+ Und wir hatten jetzt vorher, also gestern, logisch gestern,
+ also am Freitag hatten wir gesehen,
+ dass wir auch Schleifen verwenden können.
+ Also können in unseren Aufgaben Schleifen haben
+ oder können in einer Schleife eine Methode aufrufen.
+ Und das ist alles gut und schön.
+ Und da habe ich eine einfache Aufgabe für Sie,
+ so eine Art, wie irgendwo mal kommen könnte.
+ Sie sollen eine Methode OneCount schreiben,
+ die einen als Parameter einen String entgegen nimmt
+ und die berichtet, also die zurückgibt,
+ wie oft das Zeichen 1 im Eingabestring auftritt.
+ Und die, die wollen, die können sich vorstellen,
+ dass diese Eingabestringszahlen in Binärdarstellungen sind.
+ Aber das ist nicht wichtig, es sind ja einfach nur Zeichen 0 und 1.
+ So, und eben Beispiel wäre, wenn ich hier 0, 0, 1 hätte,
+ wäre die Anzahl 1.
+ Und 1, 0, 1, 0 wäre die Anzahl 2.
+ So, und das sollten Sie jetzt als Programm schreiben.
+ Wird ich jetzt keinen Poll starten, aber so.
+ Was sind jetzt, gucken, was sind so die erste Frage,
+ die jetzt in Ihren, vielleicht will mir jemand die erste Frage auch auf den Chat,
+ haben wir so eine der ersten Fragen, die Sie sich dann sofort stellen oder überlegen.
+ Die erste Frage sollte sein, oder eine der ersten Fragen sollte sein,
+ was für einen Rückgabetyp muss diese Methode haben.
+ Also hier haben wir 1, die Anzahl, also können wir int nehmen,
+ wir könnten noch long nehmen, aber int oder long bietet sich an.
+ Und dann eben, was sagt die Beschreibung, die Aufgabenstellung,
+ über Probleme, über Sonderfälle.
+ Also eben, was ist denn, wenn mein String ABC ist,
+ weil Sie können sich vorstellen, dass die Eingabestringszahlen
+ in Binärdarstellungen sind, aber das ist nicht vorgeschrieben.
+ So, wenn ABC kommt, dann ist die Antwort 0,
+ weil das tritt die 1, 0 mal auf.
+ Wenn wir den Lehrenstring hätten, auch immer so eine gute Frage,
+ was wäre denn da die Antwort?
+ Na ja, im Lehrenstring, wie oft tritt da die 1 auf?
+ Null mal, also ist die Antwort auch 0.
+ Damit haben wir eigentlich schon die beiden wichtigsten Grenzfragen behandelt.
+ Und jetzt fangen wir also an, das Programm dazu zu entwickeln.
+ Da brauchen wir Parameter.
+ Wie sagt die Aufgabenstellung, sagt, es muss ein String sein,
+ also nennen wir den S, aber können Sie irgendwie nennen.
+ Und jetzt, wie kann diese Methode jedes Zeichen analysieren?
+ Nennen Sie jedes Zeichen analysiert, müssen wir uns das irgendwie angucken.
+ Also die erste Idee wäre vielleicht einen Loop, eine Schleife.
+ So, und wie kommen wir jetzt ans Zeichen ran?
+ Hab ich Ihnen eben gezeigt, aber das ging vielleicht zu schnell.
+ Gibt es die Substring Methode
+ und die Substring Methode mit zwei Parametern, Index und Index plus 1,
+ gibt mir einen String, der genau aus einem Zeichen besteht.
+ Und jetzt kann ich dann gucken, ob dieses Zeichen eben eine 1 ist.
+ Das müsst ihr alle gucken, ob 1 equals,
+ ob dieser String mit dem Zeichen 1, genau gleich ist dem Substring,
+ den ich da irgendwie aus dem String herausgeholt habe.
+ So, und wie wird jetzt mein Ergebnis berechnet?
+ Naja, also wenn wir so eine 1 da finden,
+ dann müssen wir einfach den Zähler, irgendeinen Zähler um 1 erhöhen.
+ Wenn da eine 1 ist, da ist keine große Berechnung.
+ So, ja, so.
+ Alle dabei ist es, ja, wir finden das zu einfach.
+ Wir hatten eine andere Idee, die wir das Problem lösen könnten.
+ Okay, okay, guck mal, vielleicht habe ich auch noch ein paar Ideen.
+ Also einfache Lösung wäre halt diese hier.
+ Wir haben hier die Methode, die haben hier den Vorloop,
+ der eben benutzt i als Zählervariable,
+ geht über alle Elemente des Strings darüber,
+ also bis zu eben kleiner hat die Länge,
+ wird jedes Mal in jeder Iteration,
+ gucken wir uns das nächste, nächsten String an,
+ wenn der Substring, den ich hier an der Position i, i plus 1, finde,
+ wenn der equals der einer 1 ist,
+ dann erhöhe ich mein Resultat Wert um 1, ja,
+ und am Ende gebe ich das Resultat zurück.
+ Also das sollte nicht zu schwierig sein.
+ Jetzt, um das genau angucken, was war denn hier so die erste Überlegung,
+ die wir gemacht haben?
+ Wir haben überlegt, wie kann diese Methode jedes Zeichen analysieren
+ und dann sind wir auf die Idee gekommen,
+ ja, wir können einen Loop verwenden.
+ Und als wir entschieden haben, einen Loop zu machen,
+ war eigentlich alles mehr oder minder automatisch,
+ ja, Sie können jetzt noch ein bisschen ändern,
+ aber im Endeffekt läuft das auf sowas hinaus, ja.
+ Aber ein anderer Anders wäre doch folgende.
+ Wir erinnern uns, was für Anweisungen können eigentlich
+ im Rumpf einer Methode auftreten?
+ Also eigentlich können da alle auftreten,
+ können grundsätzlich immer alles verwenden,
+ auch wenn wir es Ihnen noch nicht erzählt haben,
+ Sie können jede Anweisung verwenden, ja,
+ unter anderem könnten Sie auch, haben wir aber schon erzählt,
+ auch Aufrufe von Methoden verwenden.
+ Und Sie können sogar auch, wenn Sie wollen,
+ Sie können auch die Methode, die Sie gerade definieren, ja.
+ Wenn ich hier eine Methode definiere,
+ kann ich in dieser Methode die Methode selber auch aufrufen, ja.
+ Heißt, Rekursion haben wir schon mal mit EBNF kennengelernt
+ und gesehen, dass das gar nicht mal so schwierig ist, ja.
+ Also stattdessen können wir überlegen,
+ wie wird das Ergebnis berechnet?
+ Gart ich mal fragen, wie gucke ich mir die Zeichen an,
+ sondern wie wird das Ergebnis berechnet?
+ Und ein Weg wäre doch zu sagen, hm, ich habe hier einen,
+ das hier ist mein String S, ja.
+ Den kann ich ja zerlegen, hier in den Anfang
+ und den ganzen Rest, ja.
+ Und der Anfang ist eben ein Zeichen, ja.
+ Das ist ein Zeichen, ja.
+ So, da könnte ich doch hingehen, dass ich halt gucke,
+ ob eben am Anfang ein Zeichen ist,
+ ob da eine Eins ist,
+ und wie viele Zeichen es im Rest gibt, ja.
+ Der Rest den bekomme ich ja, indem ich eben alles ab Eins,
+ alles ab Position Eins,
+ gerne als, dass ich mir das als Ergebnis raushole, ja.
+ Also ich weiß, für den Einzeichen am Anfang,
+ das ist entweder Null oder Eins, ja.
+ Mir gibt es da nicht, ja.
+ Und danach eben benutze ich diese Methode One Count,
+ die ich hier eben jetzt selber jetzt eben entwickle.
+ Die benutze ich eben halt hier,
+ um den Rest des Trinks zu bearbeiten, ja.
+ Also es ist eine etwas andere Art,
+ wir haben uns also nicht überlegt,
+ welche Struktur haben wir im Programm,
+ sondern wie wird mein Ergebnis berechnet?
+ Das ist im Grunde genommen die,
+ nicht die Kontrollstruktur des Programms,
+ sondern wie ich das Ergebnis berechne, ja.
+ Und das ist ein allgemeiner Ansatz, ja.
+ Wir versuchen, wenn wir so eine Aufgabe haben,
+ das so zu machen, dass wir eben,
+ wenn es geht, eine Teilaufgabe T1 finden,
+ für einen Input, der sofort lösbar ist.
+ Wenn der Input sofort lösbar ist,
+ dann kann das sofort einfach gemacht werden.
+ Und in diesem Beispiel, Strings der Länge Eins,
+ dafür können wir schnell und einfach feststellen,
+ ob da eine Eins drinnen ist oder nicht.
+ Wenn der String aus einer Eins besteht,
+ dann ist der, ist diese,
+ ist die Teilaufgabe Eins mit, gibt als Wert Eins zurück.
+ Und wenn der String nicht einer Eins ist, dann gibt es halt eine Null, ja.
+ Und dann habe ich eine zweite Teilaufgabe, T2,
+ und die mache ich so, indem ich den Input in zwei Teile zerlege,
+ X1 und X2, wobei X1 so ist,
+ dass ich den Ergebnis leicht aus für berechnen kann, ja.
+ Also entweder kann ich es direkt berechnen
+ oder eben meine Methode, die ich eben erstelle,
+ die kann mir diesen Teil die Antwort sofort liefern.
+ Er wird ja gleich sofort das oder,
+ und dann den zweiten Teil, der muss eben halt nochmal
+ von der Methode berechnet werden, das könnte länger dauern,
+ aber das ist ja kein Problem.
+ Irgendwann wird die den Input kleiner und kleiner, kleiner machen, ja.
+ Also wenn eben unser X länger als ein Zeichen ist,
+ dann berechn ich das so, dass ich eben halt hier diese Methode
+ One Count für das erste Zeichen verwende
+ und dann diese Methode One Count für den Rest, ja.
+ So habe ich das dann ganz einfach gemacht, ja.
+ Also wenn wir hier dieses Beispiel uns angucken, ja,
+ wir fangen an mit unserem S, das ist dieses hier, ja.
+ Wir gehen hin, wir gucken uns den ersten, das erste Zeichen an, ja.
+ Das erste Zeichen ist eben eine Eins, ja.
+ Daher ergibt das eben die Ziffer, den Wert Eins, ja.
+ Und dann gucke ich mir den Rest an,
+ der Abstring ab Position Eins, das ist halt dieser Teil des Strings,
+ der übrig geblieben ist.
+ Und diese Methode natürlich, dieses genauso wie vorher,
+ die guckt sich an das erste Zeichen, ja.
+ Das erste Zeichen ist hier halt immer die Position Null,
+ ist hier zuvergeweite eine Null, daher ergibt das den Wert Null, ja.
+ Und dann habe ich hier den Rest des Strings,
+ der eben halt auch wieder bearbeitet wird.
+ So, und der Rest des Strings, gehe ich jetzt hin,
+ das ist eben halt wieder eine Eins, ja.
+ Also ergibt das eine Eins, ja.
+ Und hier habe ich jetzt einen Lernstring,
+ gucke mal, wer vielleicht ganz gut,
+ wenn unsere Methode auch den Lernstring behandelt,
+ und das vielleicht sogar erkennt, dass da keine Zeichen drin sind.
+ So, und dann addiere ich die auf, ja, addiere ich das auf,
+ und die Summe ist dann eben zwei.
+ Und das ist genau das, was ich ja eigentlich gerne haben wollte, ja.
+ So, und das ist also ein anderer Ansatz,
+ den ich eben halt verwenden kann, ja.
+ Lassen Sie mich das speichern, auch wenn es Minute jetzt überziehe.
+ So, also können Sie jetzt also so, also,
+ eine Möcher auszudrücken wäre ja so,
+ wenn der String der Lehrestring ist, dann ist die Länge Null,
+ gibt es Null, und sonst, wenn der Substring,
+ der erste String eben eine Eins ist,
+ dann mache ich als Resultat Eins,
+ und sonst eben lasse ich es bei Null,
+ und dann habe ich hier eben, das ist der Wert für den ersten Substring, ja,
+ und dann eben plus den Rest.
+ Oder ich könnte das auch noch, wenn Sie wollen,
+ ausführlicher machen und sagen, hier,
+ wenn eben die Länge Eins ist,
+ und der erste ist eben genau eine Eins, dann gibt es Eins,
+ und wenn die Länge Eins ist,
+ und der erste ist eben nicht eine Eins,
+ sehen Sie hier das nicht, dann gibt es eine Null, ja,
+ und dann eben ist das der Rückgabewert,
+ und so gehe ich hin, hier ist der Wert für die erste,
+ für den ersten Teil, und hier ist der Wert für den Rest, ja,
+ so könnten Sie das machen, ja,
+ und die, die schon ein bisschen mehr,
+ das sieht natürlich nicht sehr elegant aus,
+ und da das Problem nicht so selten ist,
+ gibt es halt in Java einen besonderen Operator,
+ der Fragezeichen-Operator,
+ und was der macht ist, das wird hier evaluiert,
+ das ist entweder true oder false, ja, so,
+ und wenn der Wert true ist, dann gibt es als Ergebnis diesen zurück,
+ und wenn der Wert false ist, gibt es den zweiten Punkt,
+ hier ist ein Doppelpunkt, ja, der ist wichtig, so, ja,
+ also so kann ich ganz einfach, ganz schnell rausfinden,
+ ob der String, den ich am Anfang habe,
+ ob der eben halt Wesen will,
+ ob der eben eine Eins enthält oder nicht, so,
+ also wenn Sie das jetzt vergleichen, ja,
+ das ist nicht so viel schwieriger,
+ als was Sie vorher in der Lösung Eins gesehen haben,
+ und wie Frage eben, machen wir das nur,
+ machen wir das nur, weil wir das für so gut haben,
+ könnte diese Lösung nicht einen anderen Vorteil haben,
+ und damit entlasse ich Sie gleich in die Pause,
+ und das ist ja, wenn Sie sich vor,
+ das ist die Aufgabe im ersten Semester,
+ was, die meisten von Ihnen,
+ wenn ja hoffen, wir auch ins zweite Semester kommen,
+ und bei uns bleiben, was für eine Vorlesung haben Sie im zweiten Semester,
+ da kriegen Sie parallele Programmierung, so,
+ und wenn Sie jetzt so was hier haben, ja,
+ hier, wenn Sie den Loop sich angucken, ja,
+ der geht langsam sequenziell, Schritt für Schritt für Schritt,
+ durch den ganzen String durch, ja,
+ dieser hier, dieser Ansatz, der geht halt hin
+ und ich hier zwei Teile zerlegt den String in zwei Teile,
+ und ich habe das halt so gewählt,
+ dass ich, der erste Teil ist halt der erste Buchstabe,
+ oder das erste Zeichen, und der zweite Teil ist der Rest,
+ aber ich könnte auch genauso gut hingehen
+ und den String irgendwo in der Mitte halbieren,
+ und dann hier einmal die Methode,
+ die einmal die Methode auf der ersten Hälfte anwenden,
+ und hier auf der zweiten,
+ und so habe ich jetzt zwei Teile,
+ die im Prinzip parallel laufen könnten,
+ die könnten auf verschiedenen Chors ausführen, ja,
+ also Sie sehen solche Anweise,
+ natürlich bei den kleinen Strings, die wir haben,
+ ist der Zeitgewinn wahrscheinlich begrenzt,
+ aber es ist ja hier nur die Einführung, ja,
+ also Sie sehen solche Ansätze haben durchaus eine Berechtigung,
+ und damit sind wir eigentlich mit der Diskussion von Schleifen
+ erst mal fertig, fast fertig, ja, so,
+ und schon, damit sind wir ja mit der Diskussion von Methoden fast fertig,
+ und jetzt kommen wir doch nochmal auf Schleifen zu treffen,
+ zu sprechen,
+ also, indem Sie gesehen haben, dass man Schleifen nicht immer braucht,
+ können wir jetzt uns nochmal Schleifen genauer angucken,
+ aber jetzt machen wir erst mal Pause bis 11 Uhr, 15, okay?
+ Also, Schleifen sind wichtig, aber auch nicht alles, ja,
+ und darum, wie ich nochmal kurz,
+ auf Schleifen eingehen, und zwar eben haben wir,
+ gibt es gewisse Kurzformen, die waren leider auf einer Slide
+ schon mal verseht, nicht darauf,
+ und dann haben wir das Problem,
+ dass die Schleifen eben manchmal doch nicht so terminieren,
+ wie wir wollen, insbesondere dann,
+ wenn wir Input-Werte zur Schleifenkontrolle verwenden,
+ und dann zum Schluss eben wollen wir,
+ ist der Witz wirklich gut?
+ Ist der Witz gut?
+ Ist kein Witz, oh schade, das ist eine gute Frage.
+ Wenn Sie die Frage haben, melden Sie sich,
+ schreiben Sie ein Chat, ja, okay,
+ und dann zum Schluss haben wir auch Aussagen über Schleifen machen wollen,
+ während wir das Thema Invarianten behandeln,
+ aber das werden wir wahrscheinlich erst am nächsten Freitag behandeln.
+ So, also, um was geht's?
+ Sie haben gesehen, wir haben diese Loops,
+ die Vorloops konkret,
+ und da erhöhen wir immer den Loop-Counter um 1,
+ oder wir dekrimentieren um 1 und so weiter, ja.
+ Andere enden uns natürlich möglich,
+ aber diese hier treten sehr häufig auf.
+ Und naja, es gab mal eine Zeit,
+ da kostete der Platz auf der Speicherplatz noch was,
+ und darum gibt es so eine Kurzform,
+ mit der ich ausdrücken kann,
+ dass eben eine Variable um 1 erhöht werden soll,
+ oder um 1 runtergezählt werden soll.
+ Und früher, in der grauen Vorzeit,
+ da, wenn man sowas hatte,
+ dann war das eben für den Compiler etwas leichter,
+ war etwas leichter, das zu erkennen,
+ und etwas leichter zu optimieren,
+ und daher gab es sogar Computer,
+ die dafür besondere Instruktionen hatten.
+ Aber heute ist das überhaupt kein Thema mehr.
+ Heute ist viel wichtiger, dass man die Programme versteht.
+ Und darum gibt es eben eben,
+ einige Programmiersparen, so ein Operator,
+ mit dem man eben um 1 rauf oder runterzählen kann.
+ Und dieser Operator besteht aus 2 plus oder 2 minus,
+ direkt hintereinander, kein Zwischenraum.
+ Und das, wenn ich so ein Plus habe,
+ das ist das selbe, als wenn ich schreiben würde,
+ die Variable wird um 1 erhöht oder um 1 gesenkt.
+ Also, wenn ich hier die Variable x habe,
+ und ich habe hier x plus plus,
+ dann ist es so, als ob ich x plus x auf x plus 1 gesetzt machte,
+ und danach speichert diese Variable den Wert 3.
+ Das geht auch für reelle Zahlen,
+ wenn man das wirklich machen will.
+ Also, die Grundregel dabei ist,
+ dass eben halt durch diese Aktualisierung,
+ man eben, wie man das für Loopcourt verwendet,
+ das relativ einfach Ausdrück,
+ dass eben das, das ist das,
+ das wird relativ einfach ausdrücken,
+ und so sieht man sofort, was da läuft.
+ Aber in diesem Operator kann man überall verwenden.
+ Wenn Sie nur im Loopcourt verwenden, kein Problem.
+ Aber ihr könnt sie überall verwenden.
+ Und darum müssen Sie immer im Hinterkopf haben,
+ das System ist folgendes, die Variable wird verwendet,
+ und dann verändert.
+ Erst verwenden, dann verändern.
+ Und das kann zu interessanten Schritten führen.
+ Also, hier habe ich die Variable x, die setze ich hier zu 2,
+ und jetzt druckke ich hier x plus plus.
+ Und was druckt das?
+ Das druckt 2.
+ Warum?
+ Weil wir verwenden die Variable, die hat den Wert 2,
+ der wird ausgedruckt,
+ und irgendwann wird es um Drucker gegeben,
+ und danach wird ausgeführt diese Erhöhung des Zählers
+ um 1, und dann ist dann der Speicher Wert 3.
+ Und wenn ich jetzt hier hingehe, was passiert hier, gleiche,
+ was ist der aktuelle Wert 3, den will ich verwenden,
+ und jetzt verändere ich, und darum hat das den Wert 4.
+ Das ist die Regel, die wir immer wieder im Hinterkopf benutzen müssen.
+ Erst verwenden, und dann verändern.
+ Und das gilt immer und überall, und auch in Ausdrücken und Zuweisungen.
+ Also, hier, was würde denn für ein Wert in der Variable y gespeichert werden?
+ Denkt man mal nach, das ist, ja, wir gehen hin, wir verwenden den Wert,
+ der Wert aktuell ist 2, und danach verändern wir, ja,
+ wir gehen hin, können Sie sich vorstellen,
+ es gibt eine temporäre Variable Temp, die bekommt den Wert von x,
+ danach erhöhe ich x um 1, und danach verwende ich diese temporäre Variable.
+ So ist das gemacht, und daher bekäme ich hier als Ergebnis,
+ x würde hier y den Wert 2 haben, und x hat danach den Wert 3.
+ So, das ist also, wie wir das im Prinzip immer wieder haben wollen.
+ Und das gilt auch dann, wenn dieser Ausdruck irgendwo auf der rechten Seite
+ eines, eines, einer Zuweisung auftritt.
+ Also, hier habe ich die Variable i und die Variable j, die sind mit 3 und 7, initialisiert.
+ Und wenn jetzt meine rechte Seite die Konstante 9 ist,
+ dann ist einfach klar, Ergebnis der rechten Seite ist 9, ja.
+ Rechte Seite wird berechnet, und dann, wenn es eine Zuweisung ist,
+ wird später der Wert in der, an der linken, er wird dann, der Wert in der,
+ wird der Wert gespeichert, ja, und eventuell werden danach die,
+ die Wersenwerte noch verändert, wenn nötig, ja.
+ Also, wenn ich hier 3 plus 5 habe, ja, die rechte Seite wird berechnet,
+ er gibt 8, ja, ist nicht überraschend.
+ Also, i plus 2 ist auch nicht schwer, ja.
+ Neben i hat den Wert 3, er gibt 5.
+ Jetzt, was ist der Wert dieses Ausdrucks, ja?
+ i plus plus, ja.
+ Naja, der Wert von i ist 3, also ist das 3, ja.
+ Und danach hat i den Wert 4, ja.
+ Danach hat i den Wert 4.
+ Und was ergibt das hier, j minus, minus plus j, prozent,
+ zeichnen 4, na ja, wir gehen hin, was ist der Wert von j?
+ Der Wert von j ist 7, ja, 7.
+ So, und jetzt wird das um 1 dekumentiert, also hat danach j den Wert 6.
+ Und da die, deswegen ist wichtig, dass sie verstehen,
+ welche Reihenfolge die Ausdrücke und Operatoren angewendet werden.
+ J rest 4, also 6 rest 4 ist 2, ja.
+ 7 plus 2 ergibt 9, ja.
+ Ist also keine, ist keine, ist keine Sache, ja.
+ So, jetzt sagt ihr mal, kann man 1 plus plus schreiben
+ und die Antwort ist, äh, äh, das geht nur mit Variablen, ja.
+ Sie können da keine Konstanten verwenden, macht ja Sinn.
+ Wo soll denn das Ergebnis hinkommen, ja.
+ So, also, also, also, jetzt haben wir hier, gehen wir ein bisschen weiter,
+ also haben wir gesehen, wie die rechte Seite ausgewertet wird.
+ Jetzt haben wir wirklich, ja, haben wir ja Zuweisungen, ja.
+ Linke Seite wird gesetzt, zu rechte Seite, ja.
+ Also, gleiche Prinzip, rechte Seite berechnen,
+ Resultat speichern und als Teil der Berechnung eventuell Updates ausführen, ja.
+ Also hier, was haben wir hier, i wird auf 3 gesetzt, klar, einfach, ja.
+ Und jetzt setzen wir j zu i, äh, ähm, zu i plus plus.
+ Vorsicht, ja. Hier werden jetzt 2 Variablen verändert.
+ Die Variable j wird verändert und die Variable i wird verändert, ja.
+ Und was passiert, wie geht das vor sich, ja.
+ Also, wir fangen hier an, ähm, wir berechnen, wir nehmen den Wert von, äh, der rechten Seite.
+ Das ist der aktuelle Wert von i, äh, das ist 3, ja.
+ So, und danach machen wir das Update von i, also erhöhen das i um 1, ja.
+ Hat also jetzt den Wert 4, äh, und das hat dann, ist dann gespeichert.
+ Und jetzt gehen wir hin und speichern diesen Wert aus der temporären, äh, Variable,
+ oder wo immer wir den haben wollten, ja, den speichern wir in j und j bekommt daher die, äh, Wert 3.
+ Und weil das so eine schöne Sache ist, habe ich hier ein Puzzle für Sie, ähm,
+ dass Sie gerne, äh, versuchen können, äh, zu lösen, ja.
+ Äh, gucken wir mal nach, ob heute der Clicker funktioniert.
+ Und wenn er funktioniert, Sie können auch mal Ihren Computer rausholen
+ und sehen, wie es dem geht, äh, und äh, gucken wir mal nach.
+ So, und Sie sollen ja dieses Programm, äh, ausrechnen, äh, angucken.
+ Und dann die Antworten für die Variablen, äh, x, y und z geben.
+ Da habe ich verschiedene Antwortmöglichkeiten, äh, für Sie da.
+ Also überlegen Sie das mal.
+ [Gelächter]
+ Okay, also, ich habe äh, letzte Chance, zehn Sekunden.
+ Ach, gucken wir mal nach. Was haben wir denn da als Antwort?
+ Ja, die kann ich jetzt nicht alle.
+ Okay, sieben und zwanzig, was sind die richtigen Antworten?
+ Was für einen Wert hat denn äh, x?
+ Also, x hat den Wert vier.
+ Äh, das haben die meisten von Ihnen richtig, aber ein Drittel eben auch nicht.
+ Äh, y hat den, was für einen Wert?
+ Y hat den Wert ein, also, das haben 66 Prozent richtig.
+ Also, es ist falsch, haben äh, nicht so schlimm, andere sind in der gleichen Boot wie Sie.
+ Äh, y hat den Wert eins und das haben 73 Prozent richtig, äh, und äh, z hat den Wert, äh, fünf.
+ Und das haben äh, 54 Prozent von Ihnen richtig.
+ Äh, also, ja, das Ganze ist schon äh, äh, äh, ja, so.
+ Ähm, jetzt gucken wir mal nach, warum ist das denn der Fall?
+ Ja, sehen wir uns hier doch an.
+ Die, die richtig haben, können sich freuen, aber sollten trotzdem den Mund halten,
+ damit die anderen das mitbekommen, ja.
+ Also, welchen Wert hat x nach dem Statement s1?
+ Ihr habt ja durchgenommen, durchnummeriert, ja.
+ Nach s1 hat x den Wert eins, nach s2 hat y den Wert null
+ und nach s3 hat z den Wert null, ja, und keine anderen Veränderungen treten.
+ Das habe ich hier, Statement s4.
+ Das Statement s4 hat zur Folge, dass der Wert von x um eins erhöht wird,
+ aber der alte Wert wird benutzt, um y zu ähm, um y zu setzen, ja,
+ weil erst verwenden, dann Update, ja, und daher ist das eben eins, ja, so.
+ Und danach hat x natürlich den Wert drei.
+ So, jetzt haben wir hier erst verwenden, also das ist drei, ja, danach Update,
+ hier haben wir die Ausdrücke e1 zu 2, ja, danach eben halt,
+ nicht so schnell, nicht so schnell, ähm, ähm, so, ähm, das war falsch.
+ Also, erst verwenden, der Wert ist ja zwei, ja, hier, x hat den Wert zwei,
+ weil das wurde hier abgedäht.
+ So, erst verwenden, dann Update, damit hat x nach e1, hat x den Wert drei, ja,
+ plus erst verwenden, ja, das ist drei, ja, danach Update vier, ja,
+ darum hat x den Wert vier, y den Wert eins, und z die Summe von zwei und drei,
+ und das ist fünf, so, ja, und weil das so gut ging, machen wir das nochmal, ja,
+ ähm, gucken wir jetzt jetzt aussieht, äh, ähm, ähm, ähm,
+ haben wir wieder andere Beispiele, so, gucken wir mal nach, ob das starten,
+ ob ich das starten kann, äh, wenn ich das starten kann, dann sollten sie, äh,
+ genau, ein anderes Beispiel, oh oh, ich sehe nichts mehr, sehen Sie was?
+ Okay, ah, ja, okay, also ich sehe jetzt hier nichts mehr, aber Sie können das ja noch sehen,
+ und der Zwischenzeit kann ich versuchen, rauszufinden, warum zum, äh, warum das hier nicht funktioniert,
+ ähm, vielleicht habe ich es versehenlich probiert, also, bitte, äh, läuft, ja, hier,
+ äh, was für Werte, ähm, für A, I und J, ja, was in, was für Werte hat das am Ende der,
+ ähm, äh, der, äh, Ausführung, äh, dieser Gruppe von Statements?
+ Okay, ich mache das jetzt zu.
+ So, äh, äh, so, was ist der Wert von A?
+ Die Antwort ist 1, äh, ja, warum?
+ Wir nehmen den Wert, speichern ihn in A und danach machen wir das Update irgendwo,
+ erst verwenden, ja, dann Update, ja, sehen Sie das Beispiel, hatte ich hier vorne für Sie, da, äh,
+ hier, da, hatten wir Erschörenden, äh, hatten wir das Beispiel für X, hatten wir das hier, oder am nächsten Schleit, ja,
+ äh, auf jeden Fall, hier, da, sehen Sie, eben, erst verwenden, ja, äh, danach eben halt, äh, wir gehen hin, ja,
+ wir machen hier das Update, das Update ist das hier, ja, und danach speichern wir, ob da jetzt X oder Y steht, macht ja keine Rolle, ja,
+ ob hier ist ja nur, ja, was da steht, mit keine Rolle, das wird da gespeichert, ja, daher eben halt, äh, ist in diesem Fall,
+ das Ergebnis 1, ja, und 27% von Ihnen haben das richtig bekommen, okay, ähm, dann, äh, äh, äh, ja, so, jetzt, was für einen Wert hat denn I?
+ Das haben Sie alle richtig schön bekommen, I hat den Wert 8 und das haben 97% richtig bekommen, also Sie mögen also,
+ äh, äh, äh, die Dekrement-Operation mehr als die Inkrement, okay, gut, äh, und was hat denn Wert J, äh, was für einen Wert haben wir denn J?
+ Ah, das haben Sie auch, hat den Wert 1, ja, und das haben in der Tat 95% richtig bekommen, also, ja, äh, äh, bitte, gucken Sie sich das genau an, ja,
+ ich habe hier das nochmal Schritt für Schritt erhrauchen, so, jetzt, solche Puzzles sind natürlich schön, wenn man Prüfungsaufgaben erstellen muss, nicht wahr,
+ äh, aber bisher haben wir noch nie das in den Prüfungen gefragt, vielleicht ändert sich das mal, ja, äh, meine Meinung ist, unser Job ist es,
+ um das Verständliche Programm zu schreiben, keine Puzzles, ja, äh, Sie müssen natürlich diese Zeichen kennen, ja, oder erkennen, ja, weil Sie werden immer wieder mal Programme erfinden, in die, die verwenden,
+ Sie können die auch gerne verwenden, ja, ist Ihre Entscheidung, ob Sie so etwas verwenden oder nicht, aber wenn Sie es machen, ja, wenn dann richtig, ja,
+ äh, wenn Sie sich da selbst ins Bein schießen, dann tut mir das fürchterlich leid, aber, äh, kann ich nicht machen, ja, diese Operatoren sind nicht so effizient, das ist heute, machen die überhaupt nicht mehr ein Thema, ja, das ist früher mein Thema gewesen, heute nicht mehr, also dafür sollten Sie nicht die Klarheit eines Programmes opfern, ja,
+ und wenn Sie meinen, das war alles, nein, es gibt noch viel mehr Kurzformen, ja, Sie können auch eben plus Equal oder minus Equal machen, das wäre dann so, als ob Sie irgendeinen Wert, nicht nur den Wert eins, sondern irgendein beliebigen Wert für das Update verwenden, das geht nicht nur für plus und minus, sondern geht auch für alle anderen Operatoren, ja, es geht für, also nicht alle anderen Operatoren, für alle anderen arithmetischen Operatoren, ja,
+ wie gesagt, also ist nicht, äh, äh, wir, ich halte es für wichtig, das zu lesen, aber wir werden nicht Ihre Programme danach bewerten, wie oft Sie diese Operatoren haben, ja, so, also diese Kurzformen sind manchmal nützlich, aber auch manchmal unnötig, ja, so,
+ und diese Operatoren heißen, äh, in der Fachsprache, die, äh, sind die Post-Increment oder Post-Decrement-Operatoren, die Betonung liegt auf Post, ja, und jetzt haben manche von Ihnen schon mal Programme angeguckt, und da haben Sie gesehen, dass es auch möglich ist, diesen, äh, Operatoren, die Operatoren vor die Variable zu schreiben, da gibt es nämlich die Prie-Increment und Pridecrement-Operatoren,
+ und die erscheinen dann vor den, äh, Variablen, und da ist dann die Regel, die, dass wir das eben halt etwas anders machen, ja, so, kommen wir gleich drauf, so, also die, ähm, wie gesagt, ob das wirklich so eine gute Idee ist, weiß ich nicht, ja, also wenn Sie hier, äh, eben so was haben, ja, was passiert jetzt, ja, jetzt gehen wir halt hin und, äh, machen erst das Update und verwenden dann den Wert, ja, also hier wäre zwei,
+ wäre zwei, wäre der Eingangswert, um eins erhöht ist drei und der wird dann an das
+ Printlein geschickt, ja, und hier wird die drei erst erhöht und dann als vier an das
+ Printlein geschickt, ja, das sind diese Pre-Increment oder Pridecrement-Operatoren. Also wie gesagt,
+ wenn Sie die verwenden wollen, ist Ihre Sache, wird ... ist aber nicht das, wenn ich jetzt
+ Printlein A schreibe, wo muss, jemand fragt mich, dann müssen wir eins oder zwei heraus,
+ das müsste mir jemand, müssen uns sagen, welchen Beispiel, ja, in dem Beispiel davor, A ist,
+ wenn Sie dann Printlein A machten, würden Sie dann den aktuellen Wert bekommen. So,
+ warum sind diese Kurzformen jetzt manchmal noch etwas eben unnötig über Kopf zerbrechen?
+ Wir erinnern uns, dass für diese logischen Operatoren und/oder nicht immer beide Operanten
+ ausgewertet werden, um das Ergebnis zu ermitteln, ja. Java beendet die Ausführung, also bald
+ das Ergebnis feststeht, ja, so, und eben diese beiden sind alle beide links associativ, das
+ heißt, die Ausdrücke werden von links nach rechts, ja, und dann gemäß Präzedenz und
+ Associativität ausgewertet. Und dieses und, also logisch und, stoppt sobald ein Ausdruck
+ voll ist und der andere stoppt sobald ein Ausdruck tru ist, ja. Und das kann jetzt gefährlich
+ werden, kann, muss nicht, ja, wenn Sie in diesen Ausdrücken Pri oder Post-Increment-Operatoren
+ verwenden, ja. Hier haben wir also so ein Programmsegment, wo jemand einen Loop hat, wo er eben
+ eine Zahl sich anguckt, eingibt, ja, und dann, wenn der Wert ungleich null ist, wird ein
+ Counter um, wird erhöht und wenn der Counter kleiner als neun ist, dann, also vorher, dann
+ hört der Loop, dann wird das eben ausgedruckt und so weiter, ja. So, und das läuft eben
+ für eine bestimmte Anzahl von Fällen, ja. Und jetzt denkt man, dass dieser, der Count
+ sollte das eben liefern, ja. Eben, der liefert eben halt die Anzahl der Werte ungleich null,
+ weil das will ich halt so machen, weil das wird nur ausgeführt, ja. Wenn das schon false
+ ist, ja, dann ist das eben halt, wird der zweite Teil gar nicht ausgeführt. Und jetzt
+ hier in dem Vorloop ist das kein Problem, aber wenn Sie Count benutzen sollten, um, um eben
+ halt die, um den Loop zu kontrollieren, dann kann das eine Überraschung sein, die eben
+ Ihnen nicht gefällt, ja. Also passen Sie auf, wenn Sie in solchen Ausdrücken Post oder Prie
+ Increment Operatoren verwendet werden, ja. In der Mathematik sind diese, ist A und B
+ derselbe wie B und A, aber nicht, wenn es bei einem Programm, wenn es eben Operatoren
+ mit Nebenwirkungen gibt. Und diese Side Effects, sagen wir, diese Operatoren, Prie und Poster,
+ das sind Operatoren mit einem Nebeneffekt. Die haben einen Effekt auf die Variable X
+ und Y und dann eben macht es einen Unterschied aus, ob der Ausdruck ausgewertet wurde oder
+ nicht, weil die, ob das Update findet, nur statt, wenn eben eine Auswertung stattfand,
+ ja. Und das müssen Sie aufpassen, weil da können Sie sich im Programm Bös wehtun.
+ Also unser Ziel ist es, verständliche Programme zu schreiben, ja. Vorsicht bei diesen Kurzformen.
+ Und sie sind dann sinnvoll, wenn Sie eben in der Loop Kontrolle das verwenden, um den
+ Loop Counter zu erzählen, aber Vorsicht in allen anderen Situationen, ja. So für die,
+ die das Ganze noch nicht genug haben, ja. Die können ja mal gucken, was denn hier die
+ Ausgabe dieses Trinks ist, können Sie in den Chat reinschreiben. Wenn ich paar Antworten
+ habe, dann sehe ich, dass Sie das mitbekommen haben. Was ergibt dieser Printlinanweisung,
+ ja. Ich gucke nur nach was andere Fragen, also überlegen Sie kurz, was für ein Output
+ daraus kommen sollte. Okay, eins, zwei, jetzt kommen die Richtchen antworten, okay. Also
+ ja, ja, ja. Eigentlich sehe ich Sie einig, also Sie gibt es einige Antworten, okay. Okay,
+ was ist die richtige Antwort? Sechs, mit einem Zwischenraum und dann vier, fünf, fünf,
+ wobei die Länge des Zwischenraums, für uns keine Rolle, warum, ja. Der geht halt hin,
+ hier wird ein Wert gefunden, ja. Ich kann es auf der nächsten Slide habe ich es für Sie
+ vorbereitet, ja. Der Wert geht pri, erhöhe, dann verwenden, ja. Also wird das zwei auf
+ drei erhöht, ja. Post ist, verwende, dann erhöhen, also ist das, wird der alte Wert
+ von drei nochmal genommen und danach hat x den Wert vier und das gibt die sechs, ja.
+ Hier ist der Zwischenraum und jetzt wird gedruckt was, jetzt ist das ja string, ja. Jetzt wird
+ jeder einzeln als string produziert und als an den string angehängt, ja. So, ist das nicht
+ schön, ja. Also hier haben wir die vier, ergibt den string vier, also ergibt das erst mal
+ Zwischenraum string vier, ja. Jetzt haben wir hier prä, erhöhe, dann verwenden, erhöhen
+ ist fünf, also kommt hier eine fünf, wird das konkateniert und dann hier haben wir nochmal
+ den Wert selber, nehmen wir den Wert so einfach, haben wir also vier, fünf, fünf, ja. Also
+ wenn Sie, wie gesagt, wenn Sie mal je Langeweile haben sollten, können Sie sich mit solchen
+ Prüseln entsprechend vergnügen. So, jetzt könnte ich noch ein bisschen mehr über die Terminierung
+ von Slides, von Schleifen sagen, aber da das System heute zu funktionieren scheint, dachte
+ ich zeige Ihnen noch kurz, was Sie denn so für die if statements mir geschickt haben.
+ Da habe ich viele, nein, okay, also was könnte, was für Überraschungen könnte es denn da
+ geben. Also ich hatte Ihnen bereits die eine richtige Lösung gezeigt, das war diese oder
+ wenn Sie auch in der Stadt Integer Konstanten Rehle Zahlen verwenden wollen, ist auch okay,
+ ja. Aber das war das Programm, ja. Wir sagten hier Methode Quadrant, die das liefert. So,
+ und im verschiedenste Version habe ich, lauf der Jahre bekommen, aber jedes Jahr, und da
+ gibt es immer wieder Überraschungen, auch dieses Jahr, muss ich sagen, habe ich wieder Beispiele
+ gefunden, wo ich sage, hm, okay, interessant. Also solche Versionen habe ich einige gesehen,
+ ja, auch aus der Zeit aus der Papier noch verwendet wurde. Gibt es auch Beispiele, die so waren,
+ ja, alle keine großen Überraschungen, ja. Auch das manche ziehen dann den, ziehen den,
+ sagt man den, ziehen den Test für Null nach oben, leider hat er das nicht geschafft,
+ dass auf den richtigen, so, also, so, also das hier, dieses Programm zieht den Test für Null
+ nach oben, das ist auch gut, ja. Manche verwenden eine lokale Variable, um erst das Ergebnis
+ aufzuschreiben, ist auch gut. Das Int ist auch, auch im Prinzip gut. Ich persönlich denke, es gibt
+ mehr Möglichkeiten, Variabelnamen zu finden, aber wenn sie den gleichen Namen nehmen wollen,
+ wie die Methode, bitte schön, aber eben inzfang, ist ein kleinen Buchstaben, ja. So,
+ hat ihr Programm alle Fälle erkannt, ja, ich habe einige Lösungen gesehen, ja, es ist aus diesem
+ Jahr eine, ja, die eben halt übersieht, dass auch irgendwann mal der Rückgabewert Null sein kann,
+ ja, oder aus dem letzten Jahr in etwas anderer Anordnung, genau so, ja, so. Dann eben andere
+ haben dann vergessen, so Klammern zu schätzen. Hier würde es eben eine Warnung geben, weil hier
+ fehlt das Return, ja, da gibt es dann vom Kompiler eine Warnung, dass ein Return fehlt, da hilft der
+ Kompiler, ja. Dann haben wir hier so was, das ist auch okay, bloß eben die Quadranten sind nicht
+ richtig, ja. Also wenn sie schon das machen, dann, wenn es geht, bitte die richtigen Quadranten, ja.
+ Auch hier haben wir eine andere Lösung, die auch eine andere Reihenfolge der Quadranten hat, also
+ wie gesagt, jeder oder jeder kann programmieren lernen, aber wichtig sind Aufmerksamkeit,
+ Fantasie und Übung, aber Aufmerksamkeit, ja. Und wir haben gesagt, dieses Programm nimmt zwei
+ Reellezahlen entgegen, ja, nicht ins, das sind, die können sie nicht in Reellezahlen,
+ können sie nicht in ins umwenden. Das ist eine Lösung aus diesem Jahr, ja. Ich habe dieses
+ Jahr 78 Antworten bekommen und 28 davon haben Intparameter verwendet, ja. Also sie mögen
+ wirklich die Ints, ja. Also aber eben das System würde das nicht mögen, ja. Zudem if wird bei uns
+ lowercase geschrieben, else auch, ja. Und sys out, kenne ich nicht, ja. Machen sie sich ihr Leben
+ nicht komplizierter, als es eh schon ist, ja. Ist nicht nötig, ja. Oder hier Printlines, ja. Wir
+ haben nicht gesagt, dass sie irgendwas drucken sollen. Sie sollen etwas, ja gesagt, sie sollen
+ eine Int zurück, also einen Wert zurückgeben, ein Int, ja. Nicht irgendeinen String, ja. Alle
+ möglichen Antworten habe ich da am Lauf der Zeit gesehen, ja. Auf Papier genauso wie Leute, die
+ das eben eintippen, ja. Die geben mir gut, das ist zwar korrekt, ja. Aber wir wollten nicht
+ ins String schon gar nicht so einlangen, ja. Sondern wir wollten eben 1, 2, 3, 4 oder 0, ja. Und das
+ ist es. Und auch noch falsch, ja. Weil 0, 0, es könnte ja auch danach gar nicht gefragt, ja. Und
+ ja, es gibt verschiedenste Varianten. In anderen Jahren haben wir ihre Kollegen eben das per
+ e-mail zugeschickt. Danach sahen die eben ein bisschen farbiger aus, wenn ich die anders gemacht
+ habe. Ich habe gesagt, die Parameter sind doubles, ja. Sie können die nicht einfach
+ weglassen. Das System akzeptiert das nicht, ja. Und eben das größere Gleich ist auch nicht richtig,
+ ja. Es muss echt größer sein. Und von minus 1 hatten wir gar nicht vorgesehen als Quadranten,
+ aber okay, ja. Also, da gibt es verschiedenste Versionen, ja. Ganz ohne Namen geht es auch nicht,
+ ja. Es muss schon wirklich ein Name kommen und bitte keine Print S. Auch das können wir in Java
+ nicht machen, ja. So zwei logische Ausdrücke. Da weiß der Compiler nicht, meint die Programmierer
+ oder der Programmierer jetzt ein und oder ein oder. Darum verlangt das System, ja, dass wir das
+ genau angeben. So ist es richtig, ja, mit dem Unzeichen, ja. Aber alles andere wird eben da
+ nicht akzeptiert, ja. So. Und natürlich machen sie die Logik richtig, ja. Nicht hier unten,
+ das ist zwar nicht ganz, nicht ganz falsch, aber eben, es trinkts wollen wir eh nicht zurück haben,
+ ja. Oder eine Lösung aus dem letzten Jahr, ja. Da hat dann jemand eben ein Indparameter, aber hat
+ eben Parameter verwendet, nur dann dummerweise im Programm die nicht. Zum Glück hilft uns da
+ der Compiler, ja. Aber die Tatsache, dass die null vergessen ging, da hilft der Compiler eben
+ nicht, ja. Der Compiler hilft nur, wenn eben die Typen nicht ganz richtig sind oder die Namen
+ nicht stimmen, ja. Auch hier wieder jemand der Printlinen mochte und return, bitte lowercase, ja.
+ So. All dies Jahr habe ich auch eine Reihe von Lösungen gefunden, in denen die Studenten oder sie
+ große Kreativität in der Wahl des Variab- des Methodennamen an den Tag legten, ja. Test,
+ Quad und so weiter. Ist alles gut und schön. Aber wenn wir sagen, wir wollen eine Methode mit dem Namen
+ Quadrant, dann wollen wir eine Methode mit dem Namen Quadrant. Warum? Weil mein Testsystem wird
+ testen, ob ihre Methode mit dem Namen Quadrant das und das ergibt, zurückgibt. Wenn da die Methode
+ gar nicht existiert, gibt es nichts zurück, ja. Null Punkte, ja. Also bitte, ja. So. Und dann hier
+ elseif, ich weiß, es gibt Programmiersprachen, die versuchen die Lehrzeichen zu minimieren,
+ weil die kosten ja so viel, ja. Und darum gibt es eben elseif da als Konstrukt, aber nicht in Java,
+ ja. Und bitte, hier ist es okay, ja. Also Java ist tolerant. Sie können dieses Lehrzeichen
+ weglassen. Sie können auch dieses Lehrzeichen weglassen. Sie könnten sogar auch diese beiden
+ weglassen, ja. Wer auch immer noch korrekt ist, Java. Mein Ratschlag wäre, Lehrzeichen kosten nicht
+ viel. Daher sollte man sie einsetzen, ja. Wieder eine andere Variabelname oder da. Jemand hat da
+ Errace an den Tag gelegt, die wir noch gar nicht kennengelernt hatten, aber ist okay. Aber auch hier
+ haben wir noch einen anderen Variabelnamen. Also, dann gibt es Lösungen, die gleich, also wir hatten
+ nix von Package gesagt, machen sie sowas nicht, ja. Die Chance, dass ihr Programm auf diese Weise
+ richtig evaluiert wird, ist null, ja. Und mit sowas machen sich das Leben noch schwieriger. Das hier
+ ist okay, ja. Unsere Methode muss diese Public Static Vault sein fürs erste, ja. Aber von Variable
+ mit Static haben wir nix gesagt. Wollen wir auch gar nicht erst sehen, bis das wir ihnen erklärt
+ haben, um was es geht. Ganz ohne Methodenamen geht es auch nicht, ja. Wüsste keiner, was er da machen
+ soll, ja. Und eben, ja, also so kann man es auch machen, aber eben eher umständlich, ja. Wieder
+ eine andere Variabelname, ja. Manche Leute bevorzugen das, können sie machen, dass sie die
+ öffnende Klammer dahin setzen, wenn sie wollen, können sie es machen. Ich mache das nicht, weil
+ ich brauche den Platz auf meinen Slides, aber das ist okay, ja. Immer noch ein korrektes Programm.
+ Aber der Name muss stimmen. Und Float, ich weiß nicht, wer Float heutzutage noch verwendet, ja. Also,
+ wenn sie sicher sind, dass ihr Ergebnis so wenig Bits hat, dass es in diesem Variabeltyp
+ gespeichert werden kann oder das Ergebnis eh keine Rolle spielt, dann können sie da Float benutzen,
+ ja. Aber in allen anderen Sachen, in anderen Situationen empfehlen wir Double, weil sonst können
+ sie wirklich das Pechhaben, das nicht mal mehr das Vorzeichen ihrer Berechnung stimmt, ja. So,
+ also Float, warum? Das ist auch eine Lösung, ja. Die Lösung war jetzt letztes Jahr, die kriegt
+ einen Preis für die größte Anzahl Zeilen, ja, die man für dieses Beispiel finden kann, ja. Aber
+ dazu funktioniert es auch noch nicht ganz, aber das ist ein anderes Thema. So, also, ja, dann haben wir
+ hier Lösungen eben, die an sich okay sind, nur dass eben halt die Klammern da nicht sind, das ist
+ auch okay, ja. Also solche Klammern kosten wirklich nicht viel, ja. Benutzen sie die, ja. Weil,
+ Sie haben dann ein Programm, schreiben Sie das hin und dann wollen Sie noch irgendwas ändern, ja.
+ Und wenn Sie Glück haben, ist die Variable nicht definiert und dann beschwert sich der Compiler
+ und sagt, es ist ein Reh Beispiel, ja, sagt, oh, die Variable ist bekannt. Aber wenn die Variable
+ nicht bekannt ist, ja, dann geht der Compiler hin und wenn der ist bekannt, es geht der Compiler
+ hin, produziert Code und dann eben halt können Sie den Fehler suchen, wenn Sie wollen, ja. Also,
+ wenn das eben so ist, dass das erlaubt ist, dann geht das in der Compiler hin, produziert Code und
+ Sie haben das Problem irgendwie später zu lösen, ja. Also, solche, die Klammern kosten wirklich
+ heute nicht mehr viel, ja. So, dann gibt es kreative Lösungen, ja. Kreative Lösungen, hier wird
+ die Multiplikation verwendet, um zu sehen, ob einer der beiden operanten Nulles. Das geht jetzt gerade
+ bei Doubles, aber Vorsicht, das muss nicht immer eine gute Idee sein, ja. Das, oder auch hier wieder
+ das muss nicht unbedingt richtig sein, weil vergessen wurde immer noch der Return Typ Null, ja.
+ Der Return Wert Null, ja. Und also der Vorsicht, wenn Sie da mit denen rechnen, ist nicht gesagt,
+ also, wenn Sie zwei Zahlen miteinander multiplizieren und beide sind positiv, ist nicht gesagt, dass das
+ Ergebnis immer noch positiv ist, bei Integers, ja, darum Vorsicht. Also, machen Sie sowas lieber nicht,
+ ja. Verwendung von Variablen sind schon okay. Dieses Programm definiert eine neue Variable für
+ jeden Block, ja, bloß da unten nicht. Da ist keiner definierter. Da beschwert sich das System zum
+ Glück, ja. Ist erlaubt, aber vielleicht nicht gerade übersichtlich, ja. Also, so. Den Fragen,
+ diesen Fragezeichen-Operator hatte ich Ihnen schon mal erklärt, könnte man hier auch praktisch
+ einsetzen, ja. Gehen Sie halt hin. Wenn das x größer Null ist, dann gucken Sie nach, ob y größer
+ Null ist. Und wenn ja, ist es entweder eins oder vier. Und anderfalls, wenn das kleiner ist,
+ gucken Sie nach, ob es zwei oder drei ist. Und dann gibt es Lösungen, die sind sehr kreativ, ja.
+ Die benutzen hier diesen Operator, den wir Ihnen gar nicht vorstellen, normalerweise, ja. Das ist ein
+ Boolean-Logical-Operator, der nicht mit Short-Socket-Evaluation ab die Auswertung abricht, ja.
+ Also, da müssen Sie aufpassen, ob das ist, was Sie wollen, ja. Weil dieser eben evaluiert alle
+ beiden Operanten, unabhängig davon, ob das ist. Also, das wird dann, wo der ausgiebig auf Stack
+ Overflow diskutiert, können Sie machen. Aber vorsichtig, stellen Sie sicher, dass die nächste
+ Leserin Ihres Programms die gleiche Meinung hat, wie Sie und das auch eben kennt, ja. So. Ein paar
+ andere Beispiele eben, dass aus diesem Jahr wieder mal eins, ja. Das ist eine Zuweisung, ja. Das ist
+ keine Vergleich. Also, Sie müssen immer zwei Gleichheitszeichen verwenden, ja, wenn Sie das
+ machen wollen, ja. Oder eine andere Lösung. Aus diesem Jahr, ja, ganz ohne Typen geht es auch nicht,
+ ja. Das ist sonst einfach. Und diese Lösung kam sogar so, dass diese in der Originallösung,
+ diese schließenden Klammern fehlten. Und ich habe da irgendwie erst mal rausfinden müssen,
+ dass ich es überhaupt so schön Präti-printen konnte. Wenn Sie mich das nicht machen, dann meint
+ eben der Präti-Printer, also das ursprünglich aus, ja, dann meint der Präti-Printer, dass Sie so
+ eine Konstruktion da angeliefert haben und meint es fehlten noch zwei sich schließende geschweifte
+ Klammern, die Sie aber gar nicht brauchen, weil das Problem sind nicht geschweifte Klammern, das
+ Problem sind diese Klammern. Also passen Sie auf, Sie können da viel Zeit vergeuden, jetzt rauszufinden,
+ wo die schließenden Klammern hin müssen. Wenn Sie passen Sie auf, es geht nicht darum, schnell
+ zu machen, ja. Geht darum, das langsam und richtig zu machen, ja. Eine andere Lösung aus diesem Jahr,
+ die hat dann auch vieles weggelassen, sowohl die Klammern für die Methode, als auch die
+ Semicolons, ja, und das hat man auch in der Vergangenheit schon mal gehabt, also das geht natürlich auch nicht.
+ Auch solche Lösungen haben wir oft gesehen, ja, sind kompakt, ja, aber eben das geht natürlich
+ auch nicht für reelle Zahlen, dass sie da nicht machen, da müssten Sie, wenn Sie das richtig machen
+ wollen, eben einen Vergleich machen, ja, dann ist das Ganze in Ordnung, ja. So, auch fehlende Returns
+ sind interessant, also viele von den Lösungen haben kleine Fehler und zum Glück findet der
+ Compiler einige von denen, ja, wie falscher Typ und so weiter und deswegen verwenden wir einen
+ Compiler in der Prüfung, damit Sie eben das haben, aber trotzdem fangen Sie mit einem möglichst,
+ fangen Sie mit einem möglichst korrekten Programm an, aber die logischen Fehler, die müssen Sie
+ finden, ja, und genauso falsche Methodennahmen. Falsche Methodennahmen haben zur Folge, dass
+ für uns kein Test funktioniert, ja, bitte, wenn Sie die Punkte wollen, sorgen Sie dafür,
+ dass Sie solche Sachen richtig hinbekommen, ja, ist nicht schwer, die Aufgaben, ja, die Beschreibungen
+ sind manchmal lang, warum, weil wir an alle versuchen, an alle Sonderfälle zu denken,
+ aber Sie müssen die Aufgaben genau lesen, ja, sonst haben Sie es schwer, eine korrekte
+ Lösung zu erstellen. So, das habe ich zum Thema If Statement, einfaches Beispiel,
+ trotzdem zehn Minuten, wünsche Ihnen einen schönen Rest der Woche und wir sehen uns dann am Freitag.
+ [Applaus]
+ (Beifall bei der CDU und dem BÜNDNIS 90/DIE GRÜNEN)

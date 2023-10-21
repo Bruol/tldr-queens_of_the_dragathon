@@ -1,0 +1,1572 @@
+ Wir haben ja verschiedene kleinere technische Probleme.
+ Was könnte am Freitag den 3C noch alles schief gehen?
+ Wir werden versuchen, hoffentlich alles so hinzubekommen, dass es funktioniert.
+ Unser heutiges Thema ist, wir fangen damit mal an, dass wir nochmal das Thema Schleifen uns angucken.
+ Aber bevor ich das mache, wo ich noch kurz ein paar Berichtigungen oder Erläutungen geben zu dem,
+ was ich letzte und vorletzte Folie und Gesagt habe.
+ In der letzten Vorlesung war natürlich ein Cut- und Paid-Feder gewesen.
+ Natürlich müssen wir, wenn wir die ganze String abarbeiten,
+ dann müssen wir dafür sorgen, dass eben der eine Teil von 0 bis 3, das heißt bis 2 einschließlich,
+ und der andere Aufruf von 3 ab aufwärts,
+ diesen String oder diese Teil des Trings bearbeitet, das heißt da unten darf kein plus 1 stehen,
+ sondern da muss einfach der Selberausdruck erscheinen, wie da oben.
+ Und dann war die einigen Übungsgruppenkampf zur Sprache oder meinten einige Studierende,
+ ich hätte gesagt, dass TRU wäre die stärkste Vorbedingung, das stimmt natürlich nicht,
+ das habe ich mir wahrscheinlich versprochen.
+ Ich glaube, was ich sagen wollte war folgendes, sehen Sie, wenn Sie ein ausländiges Triple haben,
+ von der Art TRU, Statement S und Q.
+ Das ist schon eine wichtige Aussage, vielleicht habe ich das Wort stark da verwendet,
+ das könnte auch sein, eine wichtige Aussage, warum,
+ weil die sagt uns, egal welchen Zustand wir vor dem Statement S haben,
+ danach nach der Ausführung von S gilt die Aussage Q.
+ Das heißt wir brauchen uns insbesondere keine Gedanken machen,
+ was eben passiert, wie wir überhaupt dieses Statement S erreichen.
+ Deswegen ist das eine wichtige Aussage, und das heißt aber nicht,
+ dass TRU die stärkste Aussage, die stärkste Vorbedingung ist, das ist nicht richtig,
+ weil Vorbedingungen sind nicht unbedingt vergleichbar.
+ Wenn Sie eine Vorbedingung haben, die sagt X ist größer 5
+ und eine andere, die sagt X ist ungleich 9,
+ das sind zwei Vorbedingungen, P1 und P2.
+ Und weder ist P1, P1 ist nicht stärker als P2, das gilt nicht,
+ und P2 ist auch nicht stärker als P1.
+ Also solche Aussagen sind nicht immer unbedingt vergleichbar
+ und können nicht immer eben sagen, eine ist stärker als die andere.
+ Also und daher, ich hoffe, das habe ich nicht verwirkt.
+ Und dann habe ich auf dem Chat verschiedene Fragen gesehen
+ zum Thema dieser Post- und Prieinkrement-Operationen.
+ Sehen Sie, wenn wir so einen Statement uns angucken
+ im Compiler-Laufsatzsystem, da geht der Compiler nicht hin,
+ guckt sie da, hier ist ein A und da ist ein B,
+ ach, da kommt noch ein C.
+ Das ist eine andere, da ist eine Multiplikation.
+ Da gibt es eine Datenstruktur, die zum Beispiel sagt, ach,
+ wir wollen ein Plus machen und da wollen wir A
+ und da wollen wir hier als einen Operanten haben
+ und die B und C als andere Operanten.
+ Und wenn ich jetzt sage, ach, hier habe ich so eine Zuweisung,
+ okay, hier habe ich eine Zuweisung
+ und das heißt, das Ergebnis der Zuweisung
+ wird dann in der Variable Z gespeichert.
+ So, ja.
+ Wenn ich jetzt aber hingehe
+ zum Beispiel dieses B plus Plus-Inkrement verwenden will,
+ dann geht das System hin und verwendet noch mehr in dem Grafen.
+ Ach, hier soll das B verwendet werden.
+ Aber das B soll ja auch noch jetzt hier um eins erhöht werden
+ und das soll auch wieder in B gespeichert werden.
+ Und dann geht das System hin und sagt sich, ha, hier muss ich aufpassen.
+ Also, diese Speicherung, die darf erst passieren,
+ nachdem dieser Operant gelesen wurde.
+ Die Addition kann vielleicht schon stattfinden.
+ Und so weiß das System dann, ja, ich muss also erst das machen,
+ dann das, dann das, dann das, ja.
+ Und dann erst wird das eben halt richtig gespeichert.
+ Es geht eben, wenn Sie eben A wird gesetzt zu A plus Plus, ja,
+ dann ist da eben auch so eine Konstruktion.
+ Wir haben hier A, wir haben hier A plus Plus, ja.
+ Und wir haben hier nochmal das System,
+ weiß dann schon, in welcher Reihenfolge die verschiedenen
+ Operationen ausgeführt werden dürfen oder nicht.
+ Also, lassen Sie sich nicht von der einfachen textuellen Darstellung verwirren.
+ Lesen Sie das nicht einfach so, wie Sie das wollen.
+ Deswegen, mein Ratschlag, machen Sie es nicht.
+ Ja, sehen Sie, es ist wirklich toll, wenn Sie, hier haben wir,
+ hier haben wir diesen Ausdruck Y, ist Plus Plus B, also Prieinkrement B,
+ mal A plus Prieinkrement B, ja.
+ Wenn ich das in der Reihenfolge mache für die Werte A und B,
+ A, 2 und B, 1, bekomme ich 7.
+ Wenn ich die Reihenfolge vertausche, das ist ja wirklich ein Morgs,
+ wie Sie sich das hier denken.
+ Das tut mir leid.
+ Also, ich komme einfach mit dem, ich komme mit meinem Stiften,
+ ich kann nicht überall schreiben.
+ Daran habe ich natürlich beim Design der Slides nicht gedacht.
+ Also, wenn Sie sich die beiden angucken, ja,
+ die sind eigentlich, würden wir ja denken,
+ dass der komutative Aditionsapparator wirklich in beiden Fällen das Gleiche bringt.
+ Aber nein, aufgrund dieser Prieinkrement-Operationen
+ ist das dann eben unterschiedlich.
+ Daher machen Sie sowas nicht, weil es ist extrem verwirrend, ja,
+ dass das und diese beiden Ausdrücke für dieselben Werte
+ unterschiedliche Ergebnisse liefern, das ist wirklich nicht gut.
+ Deswegen machen Sie es nicht, ist ja, denn Sie brauchen es wirklich,
+ oder Sie wissen genau, was Sie machen, ja.
+ So, okay, jetzt zum Thema eben noch mehr Schleifen.
+ Und da kommen wir zum ersten Thema,
+ dass wir haben die Terminierung, ja.
+ Und eine einfache Aufgabe für Sie,
+ Sie wollen ein Programm schreiben und eine Methode schreiben,
+ die Zahlen von 1 bis N durch Komma getrennt ausgibt, ja.
+ Und irgendeine Obergrenze wird eingegeben
+ und dann sollte das System ausgeben, 1,2 und so weiter, ja.
+ So, und das wäre natürlich nicht zu...
+ Das können Sie sofort machen, ist nicht sehr schwierig, ja.
+ Also, wir brauchen da klar ein Scanner, da lesen wir die Anzahl, die Zahl, ja.
+ Und dann gäbe es verschiedene Möglichkeiten, das zu machen.
+ Ich habe jetzt zwei Optionen, ja.
+ Die eine ist, wir gehen hin und wir drucken in jeder Zeile
+ erstmal die Zahl und dann das Komma.
+ Oder in der anderen drucke ich erst das Komma und dann die Zahl, ja.
+ Und so könnte ich auf diese Weise meinen, dass ich das Problem löse.
+ Also, gucke ich mich... also, die erste an, die Option A wäre also die,
+ dass ich eben hingehe und das für jede Zeil...
+ jeder Zeil die Zahl... die Zahl drucken und das Komma.
+ Und das ist leider eine federhafte Lösung,
+ die nämlich nicht das bringt, was wir wollen,
+ weil am Ende ist immer noch ein extra Komma.
+ Und wenn ich mir die andere Lösung angucke,
+ weil das die Lösung, also das Komma erst drucke,
+ das ist auch nicht die richtige Lösung.
+ Wenn ich das mache, was bekomme ich dann?
+ Dann bekomme ich ein extra Komma zu Beginn der Zeile,
+ will ich auch nicht haben.
+ Und es ist ein Problem, dass Sie immer wieder haben,
+ dass Sie bei so einem Loop die erste oder letzte Interaktion anders ausführen,
+ irgendwie etwas ändern müssen.
+ So die Analogie ist, wenn Sie einen Gartenzaun bauen,
+ da bauen Sie ja auch, praktisch Sie gehen hin
+ und Sie stellen einen Betonieren, einen Pfosten
+ und dann installieren Sie die Querstreben.
+ Wenn Sie nach dem System verfahren,
+ dann haben Sie am Ende so einen Konstrukt,
+ zwei Querstreben, die da leer im Raum stehen.
+ Das ist praktisch der Anders, den wir da gewählt haben,
+ wenn wir das Komma drucken, nachdem wir die Zahl ausgegeben haben.
+ Oder umgekehrt der Anders wäre, dass wir die Querstreben installieren
+ und dann den Pfosten betonieren,
+ dann hätten wir die Querstreben zu Beginn völlig falsch.
+ Und da sehen Sie, wie die Lösung sein muss.
+ Die Lösung muss da sein muss,
+ dass wir zum Beispiel einen ersten Pfosten betonieren
+ und dann eben halt immer wieder diese Teile da anbauen.
+ Und genauso würden wir eben unseren Loop konstruieren,
+ dass wir eben halt den ersten Pfosten betonieren,
+ also die erste Zahl ausgeben
+ und dann die weiteren Zahlen in der Reihenfolge,
+ Zahl ausgeben und dann am Ende die Zeile abschließen.
+ So können wir das machen.
+ Oder wir könnten natürlich auch den Durchlauf der letzten Zeile verändern.
+ Das heißt, wir würden also nicht bis zum Max gehen,
+ sondern bis zu Max minus 1
+ und würden dann in der letzten Zeile eben den Pfosten betonieren,
+ also die Zahl ausgeben.
+ Was gibt es denn da so Interessantes?
+ Habe ich etwas falsches auf den Slides?
+ Nein, nicht.
+ Guter Börsen-Tab.
+ Ja, gut, dann geben Sie doch allen Kollegen mit.
+ Die dürfen auch gewinnen.
+ Nein, seien Sie nicht so selbstsüchtig,
+ dass Sie nur an sich denken.
+ Okay, ja.
+ So gibt es verschiedene Möglichkeiten,
+ wie Sie das Problem eben in den Griff bekommen können.
+ Und wenn Sie eben sehen, das ist ja oft bei 1er-Roy.
+ Die erste oder letzte Interaktion ist nicht ganz richtig.
+ Die Schleife wird einmal zu viel oder einmal zu wenig durchlaufen.
+ Und auf den deutschen Wikipedia-Seiten gibt es sogar dafür eine eigene Webseite.
+ Aber eben, das ist nicht den Inhalt dieser Webseite.
+ Dazu kann ich nichts sagen.
+ Aber es ist ein Problem, dass es immer wieder gibt.
+ Und darum sollten wir genau überlegen,
+ wie wir diese Zahl eben halt, wie wir euch die Schleifen eben kontrollieren.
+ Können wir jetzt verschiedene Systeme umsetzen,
+ ja, verschiedene Beispiele.
+ Da will ich jetzt nicht in einzelnen genauer durchgehen.
+ Ja, der interessante Fall ist der.
+ Was machen wir denn, wenn wir aus dem Programm
+ die Daten, die wir einlesen, also Input-Werte,
+ benutzen, um zu entscheiden, ob die Schleife noch weiter bearbeitet werden soll.
+ Sondern wenn Sie immer wieder mal haben,
+ Sie müssen irgendwelche Zahlen addieren oder Sie müssen irgendwas anderes bearbeiten
+ und da nehmen Sie Input ein.
+ Und bis dann der Input irgendeinen von Ihnen ausgewählten Centinell,
+ also Schlusswert hat, würden Sie in diesem Loop bleiben.
+ Und das ist halt ein unbestimmter Loop.
+ Und wir wissen nicht, wie oft er ausgeführt wird.
+ Und daher wäre das ein guter Kandidat für eine Weißchleife.
+ Und das Problem ergibt sich,
+ dass eben der Wert nicht nur zur Berechnung verwendet wird,
+ sondern auch noch eben eine Aufgabe in der Kontrolle des Loop-Sat.
+ Das ist wirklich wichtig da, dass wir das so.
+ Also, solche Hinweise, also Hinweiszeichen aus Centines,
+ geben uns dann an, ob wir das Ende einer Reihe erreicht haben.
+ Zum Beispiel, wir wollen ein Programm schreiben, das Zahlen einliest,
+ bis die Benutzerin oder die Benutzer,
+ bin ich sehr störend hier in der Vorlesung.
+ Ist das eine große Ablenkung, was ich hier mache?
+ Ist das so langweilig?
+ Ich kann auch ganz schnell machen, wissen Sie,
+ wenn das Ihnen allen Ihren Kollegen gefällt.
+ Es können auch in den Oberfloraum gehen,
+ da können Sie sich vergnügen so viel wie Sie wollen.
+ Also, wir wollen die Zahlen einlesen, bis der Benutzer eine Null eingibt.
+ Und dann soll die Summe aller eingegebenen Zahlen ausgegeben werden.
+ Also, wir wollen das so machen, der Benutzer gibt uns Zahlen ein.
+ Und wenn dann irgendwann mal die Null kommt,
+ dann wissen wir, dass das Programm die bis dann aufgezähltens Werte ausgeben soll.
+ So, wie würden wir das denn jetzt machen?
+ Also, ein einfacher Weg, das zu machen, die aber leider nicht richtig ist,
+ wäre doch so, wir haben den Scanner hier.
+ Wir lesen, wir haben den Scanner aufgesetzt.
+ Wir initialisieren unsere Summe mit Null.
+ Und wir fangen an zu zählen.
+ Oder wir haben hier diesen Wert, den wir benutzen wollen,
+ den wir von der Konsole bekommen.
+ Wir setzen den mal zu 1, irgendein Wert nur nicht Null,
+ weil Null ist ja unser Sentinel.
+ Und jetzt gehe ich hin und gucke nach,
+ der Lube ist also, das erste Mal ist er ja sicher ungleich Null.
+ Und jetzt gehe ich hin, lese vom Benutzer oder von der Konsole eine neue Zahl
+ und dann addiere ich die Zahl auf.
+ So, und wenn ich das so mache, dann läuft das, ja, das läuft im Prinzip schon.
+ Für dieses eine Beispiel, das ich hier gewählt habe, funktioniert das.
+ Aber es ist trotzdem eine schlechte Lösung.
+ Sehen Sie, warum das eine schlechte Lösung ist?
+ Oder wer meint, das wäre eine gute Lösung?
+ Wenn die Lösung erfüllt die Anforderung,
+ dass Sie das, was wir hier erfüllen wollen, erledigt,
+ das würde wahrscheinlich die Punkte in der Prüfung geben,
+ aber trotzdem ist es eine schlechte Lösung.
+ Weil wenn Sie jetzt auf einmal den Sentinel ändern wollten,
+ Sie wollten mir wegen des Programms so ändern,
+ dass der Sentinel minus 1 ist, was passiert denn dann?
+ Dann gehen wir hin, das Programm läuft genauso ab wie bisher.
+ Wir checken halt jetzt hier, ob die Zahl, die wir gelesen haben, ungleich minus 1 ist.
+ Und dann lesen wir und addieren das.
+ Aber wenn wir das so machen, bekommen wir nicht das Ergebnis, das wir wollen.
+ Wir kriegen das Ergebnis 79 und gegen 80 das richtige Ergebnis wäre.
+ Und warum ist das der Fall?
+ Weil wir haben hier jedes Mal, nachdem wir den Wert eingelesen haben,
+ diesen Wert zur Summe dazu addiert.
+ Aber dann in der nächsten Iteration haben wir diesen Wert benutzt,
+ um zu gucken, ob wir das Ende des Loops erreicht haben.
+ Und dann wenn ja, dann gehen wir raus und sind wir da sofort fertig.
+ Aber das Problem ist, zu dem der Schaden ist schon passiert.
+ Wir haben schon das den Zahl zu dem Sum-Akumulator hinzu addiert.
+ Also daher ist das eine schlechte Lösung,
+ weil eben diese Lösung funktioniert nur zufälligerweise,
+ wenn der Sentinel 0 ist,
+ weil in dem Fall wir eben den beliebig oft dazu addieren könnten.
+ Also eben, das ist nicht richtig,
+ weil wenn wir so einen Weg machen, dann bekommen wir das falsche Ergebnis.
+ Das heißt, wir müssen da denken, was ich eben sagte,
+ wir müssen den ersten und letzten Durchgang durch eine Schleife anders behalten.
+ Das Problem ist, dass wir eben halt hingehen und die Zahl einfach dazu addieren.
+ Das ist einfach das Problem und das wollen wir nicht machen.
+ Und wir müssen uns überlegen, wie wir das am besten machen.
+ Also ein Weg, das Ganze zu überlegen wäre,
+ also diese Lösung, die wir da als Erster hatten, war keine gute Basis,
+ weil wir können eben, wenn wir das auf -1 ändern,
+ dann sehen wir, dass das Problem eben nicht funktioniert.
+ So, und unser Programm eben folgt diese Muster,
+ dass ich vorher mit den Zaunfällen hätte,
+ wir müssten irgendwie unterscheiden,
+ dass beim letzten Verhindern,
+ dass beim letzten Durchlauf durch den Rumpf der Sentinel noch immer dazu addiert wird.
+ Das wollen wir einfach nicht haben.
+ Das heißt, wir könnten also,
+ müssen irgendwie einen Weg finden, das zu verhindern.
+ Und eine Möglichkeit wäre zum Beispiel,
+ dass wir die erste Schleife herausnehmen.
+ Das heißt, wir gehen einmal hin und lesen den ersten Input.
+ Und dann addieren wir den Input.
+ Und danach lesen wir den Sentinel für die nächste Entscheidung.
+ Weil dann kann ich den Input benutzen, um korrekt zu entscheiden,
+ ob der Loop eben nochmal ausgeführt werden soll oder nicht.
+ Und ohne, dass ich dann versieh, nicht den Sentinel dazu addiere,
+ weil die Addition findet dann erst in der nächsten Iteration statt.
+ Also die Addition funktioniert erst,
+ nachdem ich einmal gecheckt habe, dass der Input nicht der Sentinel war.
+ Also so würde ich das im Prinzip strukturieren.
+ Also so müsste das Programm dann aussehen,
+ dass ich also hier die erste Iteration herausgenommen habe.
+ So einen Wert bekomme, der entweder richtig ist
+ oder entweder das Ende der Schleife anzeigt,
+ also gar nicht erst, dass die Schleife durchgeht,
+ oder eben halt der hinzuaddiert werden muss.
+ Und dann im Loop gehe ich hin und lese immer wieder neue Zahlen.
+ Aber benutze die erst in der folgenden Iteration,
+ um zu sehen, ob eben das Ende des Loops erreicht ist oder nicht.
+ Also wenn Sie immer solche Eingabeprobleme haben,
+ denken Sie daran, dass eventuell der erste Durchlauf da anders gemacht werden muss.
+ Und Sie könnten natürlich auch das Problem dadurch fixen,
+ dass Sie den letzten Durchlauf ändern
+ und zum Beispiel nochmal eine Korrektur vornehmen oder so was.
+ Aber das ist eigentlich der sauberste Weg,
+ weil da ist ganz klar, was Sie machen wollen.
+ Und weil das relativ häufig vorkommt,
+ gibt es auch ein Konstrukt in der Programmiersprache,
+ der eben halt diese Test am Ende des Loops durchführt.
+ Das ist die "Doo-Weilschleife".
+ Da ist das Keyword "Doo", was Sie hier sehen können.
+ Und das "Weil" steht am Ende und dann kommt da eben so ein Test.
+ Und das ist eben so, wir kommen mal an,
+ wir führen die Anweisungen im Loop aus
+ und dann wird der Test ausgeführt,
+ wenn ja, wird eine weitere Iteration ausgeführt
+ und wenn nein, wird das eben beendet.
+ Und so könnten Sie das eben halt machen.
+ So würden Sie auch eben nicht ganz unbedingt,
+ könnten Sie das Zeichen, das Beispiel, das wir früher hatten,
+ machen Sie, könnten so lange diesen Loop ausführen,
+ bis die Benutzerin oder der Benutzer den richtigen Pin eingebt.
+ So, okay?
+ Also das eben, denken Sie daran, wenn Sie Schleifen aufsetzen,
+ es ist nicht immer nur von 0 bis N,
+ sondern es sind auch andere System, andere Möglichkeiten da.
+ So, jetzt weiß ich,
+ wie Sie gestern in der Algorithmus-Datenstruktur
+ und Vorlesung über Invarianten was gehört.
+ Gut, dann können wir ja weiter machen.
+ So, also ja, jetzt haben wir also gesehen,
+ das ist so, haben wir jetzt Loops kennengelernt,
+ und wir wollen natürlich Aussagen auch über eben Schleifen machen.
+ Wir haben gesehen, wie wir das mit IF Anweisungen machen,
+ wie wir da Götje Hoart-Tüppel definieren.
+ Wir haben gesehen, wie wir Folgen von Anweisungen bearbeiten.
+ Und jetzt wollen wir uns eben angucken,
+ wie wir auch über Schleifen vernünftig Aussagen machen können,
+ weil viele Programme verbringen viel Zeit in Schleifen.
+ Und das ist aber einiges schwieriger,
+ als was wir hier vorher hatten.
+ Deswegen haben wir das erst gemacht, warum?
+ Weil nicht nur werden die Schleifen mehrfach ausgeführt,
+ wir wissen eventuell gar nicht mal zu Beginn des Programmes,
+ oder wenn wir das Programm uns angucken,
+ wie oft die Schleifen ausgeführt werden.
+ Das ist gar nicht mal der Bekannter.
+ So, und jetzt, um das nicht zu kompliziert zu machen,
+ fokussieren wir uns auf die Weilloops.
+ Die sind letztlich allgemeiner als der Vorloop,
+ weil ich kann jeden da leicht um, leicht transformieren.
+ Und Weilloop ist auch die allgemeinste Form.
+ Und wenn ich mit dem Weilloop zurechtkomme,
+ dann kann ich mir auch überlegen, wie das mit dem Vorloop geht.
+ So, und jetzt machen wir noch eine weitere Einschränkung.
+ Einschränkung im Vergleich zu dem, was vielleicht die eine oder die andere
+ von Ihnen schon mal gelernt hat.
+ Wir wollen im Loop keine nicht lokalen Kontrolltransfers.
+ Was ist ein Kontrolltransfer?
+ Ein Kontrolltransfer ist eben halt der Programmfluss,
+ oder die Kontrolle, nicht zur nächsten Anweisung geht,
+ die da im Textuell oder im Text danach erscheint,
+ und dann dann irgendeine andere Anweisung ausführt.
+ Also ein Kontrolltransfer findet dann statt,
+ wenn die nächste ausgeführte Anweisung nicht die Anweisung ist,
+ die im Programm Text direkt darauf folgt.
+ Und direkt darauf folgt heißt, also wenn ich hier ein if-Statement habe,
+ so, und jetzt habe ich hier else, so, so,
+ und jetzt habe ich hier dieses Statement,
+ das ist das letzte Statement des if-Blocks,
+ natürlich danach hier weiter.
+ Das ist ein lokaler Kontrolltransfer.
+ Warum? Weil die nächste Ausführung, die nächste Anweisung,
+ ist diese Anweisung hier unten, nicht irgendeine andere.
+ So, das wollen wir natürlich zulassen,
+ sonst könnten wir ja keine if-Statements in unseren Loops haben.
+ Was wir aber nicht zulassen wollen,
+ was es aber in manchen Programmiersprachen gibt,
+ ist, dass sie mit wegen aus der Mitte hier,
+ wo hin springen oder aus der Mitte einer Schleife,
+ irgendwo hin springen.
+ Das wollen wir nicht zulassen, weil das macht es eben um einiges schwieriger.
+ Also wir wollen solche nicht lokalen Kontrolltransfers,
+ also die, die eben aus der, die nicht zur nächsten Instruktion gehen,
+ die wollen wir eben halt nicht zulassen, die wollen wir halt nicht erlauben.
+ Also, wie können wir jetzt anfangen, über Loops Aussagen zu machen?
+ Gucken wir uns doch mal hier diesen einfachen Loop hier an.
+ Wir haben hier zwei, sind alles in Variable und kein Overflow,
+ kein Underflow tritt auf und daher weiß ich, dass das alles gut laufen wird.
+ Und ich habe mir die, die Deklarationen hier spart,
+ damit ich mehr Platz auf den Slides habe.
+ Also gucken wir uns diesen Loop hier an.
+ Die Variable y, die Variable i werden beide mit 0 initialisiert.
+ Und jetzt habe ich hier ein While Loop,
+ dem solange i um gleich x ist, wird i erhöht,
+ danach wird y erhöht und danach bin ich fertig.
+ So, jetzt wenn ich mir das angucke, was,
+ was müsste ich festhalten als Vorbedingung,
+ damit dieser Loop überhaupt einmal normalerweise terminiert?
+ Oder was, was macht er überhaupt? Kann man auch überlegen, ja?
+ Also er fängt an und erhöht i bis es x bekommt
+ und dann erhöht er gleichzeitig, addiert er den Wert zu y hinzu.
+ Also dieses y am Ende muss doch die Summe von irgendwas sein,
+ die Summe von all diesen i's, die ich hier aufadiere,
+ also von den, den Werten, die ich hier bekomme.
+ Aber wie funktioniert das?
+ Ich erhöhe das i bis, dass es eben, solange es um gleich x ist.
+ Eine Grundbedingung, die erfüllt sein muss, damit so was funktioniert.
+ Ja, ja?
+ Also x muss einen Wert haben, das ist richtig.
+ Also x muss auch definiert sein, okay, das ist hier abgehakt,
+ weil alles sind invariable, ja?
+ Aber, vielleicht haben Sie das gesehen, ja? Ja, bitte.
+ Muss größer als i sein?
+ Ja.
+ Okay, also ein Vorschlag wäre, x muss größer als i sein, ja?
+ Das ist eine richtige Aussage.
+ Das ist aber nicht unbe, ja, das ist, ja, okay.
+ Was darf denn x nicht sein?
+ Gibt es irgendeinen Wert, ja?
+ Also x muss auch, ja, ihr muss x werden.
+ Ja, genau, ihr muss x werden, das ist genau, hat der Kollege gesagt,
+ ihr muss x werden, weil wenn i x ist, ja, dann ist es eben halt nicht der Fall.
+ Aber was, also, also jetzt eben, er sich war der andere Kollege, der sagt,
+ der x muss größer als i sein, schon richtig.
+ Was haben wir denn hier für i was festgehalten?
+ Wir haben doch für i festgehalten, dass i gleich null ist, ja?
+ Also müssten wir als Aussage festhalten, dass x größer als null ist, ja?
+ Oder zumindest größer gleich, weil wenn wir, wenn wir in es gleich null wäre,
+ dann würde halt der, der Loop nicht ausgeführt.
+ Und wenn wir jetzt die Summe von, die Summe von i gleich null bis null haben,
+ dann könnten wir auch sagen, das ist null, ja, das können wir vielleicht auch so definieren, ja?
+ Das ist ein Thema, eine Lache, die wir nicht haben.
+ Also, das ist nicht so krisch.
+ Also wir müssten auf jeden Fall festhalten, dass x größer gleich null ist.
+ Weil wenn x negativ wäre, dann würde im Normalfall ja dieser Wert nie gleich werden, ja?
+ Dann würde i immer erhöht werden, i würde größer und größer werden
+ und das wäre dann nicht ein Weg für uns da hinzukommen.
+ So, also wenn das x eben größer gleich null ist und das, oder größer als i, wie Ihr Kollege sagte,
+ dann wird eben halt, während wir durch das Erhöhende i's irgendwie den Punkt erreichen,
+ dass x gleich i, dass x gleich i ist, ja?
+ So, und wenn x gleich i ist, oder machen wir hier, machen wir es korrekt,
+ machen wir es Java in Java Notation mit zwei Gleichheitszeichen, ja?
+ So, wenn das der Fall ist, dann geht eben der Weihloop zu Ende und dann sind wir hier fertig.
+ So, jetzt können wir gucken, also was passiert, dass i wird hochgezählt
+ und jedes Mal wird das i dazugezählt, ja?
+ Das heißt, da wir hier mit 1 anfangen, weil es ja ergibt, dieses y,
+ am Ende eben die Summe von eben 1, von j gleich 1 bis n von j, ja?
+ Irgendwann können wir i nehmen.
+ Und deswegen, ja, was machen wir jetzt, wenn wir eben hier oben, wenn x gleich null ist,
+ dann, ja, müssen wir hier was, wollen wir vielleicht definieren,
+ dass die Summe von 1 bis null über j oder i ist gleich 1, können wir definieren,
+ dann haben wir das so definiert, oder wollen wir also null definieren,
+ das spielt für uns, oder null, wahrscheinlich besser null,
+ das spielt für uns eigentlich keine so große Rolle.
+ Was ich jetzt eigentlich, worauf ich hinaus möchte, ist folgendes,
+ wenn wir jetzt hier über diesen Loop reden wollen, was hier, was dieser Loop hier unten macht, ja?
+ Dann ist das in,
+ eine Idee, komm ich um, nicht besser.
+ Wenn ich also das, wenn ich über diesen Loop da, mit diesem Loop da arbeiten will,
+ dann muss ich halt irgendein Weg finden, den Loop zusammenzufassen, ja?
+ Es reicht nicht aus, irgendeine Aussage zu machen, die nur ein einzelnes Statement betrifft,
+ ich muss den Loop zusammenfassen, um eine Aussage am Ende dieses Programmsignments machen zu können, ja?
+ Und das ist die Idee der Invariante.
+ Wir fassen zusammen, was dieser Loopbody macht, ja?
+ Und diese Invariante, so wie wir das hier machen,
+ die muss an sich abdecken, dass es keine Iterationen gibt, ja?
+ Also vor der ersten Ausführung muss die Invariante gelten,
+ und dann gibt es keine Ausführung des Loopbodies,
+ und trotzdem muss die Invariante gelten,
+ und sie muss eine beliebige Anzahl von Iterationen abdecken,
+ um eben halt das eben zu zeigen, dass das eben immer noch gültig ist.
+ Also die Invariante ist ein Weg für uns, den Loopbody zusammenzufassen, ja?
+ Also wenn ich das jetzt hier habe, ja?
+ Was würde sich hier als Invariante anbieten?
+ Naja, wenn wir anfangen, und wir wollen am Ende die Summe haben, die Summe von 1 bis X, ja?
+ Und wir benutzen diesen Zähler I, um da durchzugehen,
+ dann wäre eine Idee für eine Invariante,
+ wäre zu sagen, dass diese Variable Y immer die Summe von 1 bis I festhält, ja?
+ Das wäre also unsere Invariante, ja?
+ So, und das wäre, und da müssten wir jetzt zeigen, dass das stimmt, ja?
+ Das heißt, diese Zusammenfassung, die gilt eben sowohl zu Beginn des Loop,
+ beim ersten Mal, ja?
+ Als auch, müssen wir natürlich noch zeigen, ja?
+ Das ist der Zähler, nachdem ich den Loopbody einmal ausgeführt habe, ja?
+ Damit habe ich das eben gezeigt, ja?
+ Und was wissen wir jetzt noch?
+ Naja, wir wissen natürlich, was wir hier über I und J gelernt haben.
+ Das heißt, wir wissen, dass eben Y, wir wissen, dass I eben gleich 0 ist hier,
+ und wir wissen, dass Y auch gleich 0 ist, ja?
+ Das haben wir schon, das ergibt sich zu Beginn der Iteration, ja?
+ Das haben wir als Aussage da bereits sehr, ja?
+ Das heißt, wir haben können das als Aussage mit dazunehmen, ja?
+ Also, wenn ich also das habe, da habe ich, also, ich kann das festhalten, ja?
+ Also, hier zu Beginn weiß ich, dass X ist größer gleich 0,
+ weil die Zuweisung zu Y und I ändern das ja nicht,
+ und Y ist gleich 0, und I ist gleich 0, ja?
+ So, da habe ich, also, das ist sozusagen die Information,
+ die ich zu Beginn des Loops habe.
+ Jetzt, also, jetzt kann ich checken, ja?
+ Gilt das in der Tat, das eben ist die Invariante gültig,
+ und wenn wir jetzt eben halt entsprechend definieren,
+ was es heißt, die Summe von 1 bis 0 zu machen, ja?
+ Wenn wir sagen, das wäre 0, dann ist das erfüllt,
+ weil das ist der aktuelle Wert von Y.
+ Aber ein interessanter Fall ist jetzt, können wir zeigen,
+ dass nach der Ausführung des Loop-Bodies, ja,
+ die Invariante immer noch gilt,
+ weil erst dann ist es ja eine richtige Zusammenfassung,
+ dessen, was in dem Loop passiert.
+ Jetzt, wann führen wir den Loop denn aus?
+ Wenn wir den Loop ausführen, dann ist ja hier diese,
+ muss dieser Test den Wert Tru ergeben haben, ja?
+ So, jetzt machen wir also hier diese Art Forward-Riesening, ja?
+ Also, Forward-Schließen, ja?
+ Wie die Schleife führen wir nur auf, wenn der Test Tru ist?
+ Das muss als Aussage gelten,
+ dass eben die Invariante, haben wir gesagt, ist Tru,
+ und eben halt, wir wissen, dass i ungleich 0 ist, ja?
+ So, das wissen wir.
+ Und wenn wir jetzt weiterdenken,
+ jetzt haben wir hier eine Zuweisung zu i, ja?
+ Was haben wir danach?
+ Ja, danach gilt eben das nicht mehr, ja?
+ Dass diese Aussage, die gilt nur hier, bevor wir i erhöhen.
+ Danach wissen wir das nicht mehr.
+ Einzige, was wir wissen ist jetzt,
+ dass y immer noch die Summe von 1 und jetzt i-1 ist,
+ weil wir haben ja hier das i um 1 erhöht, ja?
+ Also, es ist die Summe von 1 bis i-1, ja?
+ So, und jetzt haben wir hier einen weiteren Schritt.
+ Was macht das? Was können wir jetzt einlärzen?
+ Können wir einlärzen und vereinfachen, ja?
+ Jetzt sehen wir, aha, hier gilt jetzt,
+ dass y gleich die Summe von 1 bis i-1,
+ das kommt von oben, ist plus i.
+ Das haben wir ja gerade dahin zuadiert, ja?
+ So, und wenn wir das anschauen,
+ dann sehen wir ja, dass wir das umschreiben könnten,
+ dass die Summe von 1 bis i-1 plus i ist nichts anderes
+ als die Summe von 1 bis i, ja?
+ Und damit haben wir gezeigt,
+ dass die Invariante auch am Ende des Loops gilt.
+ Und das handelt sich, das, was wir haben wollen,
+ das heißt, am Ende der Loop-Ausführung
+ ist der Loop, gilt die Invariante auch noch, ja?
+ So, also die Invariante war eine ziemlich praktische Zusammenfassung
+ dessen, was der Loop da machen würde.
+ So, und jetzt haben wir, okay,
+ jetzt haben wir gesehen, dass also hier das erfüllt ist,
+ also die Invariante, die Invariante, die gilt, ja?
+ So, jetzt, was ist der nächste Punkt, den wir uns angucken müssen?
+ Naja, wir wollen zeigen, dass am Ende des Programms
+ diese Aussage gilt, dass Y gleich die Summe von 1 bis i ist.
+ Was ist die Definition von Invariante?
+ Eine Invariante, fast, ist eine logische Aussage,
+ die Frage war, was ist eine Invariante?
+ Eine Invariante ist eine Aussage, die eben sich für uns
+ zu Beginn eines Loop-Bodies gilt
+ und die nach Ausführung der Statements im Loop-Body immer noch gilt.
+ Also diese Art von Zusammenfassung, das nennen wir eine
+ Zusammenfassung der Aktivitäten eines Loops,
+ das nennen wir eine Invariante.
+ So, okay, so, und jetzt was haben wir noch zu beachten?
+ Also um jetzt die Aussage zu machen, was am Ende gilt,
+ na ja, wenn eben der Test mal false ergibt,
+ dann geht es ja nach hier.
+ Also, da wird der Loop nicht mehr aufgeführt
+ und wir müssen jetzt zeigen, dass dann dieses Statement gilt.
+ Und na ja, was, wenn wir jetzt diesen Punkt hier erreichen,
+ was wissen wir, dass es in das gilt?
+ Na ja, wir wissen, dass die Invariante galt,
+ weil die Invariante gilt ja hier,
+ an diesem Punkt vor der Ausführung des Loops,
+ also wir wissen, dass Y gleich die Summe von 1 bis i ist,
+ das wissen wir, und was wissen wir noch,
+ wir wissen, dass der Test da oben false ergeben haben muss.
+ Also nicht i ungleich x, na ja, das können wir natürlich vereinfachen,
+ als nicht i ungleich x,
+ das könnten wir besser schreiben als i gleich x.
+ So, das weiß ich, wenn ich diesen Punkt hier erreiche,
+ und kann ich daraus schließen, dass das eben Y,
+ die Summe von 1 bis x ist, ja,
+ weil wenn ich jetzt das hier einsetze, das ist ja x,
+ dann habe ich genau das, was ich haben will.
+ Und damit habe ich dann im Grunde genommen gezeigt,
+ dass eben die Invariante nicht nur während der Loop-Iteration gültig ist,
+ sondern am Ende auch das gewünschte Ergebnis liefert.
+ So, und wenn jetzt sie von dem i etwas verwirrt sind,
+ ich habe das hier nochmal neu gezeigt,
+ wo ich die verschiedenen Varianten,
+ die verschiedenen Versionen von i mit separaten Namen vergebe.
+ Also können Sie genauso machen,
+ sieht für meine Begriffe etwas umständlicher aus als das,
+ aber natürlich muss wissen, dass dieses i ist ein anderes i als dieses i.
+ Also, keine deswegen muss man hier eben i minus 1 haben,
+ genauer, so können wir unterscheiden, was wir da gemacht haben.
+ So, okay, also, wenn wir uns das angucken,
+ wenn wir also irgendwelche Aussagen
+ über Ausführungen von Loops machen wollen,
+ dann brauchen wir eine Invariante,
+ um eben über die Zusammenhänge dazu schließen
+ und zu sagen, oh, das ist ein gültiges,
+ das ist ein Programm, das wir für richtig halten.
+ Und wir brauchen dann eben auch wieder so ein Konstrukt, der sagt,
+ hier ist eine Aussage, ein Loop und eine Pre-Condition,
+ ein Loop und eine Post-Condition
+ und die erfüllen bestimmte Bedingungen.
+ Und das nennen wir dann Gültig.
+ Also, die Invariante macht Aussagen über die Ausführung des Loops
+ und wichtig ist, dass die Pre-Condition für die Schleife,
+ die muss die Invariante implizieren.
+ Wenn ich den Punkt vor der Ausführung des Loops erreiche,
+ dann muss die Invariante Gültig sein,
+ aufgrund dessen, was die Statements davor gemacht haben.
+ So, und der Schleifentest, wenn er wahr ist,
+ muss zusammen mit den Statements im Rumpf zeigen
+ oder sicherstellen, dass danach die Invariante wieder war.
+ Sonst ist es ja nicht invariant, sonst ändert sie sich.
+ Also, wenn wir das Rumpf ausgeführt haben,
+ muss die Invariante wieder Gültig sein.
+ Und wenn mal der Test im Loop false sein sollte,
+ also, wenn der Loop nicht ausgeführt wird,
+ dann muss dieser Information, dass der Test false ist
+ und die Invariante, das muss ausreichen,
+ um zu zeigen, dass dann die Post-Condition der Schleife erfüllt ist.
+ Und das fassen wir jetzt eben in so einem Hortrippel zusammen.
+ Also, wir haben hier ein, das hier ist unser Loop,
+ wir haben für dieses Loop eine Pre-Condition,
+ eine Post-Condition,
+ und wir sagen, ein solches Trippel ist Gültig.
+ Wenn es eben eine Invariante i gibt,
+ da muss es irgendeine Invariante i geben,
+ so dass eben die Invariante gilt zu beginnen.
+ Wenn die Invariante gilt und ich den Loop ausführe,
+ also, sprich, diese Test b, die ich da habe, ist wahr.
+ Und ich führe dann das Statement s,
+ oder die Folge von Statements s, die ich habe, aus.
+ Dann gilt danach wieder die Invariante i.
+ Und wenn mal der Test b false ergibt,
+ dann gilt die Invariante ja auch,
+ weil das ist ja zu Beginn des Loops,
+ aber dann mit dem Test false bin ich in der Lage,
+ die Post-Condition q zu zeigen.
+ Also, die Tatsache, dass ich den Loop verlassen habe
+ und die Invariante implizieren die Post-Condition.
+ Wenn wir diese Situation haben,
+ dann nennen wir das ein gültiges Hortrippel für diesen Weihloop.
+ Dann haben wir eben einen Weihloop, für den wir sagen würden,
+ diese Aussagen sind in einem Gültigentrippel zusammengefasst.
+ Also, das ist halt das gültige Hortrippel für eine Schleife.
+ Und jetzt natürlich keine Überraschung.
+ Dieser Schleifentest, der Schleifenrumpf
+ und die Schleifeninvariante hängen alle eng miteinander zusammen.
+ Es ist nicht so, dass irgendeine Schleife
+ für irgendeinen Rumpf geht oder irgendwas funktioniert.
+ Und natürlich, dass der Statement kann natürlich alles Mögliche enthalten.
+ Das kann also ein einzelnes Statement sein.
+ Das kann eine Folge sein.
+ Das kann wieder ein anderer Loop sein und so weiter.
+ Das sind aber die einzigen Statements, die wir zur Zeit zulassen.
+ Und wenn Sie jetzt die Aufgabe haben,
+ irgendeine Post-Condition q herzustellen oder sicherzustellen,
+ Sie sollen das und das berechnen.
+ Also, wenn wir sagen, die Aufgabe ist,
+ dann schreiben Sie ein Programm für das nach Ausführung,
+ die Post-Condition so und so gilt.
+ Da gibt es manchmal verschiedene Schleifen,
+ die für eine Pre-Condition dasselbe Resultat berechnen.
+ Aber die Schleifen handeln andere Invarianten
+ und gegebenenfalls andere Statements im Loop.
+ Und manchmal gibt es eben auch andere Invarianten,
+ wenn man andere Pre-Conditions hat.
+ Also, wie gesagt, diese Definition ist ziemlich allgemein.
+ Das ist auch ab, wenn der Rumpf gar nicht durchlaufen wird.
+ Deswegen geht das mit dem Weihloop so gut.
+ Aber eben halt, es ist wirklich wichtig,
+ dass wir sehen, dass diese Teile,
+ Pre-Condition, Post-Condition, Statement, Invariante und Loop-Test,
+ das die alle miteinander verbunden sind.
+ Also, das habe ich das Ganze,
+ das Beispiel, das ich eben zeige Sie nochmal etwas,
+ Schritt für Schritt, langsamer gemacht.
+ Also, die Pre-Condition für das Programmsegment muss sein,
+ dass x größer gleich 0 ist.
+ Jetzt müssen wir zeigen, dass die Pre-Condition für den Loop
+ eben den Ausreicht, um das zu zeigen.
+ Also, die Pre-Condition für den Loop ist das.
+ Dann haben wir hier die Invariante,
+ müssen also zeigen, dass die Pre-Condition die Invariante impliziert.
+ Kann man machen, das habe ich eben so von Hand gemacht.
+ Geht ganz gut.
+ Dann müssen wir zeigen, dass wenn die Invariante gilt
+ und wir den Loop ausführen,
+ die Statements, das ist der Loop,
+ dass die dann eben die Invariante gültig lassen,
+ also die Invariante implizieren.
+ Nach den Regeln, die wir für Statement Folgen gemacht haben,
+ geht das auch.
+ Und dann müssen wir noch zeigen,
+ dass wenn wir mit dem Loop fertig sind,
+ also wenn eben der Loop-Test-Force ergibt,
+ dann reicht diese Information zusammen mit der Invariante aus,
+ um zu zeigen, dass die Post-Condition gilt.
+ Und dann habe ich eben auch gezeigt, das geht eben auch.
+ So, eben Sie müssen sehen,
+ dass diese Teile genau eng zusammenhängen.
+ Hier habe ich den anderen Loop, der hat hier,
+ der initialisiert, dass ihr mit eins,
+ wenn ich das machen will,
+ dann muss ich einen anderen Loop-Test verwenden.
+ Dann muss ich einen anderen Loop-Test verwenden
+ und ich müsste auch eine andere Invariante verwenden.
+ Weil eben, klar, am Anfang gilt jetzt eben der,
+ gilt die Pre-Condition X,
+ ist größer gleich 0 und Y gleich 0 wie vorher,
+ aber Y ist jetzt eben gleich 1.
+ Das heißt, meine Invariante muss sich eben dahingehend ändern,
+ dass eben meine Y, die Summe nicht mehr von 1 bis Y,
+ sondern von 1 bis Y minus 1 ist.
+ Das heißt, das Wort ist auch für sich,
+ wenn der Loop nicht terminiert?
+ Nein, Ihr Kollege sagte,
+ das Hohe-Triple wäre gültig, wenn der Loop nicht terminiert.
+ Und die Antwort ist, nein, wir gehen immer allgemein,
+ bei allen Beispielen, tut mir leid, langsam geht ja,
+ wir gehen immer davon aus, dass wir diesen Punkt hier erreichen.
+ Wenn wir bei allen Hohe-Trippeln gilt,
+ dass die Aussage nur dann relevant ist,
+ wenn wir den Punkt nach dem Statement erreichen.
+ Und unser Statement ist jetzt eben halt hier der Loop.
+ Deswegen gilt das dann, wenn wir den Punkt erreichen.
+ Also, haben wir hier einen anderen Loop für das selbe Problem.
+ Und dann haben wir eben das halt so gemacht.
+ Und dann können wir zeigen, am Ende, wenn X plus 1 gleich i ist
+ und Y gleich die Summe von 1 bis i minus 1,
+ dann reicht das aus, um zu zeigen,
+ dass Y gleich die Summe von 1 bis X ist.
+ Hier müssten zwei Gleichheitszeichen sein,
+ das werde ich auch noch mal fixen.
+ Aber wir sind da etwas flexibel in diesen logischen Aussagen.
+ Ein Gleichheitszeichen war ja zwei, ja gut.
+ So, warum machen wir das?
+ So, jetzt haben Sie noch kurz bevor wir heute.
+ Wir machen das, weil es uns hilft, Bucks back zu finden.
+ Jetzt gucken wir sich diesen Loop an.
+ Der ist ähnlich zu dem, den ich Ihnen hier vorher zeigte.
+ Wir haben wieder Y gleich 0 und i gleich 1.
+ Aber wir benutzen hier ein Loop-Test, der auf X geht.
+ Der ist ähnlich, aber der macht halt nicht das, was wir wollen.
+ Wenn es unser Ziel ist, die Summe da zu berechnen.
+ In der Tat, das ist die Pre-Condition.
+ Wir können jetzt sagen, die Invariante ist immer noch,
+ das ist ja richtig, haben wir eben gezeigt,
+ Y ist die Summe von 1 bis i minus 1.
+ Aber wenn ich jetzt mit dem Loop fertig bin
+ und weiß, dass i ist gleich X
+ und Y ist die Summe von 1 bis i minus 1,
+ dann ist das eben nicht die Summe von 1 bis X.
+ Also, dieser kleine Fehler hier,
+ dass wir eine andere Terminierung verwendet haben,
+ der führt dazu, dass das Ergebnis, das wir bekommen, ein anderes ist.
+ Und wenn es unser Aufgabe war, die Summe zu berechnen,
+ dann ist das eben nicht richtig.
+ Oder hier haben wir ein Loop,
+ der ein ungültiges Hortrippel enthält.
+ Was ist hier falsch?
+ Sie sehen, wenn wir das so machen,
+ addieren wir in das Y nicht den neuen Wert von i,
+ sondern den alten.
+ Daher ist das gilt am Ende,
+ hier am Anfang haben wir wie gehabt,
+ Pre-Condition und die Invariante.
+ Aber eben am Ende gilt die Invariante nicht mehr.
+ Warum? Weil wir eben halt den alten Wert von i hinzuaddiert haben.
+ Also, Invarianten dürfen weder zu stark noch zu schwach sein.
+ Wenn sie zu stark ist, sind sie eventuell falsch.
+ Wir können nicht zeigen, dass die Invariante zu Beginn gültig ist
+ oder die Invariante ist nicht wahr, nachdem der Loop ausgeführt wurde.
+ Oder die Invariante ist zu schwach.
+ Das gilt, dass wir nach dem Loop fertig sind,
+ wie aus der Invariante und dem falschen Loop Test
+ nicht die Aussage über die Schleife implizieren können.
+ Oder es ist unmöglich zu zeigen,
+ dass die Invariante nach der Ausführung des Rumpfs wieder gilt.
+ Das ist die andere Situation.
+ Das ist guter Punkt für die Pause.
+ Ich starte jetzt mal einen Clicker für Sie.
+ A. Um zu gucken, ob das funktioniert.
+ Aber B. Wo Sie mir sagen können, ob Sie hier im Hörsaal sitzen
+ oder woanders.
+ Und ob Sie lieber hier wären oder noch ganz woanders.
+ Also, das starte ich mal.
+ Das lassen wir über die Pause laufen.
+ Dann können wir sehen, was für Interessen Sie da haben.
+ Okay.
+ Okay, ich mache jetzt den Clicker zu.
+ Dann können wir mal sehen, was da kommt.
+ Also, Invarianten dürfen weder zu stark noch zu schwach sein.
+ Das ist leider auch der Grund,
+ warum wir Ihnen keinen vollautomatischen Weg zeigen können,
+ wie Sie eine Loop-Invariante konstruieren.
+ Da ist halt immer noch Kreativität gefordert.
+ Weil Sie müssen halt nachdenken
+ und manchmal eben auch ein bisschen raten,
+ was das sein könnte.
+ Aber eben die Invariante und das Programm,
+ die sind ineinander gekoppelt.
+ Wenn Sie ihn programmieren
+ und Sie finden keine Invariante,
+ dann ist vielleicht nötig,
+ dass Sie den Code ändern oder die Invariante oder beides.
+ Es ist eben nicht so, dass Sie einfach sagen können,
+ für dieses Programm oder für diese gibt es einfach hier nur diese eine
+ Invariante und damit alles andere ergibt sich.
+ Und manchmal gibt es auch verschiedene Invarianten,
+ die alle genügen.
+ Also, die alle die Anforderungen erfüllen,
+ die nicht so stark und nicht so schwach sind,
+ aber sie sind unterschiedlich zweckmäßig.
+ Und was wir Ihnen bieten können,
+ ist eine Methodologie.
+ Das ist ein Ansatz, wie wir eine Schleife
+ und Invariante zusammenentwickeln.
+ Das ist kein vollständiges Rezept.
+ Es ist nicht etwas, was Sie blind verfolgen können.
+ Für die Preconditions der Assignment Statements
+ konnte ich Ihnen sagen, wie Sie das genau machen mussten.
+ Für die Invarianten kann ich Ihnen sagen,
+ wie Sie das, das funktioniert in vielen Fällen.
+ Und funktioniert dann gut, aber eben ist nicht unbedingt
+ in allen Situationen der einzige Weg
+ oder der richtige Weg, wie Sie da hinkommen.
+ Also, was ist eine Methodologie?
+ Das ist ein Ansatz, wie wir eben halt Probleme lösen,
+ eine Strategie.
+ Es ist kein Algorithmus,
+ es ist kein Rezept, das Sie verfolgen können,
+ sondern es sind eben Ideen,
+ die Sie selbst einsetzen können,
+ wie Sie eben weiterkommen können.
+ Und diese Methodologie zeigt Ihnen eben,
+ wie Sie schleifen und Invarianten zusammenentwickeln können.
+ Und das sollen Sie jetzt bitte nicht stur befolgen,
+ aber das ist manchmal besser als der schnelle Weg,
+ wo Sie einfach erst den Code schreiben
+ und dann die Invariante suchen, oder schlimmer noch,
+ nicht suchen, sondern raten.
+ Und dann hoffen, dass Sie auf das richtige Ergebnis kommen.
+ Also, was schlagen wir vor?
+ Und das funktioniert in erstaunlich vielen Situationen.
+ Wir bestimmen zuerst die Invariante.
+ Wir fangen mit der Invariante an
+ und lassen Sie die anderen Schritte leiten.
+ Wir eben überlegen uns, was wollen wir denn als Invariante haben,
+ was will ich als Schlussergebnis haben.
+ Und daraus überlegen, was die Invariante sein könnte
+ und die bestimme ich dann.
+ Und dann überlege ich mir,
+ wenn das die Invariante ist und das ist mein Schlussergebnis,
+ was bringt uns der näher ans Ziel?
+ Was muss ich denn in jeder Loop-Iteration machen,
+ damit ich mehr an das Ziel herankomme?
+ Und dann natürlich auch, was muss nach jeder Iteration gelten?
+ So, nachdem wir das überlegt haben,
+ dann kann man daraus überlegen,
+ was für einen Rumpf würde denn erstens
+ diese uns näher ans Ziel bringen
+ und zweitens würde dieser Rumpf die Invariante gültig lassen.
+ Wenn die Invariante nicht gültig bleibt,
+ dann ist es keine Invariante, dann ist das eben anders.
+ So, und nachdem wir das haben,
+ dann können wir uns überlegen,
+ wie der Loop-Test aussehen müsste.
+ Dann bestimmen wir den Loop-Test so,
+ dass das Test ist false, die Post-Condition impliziert.
+ Also dann haben wir Test ist false.
+ Das soll ausreichen, um zu zeigen,
+ was wir für diesen Loop erreichen wollen.
+ So, und nachdem wir das alles gemacht haben,
+ gehen wir nochmal zurück
+ und dann erst schreiben wir die Initialisierung so,
+ dass der Code die Invariante sicherstellt,
+ damit die Invariante vor Beginn des der Schleife bereits gültig ist.
+ Das ist dann, wenn wir das haben,
+ dann haben wir alle Schritte gecheckt,
+ die wir machen müssen,
+ um ein gültiges Hortrippel mit dieser Invariante
+ und dieser Pre-Condition für die gewünschte Post-Condition zu haben.
+ Also das sind die vier Schritte,
+ die wir vorschlagen, dass sie das machen.
+ So, und wie gesagt,
+ ist kein vollständiges Rezept,
+ aber ist etwas, was in vielen Fällen funktioniert.
+ Und darum ein einfaches Beispiel erstmal,
+ wir suchen für positive x und y, positiv,
+ den quotienten q, also q soll eben sein x durch y,
+ bei ganz Zahlen die Vision.
+ So, und wir gehen mal davon aus,
+ wieder alle Variablen sind invariable,
+ y natürlich um gleich null
+ und das Ergebnis kann korrekt in einer invariable Gespräche werden.
+ Also Ergebnis, das Intergebnis.
+ So, andere Zahlen kennen wir nicht.
+ So, wir haben also die Schritte, hatten wir,
+ der erste Schritt war,
+ bestimmen Sie zuerst die Invariante
+ und lassen Sie die Invariante die anderen Schritte leiten.
+ So, naja, jetzt gibt es da mehrere Überlegungen,
+ aber wenn Sie sich zurückdenken,
+ wie haben Sie eines am Anfang gelernt zu dividieren,
+ Ihr könnt noch hingehen und y von x subtrahieren.
+ Und so finden wir auf, raus, wie oft y in x enthalten ist.
+ Und unsere Invariante, q, die speichert dann,
+ wie oft das y subtrahiert wurde.
+ Das heißt, unser q ist, wie ich hier bereits gehighlightet habe,
+ q mal y plus r ist gleich x.
+ Natürlich ist dieser r, also der Rest,
+ ist möglicherweise größer als y.
+ Und wie ist die Division definiert?
+ Die Division ist auch so definiert,
+ dass wir eben einen q finden,
+ sodass eben diese Gleichung gilt, q mal y plus r ist x.
+ Und das eine Bedingung für r gilt.
+ Nämlich, das r muss kleiner als y sein.
+ Das ist unsere Bedingung für eine Division.
+ Da war die Frage eben, warum ist 7 dividiert durch 8?
+ 7 dividiert durch 8 ist eben 0,
+ weil eben halt wir können die 8 nicht von 7 subtrahieren.
+ Das ist nicht, weil da irgendein reeller Wert gerechnet wird,
+ der dann irgendwie in irgendeine Richtung gerundet wird.
+ Nein, es ist einfach definiert so,
+ dass eben es gibt ein q,
+ sodass eben q mal y plus r gleich x ergibt.
+ So, ich könnte noch andere Invarianten nehmen,
+ aber von der weiß ich, dass es funktioniert.
+ Also, jetzt haben wir die Invariante,
+ hier oben ist unsere Invariante.
+ Und jetzt wollen wir einen Rumpf schreiben,
+ dass die Invariante gültig lässt.
+ Also, was für Möglichkeiten hätten wir da?
+ Eine Möglichkeit wäre doch,
+ dass wir ein weiteres Mal y von r subtrahieren.
+ Das heißt, wir haben ein neues r.
+ Und dann, natürlich, wenn wir einen erfolgreich abziehen können,
+ dann müssen wir das q um 1 erhöhen.
+ Und wenn das der Fall ist,
+ dann in der Tat gilt die Invariante.
+ Auch die Invariante gilt hier zu beginnen,
+ also, die Invariante ist für uns,
+ für unsere Slups, das müssen wir her sicherstellen,
+ aber wollen wir haben,
+ dass wir dann, wenn die Invariante gilt,
+ und wir das machen,
+ dann gilt die Invariante auch nach Ende des Slups,
+ nachdem wir den Rumpf einmal ausgeführt haben,
+ oder präziser sein.
+ Also, wenn wir das gemacht haben,
+ dann gilt das eben,
+ nachdem wir den Rumpfausbau,
+ die ausgeführt haben,
+ nach Ende des Rumpfaus,
+ nicht nach Ende der Schreife,
+ nach Ende des Rumpfaus gilt die Invariante aus Neue.
+ So, jetzt haben wir also einen Loop Body,
+ und wir haben eine Invariante.
+ Und jetzt müssen wir überlegen,
+ was müssen wir für einen Test finden,
+ sodass nachher,
+ wenn der Test nicht mehr wahr ist,
+ also, wenn der Test false ist,
+ wir eine genügend Information haben,
+ dass wir dann die Post Condition,
+ die wir für diesen Loop zeigen wollen, gürtig ist.
+ Und dann können wir das Y subtrahieren.
+ Und na ja, die Überlegung ist doch,
+ dass wir das so oft subtrahieren,
+ solange es irgendwie geht.
+ Und wann geht es nicht mehr,
+ wenn der Rest eben kleiner als Y ist,
+ dann können wir nicht mehr weiter subtrahieren.
+ Das heißt, also wir wollen so lange subtrahieren,
+ solange der Rest größer als 0 ist,
+ und eben sicherstellen,
+ dass der Rest kleiner als Y ist.
+ Und sonst haben wir auch ein Problem.
+ Also haben wir eben als Bedingungen,
+ dass wir also einmal festhalten,
+ dass eben R größer als 0 ist.
+ Das haben wir hier, und das ist eine Bedingung.
+ Oder anders ausgedrückt,
+ ist das eben, dass Y muss kleiner als R werden.
+ So, also können wir anders schreiben,
+ als Y kleiner als R.
+ Also unser R muss eben begrenzt,
+ so dass das Y eben halt da nicht größer ist.
+ So, wenn wir das haben,
+ dann mit dieser Information,
+ wenn wir das haben,
+ also wir haben die invariante Q mal Y plus R ergibt X,
+ und R ist größer als 0,
+ und R ist kleiner als Y,
+ oder Y kleiner als R.
+ Daraus können wir natürlich dann zeigen,
+ dass das er günste Ergebnis sichergestellt ist.
+ So, jetzt haben wir also gezeigt,
+ dass der Loop, wenn er mal richtig ausgeführt wird,
+ und so weiter, hat die,
+ liefert das gewünschte Ergebnis.
+ Aber wir müssen sicherstellen,
+ dass die Pre-Kondition erfüllt ist.
+ Also hier, das wollen wir als Pre-Kondition haben.
+ Wir hatten gesagt, wir wollen,
+ dass das R größer als 0 ist,
+ weil sonst läuft das ja unbegrenzt weiter.
+ Und dann können wir auch sicherstellen,
+ dass die invariante gilt.
+ Und wie können wir das sicherstellen?
+ Naja, wenn wir am Anfang R auf X setzen und Q auf 0,
+ dann können wir sicherstellen, dass das erfüllt ist.
+ Und dann haben wir die gewünschte Information für den Loop.
+ Aber natürlich, wir müssen sicherstellen,
+ dass X größer als 0 ist,
+ und Y größer als 0.
+ Sonst geht das Ganze nachher auch nicht.
+ Also wir müssen das sicherstellen, dass das am Anfang gilt.
+ Und das könnte jetzt eben eine Bedingung sein,
+ die wir verlangen.
+ Oder wir könnten checken, dass das gilt.
+ Oder wir könnten die Dokumentation schreiben.
+ Diese Methode ist nur aufzurufen für positive X
+ und positive Y, oder sowas.
+ Das ist also, und da unsere Aufgabenstellung sagte,
+ dass alles in Zahlen sind,
+ und Y und X positiv sind,
+ und Y umgleich 0 ist,
+ dann gilt das aus dem Grunde.
+ Und daher sind wir da auf einer sicheren Seite.
+ Also bei den Hortrippeln gilt allgemein,
+ wir haben hier eine Pre-Condition,
+ eine Post-Condition und ein Statement S.
+ Und das war immer nur gültig,
+ das war gültig, wenn eben nach der Ausführung S,
+ die Aussage Q gilt, vorausgesetzt,
+ dass P davor galt.
+ Und jetzt bei den Regisseurs,
+ die Division durch Null gemacht wurde,
+ haben wir gesagt,
+ exception können wir nichts machen.
+ Und darum eben, hatten wir gesagt,
+ eben ist diese Bedingung,
+ muss die erfüllt sein,
+ dass wir den Punkt nach der Ausführung von S erreichen.
+ Wenn nämlich eine Division stattfindet,
+ dann wissen wir ja nicht, was da alles passiert.
+ Und deswegen wollen wir da keine Ausführung,
+ keine Aussage machen.
+ Und das hatte uns für die einfachen Statements eigentlich genügt.
+ Weil wenn das Statement korrekt ausgeführt wird,
+ dann haben wir eben halt den Punkt,
+ erreichen wir den Punkt nach S.
+ Aber jetzt, da wir mit Loops arbeiten,
+ ist das ein bisschen schwieriger,
+ weil wir wollen ja mit unserer Invariante abdecken,
+ beliebig viele Ausführungen des Loop-Bodies.
+ Und natürlich können der Loop beliebig viele Ausführungen machen
+ und wir erreichen trotzdem den Punkt nach S nicht,
+ nach dem Loop nicht, warum?
+ Weil wir eben einen unendlichen Loop haben,
+ zumindest konzeptionell unendlich.
+ Und das heißt, wir müssen also ein bisschen mehr überlegen,
+ wie wir Korrektheit für definieren,
+ wenn wir eben mit schleifen, also mit Loops arbeiten wollen.
+ Und das, was ich Ihnen bisher Korrektheit genannt habe,
+ wird eigentlich korrekterweise,
+ alle Korrektheit genannt, korrekt unter der Annahme,
+ dass dieser Loop terminiert.
+ Das ist unter der Annahme, dass das Statement terminiert.
+ Und ein vollständiger Korrektnisbeweis,
+ der erfordert auch einen Beweis, dass das Statement terminiert.
+ Wenn da eine Division durch Null ist,
+ ist das eben etwas außerhalb dessen, was die Division machen will.
+ Dafür brauchen wir nichts zu zeigen.
+ Aber jetzt eben halt, wenn wir eine Schleife haben,
+ dann können wir jetzt auch zeigen, dass diese Schleife terminiert.
+ Und hat das der eine oder die andere von Ihnen schon mal irgendwo gesehen?
+ Es gibt einen Weg das zu machen.
+ Und der Weg geht folgendermaßen,
+ wir werden das also nicht weiterverfolgen,
+ das überlasse ich einer späteren Vorlesung.
+ Die Idee ist, wir bilden den Zustand nach der Ausführung eines Durchlaufs,
+ also einer Ausführung des Bodys, auf eine ganze Zahl ab.
+ Und diese ganze Zahl muss größer gleich Null sein.
+ Und dann muss ich sicherstellen, dass diese Abbildung so ist,
+ dass jede Ausführung des Loops, das Rumpfes,
+ also jede Ausführung des Bodys, verkleinert diese Zahl.
+ Das heißt, diese Zahl wird in jeder Ausführung kleiner, kleiner, kleiner.
+ Und jetzt muss ich dann, wenn ich jetzt zeigen kann,
+ dass der Loop-Test vor es ergibt, wenn diese Zahl zu Null wird,
+ dann habe ich gezeigt, dass dieser Loop terminiert.
+ Und das muss ich dann machen,
+ weil wenn ich schrittweise in jeder Ausführung des schleifen Rumpfs
+ diese Zahl verkleinere,
+ also muss ich sie mindestens um eins verkleinern,
+ aber es gibt dann nur eine endliche Anzahl von Schritten,
+ die ich machen kann, bis dieser Wert Null ergibt.
+ Weil das ist so eine schöne Sache, die wir mal tick wissen,
+ dass eben eine Zahl,
+ eine endliche Anzahl von Subtraktionen ist nötig,
+ um die auf Null zu bringen.
+ Und dann haben wir Terminierung gezeigt,
+ weil wir zeigen, die Ausführung bringt diese Zahl,
+ die wir da konstruieren auf Null.
+ Wir haben gezeigt, dass, wenn das Null ist, ergibt der Test false.
+ Wir wissen, dass, wenn der Wildtest false hat,
+ dann terminiert die Schleife
+ und wir erreichen das Statement nach der Schleife.
+ Dann haben wir also gezeigt, dass der Loop terminiert.
+ Also die Idee zum Beispiel,
+ in dem ersten Beispiel,
+ dass ich hatte, wo wir die Zahlen von 1 bis X aufaddieren wollten,
+ da kann ich das abbinden,
+ zum Beispiel auf die Differenz zwischen X und I.
+ In jedem, in jedem Anfang ist die positiv,
+ oder zumindest eventuell,
+ schon jetzt Null, dann wird die Schleife nicht ausgeführt,
+ aber ist positiv.
+ Und dann in jeder Interaktion, wo wir I um 1 erhöhen,
+ wird diese Differenz kleiner.
+ Wenn ich I um 1, also wenn ich das um 1 erhöhe
+ und X ist unverändert,
+ dann wird das in jedem Schritt kleiner.
+ Und wenn wir den Punkt erreichen, dass X minus I gleich Null ist,
+ dann wissen wir, dass X gleich I ist,
+ und dann wissen wir, dass der Loop terminiert.
+ So kann ich das machen.
+ Also, das kann ich ein bisschen genauer machen,
+ aber das ist nur für Sie zur Information.
+ Das erwarten wir nicht, dass Sie das machen,
+ werden Sie in der späteren Vorlesung machen.
+ Oder in diesem Beispiel, wo ich den Quotienten berechnete,
+ da kann ich eben halt einen Wert R, großes R, finden.
+ Das ist der Rest, der Rest ist X, divisiert durch Y.
+ Und wenn ich zeigen kann, dass R minus R,
+ also kleine, einen großen R,
+ das das eben, das nehme ich als Abbildung,
+ und dieser Wert ist am Anfang auch positiv,
+ aber wird in jeder iteration kleiner,
+ weil ich eben das kleine R hier immer um Y decrementiere.
+ Und wenn das Y größer Null ist und so weiter,
+ dann wird das geht der runter.
+ Und ich weiß, am Ende, wenn dieser Wert Null hat,
+ dann gilt eben, dass der Rest,
+ dass der, dass der in der Berechnung
+ übrig gebliebene Rest kein R,
+ genau der Rest ist, den ich bekäme,
+ wenn ich die eben die Restoperator mache,
+ und damit weiß ich, dass dann der Loop terminiert.
+ Und natürlich, wenn diese Funktion
+ bereits vor Beginn des Loops Null ist,
+ immer umso besser, dann wird der Loop gar nicht erst ausgeführt.
+ Also so können Sie das im Prinzip zeigen,
+ dass Loops terminieren,
+ für die, die das eben zu langweilig finden,
+ dass wir das eben ohne Terminierung machen.
+ So, okay.
+ Damit habe ich den ersten,
+ einfach ersten Teil eigentlich erledigt,
+ und damit können wir jetzt das Gebiet
+ der einfachen Java-Programme verlassen
+ und uns etwas komplizierteren Konstrukten beschäftigen,
+ die vielleicht etwas, die wahrscheinlich Sie auch kennen,
+ aber die ich trotzdem noch behandeln möchte,
+ weil die wichtige Voraussetzungen
+ für die nächsten Schritte sind.
+ Weil das, was ich Ihnen über Errays erzähle,
+ ist ganz eng verwandt mit dem, was ich Ihnen danach
+ über Klassen und Objekte erzähle.
+ Also Errays sind besondere Arten von Objekten,
+ und das immer dafür gilt,
+ gilt in vielen Situationen auch für andere Objekte.
+ Und deswegen benutzen wir die Errays,
+ die Sie vielleicht schon kennen,
+ als Einstieg in diesen Bereich.
+ Aber natürlich, um Programme interessant zu machen,
+ müssen wir auch irgendwann mal Input/Output machen.
+ Also der einfache Input, wo Sie eine Zahl eintippen,
+ ja, der ist natürlich auch interessant,
+ und der einfache Output mit dem System.outprint Statement
+ ist auch interessant, aber natürlich könnte man eigentlich mehr machen,
+ und das werden wir auch versuchen zu machen.
+ Also diese Errays und Klassen sind die beiden nächsten Themen.
+ Und irgendwo, je nachdem, wie viel Zeit ich habe,
+ abhängig von dem, was die Kollegen in A und D brauchen,
+ werde ich dann die Input/Output einfügen.
+ So, ich kenne eigentlich kein gutes deutsches Wort für Errays.
+ Das beste Wort wäre Reihe.
+ Es gibt andere Wörter, die sind aber schlecht.
+ Aber deswegen, denke ich, können wir hier von Errays reden.
+ Denken, stellen Sie sich vor, ein Errays ist eine Reihe.
+ Und da fangen wir jetzt an mit einer kleinen Einführung,
+ und dann werden wir uns, wenn es geht,
+ heute noch mit dem Thema beschäftigen,
+ wie wir eigentlich Errays deklarieren und erstellen
+ und mit denen arbeiten.
+ Und um zu sehen, warum Errays eine irgendeine Bedeutung haben könnten,
+ stellen Sie sich vorhin davor Aufgabe vor.
+ Sie sollen für die Mitglieder eines Sportvereins
+ oder irgendeine anderen Gruppe irgendwelche Daten analysieren,
+ zum Beispiel die Durchschnittsgröße.
+ Und Sie sollen herausfinden, wie viele Spieler oder Spielerinnen
+ in diesem Verein über, in der Größe, über dem Durchschnitt liegen.
+ Und das könnte so aussehen, dass eben das Ihr Programm sagt,
+ wie viele Mitglieder es gibt in diesem Verein oder diesem Team.
+ Geben Sie doch bitte die Größe für alle ein.
+ Und dann berechnet das Programm den Durchschnitt und sagt,
+ okay, in diesem Team sind zwei Personen größer als der Durchschnitt,
+ und das ist ein Drittel. So was in der Art.
+ So, das ist eigentlich nicht schwierig.
+ Im Prinzip haben wir alles gelernt, was wir brauchen,
+ um so ein Programm zu schreiben.
+ Was für Schritte wären da nötig für unsere Schleife oder für unser Programm?
+ Also jeder Wert muss eingegeben werden.
+ Das müssen wir um den Durchschnitt zu berechnen.
+ Und dann, wenn wir den Durchschnitt berechnen wollen,
+ müssen wir eben den Wert eingeben und erstmal die Summe berechnen.
+ So, und danach, nachdem ich die Summe habe,
+ kann ich das durch die Anzahl der Mitglieder dividieren.
+ Das heißt, ich muss eigentlich, wenn ich mir das genau angucke,
+ diese muss ich zwei Sachen machen.
+ Ich muss also einmal die Summe berechnen
+ und ich muss zählen, wie viele Personen nachher größer gleich als der Durchschnitt sind.
+ Das ist also der Durchschnitt.
+ Ich muss erzählen, wie viele sind denn jetzt größer oder gleich der Durchschnitt.
+ Und jetzt sehen Sie das Problem.
+ Ich muss also erst den Durchschnitt berechnen.
+ Für den Durchschnitt brauche ich die Summe und die Anzahl der Mitglieder.
+ Und um herauszufinden, wie viele Personen größer oder gleich der Durchschnitt sind,
+ brauche ich natürlich den Durchschnitt.
+ Aber den habe ich ja noch nicht, bis dass ich alle Zahlen gelesen habe.
+ Ich kann den nicht irgendwie vorher berechnen.
+ Ich kann einen Vergleich, ob eine Person größer als der Durchschnitt ist.
+ Die kann ich erst machen, nachdem ich alle Zahlen gelesen habe.
+ Erst dann kann ich den Durchschnitt berechnen.
+ Und das heißt, ich muss diese Messwerte bis zum Ende speichern,
+ um dann festzustellen oder dann zu gucken,
+ welcher dieser Messwerte oder Eingabewerte eben größer als der Durchschnitt ist.
+ Und das ist eben problematisch, weil jeder Wert zweimal verwendet werden muss.
+ Also einmal eben für die Berechnung des Durchschnitts
+ und zum zweiten, um die Anzahl der Personen, die größer oder gleich,
+ als der Durchschnitt sind zu berechnen.
+ Das wäre ja im Prinzip kein Problem.
+ Wir könnten natürlich jeden Wert einfach in einer variablen Speichern.
+ Und dann, nachdem wir den Durchschnitt haben, gucken wir uns die Werte an
+ und zählen, wie viele von denen größer als der Durchschnitt sind.
+ Aber das Problem ist jetzt, während wir das programmieren,
+ wir wissen ja nicht, wie viele Personen wir in diesem Programm analysieren müssen.
+ Das wissen wir erst, wenn das Programm ausgeführt wird.
+ Wenn jemand sagt, ich möchte das Programm jetzt verwenden.
+ Das heißt, wir wissen nicht, wie viele Variable wir brauchen.
+ Und wir können jetzt nicht hingehen und sagen, dann gehen wir mal hin
+ und machen prophylaktisch 2000 Variable.
+ Und dann kommt jemand und nimmt als Menge für die Leute,
+ die das geschickt werden sollen, die Einwohner einer Größe statt.
+ Und darum geht das nicht.
+ Also wir brauchen einen Weg, wie wir mehrere Variable auf einmal deklarieren können.
+ Nicht nur eine Variable, nicht nur zwei,
+ sondern eben eine im Prinzip unbegrenzte Anzahl von Variablen.
+ Und das ist die Idee der Erreys.
+ Ein Erreyerlaub, das uns mehrere Werte des selben Typs zu speichern.
+ Wir haben eine Variable, die verschiedene Werte des selben Typs speichern kann.
+ Und jeden Wert in dem Errey, den nennen wir dann eben ein Element des Erreys.
+ Und wir werden einen Weg brauchen, um uns natürlich auf die unterschiedlichen Werte zu beziehen.
+ Da wird es dann eben einen Index geben, mit dem wir eben auswählen können,
+ mit welchem Wert wir da arbeiten wollen.
+ Und da hat sich eingebürgert, dass wir das erste Element,
+ das wir dem den Index 0 geben, aber gibt auch andere Programmiersprachen,
+ in denen das anders gemacht wird.
+ Aber das ist bei unserem System so üblich.
+ Also wenn ich so einen Erreyerlaub habe, dann habe ich einen Erreyerinn zum Beispiel für Int-Werte.
+ Und dieser hat dann eben, hier habe ich 10 Werte.
+ Und Element mit Index 0 oder Element 0 sagen wir kurz,
+ er hat eben den Wert 12 und Element mit Index 4 hat den Wert 5 und so weiter.
+ Also, so ein Errey speichert eben eine ganze Reihe von solchen Werten.
+ Und eben um damit zu arbeiten, müssen wir natürlich auch wieder die Variable deklarieren.
+ In Java müssen alle Variable deklariert sein.
+ Und das gilt auch für Erreys.
+ Und das kann irgendwo passieren in einer Methode, Main oder wo auch immer.
+ Und jetzt fangen wir mal an, das erste Beispiel einfach anzugucken,
+ nämlich wie wir mit so einer Variable arbeiten,
+ wenn wir die Deklaration und das Erstellen des Erreys kombinieren wollen.
+ In einem Schritt wollen wir also die Variable deklarieren und zugleich eben erstellen.
+ Und wenn wir sie erstellen, dann gilt auch, dass sie automatisch initialisiert wird.
+ Wir wollen keine uninitialisierten Erreys, warum kann ich Ihnen gleich, ja?
+ Aber wir müssen diese beiden Schritte Deklaration und Erstellen zusammenbringen.
+ Da gibt es in sich zwei Varianten, das zu machen.
+ Wir könnten die beiden eben zusammen machen.
+ Und wenn wir das gesehen haben, wie das geht, dann könnten wir auch sehen,
+ wie wir eben nur die Deklaration der Variable machen
+ und dann in einem zweiten Schritt dafür sorgen, dass der Erreys erstellt ist.
+ Das ist aber der, beide Schritte sind vernünftig, beides Möglichkeiten machen Sinn.
+ Und wir werden sehen, wann die eine vielleicht interessanter ist als die andere.
+ Also, wie machen wir das?
+ Und wie wir halt in Java allgemein eben Variable deklarieren.
+ Wir haben einen Namen, den Namen der Variable
+ und da wir den jetzt deklarieren, hat er eben hier Informationen über den Typ.
+ Und jetzt, da wir hier dieses Gleichheitszeichen sehen, heißt das, das ist eine Zuweisung.
+ Also, das ist eine Deklaration, die die Initialisierung kombiniert.
+ Ähnlich wie wir früher gesagt hatten, Integer A wird gesetzt zu zwei.
+ Da hatten wir die Integer A deklariert und der den gleich den Wert zwei zugewiesen.
+ Hier deklariere ich einen Reh mit dem Namen "Nehm" und ich weise dem gleich Platz zu.
+ So, und jetzt am Anfang, haben wir einfaches Beispiel.
+ Also, wir haben hier diese Name, das ist der Name der Variable
+ und diese Variable verweist jetzt auf ein Reh mit eben diesen Elementen vom Typ.
+ Das Typ, den ich hier haben möchte.
+ Also, diese Variable, die verweist darauf.
+ Das ist ein Weg für uns, den Speicher zu finden, indem diese ganzen Werte gespeichert werden.
+ So, jetzt genauer, müsste man das so sehen.
+ Wir haben hier eine Typdefinition, die in der Deklaration auftritt
+ und wir haben hier eine andere Typinformation, die in der Initialisierung auftritt.
+ Jetzt am Anfang, wo wir noch nicht die ganz komplizierten Sachen kennenlernen wollen,
+ ist es immer so, dass wir denselben Typ auf beiden Seiten verwenden.
+ Also, wir verlangen zur Zeit für diesen Teil unserer Diskussion,
+ dass diese beiden Typen identisch sind.
+ Also, ich kann hier sagen, Int irgendwas braucht dann auch auf der rechten Seite
+ dieser Zuweisung das Inzeichen.
+ Das ist einfach die Regel, die wir jetzt zur Zeit mal verlangen,
+ einfach um das Leben einfacher zu machen.
+ Ist das Erstellen Initialisieren eines Erreys in Java in der Ordnung N?
+ Hab ich von der Laufzeitkosten gesprochen?
+ Nein, also werden wir das später behandeln.
+ Gucken wir, wer es nachher hier haben.
+ Also, wir hatten gesagt, der Typ hatten wir gesagt,
+ das ist der Typ der Elemente und eben, wir haben jetzt eben immer identischen Typ.
+ Den Namen der Variable, klar, die üblichen Regeln gelten.
+ Und dann habe ich jetzt hier auf der nächsten Seite, was weiter ist,
+ also auf der Zuweisungsseite, habe ich hier das New.
+ Das New ist ein weiterer Operator in Java, was für eine Überraschung.
+ Das ist ein Operator, der Platz für die Elemente erstellt.
+ Und längs ist eben ein Ausdruck, das ist ein Ausdruck,
+ der eben einen Int-Wert liefert und der Int-Wert muss größer gleich 0 sein.
+ Es macht nicht Sinn zu sagen, wir haben minus zwei Elemente.
+ Wir haben vielleicht Null-Elemente oder 1 oder 2,
+ aber wir haben niemals eine negative einzelne Elemente.
+ Also, legales Beispiel, das ich eben schon zeigte,
+ ich habe hier eine variable Numbers deklariert,
+ die sich auf ein Array mit Integers beziehen kann.
+ Und diese Variable bezieht sich jetzt hier auf einen Array mit 10 Elementen.
+ Oder ich kann da irgendwelche Variable verwenden,
+ ich kann da Array mit 10 machen, kommt aufs Gleiche raus.
+ In diesem Beispiel wieder ist das ein Array mit 10 Elementen.
+ Also, sowas deklariert die Variable und lässt sie auf ein Array
+ mit 10 Elementen vom Typ Int verweisen.
+ Da ist also Platz für diese 10 Int-Werte geschaffen worden.
+ Und die Frage ist jetzt eben halt, was für, was für Werte sind denn da?
+ Und wir wollen natürlich nicht, dass wenn ein Programm ein Array erstellt,
+ dass das Programm lesen kann, was da vielleicht zufälligerweise
+ in dem Speicher im Prozessor drinsteht.
+ Wir wollen nicht, dass eben das Programm,
+ vielleicht die Daten eines anderen Programms illegaler, illegalerweise liest.
+ Und darum haben wir in Java die Regel,
+ dass eben die, die, diese Operation des Erstellens
+ einen wohl definierten Wert erbringen muss.
+ Also, das schönen Nebeneffekt ist, dass wir wiederholte Ausführung
+ bekommen, wer dasselbe resultat.
+ Weil wenn immer ich ein Array erstelle,
+ wird der eben auf, werden die Elemente auf einen vorher definierten Wert gesetzt.
+ Und der Wert, den wir dafür nehmen, also nicht wir,
+ sondern das System dafür nimmt, ist,
+ der nehmen wir einen Wert, der null entspricht.
+ Was immer null im entsprechenden Typ sein mag.
+ Also, wenn es ganze Zahlen sind, wie ins oder longs,
+ dann ist der null Wert die Zahl null, die bekannte Zahl null.
+ Wenn es eben doubles sind, dann ist es die reelle Zahl 0.0.
+ Wenn es Boolean sind, hat man sich entschieden,
+ dass der null Wert false ist.
+ Und wenn es ein String ist,
+ mehr haben wir ja bisher an Typen nicht kennengelernt,
+ dann ist es ein besonderer Wert,
+ auf den ich nachher noch zu sprechen kommen werde,
+ der null heißt, auf den komme ich dann gleich zu sprechen.
+ Also, so kann ich es also hingehen und einen Array deklarieren
+ und zugleich erstellen.
+ Es gibt manchmal Situationen, wo ich den Array erst deklarieren will,
+ aber noch nicht erstellen will.
+ Und das passiert ganz einfach, indem wir eben keine rechte Seite haben.
+ Ich habe also diese Typinformationen mit diesen wichtigen,
+ eckigen Klammern, die mir sagen, dass es sich um einen Array handelt.
+ Und das deklariert jetzt eine Variable,
+ die auf Arrays dieses Typ hier verweisen kann.
+ Also, ich kann hier zum Beispiel diesen Array,
+ habe ich hier jetzt nochmal deklariert,
+ eben das heißt, Numbers kann sich auf irgendwelche Rays
+ mit Int-Elementen beziehen.
+ Und ich weiß halt noch nicht, wie viele das sind.
+ Ich weiß halt nur, dass sich Numbers auf einen Array beziehen wird,
+ der Int-Werte hat.
+ Das kann ein Array mit 10 Int-Werten sein,
+ mit 42, mit 7, irgendwas.
+ Natürlich, bevor ich da irgendwelche Werte mir angucken kann,
+ muss es irgendeine Zuweisung geben,
+ die diese Variable auf einen echten Array verweisen lässt.
+ Also, Array erlaubt es uns, mehrere Elemente des selben Typs zu speichern.
+ Elemente sind eben die Werte, die wir in dem Array speichern.
+ Jedes Element hat einen Index, mit dem wir das Element auswählen können.
+ Das muss eine Zahl größer, gleich null sein.
+ Und eben, die erste Element hat den Index null, also Element null,
+ ist das allererste Element.
+ Also, wenn ich jetzt eben so ein Array habe
+ und auf das Element zugreifen will,
+ dann brauche ich die Variable, die sich auf den Array bezieht.
+ Und dann brauche ich eben einen Konstrukt,
+ den mir sagt, welches Element ich auswählen will.
+ Und das geschieht so, dass ich halt hier den,
+ ich habe hier den Namen der Variable,
+ dann habe ich hier wieder die eckigen Klammern,
+ die werden hier auch verwendet, so, die eckigen Klammern.
+ Und dann habe ich hier eben einen Ausdruck,
+ der den Index berechnet und eben auswählt,
+ welches Element ich haben will.
+ Ich habe also so einen Konstrukt.
+ Und dann habe ich hier, wie in allen anderen Zuweisungen,
+ das ist eine normale Zuweisung,
+ dann habe ich hier irgendeinen Ausdruck,
+ der eben einen Wert vom Typ der Elemente des Arrays ergeben muss.
+ Oder gegebenenfalls nach automatischer Umwandlung,
+ einen Wert ergibt, den ich dann da speichern kann.
+ Und diese Zuweisung führt dann dazu,
+ dass das entsprechende Element dieses Arrays modifiziert wurde
+ und danach den neuen Wert hat.
+ So, und das ist eben der Weg, wie ich das da machen kann.
+ Ja, wenn ich hier diesen Array in Data deklariert habe,
+ irgendwann setze ich diesen Array auf dahin,
+ dass er, nehme ich diese Arrayvariable,
+ um auf einen echten Array zu verweisen.
+ Also hier den Array mit zehn Elementen.
+ Und jetzt kann ich zum Beispiel zwei dieser Elemente
+ auf einen Wert setzen, den ich für dieses Programm brauche.
+ So, das ist also der Weg,
+ wie ich die Elemente des Arrays modifiziere.
+ Und wenn ich jetzt so ein Element lesen will,
+ dann ist das analog, ja?
+ Also der gleiche Konstrukt, ich habe den Namen,
+ ich habe die beiden eckigen Klammern,
+ ich habe einen Indexaufdruck,
+ aber das erscheint dann eben auf der rechten Seite.
+ Also das ist wahrscheinlich hier, auf der rechten Seite
+ habe ich jetzt die Gelegenheit, das Element mit dem Index 0 zu lesen.
+ Und hier lese ich Element mit Index 3.
+ Und dann addiere ich die beiden und dann gibt es das gewünschte Ergebnis.
+ So geht das auch eine große Schwierigkeit.
+ Und das funktioniert auch für alle anderen Typen, die wir kennen,
+ Bullions und so weiter, kann ich das genauso machen.
+ Natürlich ist, kann ich nicht einen beliebigen Indexwert wählen,
+ ich kann nur einen Indexwert finden
+ und mit dem arbeiten der zwischen 0 und der Länge des Arrays minus 1 ist.
+ Wenn ich diesen Array mit zehn Elementen habe,
+ dann sind 0 und 9 die beiden Grenzen, also Element 0 existiert,
+ mit Index 9 existiert, aber alles was weiter draußen ist,
+ 10, 11 oder negative Zahlen existiert nicht
+ und wird nicht, das System mag das nicht.
+ Also wenn ich dann hingehen sollte
+ und eben auf Elemente, wie das Element mit Index 0 und 9 zugreifen,
+ dann funktioniert das fein.
+ Aber wenn ich eben auf, versuche auf Element mit Index minus 1
+ oder Index 10 zuzugreifen, dann gibt es eine Exception
+ und eine Exception, die bewirkt dann einen Abbruch der Ausführung dieses Programms.
+ Und da ist die Frage, was mache ich denn,
+ wenn ich in einem Array Element mit unterschiedlichen Typen speichern möchte,
+ dann ändern Sie Ihre Wünsche, das können Sie nicht.
+ In einem Array können Sie nur Werte des selben Typs speichern.
+ Es gibt weitere Möglichkeiten, das später noch zu erweitern,
+ aber das ist halt die Regel.
+ Also, da können Sie, für wen das zu einfach ist und zu langweilig ist,
+ ist es okay, ich habe hier diesen Array, also ich habe diesen Array erstellt, hier oben,
+ mit nur 8 Elementen, damit ich Platz habe.
+ Dann initialisiere ich einzelne diese Elemente,
+ dann gehe ich hin, wähle ein Element aus,
+ ich nehme mal ein Element mit Index 1, das hat den Wert 3,
+ dann benutze ich das Element, um zum Beispiel das Element mit Index 3 zu verändern,
+ dann benutze ich den Wert des Element mit Index 6,
+ um ein anderes Element auszuwählen und das habe ich dann geändert.
+ Also, Sie können da genügend viele Programme sich überlegen,
+ die genügend interessant sind.
+ So, jetzt wenn Sie so ein Array haben,
+ dann wollen Sie im Allgemeinen da nicht nur als Werte eben den voreingestellten Wert 0 haben,
+ sondern da wollen Sie irgendwelche anderen Werte haben, wollen die ausgeben.
+ Und das können Sie natürlich gut in der Vorschleife machen,
+ also Vorschleife und Arrays gehen im Allgemeinen gut miteinander zusammen,
+ Sie alle drucken wollen,
+ oder wenn Sie hier die Elemente auf einen bestimmten Wert setzen wollen,
+ das funktioniert alles gut.
+ Allerdings, diese beiden Beispiele, die ich Ihnen zeige,
+ haben einen Schönheitsfehler, ja.
+ Hier habe ich den Loop so geschrieben,
+ dass er für acht Elemente arbeitet.
+ Oder hier habe ich den Loop auch so geschrieben,
+ dass er für acht Elemente arbeitet.
+ Und das ist eigentlich unschön,
+ weil in diesem Beispiel ging das halt glatt,
+ weil ich eben halt nur ein Array benutze, der acht Elemente hat.
+ Aber diese variable Numbers kann sich ja auf Arrays beliebiger Größe beziehen.
+ Und das wollen wir natürlich nicht,
+ weil wenn ich jetzt einen Array mit Werte, mit Länge zehn hätte,
+ würden einige Elemente uninitialisiert sein.
+ Und wenn ich einen Array mit Länge sechs hätte,
+ dann würde eben halt das zur Folge haben,
+ dass ich eine Exception bekomme.
+ Und darum gibt es einen Weg im Programm,
+ festzustellen, wie viele Elemente ein gegebener Array hat.
+ Und das ist ein Attribut dieses Arrays, also eine Eigenschaft des Arrays.
+ Und den finde ich, indem ich eben halt den Namen des Arrays benutze
+ und dann den berühmten dort, den Punkt,
+ und dann eben halt längst das Attributabfrage.
+ So könnte ich den Loop so schreiben,
+ dass er eben halt für eine beliebige Anzahl
+ für einen beliebigen Array funktioniert.
+ Egal, wie lang der Array ist, dieser Loop funktioniert immer
+ und rückt jedes Element dieses Arrays aus.
+ Also wichtig ist, das ist ein Attribut.
+ Und darum eben halt besteht das nur eben aus diesem Namen des Attributs.
+ Im Gegensatz zu Strings, wo wir eine Methode, eine Operation hatten
+ und daher Klammern nötig waren, gibt es hier keine Klammern.
+ Hier ist einfach das Attribut, das wir brauchen können.
+ So, jetzt wollte ich eigentlich einen Pool machen.
+ Können wir, wollen Sie das noch machen?
+ Ja, also machen wir die Pool noch.
+ Wir haben hier dieses Längsattribut
+ und Sie sollen jetzt zwei Sachen eingeben.
+ Nämlich, was für einen Ausdruck würden wir denn benutzen wollen,
+ wenn wir auf das letzte Element eines Arrays zugreifen wollen.
+ Und was für einen Ausdruck wollen wir benutzen,
+ wenn wir auf das Element in der Mitte zugreifen wollen?
+ Jetzt das Element in der Mitte ist etwas trickiger,
+ weil wenn natürlich die Anzahl der Elemente ungerade ist,
+ ist die Mitte klar definiert.
+ Das ist das Element hier.
+ Aber wenn die Anzahl der Elemente gerade ist,
+ dann ja, was ist dann die Mitte?
+ Könnten wir diesen Wert nehmen oder könnten diesen Wert nehmen?
+ Und wir haben uns da entschieden,
+ wir konnten entscheiden,
+ dass wir als Mitte den Wert nehmen, den wir hier eben ausgewählt haben.
+ Weil das nicht eindeutig,
+ sondern man könnte auch genauso gut anders argumentieren.
+ Aber die Entscheidung von vielen wurde halt so gefällt,
+ dass man eben halt diesen Wert dafür nimmt.
+ Also, Sie sollen jetzt eben halt in den Kricker,
+ wir sagen, was für Ausdrücke sollten hier rein,
+ damit wir entweder das letzte Element
+ oder das Element in der Mitte auswählen.
+ Die Zeit haben wir noch,
+ weil wir haben ja auch paar Minuten zu Nacht spielen.
+ Also, vielleicht bekomme ich eine Antwort, habe ich schon.
+ Ich habe da verschiedene Möglichkeiten zur Auswahl Ihnen gegeben.
+ Und Sie sollen gucken, ob eine von denen überhaupt richtig ist
+ und ob eben gegebenenfalls da eine Änderung nötig ist.
+ Okay, ich mache noch 30 Sekunden.
+ Und dann, ja, hier haben wir schon viele Anmeldungen.
+ Okay, sehr gut, super, super.
+ Also, ich denke, das haben Sie überwiegend richtig gemacht.
+ Das ist sehr gut, da bin ich beruhigt.
+ Also, hier das letzte Element ist,
+ wir nehmen halt das Längsattribut und ziehen eins ab.
+ Und das Element in der Mitte wäre eben halt die Länge minus 1 dividiert durch 2.
+ Und noch als letzter Punkt, wenn Sie jetzt ein echtes Programm haben,
+ dann natürlich würden Sie wahrscheinlich Dateien lesen.
+ Das haben wir, die Möglichkeit haben wir noch nicht.
+ Darum gibt es einen einfachen Weg, in Java Arrays zu initialisieren,
+ indem wir halt einen Array deklarieren
+ und dann gleich die Werte, die der Array haben soll, angeben.
+ Und dann wird ein Array der entsprechenden Länge konstruiert.
+ Und das geht nicht nur für ins, das geht auch für alle anderen Typen.
+ Und damit haben wir eigentlich jetzt genug Informationen,
+ um das Programm, das Sie Ihnen am Anfang zeigte, schreiben zu wollen.
+ Also, das ist das, was wir heute machen wollen.
+ Nächste Woche machen wir dann weiter, wie wir mit diesen Arrays weiterarbeiten können
+ und insbesondere, wie wir mit Arrays und Methoden arbeiten können.
+ Okay, schönes Wochenende, bis Dienstag.
+ (Beifall)
+ Video und Video von Downtown Los Angeles.

@@ -1,0 +1,1536 @@
+ So, where were we yesterday?
+ We were talking about x86 assembly, and it was quite a lengthy introduction to x86 assembly,
+ which mostly focused on a single instruction, which was move.
+ But it turns out that move does quite a lot of heavy lifting in x86, and it's, as we saw,
+ it can actually perform quite complicated operations in terms of address calculation
+ to the extent that there is also an instruction that does all that calculation without actually
+ doing the move, which is LEA.
+ And we'll see more of that now, because I want to sort of move on to actually doing
+ arithmetic on x86, doing general calculations on integers.
+ Moving point we'll come to later on.
+ So you've seen assembly language arithmetic operations before on MIPS or L3B or things
+ like that.
+ Here are some of the ones that you get in x86.
+ There's a lot of them.
+ These are the most common ones.
+ So add, subtract, multiply, shift arithmetic, shift logical.
+ There's two different ones for that.
+ Shift right.
+ XOR, exclusive OR, bitwise AND, bitwise OR, all the kind of usual stuff.
+ There is no distinction between signed and unsigned integers, because if you remember,
+ it doesn't matter in terms of the calculation that happens on the bits.
+ So all that stuff in C, where things are sort of implicitly cast from signed to unsigned
+ when you mix things up, all that stuff, none of that stuff actually matters in assembly
+ language if you don't care about the difference between the numbers at all.
+ The same circuit will do the right thing, and then it's up to you to interpret the result
+ as signed or unsigned.
+ The difference in C is the compiler is doing the interpretation for you and changing the
+ interpretation.
+ There are operations in instructions.
+ So by the way, just as a reminder, in x86, most instructions have two operands, not three.
+ Remember in MIPS, everything's really got three register operands, mostly, apart from
+ loads and stores and things.
+ Here there's only two.
+ So add takes a source and a destination, and the destination is itself one-- is the other
+ operand as well as the source.
+ So it adds the source and destination together, puts the result into the destination.
+ And so as well as these instructions here that use-- you have two operands, there's
+ actually a bunch that just have one.
+ So for instance, if you want to add one to something, you can just do inc.
+ Inc long word.
+ There's some long word variations here, but the same thing happens for quad word or word
+ or character or things like that, bytes.
+ Increment, decrement, negate, and not.
+ So there's negate, basically sets something to be the negative value, takes the two's
+ complement of the value, and then not, of course, just inverts all the bits, does the
+ one's complement of the value.
+ There are more.
+ You can look in the book.
+ We do not ask you to remember them all.
+ When you come to the exam, you will have, if you need it, a reference sheet with all
+ of the x86 instructions listed on it, at least all the ones that we expect you to use.
+ But this gives you a sort of flavor of what's there in the instruction set.
+ x86 has a pretty huge list of operations, more than many processes, partly because at
+ the time it was thought to be useful to use all those transistors to do the complicated
+ things just like we saw with the addressing modes.
+ These days, some of these operations, it just makes sense to do them as part of other operations.
+ So very few processes that I can think of today have an increment or decrement, for
+ instance.
+ The way you just do that is you simply add one to a register and set the address of the
+ register to itself.
+ It's all fairly straightforward.
+ So as well as doing these calculations, remember we can also use load effective address to
+ do things.
+ And so if we take, say, this rather convoluted function here-- let's get my gyroscopes working--
+ here, this is doing a bunch of very sort of strange operations.
+ It's a function specially constructed for teaching how load effective address is used.
+ If you actually compile that, you get this assembly language here.
+ So all of these complicated things here-- so this is basically six lines of calculation--
+ get compiled into six lines of assembly language.
+ But you'll notice that three of these lines are not actually using the instructions I
+ just showed you.
+ They're actually using load effective address.
+ So you can sort of match these up.
+ Now I've sort of colored these here.
+ This is x plus y here is this.
+ So you load the effective address of x and y, which are the first two arguments.
+ They turn out to be in these registers, and put the result into EAX.
+ This one here happens here.
+ This actually is an add instruction, and it adds EAX to something else.
+ This is z plus EAX.
+ So it's this one here.
+ x plus 4-- well, that comes down here.
+ Sorry, where is x plus 4?
+ Oh, x plus 4 is down here.
+ It's combined with calculating t5.
+ So it realizes that it only needs t3 to calculate t5, and that's x plus 4.
+ And it can do the whole thing in one instruction.
+ So this load effective address adds RDI, RDX, and 4 together, and you get the result in
+ ECX.
+ So that's these two.
+ And then the y times 48 takes two instructions, neither of which is a multiply, of course.
+ So what happens here is the first instruction takes y, which is in the RSI register, multiplies
+ it by 2, adds it to y again.
+ So that multiplies y by 3.
+ And then once you've multiplied something by 3, if you're trying to multiply it by 48,
+ that means then multiplying by 16.
+ And of course, we can do that with a shift.
+ So this load effective address followed by a shift is the multiply by 48, which is kind
+ of cool.
+ Compilers are clever, right?
+ And then finally, the last one here is this one here, where we try and multiply t3 and
+ t5.
+ And at this point, we can't do a shift, because we don't know what these numbers are going
+ to be.
+ So we actually have to result to a multiply here.
+ So this was actually the slides last year.
+ If you do it this year, you'll notice the compiler's changed a little bit.
+ And it actually does things differently.
+ It actually uses more instructions.
+ So this was last year's compiler.
+ This is this year's compiler.
+ And what's happening now is we've still got-- we do the y times 3 at the very start.
+ And then we do an assignment of a temporary variable.
+ So this move here is kind of, OK, this is sort of-- we didn't have that move instruction.
+ So this is the extra instruction.
+ And you'll notice basically the same things are happening, but they're being reordered.
+ And in some cases, like here, they're being refactored in different ways.
+ Now it's an interesting question as to why the new version is using more instructions
+ than the old version.
+ And to be honest, I don't know.
+ But I think the high-level point is microarchitecture is really complicated.
+ For instance, I suspect that this move instruction here doesn't actually do anything at all.
+ It's simply a way to get around the relatively small number of registers.
+ It's purely a register renaming operation.
+ So I imagine that this instruction here doesn't-- when it gets executed, in practice, just sort
+ of remaps some of the register names and nothing else.
+ The rest of this, like doing the y times 3 up here, then the load effective address,
+ then load effective address.
+ You notice that what the compiler is trying to do in both cases is separate out the LEAs,
+ interleave the LEAs with the arithmetic instructions.
+ And I think that's partly because these are done in separate units in the processor.
+ This is the reason that the processor likes to use LEA.
+ It's very fast.
+ It's quite specialized.
+ That's one thing.
+ But the other thing about it is that it doesn't actually use the ALU.
+ It's a completely separate part of the processor.
+ So you can have two of these things going on at the same time.
+ So you can be doing your LEA whilst you're doing, say, your shift or your add or your
+ multiply, and they simply won't interfere with each other at all.
+ So it's kind of, you know, makes things go a bit faster.
+ Very x86-specific, this is.
+ LEA is a very x86 instruction.
+ Most processors won't have something like this.
+ Some do.
+ Here's a different example which is sort of using logical operation, logical operators,
+ bitwise operators, shifts and masks and things.
+ And so here, you know, again, what you've got is, you know, a bunch of sort of XORs
+ and things like that.
+ And they get translated pretty much into the obvious kind of code here, right?
+ So we've got a move to start with.
+ We've got the XOR.
+ The XOR is this one here.
+ We've got a shift arithmetic left of this.
+ And then an AND with the mask.
+ And you'll notice here that this mask is just a constant.
+ So what's happening here is the compiler is figuring out what this is.
+ This number is here.
+ So mask doesn't really appear in the assembly language.
+ What you get is you get the shift by 17, which is here, and then 8185.
+ And 8185 is 2 to the 13 minus 7.
+ So the compiler has figured all this stuff out, and it's just an AND with the mask.
+ Okay.
+ Make sense?
+ So why am I showing you all these weird functions that you'd never normally write?
+ Basically, the point here is there are a lot of operators.
+ They mostly translate to what you would expect in assembly language.
+ But the compiler is kind of quite enterprising in rearranging these expressions.
+ When you do the compiler course, then you'll see that, you know, compilers are very good
+ at taking your program and turning it into a pretty different program that happens to
+ do exactly the same thing, but does it faster.
+ Compilers are very good at this.
+ Even C compilers are very good at this.
+ And that's one of the reasons why, generally speaking, people don't write assembly language
+ anymore for speed unless there's something very particular and there's something that
+ the compiler doesn't know that causes the compiler not to do something really clever
+ there where a human being can do something really clever.
+ And Professor Klimovich will talk about that when we talk about optimizing compilers.
+ There are things that you can write in your program that will make the compiler back off
+ and not do anything.
+ And it's good to know these things because typically you don't want the compiler to back
+ off.
+ You want the compiler to be clever.
+ Sometimes you don't, but most of the times you do.
+ And it's good to know what it is that frightens the compiler and stops the compiler from optimizing
+ things.
+ Yes, question?
+ >> If you go back two slides -- >> That one or that one?
+ >> Yeah, how does the load effect dependents differentiate when it's adding stuff and when
+ it's multiplying stuff because it almost looks like the same code.
+ The first, let's say, load effect depends on the load.
+ The second one is the load effect depends on the load.
+ >> These two here?
+ >> Yeah.
+ >> All right.
+ >> This is the add.
+ >> All right.
+ So how does the load effect of address know that these two are an add and a multiply?
+ Now, these two instructions are completely unambiguous.
+ And both of them are doing a multiply as well as an add.
+ What's happening is the syntax, right, is missing out the multiply factor.
+ Okay?
+ So here I've got three values in parentheses, right?
+ And they're always -- the first one's a register, the second one's a register, and the third
+ one is the scale factor, which is what you multiply by.
+ And that scale factor is 1, 2, 4, or 8.
+ Okay?
+ So here, this is, if you like -- and this is not even the full LEA because we don't
+ have the displacement, which is written at the start, like it is here.
+ But this one here says the displacement is zero, okay, because there's nothing before
+ the parentheses.
+ There's a 4 here, but there's nothing here before the parentheses.
+ So displacement is zero.
+ The first register is RSI.
+ The second register is RSI.
+ And the scale factor is 2.
+ And so what that says is take zero, add that to the result of adding together RSI, multiply
+ -- RSI plus RSI multiplied by 2.
+ Okay?
+ So you take RSI here, the second one, you multiply it by 2, you add it to RSI, you add
+ it to zero, which I've missed off from the start of this instruction, and then I put
+ the result in EDX.
+ Now, what's happening down here is I've missed the scale factor, but it's still implicitly
+ there.
+ If I miss it out, it's 1.
+ But I've got a displacement.
+ So this says take RDX, multiply it by the scale factor of 1, add it to RDI, and then
+ add it to 4, and then put the result into ECX.
+ Up here, I've missed off the scale factor and the displacement.
+ So what's happening here is it says, okay, take RSI, multiply it by 1, which is the scale
+ factor, add it to RDI, and add it to zero, which is the displacement.
+ So they're all -- everything's there.
+ If you said if I miss things out, then there's an obvious default.
+ The obvious default displacement is zero, and the obvious default scale factor is 1.
+ Make sense?
+ Yep.
+ Okay.
+ And as we saw actually last week, you can actually miss off the first register here.
+ But in order to make that unambiguous, you just write a comma.
+ The open parentheses, comma, second register.
+ And that means that it simply doesn't add the first register to the result.
+ Okay.
+ So arithmetic.
+ That's kind of pretty much it for x86, except that we should talk about condition codes.
+ So MIPS does not have condition codes.
+ Did you look at a processor that does have condition codes last year?
+ Raise your hand if you've seen condition codes.
+ Okay.
+ Yeah.
+ A few.
+ Raise your hand if you've not seen condition codes.
+ Yeah, that suggests to me that either you weren't paying attention or they're not in
+ the course last year.
+ I will choose to believe they were not in the course last year.
+ Okay?
+ So I'll tell you about condition codes.
+ Condition codes exist on -- typically on CISC processors.
+ They typically do not exist in RISC processors, except for ARM.
+ Actually the ARM processor does have condition codes.
+ At the time, condition codes -- when RISC was happening, condition codes were thought
+ to slow down the processor.
+ They don't really do that anymore because nothing is really a register anyway now.
+ But anyway, at the time, x86 was defined by having real condition codes.
+ ARM has them.
+ MIPS doesn't.
+ Alpha doesn't.
+ A whole bunch of other processors don't.
+ RISC-V doesn't, I think.
+ I think.
+ But let's look at what they are.
+ Okay.
+ So the way to think about condition codes is they're like extra registers.
+ Each register is only one bit.
+ It's a one-bit register.
+ And that register is set based on the result of some previous instruction.
+ Some instructions set condition codes.
+ Some don't.
+ And you just have to know which ones do.
+ As a rule of thumb, arithmetic instructions do set condition codes.
+ Load-effective address does not.
+ Okay?
+ Load-effective address doesn't change condition codes.
+ But when you do something like an add, an add long word or something, it does set the
+ condition codes.
+ And there are actually other ones that are useful to the operating system, but there are
+ four ones that really make sense in application code.
+ There are four ones that actually are defined over arithmetic operations.
+ And so they are called C, Z, S, and O. Okay?
+ It's carry, sign, overflow, and zero.
+ Okay.
+ And so what happens is, you know, think of it as a side effect of the operation.
+ The carry flag is set, for instance, when you have an add operation and the result carries
+ over into the nonexistent extra bit.
+ So it's effectively an unsigned overflow.
+ Okay?
+ If you add two unsigned numbers and the result -- like two 32-bit unsigned numbers and the
+ result is actually 33 bits long, so the top -- the 33rd bit that gets thrown away in C
+ when you do an integer overflow gets thrown away.
+ That extra bit, if it's one -- actually, even if it's zero, it ends up in the carry register.
+ So this is a way in assembly language to see what happens when you do an unsigned integer
+ overflow.
+ The carry bit contains whether or not that overflow happened.
+ Okay?
+ The zero flag is very easy.
+ Zero flag is set if the result was zero.
+ Okay?
+ The sign bit flag is set if the result was signed in terms of two's complement notation.
+ So the sign bit, if you like, is a copy of the top bit of the result.
+ Right?
+ If the top bit is set, then the result is a negative number in two's complement notation,
+ so it's set.
+ And then the overflow flag is the one that's really -- you know, people get confused about.
+ The overflow flag is quite complicated.
+ It's set based on this condition.
+ So if you treat your operands as signed, two's complement numbers, if A is greater than zero
+ and B is greater than zero and the result is less than zero, or A is less than zero
+ and B is less than zero and the result is greater than or equal to zero, if either of
+ those two conditions are true, the overflow flag is set.
+ Otherwise it's zero.
+ And what this is doing is this is a signed overflow.
+ Right?
+ So if you remember when we looked at signed integer arithmetic, you know, there was this
+ sort of complicated thing that happens where you overflow a signed number and it becomes
+ an unsigned number.
+ No, sorry.
+ No, you overflow a large positive sum and it becomes a negative number and vice versa.
+ And so this is detecting whether that's happened.
+ It tells you whether that's happened.
+ Right?
+ Yeah?
+ >> Can we set the zero flag if we get zero by overflow?
+ >> So we don't set the zero flag.
+ The system sets the zero flag.
+ The zero flag is set if the result is zero.
+ Right?
+ T is zero.
+ So T is the destination of the operand.
+ Right?
+ So if there was an overflow and the whole of T is zero, the flag is zero.
+ Yeah.
+ And you can figure out what happened to the top bit by looking at the carry flag.
+ Yeah.
+ Okay?
+ So these four flags are set when you do an operation.
+ Okay?
+ They're not set by LEA because that's not really an arithmetic operation, but they're
+ set by all the others.
+ Okay?
+ And they're set implicitly.
+ They're set as a result of doing like an add or a subtract or a multiply or things like
+ that.
+ But you can also do an instruction that just simply says, hey, you know, just set the flags.
+ Don't actually do an operation, but set the flags.
+ And so compare, the compare instruction, CMP, compares two values, and it's a bit like computing
+ A minus B. Right?
+ So compare long word BA is like computing A minus B, like a subtract would do, except
+ that you don't actually do the subtraction.
+ But you do set the flags as if you've done the subtraction.
+ Okay?
+ So it's set if there's a carry out and so on and so on and so on, the same kind of thing
+ that we had before.
+ So compare is like a null operation, except that you set the carry flags.
+ So you set the condition flags.
+ Now why would you want to set the condition flags?
+ Okay?
+ You can also set the condition flags, by the way, by doing a test operation.
+ This is like computing, so this one does a subtraction.
+ Compare does a subtract, which is kind of what you want for a numeric subtraction.
+ This one does a bitwise and.
+ Okay?
+ And the result is still the same.
+ It sets the condition codes based on this bitwise and.
+ So the two that are interesting here are the zero flag and the sign bit.
+ You can read these into another register.
+ Okay?
+ So how do you get at this stuff?
+ Right?
+ So it turns out they are actually in a register, but there's also an instruction for taking
+ them out of the status register where they live and putting them into a regular general
+ purpose register.
+ And so these things that read the flag registers are slightly confusingly called set.
+ And they set a single byte.
+ So they actually read, you remember we had the RAX register, the EAX register, the AX
+ register, the AH register, and the AL register, and they're all basically the same register.
+ These set the AL register, or the low eight bits of a register.
+ This is where you'll see the AL register appearing.
+ And there are all these different variations of the flags.
+ So these set a single byte to be zero or one, true or false, based on these expressions
+ on the flag.
+ So if you just want to see whether the zero flag is set, you just do set E, set equal.
+ And so the idea here is that the result of the comparison was zero if the two operands
+ were the same.
+ So this is, say, you do a compare, and then you set E to be one if the result was equal
+ and zero if the two numbers were unequal.
+ If I want to compare whether two numbers were not equal, I do set not equal.
+ So this simply inverts the zero flag.
+ So you do a compare.
+ The zero flag is zero if the two numbers were the same, because when you subtract them,
+ you get zero.
+ You invert that, and you get true if the numbers were not equal.
+ So this is taking these four condition flags and then turning them into relational operators
+ that we've seen in C. So this is equal, not equal.
+ S and NS are negative and non-negative.
+ So they just look at the test to sign bit.
+ And then we get these ones.
+ So greater than or greater than or equal to do rather more complicated Boolean operations
+ on this.
+ So greater than says I take this sign flag.
+ I XOR it with the overflow flag.
+ I invert that.
+ I also take the zero flag and invert that.
+ And then I take the logical and of those two values.
+ And that gives me, as I'm sure you've already realized, whether or not the first operand
+ was greater than the second operand as a signed comparison.
+ Now you may need to sort of sit down with a pencil and paper and just try a few comparisons
+ just to satisfy yourself that this really does work.
+ This expression here really does tell you whether two's complement sign numbers that
+ you've just compared using the compare instruction, whether one of them was greater than the other
+ or not.
+ And that's the reason these instructions exist, because who's going to keep writing assembly
+ code to do this calculation?
+ Let's just call it an instruction.
+ So this is greater than or equal to, just doesn't have the zero flag test.
+ But less than and less than or equal to.
+ So these four here are all doing comparisons on signed numbers, two's complement signed
+ numbers.
+ And that's why they're slightly complicated.
+ That's why they have to look at the overflow flag, because they have to deal with signed
+ integer overflow, which as we've seen is kind of a little bit more complicated.
+ And what we've got here, though, are the equivalents for unsigned.
+ And they're much simpler.
+ So unsigned, you've simply got-- and that's the reason they're called A and B, above and
+ below, because we've already got greater than or less than.
+ These are signed.
+ So here we got whether an unsigned number is above or below another unsigned number.
+ And these just test the carry flag and the zero flag.
+ And these make a lot more sense.
+ So below simply means when you compare, did you get a carry out from the subtraction?
+ And if you didn't get a carry out and the result wasn't zero, then they must be the
+ other way around.
+ So that's what these expressions mean.
+ So it's good to know that these expressions here correspond to these situations when I've
+ done a comparison of two numbers, either signed or unsigned.
+ So for instance, if I actually write a function like this, int greater than-- so GT stands
+ for long x, long y, return the Boolean value of whether x is greater than y.
+ And I compile this.
+ Or I actually do the same thing with compiling and returning a long.
+ It doesn't really matter.
+ I get this code here.
+ So the first thing you see is this, x or l, EAX, EAX.
+ This is actually-- this is almost an x86 cliche.
+ I've seen this on a t-shirt.
+ It's very old.
+ If you want to set a register to zero in assembly language on x86, you could try and do move
+ zero into the register.
+ That would be the sensible way of doing it.
+ It makes sense.
+ Move zero into the register.
+ It turns out that the xor instruction, if it operates on the original four x86 registers,
+ is only a single byte in encoding.
+ And so this instruction here, xor EAX, EAX, only takes a single byte to encode.
+ And so all the compilers use it.
+ And so people writing assembly language have started using it.
+ It is literally the fastest way to set a register to zero in x86, is to xor it with itself,
+ as long as it's one of these small number of initial registers.
+ Weird but true.
+ So this thing here just sets EAX to zero.
+ You'll see this a lot in code, xor EAX, EAX.
+ It's usually EAX that you're xoring.
+ The reason it's EAX, as we'll see later, is that that's the register that results are
+ returned from, from a function.
+ And so we're going to return the-- here we're going to return the EAX register as a 32-bit
+ value.
+ Here we're going to return the RAX register as a 64-bit value, but it's the same register.
+ So we do the comparison of the two arguments here, and then we do this, set greater than
+ AL.
+ And here's the original 8-bit register.
+ This is the 8-bit register that was there in the 8080, all those years ago, back in
+ the 1970s.
+ It's still there, and this is what gets set to be either 1 or 0, depending on the result
+ of x is greater than y.
+ Now, this is where the subtlety comes in, with all of these registers of different sizes
+ that are just sort of subsets of each other.
+ If I set the AL register, the other fields of the EAX register, the 32-bit register,
+ are unchanged.
+ So if I've got-- remember, EAX is a 32-bit value.
+ If that has some sort of value in it, and I set AL, which is the low 8 bits of that
+ register, the other 24 bits are the same as they were beforehand.
+ They're not affected by the operation.
+ And that's why we have to set those three top bits to 0.
+ We set the whole register to 0, all 32 bits to 0, so that when we set the bottom register,
+ the bottom 8 bits to 0-- to 0 or 1, all the other bits are already 0.
+ And so we will return, in EAX, from this function here, 0 or 1, nothing else.
+ But what I said was, if I return a long instead, which is when I'm returning really the 64-bit
+ register, the RAX register, what happens to those top bits?
+ And this is where things are different.
+ This is where AMD decided something different would happen.
+ AMD decided that if you change the bottom 32 bits of one of these registers, and you
+ ignore the top 32 bits, it sets those to 0.
+ So it's inconsistent.
+ The old 32-bit behavior was you set the bottom 8 bits to something, and it doesn't affect
+ the rest of the 32 bits.
+ The new behavior, the 64-bit behavior, says if you set the bottom 32 bits, it always 0s
+ the top 32 bits of a 64-bit value.
+ And so that's the reason why, at the end of this function here, or at the end of these
+ three instructions, RAX, the whole 64-bit register, is either 0 or 1 and nothing else.
+ It can't be any value other than 0 or 1.
+ All the bits in RAX are 0, except for the one bit that was set by the setG instruction
+ there.
+ Okay?
+ It's kind of a subtlety.
+ I suspect they did this because they thought that was a much more useful behavior for the
+ code and that you really didn't want to have this weird stuff sitting around in the top
+ 32 bits of a 64-bit register.
+ It would just get confusing.
+ I think it was probably the right decision.
+ On the other hand, back in the 1970s, doing this and not affecting the other bits in the
+ register was also probably a good decision at the time.
+ Yeah, things change.
+ The problem is when you've made a decision, you can't go back and change it.
+ All right.
+ So if I wanted to actually deal with the problem of the other seven bytes in a register, okay,
+ what I can do here is an alternative way of doing this is rather than zeroing this -- oops.
+ Where am I?
+ Let's go forwards.
+ Okay.
+ So rather than zeroing the register, here's an alternative way of doing this is I can
+ actually use this instruction here.
+ Now, I would suggest don't try pronouncing this instruction.
+ You can actually injure your tongue if you try and pronounce this instruction.
+ It is move zero byte to long word.
+ And the zero here means zero extend the result.
+ So what this is doing, this is another instruction we haven't seen.
+ It's a type of move instruction.
+ So move can do almost anything.
+ This moves the little ball, right?
+ Zero extends the result.
+ So it moves a byte to a long word.
+ And what we're doing here is we're moving a register to itself.
+ So we take the AL register, these little eight bits.
+ We move those to the EAX register here, so the long word register.
+ And the Z, the Z in the name means we fill all the other bits in zero.
+ So this is an alternative way of doing this, basically.
+ And this works -- this is a good way to do it when these operands here are 32 bits rather
+ than 64 bits.
+ Because otherwise, you know, here we can do a straight comparison, but we don't know about
+ the top bits of the register.
+ Now what we're doing here is moving the register to itself.
+ And so that sets the other three bytes of the EAX register.
+ And therefore, that implicitly, because of AMD's decision, then sets the other four bytes
+ at the very top of the RAX register.
+ And so then you get the same result.
+ There is also, by the way, there is a move SBL.
+ And that does a sign extend.
+ So rather than a zero extend, it is a sign extension.
+ So this is how you do sign extension in assembly language.
+ You move a register to some other register or itself, and you move it from one size to
+ another size, and you just do a sign extension.
+ Okay.
+ Finally, probably the most useful thing you can do with condition codes is you can branch.
+ It's a conditional branch.
+ This is how you do conditional branches in x86.
+ And here they all are.
+ And they have the same names as the set instruction.
+ So above, below, greater than, less than, all the rest of these things.
+ And there is an unconditional jump, of course, which is just jump.
+ And these will actually -- these are basically conditional branches.
+ These are what you've seen in other processes.
+ So this is how you do jumping.
+ And that's condition codes.
+ They do sit in a register.
+ It's possible to -- there's a register that contains all kinds of random bits that are
+ useful, whether interrupts are disabled, whether you're in kernel mode, all kinds of other
+ stuff.
+ It's a status register.
+ It's sometimes possible to read it.
+ You can read it from user space.
+ But that's just all the bits put together.
+ The instructions that Intel provides are the ones that actually compilers generate to actually
+ do different things based on the value of that register.
+ Okay.
+ Any questions?
+ No?
+ All clear?
+ Yes, question.
+ >> Yeah, maybe I understand.
+ New operations overwrite the old flags, right?
+ >> Yes.
+ If they change the flags.
+ Yeah, some operations don't affect the flags at all.
+ Okay?
+ So if I do an add, then the flags will be set based on the add.
+ If I then do an LEA, the flags will be unchanged.
+ They will stay the same.
+ So I still have the result of the add in the flags.
+ You can still compare them, yes.
+ The flags stay around until you hit another instruction that changes them.
+ Okay.
+ Yeah.
+ Okay.
+ All right.
+ That's assembly.
+ So the next thing to look at is what happens -- you know, how does the compiler actually
+ make use of this?
+ And I'm going to go through this fairly quickly because a lot of this I think you've already
+ seen in terms of at least looking at the slides from digital circuits, which, you know, you
+ may have seen this quite quickly.
+ It may have been gone through at some speed.
+ But what's happening is nothing terribly surprising when we look at most control flow.
+ Where things get a little bit surprising is when we start looking at things like switch
+ statements and procedure calls, and I'll spend more time on those.
+ But first of all, I'll run through the basics about how control flow in C, right?
+ So this isn't sort of, you know, we've seen how they compile arithmetic.
+ We haven't looked at data structures yet.
+ We'll see that in the next chapter.
+ But this is control flow.
+ How do things get compiled into C?
+ How does the C compiler compile, you know, control flow structures like conditionals
+ or loops and things into assembly language?
+ So we'll start with if-then-else.
+ You've already seen the machinery for if-then-else pretty much.
+ It's conditional jumps.
+ So here is some code.
+ Okay.
+ So if I take this value, this function here, put max, we take two values.
+ If x is greater than y, then we print x.
+ Otherwise we print y, and we return the result.
+ Okay.
+ Now, it turns out there's a reason that I'm calling printf here.
+ It's important that I call a function, as we'll see in a moment.
+ Calling a function here causes the compiler to not do some optimizations that would make
+ it harder to explain what's going on.
+ It is the assembly language, right?
+ So we do -- we basically -- well, there's a quick setup here, the stack pointer, but
+ this is the key thing here.
+ We do the comparison.
+ We compare the two arguments.
+ And then we do a jump if less than or equal to down to here.
+ So if it's less than or equal to -- so you notice we've done the jump the other way around.
+ We've done the comparison the other way around.
+ This is greater than.
+ We compare less than or equal to and go down to here.
+ This is the else clause.
+ This is the if clause.
+ And then what we do is we set up some arguments and we call printf.
+ And at the end, once printf's returned, we jump to the end, finish up, and then from
+ here, you know, we just -- having called printf, we end up down here anyway.
+ Okay?
+ So this kind of construct here in English is called fallthrough, but in German it doesn't
+ really work as dorkfile.
+ So here's what's basically going on, right?
+ We've turned this into a set of gotos.
+ So if X is less than or equal to Y, go to the else label.
+ Otherwise we do this, go to done, and done is down here.
+ Pretty straightforward.
+ It does the obvious thing.
+ Okay?
+ This is how you -- you know, your first day writing assembly language, this is how you'd
+ write an if statement anyway without really thinking about it.
+ The same thing happens, by the way, if you've got this ternary operator here where you've
+ got a value equals, you know, test question mark, then expression, colon else expression,
+ it's the same thing, right?
+ This is basically an if statement dressed up as a single expression.
+ It works the same sort of way.
+ Again, you can turn this into a goto-like construct.
+ The reason we do this, the reason we turn things into goto-like operations is that's
+ really what the mechanism you have in assembly language.
+ The only control flow operation that you really have in assembler is a jump.
+ You don't have loops.
+ You don't have conditionals, per se.
+ You don't have much else.
+ You have procedure calls and you've got jumps.
+ That's all you really have.
+ And so when we turn this into some sort of pseudo C here, we use gotos because that shows,
+ you know, what the jump's doing.
+ Okay.
+ Now, here's the reason why I called printf in that previous code, right?
+ If I hadn't called printf, the compiler would have done something different because the
+ compiler's clever and is trying to make things go fast.
+ So if I just simply said, oh, just the result is x minus y or it's y minus x, I get a very
+ different code here.
+ Look at all this stuff.
+ So what's happening here?
+ First of all, I copy the x into EAX and I subtract y from it.
+ So I calculate x minus y.
+ And that goes in the EAX register.
+ I also then do another subtraction where I calculate y minus x.
+ So I do both.
+ I calculate both values.
+ And then I compare the original two operands.
+ So I've got the one result in EAX and one result in EDX, right, of each of these two
+ values here, x minus y and y minus x, and now in EAX and EDX.
+ I then, having done all that, I then look at them to see which one was bigger.
+ And that allows me to pick which result I need.
+ Now, given the result is always returned in EAX, if the result is one way, I don't need
+ to do anything.
+ I can just return.
+ If the result is the other way, I've got the result I need in EDX.
+ I need to put it into EAX.
+ And so here is a new instruction.
+ This is a conditional move instruction.
+ So it's another move.
+ Everything's a move.
+ It's another move.
+ But it's now -- it only happens conditionally.
+ And it's conditionally based on the less than or equal comparison here.
+ And so if it's less than or equal to, then I take one of the results that I calculated,
+ plug it into the other one, and that's the one I return.
+ And that's the reason why I didn't just write this in the previous instruction.
+ This works because it's okay to calculate both sides of the conditional.
+ It's okay to do the if bit and the else bit because you don't see any side effects.
+ Back here, if I calculated both sides, the compiler had said, oh, yeah, let's just do
+ both and then return the right value, I'd get two statements printed, which is wrong.
+ Right?
+ So, you know, the result here should be, no, only do one of these.
+ And so the result here is also only do one of these.
+ But if the compiler does both, you can't tell.
+ And so the compiler does both because it's quicker to do both.
+ It's quicker to do both because there's no branch.
+ You just -- these things go -- subtractions go really, really, really fast.
+ And so it's quicker just to do the whole thing and then do this conditional move rather than
+ doing a branch.
+ But it can only do that because it can do -- it can calculate both these results secretly
+ and you don't mind as a programmer because you never see the side effects.
+ All right?
+ Make sense?
+ This is quite subtle, right?
+ This is about the effect of side effects in code and what the compiler can do.
+ The very fact that I -- the result here was the result of an expression that doesn't contain
+ a procedure call is what makes this work.
+ This is what stops the compiler from generating this code.
+ It's not -- nothing special about printf.
+ It's the fact that I called a procedure and the compiler doesn't know what that procedure
+ could have done.
+ And so it can't just call both procedures.
+ It also doesn't know how much f it's going to be.
+ I mean, those procedures could be hanging around for a second or so.
+ So there's no guarantee that it's going to be a fast thing to do.
+ Here, this is the case where the compiler knows it doesn't matter if it calculates both
+ values and it also knows it can do both those values really, really fast, faster than you
+ could do a procedure call and faster than you can do a jump.
+ And that's why it can do this.
+ But you actually see this a lot.
+ Conditional moves are so much more efficient for short pieces of code like this that they
+ have been in many, many processor architectures right from the beginning.
+ Interestingly in RISC-V, they weren't.
+ And then pretty soon the RISC-V people realized, actually, no, it's a good idea to put conditional
+ moves in when they started looking at what the compiler was trying to do.
+ So most, you know, even RISC processors have conditional moves.
+ They turn out to be just really efficient for code.
+ All right.
+ Any questions on this?
+ If statements.
+ Okay.
+ That's ifs.
+ General form.
+ Yeah, here we go.
+ Compute both values.
+ Okay.
+ Loops.
+ Loops are easy.
+ There are three kinds of loop in C. If you don't include recursion.
+ Sorry, question.
+ Yeah.
+ Okay, two things.
+ First of all, there's no bailout.
+ So are we taking a break?
+ Oh, that's a good point.
+ Yes.
+ Thank you for reminding me.
+ And the second thing is I think the presentation is not exactly the same as the slides.
+ I was confused because the title is different.
+ I don't know if you changed anything else.
+ Oh, these slides.
+ Oh, did they upload a slightly different version of the slides?
+ So far only the title.
+ But if anything else is changed.
+ I will tell them to upload a new version of the slides.
+ Yeah, I saw that.
+ But the title is still different.
+ I don't know if you changed anything else.
+ I did change the title.
+ I think I did change some of the code that was generated because I was updating it to
+ the new compiler.
+ But so the good news is don't worry because last year's slides were kind of correct.
+ They just weren't showing you what the new compiler did.
+ Last year's slides were also slightly more verbose.
+ So the new ones are shorter.
+ Because I just assume you knew all this stuff.
+ And then but we'll upload these ones.
+ I'll make sure these ones get uploaded.
+ And then the second point is, yes, it's time for coffee.
+ Thank you for pointing that out.
+ Let's come back at quarter past.
+ Okay.
+ All right.
+ So let's go back to loops.
+ So loops turn out to be fairly straightforward, as you might guess.
+ We already have a conditional branch in assembly.
+ So a loop is a fairly straightforward translation of that.
+ Turns out the simplest loop to compile is actually a do while loop, even though C code
+ tends not to have many do while loops.
+ The common case in C tends to be for loops or while loops.
+ And as we'll see, a for loop is really kind of a rearranged while loop.
+ But do while turns out to be easier to compile just because you always go through the body
+ of the loop.
+ So the fairly, you know, the fairly natural thing happens.
+ Here is, of course, the factorial function.
+ Have to do the factorial function written as a do loop.
+ So we start with 1, and then we do -- we multiply the result by X, and we subtract 1 from X
+ while X is greater than 1.
+ And then we're done, return result.
+ And this just translates into the following five assembly language instructions.
+ All right?
+ So we just initialize 1, EAX to be 1, which is here.
+ Pretty straightforward.
+ We do the multiply.
+ We do the subtract.
+ We do the compare.
+ And then we jump, if it's greater than, back to this label.
+ What could be simpler?
+ Okay?
+ Very, very, very straightforward.
+ What it looks like in terms of go-to style is basically this.
+ It's a very, very natural translation.
+ There's a loop label, and then we just jump back up.
+ Not exactly rocket science.
+ Okay?
+ So while turns out to be a little bit more complicated, because you don't actually -- the
+ test in a while loop comes at the start, okay, rather than at the end.
+ So you can't just jump back.
+ And so what happens here, typically, since the assembly language is generated, we actually
+ jump over the body of the loop.
+ Okay?
+ So here's the sort of result.
+ I've ignored the -- taken out the initialization here.
+ But what we do is we simply unconditionally jump into the middle of the loop here.
+ This does a comparison.
+ So this does the test.
+ And then we jump back into the loop, do the multiplication and the decrement down there.
+ And then if this loop -- if this condition here fails, then we drop back through.
+ All right?
+ So this is sort of the result here in go-to form.
+ You know, we jump into the middle and then jump back to the top.
+ Okay?
+ Basic pattern there.
+ Okay?
+ There are other ways to do it, but this tends to be how compilers end up compiling it.
+ Okay?
+ Now, for loop, right, if you've been writing -- hopefully you've been writing lots of for
+ loops.
+ For loops are basically very, very similar.
+ Okay?
+ So here is a for loop.
+ Starts with result equals 1.
+ The test is P is unequal to 0.
+ And the increment bit is P is sort of left shifted by 1.
+ And then the test here is if P bitwise and with 1, then result times equals X.
+ And then we square X.
+ You might be wondering what on earth this function does.
+ It's kind of cool in a sort of numeric kind of way.
+ It's basically a numeric computation hack.
+ This does -- this actually does polynomial evaluation extremely efficiently.
+ I'm not going to talk about why, but when the slides get uploaded, there's a couple
+ of slides at the end that explain a little bit about how this stuff works.
+ It's got nothing to do with compiling into C. It's a cute way of evaluating a polynomial
+ in linear time.
+ It's pretty cool.
+ Anyway, but here's what happens; right?
+ We do the test.
+ We jump if the test is not true.
+ So here's the test.
+ If the test fails, we jump right to the end and return.
+ Return the result 1.
+ That's interesting.
+ We special cased the case when we don't actually do the loop.
+ Otherwise, we initialize result to be 1, and we jump into the middle.
+ And this is the while loop.
+ Okay?
+ So this does the test, jump if equal, back up to the top here, and then we do another
+ test here that jumps to return.
+ So we're jumping around all over the place in this.
+ Just sort of interesting.
+ Okay?
+ Here's what happens basically.
+ This is what it's like translated into sort of go-to form.
+ So the first thing we do is if P is not equal to 0, we jump straight -- we just return.
+ So we get that case out of the way as quickly as possible.
+ So here it is.
+ We set the result to 1, jump into the middle.
+ Then we do -- we execute this conditional.
+ So one of these jumps here, this jump here is the conditional.
+ We do the conditional, and then we always jump back into the loop here.
+ Then we do a little bit more computation, and then we do another test.
+ Go to done.
+ This is the same as this test here.
+ Go to done that returns a result.
+ So it's kind of a little bit weird, but if you stand back and squint, it is basically
+ a while loop, right?
+ It's a while loop where it's been rearranged, right?
+ So you've got init, test, update, and body in a for loop.
+ But that's really just a while loop where you do the init to the start, and then you
+ do the body and the update, and then the test is the test for a while loop.
+ Actually for loops are basically just while loops where the initialization happens at
+ the start outside the loop, and then the update and body happen, but in the reverse order.
+ It's kind of an interesting thing, right?
+ It's very intuitive looking at a for loop for a human being.
+ But for a compiler, this is just a while loop where we've split the body up into an update
+ and a body and reversed their order.
+ But it works.
+ Okay.
+ That's loops.
+ Not much to it.
+ Any questions?
+ No.
+ Good.
+ Good.
+ Okay.
+ Switch statements.
+ Let's look at switch statements.
+ So switch statement, right?
+ Here is a complicated switch statement.
+ We have most of the kind of interesting cases of a switch statement happen here, okay?
+ So we're switching on this integer x here.
+ We have case one where we have a break statement at the end.
+ So it just executes that and then returns w.
+ Case two falls through to execute case three as well.
+ Then there's a break.
+ Case five and six have the same value of -- the same body with a break.
+ And then there's a default clause at the end.
+ And you'll notice that we're also missing out case four.
+ There's nothing here that handles case four.
+ It's the same as default.
+ So how do we compile this?
+ You might say, well, there was a way to compile this as a set of conditionals, right?
+ You can turn this into, well, if x is one, then do this and return.
+ If x is two, then do this.
+ And so on and so on.
+ You could imagine turning this into a bunch of conditional jumps.
+ You could take the whole of the switch statement and turn it into a complicated network of
+ conditional jumps.
+ And the compiler could quite happily do that.
+ It's not what the compiler actually does.
+ So the compiler does something rather clever.
+ It takes -- oops.
+ It takes this statement here.
+ Where have we got it?
+ And turns it into this code.
+ Okay?
+ So switch here basically does a comparison with six.
+ Why six?
+ Six is the largest value that we handle.
+ We don't handle any values bigger than six.
+ So it looks to see if the value is six.
+ If it's bigger than six, it's an unsigned number, we go to L8, label eight.
+ Where is label eight in the code?
+ It turns out, trust me for a moment, label eight is the default case.
+ It's the code that handles the default case.
+ So if it's anything bigger than six, you jump to the default code.
+ So that's a regular if statement.
+ That makes sense.
+ And then there's this thing.
+ Okay?
+ So this is something we haven't seen before.
+ This is a new kind of assembly instruction.
+ This is an indirect jump.
+ So remember a jump that we had before?
+ In x86, a jump, you know, you've got some argument that is typically an address.
+ You jump to an address.
+ This looks a little bit like a move instruction.
+ Okay?
+ So we've got our three registers, we've got two registers and a scale factor here.
+ So we're missing out the first register.
+ So what this is doing is taking, ignoring the first register, taking RDI, multiplying
+ it by eight, adding an offset, which is L4, whatever that address is, whatever that number
+ L4 is.
+ And then the star here, it's like, it comes out of C, right?
+ This is a point of dereference.
+ It says, take that as an address, load 64 bits, load eight bytes from that address,
+ and those bytes that you've loaded from memory, that is the address that you jump at.
+ You wouldn't see this in MIPS because every jump in MIPS is either, it's a branch with
+ a particular offset that's encoded in the instruction, or it's a jump into a register,
+ jump through a value in a register.
+ This is the equivalent of the latter, right?
+ This is saying, load something from memory, get a value from memory, and then jump at
+ the address that's given by that value.
+ It's an indirect jump.
+ And so what is L4?
+ If you look at the code, L4 just contains a bunch of quad words, okay?
+ And those quad words are themselves the addresses of the code that you need to execute.
+ And we saw that the default case is 8, and sure enough, at offset 32, 8 times 4, we've
+ got a quad word that says L8, which is the default case.
+ And so X is 4 is also handled by the default case.
+ 5 and 6 are handled by whatever happens to sit at L7.
+ And then these other labels here point to other bits of code.
+ And so the structure here is you take the switch, you turn it into a jump table.
+ This is a list of addresses of code, and at each of these addresses, there's a block of
+ code, and you jump to -- you index into this table and jump to whatever address you find
+ in the index.
+ Okay?
+ So this is mixing up code and data for control flow.
+ All right?
+ So if you look at this stuff, and then you look at -- you know, these things here correspond
+ to the different cases in the switch statement, right?
+ X equals 0, 1, 2, 3, 4, 5, 6.
+ 4 and 0 and anything above that are the default case.
+ Otherwise there are these cases here.
+ And then you can go off and look at the code that's actually sitting there.
+ And sure enough, it does the obvious thing.
+ So what have we got?
+ Case 1 is L3.
+ Okay?
+ So label 3, what does it do?
+ Well, it does the multiply for you and returns.
+ Okay?
+ It doesn't do a break.
+ Obviously there's no break instruction in assembly, but it can return.
+ It's basically done.
+ It's got the result.
+ It's in the right register.
+ We're done.
+ X is 2.
+ The case X equals 2 here needs to calculate this, which it does, by a complicated divide
+ instruction we haven't talked about.
+ Try to avoid divides if you can.
+ But suffice it to say, these two instructions do a divide.
+ And it jumps to L6.
+ What is L6?
+ L6 is this case.
+ L9 is the X equals 3 case, and that actually does the initialization.
+ So this is kind of fun.
+ This is the compiler being clever.
+ If we go way back to the program, this initialization here, long W equals 1.
+ In the case of 2, we don't need the fact that W equals 1, so we don't bother initializing
+ it.
+ And so when the code gets generated, sure enough, it doesn't bother initializing anything
+ to 1.
+ But if you're going to do case 3, yeah, you do need to initialize it to 1.
+ So that's why there's this jump.
+ L5 jumps around L9 to L6, and this does the initialization and then drops it to L6.
+ And so L6 actually does the plus equals, and we're done.
+ And then the other ones are 5 and 6.
+ Both go to L7, does the obvious thing there.
+ And then L8 is the default case, returns 2.
+ Pretty simple.
+ So what the compiler's done is it said, OK, here's a switch statement.
+ I can turn this into a table of addresses, and I just look up the address in the table.
+ And that means that the time taken to dispatch the code, the time taken to execute the switch
+ function is completely independent of the number of clauses in the switch statement.
+ You're doing exactly the same work every time to get to the right piece of code.
+ And it's just a lookup.
+ You just load a value out of the table, jump at that address, and you're done.
+ It doesn't matter how big your switch statement is.
+ It's still going to execute in the same amount of time.
+ It's a constant time dispatch of a switch statement.
+ That's pretty good.
+ Question?
+ Yes?
+ [INAUDIBLE]
+ If you have a really long if statement, like a complicated set of if statements, does it
+ turn it into a jump table like this?
+ Well, it can't in general, of course, because the switch statement really does rely on the
+ fact that that value x there is an integer.
+ It really does rely on the fact that it's an integer.
+ And so then the question is, does the compiler clever enough to realize that if you've got
+ a whole load of if statements with the same integer, testing the same integer every time,
+ can it turn it into a jump statement?
+ I actually don't know.
+ It probably depends a lot on the compiler.
+ Try it.
+ Try your favorite compilers and see how they do.
+ Write a load of if statements.
+ See how clever the compiler is.
+ But there's a lot of cases where you can't do that.
+ If x was a floating point number, it wouldn't work.
+ You can't write a switch statement that way anyway.
+ The switch statement has to have an integer.
+ So it makes it quite amenable to this.
+ However, you may have realized that there is a problem here.
+ This technique is not always going to work even when you've got integers for x, which
+ we'll come to in a second.
+ But anyway, if you look at the object code, when you actually start disassembling this,
+ you can see that basically these labels here get turned into addresses.
+ Obviously those addresses here, we can actually disassemble the code.
+ You can see that it's loading the address from this value here.
+ You can go into the code and you actually look in the disassembler.
+ You actually dump the hexadecimal code.
+ At this address, you get another set of values that look like they are addresses.
+ And they are, of course, addresses.
+ These are the real labels that get put in.
+ So the labels get turned into actual addresses in the code.
+ And here it is.
+ And this is the rather obscure GDB syntax for dumping things as 64-bit numbers.
+ And then if you look at the code here, this is the disassembly code.
+ And these are the values we got from looking at the jump table.
+ Sure enough, yeah, here it all is.
+ Here are all the different bits and blocks of code.
+ Here are the pointers in the jump table that tell you where to go.
+ But this doesn't work if I have a switch statement that looks a bit like this.
+ This is a perfectly valid switch statement in C.
+ But you'll notice it's got quite a lot of potential values of x to deal with.
+ So I've got basically 10 different values here and the default value.
+ But if I did this as a jump table, I would need 1,000 entries.
+ Now it would be fast-ish.
+ Maybe I worry about cache footprint or something else like that.
+ But it kind of sucks to have 1,000 entry table, almost every entry of which is going to point
+ to this default case down here.
+ And there's only going to be 10 entries in that 1,000 entry table.
+ One percent of that table is going to contain addresses that don't point to this return
+ minus one thing here.
+ So it would be weird if the compiler generated 1,000 entry jump table for this.
+ And if it did, well, stick another zero on the end of these numbers and then how big
+ does your table get before the compiler says, "Hang on.
+ Why am I using up all of my memory for a pointless jump table?"
+ So in a case like this, the compiler does not generate a jump table.
+ What the compiler does is it does actually generate a set of if statements.
+ So the question is how many if statements do you need to execute this?
+ Well, there are 10 cases.
+ So you presumably need 10 if statements, right?
+ No.
+ It turns out.
+ So here's the code.
+ If we look at this code, first thing it does is it does a compare to one of the values.
+ That makes sense.
+ But it doesn't compare to the first value.
+ It compares to 444.
+ That's right in the middle here.
+ So the first thing it does is it compares to that.
+ And it does a jump if it's equal to, to L3.
+ Otherwise a jump if it's less than or equal to, to another label, 28.
+ And then of course if it's greater than, neither of those jumps execute.
+ And instead you get down to this compare, which compares it against 777.
+ And here if it's equal to 777, we jump to another label.
+ If it's greater than 777, we jump to a different label.
+ Otherwise we fall through and we do a comparison to 555.
+ So what's going on here?
+ It's doing a bunch of if statements and jumps.
+ But there's two things it can do.
+ One is the comparison has three different results.
+ An if statement has got either one or the other.
+ But now we can do the comparison and there are three different results, equal to, less
+ than, or greater than.
+ And we can treat those three cases separately.
+ But the other thing is it's making use of the fact that this number is ordered.
+ This switch value is actually ordered.
+ And so it's doing these things in a particular number, in a particular order.
+ There's a particular order in which it's doing these things.
+ And basically what is happening is it's doing a binary search.
+ It's written a load of code to do walk over this binary tree.
+ And so each of these is a compare.
+ And most of the non-leaf nodes of this tree are three-way compares.
+ And so this gives you not linear performance in the number of switch statements, which
+ is what the naive if this equals this, this equals this, this equals this does.
+ This gives you logarithmic performance.
+ This is way, way more efficient.
+ It's very clever.
+ It's actually organized the whole thing as a search of this tree and then it's compiled
+ that binary tree into machine code.
+ And that's what you get.
+ I think it's pretty cool.
+ And you can look at the code and sure enough it actually does this.
+ This is real assembly language that's come out of this.
+ Take this, draw a picture of it, and it looks a lot like this.
+ All right, question, yes.
+ Would it make sense when you code to structure out code also like that?
+ [INAUDIBLE]
+ So would it make sense?
+ [INAUDIBLE]
+ Oh, if you're writing the code, would it make sense to do that?
+ You could write, I mean, obviously you could write if statements like this.
+ I think that would be much harder to understand than this.
+ I mean, this is pretty clear, right?
+ I mean, it's nice.
+ It's all regular.
+ You say, OK, you just look it up.
+ Visually, this makes perfect sense.
+ What's cool is this is just as efficient as writing that complicated code you were suggesting.
+ So just write this.
+ The compiler is your friend.
+ The compiler will help you.
+ All right, if you write this, the compiler will do it efficiently.
+ And the efficient code will be harder to understand, but that's fine because the compiler guarantees
+ it does the same as this would do.
+ So yeah, I would write this code.
+ I wouldn't write a load of fancy if statements.
+ No, no, no, no, no.
+ But for the same way, actually, there's an interesting thing that comes up here, which
+ is quite often people who know a bit of C but not enough C, when they implement a finite
+ state machine, so a state machine, the machine has a state.
+ A new symbol arrives.
+ You need to figure out some action and the next state to go to.
+ And there's a number of different ways that people do this.
+ But one of the popular ways is people say, oh, we need a goto statement for this because
+ you jump to the next state and things like that and whatever.
+ And I said, no, no, no, no, no, you do it as a switch statement.
+ And they say, no, no, the switch statement's going to be far too slow.
+ You've got a big loop and every time you do a big switch on the number of-- on the current
+ state and then do this, switch statement's far too slow.
+ They're not.
+ They're really, really fast.
+ It's much faster than doing it with gotos because the compiler just optimizes out all
+ the unnecessary jumps.
+ So no, it's go for readability and know that the compiler is doing this for you.
+ But write code like this, it's just easier to understand and it's just as fast.
+ It's probably faster.
+ And the other thing is if you want to add a new case, great, you just stick a new case
+ in.
+ If you've done all this stuff as coding your own binary tree search and you add a new case,
+ you have to do a manual binary tree insertion in your source code and recompile it.
+ No, I'm not going to do that.
+ I'm too old to do that.
+ Yeah, question.
+ Yeah, I wanted to ask about the comments in assembly.
+ I saw that you sometimes have a hashtag and sometimes a double slash and I wanted to ask
+ if this works if you use the assembly--
+ These are just on slides.
+ So--
+ There's no way to make a comment on the--
+ There are-- there is syntax for comments in assembly language.
+ It depends on your assembler.
+ And you'll sometimes see that the assembly-- the assembler generally doesn't generate comments.
+ But it has things that look a bit like comments because they actually-- the linker needs--
+ or the assembler itself needs to understand the comments.
+ So there is a way to do it if you're writing assembly language.
+ But no, just treat these as purely visual kind of things.
+ If you want to actually assemble this, go into the-- download the source code from Moodle.
+ And there are make files for all of this stuff that generates the assembly.
+ And you can look at the assembly that way.
+ And that's a real assembly that you can actually assemble and stuff.
+ So yeah.
+ Yeah, this is purely visual here.
+ All right.
+ Okay.
+ Any other questions?
+ No?
+ So that's switch statements.
+ That was easy.
+ So that is most of control flow.
+ Okay?
+ Most of C control flow.
+ Control statements do while while for switch.
+ The assembler, we've got a conditional jump.
+ We've got a conditional move.
+ We've got an indirect jump for doing things like jump tables.
+ Indirect jump, by the way, that's how you do function pointers.
+ Right?
+ Do you remember function pointers from Anna's lecture?
+ That's what a conditional-- that's what an indirect jump is.
+ Yeah, I got a pointer to a function.
+ Well, that's my-- I load from that pointer.
+ And I jump.
+ Indirect jump.
+ Groups are converted to this jump to middle kind of construction.
+ Large switch tables, sparse switch tables use decision trees.
+ Compact switch tables use jump tables.
+ And then we have condition codes.
+ And the condition codes are what are used to test sort of comparisons and things.
+ All right.
+ That was the easy bit.
+ So that was all of the language level control flow in C except for procedure call and return.
+ And that's what we're going to talk about now.
+ And this actually is-- yeah, this is more than half the lecture.
+ So we'll start now.
+ And then we'll finish this, I'm guessing, probably next week.
+ That said, you have seen quite a bit of this stuff, I think, already.
+ So you know about how stacks work.
+ You know how procedure calls generally work in MIPS, I think.
+ Have you done it?
+ Well, OK.
+ Raise your hand if you think you know how procedure calls work in assembly language.
+ Yeah, that's a kind of-- I'm interpreting this gesture as a kind of, yes, I'd quite
+ like to go through that again, please.
+ Is that OK?
+ Who would not like to see this?
+ OK.
+ It's all right.
+ I wouldn't be offended.
+ It's easier for me.
+ OK.
+ We have a stack.
+ We have a stack.
+ The stack is pointed to by a register.
+ It's called the stack pointer.
+ For reasons that are too historical to be remembered, for some strange reason, the bottom
+ of the stack is at the top, and the top of the stack is at the bottom.
+ So the higher addresses contain the bottom of the stack.
+ And the stack grows down, so the top of the stack is always below the bottom of the stack.
+ I don't know, people have been complaining about this for about 60, 70 years, and nobody's
+ really bothered to change it.
+ We just have to deal with it.
+ So the stack top, the stack pointer points to the address of the last element on the
+ stack, the last element that was pushed onto the stack.
+ The stack is a last in, first out data structure.
+ So in x86, unlike MIPS, x86, there are actually instructions for operating on the stack.
+ OK.
+ These go back to when the stack pointer wasn't a real general purpose register.
+ The stack pointer used to be something that only related to the stack.
+ And so there were instructions to manipulate the stack.
+ So push L, push long word.
+ This simply says fetches an operand from wherever.
+ You know, the whole addressing mode stuff works there.
+ And then push it onto the stack.
+ So it decrements the stack pointer by 4, size of a long word, writes it into the new address
+ given by this new value, the stack pointer.
+ So it pushes the stack pointer down by 4, size of a long word, and then writes into
+ this colored bar here what the source operand that it gets is.
+ All right.
+ And of course, there's pop.
+ Whenever there's a push, there's a pop.
+ Except for some processors, they couldn't even standardize on push and pop.
+ So some processors will have a push and a pull, which actually makes slightly more logical
+ sense.
+ But on x86, it's a pop, not a push-- not a pull.
+ That takes something off the stack.
+ So what does it do?
+ It reads the operand at the address stack pointer.
+ OK.
+ It then increments the stack pointer by 4.
+ So it moves the stack up, throws away that value, and then writes whatever that operand
+ was that it read into destination.
+ That could be memory, memory location, register, whatever it is.
+ So procedures-- when you call a procedure, x86 will use the stack in order to remember
+ where to go back to when the procedure returns.
+ It will use it, in many cases, for passing arguments to the procedure.
+ And of course, it also uses the stack for memory allocation.
+ It uses the stack to hold local variables that can't be held in registers.
+ Now in the old days, if you remember, the x86 processor only had those four registers--
+ A, C, D, and B. OK.
+ And given that you didn't have many registers, where did you put all your data?
+ Where did you put all your intermediate values?
+ Where do you put your arguments?
+ You put them on the stack.
+ And so x86 was really heavily used to stack.
+ And that's why these kind of instructions are actually quite fast.
+ And they're very compact.
+ They're like a byte, in the simplest case, because they were used so much.
+ Now that obviously has changed.
+ We've got a lot more registers now.
+ But you still see that effect.
+ It's still there in the architecture.
+ And so the stack can be manipulated by push and pop.
+ These days, the stack pointer is just another register.
+ So you can use move with the stack pointer, and it's fine.
+ And you'll see that actually modern code tends to use move more than push and pop.
+ But they haven't gone away.
+ The other thing, of course, famously, the thing that manipulates the stack is call and
+ return.
+ So on MIPS, if you remember, the way you called a procedure was actually an indirect jump.
+ But it was something called a jump and link.
+ OK.
+ So it was a jump, a jump to an address, but it took the current value of the program counter,
+ stuck it in a register.
+ That's called a jump and link instruction.
+ It's also called, on IBM mainframes, it's called a Wheeler jump.
+ OK.
+ And it's called a Wheeler jump after a guy called David Wheeler, who was a professor
+ at the University of Cambridge.
+ I actually knew David Wheeler.
+ Very interesting guy.
+ He invented the subroutine.
+ The very idea in computers of calling a subroutine, calling a function, calling a procedure, that
+ was his idea.
+ It was kind of a fundamental thing, right?
+ He actually came up with that idea in the sort of late 1940s, early 1950s.
+ That was his thing.
+ That was his PhD thesis.
+ He passed.
+ And the way that he did this was having a jump instruction that put the current program
+ counter into some register and then jumped to an address.
+ And on IBM mainframes, the procedure call function is called a Wheeler jump after him.
+ He did a bunch of other really cool things in his life, one of which was, if you've used
+ sort of Linux, you're probably familiar with bzip2.
+ You know bzip2?
+ Who's heard of bzip2?
+ It's a compression utility.
+ It's a fairly famous thing.
+ That uses something, an absolutely insane piece of algorithmics called the Burroughs-Wheeler
+ transform.
+ It was done by Burroughs and Wheeler, who were both at Cambridge at the time.
+ Mike Burroughs was actually at DEC at the time writing the world's first internet search
+ engine, AltaVista.
+ So that involves a whole bunch of extraordinarily bizarre transformations on text that happen
+ to compress extremely well.
+ That was Wheeler.
+ Wheeler's mind didn't work the same way that the rest of us tend to think.
+ He was an amazing guy.
+ So on MIPS, you get a Wheeler jump, a jump and link instruction.
+ x86, being complicated, being CISC, they give you much more.
+ The call instruction doesn't just save stuff in the register.
+ It saves the return address actually on the stack.
+ And so what call does is it pushes the return address on the stack and jumps to some address
+ in memory.
+ So for example, here's a simple one here.
+ Call an address.
+ That actually sticks the address on the stack.
+ That's a 64-bit number and x86 64 and it returns.
+ And in MIPS, if you want to return from a function, you just do an indirect jump into
+ whatever the return address was in its register.
+ On x86, there's a RET instruction.
+ It's one byte.
+ It's very simple.
+ And that pops the address off the stack and jumps back at it.
+ And so we can walk through sort of how this sort of stuff works.
+ So here's an example of calling a function and then pushing a value onto the stack after
+ the function is returned.
+ Let's assume that the stack looks a bit like this.
+ Here's the stack pointer.
+ It's 108.
+ So this value here, 123, is on the stack.
+ These are the addresses going up.
+ And here's how things sort of change.
+ So if we execute this call and we call this address, notice we're executing at this address.
+ What happens is the stack pointer-- oops.
+ OK.
+ Where are we?
+ The stack pointer gets decremented by 8, so it ends up being 0x100.
+ And then at that address, we write these 8 bytes, which is the address of the next instruction
+ here.
+ OK?
+ So this is the address of the push instruction.
+ Get written onto the stack.
+ And the instruction pointer is still pointing at the call instruction that we're executing,
+ so it's still here.
+ And then what happens is we write the new instruction pointer to be, well, wherever
+ we jump to.
+ OK?
+ And then when we return, remember the stack looks like this.
+ What happens is, first thing that happens, we execute the return.
+ The first thing it does is it jumps back, pulls this address off the stack, writes it
+ into the instruction pointer, so we return.
+ And then we increment the stack so the stack moves up.
+ So the stack pointer is now pointing at this 123.
+ This value is still on the stack.
+ It's just that it's below the stack pointer, and so it might as well not be there.
+ That's the very simplest case.
+ Now in practice, on x86, on Linux, it's similar on Windows but slightly different.
+ There are stack frames.
+ Every time you call, there's actually a big chunk of the stack, not just the return address.
+ There's a load more stuff that gets allocated on the stack in the general case.
+ And these-- so the stack is arranged in frames, big chunks.
+ And the start of the frame is pointed out by this RBP register, base pointer.
+ This is the stack frame base pointer.
+ This is why this register existed in the old days.
+ So the last thing on the call of stack frame is the return address.
+ Before that, it's actually pushed a bunch of arguments to a function.
+ Then in the new-- in the function you're actually executing in, you've got the old base pointer,
+ so you save that.
+ It's the first thing you do.
+ You point your new base pointer to this one.
+ You then save any registers you might need to save.
+ Stick your local variables in there.
+ And then this is where you-- this area here is the equivalent of this area here.
+ So this is the start.
+ This is the end of your stack frame.
+ And this is where the return address will go when you call a function.
+ Again, the next level down.
+ So this is basically how procedure call is organized on pretty much any processor.
+ It's a sequence of stack frames.
+ And each stack frame holds the state of-- it's called the activation of a particular
+ procedure.
+ It's the current execution of a function is represented by its stack frame.
+ And that includes the return address.
+ It includes-- well, it doesn't-- no, it doesn't do the return address.
+ It includes the return address for anything that it calls.
+ And it includes local variables that don't fit in registers.
+ It includes saved registers when it really needs to preserve a register across a call.
+ And so what happens is when you call procedures, you build stack frames down.
+ When you return, you throw away stack frames, back up the stack.
+ And the way you do this, the way you organize it, the way the registers are arranged, what
+ you need to do, what you don't need to do, is collectively known as calling conventions.
+ Did you get introduced to calling conventions last year?
+ Anybody?
+ Does the phrase-- no?
+ OK.
+ Now you know it.
+ Calling conventions.
+ Calling conventions is how you use the stack and how you use registers.
+ And they are conventions.
+ They're not wired into the hardware at all.
+ They just-- we agree to use the system in this way.
+ They are wired into the compiler.
+ The compiler really needs to know this.
+ Because if you've got two pieces of compiled code, they kind of need to be linked together.
+ They should use the same conventions.
+ But they're not part of the hardware.
+ They're software defined.
+ And that's why they're different between Windows and Linux.
+ Linux and Windows use different calling conventions on the same hardware.
+ And that means that, for instance, emulating Windows binaries on Linux is a complicated
+ business because you have to translate between these different calling conventions, or vice
+ versa, both of which have been done successfully.
+ So what are the calling conventions?
+ So I'm going to walk you through the particular calling conventions for Linux, x86, today.
+ Well, not today, but where they are right now.
+ And then what you have to realize is that on every other processor, and in many cases
+ other operating systems, there will be potentially different conventions.
+ And there's a manual where you can look these up.
+ They're different for different processors.
+ I'm going to give you the example of one, but you need to sort of think as well, OK,
+ how might they be different on other processors?
+ And this seems like a good time to pause because there's quite a lot to calling conventions,
+ right?
+ There's quite a lot of things.
+ Even when we've seen functions like this, this is a recursive factorial function, another
+ factorial function.
+ You'll notice that we kind of use these registers here without saving them, which suggests that
+ whoever called that function, the function that called this, doesn't really care about
+ the values of those registers.
+ But what we also do here, you'll notice that what the compiler's done here is it's pushed
+ our BX, right, on the stack.
+ Now why would it do that?
+ And then at the end, it pops it off the stack.
+ Well, it would do that because for some reason, the compiler's decided that the value of the
+ BX register has to be the same at the end of the function as it was at the start.
+ Why?
+ Well, it's because the calling conventions say you must always preserve the value of the
+ BX register.
+ You don't have to preserve the value of the AX register, which is why AX am is just, you
+ know, is not saved at all.
+ We just trash on it here.
+ And the EDI register doesn't need to be saved.
+ We'll see all that stuff when we talk about calling conventions.
+ But now, it's nearly 12 o'clock.
+ Don't come to a lecture on Tuesday.
+ You can do, but we're not going to be there.
+ Likewise, on Wednesday next week, we will not be there.
+ So you can enjoy time off compiling C code and looking at assembly and having fun in
+ other ways.
+ So I will see you in two weeks, the week after next, in 13 days, and we'll go through all
+ the calling conventions.
+ All right?
+ Have a good time.
+ [APPLAUSE]
+ [APPLAUSE]
+ (applause)
+ (audience clapping)

@@ -1,0 +1,715 @@
+ So funktioniert es jetzt besser?
+ Okay, ich hoffe es ist jetzt nicht zu laut, um den Nachmittag zu stören.
+ Okay, wir wollen heute hier weitermachen mit der Einführung in die Programmierung.
+ Die Algorithmen und Darinstrukturen werden dann später mal eine Vorlesung in unserem Zeitfenster abliefern.
+ So, und wir hatten in der letzten Vorlesung uns angefangen mit Methoden zu beschäftigen
+ und hatten gesehen, dass die ein Weg sind, eine Struktur in ein Programm hereinzubekommen.
+ Also eine Methode erlaubt es uns eine Sequenz, also eine Folge von Anweisungen zusammenzufassen
+ und dieser Folge einen Namen zu geben, den Namen dann der Methode.
+ Und da hatten wir als erstes Beispiel, das ganz einfache Beispiel,
+ dass wir so eine Methode Main gesehen hatten, die in diesem Programm Hello World war
+ und diese Methode eben hält Anweisungen.
+ Und diese Methode ist insofern was Besonderes, weil die wird automatisch aufgerufen.
+ Das gilt für die anderen Methoden nicht, aber so gefängt das Programm an, ausgeführt zu werden
+ und das ist eine gute Idee.
+ Okay, also solche Methoden, die strukturieren die Anweisungen,
+ statt so einer langen Folge von Anweisungen können wir die in bessere, kleinere Blöcke aufteilen
+ und das ist ein großer Vorteil, sondern sonst müssten wir ja alle Anweisungen
+ in dieser einen Methode Main unterbringen und das wäre ziemlich mühsam.
+ Und der zweite Punkt ist, wenn wir einmal Methoden haben, dann können wir Wiederholungen vermeiden,
+ weil wenn ich dieselbe Folge von Anweisungen nochmal ausführen will,
+ dann brauche ich ihn nicht nochmal hinzuschreiben, sondern genügt, wenn ich einfach sage,
+ diese Methode bitte nochmal ausführen.
+ Und so gesehen sind eigentlich Methodendepinitionen ein Weg für uns, neue Anweisungen zu erstellen.
+ Nachdem wir einmal gesagt haben, hier ist die Methode mit diesen Einzelanweisungen,
+ haben wir eine neue Anweisung, so eine mächtige Anweisung, die jetzt alles zusammen auf einmal macht.
+ Und das wäre also hier natürlich möglich, weil eine Klasse mehrere Methoden enthalten kann.
+ Wenn eine Klasse nur eine Methode enthalten könnte, ginge das nicht.
+ Also wir hatten gesehen, programmieren hatten wir am Anfang der Vorlesung gesehen,
+ ist im Grunde genommen ein Begriff für allgemeine Programmentwicklung.
+ Und jetzt sehen wir als nächstes, dass Programmentwicklung eigentlich heißt, Methoden zu definieren.
+ Wirklich eine Aufgabe, die wir haben, in Teilaufgaben zu zerlegen,
+ ja, die haben wir Teilaufgaben, die wir haben wollen.
+ Und diese Teilaufgaben sollen dann im Allgemeinen durch eine Methode gelöst werden.
+ Gibt es ein Problem?
+ Gibt es ein Problem?
+ Es gibt einen guten Witz.
+ Nicht, das ist aber schade.
+ Also wenn Sie einen wirklich guten hätten, würden wir ihn gerne hören.
+ Also die Idee ist, wir zerlegen die Aufgabe in Teilaufgaben,
+ und diese Teilaufgaben werden dann durch Methoden gelöst.
+ Und natürlich kommt dann der nächste Schritt, wir müssen die Teilergebnisse irgendwann zusammenfügen.
+ Und jede Methode liefert irgendwelche Ergebnisse ab und die müssen wir dann zusammenfügen,
+ um am Ende das gewünschte Ergebnis für die Lösung zu haben.
+ So, jetzt habe ich ein ganz einfaches Beispiel,
+ weil bisher haben wir ja wirklich noch fast nichts an Java Repertoire oder an Anweisungen und so weiter kennengelernt.
+ Darum habe ich als einfachstes Beispiel die Aufgabe, dass wir einen Text aufgeben sollen, diesen Text hier,
+ der hier angegeben ist.
+ Den wollen wir also ausgeben.
+ Und jetzt suchen wir halt ein Programm, das diese Aufgabe erfüllt.
+ Könnte man natürlich hingehen und ganz einfach ein einziges großes Print Statement, also eine einzige Print Anweisung haben.
+ Aber jetzt nehmen Sie mal an, diese längere Erklärung wäre etwas cleverer.
+ Die würde Rücksicht nehmen auf die Person, die die Anweisung bekommt,
+ und wäre also mehr los, also das könnte man nicht einfach in einem einzelnen Print Statement unterbringen.
+ Man sieht hier, da ist vielleicht ein Muster in dem, was da ausgegeben werden soll,
+ das können wir vielleicht auch für uns vorderhaft aussuchen.
+ So, jetzt haben wir diese Aufgabe.
+ Und der erste Versuch ist, dass wir versuchen, die so weit zu vereinfachen, dass je das dann ein Schritt reicht,
+ dass also im Grunde genommen wir diese Aufgabe in Teilaufgaben zerlegen
+ und jede Teilaufgabe kann dann in einem Schritt erledigt werden.
+ Und es wäre jetzt schön, wenn ich Ihnen eine fixe Regel geben könnte, die immer zum Erfolg führt,
+ dann sagen wir, so machen wir T1, T2, T3 und so weiter, aber es gibt leider keine fixe Regel.
+ Wir haben nur Heuristiken, das heißt, wir haben also Ratschläge oder Hinweise oder Hinze,
+ mit denen Sie manchmal weiterkommen, aber die Ihnen nicht letztlich garantieren,
+ dass Sie immer eine gute Zerlegung finden.
+ Deswegen brauchen Sie da Übung, um rauszufinden, was denn eine gute Zerlegung ist.
+ Also irgendwie versuchen wir das hier in Teilaufgaben zu zerlegen
+ und natürlich dann die Hoffnung, dass vielleicht im besten Fall jede Teilaufgabe eine einzelne Java-Anweisung ist
+ oder ein einzelner Schritt ist.
+ Dann haben wir unser Programm erstellt, haben die Teilaufgaben implementiert
+ und haben auf diese Weise alles erledigt.
+ Also in diesem privalen Beispiel hier würden wir jetzt also hingehen und sagen,
+ wir zerlegen das hier so, dass die Teilaufgabe TI die I-Tezeile, hier oben ist die erste, zweite, dritte und so weiter, Zeile.
+ Und die geben wir dann in einer Print-Line-Anweisung auf.
+ Und dann haben wir diese, die Programme, vielleicht sollten wir das in Anführungszeichen setzen,
+ weil der Begriff Programm für eine Print-Anweisung ist vielleicht etwas zu viel.
+ Also diese Programme, die können wir dann hintereinander ausführen,
+ erste Print-Statement, dann das zweite und so weiter.
+ Und am Ende würden wir dann die Ergebnisse zur Lösung zusammenfügen.
+ Wobei natürlich Print macht ja keine richtigen Ergebnisse, sondern drückt einfach nur auf.
+ Aber das Grundproblem sehen wir hier schon.
+ Wir zerlegen die Aufgabe in Teilaufgaben, die Teilaufgabe werden in Programme übersetzt
+ oder dafür schreiben wir Programme.
+ Und dann fügen wir am Ende alles wieder die Ergebnisse zusammen.
+ Also wir haben das Problem zerlegt und dann haben wir eben für jede Teilaufgabe Operationen oder Anweisungen
+ und die führen wir hintereinander aus.
+ Und so können wir dann zu unserem Ergebnis kommen.
+ Und da gibt es verschiedene Wege, wie wir hintereinander ausführen können.
+ Also eins habe ich Ihnen schon mal gezeigt.
+ Wir können also hier irgendein, sagen wir mal, Objekt, mit dem wir arbeiten nehmen.
+ Dann haben wir eine Aufgabe, eine Operation an dem.
+ Wir haben hier diese Operation, wir machen diese Substring-Operation.
+ Und das Ergebnis hatten wir gesehen, können wir dann mit der Tor-Upper-Case-Methode weiter bearbeiten.
+ Hier sehen Sie also, wie das Resultat der ersten Operation hier dieser Operation wird von dieser Operation weiter bearbeitet.
+ Also hier in dem einfachen Beispiel mit dem Print gibt es ja eigentlich keine richtigen Teilaufgaben.
+ Aber im Allgemeinen würden wir so was machen, würden wir so was haben wollen,
+ weil so können wir dann erreichen, dass unser Gesamtaufgabe gelöst wird.
+ Hätten wir also für jede dieser Teilaufgaben ein Programm und die fügen wir zusammen
+ und eins nach dem anderen führen wir dann aus.
+ Also in dem einfachen Beispiel, das wir hier haben,
+ hätten wir also hier diese, hätten wir in der Methode Main, hier diese T1,
+ das Programm für die erste Teilaufgabe, T2 für die zweite und so weiter für alle Statements.
+ Hätten wir das so erledigt, dass wir da diese Aufgabe für uns lösen würden.
+ Da können wir sagen, okay, gut, haben wir die Aufgabe gelöst und richtig ist es.
+ Und wir interessieren uns ja für die Korrektheit und dann ist das ja gut.
+ Aber wenn wir uns jetzt diese Aufgabe nochmal angucken, da hat man doch gesehen,
+ da ist irgendein Muster drin.
+ Und vielleicht, also hier ist dieser Block hier, wo wir eine Warnung ausreich geben
+ und der taucht hier hinten nochmal auf und eigentlich würden wir ja gerne die Aufgaben so zerlegen,
+ dass irgendeine Struktur in der Aufgabe ausgenutzt wird.
+ Letztlich hat dieses Programm, was wir sagen, Rettondanz,
+ das Programm wiederholt sich.
+ Es ist nicht ganz der Begriff, wie die Technik Rettondanz verwenden,
+ aber wir sagen, das Programm oder die Aufgabenstellung enthält Rettondanz,
+ wenn es eben halt Blöcke gibt, die mehr als einmal abgearbeitet werden können.
+ Das heißt, wir würden also jetzt gerne versuchen, eine Zerlegung zu finden,
+ die diese Struktur widerspiegelt.
+ Wir wollen also nicht irgendeine Zerlegung, so wie es Ihnen eben hier gezeigt hatte,
+ einfach eine Zerlegung in sieben verschiedene Tats,
+ sondern wir wollen eine Zerlegung, die es uns erlaubt, Aufgaben wiederzuverwenden
+ oder Teilaufgaben wiederzuverwenden.
+ Also in dem Beispiel hier würden wir gerne Teilaufgaben finden,
+ diese TI, so dass wir die wiederverwenden können.
+ Also hier in diesem Beispiel vielleicht, dass wir T2 mein wegen zweimal aufrufen können,
+ zweimal ausführen können.
+ Dann hätten wir eine unserer Aufgabe erleichtert,
+ weil wir hätten jetzt weniger an Anweisungen, um die wir uns kümmern müssen
+ und können das entsprechend unser Programm besser strukturieren.
+ Also hier in dem Beispiel, wo wir diesen achtsurströmigen Text auszugeben haben,
+ könnten wir sehen, da gibt es ja so eine Möglichkeit,
+ diese Warnung als Beispiel zu erkennen.
+ Die taucht hier zweimal auf und ist daher für uns,
+ der will hier nicht so richtig, aber okay, die taucht hier zweimal auf.
+ So, und zum zweiten können wir dann eben die Erklärung nehmen,
+ die hier einmal ausgedruckt wird,
+ und da könnten wir dementsprechend unser Programm strukturieren.
+ Also wenn Sie sehen, unser Ziel ist es, Programme zu erstellen
+ und wenn wir Glück haben, können wir die Aufgabe so zerlegen,
+ dass ein Schritt oder eine Java Anweisung genügt.
+ Wenn das nicht der Fall ist, dann können wir vielleicht Anweisungen
+ hintereinander schalten, also hintereinander ausführen.
+ Es gibt einen anderen Fall, der kommt später noch,
+ den werde ich jetzt noch nicht behandeln.
+ Und jetzt als vierte Möglichkeit gibt es die Gelegenheit,
+ eine selbst definierte Methode zu nehmen, also wir definieren Methoden
+ und die führen dann einzelne dieser Teilaufgaben aus.
+ So gehen wir vor, wenn wir eine schwierigere Aufgabe uns vornehmen
+ und wenn wir die da entsprechend bearbeiten wollen.
+ Also hier in diesem Beispiel würden wir jetzt eben eine Methode definieren,
+ die würde die Warnung drucken und der PrintLine Text ist gar nicht mal so wichtig
+ und wir hätten dann eine zweite Methode, die würde die Erklärung drucken
+ und natürlich auch hier ist die Erklärung einfach,
+ dass sie eben auf das Slide raufpasst.
+ So, das wären die beiden Methoden, die ich habe
+ und natürlich das Main fehlt hier noch,
+ aber das sind die beiden Methoden, die ich jetzt hier mal hätte.
+ Also wir haben dann die Aufgabe zerlegt in Teilaufgaben.
+ Jede Teilaufgabe wird durch eine Methode erledigt
+ und dann verketten wir, also führen wir hintereinander
+ die verschiedenen Programme für diese Teilaufgaben aus.
+ Also Sie sehen, Teilaufgaben zerlegen,
+ erster Schritt Methoden schreiben, zweiter Schritt dritter Schritt verketten
+ und dann sind wir schon mal soweit,
+ dass wir die Aufgaben etwas mehr in den Griff bekommen haben.
+ So, jetzt, wie verketten wir die Ausführung der verschiedenen Methoden?
+ Nun, das hatten wir schon mal kurz am Dienstag gesehen,
+ wir müssen die Methoden aufrufen, wir müssen die irgendwie aufrufen
+ und da gibt es zwei Wege, der eine Weg war der mit dem Objekt,
+ das hatte ich schon mal gezeigt,
+ und der zweite Weg ist der, den wir auch jetzt schon mal gesehen haben,
+ nämlich ohne Objekt.
+ Das geht aber nicht immer, das geht nur für besondere Methoden,
+ für Methoden mit besonderen Eigenschaften.
+ Die können wir ohne Objekt aufrufen.
+ Und eine Gruppe von Methoden, die diese besonderen Eigenschaften haben,
+ das sind die, die diese Static-Keywort haben.
+ Also die Methoden, für die wir das Keywort Static davorgeschrieben haben,
+ die sind eben besonders.
+ Das sind Methoden, die kann ich ohne Objekt aufrufen.
+ Da genügt jetzt fürs erste Mal der Methodenname allein.
+ Das heißt, diese, so eine Methode, die kann ich aufrufen,
+ die mich einfach den Namen der Methode gebe,
+ dann die Klammern dahinter nicht vergessen, und dann bin ich fertig.
+ Und dann ist der Aufruf erlaubt.
+ Das ist das, was ich hier mit Static besonders machen kann.
+ Und das ist das, was wir die ersten zwei, drei Wochen im Semester machen werden,
+ bis wir mal anfangen, uns mit dem Objektsystem ein bisschen mehr zu beschäftigen.
+ So, und dann ist es natürlich einfach.
+ Dann gehen wir jetzt hin, und hier rufen wir erstmal die Methode Print Warning auf.
+ Die geht hin und druckt die Warnung.
+ Dann rufen wir die Methode Print Erklärung auf.
+ Die druckt hier diese wichtige Erklärung.
+ Und dann rufen wir nochmal die Methode Print Warning aus,
+ die dann eben nochmal diese Anweisungen, die hier zusammengefasst sind, ausführt.
+ Also, das ist wirklich der Weg, wie wir das machen.
+ So, jetzt bin ich sicher, Sie haben das auch in anderen Programmiersprachen schon mal gesehen.
+ Das ist super, weil wenn Sie schon in anderen Programmiersprachen gelernt haben,
+ wie man dort Probleme zerlegt,
+ dann können Sie dieses Wissen auch hier anwenden und auch hier mit Gewinn verwenden.
+ Wichtig ist folgendes.
+ Wenn Sie also so eine Methode aufrufen,
+ hier haben wir eine Methode mit dem Namen "name".
+ Das sei unser End-to-State mit unserem Programm.
+ Wenn jetzt diese Methode aufgerufen wird,
+ wir sagen aufgerufen oder auch manchmal, sagen wir invoked oder called,
+ das sind andere Ausdrücke, die man verwendet,
+ dann, was passiert dann?
+ Dann beginnt die Ausführung dieser Methode.
+ Dann beginnt die Ausführung der Methode, die ich hier benannt habe.
+ Und dann fängt das System an, die Ausführungen,
+ die in dieser Methode drin stehen, auszuführen.
+ Dann werden die ausgeführt.
+ Und irgendwann ist diese Methode fertig.
+ Und wenn das kommt, dann geht es hier mit dem nächsten Statement,
+ das ist hier, das danach folgt, geht es mit dem weiter.
+ Also, wenn diese Methode hier fertig ist, dann geht es hier weiter.
+ Dann geht es einfach da mit dem nächsten Statement,
+ weil das System weiß, wo diese Methode angefangen hat,
+ weiß von wo die aufgerufen wurde und geht dahin wieder zurück.
+ So.
+ Und was heißt das jetzt aufgerufen?
+ Das heißt, dass die erste Anweisung dieser Methode wird ausgeführt.
+ Und dann guckt das System nach, ob es weitere Anweisungen gibt.
+ Und wenn es keine weiteren Anweisungen gibt, dann sind wir fertig.
+ Wenn keine weiteren Anweisungen kommen, dann ist wir fertig.
+ Aber wenn es noch weitere Anweisungen geben sollte,
+ dann wird diese Anweisung ausgeführt wie oben.
+ Da geht es wieder nach hier oben zurück.
+ Und dann wird die nächste Anweisung ausgeführt.
+ Und es geht so lange, bis wir den Punkt erreichen,
+ dass es eben keine weiteren Anweisungen gibt.
+ Dann sind wir fertig.
+ Dann kommt der Punkt, wo wir zurückgehen zu der Methode,
+ die uns aufgerufen hat.
+ Und dann gehen wir zurück.
+ Und dann führen wir hier die nächste Anweisung, die danach folgte aus.
+ Und dann sind wir mit der einen Methode fertig.
+ Und die nächste Anweisung wird ausgeführt.
+ Das kann wieder ein Methodenaufruf sein.
+ Das kann was ganz anderes sein.
+ Und diese Abfolge der Ausführung, die nennen wir "Control Flow".
+ Das ist der Control Flow, der in dem Programm stattfindet.
+ Und in Java haben wir Glück.
+ Die Ausführungsreihenfolge ist explizit.
+ Sie haben hier ein Statement nach dem anderen.
+ Und eins nach dem anderen wird fürs erste Mal ausgeführt.
+ Wir werden später andere Wege kennen, wie man das machen kann.
+ Aber am Anfang wollen wir es einfach halten.
+ Und da ist es so, dass die Ausführungsreihenfolge explizit ist.
+ Und die ausgeführten Anweisungen folgen im Programm aufeinander.
+ Eine nach der anderen.
+ Das macht es ihnen leichter zu verstehen, was da los ist.
+ Trotzdem ist das Ganze nicht trivial.
+ Wenn eine Minute aufgerufen wird,
+ dann können sich vorstellen,
+ dann springt diese Ausführung zu der Methode
+ und führt die Anweisungen aus, die in der Methode sind.
+ Und wenn das dann fertig ist, dann nach,
+ dann springt die Ausführung wieder an den Ort zurück,
+ von dem der Aufruf erfolgte
+ und führt dann die nächste Anweisung aus.
+ Sonst würde das ja nicht vorwärtsgehen.
+ Das würde man ja da stecken bleiben.
+ Und das ist der Kontrollfluss,
+ den das Java-System für uns realisiert.
+ Und die Anordnung der Methoden im Programmtext,
+ die ist völlig ohne Bedeutung.
+ Sie können die in beliebiger Reihenfolge angeben.
+ Das System findet schon heraus,
+ welche Methode sie aufrufen, wo das hin müsste.
+ Das alles passiert,
+ ohne dass sie sich da den Kopf zerbrechen müssen.
+ Und das geht wirklich einfach und ohne Probleme.
+ Also hier habe ich ein einfaches Beispiel,
+ um das noch mal zu illustrieren.
+ Ich habe hier dieses Programm MessesExample.
+ Da gibt es eine MainMethode.
+ Die brauchen wir ja.
+ Und dann gibt es eben eine Methode Message1
+ und eine Methode Message2.
+ Und ich habe die Slides aufs Web gelegt.
+ Das können Sie da gucken.
+ Also dann werden wir jetzt hier dieses Programm MessesExample aufführen.
+ Was passiert?
+ Wir führen erst diese Methode Main aus automatisch.
+ Die wird automatisch aufgerufen vom System.
+ Und die Ausführung fängt da an.
+ Und das Erste, was wir machen,
+ ist diese Anweisung ausführen.
+ Und die dann aufruft dieser Methode.
+ Also arbeiten wir jetzt da weiter.
+ Arbeiten die ab.
+ Zum Glück gibt es dann nur eine Anweisung.
+ Dann liegt das schnell.
+ Wir sind mit der fertig.
+ Und dann geht es weiter hier mit diesem Aufruf,
+ der dann der Nächste ist.
+ Und das ist auch wieder ein Aufruf.
+ Da geht es zu der Methode.
+ Gehen wir hierhin.
+ Jetzt fangen wir an, die erste Anweisung da abzuarbeiten.
+ Dann die zweite Anweisung ist ja wieder ein Methodenaufruf.
+ Nämlich der Methodenaufruf, dieser Methode da oben.
+ Also geht der Kontrollfuss dahin.
+ Führt die Anweisung da aus.
+ Drückt die noch mal.
+ Ist fertig.
+ Und geht dann zurück zu dieser Methode Message 2.
+ Und wenn die erledigt wurde,
+ jetzt geht es da oben weiter in der Main Methode.
+ Und dann wird eben das ausgeführt,
+ was oben in der Main Methode steht.
+ Das war die letzte Anweisung in Main.
+ Dann hört das Ganze auf.
+ Und wir sind mit Main fertig.
+ Und wir können das Programm abschließen.
+ Und das wäre dann eben halt der,
+ der Text, der jetzt hier produziert worden wäre.
+ Das können wir auch nochmal uns anders vorstellen.
+ Wir haben hier das Programm.
+ Wir rufen die eine Methode auf.
+ Wir gehen weiter zur nächsten.
+ Wir rufen die wieder auf.
+ Da rufen wir eine andere Methode auf.
+ Aus dieser aufgerufen Methode.
+ Wenn wir mit der fertig sind, geht es da hier weiter.
+ Wenn die fertig ist, sind wir fertig mit Main und so weiter.
+ Also diese Beispiele hier mit Print sind natürlich so,
+ einfach, dass man sich fakt, dass Köpfe auch anders haben.
+ Aber diesen Ablauf müssten sie wirklich voll und ganz verstehen.
+ Und wie gesagt,
+ später werden wir noch mehr Anweisungen kennenlernen
+ und andere Wege kennenlernen, Aufgaben zu zerlegen.
+ Aber Kontrollschluss ist eine ganz wichtige Eigenschaft der Programme,
+ die Sie berücksichtigen müssen.
+ Also, das ist das, was wir jetzt machen.
+ Wir haben hier die Aufmerksamkeit,
+ die wir jetzt haben,
+ die wir jetzt haben.
+ Wir müssen die Beispiele wieder berücksichtigen müssen.
+ Zusammenfassung des ersten Teils für die Methoden.
+ Wir definieren zurzeit nur einfache Methoden.
+ Die haben alle die Keywords "public static void", die drei Keywords.
+ Dann kommt da eine Folge von Anweisungen, Statements.
+ Das ist der Rumpf oder der Body der Methode.
+ Und diese Methode kann überall aufgerufen werden.
+ Und in diesem Fall gibt es ja auch keinen Weg, keinen Wert zurück.
+ Damit haben wir im Grunde genommen das Programm für uns erstellt.
+ So, und jetzt erinnert sich eBNF.
+ Also, wir können sagen, eine Methodendefinition ist definiert als die Methode Main.
+ Die muss sein.
+ Und dann eben halt hier könnten noch weitere folgen.
+ Weite, diese Asadeffs definiert sind definiert als eine
+ Wiederholung weiterer Methoden.
+ Das kann null Methoden sein.
+ Das war das allererste Beispiel.
+ Das kann eine Methode sein.
+ Das können zwei sein, wie ich es in den beiden Beispielen hatte und so weiter.
+ Und jede dieser Methoden besteht dann wieder aus diesen Keywords "public static void".
+ Irgendeinem Namen.
+ Jetzt noch den Klammern ohne irgendwas dazwischen.
+ Und dann eben hier den geschweiften Klammer im Programmtext.
+ Hier in da nochmal.
+ Und hier kommt eine Folge von Statements, die Sie da haben.
+ So, und also so können wir sagen, dass die Methoden definiert sind.
+ Und jetzt müsste eigentlich schon jemand sagen, da ist aber nicht alles ganz akkurat.
+ In der Kleinigkeit habe ich hier noch nicht ganz ausgedrückt.
+ Nämlich, ich habe ja gesagt, dass in der Java-Welt spielt es keine Rolle,
+ in welcher Reihenfolge die Methoden auftreten.
+ Das heißt, diese Methode "main", "main" muss nicht die erste Methode sein.
+ Oftmals ist es, weil das die Übersichtlichkeit erhöht.
+ Aber es gibt auch andere Leute, die stecken die Main-Methode ans Ende.
+ Das kann jeder machen, wie er will.
+ Und das heißt, Main ist einfach nur eine Methode, die irgendwann aufträgt.
+ Also eine korrektere EBNF-Beschreibung wäre diese.
+ Wir können eine Folge von Methoden haben.
+ Danach kommt diese besondere Methode, die wir unbedingt brauchen, namens "main".
+ Und danach können noch mehr Methoden kommen, wenn wir das wollen.
+ Also so können wir das ganz einfach machen.
+ So, und damit sind wir jetzt fertig mit dem Thema Methoden.
+ Und wollen jetzt sehen, wie wir diesen Methoden etwas mehr an interessanter Arbeit zu tun geben.
+ Und dazu gehört eben, dass müssen wir diskutieren, das Thema der Typen
+ und das Thema der Variable. Und die beiden hängen eng miteinander zusammen.
+ Also, Typen beschreiben Eigenschaften von Daten.
+ Ein Typ beschreibt eine Menge von Daten oder Werten von Daten.
+ Und für die, die schon aus mehr Mathematik kennen,
+ das kann man eigentlich auch mathematisch als eine Kategorie bezeichnen.
+ Aber das ist für uns nicht so wichtig.
+ Wichtig ist für uns, dass so ein Typ eben eine beschreibt, was für Daten das sein können.
+ Und wenn ich jetzt eben einen Typ habe, dann bestimmt der die Operationen,
+ die mit diesen Daten gemacht werden können.
+ Wenn ich einen Typ habe, der das Datum angibt,
+ kann ich im Allgemeinen nicht zweimal das Datum eineinander addieren.
+ Das geht nicht.
+ Und wir müssen, wenn wir jetzt programmieren, in vielen Programmiersprachen angeben,
+ was für ein Typ wir arbeiten.
+ Und eben klassische Beispiele, die wir auch schon ein bisschen gesehen haben.
+ Da war der Typ der ganzen Zahlen.
+ Wir hatten gesehen, es gibt preelle Zahlen.
+ Und es gibt auch Strings.
+ Das sind Typen, die im System vorgeschrieben sind oder bereits zur Verfügung gestellt werden.
+ Und mit denen können wir arbeiten.
+ Und dann dementsprechend sind dann auch bestimmte Operationen möglich
+ oder eben nicht mehr möglich.
+ Das ist durch den Typ vorgegeben.
+ So, jetzt warum sind Typen so wichtig?
+ Warum ist das so eine super gute Idee?
+ So ein Typ auf der einen Seite ist wichtig für die Leute,
+ die die Programmiersprache implementieren.
+ Weil der Typ legt fest, wie die Daten zu implementieren sind.
+ Die Programmiersprache hat entschieden, der Typ für ganze Zahlen werden auf diese Weise dargestellt.
+ Also auf diese Weise implementiert mit irgendeiner, mit irgendwelchen Bits.
+ Am Ende beruht ja alles auf einer Kombination von 0 und 1.
+ Und da haben wir hier eben diese Folge für die Zahl 97 im Dezimalsystem.
+ Und das haben Sie wahrscheinlich schon mal gesehen.
+ Das ist die Edel dieser Bits an Wert.
+ Das ist also die erste Position 2 hoch 0, 2 hoch 1, 2 hoch 2 und so weiter.
+ Und wenn ich hier so was habe, dann heißt das im Grunde genommen 2 hoch 0,
+ plus das hier ist jetzt 2 hoch 5, plus 2 hoch 6.
+ 2 hoch 6.
+ Und wenn Sie das auswächen, das ist 1 plus 32 plus 64.
+ Und wenn Sie das zusammenaddieren, ergibt das genau 97.
+ Also das ist, so werden die Zahlen in vielen Systemen dargestellt.
+ Ist für uns eigentlich nicht so wichtig fürs Erste.
+ Aber die Programmiersprache muss natürlich wissen, wie sie das macht,
+ damit dann eben die richtigen Werte immer wieder verwendet werden können.
+ So, jetzt für so Typen wie Zahlen ist das ziemlich einfach.
+ Wie würden wir denn jetzt so ein, wie würden wir denn die Buchstaben A oder B darstellen wollen oder können?
+ Was könnten wir denn da machen?
+ Da müssen wir uns auch irgendwas einfallen lassen.
+ Und die vernünftigste Auffassung ist, dass wir irgendeine Tabelle nehmen
+ und sagen, dass A hat dieses Muster und dass B hat dieses Muster.
+ Und die Länge, wie lange diese Folgen von 0 und 1 sein müssen
+ und auch wie lange diese Folge sein muss, das wird von der Programmiersprache festgelegt,
+ weil das hängt davon ab, wie viele von diesen verschiedenen Werten wir darstellen müssen.
+ Also für A würden wir vielleicht sagen, dass auch wieder acht von diesen 0 und 1 genügen.
+ Und für B auch, hätten wir das hier als Darstellung für A und B, weil es gibt eine Tabelle.
+ Da steht eben drin für den Buchstaben A, nehmen wir diese Folge von 0 und 1.
+ Und übrigens, das, wenn wir sie als ganze Zahl angucken, hat den Wert 97.
+ Aber das ist für uns eigentlich nebensächlich, weil wir gucken uns ja nicht diese,
+ wir gucken uns ja nicht die individuellen 0 und 1 an.
+ Aber für unser Programm ist es schon sehr wichtig, weil wenn ich in unserem Programm auf einmal diese Folge von 0 und 1 habe,
+ dann muss ich entscheiden, was ist denn das überhaupt?
+ Ist das jetzt eben ein A oder ist das eine 97?
+ Das kann ich aus den 0 und 1 sein heraus nicht feststellen.
+ Das kann ich nur feststellen, wenn ich weiß, was für einen Typ ich da habe.
+ Wenn es sich um Buchstaben handelt, dann ist die richtige Antwort B.
+ Und wenn es sich um ganze Zahlen handelt, ist die richtige Antwort 97.
+ Deswegen ist es so wichtig, dass wir eben festhalten, was für einen Typ durch eine bestimmte Verarbeitung wird
+ oder mit was für einem Typ wir da arbeiten.
+ So, jetzt in Java gibt es verschiedene fest eingebaute Typen.
+ Die heißen Primitive Types.
+ Und das sind die fest eingebauten Typen für Zahlen, Buchstaben und dergleichen mehr.
+ Da haben wir eben die ganzen Zahlen, die heißen INS mit einem Kleinbuchstaben.
+ Und da sind so Beispiele im 0, 42, minus 3 und irgendwelche anderen Zahlen darstellbar.
+ Und dann gibt es die reellen Zahlen.
+ Das sind die Doubles.
+ Die sind eben die Zahlen mit einem Dezimalpunkt.
+ In verschiedensten Formen kann man die darstellen.
+ Also Ziffern folgen mit einem Dezimalpunkt.
+ Das sind die reellen Zahlen.
+ Und warum haben wir diese Unterscheidung zwischen IND und DOUBLE?
+ Warum sagen wir nicht Zahl?
+ Das ist so ein bisschen ein Trade-off, den wir machen.
+ Wenn das System weiß, dass es sich um reelle Zahlen handelt,
+ dann weiß es vielleicht, wie viel Platz es dafür braucht
+ und kann ein anderthalbes Prozessor verwenden, um Apparationen schneller durchzuführen.
+ Und bei INS wissen wir dann auch, wie groß die sein darf.
+ Und wir haben dann einen anderen Weg,
+ in Prozessoradditionen oder Subtrakzionen mit solchen Werten durchzuführen.
+ Der Bereich, den wir in den INS darstellen können,
+ hat sich in der Vergangenheit dann als doch nicht so zweckmäßig herausgestellt.
+ Und darum hat man dann eben heutzutage diesen Typ LONG,
+ der eigentlich in sehr vielen Programmen auch in anderen Vorlesungen verwendet wird,
+ wo sie eben relativ, also sehr große ganze Zahlen darstellen können.
+ Und das hat den schönen Vorteil,
+ dass wir uns eigentlich im Allgemeinen nicht Gedanken machen müssen,
+ ob die Ergebnisse, die wir berechnen, überhaupt darstellbar sind oder nicht.
+ Also das sind hier die Basestypen IND, LONG und DOUBLE,
+ mit denen werden wir uns ein bisschen beschäftigen,
+ die anderen kommen dann noch später dazu, sind aber nicht so kritisch.
+ So, jetzt haben wir hier ein Programm, das wir schreiben wollen,
+ mit dem wir die Oberfläche so eines Quaders berechnen.
+ Da erinnerst du sich vielleicht, die Oberfläche wird berechnet,
+ indem wir zweimal Länge, Höhe, und so weiter zusammenrechnen.
+ Und nach dem, was wir jetzt schon können,
+ ist es ein einfaches Programm, das wir schreiben könnten.
+ Das Programm würde eben halt die Methode MAIN haben,
+ da hätte es drei Print Statements,
+ und hier würde das Print Statement eben halt die Berechnungen durchführen,
+ mit IND-Zahlen, und würde das richtige Ergebnis rausliefern.
+ Und das wäre gut und schön, solange eben alles bestens läuft.
+ Und natürlich haben wir vielleicht mal,
+ hier haben wir wirklich eine aufmerksame Programmiererin gehabt,
+ die hat gesehen, dass das eben halt hier dieses Mal,
+ das Mal das muss multipliziert werden, und das Mal das,
+ und das hier mal das.
+ Das sind die Multiplikationen.
+ Aber jetzt könnte es ja passieren,
+ dass irgendjemand einen Fehler macht,
+ und dummerweise hier eine falsche Zahl eingetippt hat.
+ Und dann hätten wir ein großes Problem,
+ weil jetzt eben die Berechnung einfach nicht mehr stimmt.
+ Und das ist natürlich, wir wollen sowas gar nicht haben,
+ und darum führen wir das Konzept einer Variable ein.
+ Und eine Variable erlaubt es uns, einen Namen zu definieren,
+ mit dem wir uns auf einen Wert beziehen können.
+ Das heißt, wenn wir eine Variable einführen,
+ dann müssen wir zwei Sachen angehen.
+ Wir brauchen einmal einen Namen,
+ und wir müssen sagen, auf was für Werte sich diese Variable beziehen kann.
+ Also in dem einfachen Beispiel, das ich hier habe,
+ da wären es Int-Werte, wir sagen, Int-Werte sind das.
+ Und darum brauchen wir dann eine Variable für Int-Werte.
+ Und die würden wir in Java einfach so deklarieren,
+ dass wir halt den Typ, den wir haben wollen,
+ und den Namen der Variable in einer Deklaration angeben.
+ Wir würden dann sagen, wir brauchen hier eine Int-Variable-Länge,
+ und dann feist das System, aha, das ist eine Variable,
+ für eben der Typ dieser Werte ist Int,
+ und der Länge ist der Name, unter der sich das Programm
+ auf diesen Wert beziehen will.
+ Und das nennen wir eine variablen Deklaration,
+ wie Declaration of Independence, wir deklarieren das,
+ und ob dann die anderen das mitmachen oder nicht,
+ das hängt vom System ab, aber wir deklarieren das.
+ Und hier hätten wir jetzt drei Int-Variable,
+ und den können wir dann Wert zuweisen.
+ Und diese Werte würden dann in der Zukunft verwendet werden,
+ wenn immer wir uns irgendwo auf diese Variable beziehen.
+ Dann wäre das einfach immer wieder gleich.
+ Nun ist es natürlich so, eine variablen Deklaration,
+ ohne eine Zuweisung ist nicht so praktisch,
+ und darum erlaubt das System es uns auch,
+ die Deklaration und die Definition zu kombinieren.
+ Das heißt, wir hätten dann also einen Typ,
+ es könnte eben Int sein, einen Namen wie die Länge,
+ keine Umlaute bitte,
+ und dann hätten wir irgend einen Wert, den wir den geben wollten.
+ Und da könnten wir irgend einen Wert haben vorausgesetzt,
+ es ist ein Wert des richtigen Typs.
+ Also würden wir eigentlich das viel besser so machen,
+ dass wir hier diese Variablen deklarieren,
+ und dann entsprechend das haben.
+ Also, so eine Deklaration liegt die Art
+ oder den Typ der Werte feste,
+ und dann kann ich jeden Wert dieses Typs darstellen.
+ Und der Name wird bekannt gegeben.
+ Jetzt sagt das System, hier ist ein Name,
+ eine Variable, die ich gebrauchen kann.
+ Und gute Namen sind sehr wichtig,
+ und alles andere als leicht zu finden.
+ Insbesondere dann, wenn die Variable
+ in vielen Teilen des Programms wiederholt verwendet wird,
+ ist es wirklich wichtig, dass sie einen guten Namen finden.
+ Wenn eine Variable nicht wichtig ist, genügt ein kurzer Name,
+ und in den Beispielen, die ich hier habe,
+ finden sie die oft, weil die Beispiele sind einfach und kurz.
+ So, jetzt kommt noch eine Sache, die wichtig ist.
+ Jetzt haben Sie gesehen, ich habe hier diese,
+ so habe ich diese Variable deklariert und gleich definiert.
+ Und hier sehen Sie so ein Zeichen,
+ und dieses Zeichen heißt im Deutschen Gleichheitszeichen.
+ Das ist aber ein extrem irreführender Name.
+ Es ist also wirklich irreführender Name,
+ weil es hat überhaupt nichts mit Gleichheit zu tun.
+ Das ist eine Zuweisung.
+ Hier weisen wir dieser Variable den Wert zu.
+ Wir weisen der Variable Länge den Wert 70 zu.
+ Und natürlich, wenn wir jetzt mit der Variable Länge arbeiten,
+ wird immer dieser Wert verwendet.
+ Aber das hat mit Gleichheit nichts zu tun.
+ So, jetzt können Sie natürlich fragen,
+ ist das jetzt so eine Java-Spezialität,
+ dass wir für alle, für irgendwelche Variablen,
+ die wir brauchen, den Typ angeben müssen?
+ Und die Antwort ist ja nicht richtig.
+ Also es gibt viele Programmiersprachen,
+ die verlangen, dass man den Typ angibt.
+ Es gibt auch ein paar Programmiersprachen,
+ die verlangen das nicht.
+ Und da gibt es da manchmal sehr große Überraschungen,
+ weil der eine meint, es wäre eine Gleit-innerielle Zahl,
+ und der meint, es wäre eine Integer.
+ Ja, und da ist die Sache weg.
+ Und in Java verlangen wir eigentlich eine Spezifikation des Typs.
+ Aber sozusagen als Genugtuung für die,
+ die etwas fauler im Schreiben sind,
+ Java verlangt nicht immer eine Spezifikation.
+ Manchmal in der Tat kann der Compiler herausfinden,
+ was für ein Typ gebraucht wird.
+ Und das ist ja normal.
+ Mein Ratschlag ist, dass Sie immer die Typen angeben,
+ dass Sie sich so klarmachen, was Sie da arbeiten.
+ Der Typ ist wirklich ein Teil der Dokumentation.
+ Der sagt viel aus.
+ Und wenn Sie den Compiler haben, zur Hilfe rufen wollen,
+ dann müssen Sie etwas Besonderes machen.
+ Wir empfehlen erst mal am Anfang,
+ dass Sie die Typen immer explizit angeben.
+ So, und was für Typen kann jetzt Ihr Java-Programm verwenden?
+ Da gibt es drei verschiedene.
+ Einmal die Typen, die in der Sprache definiert sind,
+ eben wie Int, Long usw., die Typen aus Bibliotheken.
+ Und dann gibt es, wie strings, haben wir auch schon gesehen,
+ und dann gibt es eben die benutzerdefinierten Typen.
+ Und darüber werden wir erst später was machen können.
+ Also, Typen beschreiben eben die Eigenschaften von Daten,
+ den Wertbereich, die Operationen usw.
+ beschreiben, wie die dargestellt werden.
+ Obwohl das für uns nicht beim Programmieren wichtig ist,
+ ist es wichtig dafür, dass wir sicher sein wollen,
+ dass das Programm auf unterschiedlichen Systemen
+ gleich ausgeabt wird.
+ Und die richtige Wahl des Typs ist wirklich entscheidend.
+ Weil je nachdem, was für ein Typ Sie wählen wird,
+ entweder die eine oder andere Operationen
+ in der Hardware oder Software ausgeführt
+ und Sonderfälle werden unterschiedlich behandelt.
+ Wenn eine Zahl zu groß ist für eine Integer,
+ dann wird irgendwas gemacht.
+ Wenn die Zahl zu groß ist für eine Reelle Zahl,
+ dann wird eben das auf unendlich gesetzt.
+ Da gibt es Unterschiede, je nachdem,
+ was für eine Art von Typs haben.
+ Weil alle unsere Programme manipulieren letztendlich Symbole.
+ Und wir hatten das schon bei eBNF als einfaches Beispiel gesehen.
+ Die Symbole, die werden irgendwie verarbeitet usw.
+ Am Endeffekt wird alles durch 0 und 1 dargestellt.
+ Und wir müssen eben sicher sein,
+ dass eben die Darstellung konsistent ist
+ und dass der genügend Platz ist, das darzustellen,
+ was wir da darstellen wollen.
+ Typen verhindern Fehler in Ihrem Programm.
+ Wenn Sie einen Typ haben, der eine AHV-Nummer ist
+ und einen anderen Typ haben, der ein Gehalt darstellt,
+ dann können Sie die beiden nicht addieren.
+ Wenn das für Sie Zahlen sind, können Sie die einfach addieren.
+ Oder Sie können nicht Volumen und Fläche addieren.
+ Würde das System verhindern.
+ Zum anderen eben erlauben auch Typen Optimierungen.
+ Sowohl der Berechnung als auch der Darstellung.
+ Weil ich sage, hier kann ich mit einer Int arbeiten.
+ Hier genügen für mich 32 von diesen 0 und 1ern.
+ Da kann ich das kompakter machen,
+ als wenn ich das weiß, wie groß machen muss.
+ Denn trotz aller Versuche, etwas Besseres zu machen,
+ alle Darstellungen sind letztlich endlich.
+ Und wenn wir eine zweckmäßige Darstellung treffen und wählen können,
+ dann helfen wir dem System effizienter zu sein
+ und helfen dem System.
+ Und daher ist die richtige Wahl des Typs nötig.
+ Und dann kann das System entsprechend Platz reservieren.
+ Und das müssen Sie machen, wenn Sie das Programm eben erstellen.
+ Also für die einfachen Primitivtyps ist es so Genügtes,
+ dass wir eben den Namen des Typs angeben, den Namen und dann den Wert.
+ Und das gibt dann, der Wert wird ausgewertet.
+ Und dann ergibt es einen Wert.
+ Und der wird dann mit dem Namen dieser Variablen assoziiert.
+ Das ist also einfach.
+ Und wenn wir so einen Ausdruck haben,
+ dann wird der Ausdruck in Teilausdrücke zerlegt,
+ bis wir eben einzelne Werte haben.
+ Und dann wird auf diese Weise der Wert berechnet.
+ Also wir könnten als einfachstes Beispiel nur die Zahl 4 haben,
+ als diesen Value.
+ Oder wir könnten den Ausdruck haben 1 plus 7.
+ Das wird zerlegt in 1 und wird zerlegt in 7.
+ Und die werden dann addiert.
+ Also die ganzen Regeln, die Sie kennen, gelten da.
+ Also einen einfachen Wert, den nennen wir einen literal,
+ also einen direkt auftretenden Wert.
+ Und komplexe Teilausdrücke, die werden dann eben entsprechend zerlegt.
+ So, jetzt was für Operatoren können Sie jetzt mit den Intwerten verwenden?
+ Na ja, da gibt es die bekannten Additionen, Subtaktion,
+ Multiplikationen, Divisionen.
+ Und dann gibt es hier dieses Zeichen, das heißt Modulus, der Rest.
+ Das ist also der Wert, den ich bekomme, wenn ich eben 2 Ints miteinander,
+ wenn ich eine Int durch eine andere addiere und ein Rest übrig bleibe.
+ Und wenn ich jetzt so einen Programm habe mit zum Ausdruck,
+ dann werden diese Ausdrücke während der Ausführung des Programms ausgewertet.
+ Das Programm geht hin und nimmt die Werte, sei es in Variablen oder sei es als Literals,
+ und produziert eben einen entsprechenden Wert.
+ Also hier habe ich 1 plus 1 wird addiert, ergibt 2.
+ Oder wenn ich hier so ein Printline Statement habe, wo ich das drucken möchte,
+ da geht das System hin und her, 3 mal 4 ist 12, also druck das 12.
+ Und wenn ich jetzt seitdessen nicht eben 12 haben wollte,
+ sondern wollte den Text haben, ja, den ich den Text haben will,
+ dann muss ich wieder diese Hochkommers verwenden.
+ Und dann würde ich auf diese Weise sagen, das ist ein String.
+ Und dann würde eben diese Printline, würde uns eben halt den entsprechenden String drucken.
+ Also es gibt eine ebnf Beschreibung für die Ausdrücke,
+ Warnung ist nicht vollständig und beschreibt nur die Sintag,
+ das werden wir ja noch sehen,
+ und haben dann eben diese arithmetischen Operatoren,
+ mit denen wir die Werte oder die Variablen verknüpfen können.
+ Und wenn wir jetzt so 2 Werte haben, dann ist das Ergebnis,
+ dieser Operation ist der Wert, der der Typ festgelegt.
+ Also wenn Sie eine Int und eine Int irgendwie kombinieren,
+ dann ergibt es eben eine Int.
+ Und wenn Sie eine Int und eine Long kombinieren,
+ ja, müssen wir später gucken, haben wir heute noch nicht gemacht.
+ Also diese Operatoren, die produzieren Werte eines festgelegten Typs,
+ und wenn eben beide Operanden den selben Typ haben,
+ dann zum Glück hat das Ergebnis auch diesen selben Typ.
+ Und das ist das, was ich jetzt heute zum Thema Typ habe.
+ Also wenn Sie zwei unterschiedliche Typen haben,
+ also wenn Sie beiden Typen gleich sind,
+ und arithmetisch ist es das Ergebnis des selben Typs,
+ und wenn es unterschiedliche Typen sind,
+ dann müssen wir halt später sehen, was da auf uns zukommt,
+ und da müssen wir sehen, was dann zu machen ist.
+ Bis dann.
+ [Applaus]
+ [Applaus]
+ *Pfeifen*

@@ -1,0 +1,637 @@
+ Hello everyone. So today's lecture we are covering the image features. I'm
+ covering again for Professor Mark Poliface. He will be back on Tuesday to do
+ the next lectures with you. So to give you kind of a bit of an impression what
+ image features are. Let's see if I can show you the videos. So to give you a
+ brief introduction on what we are going to learn. So as you can see here
+ they took images from the internet and they're basically capable of taking
+ this random images taken from tourists and actually capable of doing 3d
+ reconstruction. So you can see here all these colored points are actually
+ features. So this is a bit to show you that everything you're going to learn in
+ this lecture actually has a real application and you can actually do
+ really cool stuff. Like you can see here where they are reconstructing the
+ travesty fountain and this is all basically with the pictures you post
+ every day on Instagram. So they don't have information about pose, they don't
+ have anything, they even have pictures with you posing in front of the
+ monument and this is all done with features and we basically can match
+ elements in the images together and then okay this is not interesting anymore
+ for you. But just here to show you another one this is actually one of the
+ papers of Mark. They basically took again random pictures, holiday pictures and
+ they actually managed to do this not in a super super cluster with tons of GPUs
+ they actually did this with one GPU and you can see here like there are some
+ pictures that they kind of are showing how they they're using sift which you're
+ going to learn as well later. Let's try to find one of the reconstructions.
+ Okay here you can see that all the pictures they are showing before they're
+ actually using them so each of this kind of cameras that you're seeing
+ floating was actually predicted this pose and then they were actually capable
+ of reconstructing the coliseum which as you can see they just have one view point
+ so you don't have a 360 of it. So this is basically just to show you that what
+ you're learning here is later used in research so if any of you decide to do
+ a PhD this is what you're maybe going to work on.
+ Okay so now that you have seen in a really high level what features are
+ let's start with the lecture. Yeah so there seems to be a kind of miscommunication
+ between me and your TA. He has the slides so he should be uploading them but I
+ can't really tell you more. I just know I send them to him and he told me yeah he
+ will upload them. You will get them that is the only information I have. I know
+ there is actually some recordings from last year as well if you want to watch
+ videos of Mark presenting this as well so but I can't really tell you anything
+ because I'm not normally teaching this so I have no clue. So I will try to figure
+ it out. I will try to push a bit Philip to kind of give you the slides. But yeah
+ okay feel free to take pictures or something I saw in the last lecture that
+ people were like taking pictures of the slides because it was easier to take
+ notes so you're allowed just don't take pictures of me. Okay so let's start with
+ the recap of what we did on Tuesday. You had now I think the two practical
+ lectures so you should know by now what the difference is between the
+ correlation and convolutions which basically in my way explained correlations
+ are where the kernel is static on the on the image while on the convolution
+ we're having this movement which caused a bit of confusion on Tuesday which is
+ where the kernel is actually moving over the neighborhood of the pixel we're
+ applying the convolution and in a mathematical way we're having the two
+ equations which basically gives you an information about that the correlation
+ is actually the opposite of the convolution. So yeah let's start with
+ what we're doing today which is as we said we are doing image features so to
+ that we need first need to kind of start so basically first of all we're doing
+ template matching so what is template matching and basically in template
+ matching we're having an image like this one and we're having a template which
+ in this case you can see up there which is the eye and what we're trying to do
+ is we are trying to localize the template actually in the image so in this
+ case we find one eye and basically since we have a symmetric face you can
+ actually find the second one as well so we have actually a double match in this
+ case. Okay so how do we do this actually in a more mathematical way so basically
+ what we're doing is a search for the best match by minimizing the intensity
+ between the image and between the template squared so which we then can
+ write as this huge equation which we can simplify which is good because we have
+ the image which is fixed and we have the template so actually we're left with
+ just one part of the equation which then we can actually define as basically the
+ image convoluted over the template which is what we get out here so and as said
+ before basically you can see the correlation is equivalent to the
+ convolution of the image but we are changing the template the coordinate
+ system. Okay so what happens with template matching so to kind of know if
+ we're doing the template matching correctly we have to apply some kind
+ of like filtering so that's why we're applying the Cauchy-Schwarz inequality
+ which is this huge term so we're using the equation we had before from template
+ matching and we have this has to be smaller or equal than the inequality of
+ Cauchy-Schwarz so what this basically is showing us the equality is dependent on
+ this value alpha which has to count a condition which has to be bigger or
+ equal to zero so to kind of showcases in a block diagram which makes it I think
+ easier to kind of see we're having our image we're having our given template
+ and we're getting our response so basically we are trying to search for
+ the peaks what is what we are trying to find and hopefully in the end we get the
+ object location so that's kind of the normal like pipeline we are going to
+ follow to actually get get template matching in this case. Okay so yeah
+ it's mostly to kind of like have because in the end so as you have seen in the
+ example of the eye we're doing template matching but there's also a lot of things
+ that kind of like as an example the eye you were clearly seeing which eye it was
+ while on the network it's much more complex when you're doing this on a
+ computer level to actually see the difference so basically the Cauchy-Schwarz
+ inequality what it's doing it's kind of helping you to actually filter between
+ the strong information and between the weaker information so that's kind of how
+ you need to on a really high level envision this it's just ways of kind of
+ being really sure that what we are doing is actually the correct match you will
+ see further in the lecture that we will have to deal with more than this kind of
+ things just because in the end we are having a lot of matches because images
+ are really complex I mean the example that you had was kind of simple that's
+ why why you it will make more sense the more we advance here by the way if you
+ have a question make a noise because I don't really like can see all of you at
+ the same time okay so let's start I mean you have done as far as I know you did
+ edge detection already in the practical classes right okay so basically to
+ define what edge detection is we have here what is the idea in the continuous
+ space so we have we're detecting the local gradients which are mathematically
+ defined like this but of course this changes on a digital image which is
+ what we are mostly interested in which some of these things you have already
+ seen we saw them on Tuesday but you also have seen them probably in the
+ practical classes you have the differences central difference so we are
+ minus one one and the zero in between we have a pre-wit filter and the sobel
+ filter which both cases are highlighting the vertical edges okay so I mean half
+ of these filters you saw them already on Tuesday so we're having pre-wits sobel
+ and robert so what are we showcasing here we can see that we can apply the
+ pre-wit filter and the sobel filter on the vertical edges but also on the
+ horizontal edges while of course these two cover the horizontal and the
+ verticals and robert's covers the diagonal edges so this is what you kind
+ of need to keep in mind out of here that we can actually track all of the
+ different edges that kind of appear in an image so to kind of visualize this I
+ actually try to showcase this better since on Tuesday was not really nicely
+ visible and it was just me trying to show you things so now I put circles so
+ first of all let's focus on this one which is the vertical one on the pre-wit
+ filter you can see here in this part of the bridge that actually here we are
+ highlighting the lines of the bridge that are vertical while in this case which
+ is applied the horizontal one they are noticeable but not compared to this one
+ while if we take the horizontal one you can actually see here that the upper
+ part of the bridge which in the horizontal one is actually highlighted and
+ we can clearly see it in the vertical one we cannot see it at all so of course
+ this image is kind of like really specific on lines and it has all of them
+ but let's apply this to an image that is yes this image you will see it a lot in
+ computer vision this is Bill and basically Bill's face is actually often
+ used to showcase the filters so we are applying exactly the same filters that
+ we were applying before we are having the vertical edges and the horizontal edges
+ so for the vertical ones you can actually see here on the side of his face
+ that the hairline as an example here or the face line is much more highlighted
+ than on the horizontal one well in the horizontal one we have of course the
+ upper part of his head well in this case we're actually not having any information
+ about what is going on here okay so to show this what we are basically doing is
+ we're taking all the horizontals and all the verticals and doing the logarithmic
+ summation of basically the gradients on the horizontal and vertical and this is
+ what you can see so as you can see it is really sensitive we are having tons of
+ noise in this area so we are actually having prediction on edges which we
+ don't we are not really interested in having the background we're interested
+ actually in Bill's face so what we can do to actually show how sensible this is
+ and how actually weak or strong some of these lines are we can apply a threshold
+ so basically in black we have everything that's under the threshold and white
+ everything that's above is so in the first threshold we are still kind of we
+ got actually rid of most of the noise and we're having Bill's face kind of nicely
+ highlighted but as you can see also the the borders are really thick while in
+ the second threshold this looks much better but we are already starting to
+ lose parts of the details that we can see in Bill's face and then the third one it
+ looks better but yeah like as an example here the cheek we totally lost these
+ details basically because it was not a strong enough edge so now let's move to
+ the sobel filter doing exactly the same as we have done before doing exactly the
+ same thing as we have done before you can see that again we're having the noise
+ I recommend when Philip uploads you this slides to actually check it's really
+ difficult to see the difference between a pre-wit and a sobel filter I
+ recommend you to for me kind of the difference you can see it mostly on his
+ forehead I can try to move it quickly but not sure how good that works but you
+ can see that the pattern changes which basically shows you that both filters are
+ not doing the same thing but basically when we apply the different thresholds
+ you can see that both of them are just removing the same kind of lines yes I
+ assume because this lecture was made maybe 15 years ago it's really so a lot
+ of things you will actually see I mean since you're currently starting you will
+ have actually have a lot of things that will repeat and a lot of old images and
+ a lot of things that nowadays we actually use in a much improved way so but it
+ still means that you need to learn the how it all kind of started and how the
+ basics are so yeah in this case it's just also to highlight you mostly that
+ you're kind of having here a lot of noise and a lot of kind of issues actually
+ with the sensitivity of these filters but yeah you can see that actually the
+ outcome is really similar between sobel and pruit what this looks like so just
+ to show you also the diagonal ones we're having again bill and in this case we
+ are applying the logarithm magnitude of the image filter by the diagonals so
+ again you can see on one of them we're having this part of the forehead actually
+ we can actually have edges here well in this one we're actually not capable of
+ having kind of there is some information but not too much well on the other side
+ here actually in this one was not capable of having any edges here while this
+ diagonal was actually capable of predicting the edges okay so doing
+ exactly the same threshold we are having the same prediction of the of
+ the summation of the gradients and applying the threshold you can actually
+ see that this one is actually capable of having at least some more details in
+ the face than pruit and so will wear for the horizontal and vertical ones so we're
+ actually capable of keeping more of these so it shows that actually the edges
+ that were predicted were more robust okay so which brings us now to the
+ laplation operator so basically the laplation operator text discontinuities
+ by considering second derivatives so this is kind of the how we write the
+ laplation operator down what is interesting about this one is is
+ rotationally invariant so that's basically one of the most important
+ things we have the zero crossing mass mark edge location and we are basically
+ using discrete space approximations by convolutions with three by three impulse
+ response so as you can see here we're highlighting the central pixel and the
+ neighborhood and in this one we are highlighting all the pixels that are
+ surrounding the central pixel and of course the pixel so to show this in a
+ visual way we are showing the the derivatives the first one so we have
+ the edge profile then we have the first derivative and this is the second one so
+ you can see here this detects the zero crossing which in our case we are
+ interested in because that will show us where the edge is actually located so
+ applying this directly to an image looks like this so if the two that you saw
+ before were sensitive this is even worse so how do we apply actually this well
+ first we need to blur the image so by blurring the image we're actually capable
+ of removing all of this what you can see here because this is quite an old
+ picture so there are actually a lot of like details in the image in the
+ background so if you blur the image we're actually capable of removing most
+ of the noise and then basically it reacts the same to weak and strong edges so
+ what we're doing is we need to kind of come up with a suppression way to the
+ edges with the low gradient so how do we do that well we blur the image with a
+ Gaussian and Laplacian operator so which we can combine in the Laplacian of a
+ Gaussian which you can see here this is the 3d representation of the 2d this is
+ how it would look like in a matrix form on a standard deviation of 1.4
+ okay so how does this look in an image this is without the Gaussian we're
+ having this really noisy image because we haven't applied the blur before so by
+ applying the standard deviation of 1.4 on the zero crossing of the Laplacian of
+ the Gaussian you can see that we are able with this really noisy image to
+ reduce some of the noise but by actually increasing the standard deviation you
+ can see that we are actually also getting rid of the details in Bill's face so by
+ a standard deviation of 6 you can still kind of guess that this is a face but if
+ I would not give you any of these before images you would not really know so
+ that's kind of showing you how this looks so doing this but before using
+ actually the gradient-based threshold you can see that already without the
+ Gaussian we are not having all this noise that was here in the image so with
+ the standard deviation 1.4 this one actually looks really good we are of
+ course losing the information here on the side of the face but in a standard
+ deviation of 3 most of the side of his face is already gone and then standard
+ deviation of 6 again we are having just the contours of his face left I mean of
+ course this depends on what you want to do if this is your hoped outcome then of
+ course this is the perfect so okay now that you have seen this once let move to
+ the canny edge detector so basically how we do this so first we smooth the image
+ with the Gaussian filter then we need to calculate the magnitude of the angle in
+ the gradient which you have defined here this is the magnitude and this is the
+ angle this we do it by using solval or prudent then we use the non-maximal
+ suppression to gradient magnitude images then we double the threshold to
+ detect strong and weak edges which is exactly what we want we want to get rid
+ of the ones that are not interesting for us and have the big ones and then we
+ reject the weak edges with no connectors with strong edge pixels so this last
+ information looks like something like this so what we are doing is we're doing
+ the edge normals to one of four directions so we have the horizontal minus
+ 55 degrees vertical and plus 45 degrees so to kind of show you a bit let's say
+ we're doing this diagonal we're doing this point so what we are checking is if
+ the neighbors of this point are stronger or weaker if this one is stronger than
+ is two neighbors then we keep it if not we suppress it so in this case I don't
+ really know what you see from there but this and this are supposed to be like a
+ more like kind of not that white color well this one is white which is supposed
+ to mean that it is a stronger one so that's why we keep this one because it's
+ stronger than his two neighbors
+ so to basically do this to apply this threshold and suppress the weak edges
+ what we are doing is we are doubling the threshold of the gradient magnitude so
+ we are using these two variables with our theta high and theta low which
+ basically defined for us what the strong edges and what the weak edges so the
+ normally the the ratio between both of them is between two and three and what
+ we are doing is if the magnitude is bigger or equal to theta high then it's a
+ strong edge well if we are having this equation so the magnitude is actually
+ being smaller than theta high but higher than theta low then it's a weak edge so
+ yep and of course we reject an entire region if there is no edge pixels because
+ there is nothing interesting for us so how does this look in the same manner as
+ we have done before on build space we can see the canny edge detection so we're
+ having his face we are applying all the thresholds we are filtering out all the
+ kind of weak edges and what you can see is with the standard deviation 1.4 we're
+ actually having a good reconstruction of his face and most of the small details
+ we are of course having the background which are these two lines but I think
+ they are too strong in the as edges to actually be filtered out standard
+ deviation of three still doesn't get rid of this one but is actually mostly
+ getting rid of most of the things in his face why not a standard deviation of six
+ we're actually left with less than we had before also just that you kind of
+ notice which is a kind of interesting thing it's also taking into account of
+ course image issues so we're having the wide line that basically this image has
+ from actually being cropped out wrongly so to have another image which maybe if
+ you have done a computer vision course before you have seen it as well we're
+ having this photographer and you can see that with the canny edge detector we are
+ able to predict without too much noise in the background the nice and stronger
+ edges of the image which are the most interesting for us which is mostly the
+ photographer the the the camera and the the background as in the buildings still
+ we are having here this grass area is creating noise for us so we still we still
+ have there some filtering to do so let's introduce the half transformation so
+ okay so to do this since we are talking about edges the half transformation is
+ to be able to actually know where those edges are localized so the problem is
+ we want to fit a straight line or curve to a set of edge pixels so which by the
+ way this was invented in 1962 and we're still using it nowadays so nobody has
+ come up with anything better so this what it's doing is generalizing the
+ template matching technique so what we do is we consider a straight line which
+ you have the equation y is equal to the slope multiplied by x plus the
+ intercept and we draw both of these axes y and x and the slope and the
+ intercept and we draw our edge pixel which is our first edge pixel which we
+ put randomly here and we draw a first line the only condition we have in this
+ case is that we want to cross the edge pixel you will see in a second why so
+ we're having our first line so what does this line mean since y is constant we
+ can actually draw it on the intercept axis let's draw another line this one of
+ course is perfectly drawn so it goes through the origin what does this mean
+ that x is zero so we can actually draw it on the slope let's put a third line
+ which is randomly in between both of them and as you can see here if the lines
+ crossed across the edge pixel we're actually able to adjust them to a line
+ which is you will see some more examples but will actually show us in what
+ position we can actually find the edge so let's see how we do this and how we
+ find out actually the position so we first of all divide the slope and the
+ intercept in bins so we create our grid and then what we are doing is we draw our
+ first line in the slope and in the intercept first line is actually a point
+ in the in the so yeah we're drawing basically our lines so we draw a second
+ line we draw a third line fourth line so this is how we actually find what is an
+ edge because you can see all the lines that cross one point in the slope and in
+ the intercept this point is our peak and that peak in the x and y axis can
+ actually adjust it to a line and this will be an edge on our image we will do
+ some more examples where you can kind of see this in a abstract way with points
+ and then later we will see some real example so that this will be much clearer
+ for you hopefully so I mean does anyone have an idea yeah
+ of course of course let me try to come up with a different way okay so what we
+ want to do with the half transformation I'm showing you in this both slides it's
+ kind of the idea that you see so that in one case we are having points which are
+ projected on our image which is y and x and then we're having a slope and or
+ intercept which is because we want to adjust this to a line since in the end
+ the edge is a line so I'm showing you the both ways of doing this what is the
+ computer going to do so we're having our edge pixel which is going to be
+ detected by this filters so what happens is normally the lines in this case
+ cross edge pixels so we are run randomly drawing lines I don't know what's the
+ part of drawing it on the slope and intercept clear no okay so I mean you
+ have the equation of a line right so when e is constant you know that you can
+ draw c is also so it's basically going to the point is going to here okay so you
+ need to envision that e is going to be constant x is going to be constant no y
+ is going to be constant so basically while applying this equation you have
+ that the slope and the it's just on the on the intercept when you're having x
+ equal to zero which is here this case since this goes to zero you're having it
+ on the on the intercept now yes okay and what this shows you is that you have a
+ correlation between the intercept and the slope and the image so you're having
+ all the lines that cross an edge pixel in the slope and in the intercept are
+ forming a line so this is to showcase you the idea of the half transformation but
+ the interesting part which is what how we are going to do this is the other way
+ around so we are having lines in the intercept and in the slope which we are
+ drawing which are equivalent so we're doing the opposite of the equation that
+ you had of the line so you're putting them as points and you're having this peak
+ and this peak so the interception of all the lines in the slope it believe me in
+ the example in the visual example it is easier to show this is really that you
+ get the idea that there is a correlation between all the edges that we have on an
+ image and the representation of the slope and the interception where we have our
+ peak which is clearly actually showing us where the position is sadly this is not
+ really a good example to like visualize this but there are really practical
+ examples further on okay I mean well was that clear okay but I had a question
+ here can someone come up with a reason why this cannot work always
+ well we're well we are doing right now adjusting it to a line that part is good
+ but I want the more obvious one we are having lines in what case the line
+ doesn't work yes yes so we will come to this to the curved part but can someone
+ see in this case how it could not work yes no that works yeah
+ exactly and some other where you're going to say the same thing exactly yeah
+ that then doesn't work because it's not an edge anyone else has an idea well
+ basically when the line is vertical the slope is infinite so this would not
+ really work so to do that we have to pass it to actually angles so what we are
+ doing is we're having our line which we had before with is our edge and what we're
+ doing is we are finding the point which is the closest to the region and we
+ define theta angle and draw and we can write this equation so instead of having
+ a line we will have this equation for me that's why I added this it was easier to
+ understand how this equation comes from if you think about the two corner cases
+ which is when y is equal to zero and x is equal to zero I hope that makes it more
+ logic but to showcase how this looks of course since you're working with now
+ casines and scenes we have our edge pixel which is this one which is far away
+ from the origin and we're having a senoidal wave well if the edge is
+ actually on the axis y we're having it cross the origin this is how this looks
+ which now come the examples now it makes it easier to understand so first of all
+ one of you said what happens when you're having points and we're having one which
+ is not crossing so we're having here four which are actually forming a line and
+ this one is not doing anything like it's not crossing at all so represented in the
+ in the intercept in the row and cita you can see here the curve representation of
+ the curves so these four points are these four so you can see they're all
+ intercepting because they form a line so this is our peak while this fourth line
+ you can see it has some correspondence with the other lines but it is really not
+ like we cannot find a point where all five intercept so represented in 3d
+ format you can see here this is the highest point this is our our peak and
+ this four are every time the outlayer is actually crossing with one of the lines
+ but you can see that it is less important than this one
+ let's try another example this is actually a dense line which in the end is
+ formed by a lot of points so I'm not sure if you can see even the red lines but
+ this is really formed with a lot of synodal curves so these all are coming
+ together to this one point which is our edge pixel because all of them are on
+ one line so we're having something like this in 3d which all go together
+ to our one peak point
+ does this make sense yes yeah
+ it's not really that it is inconclusive what we would know is then that these
+ four are actually an edge while these four is not really part of it so it's
+ just that this one is weak while these ones are strong so the these ones are
+ also forming in the end interceptions but as you can see they are not strong
+ enough okay so to show you an example of we are having here of course this is a
+ dense line so that's why this one has sadly not really too visible but you
+ have a lot of lines that are coming together on this one point that's why
+ this actually this peak is really high well if we do this which is actually a
+ dotted line so it's less dense than before we having less points that are
+ all on the same line not visible but here we have now actually less curves and
+ if you have noticed on the axis this peak is of course clearly the one where all
+ the lines intercept but at the same time it's less high than this one it's
+ basically because this one is crossed by much more points than this one okay so
+ now to apply this of course you're seeing this all with points with kind of
+ lines but in our idea what we want to do is we want to know edges right so here
+ you're having a map of the building so what we first do because of course this
+ is color this is kind of to showcase how the map looks we do an edge detection
+ with Pruitt which gives us this and what we want to do is we want to find
+ actually the the edges in the images so we represent Aurora and Arthita and we're
+ having all these curves and it's exactly what you were actually pointing you can
+ see this has of course a lot of lines so each of these points which is a peak
+ corresponds to one of those lines does anyone want to try to guess what line is
+ this point you mean this one yes it is so why well we're having a raw and
+ Arthita representation so we are actually going down we take our angle we divide
+ the image in x and y we're having our angle represented and since we know that
+ the angle and bra are actually orthogonal to each other we know the value it is
+ which is -110 we draw the line and that line is actually corresponding to this
+ first line where the second point is corresponding to this one and now you
+ can actually see in this one they are actually not clearly defined here are
+ some that are clearly defined would are probably the big ones that you can see
+ in the upper part of the image but all these ones are all the small ones so of
+ course compared with the huge ones in the image they are much weaker than all
+ the others okay is that clear okay then I would maybe do the break now because the
+ next comes the circles which you all wanted to hear about so I would do the
+ break now and then basically explain to you the rest after hello together can
+ you hear me I would like to introduce eth juniors to you to give a rough overview
+ what we actually do first of all what's our mission so we are doing knowledge
+ transfer between the academia and the industry by doing projects so with this
+ we actually achieved a quite extensive network over the past 27 years since our
+ foundation and that's something where you can also profit from so what's in for
+ you yeah we have really nice projects to do where you can apply the algorithms
+ the things you actually learn here and in the programming exercises so you can
+ tackle real-world challenges and have a huge impact and then you also profit from
+ the extensive network so you get in contact with potential companies you
+ could work for and additionally on top of that we have very competitive salary
+ because our projects or the companies actually benefit from our projects and
+ in the end we have also flexible working for once locations but also part-time
+ jobs which you can do besides your studies or in the masters or at the end
+ of the bachelors and I think these are the main usp's from our side and with the
+ next video I think it's the best way to give you a good yeah image of ETH juniors
+ hopefully the sound is good
+ let me tell you something about uni the professors really do everything began
+ way back I just started out as a student and the semester was still fresh like a
+ blank sheet of paper and just then something crossed my mind it was a
+ simple thought that threatened to spoil the delicate ideal that studying is
+ it dawned on me that the day would come when I would finally have that beautiful
+ piece of paper on my bedroom wall and I would ask myself what now
+ sure I thought the parents at home will be proud and sigh with relief but was
+ that the reason I was doing this for of course not
+ and it was that very night where the bar was busier than usual and like so often
+ before I was fixing up drinks for people that wouldn't know the difference
+ between a cosmopolitan and the sazerac
+ and it was right there where I finally found an opening in the world and
+ naturally I was provided with a little help and suddenly everything started
+ moving really fast I only realized it once I was already in the midst of it
+ like a door that I didn't even know existed before sprung wide open and
+ once I stepped through that door I found myself in open waters
+ and it felt like I was finally invited to something
+ the multitude of what like before me became clear and clear
+ and finally the rooms at no walls in the water
+ and this is it it's just all from my place
+ so what about you do you want to just wait it out or go and find out for
+ yourself
+ as promised I'm gonna let you in on a little secret
+ I hope you enjoyed
+ we actually spent quite a lot of time into this video and now we have those
+ two QR codes where you can register you would also participate on a game to win
+ Digitech Aloxos vouchers if you participate and yeah happy to contact
+ you sometime for a project or even for getting into the ETH juniors team I'm
+ curious how many of you are doing this to get a piece of paper in the end and
+ very night bartender ring
+ okay so let's continue so as you were already thrilled before about let's talk
+ about it's not curves I know you wanted curves but sadly it's circles
+ so how to apply this actually on a circle because in the end the curve is not an
+ edge we are currently focusing on straight ones that's why we're doing
+ lines and that where we are kind of trying to actually adjust them to lines
+ so let's apply actually the half transformation into a circle so the
+ difference to do this with the circle so first of all this just works with the
+ fixed radius ones and in this case we are representing the X and the Y axis and
+ the center of the circle so the coordinates of the center of the
+ circle so we are drawing our first edge pixel as we did before which in the
+ center of the circle is here for the first one you can see so we are drawing
+ our circles that are the only condition is that we are going through the edge
+ pixel so we're having here a bunch of circles and as you probably are already
+ guessing so before when we had a line we could actually adjust this to a line
+ well you can adjust this to a circle so well my god so what we can see here is
+ that when we have a circle of a fixed radius and the circle goes through an
+ edge pixel on the circle center we're actually able to have a circle which is
+ all the circle centers will form a circle on their own but where do we apply
+ this well we apply this for a case like this so which I haven't said how what
+ do we do when we have of course that circle we're doing exactly what we did
+ before so we are having our beam grid and we are getting all these pixels we are
+ doing the same bin voting as we did before with the lines and what we can
+ do with this is this is a blood image so in our case what we want to do is we
+ want to get the edges but we want to also get the circle like the center of
+ the circle which you can see here of course for these ones where are like
+ really perfect circles this works for the ones where we are not having an
+ entire like in a border it can be more difficult and especially for this ones
+ we're having actually two that are overlapping getting the the circle
+ calculated like this is a good way to actually have the information about the
+ centers okay so what is the problem with edges that you have now learned to love
+ over the last lectures well edges just work in one direction so this is the
+ main issue with an edge well then what do we do if we can't predict an edge well
+ we predict a corner because in the end what a corner what we want with a corner
+ it's its rotation invariant in its position so what we want desirable in
+ a corner detector is it's accurate in its location invariance to shift
+ rotations scale brightness and it's robust against noise and higher repeatability
+ so to set this in a more mathematical way we are writing down the sense of it
+ sensitivity which in this case it's exactly like we had before between the
+ image and the template just in this case what we're having is a patch of an image
+ and it's the difference squared of a slightly moved patch in the same image so
+ then we are defining the linear approximation of a delta x and delta y
+ small ones which is this which we then can define this huge equation which of
+ course we're taking out this my matrix just defining it by M you will see it
+ further more often appearing and this actually shows us that it's an ellipsis
+ so if we are representing this in a 3d space the form that we're normally
+ getting is an ellipsis so how does this look in reality looks like this so we're
+ having a sensitivity we're having here this is no edge this is no corner this
+ is anything so it's a homogeneous space so in 3d representation we have it like
+ this so this one has two small yeah two small eigenvalues then we have the edge
+ which is here a point it has this shape so it does one eigenvalue then we have a
+ corner which is probably this one supposed to be and it has two large
+ eigenvalues so this is how kind of what we are trying to do would look like
+ represented in the 3d space and this of course what we're trying to do as an
+ example we could try to maximize the eigenvalues of the magnitude so how do
+ we kind of define this kind of in space so we can draw this down in so to do
+ key point detection which is what we are aiming to do since the beginning of
+ this lecture is we often have the eigenvalues which are delta 1 and delta
+ 2 and these eigenvalues are also the normal matrix they are the structure of
+ the matrix so what we have is the matrix that we had defined before which is the
+ big M and what we are doing is we can define actually the spaces like this so
+ we have the both eigenvalues normally we're having our flat region which was
+ our sky and then we have all this region which is like corners which is when a
+ delta 1 and delta 2 are large values so the eigenvalues are really big and then
+ on the edges which are on the sides we have actually the eigenvalues one of
+ them is much larger than the other one so of course this is not constant and
+ it's can if you cannot apply this always so that's why we have the measure of
+ cornerness so the measure of cornerness is this amazing equation which he's most
+ important element is K what does K do to showcase this in a easy way so K moves
+ actually the borders between the different edges of flat region and
+ corners so you can see here this is a K of 0.2 applied in the in the cornerness
+ and you can see that the area of the corner is actually much smaller while the
+ area of the edges becomes much bigger while with the K of 0.05 the space of
+ the corner is much bigger than the space we have actually on the edges the only
+ one that stays more or less constant the flat area so how does this look in
+ reality because that's kind of what we are mostly interested we're having our
+ image we're having two viewpoints we are having different illuminations we're
+ but it's in the end there should be enough key points to actually find in
+ this image so first of all we apply the Harris cornerness so you can see the more
+ red the actually more stronger corners while the bluer the less importance we
+ are giving them we apply a threshold as we have been doing for the entire
+ lecture but you can already see here this image we are also having key points on
+ the reflection we had on the table which is not ideal so this image I was
+ thinking how to showcase this better to you but there is no way that you can see
+ this like there are just some points which are supposed to be the four
+ corners that we kind of filtered out but on the image you can actually see them
+ much better overlaid so all the red points are actually the key points that
+ we actually found in the image they are all looking fine except for this so you
+ can see that with our approximation that we're using right now we are super
+ sensitive to light changes to reflections and to basically other kind of
+ environmental changes that we are actually not interested in having so how
+ can we do better localization of this so what we can do is we can give more
+ importance to centred pixels by using the Gaussian weighting function which we
+ define as this so to do this we compute the super pixel localization by fitting
+ a parabola to the cornerness function so why basically we are having some issues
+ as you already pointed out before as an example the robustness of Harris of the
+ corner detector we of course want this to be as more robust as possible so we
+ introduced the Gaussian which already gives us more robustness we are invariant
+ to brightness offset so okay we fix that we're invariant to shift and rotation
+ that's great but we are not invariant of scaling if I zoom in on a corner it's an
+ edge while if I zoom out it's a corner so in this case we're actually with the
+ original the robustness of Paris we're still not invariant to scaling which
+ luckily in 2002 Schmidt actually came up with a improved way of doing this which
+ we are not seeing in this lecture so yeah I don't know if you saw it in the
+ video but actually one of the things that was shown in the Coliseum construction
+ was they're using sift features sift is nowadays so that what you are seeing a
+ structure from motion called so it's actually meant that you're using the
+ motion of the camera moving to actually reconstruct a 3d object which in this
+ case was the Coliseum so you can see this was the paper was written in 99 and
+ nowadays this is still a super trending topic in research so of course not the
+ original one but variations of it so what does sift actually do we're having
+ our image of a track we are getting features out of it which are these kind
+ of image patches that are kind of more significant we're having them here so
+ that you can see them and sift is capable to actually recover all these
+ features in this other image so of course this one he's not seeing it in the
+ image because well he's actually seeing it in the image but you just can't
+ recover that one well with all the others he's doing a good job so actually sift
+ is actually it recovers with position orientation and scale so now it's
+ actually like solving most of our problems so let's talk about all the
+ all the things about sift so first let's define the position so sift what it does
+ it's looking for the strong response of the difference of the Gaussian so we're
+ doing the two difference between two gaussians in this case and it only
+ considers the local maxima so that's for the position second for the scale how do
+ we solve this to scale so the scale phase as you can see is defined as applying
+ a Gaussian over and over again over an image so what we're doing with this then
+ is we're doing the difference of the Gaussian of the of the succeeding images
+ that we have calculated the Gaussian which you can see here and yeah next we
+ only consider local maxima of the column and rows and scale number of times we
+ did this process so to explain this let's say we're doing this on three
+ consecutive scales and basically we're detecting the middle which is this x so
+ basically the it must be larger than all the neighbors that are surrounding it so
+ larger than all of this this and this for this a pixel accuracy this is kind of
+ the rows that we're trying to why we're how we are filtering out for having the
+ scale so now with the orientation so we create a histogram which you can see
+ here so normally the highest point of the histogram will be the the assigned
+ canonical orientation so it's going to be the designed one what you're going to
+ use each key specifies the stable to decoordinate and in the end an orientation
+ map looks actually like something like this so each of these lines is kind of
+ pointing us an orientation that is kind of like found in the in the edges and
+ lines so this looks like this which is total cows we're having our original
+ image we are trying to find edges and corners so we first have here everything
+ that was detected so this is of course full of lines which is not ideal and
+ full of orientations in the second image what we are doing is we're already
+ applying a threshold to actually just take the ones with the minimum contrast
+ so we already filtered out you can see some here on the roof they are not
+ present anymore so we already got this down from 800 points to actually 729
+ and then the last step which is we are taking out the curvatures so all the
+ curves that you wanted before we are actually removing them applying a
+ threshold and in the end we get a filtered image with the most important
+ contrast and corners on this image so okay so let's continue with sift
+ descriptors so this is how a sift descriptor looks like is the threshold
+ image gradient or sampled over 16 by 16 in this case it's 12 by 12 I think no
+ it's 8 by 8 okay so it's 8 by 8 but yeah you have normally eight orientations by
+ four by four histogram array which is 128 dimensions which are normally going
+ to work with this is just an expample made smaller that's why your descriptor
+ is just two by two but this is normally how this kind of would look like with
+ the orientations that you would have the key point descriptors and this was the
+ first time this was actually used for it's actually to do panoramic stitching I
+ don't know if you have done this before I don't think so so what we do is in
+ this paper what they did is they have this huge amount of images you can see
+ that they are actually really random you have some that are of course from the
+ mountain but you have also some pictures here is a C-star or some people and what
+ they did in this paper which you have here listed they found key points that
+ were actually matching between the random images and try to find as many
+ images they could put together so this is actually what you are probably going
+ to see for their own I assume they were capable with this bunch of images to do
+ these two panoramas so you have all this one which basically they are matching
+ and kind of adjusting the different images with the key points they actually
+ were able to get out and this creates actually this really long panorama
+ nowadays cameras use another algorithm but I don't know if you had I don't know
+ how old you are so but there were the first digital cameras that you kind of
+ would have smaller they were actually doing when you were doing a panorama
+ image or even your iPhone I think it does something really similar to this
+ they're actually trying to find key points and they're actually matching
+ them together and that's why when you're actually moving it too much it
+ can't recover it and that's why in this case you can see normally what your
+ iPhone does of course it cuts it out so it looks beautiful but this would
+ actually be what you can see because none of us has a good enough hand to
+ actually hold the camera static so normally you would have this funny
+ artifacts which are basically related to that your hand is just not stable and
+ this kind of the the real application of this and well you have seen the video
+ so this is actually used like most of the things you have seen today are used and
+ just to give you some other information I'm still this is a paper from Jiri
+ Matas you have learned lines you have learned to apply this on circles but you
+ can see here in this paper they are actually capable of applying this
+ actually to other shapes and to actually recover key points and some other
+ like blobs they don't even need to be some kind of fixed geometrical figure so
+ actually key point matching is kind of an active field which people are actually
+ researching on if someone is interested you can actually look at at the paper and
+ yeah besides that next week you're learning with mark for your transformations
+ and hopefully Philip will have uploaded you until then the slides so that you
+ can look into them
+ [APPLAUSE]

@@ -1,0 +1,20 @@
+Using the following summaries of different parts of a lecture that together comprise the entire lecture, make a summary that lists the 3-5 main topics along with short key takeaways from those topics. Add subtopics with their own short key takeaways when reasonable.  For each topic: mention from which summary number the information was sourced.
+Finish your response with another section with in-depth summaries of 100-300 words for each of the main topics. Format your response in markdown following the convention:
+{
+# Summary
+
+## <Topic 1>
+### Sourced from Summary <x>
+- **<Sub-topic>**:
+   - ...
+
+- **...**:
+   -...
+
+# In-Depth Summaries
+
+## <Topic 1>
+...
+}
+
+Remember to replace anything between and including "<" and ">" with the actual topics and sub-topics.

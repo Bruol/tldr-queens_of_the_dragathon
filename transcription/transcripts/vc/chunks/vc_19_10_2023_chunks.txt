@@ -1,0 +1,64 @@
+Summary 1: 
+Today's lecture focuses on unitary transforms, pyramids, and wavelets. It begins by discussing the representation of photo collections as vectors in a high dimensional vector space. The lecture emphasizes the importance of subtracting the average to center the data around 0 and then performing closest rank k approximation using singular value decomposition. The lecture also discusses the need to suppress noise and reduce dimensionality in order to improve recognition accuracy. It then introduces the concept of eigenfaces and their use in decomposing face images. The lecture highlights the limitations of recognition algorithms, particularly in dealing with changes in lighting and irrelevant details. It introduces a principled method to address these limitations by fitting ellipses to distinguish between classes and minimize within-class variation. The lecture concludes with a discussion on solving the problem using a generalized eigenvector problem or the singular value decomposition.
+
+
+Summary 2: 
+The lecture transcript discusses the concept of inverting or dividing by a matrix by multiplying with its pseudo-inverse. It explains that this is similar to how filters are inverted. The lecturer emphasizes that the intuition behind this is to maximize a certain variation while ignoring as much as possible another variation.
+
+The lecturer provides an example of PCA (Principal Component Analysis) and how it can be used to project a two-dimensional space onto a one-dimensional space. They explain that while the variation in the chosen direction is the largest, it may not be the best for recognizing differences between classes. They introduce Fisher linear discriminant as a solution to find the direction that best represents the difference between classes.
+
+The transcript also mentions eigenfaces and Fisher faces, and how by properly considering the sources of variation, better results can be achieved. It further explains the concept of lighting and how it affects the appearance of surfaces. The expression for the amount of light reflected on the surface is discussed, and the importance of the cosine of the angle between the light direction and the surface normal is highlighted.
+
+Finally, the transcript briefly mentions that in certain situations, the light direction can be considered constant, while the surface normal is the changing factor.
+
+Overall, the lecture transcript provides an explanation of concepts related to matrix inversion, PCA, Fisher linear discriminant, and the effect of lighting on surface appearance.
+
+
+Summary 3: 
+The lecture transcript discusses the concept of vectors and the use of principal component analysis (PCA) in modeling and recognizing images. It explains that while the light vector remains constant, the normal vector of the face changes. The lecture also mentions the limitations of the linear model in capturing variations caused by factors like shadows. It then introduces Fisher faces as an alternative approach that performs better in certain scenarios, such as recognizing glasses. The lecture further delves into the challenges posed by nonlinear distributions and presents an example of using PCA to handle viewpoint changes in object recognition.
+
+
+Summary 4: 
+In this lecture transcript, the speaker discusses the concept of finding hidden patterns in images using a double loop system. They explain that certain viewpoints of an object can make it appear different, causing a double loop effect. The speaker also introduces the concept of compressing images using principal component analysis (PCA) and singular value decomposition (SVD). They explain that images can be represented using a basis similar to the Fourier transform, and show an image of a JPEG compressed image to demonstrate artifacts that can occur during compression. The speaker also discusses the contrast sensitivity curve and how our eyes are less sensitive to higher frequencies, which can be utilized in image compression. They suggest that both the low frequency content and the decreased sensitivity to high frequencies in natural images can be used to compress images effectively.
+
+
+Summary 5: 
+The lecture transcript discusses the use of the discrete cosine transform (DCT) in JPEG compression. The DCT is a transform that takes an 8 by 8 pixel block and decomposes it into a basis of 8 by 8 basis elements. It captures both low and high frequencies, with low frequencies being represented by cosine patterns and high frequencies being represented by black and white dot patterns. 
+
+In JPEG compression, each 8-byte block is separately transformed using the DCT and then a quantization matrix is applied to reduce the number of bits used to represent each coefficient. The quantization step divides the coefficients by certain values, resulting in a lossy compression that may not exactly invert the process and fully recover the original image. 
+
+The zigzag scan is used to encode the coefficients, starting from low frequencies and progressing to high frequencies. The DC component, which represents changes in brightness, is encoded separately and takes advantage of continuity between blocks. Huffman coding is then used for lossless compression of the remaining bits. 
+
+To decompress the image, the inverse quantization matrix is applied, the coefficients are multiplied with the basis images, and all patches are reassembled. This process is repeated for every 8 by 8 patch of the image. 
+
+The lecture also mentions that the DCT is used in JPEG because it is strictly real and allows for fast implementations in hardware.
+
+
+Summary 6: 
+In this lecture transcript, the speaker discusses the use of discrete cosine transform (DCT) in JPEG compression. They explain that DCT is used because it involves real numbers and allows for fast implementations, which is important for hardware used in multimedia devices. The speaker also mentions that using smaller block sizes in JPEG compression is faster and captures the correlation between neighboring pixels, while larger block sizes could provide better compression in smooth regions but would be more costly. 
+
+The transcript then briefly covers entropy coding, specifically Huffman codes, which are used to spend a number of bits proportional to the probabilities of different symbols. The speaker emphasizes that entropy encoding is a generic information-theoretic concept and that it plays a role in optimal encoding for images. They also mention that JPEG compression is a combination of lossy and lossless compression techniques. 
+
+Moving on, the speaker discusses scale spaces and how signals show up at different resolutions and frequencies. They explain the concept of representing images at different scales, using techniques like blurring with Gaussians, downsampling, and upsampling to capture information at different levels. Scaled representations can be useful for finding correspondences, refining with finer scales, edge tracking, and controlling the computational cost of matching features. The speaker provides an example of using scale representations in face detection with a neural network and a pyramid structure.
+
+Overall, the lecture transcript covers the use of DCT in JPEG compression, entropy coding, and the concept of scale spaces in image representation. The transcript is a mix of specific image encoding techniques and more general information-theoretic concepts.
+
+
+Summary 7: 
+In this lecture transcript, the speaker discusses the concept of building up a pyramid to detect faces of different sizes. They explain how by gradually reducing the resolution of an image through blurring and subsampling, a 20 by 20 detector can be applied at all resolutions. The speaker mentions that processing a full pyramid is only slightly more expensive than processing the original high-resolution image. 
+
+There are two types of pyramids mentioned - Gaussian pyramid and Laplacian pyramid. The Gaussian pyramid involves smoothing the image to reduce the high frequencies and then subsampling. The Laplacian pyramid is constructed by subtracting two consecutive layers of the Gaussian pyramid, capturing the difference between scales. The Laplacian pyramid is often referred to as the difference of Gaussian pyramid because it is easier and cheaper to compute.
+
+Wavelet transforms are also discussed as an approach to decompose the signal into low-pass and high-pass components. The speaker mentions the Hart transform as a simple example of a wavelet transform that is real, orthogonal, and localized according to different scales and transitions.
+
+Overall, the lecture covers the concept of pyramid-based detection for different sizes of faces, the construction of Gaussian and Laplacian pyramids, and the use of wavelet transforms.
+
+
+Summary 8: 
+The lecture discusses the concept of wavelets and their application in image compression. The speaker explains that wavelets are used to decompose an image into different frequency bands. The low frequency components represent global patterns, while the high frequency components represent localized details. The lecture also mentions the issue of aliasing when subsampling high frequency signals, but states that it is not a problem in wavelet decomposition. The speaker discusses the construction of wavelets in 1D and extends it to 2D for image processing. The lecture concludes by mentioning the use of wavelets in JPEG 2000 compression and the concept of perfect reconstruction using biorthogonal filters.
+
+
+Summary 9: 
+The lecture transcript discusses various aspects of image compression using wavelet transform, quantization, entropy coding, and decomposition. It mentions how the compression process involves transforming the grayscale image into a low-resolution version with high pass and low pass combinations, quantizing the data, and encoding it into a bit stream. The transcript also highlights the use of tiles to process large images more efficiently and showcases examples of image reconstruction using JPEG and JPEG 2000 compression methods. Additionally, it mentions future topics that will be covered, such as optical flow and video encoding.
+
+

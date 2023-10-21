@@ -1,0 +1,1145 @@
+ So, wir wollen jetzt noch weitermachen mit dem Thema, das wir gestern schon angefangen
+ hatten, nämlich einfache Java-Programme und eben Typen und Variable und Operationen,
+ die damit gemacht werden können.
+ Wir haben angefangen mit diesen Primitive-Types, diesen eingebauten oder Basestypen, hatten
+ gesehen, wie Deklarationen und Definitionen funktioniert.
+ Da ist eben irgend so ein Ausdruck auf der rechten Seite und wir hatten angefangen zu
+ diskutieren, was die Regeln für solche Ausdrücke sind.
+ Und wie Sie sich denken können, gibt es dafür eine EBNF-Beschreibung, die hatte ich Ihnen
+ auch gestern gezeigt, es sind keine Überraschungen, es sind so, wie Sie Ausdrücke aus der Mathematik
+ oder Schule gewohnt sind und eben Number ist das, was eben weder eine ganze Zahl oder
+ eine reale Zahl in zwei verschiedenen Formaten sein kann.
+ Es gibt noch mehr Formate, ja.
+ Das sind die Little Worlds, die im Text selbst auftretenden Symbole.
+ Und natürlich diese Beschreibung, die gibt uns nur die Sintags, die sagt uns nur, wie
+ ein Ausdruck geformt wird, aber sagt nicht, was die Bedeutung ist.
+ Und das heißt, wenn wir also irgendeine Operation haben mit einem Operator, mit zwei Integers
+ A und B, dann müssen wir wissen oder diskutieren, was ist das Ergebnis und da wir ja immer Typen
+ haben, was für einen Typ hat das Ergebnis.
+ Und da fangen wir eben mit den einfachen arithmetischen Operationen an und fangen mit INS an, weil
+ das ist für jeden Typ eventuell anders.
+ Also und jede Operation hat einen festgelegten Typ.
+ Ich hatte schon gesagt, wir haben die Regel hier, dass wenn wir zwei Operanten des selben
+ Typs irgendwie verknüpfen, dann ergibt das auch wieder ein Ergebnis in dem selben Typ.
+ Das gilt für die arithmetischen Operatoren, eben Plus-, Minus und so weiter.
+ Andere Operatoren lernen was später mal kennen, da geht das nicht.
+ Und die Frage, die dann in der Pause kam oder auch im Chat, was passiert denn, wenn wir
+ Typ A mit Typ B kombinieren?
+ Naja, das werden wir erstmal angucken, nachdem wir uns den ersten Teil angesehen haben.
+ Also, wenn ich zwei Integer zahlen, dividiere, dann ergibt das Ergebnis auch wieder eine
+ Integer.
+ Also 14 dividiert durch 4, ergibt 3, weil das ist die größte Integer, die wir da unterbringen
+ können.
+ Da haben Sie der Schule sicher mal gelernt, wie man sowas berechnet.
+ Und eben, wenn Sie hier 32 durch 5 ergibt 6 und so weiter.
+ Das gilt auch für die negativen Zahlen.
+ Minus 4 dividiert durch 3 ergibt eben minus 1.
+ So, und wenn Sie jetzt versuchen sollten, während der Ausführung so eine Operation durch
+ 0 zu dividieren, naja, das mag das System nicht.
+ Und dann gibt es eben eine exception, eine Fehlermeldung, die sagt, dass das eben nicht
+ akzeptiert ist.
+ Und dann gibt es auch einen schönen Operator, den Rest-Operator, der ja mit diesem Prozentzeichen
+ ausgedrückt wird.
+ Und der gibt eben den Rest.
+ Also 14 dividiert durch 4 ergibt 3, der Rest war 2, darum 14 Rest 4 ergibt 2, oder 218
+ Rest 5 ergibt 3.
+ Gleiche Berechnung, ja.
+ Der ist sehr praktisch, wenn Sie die letzte Ziffer brauchen von irgendeiner Zahl, Rest
+ 10.
+ Die letzten 4 Ziffern, Rest 10.000, ja, gibt Ihnen die letzten 4 Ziffern.
+ Und wenn Sie feststellen wollen, ob eine Zahl gerade oder ungrade ist, ja, wenn Sie eine
+ gerade Zahl haben, ergibt das den Rest 0.
+ So können Sie leicht feststellen, ob da eine gerade oder ungrade Zahl ist.
+ Und hier habe ich so ein paar Beispiele, picken sich eins von denen raus und überlegen Sie,
+ was die Antwort sein sollte.
+ Ich werde jetzt dafür nicht ein Klicker starten, das ist zu, kann nämlich auch da nicht gut
+ die Antwort entgegennehmen.
+ Also es ist ziemlich einfach, ja, also hier 10 dividiert durch 4 ergibt 2, dies hier ist
+ ein bisschen nachdenken, 11 Rest 0.
+ Was ist der Rest von 11 dividiert durch 0?
+ Naja, durch 0 dividieren dürfen wir doch nicht.
+ Also beschwert sich das System und sagt Laufzeitfehler, ja.
+ Arithmetic exception division by 0 division, ja, das ist also, so.
+ Das war also der erste Einsatz einstieg.
+ Jetzt gibt es aber natürlich Ausdrücke, die haben mehrere Operanden, ja.
+ Wir hätten zum Beispiel einen Ausdruck mit operanten x, y und z und da ist ein Operator
+ und der taucht zweimal auf, ja.
+ Naja, Sie haben ja mal Artikel gelernt, wenn Sie 7 plus 5 plus 3 haben, dann bedeutet das
+ eben, dass 7 plus 5 addiert werden und dann 3 dazu, ja.
+ Und 64 durch 8 durch 2 heißt eben, dass wir erst 64 durch 8 und dann durch 2 teilen
+ und eben nicht 64 dividieren durch die Quotienten von 8 und 2, ja.
+ So, jetzt also was entscheidet, wie wir so was machen.
+ Da gibt es den Ausdruck, den haben Sie sicher schon mal gehört, associativität, ja.
+ Jeder Operator hat eine Associativität und daraus können wir dann, das entscheidet
+ dann, welcher der Operanten zuerst verarbeitet wird, ja.
+ Also, wenn Sie hier einen Operanten y haben, ja, da gibt es zwei Möglichkeiten.
+ Die eine ist dieser Operator, das hier ist der Operator, ja, der ist linksassociativ
+ und das heißt, in dem Fall wird dieser Operant y zuerst mit dem linken Operanten verarbeitet, ja.
+ Oder der Operator ist rechtsassociativ.
+ In dem Fall würde eben halt der, dieses y zuerst mit dem zapp verarbeitet werden, ja.
+ Das ist der, also gibt links- und rechtsassociative Operatoren und je nachdem,
+ was wie der Operator definiert ist, wird dann entweder die eine oder die andere,
+ der andere Operant als erster genommen, ja.
+ Das ist die, ja.
+ Und das ist eben, müssen wir festlegen und das sagt die Grammat, die ebnf,
+ das regelt uns, sagt uns überhaupt nichts, ja.
+ Und die meisten Operatoren, die Sie bisher kennengelernt haben, die sind linksassociativ, ja.
+ Die haben Sie, das sind die, die Sie in der Mathematik bisher kennengelernt haben, vermute ich.
+ So, ja. Also die Addition, Multiplikation, ja.
+ Aber es gibt eben auch die rechtsassociativen und da werden wir heute noch ein Beispiel sehen, ja.
+ Und wenn Sie aus der Mathematik kommen, dann sagen Sie, operatoren sind doch associativ,
+ das heißt, es macht keinen Unterschied, wie wir die Klammern setzen, ja.
+ Das ist, ja, in der Mathematik geht das, in der Mathematik ist das Leben einfach, ja.
+ Da können Sie die Klammern setzen, wie Sie wollen, ja.
+ Das ist leider auf dem Computer nicht mehr so, ja.
+ Und wir werden später sehen, dass das einige Folgen für uns haben kann.
+ Aber eben die gewohnten arithmetischen Operatoren sind alle linksassociativ.
+ Aber das ist noch nicht alles.
+ Es gibt ja noch ein paar mehr Sachen, die wir uns durch den Kopf gehen lassen müssen,
+ wenn wir so einen Ausdruck uns angucken, der mehrere Operatoren hat.
+ Nämlich, es ist ja durchaus möglich, dass die Operatoren unterschiedlich sind, ja.
+ Sie wissen, wenn wir hier 2 plus 6 mal 5 sehen, dann wissen Sie, dass die Antwort 32 ist, ja.
+ Ja, wissen Sie, dass die Antwort eben, da gehen wir erst hin, machen wir das, das ist 30.
+ Und dann dazu plus 2 ergibt 32. Ja, wir gehen nicht anders hin.
+ Das ist halt das, was wir normalerweise machen, ja.
+ Also, wenn ein Ausdruck mehrere Operanten mit verschiedenen Operatoren hat,
+ also einem Y und einem Y wird verknüpft auf der einen Seite mit diesem Operator
+ und auf der anderen Seite mit diesem Operator, ja.
+ Da müssen wir jetzt festlegen, ob eben das Y erst mit diesem Operator verknüpft werden soll
+ oder ob es erst mit diesem Operator verknüpft werden soll, ja.
+ Wir können also erst mit dem einen oder mit dem anderen das verknüpfen, ja.
+ Und da entscheidet jetzt die Rangordnung der Operatoren, wer zuerst dran kommt, ja.
+ Also, die Rangordnung ist festgelegt für diese verschiedenen Operatoren
+ und der Operator, der die höhere Rangordnung hat, der wird als Erster rangenommen.
+ Das heißt, der hat als Erster eine Chance diesen Operant Y zu verarbeiten, ja.
+ Das haben Sie also auch schon mal gesehen, ja.
+ Also, wie normalerweise hat ihr die Multiplikation eine höhere Rangordnung als die Addition, ja.
+ Und daher, wenn wir das machen, wird also dieser Ausdruck zuerst ausgewertet
+ und dann erst im letzten Schritt wird dann die Addition ausgeführt, ja.
+ Das ist also, das müssen Sie sich immer genau gucken, was für Operanten haben wir,
+ was für Operatoren haben wir, was ist die Rangordnung der Operatoren
+ und dann können Sie dementsprechend da durchgehen, ja.
+ Also, hier haben wir das.
+ Sechs ist ein Literal, ja.
+ Wir fangen immer von links an, wenn wir uns sowas angucken wollen, ja.
+ Sechs ist ein Literal, danach kommt ein Plus, danach kommt noch ein Literal
+ und danach kommt eben ein Operator, einer als höheren Rang ist,
+ eines höheren Rang ist als die Plus.
+ Daher wird der zuerst genommen, die Division wird durchgeführt
+ und dann sieht man, da kommt ja noch ein Operator eines höheren Ranges,
+ nämlich das Multiplikationssymbol, also wird das durchgeführt, ja.
+ Und dann, nachdem das durchgeführt wurde, kann am Ende die Addition gemacht werden, ja.
+ Also, ein Operant wird vom Operator mit höheren Rang zuerst verwendet,
+ haben zwei Operatoren den selben Rang, entscheidet die Assoziativität
+ und wenn zwei Operatoren den selben Rang und die selbe Assoziativität haben, ja,
+ dann werden die Ausdrücke von links nach rechts ausgewertet.
+ Und wenn Ihnen das nicht gefällt, dann setzen Sie Klammern, ja.
+ Dafür sind Klammern da, ja.
+ Denen können wir dann eben das ändern, ja.
+ Und das entscheidet, also eben 1+4*4 ergibt 16, ja.
+ Und da hilft also, das ist eine fürchterliche Schreibweise,
+ wenn Sie so was schreiben, 1+4 zwischen Raum, Multiplikationssymbol, 4-2,
+ wird trotzdem zuerst das ausgeführt, die Leerzeichen spielen alle keine Rolle, ja.
+ Das ist schlimm, wenn wir so was legen Sie sich oder die nächste Leserin bös rein, ja,
+ ist also nicht gut, ja.
+ Also wenn Sie so was haben hier, ja, jetzt mit Klammern, ja,
+ dann wird eben erst, die erste Ausdruck wird ausgewertet, jetzt kommt das Plus,
+ es sieht danach kommt eine Klammer, das kommt dann auf jeden Fall zuerst, als erstes ran.
+ Natürlich wird dann erst mal dieser Ausdruck ausgewertet, weil da ist der Operator, dann dieser,
+ dann wird das Plus gemacht, dann sieht man, dass dieser Operator einen höheren Rang hat, als das Plus,
+ also wird hier die Multiplikation ausgeführt und dann erst zum Schluss die Edition.
+ Also es ist ganz, es haben Sie schon x-mal gesehen und so weiter.
+ Und das ist nur heute Morgen, damit Sie einen leichten Einstieg haben und nicht zu sehr geschockt sind, ja.
+ Also, ja, so, okay, können Sie sich jetzt durch den Kopf gehen lassen, was bei diesen Ausdrücken alles rauskommt.
+ Denken Sie mal eine Sekunde nach, ein paar sind vielleicht ein bisschen interessanter,
+ oder die hier unten, ja, da oben 9 durch 5, das ist vielleicht zu einfach, ja.
+ Was ergibt das, ja.
+ Ja, gucken wir uns das an, 9 durch 5 klar, 1, ja.
+ 695, Rest 20 ist 15, ja.
+ Wenn ich hier das habe, 6 plus 18, Rest, klar mal auf, 17 minus 12, na ja, wird das erst ausgerechnet, ja.
+ Dann der Rest davon ist 3 plus 6 ergibt 9, ja.
+ Also keine große Überraschung.
+ So, jetzt gibt es aber nicht nur Ins, sondern auch die Doubles, die Reellenzahlen, ja.
+ Und die können Sie so schreiben, ja, eben mit einer Zahl, mit einem Punkt oder eben auch in diesem Format, ja.
+ Das Interessante ist, dass wenn ein Punkt da ist, dann ist das eine reelle Zahl, Punkt, ja.
+ Also 42.0 könnte man auch als Integer darstellen, ja, könnte man, aber das ist, wenn der Punkt da ist, eine reelle Zahl.
+ Und das ist wichtig, weil, wenn wir später sehen, wie Operatausdrücke, Werte oder Variablen unterschiedlichen Types kombinieren,
+ dann müssen wir uns überlegen, ist das jetzt eine Int oder ist das eine Double oder noch etwas ganz, ganz anders, ja.
+ So, und natürlich sind diese Ihnen bekannten Operatoren, wie für Additionen und Subtaktionen und so weiter, auch für die Doubles definiert, ja.
+ Und jetzt eben, wenn wir das, die Division machen, dann berechnet die das genaue Resultat, genau so weit, so genau, wie wir das halt hier in diesem, auf dem Computer darstellen können.
+ Also 15.0 dividiert durch 2.0 ergibt eben 7.5.
+ Und die Rangordnung ist in unserer Welt im Allgemeinen dieselbe, ja.
+ Erst die Klammern und dann eben halt Multiplikationen, Division und Rest, bevor wir Additionen und Subtaktionen rangehen, ja.
+ So, also mit reellen Zahlen sieht das genauso aus wie vorher, ja.
+ Wir gehen da durch, wir gucken, aha, hier hoher Rang, höherer Rang als das, also und eke von links nach rechts, wird also ausgeführt, haben wir hier einen Plus,
+ jetzt haben wir hier danach einen Operator eines höheren Ranges, wird ausgeführt, wird ausgeführt und da sind wir fertig.
+ So, also, damit haben wir jetzt Int und Doubles behandelt, also die Welt, wenn wir eben denselben Operator haben, die haben wir jetzt erledigt.
+ Aber jetzt wollen Sie auch wissen, was passiert, wenn wir unterschiedliche Typen haben.
+ Und eben, wir nehmen immer mal an, dass das Ergebnis, das wir haben bekommen, dargestellt werden kann.
+ Dass das also in dem endlichen Wertbereich, den jeder Typ unterstützt, dargestellt werden kann.
+ Das Probleme, die sich aus der Endlichkeit ergeben, die werden wir erst später im Laufe des Semesters uns angucken, ja.
+ So, aber jetzt hatten Sie auch eben die Frage aufgebracht, was passiert, wenn wir jetzt unterschiedliche Typen haben.
+ Also wenn wir Operanten oder Literals, Art eben kombinieren und die Typen sind unterschiedlich.
+ Und da gibt es eben die erste Regel und die erste Regel ist, dass wenn wir Int oder Long mit einem Double kombinieren, ja,
+ dann ist das Ergebnis Double, ja.
+ Das ist einfach die Regel, die man erstellt hat.
+ Aus dem Gedanken heraus, dass die Doubles den größeren Zahlenbereich abdecken und man daher das Ergebnis als Double haben möchte, ja.
+ Also 4.2 mal 3 ergibt eben 12.6 oder 4.5 mal 2 ergibt 9.0, ja, 9.0.
+ 2 ist zwar eine Integer, die wird eben verwendet, die wird umgewandelt in eine Double und dann wird das Ergebnis berechnet.
+ Und das Ergebnis ist auch wieder eine Double, ja.
+ Obwohl sich der Wert als Integer darstellen ließe, ist das eine Double, ja.
+ Also diese Umwandlung oder Conversion von einem Typ zum anderen, die funktioniert automatisch, implizit, ja.
+ Also jeder Operant wird angeguckt, der Operator wird angeguckt, der andere Operant wird angeguckt.
+ Und wenn jetzt einer von den Operanten eine Int sein sollte und der andere ist Double,
+ dann wird der Int operant einfach konvertiert, ja.
+ Das wird passiert automatisch, da können wir nichts mitmachen, ja.
+ Aber zur selben Zeit, die Regeln für Rangordnung und Assoziativität gelten weiterhin, ja.
+ Also hier habe ich 7 dividiert durch 3 mal 1.2 plus 3 dividiert durch 2.
+ So, gucken Sie, überlegen Sie mal kurz im Kopf, was das Ergebnis denn vielleicht sein sollte, ja, das ist nicht so schwer, ja.
+ Welcher Reihenfolge wird das abgearbeitet?
+ Also wir fangen an von links nach rechts, ja.
+ 7 dividiert durch 3 ist, beide Operanten sind Integer, es gelten die Regeln der Integer-Division, also ist das Ergebnis 2, ja.
+ Multipliziert mit 1.2, produziert eine neue Reellezahl 2.4.
+ Jetzt kommt ein Plus, danach kommt 3 dividiert durch 2.
+ Die Division hat einen höheren Rang, also wird die Division von 3 durch 2 durchgeführt.
+ Beide Operanten sind zuvergauerweise Integers, 3 dividiert durch 2 als Int ist 1, ja.
+ Und daher ergibt das Ergebnis hier 2.4 plus 1 3.4, ja.
+ Also deswegen ist wichtig, dass Sie immer genau wissen, was für ein Typ was ist da los, ja.
+ Also das können Sie hier nochmal sehen, ja.
+ Entscheidend ist immer auch in so einem Ausdruck hier, ja, von links nach rechts, ja.
+ 10 dividiert durch 3 ist 3, danach erst wird die Multiplication gemacht, dann wird das eine Reellezahl.
+ Hier hinten 6 durch 4 ist immer noch 2 Integer-Operanten und daher ist das das richtige Ergebnis, ja.
+ So, ich habe ein paar Beispiele so gegeben, dass Sie die am Kopf selber durchrechnen können, wenn Sie wollen, ja.
+ Um zu sehen, was das ist.
+ Was ergibt hier dieser hier, der ist vielleicht noch interessant, 9 dividiert durch 2 dividiert durch 3 plus 7.
+ Was ergibt das?
+ Was ergibt 2 dividiert durch 3?
+ Integer, 0, genau, ja.
+ Und was ergibt dann 9 dividiert durch 0?
+ Genau, ein Fehler, ein Laufzeitfehler, ja.
+ Das bislang mag das nicht und es gibt ein Laufzeitfehler, ja.
+ Also das ist halt, deswegen, wie gesagt, wenn das Reellezahlen gewesen wären, dann wäre das anders, ja.
+ So, also, das hatte ich gesagt, diese Konvertierung, die funktioniert implizit, ja.
+ Also implizit, eben der Operant, ein Operant ist double, der andere nicht, also wird, der andere ist Intel, wird konvertiert.
+ Aber es gibt auch die Möglichkeit, dass Sie eine Konvertierung oder Umwandlung erzwingen.
+ Und das heißt, das Programm enthält eine Anweisung, dass eine Konversion stattfinden soll.
+ Und sowas nennt man einen TypeCaster, das ist also eine Umwandlung von einem Typ in einem anderen, ja.
+ Und das könnten Sie mal wegen machen, weil Sie haben da zwei Int-Werte und Sie wollen eigentlich das Ergebnis als Reellezahl haben, ja.
+ Dann würden Sie konvertieren.
+ Oder Sie haben einen Double-Wert und Sie wollen den doch in einen Int-Wert umwandeln, ja.
+ Und in so einem Fall konvertieren Sie den und das passiert durch Abschneiden, ja.
+ Nicht Rundung, der wird einfach trankiert.
+ Der Reelletal, der Teil kleiner als eins wird einfach auf den Tisch fallen, oder unter Tisch fallen gelassen und ist einfach weg, ja.
+ So, jetzt muss man einfach, ja.
+ So, jetzt also, wie drücke ich so eine erzwungene Typ-Umwandlung aus, indem ich den gewünschten Typ in Klammern vor den Ausdrucks setze, ja.
+ Also, zum Beispiel, wenn ich diese 19 in eine Double-Umwandlung wollte, dann würde ich hier schreiben, Klammer auf, Double 19.
+ Das hat zur Folge, dass das jetzt in 19,0 umgewandelt wird.
+ Und jetzt gilt wieder, die Regel ist ein operant Double, wird der andere konvertiert.
+ Also hätte ich dann hier 19.0 durch 5 und das ergäbe dann 3,8, ja.
+ Und wenn ich jetzt dieses Ergebnis, das ich hier habe, in einer Int-Umwandlung zurückwandeln will,
+ dann würde ich hier den Int-Operator, die Int-Type-Konversation anwenden, ja.
+ Und er würde halt diese 3,8 nehmen und den Teil wegschneiden und in der Tat hätten wir dann hier die drei, ja.
+ So, also, das so drücke ich das aus, ja.
+ Und das heißt, Sie als Programmiererin oder Programmierer übernehmen die Verantwortung, dass das Sinn macht, ja.
+ Also, dass hier zum Beispiel das Ergebnis als Int dargestellt werden kann.
+ Wenn das nicht dargestellt werden kann, ja, der Computer macht das, was Sie sagen, ja.
+ Dann haben Sie das Problem nicht der Computer, ja.
+ Und diese Konvertierung ist auch ein Operator, ja.
+ Das ist der allgemein ausgesprochen, der Cast-Operator.
+ Und der hat einen höheren Rang als arithmetische Operationen, ja.
+ Deswegen haben wir hier ja auch gesehen, dass sich das eben nicht, wenn wir das erst 19.0 durch 5 gemacht hätten, ja.
+ Das wäre ja 3 gewesen, ja.
+ Und wir dann erst konvertiert haben.
+ Nein, dieser Operator bezieht sich auf den Operanten, der direkt neben ihm steht.
+ Und zwar direkt rechts neben ihm steht.
+ Und dieser Operator ist also rechtsassoziativ.
+ Der wandelt nur den Operanten direkt rechts neben sich um.
+ Und der Rest ist davon nicht betroffen.
+ Dann gelten natürlich die anderen Regeln, wenn ich einen einmal umgewandelt habe, könnte das implizite Umwandlung nach sich zielen, ja.
+ Aber das hängt davon ab, was für eine Berechnung ich machen will.
+ Und diese Cast-Operatoren sind für alle Typen verfügbar.
+ Also nicht nur für ihn Double und Long, auch alle anderen, die wir später mal kennenlernen werden, wo es Sinn macht, sind die verfügbar, ja.
+ Also, weil der so eine hohe Präzedenz hat, ja, hat also manchmal gibt es da Überraschungen, ja.
+ Ich habe hier Double, die 1 konvertiere ich zu Double und addiere 1 durch 2.
+ Und das Ergebnis ist 1,0.
+ Warum? Das hier wird davon dem Cast-Operator nicht betroffen.
+ 1 durch 2 als Integer ergibt 0.
+ Ich habe hier die 1,0 plus 0.
+ Die 0 wird in 0.0 umgewandelt, aber ergibt immer nur noch 1,0, ja.
+ Ohin gegen 1 plus Double, 1 dividiert durch 2.
+ Das hat zur Folge, dass das 1,0 ist.
+ Jetzt wird das durch 2 dividiert.
+ Die 2 wird in 2.0 umgewandelt, ergibt also als Ergebnis 0,5.
+ Und das mit 1 dazu ergibt eben die 1,5.
+ Also, es spielt eine große Rolle, was sie konvertieren und wo sie konvertieren.
+ Und wenn eben ist nicht gefällt, dass dieser Cast-Operator nur den direkt daneben stehenden Operanten betrifft,
+ dann können sie natürlich Klammern setzen, ja.
+ Die Klammer hat wieder eine höhere Rahmenordnung.
+ Die wird zuerst ausgewertet.
+ Also, hier in diesem Beispiel hätten wir eben als 1, 2 plus 1 plus 1 ergibt 4.
+ Das würde konvertiert zu 4,0.
+ Dann durch 3 dividiert ergibt die gewünschte, oder Ergebnis 1,3, ja.
+ Also, das sind die Regeln hier für Java.
+ Das ist die Java-Sicht der Welt.
+ Nicht alle Programmiersprache machen das so.
+ Gibt Programmiersprachen, die haben andere Vorstellungen.
+ Das kann manchmal überraschend sein.
+ Deswegen ist es wichtig, dass sie überlegen, was ist die Rahmenordnung, was sind die Typen.
+ Andere Programmiersprachen machen das anders.
+ Vielleicht haben sie das schon mal selbst erfahren.
+ Microsoft Excel hat da andere Vorstellungen.
+ Wenn Sie hier minus 2 hoch 2, das ist hier hoch, also 2 hoch 2 sehen, ja.
+ Dann würde eine Mathematikerin minus 4 erwarten, ja.
+ Weil in der Welt würde man erst die Exponentierung machen und dann eben das minus ransehen.
+ Aber wenn Sie es in Excel machen, Überraschung, ja, das ist 4.
+ Warum? Weil Excel hat die Auffassung, dass das hier, dass eben das minus sich nur auf die 2 bezieht.
+ Und das dann hoch 2 gerechnet wird.
+ Und das ist dann natürlich 4, ja.
+ Also, das ist halt etwas verwirrend, weil wenn Sie dann sowas sehen, 0 minus 2 hoch 2, ja.
+ Das ergibt dann eben doch minus 4, ja.
+ Also, so könnte man das dann erreichen, wenn man die minus 4 haben wollte.
+ Und das ist eben ein Feature oder eine Eigenhade.
+ Früher wurde das auch diskutiert, gab auf einer Microsoft-Seite eine Diskussion dieses Crocs oder dieses Design Features, ja.
+ Aber dann haben Sie die Seite weggenommen, die wollen Sie halt nicht mehr den Leuten zeigen, ja.
+ Also, Sie müssen das berücksichtigen, ja.
+ Wenn Sie in die Dokumentation reingehen, dann sehen Sie in der Tat, dass in der Excel-Regel die Exponentierung eine tieferen Ordnung hat als die Negation, ja.
+ Und deswegen das so ist, ja.
+ Also, passen Sie auf und was für eine Programmiersprache Sie arbeiten.
+ Hoffen Sie, dass alle Compiler-Schreiber sich geeinigt haben, was die Rangordnung und so weiter ist und damit eben alles gut ist, ja.
+ So, also, jetzt haben wir die Basistypen also mal angeschaut, ja, und haben einiges da gesehen, Operationen und auch ganz einfache Variable.
+ Und dann gibt es natürlich noch die Typen aus der Java Bibliothek.
+ Und natürlich gibt es auch hier Typen, die wir selber machen, aber das muss noch ein bisschen warten.
+ Jetzt für die Typen aus der Bibliothek haben wir gesehen, haben wir verschiedene Werte gesehen und wir haben gesehen, dass wir Operationen durch Methoden angeben können, wie dieses, wir nehmen das Objekt "Hello"
+ und dann machen wir die "Tor-Upper-Case-Operationen" drauf und das setzt das dann in Großbuchstaben rum.
+ Aber es gibt auch die Möglichkeit für einige Insulin, für den String, gibt es die Möglichkeit, Operationen mit Operatoren zu machen.
+ Das ist so ein Kompromiss, den die Java-Entwickler gemacht haben, dass die Sprache nicht zu umständlich wird, weil das sehr praktisch ist und das ist halt manchmal etwas überraschend.
+ Also, ich kann den Plus-Operator verwenden, um zwei Strings zu konkatenieren.
+ Es gibt auch eine besondere Operation, die ich verwenden könnte, aber wer will das immer schreiben, darum das Plus, ja.
+ Also, wenn ich hier den Plus-Operator für zwei Strings verwende, gibt es neun Strings.
+ Aber wenn ich hier drei Strings habe, bekomme ich auf diese Weise einen Strings, der diese Werte hat.
+ Und der zweite Punkt ist, dass jegliche Ausrügen in Java kann im Prinzip operanten, verschiedene Typen kombinieren.
+ Es gibt gewisse Regeln, was sie nicht machen können, aber mit den Ins und Longs und Doubles und Strings, die wir gesehen haben, können wir die kombinieren.
+ Aber eben natürlich gibt es Einschränkungen bezüglich der Operatoren, die wir da einsetzen können oder verwenden können.
+ So, und jetzt gibt es eine, finde ich, sehr gute Entscheidung, die die Java-Entwickler gemacht haben.
+ Die haben nämlich entschieden, dass es für jeden Wert eine Darstellung als String gibt, egal was für einen Wert, auch später, egal was für ein Typ.
+ Es gibt immer eine Stringdarstellung und zwar gibt es eine Default-Darstellung, die ist also vom System voreingestellt, die gibt es einfach.
+ Ob die jetzt immer sinnvoll ist, ist eine andere Frage, aber es gibt sie wenigstens.
+ Denn das ist sehr praktisch, damit können wir jeden Wert, egal was wir haben, mittels Print aus oder Print line, das wäre die andere, wäre die Version, wo wir noch ein bisschen noch einen Zeilenumschub bekämen, kann man das ausgeben.
+ Und das ist sehr praktisch, weil wir können auf diese Weise, wenn wir irgendwie sehen wollen, was in dem Programm los ist, uns die Werte angucken.
+ Wenn uns diese Default-Darstellung nicht gefällt, werden wir später sehen, wie wir die ändern können.
+ Die ist nicht fix, die ist aber am Anfang immer da.
+ Und in den meisten Fällen für die Typen, mit denen wir jetzt arbeiten, ist die Default-Darstellung das, was wir erwarten.
+ Wenn ich also einen Int-Literal, also Int-Konstante habe, ist die Default-Darstellung eben halt diese Konstante, wenn ich so eine Int-Variable habe, dann ist die Default-Darstellung der jetzige aktuelle Wert.
+ Das verdabelt es genauso.
+ Und natürlich für Strings auch, der ist die Default-Darstellung von "Hello" ist eben dieser String "Hello".
+ So, und jetzt eben habe ich gesagt, wir können diesen Plus-Operator verwenden, um einen String mit einem anderen Wert zu verknüpfen.
+ Und wenn der andere Wert ein String ist, ist alles Bestens.
+ Und wenn nicht, wird da halt ein String umgewandelt, sodass ich dann zwei Strings habe, die dann miteinander verknüpft werden können und einen vielleicht längeren String ergeben.
+ Also, wenn ich also "Hello" plus 42 habe, dann geht der hin, Strings plus Nicht-String, also in Strings konvertieren, wird in Strings konvertiert und dann wird das konkateniert.
+ Oder genauso wie ich eine Variable habe, "Hello", was ist der aktuelle Wert, sagen wir 99, wird in einen Strings konvertiert, 99, "Hello" plus 99 ist eben "Hello" 99.
+ Und das geht nur für den Plus-Operator, alle anderen Operatoren sind nicht erlaubt, gibt es nicht, nur für den Plus-Operator.
+ Aber auch das kann da schon zum Nachdenken, kann man das sagen.
+ Und wieder wird von links nach rechts gerechnet und gelesen, also 12 minus 3 plus 5 ergibt, wie Sie wahrscheinlich wissen, 14.
+ So, 2 plus 3 ergibt 5 plus "Hello", ergibt daher 5 "Hello".
+ "Hello" plus 2, ah, 2 in Strings konvertieren ergibt "Hello 2", "Hello 2 Strings plus 3", bitte auch in Strings konvertieren ergibt "Hello 2 3".
+ So, und natürlich können wir in unseren Ausdrücken nicht nur Plus verwenden, sondern auch alle anderen Operatoren, wenn die Operanten ins oder doubles sind.
+ Wenn der Operat ein Strings wäre, könnten wir nicht den Multiplikations-Operator verwenden.
+ Aber wenn wir eben einen 2 in haben, können wir das machen.
+ Also hier, wir fangen an, von links nach rechts, "Hello" plus, okay, halt, hier ist ja ein Operator eines höheren Ranges.
+ Also machen wir den zuerst 6, also 2 mal 3 ist 6, ergibt also "Hello 6", ja.
+ Also das können Sie da, ist da ein einfacher Weg das zu machen.
+ Ich habe noch ein Quiz für Sie, da lasse ich einfach die Slides für Sie, können Sie sich selber angucken.
+ Es ist wirklich nicht schwierig und vielleicht finden die meisten von Ihnen das auch langweilig, ich weiß es nicht.
+ So, also wir können also dieses Plus verwenden, um einen String und den Wert eines Ausdrucks auszugeben.
+ Und die Frage jetzt, die können Sie kurz durch den Kopf gehen lassen, warum brauchen wir jetzt hier die Klammern?
+ Hier habe ich, ich möchte ausgeben den Textnote und dann die arithmetisch gemittelte Note für diese Studierende.
+ Da gehe ich also hin, plus, jetzt wenn ich das keine Klammer hätte, dann würde das sofort die 4.8 in ein String konvertiert werden, aber die Klammer kommt zuerst und dann wird dieser Ausdruck hier zuerst ausgerechnet und dann ist die Sache in Ordnung, ja.
+ So, dann ist das in Ordnung.
+ So, damit habe ich also eben das erste gesagt, was ich über Typen und Operatoren mit Typen sagen möchte und wir machen jetzt bisschen weiter mit Variablen.
+ Da haben wir ja schon eben gesehen, wie man so eine Variable am Anfang deklariert, aber wollen ein bisschen mehr uns damit diesem Thema beschäftigen.
+ Und eine Variable ist eben ein Name, der es uns erlaubt, auf einen gespeicherten Wert zuzugreifen.
+ Kennen Sie vielleicht auch, ja, wir haben hier in den Büros diese Telefone, die 1.000 Franken kosten und trotzdem nicht das können, was es 50 Franken telefonen kann.
+ Aber die haben immerhin die Möglichkeit, Werte zu speichern.
+ Ich kann da also Nummern, die ich häufig anrufe, die kann ich da im Prinzip speichern, ja.
+ Und dieser Wert wird da eben gespeichert und so ist das im Computer auch.
+ Da muss eben halt irgendeine Speicherzelle sein, ja, die den Wert speichern.
+ Diese Wahlknöpfe werden genauso benutzt, wie wir Variable benutzen, ja, die werden irgendwann eingerichtet.
+ Jetzt für diese Knöpfe funktioniert es in der Fabrik.
+ Die werden irgendwann konfiguriert, also sagen, welche Nummer das ist, ja.
+ Und am Ende, wenn ich einmal konfiguriert habe, kann ich diesen Knopf verwenden, um eine Schnellwahl zu machen.
+ Und genauso geht es mit den Variablen im Programm.
+ Wir müssen sie deklarieren, ja, und wir müssen sie dann initialisieren.
+ Und wir haben gesehen, das können wir auch manchmal zusammen machen.
+ Und danach können wir die Variable gebrauchen.
+ Also erscheint irgendwo im Text und dann wird die eben halt der Wert verwendet, den die diese Variable in dem Moment hat, ja.
+ Also die Deklaration einer Variablen, die reserviert den Speicher für die Werte, ja.
+ Und in Java, das ist eine Java-Regel, es gibt andere Programmiersprachen, die machen das nicht.
+ Die Variable muss deklariert sein, bevor sie verwendet werden kann, ja.
+ Und alles, was ich jetzt erzähle, gilt fürs Erste in einer Methode, ja.
+ Wir haben noch keine Variablen gesehen, die wir außerhalb von Methoden deklarieren.
+ Alles passiert innerhalb einer Methode.
+ Und ich hatte ihnen gezeigt, diese Sündtags-Eben, wir geben den Typ und den Namen an, ja.
+ Und wir können dann später diese Variable einen Wert zuweisen und dann ist das okay.
+ Oder wir können eben halt, also die Variable muss deklariert sein, ja.
+ Und dann können wir sie, nachdem sie einmal deklariert wurde, können wir sie auch in der Zuweisung benutzen
+ und können der Variable irgendeinen Wert zuweisen.
+ Und so eine Zuweisung muss passiert sein, bevor so eine Variable als operant verwendet werden kann, ja.
+ Wenn wir die Variable verwenden wollen und es wurde kein Wert zugeweisen, dann beschwert sich das System.
+ Und darum ist diese Deklaration mit Initialisierung oder Deklaration mit Definition so praktisch,
+ weil die eben halt das sofort macht.
+ Wenn wir das nicht machen wollen, können wir später eine Zuweisung machen, wie da oben gezeigt.
+ Und dann hat die Variable einen Wert und dann kann man damit arbeiten.
+ Und wenn wir vergessen sollten, den Wert, irgendeinen Wert zuzuweisen, beschwert sich das System, ja.
+ Der Compiler oder das Laufzeitssystem merkt das und sagt, diese Variable hier hat keinen Wert, ja.
+ Und daher dürfen wir sie nicht verwenden.
+ Und natürlich, sie dürfen Variable nicht doppelt deklarieren und auch egal, wie sie das machen,
+ dürfen auch keine Doppeldeklaration mit unterschiedlichen Typen machen.
+ Wenn sie einmal sagen, X ist ein Int, dann bleibt das so in einem Java-Programm, in einer Java-Methode.
+ Und das können wir nicht irgendwie ändern.
+ So, okay. Also, so eine Zuweisung geht dann eben hin, nimmt einen Wert.
+ Der Wert wird bestimmt durch den Ausdruck auf der rechten Seite, ja.
+ Der Ausdruck wird evaluiert.
+ Und dann wird dieser Wert in der Variable gespeichert, ja.
+ Dann wird der Variable gespeichert und danach hat das eben dann den entsprechenden Wert.
+ Also, wenn ich hier die Variable X habe, der weiß ich den Wert 3 zu, dann erscheint da der Wert 3.
+ Und wenn ich dann eine Doppel hätte, ja, und da würde ich dann das als Note speichern,
+ dann würde eben der Speicherplatz wird geschaffen.
+ Und dann wird ein Verzeichnis, dass wir wissen, wo diese Variable ist und der entsprechende Wert wird da gespeichert.
+ So, jetzt, die erste Sache ist, wiederholte Zuweisungen sind erlaubt.
+ Also, wir können eben hier ohne weiteres diese Variable X deklarieren,
+ mit 3 Initialisieren ausgeben und dann einen neuen Wert zuweisen.
+ Wenn das geht, dann wird dann entsprechend geändert.
+ Dann ist dann da immer der aktuelle neueste Wert in dieser Variable gespeichert.
+ Und ja, das ist so eine, das haben Sie sicher auch, oder haben Sie eventuell schon mal in einer anderen Programmiersprache gesehen, ja.
+ In Java verwenden wir dieses Zeichen, das im deutschen Gleichheitszeichen heißt, ja,
+ als Operator, um eine Zuweisung auszudrücken, ja.
+ Korrekt, da müsste man sagen, das ist der Assignment-Operator, ja.
+ Und wenn Sie das wissen, dass ein Assignment-Operator ist, dann können Sie auch Ausdrücke, wie A, wird gesetzt zu B, zu C, können Sie auch verstehen, ja.
+ Müssen Sie das nur wissen, ist der Rechts-Assoziativ oder Links-Assoziativ, ja, um zu wissen, in welcher Reihenfolge das ausgeführt wird.
+ Und natürlich haben wir eben eine Beschreibung dafür, ja.
+ Und das, was für die Expressions hatten wir, das Sie da schon gesehen.
+ Das ist also das, was wir immer da schon hatten.
+ So, jetzt also ein wichtiger Punkt, ja.
+ Dieses Zeichen heißt eben Zuweisung, ja.
+ Und das ist keine allgebrarische Gleichung, ja.
+ Das heißt eben, speichere den Wert der rechten Seite in der Variable auf der linken Seite, ja.
+ Und das heißt, dass dieser Ausdruck hier, der hier auf dieser Seite steht, ja, der wird zuerst ausgewertet, ja.
+ Der wird ausgewertet und dann wird der Wert in der Variable gespeichert, deren Namen hier erscheint, ja.
+ Es ist wichtig, dass wir hier erst rechts, ja, und dann hier zweitens rausfinden wohin.
+ Und drittens findet dann die Speicheroperation statt, ja.
+ Er findet die, lassen Sie mich das, ist nicht ganz korrekt, lassen Sie mir das lieber, das machen wir lieber zusammen, machen wir hier zusammen, ja.
+ Also, er findet erst raus, wo geht's hin, ja.
+ Und nachdem wir das gemacht haben, dann haben wir evaluiert und dann speichern wir den Wert in der Variable.
+ Und das heißt natürlich, dass sich auch denselbe Variable sowohl auf der rechten als auch auf der linken Seite haben kann, ja.
+ Ich habe hier die Variable x und in der nächsten Zeile habe ich eine Zuweisung, in der ich die Variable x den Wert nehme, um 2 erhöhe.
+ Und dann diesen neuen Wert hier in der Variable x ablege, ja.
+ Und wenn ich am Anfang also x den Wert 3 habe, was passiert dann, ja, dann x plus 2 ist 5.
+ Und daher wird er den neuen Wert 5 in dieser Variable gespeichert, ja.
+ Und weil das so eine wirklich wichtige Sache ist, habe ich dafür jetzt einen Klicker und den könnten Sie, könnten Sie Ihre Computer oder Smartphones rausnehmen.
+ Und ich hoffe, dass ich den jetzt zum Laufen bekomme.
+ So, der sollte jetzt hier für Sie sichtbar sein.
+ Also, hier ist ein Programmsegment, ja, ein einfaches Programmsegment mit 4 Statements.
+ Und Sie sollten entscheiden oder mir in dem Klicker angeben, welchen Wert denn diese Variable x hat,
+ nachdem alle Statements ausgeführt wurden.
+ Also, an diesem Punkt hier unten, welchen Wert hat die Variable x?
+ So, ist der gestartet? Sehen Sie es?
+ Okay. Halt, halt, halt, halt, halt.
+ Aber das ist nicht der Richtige.
+ Das ist nicht der Richtige.
+ Also, wissen Sie, das funktioniert heute für mich nicht.
+ Warum weiß ich auch nicht?
+ Ich kann das nicht starten.
+ Er weigert sich einfach, ich kann es nochmal versuchen, aber er weigert sich einfach, das zu starten.
+ Ich weiß nicht, warum.
+ Okay, dann können Sie ja, tut mir leid, für die im Oberfloraum, die können jetzt nicht abstimmen.
+ Okay, was für Werte bieten Sie sich denn an?
+ Wer meint, das hat den Wert 0?
+ Hat jemand dafür eine Meinung?
+ Den Wert 1.
+ Okay, den Wert 2.
+ Ja, okay. Wert 3.
+ Okay, also 1 ist die richtige Antwort.
+ Und warum ist das der Fall?
+ Gucken Sie sich das an.
+ Was passiert hier?
+ Nach jedem Statement, nach dem ersten Statement hat x den Wert 0 und y, wissen wir nicht.
+ Danach hat y den Wert 1 bekommen, x unverändert.
+ Danach ist eben x, auf den wir gesetzt worden, den y hatte und danach wurde y geändert.
+ Also deswegen ist die richtige Antwort für x 1.
+ Also beachten Sie, dieser Operator hat nichts mit Gleichheit zu tun.
+ Er sagt einfach nur, dass das der, die Zuweisung ist, die ausgeführt werden soll und dass da ein neuer Wert gesetzt werden soll.
+ Also damit haben wir zumindest einen ersten Blick auf Variable bekommen.
+ Und jetzt in der nächsten Nach der Pause möchte ich dann weitergehen.
+ Und da wollen wir gucken, ob wir nicht über die einfachen Programmsegmente, die wir bisher kennengelernt haben,
+ ob wir über die nicht Aussagen machen können.
+ Und da werde ich zwei verschiedene Arten des Aussagenmachens vorstellen, nämlich, dass wir vorwärts und rückwärts schließen.
+ Und das führt dann dazu, dass wir festhalten können, was für Bedingungen erfüllt sein müssen,
+ bevor wir eine Anweisung oder eine Folge von Anweisungen ausführen
+ und was für eine Bedingung vielleicht erfüllt ist, nachdem wir die ausgeführt haben.
+ Und das wird uns dann erlauben, eben Aussagen über ein Programmsegment zu machen und zu sagen, dieses Programmsegment hat diesen Effekt auf diese Variable.
+ Und nachdem wir das gemacht haben, gucken wir uns mal an, wie wir unser Repertoire an Anweisungen erweitern und dann eben mit Verzweigungen arbeiten.
+ Aber jetzt haben Sie erstmal die Pause und jetzt machen wir Pause bis 9 Uhr, 10 Uhr.
+ So, wir wollen dann jetzt weitermachen und uns mit dem Thema Aussagen über Programme beschäftigen.
+ Also, wenn wir sagen Programme, dann meinen wir natürlich erstmal einfache Programmsegmente wie einfache Teile von Methoden.
+ Also, Sie erinnern sich, wir hatten diese einfache ...
+ Darf ich?
+ Wir hatten diese einfache Methode, die für einen Quader die Oberfläche berechnete.
+ Und jetzt wollen Sie eine Aussage über diese Berechnung machen.
+ Ist der Witz gut?
+ Okay, ja doch, ich meine schon sehr.
+ Die Aussage, die Berechnung, muss natürlich diese variable Fläche involvieren.
+ Das ist diese Variable, die wir benutzen, um die Fläche da festzuhalten.
+ Und wenn Sie es jetzt angucken, dann ist das so, dass wir jetzt an sich gerne in der Lage wären, Aussagen zu machen.
+ Aber diese Aussage über die Fläche muss an einen Ort oder eine Stelle im Programm gekoppelt sein.
+ Es macht keinen Sinn, hier über die Fläche zu reden, weil die Variable existiert noch gar nicht.
+ Und die Variable hat noch gar keinen Wert zugewiesen bekommen.
+ Das heißt, an dem Punkt macht es überhaupt keinen Sinn, eine Aussage machen zu wollen.
+ Oder eine Aussage hier auch noch nicht möglich.
+ Oder hier auch noch nicht.
+ Oder hier nicht.
+ Erst jetzt, nachdem die Berechnung stattgefunden hat, können wir eine Aussage über diese Variable machen.
+ Und das heißt also, wenn wir Aussagen machen wollen, dann müssen wir die eben an einen Ort koppeln.
+ Und wir brauchen einen Weg zu sagen, wo diese Aussage gilt.
+ Und wir machen am Anfang ganz einfach, wir machen, unterhalten uns nur oder gucken uns nur Aussagen an, die innerhalb einer Methode gelten werden.
+ Und wir gucken uns auch nur Aussagen für Programmsegmente an, die aus Zuweisungen bestehen.
+ Nichts anderes.
+ Also wir haben nur Zuweisungen, so wie hier oder Deklarationen.
+ Und darüber wollen wir irgendwelche Aussagen machen.
+ Was ist eine Aussage?
+ Eine Aussage ist eine Behauptung, die entweder wahr oder falsch ist.
+ Manchmal kann man nicht sofort erkennen, ob die Aussage wahr oder falsch ist.
+ Also Aussage wie Zürich ist ein Kanton in der Schweiz.
+ Das können Sie sofort beantworten.
+ 11 ist eine Primzahl wahrscheinlich auch.
+ 120 ist kleiner als 11.
+ X größer gleich null.
+ Können Sie nicht sofort beantworten, weil das hängt davon ab, was für einen Wert X hat.
+ Oder X geteilt durch 2 ergibt 8.
+ Ob die Aussage wahr oder falsch ist, das hängt auch wieder von diesem Wert X ab.
+ Also die entscheidende der Punkt ist nicht, ob Aussagen wahr oder falsch sind,
+ sondern dass eben Aussagen, das Sinn macht zu fragen, ob die Aussage wahr oder falsch ist.
+ Es muss also möglich sein, diese Frage zu stellen.
+ Und es muss einen Weg geben, diese Aussage als entweder wahr oder falsch zu erkennen.
+ Das heißt eben, das sind einfache Aussagen im Rahmen der klassischen Logik,
+ die Sie ja in der diskreten Mathematik jetzt wahrscheinlich auch schon kennengelernt haben.
+ Oder zumindest bald kennenlernen werden.
+ Also wie gesagt, es wichtig ist, dass es Sinn macht zu fragen, ob eine Aussage wahr oder falsch ist.
+ Und unser Ziel ist es jetzt eben Aussagen über ein Programm zu erstellen oder herzuleiten.
+ Und wie ich eben sagte, diese Aussagen gelten an einer Stelle im Programm.
+ Das heißt, wir müssen dann, warum machen wir das?
+ Wir machen das, weil wir vielleicht festhalten wollen, was für Annahmen nötig sind,
+ damit eine Aussage P wahr ist.
+ P ist eine Aussage, das heißt, es macht Sinn zu fragen, ob die wahr oder falsch ist.
+ Aber wir können vielleicht nicht sofort die Entscheidung wahr oder falsch treffen.
+ Wir brauchen halt gewisse Annahmen.
+ Und diese Annahmen sagen uns etwas über das Programm aus.
+ Und das interessiert uns eben über das Programm.
+ Aber das macht eben alles nur Sinn, wenn wir eben an irgendeiner Stelle das festhalten können,
+ weil, wie ich Ihnen eben im Beispiel davor zeigte, es gibt Punkte im Programm,
+ wo wir gar gar nicht darüber reden können, dass diese Variabe,
+ dass da eben irgendeine Aussage gemacht werden kann.
+ Und darum stellen wir uns vor, dass diese Programme, der Code, irgendwelche Punkte hat,
+ einen Punkt, noch einen Punkt.
+ Und diese Punkte haben einen Namen.
+ Kann sagen Punkt A, Punkt B, Punkt C.
+ Und die Annahme, die wir fällen, ist, dass wenn wir hier an dem Punkt B sind,
+ dann alle Anweisungen, die davor erschienen, die wurden bereits gemacht.
+ Und alle Anweisungen wurden ausgeführt.
+ Und alle Anweisungen, die danach kommen, die wurden noch nicht ausgeführt.
+ Also hier ist unser Punkt B.
+ Und an diesem Punkt B haben wir jetzt die Situation,
+ dass alle Anweisungen, die davor kamen, sind bereits gemacht worden.
+ Und alle Anweisungen, die danach kommen, die wurden noch nicht ausgeführt.
+ Und das ist wichtig, weil je nachdem, was die Anweisungen machen,
+ könnten die ja auch irgendwelche Variable verändern.
+ Also wir stellen es also vor, dass es diese imaginären Punkte da gibt
+ und dass wir davon reden können, dass das so oder so ist.
+ Und jetzt können wir eben über die Programme an diesem Punkt reden.
+ Und diese Logik wurde entwickelt von einem Mann namens Hoor, Tony Hoor.
+ Und er hat das schon vor langer Zeit, also vor fast 50 Jahren gemacht.
+ Und das hat immer noch eine gewisse Bedeutung.
+ Und diese Logik erlaubt es uns eben zu sagen,
+ wir gucken uns ein Programm an vorwärts, um festzuhalten,
+ was für Auslagen danach gelten.
+ Und wir gucken uns ein Programm rückwärts an,
+ um zu sehen, was am Eingang oder zu Beginn dieser Ausführung
+ gegolten haben muss, damit eben eine bestimmte Annahme erfüllt ist.
+ Und das werden wir als Erstes machen.
+ Und um das Ganze nicht zu schwierig zu machen,
+ werden wir erstmal uns eine einzige Anweisung angucken.
+ Wir gucken uns eine Anweisung an und gehen von der,
+ weder vorwärts oder rückwärts,
+ um zu entscheiden, was mit der gemacht werden kann.
+ Das wird jetzt vielleicht für Sie extrem langweilig sein,
+ weil Sie das schon kennen.
+ Dann gut.
+ Das kann für Sie extrem tedious sein, weil Sie sagen, das ist ja ganz genau.
+ Das stimmt, das ist ganz genau.
+ Und damit langsam und Schritt für Schritt.
+ Aber das ist wichtig, dass Sie das Schritt für Schritt verstehen,
+ weil wenn Sie eben mit den einzelnen Anweisungen Probleme haben,
+ kommen Sie eben nicht weiter,
+ wenn es dann später kompliziertere Beispiele gibt.
+ Und das werden wir sehen, ist eine wichtige Sache.
+ Also unser Ziel ist es, für ein einfaches Programm
+ genau zu argumentieren, was dieses Programm eigentlich macht.
+ Was macht das Programm?
+ Was für ein Ergebnis liefert es?
+ Was gilt am Ende dieses Programms?
+ Sie werden das jetzt nicht mit jedem Programm machen,
+ dass Sie jeden Tag in den Übungsaufgaben schreiben.
+ Wenn Sie diese Schritte für jedes Programm machten,
+ dann könnte das wirklich sehr lange dauern.
+ Also in der täglichen Programmentwicklung macht man das nicht ganz so genau.
+ Aber es ist wichtig, dass Sie verstehen, wie dieser Ansatz funktioniert.
+ Weil wenn Sie mal eine Situation kommen,
+ wo Sie nicht genau wissen, was ein Programm macht
+ oder ein Programm segment macht,
+ dann gibt Ihnen dieser Ansatz ein Werkzeug,
+ mit dem Sie diese Schritte nachvollziehen können,
+ mit dem Sie eben sehen können, was das Programm macht.
+ Also das ist so der erste Ansatz zur Verifikation von Programmen.
+ Und das ist ein sehr wichtiger Bereich,
+ wenn wir sicher sein wollen, dass die Programme das machen,
+ was wir wollen und nicht irgendwas anderes.
+ Also das Ganze hat eben sowohl einen didaktischen Effekt
+ als auch einen praktischen Effekt.
+ Weil wir können jetzt Aussagen machen über Zustände.
+ Das sind Zustände der Ausführungen.
+ Das Programm wird ausgeführt.
+ Später können wir machen, wir kommen zu kompliziertere Programme.
+ Und wir können jetzt diesen Effekt eines Programms ganz genau beschreiben.
+ Wir können sagen, was es heißt, dass eine Aussage ist stärker
+ und eine andere Aussage ist schwächer.
+ Wir werden also einen Weg finden,
+ die Aussagen in manchen Fällen zu vergleichen sagen,
+ eine Aussage ist stärker oder schwächer.
+ Und können dann sagen, ach, wir brauchen hier eine stärkere
+ oder eine schwächere Ausgabe.
+ Und das ist halt wichtig, insbesondere dann,
+ wenn Sie Methoden entwickeln, die von anderen Leuten benutzt werden.
+ Da wollen Sie ganz genau sagen, was erwartet diese Methode als Eingabe,
+ was für Bedingungen müssen erfüllt sein,
+ damit diese Methode die Aufgaben erledigen kann,
+ die sie behauptet, erledigen zu können.
+ Also, kommt der Punkt, wie finden wir jetzt die Richtenstellen im Programm?
+ Weil letztlich interessieren Sie nicht irgendwelche Aussagen,
+ sondern Aussagen, die das Verhalten der Ausführungen beschreiben.
+ Und darum, um das nicht so schwierig zu machen,
+ funktionieren unsere Programme zurzeit so,
+ dass sie einfach allen nur mit Indivariablen arbeiten.
+ Es ist nicht schwer, das weiter zu erweitern,
+ aber am Anfang machen wir Indivariablen.
+ Und wir nehmen an, dass die endliche Darstellung ist kein Problem.
+ Alle Ergebnisse können korrekt dargestellt werden.
+ Also, wenn ich eben eine Addition mache,
+ dann ist das Ergebnis auch wieder eine Ind.
+ Ich muss mir keine Gedanken machen, was passiert,
+ wenn das Ergebnis nicht mit der endlichen Darstellung dargestellt werden kann.
+ Das ist ganz wichtig, dass Sie das für diese Beispiele immer im Kopf haben.
+ Also, jetzt nehmen wir alle an, wir haben hier drei Anweisungen,
+ X, Y und Z.
+ X wird ein Wert zugewiesen, Y wird ein Wert zugewiesen,
+ Z wird ein Wert zugewiesen.
+ Und wir nehmen an, dass wir wissen oder vermuten,
+ dass diese Variable W, die ja hier auch auftaucht,
+ dass die einen Wert größer 0 hat.
+ Und wir wollen jetzt eben den Zustand vor der Ausführung eines Programmsigiments
+ als Grundlage benutzen, um uns zu fragen,
+ was können wir sagen, nachdem dieses Programmsigiment ausgeführt wurde.
+ Also, am Anfang wissen wir, dass dieses Programm,
+ in diesem Programmsigiment die Variable W, den einen Wert größer 0 hat.
+ Das kann eine Anforderung sein, die wir erstellen.
+ Und jetzt haben wir eine Zuweisung zu X.
+ Und nachdem wir das gemacht haben,
+ wissen wir, dass W ist immer noch größer 0
+ und dass das X hat den Wert 17,
+ weil hier war eine Zuweisung zu X.
+ Und nach dieser Zuweisung zu Y, wissen wir, dass W größer 0 ist,
+ X hat den Wert 17, Y hat den Wert 42.
+ Und jetzt bilden wir die Summe aus W, X und Y.
+ Und danach wissen wir, W ist immer noch größer 0,
+ X hat den Wert 17, Y hat den Wert 42.
+ Und wir wissen, das ist jetzt das, was das Interessante für uns ist,
+ und Z hat einen Wert, der ist größer als 59.
+ Das können wir schließen, weil wir wissen, dass 17 und 42 gibt 49
+ und dem wird noch dazu addiert, ein Wert größer als 0
+ und sind ja alles ins, also W ist mindestens 1.
+ Und jetzt wissen wir, also, dass das Programm,
+ in diesem Programmsegment Z ist größer als 59.
+ Das haben wir hier festgestellt.
+ Das ist, was wir vorwärtschließen nennen.
+ Wir gucken uns, wir haben Aussagen, die wir wissen oder vermuten,
+ die zu Beginn der Ausführung gelten, dann gucken wir uns die Aussagen an.
+ Und am Ende machen wir eine Aussage über das, was gelten muss,
+ nachdem das ausgeführt worden ist.
+ Jetzt rückwärtschließen, also hier haben wir eine Folge von Statements.
+ Und wir haben das aus Bequemlichkeitsgründen,
+ habe ich einfach diese Aussagen als Kommentare da hereingeschrieben.
+ Bitte beachten Sie, dass dieser Kommentar eine logische Aussage ist,
+ kein Java-Auszug oder keine Anweisung.
+ Ich habe einfach nur einfach was ich geschrieben habe,
+ damit das Ganze auf ein Sleit vernünftigerweise passt.
+ Also, das war jetzt vorwärtsschließen.
+ Jetzt sind wir rückwärtschließen, ist umgekehrt.
+ Wir überlegen uns, haben wir irgendeine Aussage hier,
+ irgendeine Aussage oder gibt es eine Aussage,
+ die wir vielleicht erreichen wollen.
+ Und wir müssen jetzt feststellen,
+ was für eine Bedingung muss davor erfüllt sein,
+ damit das eben später der Fall ist.
+ Also, nehmen wir mal an, wir wollen in diesem Fall hier haben,
+ dass Z nach der Ausführung negativ ist.
+ Also, wir wollen wissen, dass dieses Z kleiner als Null ist.
+ Das könnte für uns wichtig sein,
+ für das, was wir als Nächstes machen wollen.
+ Wenn ich also Z kleiner als Null haben will,
+ muss denn in dem Punkt davor gegolten haben.
+ Naja, am Punkt davor muss etwas gegolten haben,
+ dass ich eben sagen kann,
+ dass dieser Ausdruck W plus X plus Y muss kleiner als Null sein.
+ Also, hier muss gegolten haben,
+ dass W plus X plus Y ist kleiner als Null.
+ Und was muss davor gegolten haben, damit das eben gilt?
+ Naja, jetzt wissen wir hier, Y wurde auf 42 gesetzt.
+ Also, was wir jetzt haben müssen,
+ ist, dass W plus X plus 42 muss kleiner als Null sein.
+ Wenn das der Fall ist, dann ist nach dieser Zuweisung,
+ auch W plus X plus Y kleiner als Null.
+ Und jetzt sehe ich, was für ein Wert hat das X bekommen?
+ Also, das X hat bekommen den Wert 17,
+ also W plus 17 plus 42 muss kleiner als Null sein.
+ Und dann kann ich daraus jetzt schließen,
+ ah, okay, wenn das der Fall ist,
+ dann kann ich eben jetzt sagen, ah,
+ W muss eben kleiner als minus 59 sein,
+ um das erwünschte Ergebnis haben.
+ Also, das ist halt für uns ein Weg,
+ wie wir ein gewünschtes Resultat erzwingen können.
+ Der gewünschte Wert war, dass das Z kleiner als Null ist.
+ Und wir wollen jetzt eben sicherstellen,
+ dass nach der Ausführung dieses Programms,
+ das eben der Fall ist, das Z kleiner als Null ist.
+ Und das geht eben hier, das ist dann der Fall,
+ wenn dieses W kleiner als minus 59 ist.
+ Und diese Bedingung ist sowohl notwendig,
+ als auch hinreichend.
+ Wenn das W größer gleich minus 59 ist,
+ dann ist diese Bedingung hier hinten nicht erfüllt.
+ Und es ist hinreichend,
+ wenn die B wirklich kleiner als minus 59 ist,
+ dann haben wir in der Tat das richtige Ergebnis
+ und haben dann garantiert,
+ dann haben wir eine Situation,
+ dass Z kleiner als Null ist.
+ Also, das ist vorwärtsrückwärts.
+ Sie gucken sich ein Programm einmal an in Bezug auf,
+ was habe ich denn, was gilt denn,
+ oder was für einen Zustand werde ich haben,
+ wenn das Programm ausgeführt ist.
+ Das ist diese vorwärtssichtweise.
+ Das ist der Rückwärts, was für eine Bedingung
+ muss am Anfang erfüllt sein,
+ damit ich am Ende eine andere,
+ am Ende diese Bedingung gilt.
+ Also, vorwärtsschließend ist praktisch,
+ wenn Sie eben ursprüngliche Anleitungen,
+ ursprüngliche Annahmen haben
+ und Sie jetzt eben sehen wollen, was danach gilt.
+ Und das ist sehr praktisch,
+ wenn eben eine Invariante gelten soll.
+ Sie haben vielleicht schon die invarianten
+ in Algorithmen und Datenstrukturen kennengelernt.
+ Haben Sie das Wort noch nicht?
+ Okay, dann werden Sie aber,
+ invarianten sind eben logische Aussagen,
+ die invariant sind,
+ die also immer gelten,
+ oder einen bestimmten Bereich immer gelten.
+ Und wenn wir so was haben,
+ wenn wir also sicher sein wollen,
+ dass irgendeine Aussage immer gilt,
+ können wir mit vorwärtsschließen
+ die einzelnen Aussagen erkennen,
+ die da an dem Punkt gelten müssen
+ und die da an dem Punkt gelten müssen,
+ die da an dem Punkt gelten müssen,
+ die da an dem Punkt gelten müssen,
+ die da an dem Punkt gelten.
+ Und das ist ja auch ein Punkt,
+ das wir jetzt schon mal sehen,
+ dass wir das hier in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ das wir jetzt in der Formatik haben,
+ die sind in der Simulation,
+ sind die mit abgedeckt.
+ Die ist so ein Vorwärtsschließen,
+ ist oft leicht zu verstehen
+ und erscheint eigentlich fast natürlich,
+ weil wir gucken uns das Programm an
+ und versuchen zu verstehen,
+ was das Programm eigentlich machen soll.
+ Der Nachteil ist,
+ das ist ein bisschen der Nachteil,
+ dass oft sehr viele Details festgehalten werden.
+ Sie haben gesehen, wir haben festgehalten,
+ als wir vorwärts geschlossen haben,
+ dass es größer Null ist,
+ dass X diesen Wert hat,
+ dass Y diesen Wert hat und so weiter.
+ Und nicht alle von diesen Details
+ sind vielleicht am Ende wichtig für uns,
+ wenn es uns darum geht,
+ eine bestimmte Aussage zu treffen.
+ Aber wir wissen ja am Anfang noch nicht,
+ was für eine Aussage wir am Ende
+ der Folge von Anweisungen eigentlich machen wollen.
+ Und deswegen werden alle diese Details festgehalten,
+ auch wenn sie nachher letztlich nicht wichtig sind.
+ Das ist so ein Nachteil,
+ dass wir das Programm anwenden können.
+ Jetzt rückwärts schließen,
+ ist vielleicht etwas ungewohnt für Sie,
+ aber von großem praktischen Nutzen,
+ weil Sie verstehen,
+ was jede Anweisung zum Endergebnis beiträgt.
+ Sie können gucken,
+ was macht diese Anweisung
+ und was hat für einen Einfluss,
+ hat das auf das Endergebnis,
+ das ich erreichen möchte.
+ Und eben so ein Programmsegment rückwärts zu lesen,
+ da braucht man ein bisschen Übung,
+ um zu sehen, was ein Programm macht.
+ Nach dieser Einführung
+ kommen wir jetzt auf die Begriffe zu sprechen,
+ die Sie vielleicht schon mal woanders gehört haben,
+ nämlich auf die "Pri" und "Postcondition".
+ Also die "Pri-Condition", "Pri" von vor,
+ die "Pri-Condition" ist die notwendige Vorbedingung,
+ die erfüllt sein muss
+ oder die Bedingungen, die erfüllt sein müssen,
+ vor der Ausführung einer Anweisung, vor.
+ Also die "Pri-Condition" hält fest,
+ was für eine Bedingung
+ oder was für Bedingungen erfüllt sein müssen,
+ bevor eine Anweisung ausgeführt wird.
+ Und die "Postcondition", die hält fest,
+ was das Ergebnis der Ausführung ist.
+ Also die hält fest,
+ was für einen Zustand
+ oder was für eine Aussage nach der Ausführung gilt.
+ Wichtig aber ist,
+ die "Postcondition" gilt dann,
+ wenn die "Pri-Condition" erfüllt ist.
+ Wenn wir nichts über die "Pri-Condition" wissen,
+ können wir vielleicht auch gar nichts über die "Postcondition" sagen.
+ Also die Aussage gilt natürlich nur,
+ wenn die "Pri-Condition" erfüllt ist.
+ Dann haben wir den Weg, da eine Aussage zu machen.
+ Und eben um das ganz einfach zu machen,
+ fangen wir einfach an mit "Pri" und "Postconditions"
+ für eine Anweisung.
+ Wenn vor der Ausführung die "Pri-Condition" erfüllt ist,
+ dann gilt nach der Ausführung die "Postcondition".
+ So kann man argumentieren,
+ wenn die "Pri-Condition" vorher erfüllt ist,
+ gilt nachher die "Postcondition" oder umgekehrt.
+ Damit die "Postcondition" erfüllt ist,
+ muss vor der Ausführung die "Pri-Condition" erfüllt sein.
+ Das ist die andere Sichtweise von "Pri" und "Postcondition".
+ Also eben "Pri-Condition",
+ Anweisung und "Postcondition" hängen zusammen.
+ Die sind ganz aufeinander abgestimmt,
+ weil sonst können wir ja keine Aussage machen.
+ Je nachdem, was die Anweisung da macht,
+ ist das eine oder andere dann eben die richtige "Pri"
+ oder "Postcondition".
+ Also das ist einfach wichtig.
+ Am Anfang fangen wir wirklich an mit einer Anweisung.
+ Und später werden wir das dann auf Folgen von Anweisungen erweitern.
+ Wenn Sie Fragen haben, können Sie entweder haben hoch oder ...
+ Also die "Pri-Condition" ist die Annahme, die vor der Ausführung gilt.
+ Und jetzt kommt ein wichtiger Punkt.
+ Diese Annahme oder diese Aussage über die, die danach gilt,
+ ist die "Postcondition" gilt,
+ wenn Sie diesen Punkt nach diesem Statement erreichen.
+ Dann gilt die "Postcondition".
+ Jetzt, warum ist dieses "Wenn wir diesen Punkt erreichen" so wichtig?
+ Das ist deswegen so wichtig,
+ weil eine Anweisung könnte ja aus irgendwelchen Gründen
+ gar nicht zu Ende ausgeführt werden.
+ Wenn Sie versuchen, durch Null zu dividieren,
+ beschwert sich das System.
+ Das heißt, Sie erreichen gar nicht den Punkt nach dieser Anweisung.
+ Und deswegen macht es dann auch keinen Sinn über den Zustand des Programmes
+ in Bezug auf die Variablen,
+ die da in dieser Anweisung gesetzt werden sollten zu reden.
+ Weil Sie eben keinen, Sie können da keine Aussage machen.
+ Wenn Sie den Punkt nicht erreichen, dann machen Sie keine Aussage.
+ Das ist ganz wichtig, dass Sie immer,
+ wir denken, das gilt alles immer nur dann,
+ wenn dieses Statement ausgeführt wurde.
+ Wenn das Statement eben nicht ausgeführt wurde
+ oder wenn die Ausführung abgebrochen wurde,
+ dann können wir keine Aussage machen,
+ weil wir wissen ja gar nicht, wo wir gelandet sind.
+ Das ist immer wichtig, das zu bekommen.
+ So, jetzt diese Aussagen, die "Prior to Post Condition",
+ das sind logische Aussagen.
+ Das sind logische Ausdrücke
+ und die beziehen sich auf den Zustand der Ausführung.
+ Also den Zustand, die Werte der Variablen oder so was.
+ Das ist der Zustand eines Programms.
+ Das sind die Variablen, die irgendwelche Werte haben.
+ Und das heißt, diese Werte natürlich, die können wir ja selber nicht sehen.
+ Die können wir nur über die Namen der Variablen erreichen.
+ Und jede Variable, die wir da benutzen,
+ liefert dann den Wert, den die Variable zum jetzigen Zeitpunkt haben.
+ So, und das macht natürlich, das geht nur dann,
+ und das ist nur dann verbleicht verständlich,
+ wenn wir eben sicher sind, dass Ausdrücke keine Nebenwirkungen haben.
+ Wenn Sie das nicht, da Sie nie gehört haben, was eine Nebenwirkung ist,
+ ist das gut, dann erkennen Sie gar nicht die Probleme.
+ Und wenn Sie sich damit gar nicht selbst das Leben schwer machen.
+ Aber es gibt manchmal Ausdrücke, die könnte man eigentlich
+ als logischen Ausdruck verwenden.
+ Aber die haben Nebenwirkungen, das wollen wir nicht.
+ Wir haben hier nur logische Ausdrücke, die haben keinen Effekt
+ auf den Zustand des Programms.
+ Und das geht alles eben gut und so weiter.
+ Es ist wirklich nur eine Warnung an die Leute, die eben Vorkenntnisse haben.
+ Nebenwirkungen haben wir noch nicht diskutiert, gibt es daher nicht.
+ Aber wenn Sie davon gehört haben sollten, dann bitte denken Sie daran,
+ wir arbeiten hier in einer Welt fürs erste, ganz ohne Nebenwirkungen.
+ Also, wir haben die Notwendigkeit, diese Pre-Conditions
+ und die Post-Conditions auszudrücken.
+ Und wir wollen das mit den Namen der Variable machen.
+ Und da hat sich eine Notation eingebürgert, die sich halt so
+ in vielen Texten eingebürgert hat.
+ Und zwar gibt es da zwei Notationen, also entweder
+ als Kommentar in Java oder in vielen Texten verwendet man,
+ da man keine bessere Idee hatte, wieder geschweifte Klammern.
+ Die geschweiften Klammern wurden halt immer wieder verwendet.
+ So, wenn wir jetzt geschweifte Klammern verwenden,
+ ist es natürlich kein Java mehr.
+ Aber wenn ich es also ausdrücken möchte, dass dieses W kleiner als -59 sein will,
+ dann würde das eben in vielen Texten so ausgedrückt werden,
+ dass wir eben hier diese sich öffnende Klammer haben,
+ diese sich schließende Klammer und dazwischen die logische Aussage.
+ Die logische Aussage, die wir hier machen, das ist kein Java Code.
+ Wir verwenden zwar Java-Operatoren oder aus dem Artikel bekannte Operatoren,
+ aber das ist kein Java-Programm.
+ Das ist aber eine logische Aussage.
+ Deswegen könnten Sie hier auch meinetwegen schreiben x,
+ kleiner, y, kleiner, z, was Sie in Java nicht machen dürfen.
+ Als Java wäre das nicht erlaubt, aber als logische Aussage wäre das
+ im Prinzip erlaubt.
+ Aber Sie können es auch natürlich anders schreiben,
+ wenn wir auch noch andere Wege sehen.
+ Also, wenn ich das hier habe und da habe ich danach,
+ nachdem ich das jetzt gemacht habe, habe ich eben dann hier wieder die Aussage,
+ wo ich jetzt sage, wenn eben W kleiner als -59 ist,
+ dann weiß ich, dass W plus x muss kleiner als -42 sein.
+ Also, das ist ein Weg, wie man diese, wie viele Texte
+ und viele andere Lehrbücher solche Aussagen festhalten.
+ Deswegen, wenn Sie mal da reingucken, dann können Sie, werden Sie das finden.
+ Jetzt in Java gäbe es die Möglichkeit, Kommentar zu machen, zu geben.
+ Oder es gäbe eine andere Möglichkeit.
+ Es gibt nämlich in Java ein Statement,
+ mit dem ich solche Aussagen ausdrücken kann.
+ Das ist das Assert Statement.
+ Das Assert Statement hat das Keyword Assert und dann folgt ein Ausdruck.
+ Und das ist ein logischer Ausdruck nach den Java-Regeln.
+ Also, dann natürlich ohne diese geschweiften Krammern.
+ Also, zum Beispiel könnten Sie sagen Assert x größer als 0.
+ Nun, das Assert Statement hat eine andere Probleme.
+ Wenn dieses Assert Statement eingeschaltet ist,
+ dann ist das wichtig.
+ Und zur Laufzeit, dieser Ausdruck nicht gültig ist,
+ dann wird eine Laufzeitfehler generiert.
+ Jetzt da eben das Java Assert Statement muss eingeschaltet sein.
+ Wenn aktiviert, und das ist halt nicht von der Sprache geregelt,
+ wann das aktiviert, dann entscheiden Sie als Programmiererin oder Programmierer.
+ Und deswegen ist das so ein bisschen heikel,
+ weil je nachdem, wo Sie sind, funktioniert das mal so oder mal anders.
+ Deswegen da auch fast alle Texte, die wir kennen,
+ diese geschweiften Klammern verwenden, verwenden wir auch diese Zeichen.
+ Die rechtfertige dafür ist, dass letztlich das, was ich Ihnen hier erzähle,
+ was ich Ihnen hier erzähle, nicht nur für Java,
+ das können Sie auch für viele andere Statements haben.
+ Jetzt fragt mich immer, was heißt zur Laufzeit-Expression?
+ Also, dieses Assert Statement, das Assert Statement war ja so,
+ jetzt müsste ich kursiv schreiben, kann ich aber nicht.
+ Schreibe ich eben halt in Violette.
+ Hier ist eine Expression.
+ Hier ist das Assert Statement, das ist mein Assert Statement.
+ Und das wird jetzt, wenn Asserts aktiviert sind,
+ wird zur Laufzeit dieser Ausdruck ausgewertet.
+ Und wenn der nicht wahr ist, dann gibt es, wenn der also nicht wahr ist,
+ dann gibt es hier eine Laufzeit-Feder genauso,
+ als ob Sie durch null dividiert hätten.
+ Und dann gibt es eben, dann erreichen Sie nicht den Punkt des nächsten Statements,
+ aber das Statement, dann ist die Ausführung im Allgemeinen da zu Ende.
+ Also, das so funktioniert, das Assert Statement,
+ das ist eben ein, nicht etwas, was Sie beim Lesen des Programms prüfen,
+ sondern das wird erst geprüft, wenn das Programm ausgeführt wird.
+ Aber wir wollen ja uns sowas angucken, ohne das Programm eventuell ausführen zu müssen.
+ Und eben da fast alle anderen diese geschweiften Klammern verwenden,
+ werden wir die auch verwenden.
+ Also, ich hoffe, das hat das jetzt beantwortet.
+ Das ist der Grund, warum wir auch mit den geschweiften Klammern arbeiten.
+ Und diese geschweiften Klammern werden jetzt praktisch zusammengefasst mit einem Statement.
+ Also, ich habe hier in geschweiften Klammern die Pre-Condition,
+ das ist das, was davor gelten muss.
+ Dann habe ich danach auch wieder in geschweiften Klammern die Post-Condition,
+ auch eine logische Aussage, die Post-Condition.
+ Und dann habe ich hier in der Mitte, es ist jetzt erstmal das Programmsegment,
+ das ist zurzeit ein einziges Statement.
+ So schreibe ich das auf.
+ Ich habe hier, wenn diese Pre-Condition gilt und das Statement ausgeführt wurde
+ und das Statement keine Probleme hatte, sondern zu Ende ausgeführt wurde,
+ dann gilt danach die Post-Condition.
+ So müssen Sie das lesen.
+ Und wenn das der Fall ist, dann sagen wir, dieses Triple,
+ dieses Hortrippel ist gültig.
+ Und es gilt dann, wenn für jeden Zustand, für den P-Gültig ist,
+ ergibt die Ausführung von S immer einen Zustand, in dem Q-Gültig ist.
+ Oder informell gesagt, wenn P vor der Ausführung von S war,
+ dann ist Q nach der Ausführung von S war.
+ Das sagt uns dieses Triple, dieses Triple fast zusammen,
+ was eben halt, wenn vorher P gilt, nachher nach der Ausführung,
+ dann gilt nachher Q.
+ Das ist das System, das wir hier haben.
+ Und wenn das eben nicht gültig ist, dann sagen wir, das Hortrippel ist ungültig.
+ Jetzt werden wir gleich Beispiele sehen von Gültig und Ungültigem-Trippel,
+ weil das eben halt wichtig ist für unser Verstehen.
+ Also, das heißt, wenn wir eben diese so einen Triple haben,
+ PS und Q, dann, wenn P vorher war, dann muss Q nachher war sein.
+ Und jetzt haben wir bisher ziemlich informell gemacht.
+ Aber das Schöne ist, für jedes Java-Statement gibt es eine genaue Regel,
+ oder genaue Regeln, die die Pry- und Post-Condition in Beziehung setzen.
+ Also, es gibt eine Regel für Zuweisungen.
+ Es gibt eine Regel für zwei aufeinanderfolgende Anweisungen.
+ Wenn ich eine Regel für zwei aufeinanderfolgende Anweisungen habe,
+ kann ich auf diese Weise auch drei aufeinanderfolgende Anweisungen haben.
+ Weil erst habe ich hier zwei, und danach habe ich die beiden wieder zwei Anweisungen.
+ Also, kann ich diese Regeln benutzen,
+ aus der Regel für ein einziges Statement,
+ kann ich dann eben Regeln für einen Codeblock herausbekommen.
+ Es wird Regeln geben für Verzweigungen, die wir noch nicht gesehen haben,
+ und wir werden später auch Regeln verschleifen kennenlernen.
+ Also, das habe ich jetzt aber hier für heute.
+ Ich muss leider meinen Computer nicht überschneller geworden,
+ als ich dachte, weil eben der Clicker nicht funktioniert hat.
+ Und jetzt weiß ich nicht, ob ich Ihnen den nächsten Update zu wählen will.
+ Danke schön.
+ Ob ich jetzt noch die nächsten zehn Minuten nutzen soll,
+ um Ihnen mehr Beispiele zu zeigen,
+ oder ob Sie ins Wochenende gehen wollen.
+ Wir fragen mal so, wem gehe ich überhaupt zu schnell voran?
+ Okay, wem gehe ich zu langsam voran?
+ Wer hat Angst, sich zu melden?
+ Okay, weh gehe ich denn genau richtig voran?
+ Also, wenn Sie wollen, kann ich jetzt noch die nächste Sache raushaben.
+ Ich denke mir, ja, tut mir leid,
+ ich kann noch mal versuchen, die Clicker-Frage heute
+ mit den Strings aufzuschalten.
+ Vielleicht funktioniert die ja doch jetzt.
+ Also, probieren wir den Clicker mit den String-Operationen.
+ Ob der funktioniert, gucken wir mal.
+ So, jetzt, ja, das müsste ich jetzt hier.
+ So, also, wenn Sie wollen, helfen Sie uns mit, das System zu debaggen.
+ Also, geben Sie die Antwort für die restlichen Operationen
+ auf eine Zeile an, ohne diese Hochkommer.
+ Also, wenn die Antwort wäre, wenn der String 3xY wäre,
+ dann schreiben Sie bitte als Antwort 3xY in den Clicker herein.
+ Das sollten wir gucken, ob es funktioniert.
+ Ich habe jetzt funktioniert, das ist auf meinem Computer hier.
+ Ich kann also sehen, dass er läuft.
+ Ich sehe, auch eine Person hat schon abgestimmt.
+ Also, geben Sie die vier Antworten dafür ein.
+ Es ist wirklich nicht schwierig, aber gibt Ihnen die Chance,
+ das nochmal auszuprobieren.
+ Und ja, ich tut mir leid, dass ich den interessanteren Clicker
+ mit den Zuweisungen nicht machen konnte,
+ aber dann können wir den jetzt noch machen.
+ Okay, ich habe 178 Antworten.
+ Na, kommen noch ein paar mehr.
+ Aber...
+ Okay, machen wir...
+ Ja, hier sehen Sie die Ergebnisse, weiß ich nicht.
+ Also, hier, gerade noch...
+ Ich weiß nicht, können Sie die Antworten sehen auf Ihrem Clicker?
+ Also, ich sehe sie bei mir, aber weiß ich, sehen Sie die auch?
+ Ich müsste die...
+ Das können wir ja...
+ Das ja dadurch machen, dass wir die jetzt...
+ So, gucken wir mal.
+ Magie.
+ Ja, funktioniert.
+ Also, hier sehen Sie die Antworten, wie ich sie habe.
+ Ja, aber jetzt kann ich natürlich nicht mehr die anderen zeigen.
+ Früher hatte ich zwei Projektoren, aber hat man mir nicht erkannt.
+ So, ein Punkt noch nebenbei.
+ Wenn wir sagen, eine Antwort auf eine Zeile,
+ dann meinen wir das so auf eine Zeile.
+ Das ist...
+ Die meisten von Ihnen wahrscheinlich haben...
+ Habe ich das sogar selber falsch gesagt,
+ dass Sie sagten, eine pro Zeile.
+ Es ist für uns leichter, wenn wir die alle pro Zeile haben.
+ Also, ich sehe, die meisten von Ihnen haben das erfreulicherweise richtig.
+ Das ist natürlich...
+ Ja, sehen Sie, das ist nicht ganz richtig.
+ Wir haben zwar nie gesagt, wie viele Leerzeichen Sie brauchen,
+ aber ein Leerzeichen ist dann doch erforderlich, mindestens eins.
+ Das ist ja...
+ Wir freuen uns immer wieder, wenn es kreative Lösungen gibt.
+ Das ist wichtig.
+ Da oben hat jemand Kommas verwendet.
+ Kommas wollten wir nicht haben.
+ Wir hatten nicht... Bitte machen Sie es nicht.
+ Wenn ich mir das angucke, ich bin in der Lage, die Kommas zu ignorieren.
+ Wenn wir ein Computer haben, der das anpuckt,
+ der schüttelt den Kopf und gibt Ihnen nicht die Punkte.
+ Also, bitte, wir müssen daran arbeiten,
+ dass wir alle ganz genau sagen, was wir wollen
+ und Sie müssen ganz genau lesen, was wir wollen.
+ Also, wünsche Ihnen schönes Wochenende
+ und bis Dienstag.
+ (Beifall)
+ (Applaus)

@@ -1,0 +1,996 @@
+ Okay, good morning everyone.
+ So I guess it's also probably
+ the first lecture of the semester or second already, first.
+ Okay. So for me also.
+ So today, so this is Visual Computing.
+ I'm Mike Polofes and I will teach
+ the first part of this lecture,
+ which is mostly so Visual Computing consists both
+ of processing images.
+ So your given images,
+ you will look at how to analyze and process them,
+ then we'll also look at how to computationally generate images.
+ So in some sense, image processing,
+ image analysis, computer vision, on one hand,
+ that's the part I'll be covering,
+ that's the first half of the semester.
+ Then second half, it's more going to be
+ focused very complementary aspect,
+ which is then computer graphics,
+ generating images from models.
+ And that will be by,
+ taught by Marcus Kroes,
+ I think I type for there.
+ Also for the assistants,
+ there will be for each part,
+ a main assistant responsible.
+ So Philip Lindenberger will be in charge of the first half of the semester.
+ There will be of course other assistants also,
+ but he can be your point of contact if you have any questions or things like that.
+ And then for the,
+ oh sorry, there's a mistake here.
+ For the second part,
+ the part taught by Marcus Kroes,
+ it will be RFL,
+ The topics of the lecture in the first part,
+ we'll essentially start by looking at what are images,
+ what are digital images in particular,
+ how do we represent images,
+ how do we represent them in a digital form,
+ both geometrically as a grid of numbers,
+ numbers indicating,
+ reflecting a particular physical property that's captured in the image.
+ The image in the end is from a particular point of view,
+ an impression of how much light comes from,
+ gets reflected typically from light source,
+ gets reflected by the scene and comes to us
+ from every direction a different amount of light,
+ that's at some level what is an image.
+ So we look at how to represent that digitally.
+ Also we'll talk a little bit about what are the sensors,
+ what is the underlying technology that allows us to build up images
+ in a way that we can recognize those images then later
+ when we show them on a display,
+ so that they essentially mimic in a sense
+ the processes that we perceive the world with our eyes,
+ and what is the technology that allows us to mimic that process
+ in a certain way,
+ although then in practice it works quite differently from our eyes,
+ but it's a process that works well and is adapted
+ to digital manipulation, digital processing,
+ and also just to afterwards render on a digital screen
+ like this one or this one.
+ Okay, then we'll talk about,
+ we'll look a little bit at some processes that we can do on images,
+ we'll look at a very simple problem of segmentation,
+ there can be very complicated problems in segmentation,
+ but segmentation essentially somehow separating the images in two parts.
+ Let's say in the simplest or conceptually the simplest way to explain it,
+ there's a part of the image that interests us that we care about
+ and then there's a part that we don't care about.
+ You could call it foreground and background,
+ if you have, for example, when people present the weather,
+ they are waving at a screen,
+ these days it's mostly a digital screen behind them
+ because in the meanwhile people have figured out
+ how to properly align a digital screen and cameras
+ and have all of those things work properly together.
+ There was actually a time where these things didn't work so well together
+ and so they had to, in post-production,
+ or the weather person was just looking at a green screen and waving about
+ and on TV it would appear as if there was a map,
+ but the person himself wasn't actually seeing the map that they were waving at,
+ which could lead to confusion,
+ but there to be able to do that they would have to segment the foreground from the background.
+ They would cut out the person and leave the green background out.
+ They would select the interesting part, the foreground,
+ and then separate it from the pixels, the points,
+ the parts of the image that form the background.
+ It can also be looking at an image, a medical image,
+ and deciding what part might be a tumor
+ and what part is just a normal image of a healthy human being.
+ That's also foreground, background, separating in the interesting part.
+ You hope there's no interesting part in that case,
+ but it's separating that interesting part,
+ the part you want to look at carefully from the normal stuff, the background.
+ We look at that kind of two-class segmentation,
+ segmenting in foreground and background.
+ There are many more general or more advanced versions of this problem also.
+ Most recently, MetaLabs came out with Segment Anything,
+ which is a very advanced way of generating segmentations in images
+ based on a ton of training data and so on and so on.
+ Throughout the lectures, we won't go too deep into that, these most modern methods,
+ but we will at the end talk a little bit about convolutional neural networks.
+ All of these neural network-based, AI-based methods that you see these days,
+ however, everything you'll see in this lecture is actually relevant
+ to build up these networks and all of those things.
+ You'll see really in this lecture the basis that then allows you to not just run a few scripts
+ and try out some cool neural net demos or so,
+ but you'll actually learn how those computer vision, convolutional neural networks
+ and other type of things that kind of grant basis layers for that,
+ the basic image processing steps.
+ Many of the image processing steps that we'll see throughout the lecture
+ actually come together in our all present in one form or the other
+ in many of those more modern methods then.
+ After segmentation and then also a little bit of morphology,
+ which is mostly related to looking at if you have a particular point in the image,
+ which we'll call pixels like pixel element, picture element.
+ It's the atom, let's say, of which you construct images.
+ It's point measurements of the quantity, for example, the light that we're interested in.
+ It's that an image is not just a random assembly of those picture elements,
+ but they actually have a structure.
+ A pixel has a well-defined neighborhood of pixels that are next to it,
+ and there might be some relationship.
+ We might say, well, if this pixel was not part of a segmentation,
+ but all the neighbors are part of, then we might decide that we flip that pixel over
+ to be also part of the segmentation.
+ These type of processes that are kind of based on neighborhoods and so on,
+ we'll briefly look at that.
+ After that, we'll come to convolutions,
+ which also, for example, here at the base of convolutional neural nets,
+ one of the key elements in it.
+ So convolutions are, we'll also then, you know,
+ convolutions and free transforms and filters, all of these belong together.
+ Convolutions are the, when you look at a particular pixel element in the image,
+ you would also look at its neighborhood and you would generate a function
+ that somehow combines, you know, it would, so it's, you know,
+ I won't explain it now in detail or so, but it's essentially the type of process
+ that allows you to, for example, model an image, if you start from an image,
+ and you, you know, there's a process that would blur the image, for example, right?
+ Physically, that would happen by, for example, you know, putting,
+ if your lens is out of focus, then the light that's supposed to land on a single,
+ at a single point and give a sharp image, if your lens is slightly out of focus,
+ that light would actually end up not landing where it's supposed to be,
+ but be spread out a little bit.
+ The process of convolution and so on is actually going to model mathematically
+ that process of taking a part of the image and distributing it, you know,
+ like to other pixels in the image and create a new image, so it's a function on an image,
+ let's say the sharp image, that goes to the unsharp image,
+ that can be modeled mathematically with this process.
+ You can actually also do the reverse process and do a sharpening filter.
+ So these actually all correspond to, to how we implement filters on images.
+ So we'll look at, in detail at that, we'll actually learn a new language
+ or a new transformation, because it will turn out that if we look in detail at all those filters
+ and what those linear filtering operations come, you know, like do,
+ there are sometimes strange behaviors, in particular also if we look at the images
+ that consist of samples and we do filters and so on,
+ there will be a number of, you know, complicated behaviors that are hard to understand
+ if we just look at the image pixel by pixel, point by point.
+ However, if we transform it in an alternative representation,
+ a representation that looks at the image more globally and essentially says,
+ well, you know, this image on average, on average is pretty bright,
+ it's mostly white with a few black pixels, okay,
+ and then, you know, it has, you know, in terms of global structure,
+ it has a few patterns that is kind of white and dark and white and dark and white and dark,
+ so it has this kind of wave pattern that's kind of, you know,
+ like vertical waves that have brighter and darker patches and so on.
+ So essentially, we look at the language that describes these kind of global patterns in the image
+ and we'll start describing images that way, okay,
+ and you might wonder, why do we do this and so on?
+ Well, it turns out that in that representation,
+ some of these strange effects that show up when we manipulate digital images,
+ when we sample digital images or re-sample digital images and so on,
+ they all become pretty easy to understand in this alternative representation, okay?
+ Also, some operations are more efficient in that representation.
+ So that's the Fourier transform, which is just changing a basis from a point per point,
+ you know, basis like x, y, z, for example, in 3D space.
+ What we'll see is that an image basis actually images,
+ something you learned in this lecture, this will probably be, I might be wrong,
+ but it will probably be the first time you look at geometric spaces,
+ you know, you will get some intuition for geometric spaces that are not one, two, or three dimensional,
+ but actually are maybe million dimensional, okay?
+ What are those million dimensions?
+ Well, it's essentially every pixel is one dimension, right?
+ So you can represent the image as a huge vector space.
+ All the images, all possible images, a huge vector space where every pixel is one dimension.
+ Okay, so if you have a million pixels in your image, you have a million dimensions, right?
+ So you got to represent the image as a million dimensional vector, okay?
+ We'll cover all of these things much more in detail, so at this point it is all a bit fuzzy,
+ and you don't understand this is normal, okay?
+ I'm going now over the whole lecture in, you know, brief introduction,
+ but it's just giving you a preview a little bit and we'll put things in context
+ so you can go more in depth through the lecture, okay?
+ So essentially an image, if you look at it as a million dimensional vector,
+ it's essentially every pixel is kind of one dimension of that vector, okay?
+ And that's essentially not necessarily a great way to represent and understand some of those,
+ some of those effects that we'll encounter as we manipulate those images.
+ And so we'll choose then a change of basis, which, you know, in a three-dimensional XYZ space
+ would be a change of basis, a rotation of the space, right?
+ You reparameterize your space by rotating it around.
+ Here, you know, it's also, we'll actually look at, here, unitary transforms,
+ Fourier transform also, unitary transform.
+ Unitary transforms actually transforms that actually correspond to the equivalent of rotations.
+ You know, rotations are transformations of 3D space that don't change the,
+ that don't change the length of vectors, right?
+ So you rotate around, you can move around, like, let's say in particular you rotate around,
+ if I have a vector that's this long, you know, in this basis, and then I change it,
+ now it has different coordinates in the basis, but the length of the vector is still the same, okay?
+ That's this type of transformations, but this unitary transform, again,
+ we'll apply them not on two or three-dimensional space, we'll apply them on a million-dimensional space,
+ or, you know, maybe only a thousand-dimensional space.
+ Let's say you do a 30 by 30 patch representing a template of a face, for example.
+ So you have 900 numbers that represent how a face looks like if you kind of do a cutout.
+ Then you can do unitary transform on this 900-dimensional space.
+ Okay, we'll look both at generic transforms, like the Fourier transform.
+ We'll also look at specific transforms that are adjusted to a particular problem.
+ I already told you which problem, for example, doing face recognition or finding faces, recognizing faces,
+ you know, being able to kind of look at different faces, for example, you know,
+ so that when, you know, I want to unlock my phone, I just hold my face in front of the phone,
+ and it will essentially be able to unlock it because it actually recognizes it's my face in front of it, right?
+ Or actually the same with my laptop, okay?
+ So therefore we need to, given an image, be able to say, you know, to go to a vector space
+ and then say, is this the right vector or is it close enough to the person I'm trying to recognize
+ versus any other person.
+ And so we'll see that these transformations transforming to a particular problem,
+ we can actually work in lower-dimensional spaces and we don't have to work in 900-dimensional space,
+ which could be very expensive, but we can work in a much more compact space
+ where the actual features that matter will be there.
+ The, this will also be fundamental, the more generic transforms of the type,
+ will be fundamental also in image compression, okay?
+ As I kind of hinted, if you have an image, you know, roughly a thousand by a thousand pixels here on the screen,
+ that's a million numbers, that's actually a million numbers for a grayscale image.
+ If you have a color image, we won't talk too much about this, this is more in the graphics part,
+ what color actually is, we'll briefly talk about it in sensing,
+ but for now, for this part of the lecture, you can assume, okay, color actually,
+ because of the way our eyes perceive color, which is not physical full-spectrum, you know, color,
+ we actually have three different types of color-sensitive sensors in our eyes.
+ So in a sense, what we perceive is red, green, you know, variations of combinations of red, green and blue,
+ RGB, which you might have seen on screens or other things.
+ So because we perceive these three colors, we need screens to at least, you know,
+ play around with combinations of also those three colors, red, green and blue.
+ If you would actually look very close at the screen here, you might be able to see,
+ or some of the screens you might be able to see actually dots,
+ when you look very close, red, green and blue dots on the screen.
+ So that means actually instead of a single number per point,
+ you actually need three numbers if it's a color image, okay?
+ So that means already three million numbers, so if you only use eight bits per,
+ and we'll discuss that also, but if you only use eight bits per, you know, per color,
+ that's still three megabytes for a pretty simple image.
+ If you now talk about a video, you know, it's actually sending images here at 60 frames per second,
+ it's always the same image, so that would be cheap to compress.
+ But let's say I play a video here, we'd be talking about three megabytes times 60 hertz.
+ You know, you can already start seeing that you're, you know,
+ what you thought was a really high bandwidth, you know, a few gigabits to your home, you know,
+ fiber would quickly be, you know, fully filled with a single video stream, okay?
+ So clearly we need compression.
+ So first we look at single image compression, which is using these transforms.
+ And then we'll look at also after that, at video.
+ Now it turns out at video, you know, what is important in video,
+ if you want to understand and compress videos also, is to see, you know,
+ like if I look at this scene, for example, I see mostly the same stuff,
+ except that, you know, some of you are moving a bit around and so on,
+ or in general if I film a random scene from frame to frame, not that much will change,
+ except that some things are moving, right?
+ Or I'm moving and therefore the visually everything moves around me because I'm moving.
+ But if I move from here to here, I still see all the same stuff, almost all the same stuff.
+ There's a few things occluded and disoccluded.
+ But mostly I see the same things, I just see them in a different place in my field of view,
+ or same with the camera.
+ You would see the same things, almost the same pixels, almost the same image content,
+ but slightly, you know, in a different part of the image.
+ Okay, so the way we'll do compression for video, and the way we'll also do anything
+ that tries to understand videos and so on, is first by really trying to find, you know,
+ something we call optical flow, it's actually trying to see how things move in the image.
+ You know, that stuff was over here and now it moved over there,
+ we'll try to compute that from images.
+ And this will be also the basis to be able to do compression.
+ Because then the way we'll explain it is, okay, this new image that I now have to explain,
+ based on the previous image, I take this patch over here and I just move it over here,
+ or actually vice versa, I will say, the patch here that I want to, you know,
+ rebuild for the new image or transmit for the next image, this patch over here, you know,
+ just go look a little bit to the left and to, you know, a little bit lower in the previous image.
+ So take this patch, copy it over here in the new image, and that will give you a good starting point.
+ It won't be perfect, so we'll still need some additional stuff based on normal image compression.
+ You say, okay, and you do a collage from all the patches from the previous image,
+ let's say in a simple way, you do this collage based on how things moved around,
+ and then you say, okay, now I have to do touch-ups, and then I'll use normal image compression
+ to explain what touch-ups I have to do.
+ That's in two minutes the lecture that we'll have on video compression.
+ We'll also talk about radon transforms.
+ This is one, we'll have one lecture where we'll go into more medical image processing.
+ All the images we look at for the rest are typically going to be images that just look at surfaces.
+ So we have light sources that, you know, send light out, so photons go out,
+ they hit surfaces, they bounce off, part of it gets absorbed, part of it bounces around,
+ and then if you put a camera somewhere, or you have your eyes somewhere,
+ that light will kind of be measured how much light is reflected on surfaces
+ from every direction based on the lighting there.
+ So you only look at surfaces typically, or, you know, mostly really surfaces.
+ You have some transparent things and so on, but mostly you look at surfaces.
+ With radon transform or with medical imaging,
+ you're actually interested at doing images through, you know,
+ like not of the surface of the person, but actually through the body,
+ measure what's inside.
+ So there we'll actually use still the same geometric, you know, like a pixel,
+ a point, an image point will be measured at what comes in from a ray in space.
+ So like if I look in that direction, I, you know, my eye sees whatever is first
+ in that direction when I look at surfaces.
+ For image, medical imaging, it will be different.
+ I'll be looking with x-rays or something.
+ I'll be looking all the way through, and I see kind of everything that's along the line,
+ all the way through the body, for example.
+ And I just see the brightest thing like, or the accumulation of everything through the body
+ in a particular way.
+ It turns out that to understand that, and to model again mathematically that process,
+ and represent that, and analyze that, there's this random transform that's very useful.
+ It's also, I also like to discuss it because it's actually also closely coupled
+ to the Fourier transform, it shows, and so it gives you another insight
+ in what the Fourier transform is doing and can be doing.
+ And so it also explains a little bit the basis of, you know, CT imaging and things like this.
+ So computational tomography.
+ So the typical, like, how medical imaging kind of some of the basis for that.
+ And then we'll finish with this, this is the first time we'll actually cover this topic in this lecture.
+ But we'll then discuss also convolutional neural networks,
+ which will actually also bring back a lot of those steps.
+ The image segmentation is actually a nonlinear operator,
+ but then everything we see after that mostly, the convolutions and filters and so on,
+ are all linear filters.
+ They'll have the interesting property that if you apply a linear filter
+ and then a second linear filter behind it, and a third linear filter,
+ and you know, any number of linear filters that you want,
+ up to saturating your, you know, your 8 bits and, you know, and things like this.
+ But up to, if you assume that you have, you don't have issues of saturations
+ or, you know, not having enough precision or so, up to that,
+ all of those linear filters, if you apply 10 linear filters after each other,
+ you could actually replace that by a single linear filter.
+ It's guaranteed you actually could apply the filters to each other,
+ and that makes a big filter, and then you just take that big filter as a single operation
+ and apply to the image, and you would have the same effect as the 10 linear filters in a row.
+ So linear filters somehow, they don't do that means, you know,
+ in a sense they do very interesting things, but in the other hand,
+ they don't combine in a very interesting way because they just kind of keep combining into,
+ you know, you can all collapse them to a single linear operation.
+ So at some level, they don't, they're not that interesting.
+ You find them everywhere, but they only, they're limited in how much they can do.
+ Convolutional neural nets are essentially, there's one small difference
+ when they apply all those filters in a network, a deep neural network,
+ so they will have actually many in a row, apply many small filters in a row,
+ but the key difference is that after every filter, they make a nonlinear decision.
+ I mean, or they essentially apply a nonlinear effect.
+ For example, typical one is, okay, if the result is positive, then I just keep the result,
+ but if it's negative, you know, I just clip it to zero.
+ So that's nonlinear, right?
+ So positive, it's, or let's say for you like this way, so positive,
+ if the value is positive, I just output that particular value,
+ so it's 45 degree curve, right?
+ If it's linear, you know, you push it up, and you know, if it's positive,
+ but you push it down, it's negative, and then, you know, afterwards you recombine,
+ somehow always ends up, you know, having one combined linear filter effect,
+ but as soon as you put a nonlinear effect, then you can do much, much more interesting things.
+ At that point, you can actually take decisions in a sense, right?
+ So if it's positive, so now you can make the difference,
+ so essentially linear filters in a sense, what they do is they cannot make the difference between,
+ so if they have a strong positive effect, so they say, oh, this really looks like, you know, whatever,
+ for example, some of the features we look at is corners, right?
+ So hey, this really looks like a corner, like a white, you know, inside corner with a black outside, okay?
+ So let's say that's a feature you're interested in, you want to find this corner here,
+ then you could look for a template like this, and you would correlate or convolut the image with a template of a corner,
+ and then it would give you a strong response if you hit this.
+ The problem is you are bound to also, if you use a linear filter,
+ you're bound to also have a very strong response if you have the exact opposite,
+ and it will be a very strong negative response, okay?
+ So if you have a black corner here with a white surrounding, right?
+ If you have a linear filter, it has to also at that point give a strong response,
+ so the responses between the positive and the negative are always coupled,
+ you cannot separate them in linear filters,
+ so you can, if you say strong response to this, then you have an equally strong negative response to the opposite visual signal, okay?
+ And because as you keep stacking things up, they all recombine in a single combined response,
+ it means that your filters can somehow not just choose the positive but ignore the negative, okay?
+ Deep neural networks, the key thing is they insert at every layer of the network a negative, like a nonlinear decision.
+ It says, "Yes, I keep the positive, but I ignore the negative."
+ That's in a sense what they're doing, you know, intuitively at a certain level.
+ That allows them to be much more powerful because there they can just select what they care about
+ and not have the byproduct of kind of, you know, also kind of having a strong response to the negative, to the opposite signal, okay?
+ So that is what actually then turns out to be,
+ suddenly you can represent pretty much anything or get any decision function created with this,
+ where linear decision boundaries at some level, okay, by the way, in the end what are you doing?
+ You're essentially looking at a big vector space and what a neural network at some level is doing,
+ or any decision mechanism, is putting a boundary somewhere in that space, okay?
+ If you have a linear system, that boundary is just a plane, you know, a hyperplane or whatever, but it's just a plane.
+ You can put any number of linear filters behind each other, it will always remain a hyperplane somewhere in that space.
+ So it means everything on one side of that plane is labeled one way, if you do binary classification.
+ Everything on the other side is labeled the other way, and you won't be able to get anything else out of your linear filters, okay?
+ With nonlinear, you can actually end up drawing any arbitrary boundary and say, okay, those things over here are positive,
+ and then those are negative, and then those are positive again, and so on, you can have very complicated boundaries,
+ arbitrarily complicated boundaries with neural networks, okay?
+ Okay, so that's, you know, a kind of big overview of everything we'll be discussing in the first part of the lecture.
+ Any immediate questions related to this or other questions related to this first part of the lecture?
+ Okay, you know, this, so as I said, like, this was not the level you should understand, it's mostly, I hope,
+ a good intro, give you some background, and as we go through the lecture, it will allow you to put a different part into context,
+ also looking at what will come afterwards.
+ Yes?
+ [inaudible]
+ What?
+ [inaudible]
+ Oh, the slides should be made available to you by, like, for the first part, I think by, Philip should upload them.
+ I think now I just send him an email 15 minutes before the lecture, so I think he might, like, this might not yet have happened for this lecture,
+ but the goal will be that it will be uploaded before the lecture so that you have access to them.
+ I think it's on the course website, but I think it will be there, but anyways, you'll hear about, from Philip, you'll hear about it.
+ Any other questions?
+ Also related to practical organization or other things, so actually, I'll, I'll, I have some course logistics after this.
+ Okay, so on the graphics side, I won't go as much into detail there, but essentially, you'll, you know, you look at basics of how to draw a triangle,
+ like the basic kind of graphics pipeline, you know, steps, drawing pipelines, rasterizing, you know, again, the images are grids, rasters,
+ and so you kind of go through it, you know, pixel by pixel or so and, you know, kind of make decisions there or compute the value you should get there.
+ Then very important is being able to move things around.
+ So transformations, here we're actually talking about 2D, you know, 2D and 3D transformations, and kind of basic geometry and then textures,
+ texture in this case is essentially the appearance of a particular triangle, you can attach kind of an image to a triangle in a sense,
+ that would be the texture, and then as you move that triangle around, it will go to different place and then you have to, it will land on different pixels
+ and then you have to sample that texture to see what part of the texture, what, you know, that texture, what, you know, what, how to fill in the right color in the image based on sampling that texture.
+ So you look at the rendering pipeline, then important, of course, is lighting.
+ If you don't generate the light in your, have some notion of lighting in graphics, you know, you're not going to get much, okay,
+ so actually the basics would be to just copy the texture values or whatever you say, this thing is red, you know, just copy red values to your image,
+ but that creates very flat images that are not very interesting.
+ So what you actually want to do is also generate, simulate the lighting process.
+ That means that if light is coming from a certain direction, you know, it will be, so you model the fact that, you know, the brightness,
+ let me try this here, okay, so now my hand is, it gets a lot of light straight from the light there.
+ As I, you know, mostly approximately from any direction, you will see the same brightness from my hand.
+ This is called lamb version reflectance.
+ It means that the light that hits there on this surface will mostly reflect the same in every direction.
+ The same amount of light will reflect in any direction, roughly.
+ That's a good approximation for a good number of materials.
+ That's also for the screen, for example, the case that reflects light roughly equally in the 180 degrees in front of the surface.
+ But then if I pivot the surface like this, sorry, you guys can't see it anymore, but you see on this side that my hand is now less bright, right?
+ That's because, of course, now if you just look at the amount of light that hits my, that illuminates my hand now,
+ it's a much smaller fraction of the amount of light of the projector.
+ At this point, it's about this, while now it's about this fraction of the projector that hits, that illuminates my hand.
+ And so essentially the normal between the light direction and the surface direction will determine how bright a surface looks like.
+ Or, you know, how much light is actually captured by the surface and reflected by the surface, et cetera, et cetera.
+ So that's lighting and shading.
+ Also, you talk about colors.
+ As I said, colors are actually quite complicated.
+ You know, our eyes might not exactly sense things the same way that the screen represents it.
+ All of these things can lead to some interesting effects.
+ You have to choose how you represent colors, et cetera, et cetera.
+ There's a lot of depth to that.
+ I think Marcus will actually go through some of that with you to at least give you some basic understandings.
+ For example, also, you might have noticed that your printer doesn't, your screen is an RGB screen,
+ but your printer actually typically C-M-Y-K sees for, so it's cyan, magenta, and yellow, and then K is for black.
+ That's just because it's hard to make black by just mixing colors.
+ But what you really need is C-M-Y-K.
+ It's different colors.
+ This is because, you'll see all of this, but it's because there you actually subtracting light.
+ It's what light gets absorbed on the surface.
+ If you print something on the surface, on the screen is what light gets emitted.
+ Those are inverse processes, and that means that if you want to combine, you know, to generate a color,
+ here you decide on a screen like this, you decide what do I emit.
+ I emit RG, and how much RG and V do I emit?
+ When you actually print, you say what should the surface absorb in terms of light?
+ And therefore, if you put two colors together, you absorb not two colors instead of one when you mix colors.
+ That's why it's actually some of the inverse colors.
+ Anyways, you'll see all of that when you'll talk about colors.
+ And of course, visibility and shadows.
+ You know, if I turn my hand this way, then this doesn't get any light from there, right?
+ All of this needs to be modeled, so that's all geometry, et cetera.
+ It could also be that this doesn't get any light, not because it's oriented the wrong way, but because there's an occluder, right?
+ Because my other hand is kind of capturing light, so there's no light hitting this anymore.
+ Obviously, you want to model that, otherwise your graphics is going to look kind of strange
+ if the light illuminates every surface, you know, behind other surfaces equally, right?
+ So, visibility and shadows.
+ Then, I think this time there will be curves and surfaces will be discussed.
+ How do you represent kind of not discretized surfaces, but actually smooth surfaces or as smooth as possible surfaces using mathematical representations,
+ both curves in 2D and then surfaces in 3D?
+ Some geometry processing, I'll see with that.
+ And also ray tracing.
+ The standard graphics pipeline is, you know,
+ is directly rendering these triangles and, you know, projecting those in the image and so on.
+ Ray tracing is a different process.
+ It actually, you know, will trace rays through space and see, you know, until it hits the light and stuff like that.
+ With today's graphics hardware and so on, this is starting to become quite feasible also in real-time interactive settings and so on.
+ So, you'll also look at that.
+ So, this is, you know, also working at Disney is also going to tell you or maybe have a guest lecture and, you know, both throughout the lecture
+ and also, you know, probably dive deeper in some of the kind of more advanced special effects that are happening at Disney, right?
+ Okay, so in terms of course logistics, you should be able to find all the info on the website.
+ There's probably also the slides.
+ They might also be on the Moodle or somewhere else, but I think they'll be on the website.
+ So, you all found the way today.
+ We'll be here at the same place on Thursday afternoon for the other lecture of the week.
+ And then the exercises will be those two sessions here.
+ Philip will communicate with you, you know, what group, in what group you do normally be.
+ If you have conflicts, you can also switch around.
+ The groups are so as long as this is somewhat ends up with balanced groups.
+ But that's something that he will reach out to you for.
+ The exercise also only starts next week, so this week no exercises yet.
+ As the exercises, you know, have the goal to revisit some of the concepts and actually get some hands-on experience with some of the concepts in the lecture.
+ This week is too early.
+ Is it a third lecture from tools?
+ Oh, yes, you might be right.
+ Yes, I think that's something I forgot to update.
+ Good point.
+ Yes, it was shifted a few years ago and then when I copied something over, I missed that.
+ Yeah, I think you're right.
+ Okay.
+ I think all the other times I still write, but do double check.
+ Okay.
+ So the exercise is non-count for the grade.
+ The grade is determined by the final exam.
+ However, of course, the doing the exercises and, you know, kind of,
+ well, being able to do the exercises, doing the exercises is, of course, should be very correlated with how you do on the final exam.
+ Or in other words, some of the things that you do there and this and that are the things that are going to come back at the exam.
+ Okay.
+ So I attend one of the two sessions each week.
+ The exercise complement the lectures to provide insight and hands-on experience.
+ And the goal is also to be able to finish the exercises during the session with the assistance of the assistance.
+ So the goal is to not have homework to do for the lecture.
+ So hopefully you have the time to do that.
+ The exercises since a few years have been switched from MATLAB to Python.
+ So this will all be Python exercises, at least for the first part of the lecture.
+ And I think for graphics it's probably different.
+ So now I'll just give you a little bit of overview of beyond kind of the -- so this is the first intro to visual computing.
+ Here I want to sketch a little bit everything that's going on in the broader space of visual computing at ETH,
+ both in the computer science department, so first in the Institute of Visual Computing, actually,
+ which combines both graphics and vision.
+ So I'm leading the computer vision and geometry lab.
+ Marcus is leading the computer graphics lab.
+ Olga is leading the interactive geometry lab, which is also really focused on computer graphics,
+ geometry processing.
+ Then C. Utang is leading the vision and learning group,
+ where I'm mostly focused -- and I'll show some examples throughout the lecture --
+ on having cameras that move around through environments and try to understand what's going on in the environment,
+ build representations of the environment, think of scenarios like head mounted displays,
+ like a HoloLens device or VR devices, also phones that move around
+ and to help you navigate or self-driving cars or drones or other things that essentially --
+ systems that need to be able to navigate the world or do things in the world need to perceive their environment and function.
+ Olga is more focused on cameras that look at people and understand what people are doing,
+ tracking people, modeling people, making, building digital avatars, et cetera, et cetera.
+ That's what we are doing in the vision space.
+ In addition to that, Otmar Heligus, who's doing HCI and computer vision,
+ also more focused on tracking people, how they interact and what they can --
+ these kind of interactive computer vision-based modalities.
+ Sted and Kuros does the computational robotics, leads the computational robotics lab.
+ This is a lab that's focused on the intersection of robotics and graphics.
+ You can wonder, okay, why do robots need graphics or so?
+ This is about enabling reinforcement learning and enabling -- so you need a simulation environment
+ to be able to train your robot without destroying your robot in the process.
+ So you actually want to have a kind of -- you want to leverage all of the modeling and 3D and capabilities
+ of, you know, manipulating geometry, having interactive geometry,
+ use that to simulate your robot behavior, train your robot behavior and so on,
+ in simulation to then transfer that to an actual physical robot and so on.
+ Okay? So that's what he's doing then.
+ In ETHET, there is the computer vision laboratory with Luke Fanghole
+ and Konokoro and Fisher U.
+ Luke and Fisher are more on the computer vision side and there is more on the medical imaging side.
+ Then there's the Institute of Machine Learning that also does some --
+ also does some work sometimes in both medical image processing as well as computer vision and so on.
+ In photogrammetry and remote sensing, this is in Debalk in the civil engineering department.
+ However, he's actually also really has a computer vision background and does computer vision research.
+ Then there's a lot of work in robotics happening in the day-maft department,
+ so in mechanical engineering, Roland Sigurd.
+ Actually, I should have, but Marco Hutter there also are doing computer vision.
+ Margarita and Eminor-Hiles moved on.
+ I forgot to update this part.
+ Then also at the university or actually between the university and ETH,
+ there's the Institute of Neuronformatics.
+ They do some very interesting work in particular in neuro-inspired sensors.
+ The Toby Delbrouk actually built and we'll talk about that on Thursday.
+ At the origin of event cameras, these are special type of camera that much more mimics the actual way the eye senses the world.
+ We're not measuring every pixel every time at every frame,
+ measure how much light came in now and then again the same thing, the next step and so on.
+ So much more sparse process is like, okay, as long as nothing changes, there's nothing to signal,
+ but when something moves somewhere or something happens somewhere and the brightness changes in a particular area,
+ then it sends a signal.
+ It's like, oh, this pixel became brighter by 10%.
+ Oh, this one became darker by 10%.
+ So it just sends these type of signals, completely different way to create images.
+ So Toby did that.
+ Now there's actually so many Samsung, everybody's building these cameras.
+ They're originated from here.
+ There's also a few startups here in Zurich.
+ Davide Skarmutza is one of the leaders in the field of actually using and building algorithms to leverage these type of cameras to do cool stuff.
+ For example, he just set a paper in nature that showed some of his really crazy drone flights that now can beat you in pilots and so on.
+ Okay, so I leave it at that for the first part.
+ Now we have a break and then we'll resume in 15 minutes.
+ And I forgot, was there a presentation or not?
+ No, because at some point there might be some presentation during the breaks from different student organizations.
+ Thank you.
+ Okay.
+ So I told you about all the labs at ETH or at least a good part of the labs that do computer vision related things and computer graphics related things.
+ So visual computing related things.
+ There's also a lot of industry, both big tech as well as startups.
+ Actually, often those things are correlated.
+ Here's a few things that are happening here in Zurich in this space.
+ So Disney, of course, is here.
+ This was actually Marcus Gross that brought Disney here, set up a Disney research lab.
+ Now it's focused on the studios and so the special effects and so on.
+ Google is of course here, has lots of computer vision and graphics people related to both on the research side of Google here with several groups.
+ Also a former professor from ETH, Vittorio Ferrari, is there several others.
+ Then there's also actually former Disney, Tavo Bieler is doing avatars and other things.
+ So digital humans at Google, they do a lot of things related to their AR, VR, also search maps, etc., etc.
+ With different vision and graphics components.
+ In particular also ARCore.
+ There was a team that worked on ARCore that also did the navigation or the, you know, in Google Maps, if you do pedestrian navigation.
+ And you can click to then get kind of localized based on an image.
+ That's actually done here in Zurich by Simon Linden and his team.
+ Also including one of my PhD students, the actual algorithm, the origin, not today's algorithm that's used,
+ but the first version of the algorithm that was then developed further was actually developed in my lab actually.
+ And published in 2015 and is now kind of the base for the algorithm that's in Google Maps for example.
+ You know, there's startups here doing like physics simulation on GPUs.
+ There was a startup that got acquired, or actually a startup information.
+ I think it was called Zurich Sensor, so it was never really started because it got, the whole team got acquired,
+ acquired by Oculus.
+ So Meta now in the meanwhile is about 300 people here in, or maybe even 400 people working with mostly vision background.
+ That are working on the tracking and many other aspects, computer vision related aspects.
+ Also some graphics for Oculus device for MetaQuest devices.
+ There was, Koaba was a startup of the computer vision lab, got acquired.
+ It was a startup that 15 years ago, you could also, you could take pictures.
+ Actually I think it's still their technology in Vivino where you can take a picture of a bottle and it will kind of recognize what the label is and so on and do that efficiently.
+ But they were acquired by Qualcomm as part of the, you know, became part of the euphoria in Qualcomm which then got sold further to PTC.
+ Which is one of, you know, you might not know it, it's not a consumer oriented company, but it's actually a big company and everything that's digital industry kind of digital twins and IOT and these type of things.
+ So anyway, so they used that for doing augmented IT and other experiences at PTC.
+ There was a startup called Procedural, you know, here's some computer vision work that some of Pascal Müller in particular did between graphics and the computer vision lab to label facades here and segment facades in all its components and understand that this facade had a structure that all these windows are essentially the same elements copied over and so on.
+ And they developed that further to be able to build procedurally, build kind of digital cities with the idea to help urban planning so that you can generate kind of, if you put a street layout, you can generate a plausible set of buildings that, you know, with a proper style and you define the style and it will populate it and generate a whole virtual city, for example.
+ So that was what Procedural was, they got acquired by Esri, which is a large international company and they're not as far as I know the mixed reality expertise center for Esri and so they're also based in Kais-Pimpf in, have their offices there.
+ There's a small startup, a startup CVL that got acquired by Logitech, for example, that was doing some camera stuff. LibreVision was a startup from Marcus that was looking, that was, you know, you might have seen in football matches at some period they had like these circles and tracking players and all of these analysis of what was going on in the game and enabling the commentators to discuss, you know, the effects.
+ This was all pioneered by LibreVision, so it was a mix of vision and graphics, became part of ISRT, which is, I think, a Norwegian group, if I'm not mistaken, that is kind of specialized in sports, kind of video processing things.
+ FaceShift startup also from, it was a student with MacPauly, who was a professor next to Marcus Gross in computer graphics here, he's now a professor at APFL, so he was assistant professor here, became a full professor at APFL.
+ This was a student and then postdoc, people, Vicer, there were other people also involved, the startup was kind of linked to APFL because that's when they started after that postdoc but was established in Zurich because, you know, Tivo and others were from here.
+ And that became the basis, got acquired by APFL, this is actually when in APFL you have an emojis and you have your face tracked kind of, you know, and doing grimaces in front of your phone, that's their technology.
+ So, you know, they got acquired, a bunch of people moved to Cupertino but also there's a part that stayed here.
+ Now there, that's part of the team here of APFL, APFL has been growing in the meanwhile but that's one of the teams here.
+ There's also another team more related to robotics and actually self-driving cars, although they cannot say that they work on self-driving cars and stuff, but that's also related, they also have computer vision expertise and people doing that there.
+ There was a startup called Dacuda, they had at some point a product that was called a scanning mouse, so a mouse actually has a small light sensor below it that tracks, you know, with a laser and then reflection patterns and so on and will track your motion.
+ What they did was replace that with a camera that actually just, or augment that with a camera that would look at anything below your mouse.
+ So they had a little window and the mouse not only was a mouse but was also a scanner so you could scan receipts and stuff like that.
+ That was their first product, of course eventually that would all be replaced by just taking a picture.
+ So, but then after that they wanted to go to 3D scanning and things like this and then they got acquired by Magic Leap as the basis for the tracking team to augment the tracking team.
+ In the meanwhile, most of the Magic Leap computer vision team is actually here in Zurich.
+ There's about 60 people I think that do computer vision. They're in the same building as the informatics department in the AI center in Eurlico.
+ What else here?
+ Bunch of other startups and small companies or companies that use maybe Leica also.
+ There was a startup that was doing drone flights.
+ They, I mean there's many startups doing drones here in Zurich. This whole ecosystem.
+ Oterion is actually a startup followed by one of my students, Lauren Smeyer.
+ They do a bit of computer vision, not so much, but one startup was going to do the self-lying drones for GoPro.
+ So first, themselves, then they got bought by GoPro. That didn't work out. Then they got bought by Leica.
+ Leica now has the self-lying scanners. So lighter scanners mounted on drones that can kind of do a map of a building by flying through it and so on.
+ Leica Geosystems more in general has a lot of computer vision, robotics, you know, and other metrology applications.
+ They historically were based in Hebrug, or are based in Hebrug next to the border with Austria in Liechtenstein in that corner.
+ But they now more and more also have a big operation in Zurich, both doing these type of things, but also actually doing a lot of graphics.
+ So they're part of the bigger hexagon group. And so hexagon has also a good part of their hexagon digital realities platform is also being built here in Zurich.
+ And that's more on the graphic side, representing digital representations in the cloud of cities and other kind of scans.
+ Anyway, so that's a little bit of, you know, a little bit of the things, the many things that happen in Zurich in this space is actually, I would say that in the space of computer vision, especially, oh, and I forgot, of course, the Microsoft Mixed with IT and the iLab that I set up.
+ So actually, I'm only a half time professor at ETH. My other half I'm working for Microsoft and leading this lab here.
+ The, and what I worked on is essentially this device, the HoloLens 2.
+ In the meanwhile, we work much more on cloud services. So I have a relatively small team here, about 25 people.
+ The whole lab is about 30 people. We mostly work on a cloud service to map environments and to be able to, you know, if you think of the digital transformation, the goal is that eventually there will be a digital copy, a digital twin that collects all of the digital information about a particular environment,
+ a factory or something like this. And what we're in particular focused on is making sure that the digital twin can be one-to-one connected to the real world in the sense that if you walk around with a device like HoloLens or with your mobile phone,
+ you can kind of have a one-to-one overlay between the real world and the digital twin so that you can both consult the digital twin in the field, in the factory, for example, intuitively by just pointing at something,
+ or if you wear HoloLens, it's even simpler, you just look at something.
+ And you see all the layers of information are relevant to whatever your task is or your job is.
+ But also that if you actually do something, so you now do maintenance or you do something, that information can be also, you know, update, can update in a natural way, can simply update the digital twin also.
+ So you've got to do a maintenance procedure, that documentation, maintenance procedure, and now I'll get copied over to that machine in the digital twin, et cetera, et cetera.
+ So we're working on a cloud service that supports that. It's essentially a mapping, a 3D mapping of the environment based on just capturing images as you walk around.
+ So if you look at Zurich is actually quite exceptional in the sense that in terms of how much computer vision opportunities or, you know, R&D activities going on in Zurich, in the broader Zurich space,
+ you know, if I look in particular at Mixed Reality, so if you look here, you have quite, you know, Largely's Quest Team, Apple is doing things here in Mixed Reality,
+ Google is doing things here in Mixed Reality, Magic Leap is doing things, PTC is doing things, et cetera.
+ So essentially every major player in the field actually has an R&D computer vision team supporting their Mixed Reality applications or products in Zurich.
+ That's on par essentially with the Bay Area and the Pacific Northwest and, you know, and then Zurich and that's pretty much it worldwide, I think, as the top places for these type of activities, which is, you know, quite interesting.
+ And so if you're interested in the space, there are opportunities here.
+ Okay, so now let me just dive and this will be actually, you know, in a number of examples of things that exist in the space.
+ It's actually biased towards slightly older examples, as we did at the beginning of the lecture, the beginning of your journey in visual computing, I think it's good to also see a little bit of what did people do maybe 10 years ago
+ in some of those nascent, back then nascent areas, where some of those things you will see now are like, well, of course, and, you know, now you have, like, you know, almost fully self-driving cars, not yet fully, but et cetera.
+ Here I'll show some of the things more at the beginning of that, et cetera, et cetera, also because there the algorithms are still a little bit more kind of exposed or it's more clear what actually the direct link is to some of the things we'll cover here.
+ Okay, so here's some examples of first is, you know, all of these kind of 3D and interactive maps and stuff like that.
+ So you can both have algorithms. This was more the time where there was still some interactive modeling involved in, you can see it's relatively clean and so on.
+ So, but still you have a lot of image processing and graphics and so on to, even if you do this interactively, nowadays, you know, there's a lot of algorithms and things that do this automatically.
+ Here's work from one of my students. He works, he worked then at Google and now at WeMo, so still Alphabet on self-driving cars, but essentially this was work, you know, done about more than 10 years ago.
+ Our goal was to essentially, from camera, similar to Street View, so cameras mounted on vehicles that record the environment.
+ Our goal was to be able to do the best we could in terms of reconstruction in real time.
+ So if we record an hour data, we wanted to be able to process it in one hour and build 3D models of environments.
+ And for doing that, we leveraged graphics processors, so GPUs already back then we did general purpose computing or computer vision computing on graphics processor,
+ which now is the big thing why NVIDIA stock has gone through the roof is because everybody now needs GPUs, not for doing graphics, you know, which you'll see how GPUs do that in the second half of this lecture,
+ but actually to train deep neural nets or like things like convolutional neural nets and so on that we also look a little bit at in this lecture.
+ But back then we were using our GPUs to do this type of more classical geometric processing reconstruction.
+ Here's also a bit of other older work from my lab, but was kind of one of the first or the first that really combined both the geometric reconstruction of the space with also a semantic interpretation of the scene.
+ So people have done both separately before, but this was really seeing if we do both, we solve both problems together, we ended up representing it.
+ So essentially when you what you do is you look at an image and you have neighboring images and you compare those.
+ And so you say you try to find and we'll look at how to do that in this lecture for a particular point in one image.
+ You know, you look in the neighboring images like where is that point.
+ I talked a little bit earlier about in video from one frame to the next, you would try to find back the points how things are moving.
+ You can also do that if you just change the viewpoint a bit. So I have this viewpoint and I have this viewpoint slightly different and I compare both images and what we'll do is correlation.
+ This is something you'll see in the third week.
+ I would actually be absent a third week, but one of my postdocs will replace me for that.
+ You do a correlation.
+ So you take thing you represent as a vector and you see if the two vectors actually align or don't align.
+ And you find things that correspond that way that are likely to correspond.
+ You do that. And then if I find this point here is this point over here and then that point geometrically given the camera corresponds to this rain space.
+ Wherever those two rays intersect, that must be where the original 3d point that I see in both images.
+ And it's the same point.
+ Then I know that 3d point must have been over there in space.
+ That's the process that's done here, which is represented here.
+ So we have a reference image, a bunch of images around it.
+ We determine correspondence between all those images with this correlation process in the simplest way.
+ For every point in that reference image, we have now through triangulation determined how far it is.
+ In that image what you see is it's a representation for the points where we're successful.
+ The color indicates and codes in a sense how far the point was.
+ So this is essentially a color representation of the depth.
+ We do that for all the images all around.
+ And we've also computed and we want this talk about that and be able to talk about it in this lecture.
+ But this will be covered in computer vision and then in 3d vision in the masters if you're interested.
+ We find where all those cameras are geometrically with respect to each other around the building.
+ So now we have, well, from here this is roughly the things I see from here.
+ From here there's these things and so I have all these measurements from all around, but they all like separate points.
+ The process we do then, and this is the result of that, is to say, okay, now let me try to do a segmentation problem.
+ I will try to find the surface that separates the points that are outside from the points that are inside.
+ And of course whenever I see a point that's an indication that what's in front is outside and then behind it must be inside.
+ And as a result of that kind of optimization process that separates inside from outside based on all the evidence that I saw from all the different images surrounding it.
+ And then we do some regularization which says that essentially we want that surface to be as close as possible to the data.
+ So if I found a point here and in front it must be empty and behind it must be occupied, I would like to be as close as possible to every measurement I have.
+ But at the same time, and we'll see this actually in general, at the same time I would like to have a somewhat simple solution.
+ Typically if I compute this independently per point, I will have something very noisy.
+ Point here, point there, there will be noise on my measurements and so I will have points going like this.
+ And if I want an exact solution, my surface will have to go zigzag like this through all those points in an outside point.
+ So essentially that's not what I want.
+ What I want is like, okay, I know all those points are roughly here.
+ I want a smooth surface that gets close to all those points.
+ This we'll call regularization.
+ This is actually a general principle for any problem that you'll encounter throughout, not only in this lecture.
+ It's used a lot in computer vision, but also in many other problems.
+ It's when you are trying to fit a model to data, but that data is noisy, you don't want to blindly fit the model to data.
+ You want to fit it to data as much as possible, but also at the same time try to keep that solution somewhat simple.
+ Because that simple solution is more likely to be the correct solution than not.
+ Let's say you have a bunch of points that almost look like a line.
+ You could of course also, if you have 10 points, you could fit a 10 for the polynomial exactly through those 10 points.
+ And that's going to be an exact zero error fitting solution to that.
+ So an exact perfect solution to the problem you ask to solve, the curve that goes through those 10 points.
+ However, you probably all realize or you all know already that if it's close enough, if a straight line going through those points is close enough,
+ that's probably a much better solution.
+ In particular, it's a much better solution.
+ If now for another point you get a new point coming in and you want to predict where that point will show up,
+ your straight line fitting through the data is probably a much better fit,
+ much better predictor than your 10th degree polynomial going crazy to somehow go through exactly through all those 10 points that you get initially.
+ The 11th point will be much closer probably, very, very likely to the straight line than to this 10 for the polynomial.
+ Same principle, whenever you have to solve essentially an inverse problem,
+ you're given some data and you're trying to build up the model that underlies the data, that's an inverse problem.
+ Computer vision is full of inverse problems, right?
+ Because you get images which are the result of a projection from a 3D model, for example, you get an image, you get a result,
+ or you get an image and you try to kind of figure out where did that image come from?
+ What is the underlying model that represents that image was an image projection from?
+ You're essentially trying to invert that process.
+ It's typically ill-posed.
+ For example, you go from a 2D projection to actually a 3D representation.
+ So information got lost in that projection process, so you don't have all the information.
+ Now you collect information, enough information to reconstruct, but there's noise, so everything is not very precise, so it's an inverse problem.
+ Typically, it's really important to combine, to be able to combine the data and your initial, your prior assumptions on how the model should look like.
+ In particular, typically, you would like, you would prefer a simpler model.
+ So you apply, for example, in the process on the top there, we just applied the general thing that we preferred smooth solutions in general.
+ At the bottom, we did exactly the same thing, except that now we also, in addition to getting the depth information extracted from images,
+ we also looked at the image, and in this case, this was pre-all these deep neural nets.
+ This was done with a much simpler classifier, and it would essentially classify the scene in, you know, not in two foreground background,
+ as we said, as we'll see in the next week or so, but in a few more categories, we tried to segment the image in sky, building, vegetation, ground, and stuff.
+ So we had five categories, so stuff is like everything that's not those four categories.
+ And now we combine that, and now we do a separate reconstruction process, and instead of just separating it in two classes, inside and outside,
+ we now segment it in five classes, being ground, so everything below the ground surface is ground, vegetation, so it's volumes, right?
+ It's three-dimensional volumetric representation, so it's a cube, and you say which voxels, which points in that are vegetation,
+ which ones are the inside of the building, which ones are below the ground, et cetera.
+ But we use exactly the same geometric information, but we now have different priors for different types of surfaces.
+ Vegetation still has the same priors of being smooth in general, but no particular orientation preferences.
+ But the ground, we actually said the ground, that's actually a surface that tends to have a normal pointing up.
+ It's mostly a horizontal surface. It can deviate from it if there's evidence for it, but we prefer, in absence of more evidence, we prefer to have it.
+ It's very cheap to make a large horizontal surface, and it's kind of expensive to make the ground vertical.
+ That's what mathematically we put in this process, and it's different from there.
+ Here we just paid a price in our optimization process. We paid a price for every little bit of surface we instantiated.
+ The ground, you can see here, it's not very well measured, so in the absence of good measurement, and we have to pay a price for surface in the optimization,
+ we said let's just ignore these surfaces that we don't really know where they are.
+ Here we say, oh, ground, I prefer to keep extending the ground horizontally. I don't care, that's cheap,
+ but we have to wrap it up and have it upside down, like you have these little patches there, remember, they're volumetric, so they have a bottom side also.
+ That's actually very expensive to have ground that actually has a normal pointing down, that doesn't exist.
+ So that's very unlikely. So suddenly it extends the ground out through the whole surface.
+ Buildings, well, buildings we like for sats to be mostly vertical, so it's very cheap to have them vertical, but kind of expensive to have them horizontal, et cetera, et cetera.
+ So the same geometric information, but a little bit of this semantic information to help, and then based on the semantics do something different in terms of our assumptions to be able to do things differently,
+ suddenly you get qualitatively a much, much better reconstruction.
+ Anyway, so just to bring in also some of the concepts underlying this, nowadays with deep neural networks you can somehow do all of these at once in one big learning problem,
+ and much less of than the insights here I revealed.
+ [INAUDIBLE]
+ Yes.
+ [INAUDIBLE]
+ So the flat roof was actually not very expensive or so. So this would still be fine. We actually also played around with follow-up work that we did with Conrad Schindler.
+ We actually had a separate building class, so this was actually building seen from the ground mostly that we processed.
+ Conrad, he looked at aerial images, so he's more in remote sensing and satellite imagery and stuff like that, and so in that case, most of what you see of the building is actually the roof.
+ And so there they instantiated, they learned a separate class that corresponded to roof, for example, because there they had evidence.
+ Here the roof is actually not observed from if you walk from the ground, so this is just the default filling of the roof because you actually don't observe it.
+ You actually see that the roof is missing there because we didn't measure it. It was all images like this from the ground, and you can see that you don't actually see the roof in that one.
+ That's a good question. Yes?
+ How accurate is such a system being for any not specific building and type of vegetation if we need to constantly make a different model or different assumptions like the roof will be triangular, the street will be horizontal and so on and so forth?
+ So the street doesn't have to be horizontal, so the street horizontal is very cheap, like this is just a little bit more expensive and so on, but once you get to this, it starts becoming significantly more expensive, but it's all a trade-off.
+ If you have strong data evidence, you can see this is not very good data. There's holes, there's stuff. If there's good data, the prior barely matters. It's just that if you are missing data, and so on, then the prior starts dominating and playing a big role, the nice thing about this system was if you had a complete wall missing, it would kind of fill it in by default vertical.
+ But yes, if it's the wrong assumption, if you're actually looking at more pyramidal construction or so, then it's just going to fill it in the wrong way.
+ And in data-driven, this is the whole problem of bias, a data set biases and things like this. If you have a startup here and you, let's say, would only train on white people, Caucasian people, and then of course you would try to sell it in whatever in Africa and then it would work terribly, like it wouldn't work at all.
+ So it's the same problem, right? All machine learning will be dependent on what data you train on. If that's not the same distribution as where you apply it, it's not going to work.
+ And yeah, so.
+ Here's another example. I think the video codec is too old to play here. It just has the audio. But this was essentially some relatively simple kind of cameras watching this simple world, like more easy to.
+ You know, and essentially kind of doing that.
+ Willow garage will shark team. We just program.
+ This is another example. Let that play. Willow garage. We like to challenge our raw software by doing short hackathon sprints. These sprints help spark new ideas, test our raw software, and most importantly, our fun.
+ So by the way, our most recent sprint was a game.
+ Just as some history.
+ If any of you are in robotics or are familiar with robotics, Ross, the robotic operating system was actually developed initially at the garage at this period.
+ You know, a few years before this.
+ I will go right.
+ I will go right.
+ I think the crawler service. So the one that they need. So they had this Google had Google had technology to index the.
+ You know, to compute search to do search over the web, to be able to actually try that they needed to kind of crowd the whole web and collect the data.
+ The founder of Willow garage essentially provided that service to Google and got a little bit of stock in exchange right when they started Google.
+ And so he's a billionaire and decided that he wanted to do robotics and launch the whole willow garage and, you know, resulted in this interesting robot that he made available to the research community.
+ But also lasting legacy is Ross, the robotic operating system, which is used by everyone.
+ Everyone in robotics. If you do robotics projects in your, you know, later or in your masters or whatever, you'll be using Ross. By now it's mostly Ross. It's gradually becoming Ross to the next version of it.
+ He's on the one that very, very early, you know, first kind of prototype or very early kind of mobile I system.
+ Who has heard of mobile I.
+ Oh, wow. No one. I mean, one person like.
+ Okay, so, so mobile I is, I think still the most successful computer vision startup.
+ In terms of of acquisition.
+ It was acquired by Intel.
+ I don't know. Maybe like maybe 10 years ago or like 5, 10 years ago.
+ For 16 billion. So not bad for a startup.
+ They're essentially built. They, you know, very likely if you have a car, your parents have a car is very likely their technology is building.
+ They're not a self driving company, although.
+ As Intel needed cash, Intel actually resold or like put the company partially back on the, did an IPO so that they could get some money back to.
+ You know, to fund their, you know, their operations.
+ So Intel has been struggling a bit.
+ So the.
+ So, so essentially.
+ Mobile I is so they talk about self driving, but mostly they're focused on it.
+ It is stands for advanced driver assistance systems.
+ And so it's really about these kind of cameras that are built in. So if, if your car.
+ Or your parents car, whatever, like the cars that you kind of use sometimes have a camera somehow in the windshield in the front, like a camera that looks at the street and so on.
+ It's probably a mobile I system. Okay, so they sell.
+ Not the cameras. They actually sell the chips that process the cameras.
+ Back in 1996.
+ In a European project.
+ I visited Jerusalem and I'm not sure I was the CEO of of mobile.
+ I had this little chip, this little box in the open and he said, this is a chip, you know, that's going to do great stuff for for cars and stuff.
+ And it was, it had filters and things like this. Some of the stuff we'll see back then.
+ It had filters and other things that would help detect in hardware very efficiently the road.
+ Like in the camera kind of see where the road lines are and stuff like that that would help you keep, you know, have lane warnings.
+ It would also detect if a car was in front of you and make a signal or if a pedestrian was in front of you, it would all do all those things in hardware with very little power so that it could actually run in real time low latency on the car.
+ This was back in 96 when this was not a given.
+ So, so this, this was one of the first system.
+ And I don't know that you could put in your car and it would kind of tell you, you know, how far you were from colliding with the car or stuff like that.
+ He's actually one of their videos from long ago and are less likely to be identified by drivers.
+ The mobile eye system identifies pedestrians and cyclists during daylight hours and can determine if the danger of a collision exists.
+ In the event of a possible collision, the system issues an alert providing you with up to two seconds to break and prevent an accident.
+ Okay, you get it, right?
+ Anyway, so this is not building in most cars.
+ Actually, I think there's there's rules in many countries in place that force you to have systems like this in place and so on.
+ But this is where this all started, right?
+ And so this is someone, you know, this was before starting this company.
+ I'm not, I was a professor at the university.
+ He still is, I think, actually.
+ But this was, but it's also CEO of mobile.
+ This is another system.
+ This is some work that actually that that FPGA was actually that board.
+ As far as I know, was actually our, at least the first prototype, which was developed in Zurich by supercomputing systems, which is kind of an integrated that does.
+ Transfer kind of code to FPGA implementations or embedded implementations.
+ What they did, this was.
+ Daimler.
+ They had a stereo camera system that would essentially, you know, same thing.
+ We have two eyes and we perceive depth in front of us, most of us at least.
+ You know, again, an encoding of the depth based on on color.
+ From essentially comparing to nearby images that look mostly the same and the small differences actually reflect the depth, the depth of the objects.
+ They essentially build a very fast hardware implementation.
+ You know, board that they would build in, I think at the time in some of the high end as classes had this building, you know, 10 or 10 or more years ago.
+ From this, they went to this kind of what they call stick sales, which was okay to roll.
+ I don't care about, but I care about representing like with these vertical sticks instead of pixel, it was stick sales.
+ These vertical sticks were kind of representing kind of clusters of those were representing cars and other objects and so on.
+ Essentially, they were fitting kind of vertical surfaces to the world, ignoring the road and then every vertical surface was represented compactly by this few sticks and so on and so on.
+ And then they did optical flow, something we'll also talk about in the sixth week of the semester when we talk about video compression, but you see also here to follow where things are moving and so on.
+ Optical flow is kind of the algorithm you kind of you would use.
+ So optical flow and depth and then put that together to essentially track, you know, not just from pixel to pixel and frame to frame, but actually then have a filter that tracks the motion of the object as a whole of the car.
+ That's in front of you and see if it's on a colliding path with you or not, right?
+ And then they decide to sound alarm or to hit emergency brake or so on.
+ Here's an example of kind of their 6D vision system.
+ This was because it was 3D, but in addition, it also has a vector indicating the motion.
+ That's another 3D vector.
+ So they called it 6D.
+ So here's a project that oops.
+ This was about relatively simple self driving.
+ So self driving in the parking lot.
+ So you drop off your car and then the car goes park itself or the charge itself.
+ So the charging spot once it's charged, let's go to the car go there.
+ Once you come back, for example, at the airport, the car comes pick you up at the, you know, and you step in your car and drive.
+ So we charge is a collaborative project funded by the European Commission.
+ Paul Ferger was then at the postdoc in ASL.
+ The robotics lab in the Royal NC Guard.
+ Then went to Apple, worked on a self driving project.
+ Now he's one of the leaders at Med-Age.
+ Using a smartphone app, the parking process is started.
+ First of all, the vehicle can...
+ Okay, so you get the idea.
+ This is some of the stuff we are doing under hood.
+ Here you see the car is moving and all these rays corresponds to features and things we see.
+ This was surround.
+ You see it's surround images.
+ Full 180 views kind of from all four sides of the car.
+ So we had a surround view of the car.
+ Those rays corresponds to things we signed the environment and could localize our self with.
+ This is a top view of the parking garage.
+ This is where the car is and each of those rays corresponds to one point we recognize in one of those views.
+ This was then some real time geometric obstacle kind of detection from those fisheye cameras.
+ Determining free space.
+ Finding free parking spots and stuff like that.
+ The special thing was we didn't use a stereo system for these two cameras,
+ but we used the moving camera essentially, which also works.
+ Some work we did longer ago.
+ For robots, this was azimot.
+ This was a humanoid robot built already 15 years ago or 20 years ago almost.
+ This was around 2010.
+ Again, you see optical flow, tracking features.
+ We'll see the basics of this in this lecture, again in the sixth lecture.
+ This then determines and builds map.
+ In some way, what we do here is also very related to some of the things we do at this point
+ that I explained earlier that we do at Microsoft.
+ And also actually that one of the other teams here in Mixuality are doing
+ replace this robot with a headset with cameras and the person walks around.
+ You also need to map the environment and do all this in real time in the background.
+ Just as you walk around, all of this stuff is happening under the hood in the device, essentially.
+ Then here's some drone stuff.
+ PIXHawk was a project in the lab and together with many others,
+ or students from all the different departments,
+ our goal was to enable onboard computer vision autonomous drones,
+ but very quickly we realized there was missing infrastructure.
+ And so we built, or in particular, Lorenz Meyer,
+ got students from electrical engineering, from mechanical engineering
+ and started building everything that was needed to enable these computer vision explorations,
+ but essentially built all of the drone software,
+ the electronics that would control and be the core of the drone,
+ which became PIXHawk and the PX4, and then this is now what,
+ this is a whole open source ecosystem.
+ It's actually the default open source ecosystem throughout the world.
+ Oterian is a little bit like Red Hat is doing for Linux,
+ building a commercial business of services and support and so on,
+ on top of an open source ecosystem, Oterian is doing that for drone software,
+ for building on top of PIXHawk and so on, that is an open source ecosystem.
+ But provides services to companies that don't necessarily have the expertise
+ to build their own solutions on top of it and need certain modules or certain components,
+ and then they build it for those customers of theirs.
+ This was the first fully autonomously flying drone
+ that was flying purely camera-based in close proximity to objects.
+ So not something that was flying high above with the camera looking down,
+ but actually something that could avoid obstacles and map out nearby obstacles
+ and both could fly indoors and outdoors and kind of explore a space and map out a space.
+ So this was essentially, so some of the boards we built were building,
+ the students essentially built the first kind of small board flying PC
+ that could fly on top of a drone.
+ And that board was both used here for those experiments,
+ but was also, the batch was made and was sent to CMU and Stanford and MIT,
+ and so they had somehow made the connections and all of those labs also got some boards to,
+ and that enabled a lot of research at a time where people had a separate PC doing computing
+ and then a Wi-Fi connection to the drone, which was very flaky and often the drone would crash
+ because of the data not getting through.
+ If the control was actually based on what happened on the PC,
+ the Wi-Fi connection went down, the drone would kind of crash,
+ and so having the compute on the drone enabled a lot of research at a time.
+ As an example, okay, I skipped this one.
+ This was some indoor navigation, you know, image retrieval.
+ Okay, let me, I think we are out of time.
+ So we participated in Project Tango, which was the predecessor of ARCore.
+ Google was actually planning to build their own devices,
+ trying to build special phones with depth cameras with all kinds of special sensors
+ to enable AR experiences on phone type form factors or tablet type form factors.
+ And then suddenly Apple came out with ARKit,
+ and Google was like the people there were in shock.
+ But then what they did was they pivoted their, this effort,
+ they threw away the special tablets which, you know, took too long to build
+ and were only building a few thousands and so on.
+ They threw all of that effort away and tried to use what they wrote,
+ pivot that and build that in Android phones, and that is what then became,
+ in a few months they were able to launch ARCore, you know,
+ a few models at a time and then generalize it.
+ There are challenges of course that people that build phones,
+ the OEMs that build phones, they actually don't build them for supporting tracking
+ while Apple is very smart.
+ If they decide to build ARKit, they are already building in all the right sensors
+ and all the right synchronization between your cameras and your IAMUs
+ and all of those things are done all properly and everything is factory calibrated
+ and everything is going to work perfectly.
+ And poor guys at Google are to, you know, struggle big time
+ to try to match the quality of what Apple was doing
+ with essentially OEMs that had just slapped together components,
+ not thinking about doing AR with it and so on and so on.
+ A little bit better in the meanwhile, but, you know, there is still a gap between the two.
+ For example, but at least they had done the Tango project,
+ enable them to very quick follow behind.
+ Okay, and so this I won't talk about this time, but it will probably come back at some point.
+ And there are many more examples in the slides that you will find
+ if there are some things that are particularly of interest to you,
+ don't hesitate to reach out or things like that.
+ I leave it at that for today.
+ [applause]

@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.template import loader
 
 from .models import Lecture
+from django.template import loader
+
+from .models import Lecture
 
 # Create your views here.
 
@@ -12,8 +15,17 @@ def index(request):
     return HttpResponse(template.render({'lectures': lectures}, request))
 
 def videos(request, class_id):
-    return HttpResponse("This is where the list of summaries for a lecture " +
-                        str(class_id) + "will go.")
+    latest_lecture = Lecture.objects.order_by("-lecture_number")[1]
+    template = loader.get_template("views/video.html")
+    context = {
+        "lecture": latest_lecture,
+    }
+    return HttpResponse(template.render(context, request))
 
 def summary(request, summary_id):
-    return HttpResponse("summary: " + str(summary_id))
+    latest_lecture = Lecture.objects.order_by("-lecture_number")[1]
+    template = loader.get_template("views/summary.html")
+    context = {
+        "lecture": latest_lecture,
+    }
+    return HttpResponse(template.render(context, request))

@@ -1,0 +1,31 @@
+# Summary
+
+## Topic 1: Weakest Preconditions
+### Sourced from Summary 1, Summary 2, Summary 3, Summary 4
+- **Definition**: Weakest preconditions refer to the minimum conditions necessary for a specific post-condition to hold after executing a statement.
+- **Finding Weakest Precondition**:
+  - For assignments: Replace variables with expressions.
+  - For sequences of statements: Find the weakest precondition for the second statement and use it as the postcondition for the first statement.
+  - For if statements: Use the condition and weakest precondition of the statements to find the weakest preconditions for the if-part and the else-part.
+
+## Topic 2: Importance of Weakest Preconditions
+### Sourced from Summary 4
+- When using a program with multiple statements, it is easier to prove the validity of a statement if the precondition is strong.
+- Weakest preconditions are preferred because they are easier to prove.
+
+## Topic 3: Input Handling with Scanner Library
+### Sourced from Summary 4
+- Input is more complex than output because users can make unexpected inputs.
+- The Scanner library in Java can simplify the process of handling input.
+- An example is provided on how to use the Scanner library to read input and calculate a result based on that input.
+
+# In-Depth Summaries
+
+## Topic 1: Weakest Preconditions
+Weakest preconditions refer to the minimum conditions necessary for a specific post-condition to hold after executing a statement. In the context of assignment statements, the weakest precondition can be found by replacing the variable in the postcondition with the right-hand side expression of the assignment. For sequences of statements, the weakest precondition is found by finding the weakest precondition for the second statement and using it as the postcondition for the first statement. If statements have their own approach to finding the weakest preconditions. The weakest precondition for the if-part of the statement can be found by using the condition of the if statement together with the weakest precondition for the first statement. The weakest precondition for the else-part of the statement can be found by using the negation of the condition together with the weakest precondition for the second statement. Overall, understanding and finding the weakest preconditions are essential for ensuring minimal assumptions needed to execute a program. (Summary 1, Summary 2)
+
+## Topic 2: Importance of Weakest Preconditions
+When using a program with multiple statements, it is important to prove the validity of a statement. While a strong precondition may make it easier to show a certain outcome is valid, it is also crucial to prove that the precondition itself is valid. Weakest preconditions are preferred because they are easier to prove, simplifying the process of proving the desired postcondition after the execution of a statement. (Summary 4)
+
+## Topic 3: Input Handling with Scanner Library
+Input handling can be more complex than output because users can provide unexpected inputs. The use of the Scanner library in Java simplifies the process of reading and handling input from the console. By utilizing the appropriate methods from the Scanner library, input can be processed and incorporated into program logic more efficiently. An example is provided that showcases how to use the Scanner library to read user input and calculate a result based on that input. (Summary 4)

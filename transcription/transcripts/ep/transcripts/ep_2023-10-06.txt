@@ -1,0 +1,1268 @@
+ So, wir wollen noch weiter mit einfachen Java-Programmen beschäftigen.
+ Und das nächste Thema, nachdem wir jetzt gesehen haben, wie wir einfach Instruktionen oder Anweisungen
+ hintereinander rein können, ist das Thema der Schleifen.
+ Und da werden wir uns am Anfang wiederholen mit Schleifen beschäftigen.
+ Als ersten Einstieg gucken wir uns bestimmte einfache Schleifen an.
+ Aber bevor wir das machen, wollen wir noch kurz auf ein anderes Thema für ein paar Minuten zu sprechen kommen,
+ das wir eigentlich auch brauchen, um etwas interessanter Programme zu schreiben.
+ Ich hatte Ihnen gestern erzählt, dass Sie mit dem Scanner Daten einlesen können.
+ Das ist gut und schön, aber manchmal will man noch weniger machen.
+ Manchmal hätte man einfach nur gerne irgendwelche Zahlen, mit denen man arbeiten kann.
+ Und auch dafür stellt Java einen Service zur Verfügung, nämlich eine andere Bibliothek,
+ mit der wir so etwas erreichen können.
+ Und dieser Service ist der Random Service für Zufälliger.
+ Das ist natürlich auch wieder in dieser Bibliothek Java.util definiert.
+ Das heißt, wir müssen wieder ein bisschen blaue Farbe verwenden
+ und müssen so ein Statement eben an den Anfang unseres Programmes schreiben,
+ damit das System weiß, dass wir diesen Random Service benutzen wollen.
+ Und natürlich brauchen wir da auch eben etwas, mit dem wir, also ein Objekt,
+ mit dem wir solche Zufallzahlen erzeugen können.
+ Und das würden wir ähnlich im Scanner gesehen haben, so machen,
+ dass wir eben halt ein Exemplar dieses Objekts dieser Typen da haben
+ und sagen, nehmen wir den Zufall und das ist halt ein neuer Zufallzahlengenerator.
+ So einen Satz, oder eine Anweisung, müssten Sie einfach eben über kopieren.
+ Das zeige ich gleich ein Beispiel.
+ Also, so, wenn wir jetzt so einen Zufallzahlengenerator haben,
+ dann gibt der für uns drei verschiedene Services an, gibt einige mehr,
+ aber die drei sind für uns wichtig.
+ Und der erste ist, dass wir mittels der Operation oder der Methode NextInt
+ eine zufällig gewählte Integer bekommen können,
+ also eine ganze Zahl innerhalb des Wertepereichs,
+ der auf dem System zugelassen wird.
+ Nun, manchmal will man ja nicht irgendeine Integer,
+ sondern hätte gerne eine Integer innerhalb eines bestimmten Bereichs.
+ Und darum gibt es auch die Variante NextInt mit dann in Klammern Max,
+ die größte Zahl, die nicht erreicht werden soll.
+ Also, wenn ich eben Max angebe, dann wird das, gibt es eine Integer
+ aus dem Bereich von Null, also Null ist eine mögliche,
+ bis eben unterhalb Max, also Max-1 wäre die größte mögliche ganze Zahl,
+ die ich durch diesen Service bekommen kann.
+ Und mit NextDouble kann ich eben eine Random-Nummer bekommen,
+ die in dem Bereich von Null, Null bis 1, Null ist.
+ Also, 1, Null ist gehört nicht dazu, aber eben Null, Null, Null, Null, Null,
+ oder was auch immer, gehört noch mit dazu.
+ Und wie würden wir das jetzt machen?
+ Also, wir würden unser Programm schreiben hier oben,
+ import Java.util Random, dann produzieren wir einen Random,
+ einen Zuverzahlengenerator und dann hätten wir eben halt diesen
+ Zuverzahlengenerator, den könnten wir jetzt benutzen,
+ so wie wir es schon mal bei PrintLine gesehen haben.
+ Wir nehmen den, den haben wir hier definiert,
+ und den nehmen wir jetzt und wollen eine Zahl zwischen 0 bis 9.
+ Also, würden wir diese Variante nehmen, wo wir sagen,
+ die NextInt vom Bereich Null bis 10, aber 10 ausschließlich,
+ dann hätten wir gerne eine und die würden wir dann in dieser
+ ganzen Zahl, in dieser Variable für ganze Zahlen bespeichern.
+ Das hätten wir auf diese Weise leicht erledigt und könnten
+ auf diese Weise eben unsere Zuverzahlen produzieren.
+ Also, jetzt ist es so, oftmals brauchen Sie natürlich
+ Zuverzahlen nicht zwischen 0 und irgendeinem N minus 1,
+ sondern zwischen 1 und N.
+ Naja, und das ist nicht sehr schwierig, Sie würden einfach hingehen
+ und sagen, ich gehe jetzt halt hin, ich bekomme halt Zuverzahlen
+ von 0 bis N minus 1, und dieser Zufallszahl hier,
+ die ich hier bekomme, der addiere ich noch eine 1 dazu,
+ und so bekomme ich dann die Zufallzahl im Bereich zwischen 1 und N.
+ Also, wenn ich Zuverzahlen von 1 bis 20 will, würde ich sagen,
+ hier dieser Zufallzahlgenerator, mögen wir bitte eine Zahl
+ in dem Bereich liefern und dann arbeitet der entsprechend.
+ Also, wenn ich so praktisch wenn ich hingehe und Zahl
+ in dem Bereich brauche, kann ich das gut machen.
+ Und das ist sehr praktisch, weil dadurch können wir schnell
+ Zahlen bekommen, die wir irgendwie gebrauchen.
+ Also, wenn wir eine zufällige ganze Zahl zwischen 1 und 47 einschließlich wollen,
+ dann würden wir eben sagen, Next Int, und dann 47 plus 1.
+ Das wäre der Weg, wie wir das ganz einfach machen könnten.
+ Oder eine zufällige ganze Zahl zwischen 23 und 30 einschließlich.
+ Was ist 30 minus 23?
+ Das ist 7 plus 1 ist 8.
+ Also, ich hätte gerne eine Zufallzahl von 1 bis 7,
+ und dazu addiere ich dann 23,
+ und so bekomme ich dann Werte zwischen 23 und 30.
+ So, und so können wir, wenn wir eine ganze Geradezahl haben wollen,
+ ja gut, da müssen wir das, was wir bekommen, mit 2 multiplizieren.
+ Also, das ist ein einfacher Weg, mit dem wir das machen können.
+ Und jede Menge von Werten der Basestypen können wir letztlich
+ auf ganze Zahlen abbilden.
+ Es hilft auch bei anderen Typen.
+ Wenn Sie ein Programm schreiben wollen,
+ mit dem Sie Schere, Stein, Speich, Pi spielen können,
+ dann bräuchten Sie eben Zufallszahlen zwischen 0 und 3,
+ also 0, 1 und 2, und dann würden Sie entscheiden,
+ was diese Zahlen eben, was das eben bedeutet,
+ und würden eben dementsprechend das ausgeben.
+ So, also das ist nur so kurzer Einschub,
+ für die, die etwas interessanter Programme machen wollen,
+ und sich die Mühe sparen wollen, das einzugeben.
+ Und jetzt kommen wir also zum ersten Thema der Schleifen,
+ nämlich ganz einfache Schleifen.
+ Also, Schleifen sind, kennen Sie vielleicht aus anderen Programmiersprachen,
+ ist ein einfaches Konzept, mit dem wir eine oder mehrere Anweisungen
+ wiederholt ausführen können.
+ Die gibt es natürlich in den verschiedensten Varianten,
+ und die Erste, die uns angucken, ist der sogenannte Vorloop,
+ Vor, weil das Keywort, in dem für diese Schleife verwendet wird,
+ und der sollte angesetzt werden, um eine fixe Anzahl
+ an Wiederholungen durchzuführen, wenn er richtig eingesetzt wird.
+ Manchmal, na ja, kommen wir auf Probleme noch später zu sprechen,
+ aber das ist der Grundgedanke.
+ Also, nehmen wir mal an, Sie wollen statt die Schere Steinpapier,
+ wollen Sie Rechenaufgaben für jemanden stellen, einfache Aufgaben.
+ Sie nehmen zwei ganze Zahlen, Z1 und Z2,
+ und dann präsentieren Sie die Aufgabe, berechnen Sie die Summe von Z1 und Z2,
+ und dann lesen wir die Eingabe, und dann vergleichen wir die Eingabe,
+ und wenn die Eingabe richtig ist, dann zählen, dann sind wir zufrieden,
+ und falls zählen wir die Anzahl der Fehler.
+ Na ja, gut, wer lernt schon üben, wer übt denn schon mit einer Aufgabe,
+ keine, also, wir haben besten drei Aufgaben machen.
+ Also, wie wir so ein Programmsegment aussehen, na ja,
+ wir bräuchten natürlich eben halt den Scanner, um von der Konsole zu lesen,
+ wir bräuchten den Zufallszahlengenerator, um die zufällige Zahlen zu haben,
+ wir zählen die Anzahl der Fehler, dann haben wir ein paar zwei Integervariable,
+ um eben die Operanten herzustellen, dann gehen wir hin und drucken auf der Konsole aus,
+ eben diese beiden Zahlen mit dem Plus-Operator,
+ und dann lesen wir von der Konsole die Antwort, na ja, dann vergleichen wir die Antwort,
+ ob die das ist, was passiert, wenn wir den Plus-Operator verwenden,
+ und wenn das eben nicht gleich ist, dann erhöhen wir die Anzahl,
+ erhöhen wir den Zähler-Account, ja.
+ So, und natürlich würden sowas vielleicht gerne nicht nur einmal, sondern dreimal machen,
+ und der erste Anlass wäre natürlich einfach die Dreimal hintereinander zu kopieren,
+ da sehen Sie sofort, ach, das ist ja total übersichtlich, ja,
+ und eben statt, wie, unübersichtlich, und statt un, statt solcher,
+ un, statt solch unübersichtlich langen Programmen,
+ würden wir lieber eine kompakte Darstellung haben,
+ und dafür brauchen wir eben so ein Vorloop, ja, der Vorloop geht jetzt hin,
+ sagt hier, was eben hier Kontrolle erkläre ich gleich, ja,
+ diesen Teil des Programms bitten wir jetzt dreimal auszuführen, ja,
+ und dann wird das dreimal ausgeführt, und wir brauchen das nicht weiterzumachen.
+ So, jetzt dieser Vorloop, der hat hier hinter drei Komponenten,
+ die alle wichtig sind, und die entscheiden, wie diese, wie die Statements in dem Loop-Body,
+ das ist also der Rumpf dieses Vorlobes, ja, wie die ausgeführt werden, ja.
+ Da gibt es also einmal eben den Bereich der Initialisierung, ja,
+ dann gibt es einen Bereich, der entscheidet, ob der Loop nochmal ausgeführt werden soll,
+ und dann gibt es einen dritten Bereich, in dem wir etwas updaten,
+ gehen wir jetzt kurz einfach durch.
+ Also, normalerweise geht der Loop so, ja, wir führen erst die Initialisierung aus,
+ die wird als erstes ausgeführt, ja, und die wird einmal ausgeführt, ja.
+ Da können wir uns neue Variable deklarieren, wenn wir wollen,
+ und die sind dann auch im ganzen Loop-Body verfügbar, ja.
+ So, nachdem wir diese Initialisierung gemacht haben, wiederholen wir diese Schritte.
+ Wir prüfen, ob dieser Test hier im zweiten Schritt true ergibt, ja.
+ Wenn der true ergibt, ja, dann geht es hier weiter
+ mit der Ausführung der Statements oder Anweisungen in diesem Loop.
+ Sollte dieser Test nicht true ergeben, sondern false, geht es raus, ja,
+ und wir sind fertig mit diesem Loop, und wir gehen zur nächsten Anweisung.
+ So, jetzt führen wir also, nehmen wir an, das war also true, ja, das war der True-Fall, ja.
+ Da gehen wir jetzt hin, führen die aus, und nachdem wir alle Anweisungen ausgeführt haben,
+ und wir diesen Punkt hier erreichen, ja, das kann, ja, diesen Punkt hier erreichen, ja,
+ dann wird die Aktualisierung ausgeführt, dann wird das Update gemacht,
+ das ist dann der dritte, war hier der dritte Teil, war der eben der Loop ausführen,
+ und jetzt kommt der vierte Schritt, der ist das Update ausführen.
+ Das Update führt jetzt eben, da können wir auch wieder gewisse Anweisungen unterbringen,
+ und die erlauben es uns dann eben eventuell etwas, einige der Variablen,
+ die wir hier verwenden zu ändern.
+ Ja, gut, müssen wir denn, können wir den eben,
+ versuchen nochmal aufzuspielen, wenn ich den speichern will, dann muss das hier so richtig rein, so, okay.
+ Also, das ist die allgemeine Struktur eines solchen Loops, die wir hier haben, ja,
+ das ist die Capture Failure, ah, gut Grief.
+ Ah, jetzt hat das, okay, na, schön.
+ Also, die vier Teile gehen wir nochmal kurz durch.
+ In der Initialisierung können wir eine Variable deklarieren,
+ und müssen sie auch initialisieren.
+ Und dieser Teil des Loops liegt die Variable fest, die im Loop verwendet wird,
+ oder verwendet werden soll, ja, niemand zwingt sie das, ja.
+ Sie können da irgendeine Variable deklarieren, aber in einem gut strukturierten
+ und der normal kontrollierten Programm würden wir diese Variable verwenden.
+ Und es wird einmal ausgeführt, und die Variable ist dann deklariert und initialisiert,
+ und wir nennen die den Schleifenzähle oder Loop Counter, ja.
+ Die kann natürlich jeden beliebigen Namen haben, den wir uns irgendwie ausdenken können, ja.
+ So, dann wird der Test ausgeführt, ja.
+ Der Test wird als erstes, also wird danach ausgeführt, ja,
+ und jetzt der Test idealerweise involviert dieser Test den Loop Counter.
+ Das ist nicht zwingend vorgeschrieben, sie können da irgendwas haben.
+ Es ist eine gute Idee, das zu machen, weil sonst eben vielleicht Überraschungen passieren.
+ So, diese Test hier vergleicht im Allgemeinen die Zellevariable mit irgendeinem Grenzwert,
+ und da können wir die gleiche Art von Vergleichen verwenden, die wir auch für die IF-Stapements hatten,
+ also kleiner, kleiner, oder weniger, weniger als, größer, als größer, gleich und so weiter.
+ Das können wir da verwenden, ja, oder können auch auf Gleichheit oder Ungleichheit testen,
+ wenn wir wollen, ist auch uns erlaubt.
+ Und danach, eben wenn der Test truht, wenn die Statements ausgeführt,
+ da kann jedes beliebiges Statement sein, und dann erst am Ende kommt die Aktualisierung, ja.
+ Und eben idealerweise ändert sich da die Zellevariable, ja.
+ Die Zellevariable müsste sich ändern, wenn sich die Zellevariable nicht ändert,
+ dann findet die Schleife vielleicht kein Ende, ja,
+ weil der Test immer wieder den gleichen Wert tru ergab, ja.
+ Und da ist ein beliebiger Ausdruck zulässig.
+ Da können Sie machen, was Sie wollen, also einen Ausdruck der gewissen Java-Regeln entsprechen muss, ja.
+ Also das ist das Grundgerüst von dem, und damit können wir ganz einfach viele Arten von Wiederholungen durch bessere Loops ausdrucken.
+ Wenn wir so eine Tabelle ausdrucken wollten, wo wir für die ersten sechs Quadratzahlen den Wert ausdrucken, ja,
+ dann eben, die Aufgabe ist, ich will diese Tabelle ausdrucken, das heißt jede Zeile muss das ausgeben.
+ Also würde ich einen Vorloop schreiben, der eben irgendein Zeller verwendet.
+ Ich muss das sechs Mal machen, ja.
+ In jeder, nachdem ich es für eine Zahl gemacht habe, nehme ich die nächste,
+ und da druck ich in meinem Loop-Body genau das aus.
+ Ich ducke aus die Zahl und die Quadratzahl und so weiter, ja.
+ Natürlich, Sie können beliebig viele Anweisungen im Loop haben, ja, das ist kein Problem.
+ Sie können alles machen, wie Sie wollen.
+ Sie können die Schleifenkontrolle eben, da können irgendwelche Variablen auftreten und so weiter.
+ Das ist alles überhaupt kein Problem, ja.
+ Nur natürlich, Sie können auch, Sie müssen nicht heraufzählen, ja, sondern können auch herunterzählen.
+ Nur natürlich, wenn Sie herunterzählen, also hier gehen wir hin und, gehen, hin und,
+ eine Dekrimentierungsoperation, also subtrahieren eins, ja, dann müsste wir natürlich hier besser checken,
+ dass das so lange das größer ist, ja,
+ annahm falls könnte der Loop auch längere Zeit laufen, ja.
+ Also das ist wirklich nicht sehr überraschend
+ und so könnten wir eben einfach unseren Loop da kontrollieren.
+ So, jetzt die Loop sind natürlich interessant,
+ weil ich kann natürlich hier in dem LoopBody jedes beliebiges Statement unterbringen.
+ Und unter anderem kann ich da wieder weitere Schleifen unterbringen, ja.
+ Also das kann ich weitere Schleifen nochmal machen, ja.
+ Aber das Gleiche, was ich vorher hatte, ja, gilt dann hier auch, ja.
+ Ich kann dann da eine andere Schleife unterbringen
+ und das nennen wir eine verschachtete Schleife,
+ verschachtete Schleifen oder nestet Loops, ja.
+ Eine Schleife in einer anderen.
+ Hier habe ich so ein paar einfache Beispiele, ja.
+ Was produziert denn so ein Programm, ja, wie,
+ also hier haben wir den einen Vorloop, ja,
+ und dann haben wir hier drinnen einen anderen
+ und der eine läuft auf J
+ und der andere hier läuft aus I.
+ Gucken Sie das für eine Sekunde an, oder zwei
+ und überlegen Sie sich so kurz, was für ein Programm würde denn die
+ was für ein Output würde dieses Programm denn ergeben, ja.
+ So, was würde hier passieren, also, also wir haben hier,
+ wir fangen an mit der äußeren Schleife, ja.
+ Sie wird initialisiert mit I
+ und dann gehen wir hin und führen die innere Schleife aus
+ und die innere Schleife wird zehnmal ausgeführt, ja.
+ Und danach wird, das war eine Ausführung der äußeren Schleife
+ und dann kommt eine nächste Ausführung der äußeren Schleife
+ und die hat wieder zehn.
+ Und insgesamt wird die äußere Schleife fünfmal ausgeführt, ja.
+ Und die innere zehn, ja.
+ Also haben wir hier 50 Sterne, die auf diese Weise gedruckt werden.
+ Jede Zeile immer zehn, zehn, zehn Sterne, ja.
+ Also ein einfacher Weg, wie wir unser Programm hier strukturiert haben.
+ So, und was gibt dieses Programmsegment aus?
+ Gucken wir das noch mal an, ja.
+ Wir haben auch wieder einen äußeren Loop,
+ der auf, der die Variable I initialisiert
+ und wir haben einen inneren Loop, der mit der Variable J arbeitet.
+ Aber diesmal haben wir eine etwas andere Form der Kontrolle des inneren Loops.
+ Nämlich hier testen wir, ob diese Variable J kleiner gleich der Variable I ist.
+ I ist der Loop Counter aus der, das ist das I hier, ja.
+ Das ist aus dem äußeren Loop kommt, ja.
+ Was wird dieser Loop jetzt produzieren?
+ Was sehen wir hier?
+ Wie oft werden die ausgeführt?
+ Wie oft werden die diversen Statements ausgeführt?
+ Also wir fangen natürlich, ist klar, der äußere Loop wird fünfmal ausgeführt.
+ Das sehen wir schnell.
+ Und wenn wir mit dem ersten Mal ankommen, dann hat I den Wert eins.
+ Das heißt, dieser Loop wird in der ersten Interaktion einmal ausgeführt.
+ Und wenn I den Wert zwei hat, wird der zweimal ausgeführt und so weiter, ja.
+ Bis er in der letzten Reihe, bis er in der letzten Reihe fünfmal ausgeführt wird.
+ Also wie ich das so mache, bekomme ich so einen Dreieck, ja.
+ Also die erste Zeile, zweite Zeile und so weiter.
+ Und mit jeder Zeile wachsen die, wächst die Anzahl der Sterne, ja.
+ Und dieses Programm, wollen Sie noch mal nachdenken.
+ Was passiert hier?
+ Hier haben wir, äh, ähnlich wie das andere,
+ nur eben statt der Sterne drucken wir jetzt hier einfach die Zahl, ja.
+ Also wirklich, so, das ist also, ähm, es hat nicht ein gut konstruierter Loop, ja.
+ Der benutzt eben hier den Loop Counter im Update
+ und benutzt den Loop Counter auch im Test, ja.
+ Natürlich kann der auch, auch der andere war gut konstruiert, ja.
+ Aber hin und wieder kann auch was schiefgehen und, ähm, was für Probleme gibt's.
+ Und das Problem, das Sie vielleicht als erstes, äh, kennenlernen werden,
+ ist, dass aus irgendwelchen Gründen eine Schleife nicht terminiert.
+ Die läuft und läuft und läuft.
+ Und das ist manchmal ganz schön, aber, ähm, das hilft Ihnen nicht,
+ wenn Sie irgendein, äh, Problem erlösen sollen.
+ So eine endlos Schleife ist ein Problem, das Sie eben, ähm, bekämpfen müssen.
+ Und so ein infinite Loop, ja, das ist der unendlich laufende Loop,
+ haben Sie vielleicht schon mal gesehen, ist auch die Postadresse
+ einer Firma, die Computer herstellt, die manchmal auch unendlich lange laufen,
+ oder ziemlich lange laufen, ja.
+ Das ist, die haben das als Adresse bekommen können,
+ weil Loop ist im amerikanischen System auch ein legaler Straßenname.
+ So, also, was haben wir hier als Möglichkeit,
+ worauf sollten Sie gucken, wenn jetzt Ihre, Ihr Programm unendlich läuft?
+ Ja, hier haben wir so ein Beispiel, ja.
+ Wir haben den äußeren Loop, i, gleich eins
+ und so fängt an mit, wird mit eins eingelinitialisiert, ja.
+ Ähm, äh, soll, wird fünfmal ausgeführt.
+ Und jetzt haben wir den inneren Loop und da checken wir, ob i,
+ keiner gleich zehn ist.
+ Na, die Bedingung ist bei der ersten Ausführung dieses Loops, äh, erfüllt,
+ bei der zweiten und so weiter, die hört nie auf.
+ Warum? Weil wir hier eben nicht die, äh, Loop Variable j,
+ irgendwo, äh, in der Kontrolle, äh, verwendet haben, ja.
+ Also, da aufpassen, da kann man sich schnell, ja, vertippen.
+ Oder, anders Problem, ja, Sie haben jetzt zwar hier, hier kontrollieren Sie zwar korrekt,
+ äh, ob eben j kleiner als zehn ist, aber das Problem steckt hier im Update.
+ Äh, Sie updaten hier, äh, die Variable i.
+ Das j wird niemals geändert, ja.
+ Ähm, das ändert sich nicht und daher läuft der Loop weiter.
+ So, was passiert hier?
+ Was sollten Sie so in Situation machen?
+ Vielleicht haben Sie es schon entdeckt, ja.
+ Äh, sich das Eklips, äh, äh, System angucken, ja.
+ Da gibt es eben verschiedene, äh, äh, äh, Buttons, die wir klicken können.
+ Da war dieser grüne, ähm, war der grüne Pfeil, der unser Programm zum Laufen brachte, ja.
+ Und da gibt es, wenn, gibt es auch so einen rotes, äh, Quadrat, ja.
+ So, und wenn Sie auf dieses rote Quadrat klicken, dann hört das Programm auf zu laufen
+ und Sie können sich dann, äh, den, den, die restliche Ausgabe im Konsolenfenster angucken.
+ Das ist die erste Sache, die Sie wissen müssen, äh, um auf sowas rauszukommen, ja.
+ Ähm, später werden wir sehen, dass da noch ein paar mehr Probleme sind,
+ das nämlich, ähm, das eigentlich nur das Programm unterbricht
+ und wir irgendwann aufpassen müssen, dass wir nicht zu viele unterbrochene Programme haben.
+ Aber am besten ist natürlich, wir schreiben nicht Programme, die nicht terminieren
+ und dann haben wir das Problem eigentlich überhaupt nicht.
+ So, jetzt ähm, jetzt wollen wir noch, ja, weil, wie, wie können wir denn so ganz einfache
+ schleifen, bisschen systematischer erzeugen, ja.
+ So, also demweil wir haben hier diese Aufgabe, dass wir so etwas einfacher erstellen sollen
+ und natürlich wollen wir jetzt nicht einfach diese fünf Zeilen in fünf verschiedene Print-F,
+ Printline Statements reintun, sondern wir wollen eben das mit Loops erstellen.
+ So, also wir haben hier die Aufgabe, so was zu erstellen.
+ Und jetzt gucken wir uns an, was sehen wir da näher?
+ Also wir sehen hier, dass wir hier eine innere Schleife haben müssen,
+ die eine Zeile nach der anderen produziert.
+ Also wir müssen eine innere Schleife machen.
+ Und dann brauchen wir eine äußere Schleife, die uns sagt, wie viele von diesen Zeilen
+ wir insgesamt produzieren müssen.
+ So, also wir haben eine innere und äußere.
+ Jetzt die Frage, was tun wir in die innere?
+ Und jetzt müssen wir irgendwie einen Weg finden, die Ausgabezeile zu konstruieren.
+ Und dann gucken wir uns das an, ja.
+ Und dann sehen wir halt, ähm, mit der äußeren Zeile kann ich gut,
+ mit der äußeren Schleife kann ich gut eine Zeile nach der anderen konstruieren.
+ Ja, das ist also nicht so schwierig.
+ Das heißt, ich müsste am Ende der äußeren Schleife immer wieder die,
+ die, die den Zeilenabschluss drucken, damit eine neue Zeile angefangen wird.
+ Aber die innere Schleife, die hat irgendeinen Muster, ja.
+ Das heißt, wir müssen dieses Muster angucken,
+ und müssen überlegen, wie wir dieses Muster entsprechend produzieren.
+ Also fangen wir mit der äußeren Schleife an, ja.
+ Also haben wir gesagt, wir brauchen davon fünf, also haben wir hier so etwas, ja.
+ Wir legen das also fest, ja.
+ Und jetzt gucken wir uns nochmal genauer diese Zeilen an, ja.
+ Da sehen wir, aha, das Muster ist doch so, dass wir irgendeine Anzahl Punkte haben,
+ und dann kommt eine Zahl.
+ Und für fünf gibt es Nullpunkte in der letzten Zeile.
+ Und in der Zeil davor gibt es einen Punkt.
+ Und der zwei dazu gibt zwei und so weiter, bis wir hier oben vier Punkte haben, ja.
+ Also, wenn ich das habe, dann eben die, hängt, also einmal ändert sich die Anzahl der Punkte, ja.
+ Und die Anzahl der Punkte hängt ab von der Zeile, ja.
+ In der letzten Zeile Null, in der Zeil davor vier,
+ schon in der Zeil davor eins, in der Zeil davor zwei, ja.
+ Das heißt also, die Anzahl der Punkte hängt von unserer Zeilnummer ab.
+ Und hier ist natürlich ein bisschen, ein bisschen,
+ das ist trivial, ja, einfach, ja.
+ Kann ich sofort hinschreiben, Programme, da druck ich entsprechend Punkte.
+ Aber nehmen wir mal an, unsere Rumpf, unsere Anwalt im Rumpf,
+ würde so einen Output herausgeben, also nicht vier Punkte,
+ sondern, und jetzt habe ich nicht Punkte gemacht, weil das für die Zählen ist,
+ sondern sie würden gerne herausgeben, vier, sieben, zehn, 13, 16 Punkte, ja.
+ Oder das als Zahlen.
+ Wie würden wir das machen, ja.
+ Und dann können wir so eine Zahlenfolge in eine vernünftige,
+ in einen vernünftigen Loop bringen, der dann diesen Output für uns liefert, ja.
+ So, also, na ja, wenn wir uns das angucken, das ist also hier,
+ es ist so eine Serie, ja, das haben sie sicher auch schon mal früher machen müssen,
+ was ist die nächste Zahl, ist so eine beliebte Frage, ja.
+ Uns interessiert nicht die nächste Zahl,
+ uns interessiert über die alle erzeugen können, ja.
+ Und da sehen wir, das können wir jetzt sehen machen, indem wir halt den,
+ wir können die durchzählen, ja, das wäre eins, zwei, drei und so weiter,
+ dann nehmen wir also dreimal diesen gezählten Zähler plus eins,
+ und dann drucken wir noch ein Lehrzeichen, um die eine Zahl von der anderen abzusetzen.
+ So, jetzt, wie können wir das systematisch rausfinden, ja,
+ wenn wir irgendeine Zahlenfolge haben, wie können wir systematisch rausfinden,
+ wie so eine Schleifenkontrolle oder was das eben ergeben sollte, ja.
+ Und um das zu machen, gehen Sie hin, Sie erstellen eine Tabelle,
+ und da zählen Sie eben halt von eins an durch,
+ und dann schreiben Sie sich die Zahl dahinter, die in dieser Zahlenfolge auftreten soll.
+ Also, hier hätten wir die Folge zwei, sieben, zwölf, siebzehne und so weiter, ja.
+ Die würden wir entsprechend runter schreiben.
+ Dann wäre der erste Ansatz jetzt noch, okay,
+ sehen wir, wenn wir die Zahl um eins erhöhte, dann geht das immer um plus fünf rauf, ja.
+ Das heißt also, wir müssten, es wäre also gut,
+ so eine eine Möglichkeit wäre, zu sagen, wir nehmen einfach den Count
+ und multiplizieren den mit fünf, ja, dann haben wir eine Erhöhung um fünf erreicht, ja.
+ Und dann würden wir das so machen, hätten wir hier fünf, zehn und so weiter.
+ Aber das ist natürlich nicht ganz, was wir wollen, ja,
+ weil hier sehen wir, ja, hier ist eine Differenz von drei, und hier ist eine Differenz von drei.
+ Ja, das gibt uns dann sofort die Idee, wie wir eben halt diese Tabelle korrigieren müssten, ja.
+ Wir müssten also noch von dem Wert, den wir da haben, drei subtrahieren, ja.
+ Und so haben wir dann den Ausdruck gefunden, der uns einfach richtig erlaubt,
+ die richtige Zahl zu erzeugen, ja.
+ Also fünf mal den Count minus drei, das ist die gewünschte Zahl, ja.
+ Oder nehmen wir an, wir hätten 17, 13, 9, 5, 1 entweder Punkte oder als Zahl zu produzieren, ja.
+ Wird in Programmiersprachen nicht von null aus gezählt, also ich zähle immer mit eins, ja.
+ Also wenn ich mit null anfinge, dann müsste ich gar nicht,
+ ich müsste überall null haben.
+ Also wir haben uns entschieden, hier mit eins zu zählen, ja.
+ Wir können auch, Sie können auch genauso gern, wenn Sie machen das, jemand das geschrieben,
+ wird in Programmiersprachen nicht von null aus gezählt.
+ Sie können auch von null anfangen, ja.
+ Dann gehen Sie doch hin und versuchen, die Formel zu finden, die Sie nehmen müssten,
+ wenn Sie von null aus machten.
+ Ist nicht sehr schwierig, also.
+ Wenn sich ein, hier haben wir die Zahlen, wie ich es eben sagte, ja.
+ Und wir sehen jetzt, dass hier für jede Zahl geht es eben um eine Differenz von vier.
+ Minus vier, ja.
+ Immer werden vier abgezogen.
+ Das heißt also, ich würde als ersten Ansatz wählen, dass ich minus vier Mal den Zähler, den ich da verwendet habe.
+ Aber natürlich ist das noch nicht ganz richtig.
+ Sie sehen, das hier ist um 21 zu groß und das hier ist auch um 21 zu groß.
+ Also in dem Fall, da gibt es ja auch wieder eine fixe Differenz, ja.
+ Daher würden wir eben 21 dazu addieren, um eben halt den richtigen Zähler,
+ die richtigen Ausdruck zu finden, der diese Zahl generiert, ja.
+ Also, jetzt zurück zu den Beispielen mit der Vorsleife, ja.
+ Hier wollten wir also hier eben vier, drei, zwei, eins, null Punkte, ja.
+ Da haben Sie die null, bitte schön, ja.
+ Und dann würden wir entsprechend eben hier sagen, aha, das geht hier jedes Mal um eins runter.
+ Also machen wir minus eins Mal.
+ Und dann haben wir die Zähler, die wir jetzt hier haben,
+ die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
+ Und dann haben wir die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
+ Und dann haben wir die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
+ Und dann haben wir die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
+ Und dann haben wir die Zähler, die wir jetzt hier von denen brauchen.
+ Würde ich eben halt hier checken, ob der bis vier ist.
+ Und dann würde ich hier das erhöhen, um so meine Anzahl an Punkten gedruckt zu bekommen.
+ Und dann habe ich das eben, wenn ich das so mache und eben in den äußeren Lube einsetze,
+ dann bekomme ich das gewünschte Ergebnis.
+ So, jetzt haben wir hier paar verschachtete Schleifen.
+ Das ist sicher nicht sehr schwierig. Was gibt denn dieses Programm jetzt aus?
+ Überlegen wir uns das kurz.
+ Das ist der Lube, den wir eben geschrieben haben.
+ Der hat jetzt hier, also wir gehen hin und haben fünf Zeilen.
+ Und wir haben hier diese Gleichung, benutzen wir jetzt, um eben zu entscheiden,
+ wie viele Punkte in dieser einen Zeile gedruckt werden sollen.
+ Und erhöhen dann den Lube-Counter um eins.
+ Und danach haben wir einen zweiten Lube.
+ Und was gibt der für uns denn aus?
+ Jetzt haben wir hier den zweiten Lube und der zählt auch hoch.
+ Und der ist auch abhängig vom äußeren Lube-Counter allein.
+ Und was er macht, er druckt dann einfach den Wert der aktuellen Zeilen normal.
+ Da würde dann eben so ein einfaches Tableau daraus kommen.
+ Und dann können Sie jetzt gerne noch ändern, um stattdessen mal wegen der Punkte zu drucken und so weiter.
+ Das ist alles nicht schwierig.
+ Und wenn Sie das noch nicht vorher gesehen haben, dann empfehle ich Ihnen sehr,
+ sich damit gut zu beschäftigen, weil Schleifen werden Sie immer wieder haben und so weiter und so weiter.
+ So, jetzt, wenn wir uns also Schleifen angucken, da gibt es verschiedene Wege,
+ wie wir die etwas einteilen können.
+ Und eine erste wichtige Unterscheidung ist, ob eigentlich die Anzahl der Ausführung des Rumpfs vor Beginn der Ausführung bekannte ist.
+ Und sowas nennen wir eine bestimmte Schleife.
+ In dem Moment, wo die Schleife als nächste Instruktion herankommt,
+ wissen wir oder können wir berechnen, wie viele Ausführungen des Rumpfes nötig sind.
+ Und diese Vorschleifen sind eben dafür konstruiert, dass wir solche bestimmte Schleifen eben halt gut ausführen.
+ Irgendwas, eine bestimmte Anzahl mal drucken wollen oder ausführen wollen und so weiter.
+ Können wir das gut und gerne machen.
+ Aber eben, es gibt auch Schleifen, in denen wir zu Beginn nicht wissen oder nicht schnell wissen, wie viele Ausführungen nötig sind.
+ Und das nennen wir eine unbestimmte Schleife.
+ Wenn man das auch bestimmt, dann ist diese Anzahl, wenn die Anzahl der Interaktion nicht vorher bekanntet.
+ Und dafür brauchen wir auch einen Konstrukt, um das auszudrücken.
+ Und diese Art von Schleifen, die kommt sehr, sehr häufig vor.
+ Zum Beispiel, wenn Sie den Input von der Konsole lesen wollen und die Benutzerin macht einen Fehler,
+ dann müssen wir vielleicht nochmal das machen.
+ Wir wollen so lange lesen, bis eine nicht negative Zahl eingegeben wurde oder bis ein Q eingegeben wurde.
+ Oder wir lesen eine Datei bis in dieser Datei drei aufeinanderfolgende Sätze mit irgendeinem Zeichenenden und so weiter.
+ In all diese Situationen wissen wir von Anfang nicht, wie viele Ausführungen des Loops nötig sind.
+ Und darum ist der Vorloop dafür nicht richtig geeignet.
+ Und dafür gibt es dann eben die Weilschleife. Die Weilschleife ist ähnliche.
+ Sie hat eben das Keyword "Weil" klar und hat dann danach nur einen Test, einen Test, der evaluiert wird.
+ Und wenn dieser Test den Wert "Wahr" ergibt, dann wird dieses, wenn das hier in der Test den Wert "Wahr" oder "True" ergibt,
+ dann wird diese Folge von Statements hier ausgeführt.
+ Und sollte dieser Test "False" ergeben und danach wird eben der Test wieder ausgeführt.
+ Und wenn das "False" ergibt, dann hört die Ausführung dieses Weilloops auf.
+ Und es geht mit dem nächsten Statement, das hier hinterfolgt weiter.
+ Und wir bleiben so lange in diesem Loop, bis eben halt dieser Test irgendwann einmal den Wert "False" ergibt.
+ Also hier habe ich ein einfachstes Beispiel.
+ Wir haben eine integer-variable Namen, die wir mit 1 initialisieren.
+ Und wir lassen diesen Loop laufen, solange das Quadrat kleiner als 2000 ist.
+ Und dann drucken wir das aus.
+ Und danach, ja, jetzt haben wir das, jetzt ist die Verantwortung dafür,
+ dass dieser Test irgendwann mal auf 0, der Test irgendwann false ergibt, die liegt bei uns.
+ Das heißt, wir müssen dafür sorgen, dass eines der Statements hier vielleicht,
+ die Variablen, die hier in dem Test verwendet werden, in irgendeiner Form modifiziert.
+ Wenn wir das nicht machen, wird der Loop entweder 0 mal ausgeführt,
+ wenn der Test am Anfang bereits false ist, oder er wird unendlich oft, also ohne Ende ausgeführt,
+ wenn der Test sich nicht ändert und es immer false, immer true ergibt.
+ Darum brauchen wir hier eine Anweisung, mit der wir diese Variable, die hier im Test verwendet wird, verändern.
+ Also das Update ist hier unser Expecit, also Expecit von uns zu machen.
+ Das Update muss in den Anweisungen sein, die im Loop sind.
+ Also der Loop ist so gekommen an, wir checken, ob der Test wahr ist.
+ Wenn ja, dann wird die Anweisungen ausgeführt und danach wird wiedergecheckt,
+ solange bis das hier irgendwann mal eben der Test nicht mehr wahr ist,
+ und dann werden die Anweisungen nach dem Loop ausgeführt.
+ Und aber die ganze Verantwortung dafür, dass sich die Variable, die in dem Test verwendet werden,
+ eher ändern, die liegt einfach für uns.
+ Also, jetzt wieder, es gibt viele Möglichkeiten, wie Sie solche Loops schreiben können.
+ Ich möchte bewusst möglichst einfach zeigen, so dass auch die, die das noch nicht so häufig gesehen haben,
+ damit auch ohne Schwierigkeiten zurechtkommen.
+ Also nehmen wir an, Sie wollen den ersten Faktor finden von der Zahl 91 Faktor heißt.
+ Das ist eine Zahl, die eben ganz, die diese Zahl selber teilt ohne Rest.
+ Und das machen wir, wie machen wir das?
+ Ja, wir fangen also an.
+ Wir, natürlich, eins ist immer ein Faktor, aber ist nicht sehr interessant.
+ Also fangen wir an mit zwei.
+ Und jetzt haben wir hier, gucken wir den Rest, was ist die Rest der Division von N durch diesen Faktor.
+ Wenn das 0 ist, dann haben wir einen Faktor gefunden, weil dann hat es keinen Rest gegeben.
+ Wenn das nicht, dann sind wir fertig.
+ Wenn wir nicht, wenn wir ungleich 0 ist, dann haben wir noch keinen gefunden.
+ Und dann erhöhen wir hier, das habe ich leider, das müsste eigentlich besser heißen, Faktor ist gesetzt für Faktor plus 1.
+ Erhöhen wir das um 1 und dann ist die Sache, wird der Loop wiederholend ausgeführt.
+ Und wir hoffen, dass wir natürlich irgendwann wissen, wir, dass dieser Loop enden wird,
+ weil im besten und schlimmsten Fall wird der Faktor, hat irgendwann wird er zu 91 genetzt, wird er aber nicht.
+ Gibt eine andere Zahl davor.
+ Aber wir wissen, wenn wir immer wieder kontinuierlich den Faktor erhöhen, gibt es irgendwann eine Anweisung, die Faktor zu 91 setzt.
+ Und wir wissen, dass jede Zahl sich selbst ohne Rest teilt.
+ Und dann wissen wir, dass daher dieser Loop terminieren wird.
+ Und hier ist schon ein Weile besser.
+ Sie könnten sowas auch mit dem Vorloop in irgendeiner Form machen.
+ Und das wäre nicht, das wäre auch möglich.
+ Aber hier beim Weile sieht man sofort, aha, ist ein Loop, der eben halt eben, von dem wir eben nicht wissen, wie oft er ausgeführt werden wird.
+ Also das sind, mit Vor- und Weilloop kommen Sie eigentlich durch die ganze Vorlesung.
+ Also da, wenn Sie die beiden richtig im Griff haben und auch mit allen anderen Sachen später richtig machen können, dann haben Sie damit kein Problem.
+ Wir werden aber später ein bisschen mehr über Loops reden, ist noch nicht alles.
+ Aber bevor wir das machen, wollen wir das ein bisschen weiter machen und uns ein bisschen mehr mit Methoden beschäftigen.
+ Weil was wir bisher gesehen hatten, war ja einfach wirklich viel zu einfach und bringt uns nicht so viel weiter.
+ Also, ihr hattet gesagt, diese Vorloops erlauben Wiederholungen, hatte Ihnen da dieses Beispiel gezeigt.
+ Aber das Beispiel hat natürlich viele Nachteile und ein großer Nachteil ist natürlich, dass wir würden natürlich niemals sowas direkt so schreiben wollen.
+ Also wenn wir irgendwelche Programme oder Programsegmenten wieder verwenden wollen, dann müssen wir die in Methoden organisieren.
+ Anderfalls haben wir bald ein langes Programm, in dem wir schnell die Übersicht verlieren.
+ Wenn wir also sowas wiederholen wollen, dann würden wir eigentlich erstmal hingehen und das in irgendeine Methode reinstecken.
+ Aber würden wir also eine Methode definieren, nennen wir die mal "Test".
+ Ich war eine jetzt bereits davor, dass das Beispiel nicht vollständig ist.
+ Also, dann hätten wir eine Methode und dann würden wir diesen Vorloop, wenn wir das jetzt immer dreimal machen wollten, würden wir hier eben halt in diese Methode reinstecken.
+ Und dann haben wir gesehen, wie wir so eine Methode definieren.
+ Die müsste immer noch "Public Static" und "Woid" diese drei Begriffe davor haben, aber zumindest einen von denen werden wir heute vielleicht sehen, dass wir den nicht mehr brauchen.
+ So, und jetzt warum ist so eine Methode besser?
+ Also einmal natürlich, wenn wir das wiederholen verwenden, sparen wir damit Zeilen.
+ Das heißt, das Programm wird kürzer und ein kurzes Programm ließt sich einfacher als ein langes.
+ Zumindest für die meisten Leute von uns.
+ Aber wichtiger ist oder genauso wichtig ist, das sollte es mal nötig sein, irgendwelche Änderungen zu machen.
+ Dann bräuchten wir die nur an einer Stelle zu machen.
+ Wenn ich jetzt also dieses Programm ändern wollte und statt immer nur zwei Operanten ausgeben, möchte ich für eine beliebige Anzhafenoperanten ausgeben,
+ oder eine Anzhafenoperanten innerhalb eines bestimmten Bereichs.
+ Dann muss ich all diese Änderungen nur an der einen Stelle machen.
+ Und daher, wenn ich also Wiederverwendung habe, will ich da stecklich Sachen in Methoden.
+ Aber wenn ich jetzt wieder verwenden will, dann brauche ich auch eine gewisse Flexibilität.
+ Denn die Wahrscheinlichkeit, dass ich genau drei Wiederholungen brauche, ist eigentlich eher unwahrscheinlich.
+ Also diese Lösung, die ich zeigte, die liefert immer drei Aufgaben.
+ Aber was ist, wenn Sie jetzt mal vier oder mal eine Aufgabe wollen?
+ Natürlich könnten Sie jetzt hingehen und neu, könnten Sie weitere Methoden definieren.
+ Aber wer will das denn machen? Das will ja keiner.
+ Wir brauchen einen besseren Weg, zum Beispiel die Anzahl der Wiederholungen in einer Situation anzupassen.
+ Und das nennen wir Parametrisierung.
+ Wir fügen einen Parameter ein.
+ Das ist eine besondere Art von Variablen oder sowas, die wir verwenden werden, um die Anpassung vorzunehmen.
+ Und mit dieser Parametrisierung können wir dann die gleiche Folge von Anweisungen in unterschiedlichen Situationen verwenden.
+ Also Parameter ist ein Wert, den die aufgerufene Methode von der aufrufenden Methode enthält.
+ Also wenn ich hier mein Ad-Test habe, dann muss die irgendeinen Weg haben,
+ dass ich zum Beispiel den Loop Count, dass ich den irgendwie von außen hier mit einbauen kann,
+ dass ich den mit einfügen kann.
+ Dann habe ich eine Parametrisierung erreicht in Bezug auf den Loop Count,
+ nicht in Bezug auf die Anzahl der Operanten, aber in Bezug auf den Loop Count.
+ Und mit dem kann ich das dann entsprechend machen.
+ Das heißt, wenn wir so eine Methode deklarieren, dann geben wir an, dass wir einen Parameter brauchen.
+ Und wenn wir die Methode aufrufen, dann muss natürlich ein Wert für den Parameter angegeben werden, sonst funktioniert das nicht.
+ Und das geschieht sehr einfach.
+ Wenn wir die Methode deklarieren, dann kommt jetzt in die zwischen diese Klammern,
+ kommt eben der Name des Parameters und der Typ des Parameters.
+ Und wenn wir die Methode aufrufen, dann geben wir irgendeinen Wert oder einen Ausdruck, der einen Wert liefert, für diesen Parameter an.
+ Damit wird die Methode vielseitiger einsetzbar, aber die Entwicklung wird jetzt doch um einiges komplizierter.
+ Also wir hätten hier, so würden wir das jetzt machen, wir hätten hier unsere Methode deklaration.
+ Und da wäre eben hier Typ und Name, der Name wäre der Name der Parametervariable und Typ wäre halt der Typ dieser Parametervariable.
+ Und fürs erste Mal hier bei uns werden wir, bis wir mehr lernen, immer nur ein Basestyp verwenden, wenn später andere kennenlernen.
+ Also hier, wenn ich eine ganz einfache Methode haben will, die den Parameter einfach nur wiedergibt, würde ich eben hier eine Variable,
+ einen Parameter-Code deklarieren, den ich dann hier im Programm einfach ausgebe.
+ Und wenn ich das Programm aufrufe, dann muss natürlich ein Code angegeben werden, nicht ganz funktioniert das nicht.
+ Wenn ich keinen Code angeben würde, dann würde sich das System da beschweren.
+ So, und wie der Parameter übergeben wird, das machen wir nach der Pause.
+ Aber ich hatte ja gestern so viel über die schwächste Vorbedingung geredet.
+ Und jetzt wollen wir mal gucken, oder möchte ich Ihnen die Chance geben, zu sehen, was Sie davon noch eben mitbehalten haben.
+ Und darum gebe ich Ihnen jetzt hier ein Clicker-Beispiel.
+ Ich hoffe, der Clicker funktioniert heute.
+ Haben wir also drei Beispiele.
+ Und da sollen Sie mir die schwächsten Vorbedingungen in das System als Clicker-Antwort geben.
+ So, gucken wir mal hier.
+ So, jetzt gucken wir mal.
+ Ich habe es gestartet. Sieht jemand?
+ Ist der Clicker für irgendjemand erkennbar?
+ Ja, ja, ja, danke.
+ Okay, ich lasse das mal damit da kein Stress ist.
+ Lass ich das die ganze Pause laufen.
+ Und da können Sie einfach eben als Text in die als Antwort geben.
+ Danach gucken wir uns das an.
+ Und danach sehen wir, wie die Parameter einer Methode übergeben werden.
+ Hallo.
+ Aber Sie können auch gerne die Pause anders nutzen.
+ Aber die, die wollen, können das auch mit Ihrem Nachbarn oder Ihrer Nachbarin diskutieren.
+ Die geht hier weniger darum.
+ Das ist ja nicht dazu da, um Sie abzufragen, sondern soll Ihnen nochmal die Gelegenheit geben, das, was Sie gestern gesehen haben, zu wiederholen.
+ Und die Slides von gestern sind auf dem Netz.
+ Und wenn Sie vergessen haben sollten, was genau die schlechteste Vorbedingung ist, sollten Sie jetzt in der Lage sein, die auf dem Netz zu finden.
+ Also letzte Chance, noch eine Abstimmung hier, ein Ergebnis einzureichen.
+ Also, wenn Sie das, das ist halt ein Weg für uns genau zu verstehen, was ein Programm macht.
+ Und das ist etwas, was Sie in vielen Situationen wiederfinden werden.
+ Immer Sie programmieren, müssten Sie eigentlich genau wissen wollen, was macht das Programm, was für Folgen hat das.
+ Oder was für eine Bedingung muss erfüllt sein, damit diese und jene Bedingung da ist.
+ Und wie Sie wahrscheinlich wissen, am Ende dieses Semesters muss es ja doch eine Prüfung geben.
+ Und in der Prüfung werden Sie zum Teil programmieren, aber zum Teil werden Sie auch eben Fragen beantworten.
+ Und ein paar Fragen, die wir in der Vergangenheit gestellt haben, waren eben von der Art, was ist die schwächste Vorbedingung.
+ Also, was sind, ich sehe hier, okay, es sind viele Richtige, aber nicht alle ganz Richtige.
+ Okay, also, gucken wir, da, wo ich Ihnen das schon gegeben habe, gehen wir kurz durch die Beispiele durch.
+ Also, was ist die schwächste Vorbedingung hier für dieses Statement?
+ Na ja, da haben wir ja gesagt, wir setzen die rechte Seite in die Prostkondition ein und dann transformieren wir das
+ und dann bekommen wir raus, dass x muss größer als minus 1 sein.
+ Jetzt sagt jemand, ja, aber ich hätte auch das Programm laufen lassen können.
+ Ja, klar, Sie hätten das Vereinwärt von x laufen lassen können und sehen können, ob das stimmt oder mehrfach mehrere Werte.
+ Aber so wissen wir, dass wenn x größer als minus 1 ist, dann gilt das, egal, wie wir dahin gekommen sind.
+ Jetzt die zweite Sache, zweites Thema ist auch nicht sehr schwer.
+ Auch hier setzen wir das ein, ja, wir setzen erst das ein, dann haben wir hier einen Ausdruck, in dem 2 mal k vorkommt
+ und dann setzen wir das für das k ein und dann können wir sehen, j muss dann mal 2, muss größer sein als 0,
+ aber muss kleiner sein als das und so weiter und dann sehen wir, dass die richtige Antwort, da gibt es nur einen Wert für j, der das erfüllt.
+ So, dann haben wir hier ein if Statement.
+ Ist da irgendetwas nicht in Ordnung?
+ War zuvor aber m kleiner 2.
+ Oh, habe ich da irgendwas gemogelt?
+ Ja, das ist aber, hier war j kleiner 2, was haben wir hier?
+ Ach, nein, das ist aber selbe, sehen Sie, klein sind ja ins, ja.
+ Welche Zahl gibt es denn als ins?
+ Also als ins gibt es 1 oder 0, wenn Sie wollen, 1, 2, 3, 4, ja, und mehr, ja.
+ Und wenn es größer als 2 sein muss, dann muss es 3 oder mehr sein.
+ Also, nein, da habe ich jetzt nicht gemogelt, da habe ich also, ja, oder doch?
+ 1, ach ja, da oben, ja, gut, okay, das müssen wir, ja.
+ Gut, dass Sie das sagen, sehen Sie, wenn ich das noch, habe ich was falsch getippt.
+ Okay, gut, okay, aber so, aber interessant, sehen Sie,
+ der interessante Fall ist ja der Fall 3, ich meine,
+ und das ist der Fall, wo wir eben halt ein if Statement haben, ja.
+ Und hier haben wir als Aussage am Ende, dass Max größer gleich x sein soll
+ und Max soll größer gleich y sein, ja.
+ So, und hier habe ich eben diese Aussage, die möchte ich eben machen.
+ Und hier haben wir gesagt, die Weakest Precondition ist B, also B ist hier mein Test, ja, den ich hier habe,
+ und die Weakest Precondition für diesen Block, ja, und nicht B,
+ und die Weakest Precondition hier für diesen Block, also für den Block, für den zweiten Block, ja.
+ Also hier diese, für das, und das andere schwarz für den anderen.
+ So, da gehe ich also jetzt hin, ja, kann ich das da also einsetzen, ja.
+ Was ist die Weakest Precondition für S1 und Q, ja.
+ Da setze ich das also jetzt ein, ja.
+ Also hier habe ich mein B, und jetzt frauche ich die Weakest Precondition für diese Anweisung hier, ja.
+ Das hier ist die Anweisung, und mein Q ist das hier, ja.
+ Das ist, dass Max soll größer gleich x sein,
+ und dann habe ich das gleiche noch für eben nicht B, aus nicht B,
+ Max größer gleich y und so weiter, ja.
+ So, und dann habe ich das, ja, und das kann ich jetzt vereinfachen, ja,
+ indem ich jetzt eben halt x größer als y, meine Condition B, ja,
+ und eben x, y größer gleich x, und y größer gleich y, das kann man auch gleich y, ja,
+ kann ich weiter vereinfachen, ja, das kann ich weiter vereinfachen zu x größer,
+ y größer als x, ja.
+ Und genauso kann ich den anderen Teil hier, also das, was hinter dem, das Ohr ist, ja,
+ für den anderen Teil des Predigtivstetments,
+ und wenn ich habe x, y größer gleich x, und y kleiner gleich x, ja,
+ ja, da gibt es nur einen Weg, wie man das, das muss immer, das muss immer true sein, ja.
+ Entweder es y größer als x, oder nicht, ja.
+ Er kann das vereinfachen, und in der Tat, in diesem Fall habe ich eine Situation,
+ egal was für Vorbedingungen ich habe, ich, nachher gilt diese Post Condition, ja.
+ Also, also, das wollte ich nur mit einem Fehler berichtigen,
+ ich noch, bevor ich es aufs Webtour tut mir leid, ja, die Idee haben Sie hoffentlich bekommen,
+ und das ist, okay, so, jetzt wollen wir mal gucken,
+ dass wir das richtige Window wiederfinden, und dann weitermachen mit den Schleifen, so.
+ Ja, so, okay, so, also, also, das haben wir gesehen,
+ dass eben halt diese, wenn wir jetzt so eine Methode mit Parameter haben,
+ dass dann der, muss ein Wert übergeben werden,
+ und dieser Wert wird an die aufgerufenen Methode übergeben, ja.
+ Das ist also ein Weg, wie der Aufrufer zur aufgerufenen Methode
+ einen Wert übermitteln kann, ja.
+ Und wenn die Methode aufgerufen wird, dann wird eben dieser Wert genommen,
+ und wird in der Parametervariable gespeichert.
+ Also, der Wert, den der Aufrufer übergibt,
+ ist der Wert, mit dem die Parametervariable initialisiert wird, ja.
+ Und dann erst werden die Anweisungen der Methode ausgeführt,
+ mit dem Wert, ursprünglich, mit dem Anfangswert für diesen Parameter,
+ für diese Variable, den der Aufrufer übergeben hat, ja.
+ Also, hier in dem Beispiel haben wir dann eben jetzt hier
+ den Parameter-Emeranzahl, und den benutzen wir hier,
+ hier im, benutzen wir hier in diesem Loop,
+ um zu kontrollieren, wie oft dieser Loop ausgeführt werden soll
+ und wie oft da das gedruckt werden soll, ja.
+ So, und um das Programm natürlich komplett zu machen, ja,
+ müssen wir natürlich dafür sorgen,
+ dass da ein Zufallzahlengenerator verfügbar ist,
+ und dass wir den einen Scanner haben und so weiter.
+ Und um das zu machen, müssen wir natürlich da oben
+ diese Importstatements haben, dass das System weiß,
+ dass das eben letztlich gebraucht werden.
+ Und dann brauchen wir natürlich auch noch eine andere Methode,
+ die diese Methode aufruft.
+ Und dafür nehmen wir in diesem einfachen Beispiel die Methode Main,
+ die dann eben hier den Aufruf machen würde,
+ indem sie diese Methode aufruft.
+ Und dann haben wir jetzt das Beispiel komplett,
+ und so können Sie das benutzen, ja.
+ Also, ein Parameter, der in der Deklaration
+ einer Methode auftaucht, also hier dieses Anzahl, ja,
+ den nennen wir den formalen Parameter, ja.
+ Und das ist ein Weg für uns, eine Variable
+ für diese Methode zu definieren, ja.
+ Das deklariert hier diese Variable, ja.
+ So, und jetzt beim Aufruf der Methode
+ muss der ja ein Wert übergeben werden, ja.
+ Irgendwann ein Ausdruck wird da übergeben.
+ Und dieser übergebende Wert, der heißt eben,
+ ja, tatsächliche Argumentwert oder Actual Argument value, ja.
+ Oder wenn wir eben zum Ausdruck bringen wollen,
+ dass wir da einen Ausdruck haben,
+ spricht man manchmal von dem Actual,
+ von dem tatsächlichen Argument Ausdruck, ja.
+ Jetzt in den meisten Fällen verwenden wir das Wort Argument,
+ wenn es da kein Missverständnis gibt, ja.
+ Also die Unterscheidung zwischen dem Wert, ja,
+ der eben übergeben wird, und dem Ausdruck,
+ der benutzt wird, um den Wert zu generieren,
+ im Allgemeinen brauchen wir die nicht zu machen, ja.
+ Und daher, wenn eben keine Gefahr eines Missverständnisses ist,
+ dann würden wir einfach auf den Argument sprechen.
+ Der Argument ist der Wert, der vom Aufruf her
+ an die aufgerufene Methode übergeben wird.
+ Ja, das ist der ganz einfache Weg, den wir da haben.
+ So, also, und diese Parametervariable,
+ die kann jetzt in der Methode, wie jede andere Variable,
+ jede andere Variable verwendet werden.
+ Die können wir für alles Möche benutzen, ja.
+ Und so haben wir ja gesehen, ja.
+ Das ist alles kein Problem, wenn wir hier eine Methode haben,
+ die zweimal aufgerufen wird, einmal wird sie aufgerufen mit 3,
+ dann druckt sie das, und wenn sie mit 7 aufgerufen wird, druckt sie das.
+ Das ist also jedes Mal dasselbe.
+ Jetzt, was kann da schiefgehen, wo wir aufpassen?
+ Also wenn eine Methode ein Argument erwartet,
+ dann muss es auch übergeben werden.
+ Andere Programmiersprachen sind da etwas laxer,
+ aber wenn sie eben diese Methode haben,
+ und sie geben dann kein Argument an,
+ dann beschwert sich das System
+ und führt das Programm auch gar nicht erst auf.
+ Und der Wert oder der Ausdruck muss den richtigen Typ ergeben.
+ Wenn Sie jetzt versuchen würden, die eben deklarierte Methode,
+ die einen Int-Parameter verlangt, mit einer reellen Zahl aufzurufen,
+ dann beschwert sich das System auch.
+ Wobei natürlich erfreulicherweise die Regeln für Umwandlungen,
+ also die Implizitenumwandlungen hier auch gelten.
+ Also wenn da ein Double erwartet wird,
+ und sie geben ein Int an, dann würde das eben konvertiert
+ und würde auch erlaubt werden.
+ Und natürlich können Sie mehr als einen Parameter angeben,
+ können mehrere Parameter angeben,
+ die würden wir dann durch Komma trennen.
+ Also so eine Methode, die eben mehrere Parameter hätte,
+ hätte eben hier diese Folge.
+ Natürlich, die Typen können unterschiedlich sein,
+ die Namen müssen unterschiedlich sein.
+ Also die Typen, die beiden könnten gleich sein,
+ aber die Namen müssen immer ungleich sein.
+ Wenn die Namen gleich sind, beschwert sich das System,
+ weil das ist so, als ob Sie zwei Variable
+ mit demselben Namen deklarieren würden.
+ Und dann würden Sie die eben aufrufen,
+ dass für jeden Parameter, den Sie deklariert haben,
+ natürlich auch ein Wert übergeben werden muss.
+ Also hier hätten wir zwei Aufrufe einer Methode mit zwei Parametern,
+ dann müssten Sie halt immer wieder da entsprechend die Werte übergeben.
+ Also, wenn eine Methode aufgerufen wird,
+ wird der Wert für den Parameter vom Aufrufer berechnet und übergeben.
+ Entweder direkt als direkter Wert oder als Variable oder als Ausdruck.
+ Und dieser Wert wird in der aufgerufenen Methode
+ in der Parametervariable gespeichert.
+ Und dann werden die Anweisungen durchgeführt,
+ und zwar eben anfangs mit dem Wert für die Parametervariable.
+ Aber die Parametervariable ist sonst eine ganz normale Variable
+ und die kann daher auch verändert werden.
+ Die kann, wenn man das will,
+ kann man die beliebigste Weise verändern.
+ Und der Wert, den der Aufrufer übergibt,
+ der kann durch einen Ausdruck bestimmt sein
+ oder durch eine einfache Variable,
+ das wäre auch nur ein Ausdruck.
+ In allen Fällen wird der Wert berechnet und dann übergeben.
+ Aber die aufgerufene Methode, die hat keine Ahnung,
+ wie dieser Wert zustande kam.
+ Die hat keine Ahnung, was für Variable er evolviert war.
+ Die hat überhaupt keine Ahnung, woher der Wert kommt.
+ Die kriegt einen Wert und mit dem wird das initialisiert.
+ Also, wenn Sie eine Variable übergeben,
+ dann wird halt der Wert der Variable genommen
+ und wird dieser Wert an die aufgerufene Methode übergeben.
+ Und eben diese Art von Übermitteln, also Aufrufen,
+ die nennen wir Value Semantics.
+ Das heißt, wenn der Parameter eines der Basestypen ist,
+ und bisher haben wir ja nur die zugelassen,
+ dann wird der Wert direkt kopiert
+ und das nennen wir Value Semantics.
+ Der Wert wird übergeben.
+ Wenn der Ausdruck durch einen Parameter übergeben,
+ dann wird der Wert direkt kopiert.
+ Und das nennen wir Value Semantics.
+ Und das wird dann übergeben.
+ Wenn der Ausdruck durch einen Parameter,
+ wenn wir einen Ausdruck haben,
+ dann wird der Ausdruck evaluiert
+ und dann wird der Wert des Ausdrucks übergeben.
+ Und dieser Wert, der jetzt da kopiert wird,
+ der initialisiert dann die Parametervariable,
+ so wie ich das eben gezeigt habe.
+ Also, ich hatte hier eben diese Methode
+ einmal mit einer Variable aufgerufen
+ oder mit einem Ausdruck.
+ Das macht alles keinen Unterschied aus.
+ Das wird alles so ausgeführt, wie wir das erwarten.
+ Wir berechnen den Ausdruck
+ und dann entsprechend wird das gemacht.
+ So, und weil diese Parametervariable
+ eben auch eine normale Variable in der Methode ist,
+ kann diese Methode mit dem Parameter arbeiten, wie sie will
+ und insbesondere Veränderungen, die in der Methode passieren,
+ haben keine Auswirkungen auf die aufrufende Methode.
+ Warum?
+ Weil es wurde hier nur der Wert übergeben.
+ Mehr wurde gar nicht übergeben.
+ Es wurde nur ein Wert übergeben.
+ Also, ich habe hier eine Methode strange,
+ die hat einen Int-Parameter.
+ Und dieser Int-Parameter heißt x.
+ Und jetzt geht diese Methode hin
+ und nimmt x und erhöht den Wert um 1.
+ Und speichert dann das Ergebnis in dieser Variable x.
+ Und dann drucken wir diesen Wert x aus.
+ So, und jetzt rufen wir diese Methode auf
+ von einem, mit unserem Main-Programm.
+ Da rufen wir das auf mit eben einer,
+ auch einer Variable auch, die x genannt wird.
+ Die wurde mit 23 initialisiert.
+ Und die rufen wir damit aus.
+ Und was passiert, der Wert wird übergeben.
+ Der Wert wird diese 23 wird übergeben.
+ Und wird hier um 1 erhöht.
+ Und wir drucken dann aus,
+ dass der Wert dieser Variable in diesem Programm
+ an dieser Stelle gerade 24 ist.
+ Aber dann ist diese Methode zu Ende.
+ Wir sind mit der Methode fertig.
+ Wir erreichen das Ende.
+ Und jetzt geht die Ausführung weiter hier an dieser Stelle.
+ Und was machen wir hier?
+ Hier gehen wir jetzt hin.
+ Und wir drucken nochmal den Wert x.
+ Das ist diese Variable hier.
+ Und die hat den Wert, den diese Variable da bekommen hat.
+ Was immer in dieser Methode passierte, interessiert niemand.
+ Das heißt, wenn ich jetzt hier drucke,
+ bekomme ich hier als Ausgabe,
+ dass x noch weiterhin den Wert 23 hat.
+ Warum?
+ Weil Änderungen in der Methode,
+ Änderungen dieses Parameters,
+ haben gar keine Auswirkungen auf das,
+ was außerhalb passiert.
+ Das ist einfach der Weg, wie wir das machen.
+ Also, wie die Variablen heißen.
+ Und das spielt alles keine Rolle.
+ Entscheidend ist, dass die Werte übergeben werden.
+ So, jetzt habe ich hier ein Programm.
+ Und da wollen wir mal gucken, was dieses Programm eigentlich ausgibt.
+ Das hat hier eine Methode mystery.
+ Und mystery hat drei Parameter.
+ Nämlich ein Parameter x, ein Parameter z
+ und ein Parameter y.
+ So, und diese Methode wird aufgerufen an zwei Stellen hier.
+ Das war ja eine zweite Farbe.
+ Er hat zwei Aufrufe hier und hier.
+ Und es gibt in dem Programm drei Variable,
+ x, y und z.
+ Und die sind hier auch, und wir wollen wissen,
+ was produziert dieses Programm denn jetzt.
+ Jetzt mal angucken.
+ Hier kann man schnell die Übersicht verlieren.
+ Also, gucken wir mal an.
+ Also, x hat den Wert 9, y hat den Wert 2
+ und z hat den Wert 5.
+ Und jetzt rufe ich diese Methode mystery,
+ z, y und x.
+ Die rufe ich jetzt aus.
+ Und mit drei Argumenten.
+ Z, was ist z?
+ Z ist 5, y ist 2 und x ist 9.
+ So, das rufe ich jetzt auf.
+ Was passiert?
+ Diese Werte werden kopiert.
+ Und dann hat eben, der Wert x ist das,
+ was hier als erstes,
+ der Parameter x, also die lokale Variable x,
+ dieser Mystery Methode,
+ bekommt den Wert, der da als erster übergeben wurde.
+ Die Methode, die Variable z,
+ bekommt hier den zweiten Wert, das war eine 2.
+ Und der Parameter y, das ist der letzte,
+ bekommt den Wert, der hier als letzter übergeben wurde.
+ So, und damit habe ich also hier diese Werte
+ für die Integer-Parameters x, z und y in der Methode.
+ Und jetzt druck ich aus, ich druckere aus, eben z,
+ das ist 2, dann druckere ich den Text end.
+ Und dann habe ich hier die Differenz von y minus x.
+ Und das, also jetzt hoffe ich immer richtig zu rechnen,
+ 9 minus 5 ist 4.
+ Und dann bekomme ich das als Ausgabe.
+ So, und das nächste Beispiel können Sie jetzt selber überlegen,
+ wie das geht.
+ Also hier habe ich, wenn ich das nächste Beispiel nehme,
+ dann habe ich jetzt hier diese, wieder diese Reihenfolge,
+ y, x und z, y ist 2, x war 9 und z ist 5.
+ Das wird dann kopiert auf diese, dann ist eben hier,
+ mein lokales x ist 2, mein lokales z ist 9,
+ mein lokales y ist 5, dann habe ich also,
+ druck ich jetzt hier aus, z, z hat den Wert 9,
+ 9 und, richtig sehe, y ist 5, minus x, 2 ist 3.
+ Also sollte 9 und 3 als richtige Ausgabe kommen.
+ Und das tut es dann auch.
+ Also wie gesagt, nicht, dass ich das als Beispiel
+ für gute Variabelnamen vorstellen möchte,
+ Sie müssen so ein Beispiel, so genau Schritt für Schritt
+ durchgehen können und sehen können,
+ so sehen können, dass das eben,
+ als Sie verstehen, wie das geht.
+ So, jetzt haben wir also den Weg gefunden,
+ wie wir Werte in eine Methode hereingeben können,
+ indem wir eben diese Parameter entsprechend setzen.
+ Und natürlich die nächste, um das bisschen weiterzuentwickeln,
+ müssen wir auch einen Weg haben,
+ Ergebnisse aus einer Methode zurückzugeben.
+ Und dafür gibt es auch eine Möglichkeit.
+ Zum Beispiel habe ich hier ein Programm,
+ in dem ich für alle Zahlen bis zu einem Limit,
+ möchte ich sehen, ob diese Zahl eine Primzahl ist.
+ Und das würde ich, wenn die Primzahl ist,
+ dann werde ich sie ausdrucken.
+ Und daher würde ich an sich idealerweise hier in meinem If-Statement
+ einen Test haben, ob eine Zahl eine Primzahl ist.
+ Und na ja, da gibt es leider keine ganz einfache geschlossene Form,
+ die ich hier eingeben könnte.
+ Also hier kann ich jetzt nicht einfach irgendwie
+ einen Test hinschreiben von der Art,
+ wenn das und das erfüllt ist.
+ Das heißt, ich muss also irgendein etwas besseren Weg finden,
+ mein Programm zu strukturieren.
+ Und da bietet sich natürlich wieder an,
+ dass wir dafür eine Methode definieren.
+ Der Parameter erlaubt die Kommunikation zur aufgerufene Methode hin.
+ Und jetzt kann ich eine Methode definieren, die einen Wert zurückliefert.
+ Und dieser Rückgabewert erlaubt es mir dann,
+ in der aufgerufene Methode weiterzumachen.
+ Damit kann ich meine Programme viel besser zusammenstellen,
+ als wenn ich eben nur Werte an die Methode übergeben könnte.
+ Also müssen wir das so vorstellen, wir haben hier diese Methode,
+ nennen wir die Name, die ist hier eben deklariert,
+ die hat zwei Parameter, wenn ich die aufrufe,
+ dann werden diese Werte genommen, die werden dahin kopiert,
+ und die sind dann in dieser Methode verfügbar, dann arbeite ich da.
+ Und am Ende habe ich ein Resultat.
+ Und das will ich jetzt eben zurückgeben.
+ Das will ich in irgendeiner Weise zurückgeben.
+ Und dafür gibt es eben ein besonderes Statement,
+ dass diesen Rückgabewert von der aufgerufenen Methode an die Methode,
+ die eben auf, die das Aufruf zurückgibt.
+ Und dieser Wert muss natürlich deklariert sein,
+ sonst weiß das System, wenn ich jetzt hier diesen Wert zurückgeben will.
+ Was soll das denn sein?
+ Ist das ein Int oder Double oder irgendwas anderes?
+ Und darum muss der eben deklariert sein.
+ Das heißt, wenn wir eine Methode deklarieren,
+ dann geben wir an, was für ein Rückgabetyp wir da erwarten.
+ Dieser Rückgabewert muss dann von diesem Typ sein.
+ Und dann hatten wir ganz am Anfang ja gesehen,
+ manchmal haben wir dieses Keywort "Void" gehabt,
+ und "Void" heißt, es gibt keinen Rückgabewert.
+ Das ist eben die Kurzform, um zu sagen, hier ist nichts.
+ Das ist einfach auszudrücken, dass diese Methode nicht zurückgibt.
+ Und da haben wir das bisher gemacht,
+ weil ich eben noch nicht Überrückgabewerte reden konnte.
+ Aber eine Methode, die eben einen Wert zurückgeben will,
+ die deklariert hier den Typ,
+ und dann hat sie in der Methode ein Return Statement,
+ dass eben diesen Wert liefert.
+ Also irgendein Ausdruck hat, kann ein Erd sein,
+ kann der Variable sein und so weiter,
+ der wird evaluiert und dann zurückgegeben.
+ Und die gleichen Regeln, die wir für die Typen hatten,
+ die für die Variable galten und für Parameter galten,
+ die gelten hier auch.
+ Also zurzeit können wir nur mit Basestypen arbeiten,
+ aber das kann auch später erweitert werden.
+ Also dieses Return Statement,
+ wertet eben den Ausdruck aus
+ und gibt dann den Wert an den Aufrufer zurück.
+ Aber die aufgerufene Methode hat keine Ahnung,
+ was der Aufrufer damit machen will.
+ Das liefert den Wert und es ist dann
+ Sache der aufgerufene Methode, mit dem Wert weiterzumachen.
+ Und wenn einmal dieses Return Statement ausgeführt wurde,
+ also wenn der Wert zurückgegeben wurde,
+ dann ist die aufgerufene Methode zu Ende.
+ Das beendet die Aufführung dieser Methode.
+ Dann ist das das Ende dieser Aufführung
+ und damit ist es so,
+ als ob wir die letzte Anweisung erreicht hätten.
+ Also die Return liefert den Wert ab
+ und sendet das Ergebnis zum Aufrufer.
+ Also die Parameter sind der Weg,
+ wie wir Werte vom Aufrufer zur aufgerufene Methode bekommen.
+ Der Return schickt Werte von der aufgerufenen Methode
+ zum Aufrufer zurück.
+ Also hier, wenn wir diese einfache Methode haben,
+ dann hätten wir hier einen Return Statement,
+ kann man das sehen.
+ Und da wollen wir eben einen Int Wert zurückgeben.
+ Darum haben wir dekoriert, dass diese Methode einen Int Wert gibt.
+ Resalt ist in der Tat ein Int Wert.
+ Also das ist okay, der Wert kann zurückkommen.
+ Und hier weiß das System,
+ diese Methode liefert einen Int Wert zurück.
+ Daher kann ich den benutzen,
+ um diese Int variabel hier zu initialisieren
+ oder irgendwie einen Wert da zu haben.
+ Also so kann ich da den Wert vernünftig zurückgehen.
+ Jetzt also zurück zu meinem Beispiel,
+ wo ich da eben mit den rausfinden möchte,
+ ob die Zahlen primzahlen sind.
+ Da ich das einem If Statement verwenden will,
+ brauche ich einen Rückgabetyp Boolean,
+ entweder true oder false.
+ Und habe ich jetzt hier den Code, der checkt,
+ wie viele Faktoren eine gegebene Zahl hat.
+ Und wir wissen, dass wenn eben die Anzahl,
+ machen wir so lange, bis wir den Faktor gefunden haben.
+ Und wenn wir wissen, dass das richtig ist,
+ dann werden wir dementsprechend als Rückgabewert das geben.
+ Also wir checken, dass da eben die Anzahl,
+ dass eben halt, wenn es eine Primzahl ist,
+ dann gibt es keinen Faktor.
+ Dann ist der erste Faktor, den wir finden, der Wert selber,
+ der Wert, den wir hier als Argument übergeben bekommen haben.
+ Wenn das also der letzte Wert ist, den wir haben,
+ dann wissen wir, die Zahl ist eine Primzahl.
+ Und wenn wir schon früher diesen Loop beendet haben,
+ dann wissen wir, dass es keine Primzahl ist.
+ Und daher ist dann die Antwort false.
+ Okay, also.
+ Und das können wir mit allen Basitypen machen, wie wir wollen.
+ Können da eben halt die Steigung liefern oder irgendwas anderes machen.
+ Und wenn eben halt der Wert dann berechnet wurde,
+ geht er an den Aufrufer zurück.
+ So, und eben wenn sie keinen Wert schicken,
+ dann können wir das mit Wold sagen,
+ dann ist das nicht so.
+ Ich möchte unser Return Statement auch keinen Ausdruck,
+ weil es wird ja nichts zurückgeliefert.
+ Aber in meiner Empfehlung wäre,
+ lassen Sie das Return Statement weg.
+ Also ein Return ohne Ausdruck ist okay,
+ wenn es keinen Rückgabewert gibt,
+ ist aber letztlich eher verwirrend als sonst irgendwas.
+ Also und das können Sie in allen möglichen Situationen gebrauchen,
+ wenn Sie eine Konvertierung machen wollen,
+ irgendwas berechnen wollen und so weiter.
+ Also, können Sie arithmetische Ausdruck, alles können Sie machen.
+ So, jetzt was für mögliche Fehler sehen wir in diversen Programmen,
+ bevor sie uns eingereicht werden.
+ Also ein leichter Fehler machen kann,
+ ist, dass das Return Statement zwar den Wert zurückschickt,
+ aber die aufgerufene Methode mit dem Wert nichts anfängt.
+ Und die Namen, die im Programm verwendet werden,
+ spielen einfach keine Rolle.
+ Ich habe hier nochmal diese Methode,
+ die eben die Steigung durch zwei Punkte berechnet.
+ Jetzt gehe ich hin und rufe die hier auf, das ist ja okay.
+ Aber jetzt geht das Programm hin.
+ Diese Methode liefert einen Rückgabewert,
+ einen Rückgabewert vom Typ Double
+ und der wird dann entgegengenommen.
+ Jetzt fragt mich eben jemand im Chat,
+ müsste nicht hier ein Bullion zurückgegeben werden.
+ Und die Antwort ist ja, das wird es auch,
+ weil hier ist ein Ausdruck, ein Ausdruck,
+ der vergleicht, ob der letzte gefunden Faktor gleich dem Argument ist.
+ Das ist ein Ausdruck, der kann sein entweder true oder false.
+ Und das ist genau das, was für Bullion gilt.
+ Das System checkt, ob in der Tat der Ausdruck, der hier steht,
+ entweder von dem Typ ist oder implizit in diesen Typ verwandelt werden kann.
+ Und da es für Bullion keine implizite Verwandlungen gibt,
+ checkt er, dass der Ausdruck hier in der Tat ein logischer Ausdruck ist,
+ der einen Bullionwert ergibt.
+ Das haben Sie richtig gesehen, da mussten Bullion zurück
+ und in der Tat, da ist ein Bullion zurückgegeben worden.
+ Also, hier hatten wir das Problem, dass der Wert zurückgegeben wird,
+ aber nicht irgendwie verwendet wird.
+ Natürlich kann man jetzt hingehen und sagen, okay,
+ dann können wir doch hier den Wert nochmal ausgeben,
+ weil das hieß ja gesalt hier.
+ Das geht nicht.
+ Was immer an Namen hier verwendet wird,
+ ist völlig irrelevant für die Methode von der aus der Aufruferfolge.
+ Der einzig legale Weg, das zu machen,
+ ist, dass wir diesen Wert explizit speichern.
+ Und leider gibt das System uns da keine Hilfe.
+ Wenn Sie den Wert entgegennehmen und auf den Fußboden fallen lassen,
+ ist der Compiler zufrieden und optimiert vielleicht noch den Aufruf weg,
+ weil die brauchen das Ergebnis ja nicht,
+ aber eine Warnung gibt es nicht.
+ Also, da müssen Sie hier selber durch ein explizites Statement diese Anweisung,
+ müssen Sie selber hingehen und das von Hand machen und selber speichern.
+ So, jetzt habe ich gesagt, die Return Anweisung gibt einen Wert zurück.
+ Aber wir können natürlich in einem Programm mehrere Return Anweisungen haben.
+ In einer Methode kann es mehrere Return Anweisungen geben
+ und das ist sinnvoll, wenn Sie irgendwelche Fallunterscheidungen machen wollen.
+ Wenn wir jetzt diesen Punkt erreicht haben,
+ dass das Ergebnis feststeht, können wir den Wert da zurückgeben.
+ Die einzige Regel ist, dass eine Methode, die einen Rückgabewert deklariert hat,
+ die muss eine Return, die muss mindestens eine Return Anweisung haben.
+ Aber sie kann beliebig viele haben.
+ Und das ist sinnvoll, strukturiert unser Programm,
+ aber kann manchmal zu Überraschungen führen.
+ Also, hier haben wir ein Programm, wo wir eben sehen wollen,
+ welche Zahl ist die größere.
+ Und wenn sie gleich sind, dann spielt es keine Rolle.
+ Also, hier checken wir erst, ob A größer B ist.
+ Und wenn A größer B ist, dann geben wir A zurück.
+ Und anderenfalls, da ja in dem Fall ist B größer gleich A,
+ können wir einfach B zurückgeben.
+ Dadurch brauchen wir hier keine lokalen Variablen weiter zu deklarieren.
+ Also, wir haben hier einen Return im If-Statement, das ist fein.
+ Aber eben, egal wie wir durch dieses Programm durchgehen,
+ entweder hier der Test ist wahr, dann haben wir das ausgeführt
+ und da ein Return gehabt, oder der Test war false,
+ dann haben wir das ausgeführt und das auch geführt.
+ Und andere Fahre durch das Programm gibt es nicht.
+ Und daher ist am Ende jedes Fahres immer ein Return-Statement
+ und das System ist zufrieden.
+ Die Ausflugung des Return-Statements hat dann eben die Methode beendet.
+ Also, der Fahrd ist dann abgeschlossen worden.
+ Und eben, wie ich zeigte, alle Fahre in diesem Beispiel
+ enthielten ein Return-Statement.
+ Aber wie ist es bei diesem Programm?
+ Hier haben wir auch einen Test
+ und hier haben wir, wenn A größer B ist, dann haben wir einen Return von A.
+ Und in der Tat, wenn A, hier haben wir die Parameter A und B,
+ wenn A größer B sein sollte, ist alles Bestens.
+ Aber wenn B größer gleich A sein sollte, wenn der Test false ergibt,
+ dann eben geht das System hin und führt die nächste Anweisung aus.
+ Und da ist jetzt keine.
+ Und daher beschwert sich das System.
+ Also, wenn Sie so ein Programm haben, geht der Compiler hin und sagt,
+ das ist kein akzeptables Programm,
+ weil nicht alle Fahre haben einen Return-Werk.
+ So, manchmal ist der Compiler ein bisschen naiv.
+ Jetzt nehmen wir mal an, jemand hätte dieses Programm geschrieben.
+ Wenn A größer als B ist, haben wir wieder, geben wir A zurück.
+ Und andersfalls, um sicher zu sein, checken wir doch nochmal.
+ Wenn B größer gleich A ist, dann geben wir B zurück.
+ Und wenn wir das so machen, dann beschwert sich der Compiler auch
+ und sagt, dieses Programm kann nicht übersetzt werden,
+ weil der Compiler meint, dass es hier einen Fahrt gibt,
+ an dem es keinen Return gibt.
+ Deswegen empfiehlt sich dann nochmal anzugucken,
+ der Compiler sich so ein Programm anguckt.
+ Der Compiler sieht das Programm doch folgendermaßen sich an.
+ Hier oben ist der erste Test, das ist dieser hier.
+ Und der kann wahre oder falsch sein.
+ Wenn der Wahre ist, dann wird das dieses Return-Stapel ausgeführt
+ und alles ist okay.
+ Wenn der nicht Wahre ist, dann wird dieser Teil ausgeführt
+ und hier wird der Test A kleiner gleich null ausgeführt.
+ Wir wissen, das muss ja Wahre sein und daher wird das ausgeführt.
+ Aber der Compiler sagt, es wäre ja auch möglich,
+ dass dieser Test Nein ergibt, also der Test False ergibt.
+ Und daher sagt der Compiler, es gibt auch einen Fahrt durch das Programm,
+ es gibt hier keine Weitere Anweisungen,
+ in dem es keinen Return-Stapel mit gibt.
+ Und daher beschwert sich der Compiler und sagt,
+ das geht nicht, das wollen wir nicht, das ist nicht korrekt.
+ Und daher in einem solchen Fall müssen Sie entweder das Programm restrukturieren,
+ indem Sie entweder diesen Test wegwerfen, der nicht nötig ist,
+ oder dass Sie noch ein weiteres Return einfügen.
+ Sie könnten auch ein Return hier unten einfügen,
+ wäre das System auch zufrieden.
+ Aber muss irgendein Entwert sein, kann nicht irgendein,
+ nur einfach Return sein, dann ist das System auch zufrieden.
+ Und weil das so ein gutes Beispiel,
+ weil das mit diesem if und return so schön ist,
+ habe ich hier ein Beispiel für Sie,
+ das Sie sich jetzt auch überlegen sollen.
+ Und zwar haben wir hier die Aufgabe, und die müssen wir jetzt genau gucken,
+ wir haben hier einen, wir haben zwei reale Zahlen,
+ die geben an Punkte in dieser Fläche.
+ Und wir wollen ein Programm, das den Quadranten liefert.
+ Also Quadrant ist entweder eins oder zwei oder drei oder vier,
+ in der Reihenfolie.
+ Also wenn ich eben zum Beispiel hier diesen Punkt minus 4,2,
+ minus 4,2, 17,3 habe, der ist hier irgendwo,
+ da ist dieser Punkt, dann wäre die Antwort 2.
+ So ein Programm, sollen Sie, also eine Methode,
+ mit dem Vorgegebenen Namen Quadrant, sollen Sie schreiben.
+ Und das sollen Sie mir in den, als Antwort,
+ für den Klicker, den ich jetzt starte, geben.
+ Es ist nicht schwierig, ein paar Zeilen sind es aber doch,
+ können Sie machen, wie Sie wollen.
+ Am besten schreiben Sie es da rein.
+ Sie können es auch auf dem Blatt Papier schreiben,
+ und das Blatt Papier mir runterreichen.
+ Sie können es mir auch per E-Mail checken.
+ Sie können natürlich jetzt auch Ihre Eclipse starten,
+ und das dann da lösen, aber das ist eigentlich nicht der Sinn der Übung.
+ Sondern Sie mir überlegen, was muss ich machen,
+ wenn ich diese Aufgabe lösen soll.
+ Also schreiben Sie jetzt nicht in die Kurz-Channel.
+ Diesmal versuche, hoffe ich, dass der Klicker funktioniert,
+ und dass Sie daher das als Antwort in den Klicker reinschreiben können.
+ Also ich nehme auch gerne von denen,
+ die keinen Smartphone dabei haben, Papier entgegen.
+ Normales Papier, irgendwelches Papier.
+ Lesbar sollte es sein, das macht es dann leichter,
+ das später zu diskutieren.
+ Und eben der Feinprint ist auch noch mitzulesen hier unten.
+ Fällt der Punkt auf eine der Achsen des Koordinatensystems,
+ sollen Sie den Wert 0 liefern.
+ Okay, gut.
+ Die Auflösung, also ich mache noch eine Minute,
+ und dann, wenn wir das schicken,
+ ich mir mehr Beispiele.
+ An einem späteren Tag zeige ich Ihnen dann eine Auswahl derer,
+ die ich da gesehen habe, ist ja alles anonym.
+ Es gibt da sehr viele Möglichkeiten, das zu machen.
+ Ja, also wie machen wir das?
+ Also hier, erste Sache ist,
+ wie sieht unsere Methode aus, die wir da schreiben wollen.
+ Also Public Static, das sollte auch sein, der Name war vorgegeben.
+ Und natürlich, wir wollen den Quadranten zurück.
+ Also als Return Type muss da im Stehen.
+ Das muss ein Intwert zurückkommen.
+ Und was haben wir hier?
+ Wir haben unsere Methode, die hat zwei Parameter vom Typ Double.
+ Name spielt keine Rolle.
+ Ein Weg, das zu machen, ist, zu sehen,
+ dass wir erst sehen, ist es im ersten Quadranten,
+ im zweiten, dritten, vierten, vierten.
+ Und wenn es da nicht ist,
+ dann muss es ja auf einer der Achsen liegen und das so machen.
+ Und können das auch anders strukturieren.
+ Sie können es also mit Doubles,
+ mit Double Werten machen und so weiter.
+ Also, da können Sie auch verschiedenste Weise das machen.
+ Und wir werden mal sehen, was für Möglichkeiten von Ihnen jetzt gekommen sind.
+ So, das haben wir für heute.
+ Ich wünsche Ihnen schönes Wochenende
+ und bis zum Dienstag dann.
+ (Beifall)

@@ -1,0 +1,847 @@
+ So, wir wollen heute weitermachen mit dem Thema Aussagen über einfache
+ Programmsegmente formulieren zu können und ich hatte Ihnen letzte Woche kurz
+ das Hoher-Trippel vorgestellt, das eben aus drei Teilen besteht, eben aus einer
+ Pre-Condition, die vor der Ausführung des Statements gelten muss, damit nach der
+ Ausführung des Statements die Aussage "Q", die Post-Condition gilt. Und so ein
+ Trippel, da sagen wir, das ist gültig, wenn folgendes gilt und nur wenn folgendes
+ gilt. Für jeden Zustand, für den "P" gültig ist, ergibt die Ausführung von "S",
+ dem Statement, ergibt danach einen Zustand, in dem diese Aussage "Q"
+ gültig ist. Das ist also dann, wenn das gilt, dann haben wir ein gültiges
+ Hoher-Trippel. Dann und nur dann, also informell, wenn "P" war vor der
+ Ausführung von "S" ist, dann ist nachher "Q" nachher wahr. Aber natürlich wichtig
+ ist dabei, das ganze geht nur, wenn wir wirklich wissen, dass diese Statement "S"
+ ausgeführt wurde, wenn "S" nicht ausgeführt wurde oder wenn es während der
+ Ausführung von "S" einen Laufzeitfehler gab, dann gilt das natürlich nicht, weil
+ dann ist eben halt nicht sichergestellt, dass wir das eben halt so, dass wir ein
+ Zustand erreicht haben, in dem "Q" gilt. Also das alles gilt nur, wenn eben dieses "S"
+ ausgeführt wurde. So und das Interessante ist jetzt für uns, dass es
+ für jedes Java-Statement genaue Regeln gibt, die eine "P" und "Post-Condition" in
+ eine Beziehung zueinandersetzen. Das heißt, wenn wir also eine Post-Condition "Q" und
+ ein Statement "S" haben, dann können wir rausfinden, was für eine
+ "Precondition" gegolten haben muss, damit nachher das "Q" gilt. Oder umgekehrt, wenn
+ wir "P" haben und "S" haben, dann können wir dann nachsagen, was aufgrund dessen,
+ was wir jetzt sehen, was für eine Post-Condition "Q" da gültig sein muss.
+ Und darum fangen wir mit dem einfachsten Beispiel an, weil wir haben ja noch nicht
+ viel für Weitere gesehen, nämlich eine Zuweisung. Zuweisungen weisen irgendwelchen
+ Variablen einen Wert zu und dann können wir natürlich Aussagen über diese
+ Zuweisungen machen. Also wenn ich hier so eine Zuweisung habe, das ist also eine
+ Java Anweisung, da wird irgendein Ausdruck "E" wird eben evaluiert und dann wird der
+ Wert dieser Variable "X" zugeösen. Und jetzt wollen wir gerne wissen, was für eine
+ "Precondition" muss denn vorher gegolten haben, damit wir nachher eben sagen
+ können, diese Post-Condition "Q" gilt. Und das machen wir folgendermaßen. Wir
+ gehen jetzt hin, also suchen eben das "P". Wir bilden ein "Q" Strich und das bilden wir,
+ indem wir "Q", das ist dieses "Q" hier, da gehen wir hin und ersetzen wir diese
+ Variable "X" durch das "E", das "E", das hier auf der rechten Seite erscheint.
+ So, und wenn wir das geformt haben, dann haben wir also einen "Q" Strich. Wie
+ jetzt ist das gültig, wenn für alle Zustände des Programms "Q" Strich "Var"
+ ist, wenn "P" "Var" ist. Das heißt, wenn aus "P" voll "Q" Strich gilt und dafür können
+ wir schreiben, benutzen wir diese Doppelpfeilsymbol, das können wir sagen,
+ dann sagen wir aus "P" voll "Q" Strich. Jetzt haben Sie vielleicht in der
+ diskreten Mathematik schon dieses Zeichen kennengelernt. Ja, nein, ja, gut, so, ja.
+ Und da ist Ihnen auch gesagt worden, das Zeichen wird in verschiedensten Weisen
+ verwendet, ja, in unterschiedlichen Weisen verwendet. Und Sie haben auch
+ gesehen, dass es da dieses Zeichen gibt, wo nur ein einfacher Pfeil ist, ja, wo wir
+ sagen "A" impliziert "B". Diese beiden werden eben in unterschiedlichen
+ Gegebenheiten unterschiedlich verwendet. Ich weiß, ob das Skript noch genauso sich
+ heute liest, wie als ich es kopiert habe, ja. Aber der Punkt ist, was wir wissen
+ wollen, ist hier, wir wollen einen Zustand haben. Wir können dann sagen aus
+ diesem P folgt dann nach der Ausführung von "S" das "Q". Und jetzt habe ich hier
+ ein einfaches Beispiel, ja. Also wir haben hier diese, die Postcondition "Q", die
+ sei, dass das Y sei größer als 1. Und unser Statement ist, Y wird der Wert Z plus 1
+ zugewiesen, ja. Und wir wissen, woher auch immer, vielleicht sollte ich das nicht als
+ ein Pfeil machen, lassen Sie mich das mal einfach, lassen Sie mich einfach hier
+ wegnehmen, sagen wir das ist hier P und das ist Q, ja. Hier haben wir P, das sagt,
+ das Z ist größer als 34. So und jetzt bilden wir also unser Q-Strich und unser
+ Q-Strich setzt unser Y, ja, über, setzt das den Ausdruck, den wir auf der rechten
+ Seite haben, in, setzt das Y durch den Ausdruck auf der rechten Seite, ja. Also
+ wir nehmen hier die rechte Seite, das ist hier dieses Z plus 1, wir ersetzen das
+ in dem Ausdruck hier unten und damit haben wir unser Q-Strich und das sagt
+ jetzt Z plus 1 ist größer als 1. So und jetzt ist die Frage, können wir zeigen,
+ dass aus P diese Aussage Q-Strich folgt, ja. Also können wir zeigen, dass aus Z
+ größer 34 folgt, Z plus 1 ist größer 1 und in diesem einfachen Beispiel ist
+ natürlich ganz klar, das können wir zeigen und daher ist das eben halt ein
+ gültiges hoher Triple, weil eben halt wir das zeigen konnte, ja. Also denken Sie
+ einfach daran, dass Sie dieses, wie Sie vielleicht auch bisher, dieses Symbol in
+ Beweisen verwendet haben, ja. Und was das jetzt gute, was das ist, das sagt uns das
+ für alle Ausführungen von dieses Programm der Gemäß, in dem diese
+ Aussage P gilt, gilt nachher die Aussage Q. Ja, das wissen wir jetzt, das haben wir
+ jetzt gezeigt, wenn wir dieses einfache Beispiel gerechnet haben und dann es
+ gibt keine Liveübertragung. Okay, ich sehe auch den, die Person nicht, die das
+ normalerweise macht. Ich vermute, dass irgendein, nein, der war aber da, da war also,
+ es gibt keine Liveübertragung. Okay, ja.
+ Okay, jetzt halt, jetzt sagt er, es funktioniert, nachsehen Sie, was tut
+ sich so ein, was hat so ein Chat nicht für positive Wirkung, ja. Also, jetzt tut mir
+ Leid, dass Sie das nicht mitbekommen haben und darum werde ich mir erlauben,
+ auch wenn das mein Zeitplan durcheinanderbringt, noch kurz auf dieses
+ Statement zurückzukommen. Also, wir wollen eben zeigen, wir haben, wir haben
+ definiert, was ist ein gültiges Hoher Triple, ja. Ein Hoher Triple ist gültig, wenn
+ für jeden Zustand für den P gültig ist, die Ausführung von S, einen Zustand
+ ergibt, in dem Q gültig ist. Und das gute ist, in Java können wir für Anweisungen,
+ das eben mechanisch checken und mechanisch machen. Und da hatten wir uns aus
+ erstes das Beispiel angeguckt von Zuweisungen, ja, wir haben ja eine
+ Zuweisung und wie können wir jetzt sehen oder zeigen, dass das ein gültiges
+ Hoher Triple ist und das machen wir, indem wir die Post Condition Q nehmen, die
+ Q Post Condition nehmen wir und da ersetzen wir die Variable X, ja, durch das E, das
+ ist hier die rechte Seite dieses, dieses Statement, das ist eine Java Anweisung, ja.
+ So, und wenn wir das ersetzt haben, dann haben wir also einen neuen Ausdruck, den
+ nennen wir Q Strich und wir sagen, das Triple ist dann gültig, wenn ich zeigen
+ kann, dass aus dem P diese Situation Q Strich folgt, ja, das ist, was wir machen
+ wollen, dann wissen wir, wenn immer der Zustand P gilt, Ausführung des Statements
+ ergibt, einen Zustand in dem Q gilt. So, und ich hatte Ihnen daran erinnert, dass in
+ der Diskretematik, die dieses Symbol auch benutzen, einer etwas vielleicht anderen
+ Nuyence, aber die Idee ist dieselbe, wir benutzen das, um zu zeigen, dass eben
+ etwas gilt. Und da hatte ich als erstes Beispiel hier dieses einfache Statement
+ genommen, wo wir die rechte Seite, das ist unser Expression E, ja, und unser Y ist
+ das X, das haben wir jetzt eingesetzt hier in dieser, in der, in der Post Condition
+ Q, dadurch gab es dieses Q Strich und dann hatten wir dieses, jetzt mussten wir zeigen,
+ ob eben wir, muss man sehen, ob wir zeigen können, dass aus P Q Strich folgt.
+ Und wenn das, und das ist in diesem Fall einfacherweise der Fall, weil jetzt hier
+ Z größer 34, daraus folgt das Z plus 1 größer als 1 ist, ja, also das ist, und
+ denken Sie also an dieses Zeichen so, das wird ähnlich verwendet, wie eben in
+ manchem Beweis, um zu zeigen, dass das geht. So, jetzt haben wir hier ein anderes
+ Beispiel, wir haben die Aussage Q, dass Y sei ungleich Z und das Statement S ist, Y
+ wird gesetzt zu Z Quadrat und unsere Pre-Condition ist, dass Z ungleich 1 ist.
+ So, und jetzt gehen wir wieder hin, wir nehmen die rechte Seite, das ist unser E,
+ ersetzen das für das X, das hier ein Y ist, ja, und dann bekommen wir hier diese
+ Aussage Q Strich, ja, so, Z Quadrat ist ungleich Z und jetzt müssen wir sehen,
+ können wir zeigen, dass aus P folgt Q Strich, also in allen Situationen, in denen
+ P gilt, gilt danach auch das Q Strich, ja, und ja, denken Sie eine Sekunde nach,
+ und ich sehe schon einige von Ihnen nicken und andere schütteln den Kopf und die,
+ die den Kopf schütteln, haben wir jetzt diesmal recht, weil das haut nämlich nicht
+ hin, weil aus, können aus Z ungleich 1 zeigen, wir sind zwar alles inns, dass Z
+ mal Z ungleich Z ist und die Antwort ist nein, weil für X gleich, Z gleich null,
+ gilt das nicht, ja, und daher können wir in diesem Fall das nicht, das nicht eben
+ zeigen, ja, und daher ist das hier kein gültiges, das ist kein gültiges Triple, ja,
+ das ist also eins, das wir nicht, das heißt wollen oder das ist eins, das wir eben
+ halt nicht haben, also stellen sich vor, oder der Grund, warum das so interessant
+ ist, wir haben hier unser Programmausführung, da haben wir unsere,
+ die Zustand des Programms sind diverse Variable, ja, und dann kommt eben halt der
+ Punkt, wo wir dieses Statement S hier ausführen wollen, ja, das wollen wir jetzt
+ hier ausführen, ja, und da haben wir irgendeinen Zustand P, und da wollen wir
+ eben gucken, können wir jetzt sicher sein, dass danach, nach der Ausführung von S,
+ ja, dieser Zustand Q gilt, ja, und daher, und das Interessante ist, wie wir das eben
+ zeigen können, dann haben wir das für alle Ausführungen gezeigt, ja, nicht nur
+ für irgend eine, was wir immer auf dem Computer leicht machen können, sondern wir
+ haben diese Aussage jetzt, die gilt für alle Ausführungen, ja, alle Ausführungen
+ dieses Programmes, die diese Bedingung P erfüllen, erfüllen dann nachher die
+ aus, die Bedingung Q, ja, das ist der entscheidende Punkt, ja, also wenn ich jetzt
+ hier dieses Statement habe, mal wegen X wird gesetzt zu Y+1, ja, und ich habe Y
+ dann ist vorher 8 und X ist 0, egal was für andere Werte da sind, auch egal was
+ für Werte von X da sind, ja, wenn ich das ausführe, ja, dann kann ich zum
+ Beispiel sicher sein, dass X ist größer 5, ja, und wenn ich das zeigen müsste,
+ kann ich das jetzt eben zeigen, was muss, was für eine Bedingung muss erfüllt sein,
+ wenn ich danach X größer 5 haben will, ja, ja, gucke ich mir das an, das sehe ich,
+ ja, ich setze das ein, ja, ich bilde das, bilde das Q-Strich, ja, Q-Strich ist Y+1,
+ Y+1, Y+1 ist größer 5, ja, so, das ist meine, jetzt muss ich gucken, was für eine
+ Bedingung brauche ich, damit das eben halt erfüllt ist, ja, und dann sehe ich,
+ ah, wenn Y größer 6 ist zum Beispiel, dann ist das erfüllt, denn aus Y größer
+ 6 folgt sicher, dass Y+1 größer 5 ist, gäbe auch andere Bedingungen, darauf kommen
+ wir später mal zu sprechen, aber das wäre eine Bedingung P, die für uns den Job
+ erfüllt, ja, das wäre eine, die für uns den Job erfüllt, ja, und wenn wir die
+ Aussage hätten jetzt statt X gleich Y+1, ja, wenn wir die Aussage hätten X wird zu
+ 6 gesetzt, was, und wir hätten immer noch Interesse an der gleichen Aussage X
+ größer als 5, ja, was müssten wir denn dann als pre-condition festhalten, was
+ muss dann erfüllt sein, damit nach der Ausführung dieses, dieses Statements X
+ größer 5 ist, ja, sehen wir, da können, egal was für Werte X vorher hat, egal was
+ für andere Werte es gibt, das ist immer der Fall, ja, und wie drücken wir jetzt
+ aus, dass dieses Q nach der Ausführung dieses Statements immer gilt, nun, wenn
+ das der Fall ist, dann nehmen wir die Bedingung, die immer gültig ist, und das
+ ist das True, ja, sagen True heißt, ah, egal was da sonst ist, nach der Ausführung
+ dieses Statements gilt diese Post-Condition, ja, so, und damit das, wollen wir mal gucken, ob
+ heute die, die, die, die Klickers funktionieren, habe ich jetzt hier mal ein
+ ganz einfaches Beispiel für Sie, gucken wir mal, ob das jetzt, wir haben,
+ wie wir Trouble-Finding, sehr Zeit, das fängt schon mal gut an.
+ Ach, so, okay, jetzt hat das gefunden, okay, also, ich habe das mal gestartet, jetzt
+ hoffe ich, dass das für Sie funktioniert, also Sie sollen mir sagen, ob das ein
+ gültiges Hortrippel ist oder nicht, nach dem, was ich Ihnen erzählt habe, und ich
+ hoffe, das kommt auch im anderen Raum an.
+ Und eben, wir nehmen an, dass alles invariable sind, es kein Overflow gibt,
+ kein Underflow, also das heißt, alles Statements werden ohne Problem ausgeführt.
+ Bitte lauter, darf ich mal fragen, ist das bitte lauter hier im Raum oder ist das
+ im Overflow-Raum?
+ Okay, ich sehe, die meisten, viele von Ihnen haben schon geantwortet oder haben
+ was anderes zu tun, okay, dann machen wir mal close und gucken wir uns die, ja, ja,
+ was sind die Ergebnisse, also die erste Sache ist natürlich gültig und 96 Prozent
+ von Ihnen haben das richtig hinbekommen, na gut, Bravo. Die nächste ist, ist
+ ungültig und das haben 93 Prozent von Ihnen richtig gemacht und das letzte ist
+ auch ungültig und das haben 89 Prozent von Ihnen richtig gemacht, so, also ja,
+ es ist nicht schwierig, so, natürlich ist eine Anweisung ein bisschen langweilig
+ und da kann man nicht viel machen und darum wollen wir uns ansehen, was wir
+ machen können, wie wir diese Idee, die wir jetzt für eine Anweisung gesehen haben,
+ wie wir die auf mehrere Anweisungen ausdehnen und hier haben wir die Situation,
+ wo wir jetzt zwei Statements haben, das ist sozusagen das Einfachste, was wir
+ über ein Statement haben können und jetzt auch hier können wir wieder
+ vorwärts rückverschließen und müssen überlegen, wie können wir jetzt definieren,
+ dass so etwas ein Triple, das aus einer Folge von Anweisungen besteht,
+ wie ungültig es ist, also, wir sagen so ein Triple ist ungültig, also wir haben
+ hier zwei Statements, nur zwei, zwei einfache und wir haben der
+ pre-condition und post-condition und wir sagen gestern, dass dieses Triple ist
+ ungültig dann und nur dann, wenn es eine Aussage r gibt, eine Aussage r, die wir
+ selber finden müssen, so, dass p s 1, r ist ungültig, also dieses Triple ist
+ ungültig, das Triple mit der pre-condition p und der post-condition r ist
+ ungültig und dann ist weiterhin dieses Triple, dass die pre-condition r hat, mit
+ s 2 ausführt, dann ist danach ungültig, also wenn wir zeigen können, dass
+ praktisch diese Aussage r in der Mitte ungültig gemacht wird, wenn
+ wir das Statement s 1 ausführen, dann können wir sicher sein, dass wenn wir
+ nach s 1 s 2 ausführen, dass danach q gilt, warum? weil wenn wir dieses aus r folgten,
+ können wir zeigen, dass nach dieses q Strich folgen wird, ja, so, also das heißt, wir
+ müssen uns irgendein r überlegen, dass wir finden können, wenn es so einen
+ Skift, ja, dann haben wir ein gültiges Hoartrippel, in dem wir eben nicht nur
+ ein einziges Statement haben, sondern eine Folge von Statements, so, also haben wir
+ hier ein einfaches Beispiel, ja, ich habe jetzt hier das erste Statement, das ist
+ s 1, s 1 z z plus 1 zu y und s 2 setzt w zu y mal y, ja, so, wie sie sehen, ich
+ gucke mir die Sachen meistens rückwärts an, ja, weil das ist das, weil so will ich
+ auch versuchen zu argumentieren, ja, und dann habe ich hier die Aussage q und jetzt
+ habe ich die Aussage p und ich möchte mir überlegen, ob das gültig ist, so, jetzt
+ müssen wir irgendeine Aussage r finden, ja, kann man natürlich sich verschiedene
+ überlegen, ja, aber wir könnten ja mal, also versuchen, ja, als r Aussage nehmen wir,
+ dass das y größer 1 ist, ja, weil wenn y größer 1 ist, dann kann ich sicher sein,
+ dass y², also wie, ist größer als y, wenn y 1 wäre oder 0 geht das nicht, aber
+ y größer 1 sind ja alles ins, ja, ist das eben der Fall, so, also könnte ich das
+ als r nehmen, ja, das heißt ich müsste, könnte, könnte mir auch andere Sachen
+ denken, ich könnte auch sagen y größer 10 wäre auch richtig, aber wäre auch, ja,
+ spielt die Reihenfolge der Statements eine Rolle, ja, ja, eine große Rolle, ja,
+ weil je nachdem, was für Variable dieses Statements verändern, kann das, das eine
+ oder andere Ergebnis haben, ja, wenn wir jetzt zum Beispiel dieses Statement
+ s2 zuerst ausgeführt hätten, dann müssten wir uns anders überlegen, weil dann
+ würde das, was ich jetzt vielleicht danach über z sage, nicht mehr relevant sein, ja,
+ so, also, hier habe ich jetzt also entschieden r größer 1, die Aussage r zu
+ nehmen, die sagt y größer 1, ja, so, und da müssen wir jetzt als erstes zeigen,
+ dass das hier ein gültiges Trippel ist, also, dass ich hier für diese
+ pre-condition p z größer gleich eins und das Statement s, das ist ja mein s1, ja,
+ und die post-condition q y größer eins, dass das ein gültiges Hortrippel ist,
+ und jetzt können wir sehen, jetzt setzen wir wieder die, die rechte Seite in dieses
+ q ein, und da sehen wir z plus eins muss größer als eins sein, und da kann ich
+ sehen, aha, das ist mein q-Stich, also, hier, ja, mein q-Stich sagt ist z plus
+ eins größer eins, jetzt sehe ich meine pre-condition hier, weil ja z ist größer
+ gleich eins, na ja, wenn z größer gleich eins ist, dann ist z plus eins auch
+ strikt größer als eins, und daher kann ich dieses als ein gültiges
+ Hortrippel erkennen und sage, das ist gültig, so, und dann im zweiten Schritt
+ müssen wir zeigen, dass das ist jetzt hier mein r, ja, das r und das ist das p
+ für das neue Trippel, ja, das habe ich dieses r, dann habe ich hier das Statement s,
+ das ist mein Statement s2, und dann habe ich hier meine post-condition q, ja, das q ist
+ hier w größer y, dass das auch wieder ein gültiges Hortrippel ist, jetzt gehe ich
+ wieder hin und nehme die rechte Seite dieses Statements y² und setze das
+ für das w hier ein, und dann bekomme ich eben wieder ein q-Stich, ja, das ist mein
+ neues q-Stich, ja, y mal y ist größer als y, und jetzt muss ich gucken,
+ kann ich aus y größer eins, ja, kann ich daraus folgern, dass daraus folgt y
+ mal y ist größer als y, und das kann ich, das heißt das ist auch ein gültiges
+ Hortrippel, ja, so, jetzt habe ich also gezeigt, es gibt eine, es gibt eine
+ Aussage r, y größer eins, ja, die könnte ich hier benutzen, um zu zeigen, dass das
+ eben, dass sowohl das erste, dieser erste Teil als auch der zweite Teil beides
+ gültige Hortrippel sind, und daher ist das Ganze ein gültiges Hortrippel, weil
+ eben eben p s1 r ist gültig und rs2 q ist
+ gültig, daher ist p s1 gefolgt von s2 q-gültig, so, und weil sie jetzt ihre
+ Handys schon draußen haben, können wir noch mal versuchen, ob jetzt beim zweiten
+ mal, dass etwas besser funktioniert, gucken wir mal nach, ob das jetzt noch
+ mal funktioniert, habe ich ihnen zwei Trippel gegeben, dann können sie mir sagen, ob
+ die gültig sind oder nicht, ja, also erste und es zweite Trippel sind beide
+ hier, so, und auch da können sie mir jetzt sagen, ob die gültig oder nicht
+ gültig sind.
+ [Präsident] Okay, was meint man mit Overflow, Underflow, fragt mich jetzt auch jemand,
+ was ich damit meine ist folgendes, die Int sind ja alle endlich, ja, da gibt's
+ irgendeinen größten Wert, es gibt eine Obergrenze und wenn jetzt die Obergrenze
+ durch irgendeine Addition erreicht wird, dann wissen wir noch nicht, was danach
+ passiert und da wir uns darüber noch keine Gedanken machen wollen, weil unser
+ Leben vielleicht doch schon kompliziert genug ist, da ist, da ist, ist es ein
+ Zeichen, dass eben halt wir uns darum nicht kümmern wollen, darum sagen wir, sind
+ invariablen und es gibt keinen Wert, der nicht darstellbar ist, ja, Overflow sind
+ Werte, die zu groß sind, ja, und Underflow sind die zu klein sind, ja, und das ist
+ kein Problem für uns, ja, noch kein Problem, ja, kein Problem jetzt.
+ So, ja, so, so, noch 30 Sekunden.
+ Temp ist auch eine Variablen, alles sind Intvariablen, ja, Temp ist eine Variable,
+ eine Variable, die ich halt Temp genannt habe. Was meint man mit dem Zeichen, das da,
+ das heißt gleich, ja, ja gut, das könnte also, das wäre einfach eine Form von,
+ eine Art von Gleichheit ausdrücken, ja, das Vergleich ist gleich, so, und eben
+ ein, hier fragt mich auch, das hier ist das Zeichen für logisch und, ja, das haben
+ Sie vielleicht auch schon mal irgendwo gesehen, so.
+ Okay, so, ja, jetzt ist die, ich sehe, ach, Sie haben das super gemacht,
+ bestens, ja, Sie haben, gucken wir mal nach, ob das gespeichert hat, Capturing, ja,
+ so, also eben, die Aufgabe, die erste war gültig in der Tat und das haben 98 Prozent
+ von Ihnen richtig gemacht, ja, und das andere ungültig und das haben auch
+ 98 Prozent von Ihnen richtig gemacht. Was eigentlich erfreulich ist und mir sagt,
+ dass wir weitermachen können, so, also, jetzt haben wir also gesehen, wie wir für
+ einfache Folgen von Statements argumentieren können, dass ein Statement
+ einen bestimmten Zustand nach der Ausführung erreicht, so, natürlich,
+ die, hier haben wir uns nur mit Zuweisungen beschäftigt und das sind
+ ziemlich langweilige Programme, wenn wir nur Zuweisungen machen dürften und
+ daher wollen wir uns jetzt mit der nächsten Form von Kontrollebeschäftigen
+ nämlich mit den Verzweigungen, so. Also, manchmal wollen wir halt nicht alle
+ aus, alle Anweisungen ausführen, ja, wir wollen nur einige ausführen, ja, und
+ darum gibt es verschiedene Wege, das zu kontrollieren und das zum Beispiel, ich
+ habe hier eine Anweisung 1, eine Anweisung 2, eine Anweisung 3 und
+ bisher haben wir die immer so ausgeführt. Jetzt habe ich die Situation, dass ich
+ vielleicht einmal die Anweisung 2 überspringen möchte oder ich mache
+ eine Anweisung A1, dann eine Anweisung A1, A1, A2 und dann mit A3 weiter, ja, das
+ ist, also, könnt ihr mir vorstellen, dass es immer Situationen geben kann, wo ich
+ einfach nicht alle Anweisungen nacheinander ausführen will, ja, und so was
+ nennt man eine bedingte Ausführung, ja, bedingt, weil es muss irgendeine
+ Bedingung erfüllt sein, damit eine Anweisung ausgefüllt wird und da gibt es
+ halt verschiedene Möglichkeiten, dass diesen Kontrollfluss in einer
+ Programmiersprache zu kontrollieren und Java ist da auch nicht anders, dass in
+ allen Programmiersprachen in irgendeiner Form vorhatten. Wir wollen also
+ selektiv manche Anweisungen ausführen und dafür gibt es eben diese
+ IF Anweisung oder das IF Statement und das führt eine Anweisung oder eine Folge
+ von Anweisungen nur dann aus, wenn eine bestimmte Bedingung erfüllt ist. Das heißt,
+ es gibt einen Tester und dieser Test kann entweder den Wert "Wahr" oder "False"
+ ergeben und wenn der Wert "Wahr" herauskommt, dann wird diese Folge von
+ Statements dann ausgeführt. Wir führen den Test aus, wenn der Test "Wahr" ist, dann
+ werden diese Anweisungen ausgeführt und danach geht es mit der folgenden
+ Anweisung weiter und sollte der Test aus irgendwelchen Gründen nicht wahr sein, ja,
+ dann werden diese Anweisungen in dem Block übersprungen und es geht dann sofort
+ hier unten weiter. Sonst kommen wir hierhin erst nachdem wir diese Anweisungen
+ da rausgeführt haben. Also ich könnte irgendeine Anzahl Punkte einlesen von
+ irgendwo und wenn dann die Punkte größer als 50 ist, dann kann ich
+ sagen, ah, kann ich ausdrucken, die Prüfung ist bestanden.
+ Also natürlich, wenn wir jetzt sagen, da wird diese Anweisung ausgeführt, gibt es
+ auch mal die Situation, dass sich eben statt nichts zu machen, wie hier mache
+ ich ja nichts, ja, möchte ich auch da etwas ausführen und dafür gibt es eben die
+ IF-ELS Anweisungen. Die beiden sind einfach Varianten voneinander, ja. Also der Test
+ wird evaluiert, wenn der "Wahr" ist, dann wird eben wie vorher diese Gruppe von
+ Anweisungen ausgeführt und wenn der Test "Falls" ergibt, also nicht "Wahr" ist,
+ dann wird eben halt diese Folge von Anweisungen ausgeführt und danach treffen
+ sich beide Fahde durch dieses Programm, also beide möglichen Ausführungen
+ treffen sich wieder hier an der folgenden Ausführung an Anweisungen, die dem
+ hinterher kommt, ja. Also hier könnte man jetzt sagen, das Beispiel eben
+ erweitert, wir haben diese Anzahl Punkte, im einen Fall wird gedruckt Prüfung
+ bestanden, im anderen Fall, was wir ungern drucken, wird gedruckt Prüfung ist
+ nicht bestanden, ja. Also, so, also jetzt, das ist die Grundidee der selektiven
+ Ausführung von Anweisungen und natürlich kommt jetzt die Frage, was für Tests
+ können wir denn da machen und if statements und if else statements
+ verwenden da dasselbe, ja. Und da gibt es verschiedene Fälle und in einfachsten
+ Fall können wir jetzt schon kennenlernen, nämlich den, dass so ein Testwerte und
+ Variable eines Basestyp involviert, also ins oder long oder double, die wir bisher
+ kennengelernt haben, ja, mit denen können wir arbeiten und was ich jetzt erzähle,
+ die gilt im Prinzip mit leichten Abwandlungen für alle Basestypen, aber es gibt
+ noch eben andere Typen und da kommen wir später darauf zu sprechen und für die ist
+ die Sache ein bisschen komplizierter, aber das brauchen wir heute noch nicht
+ machen. So, also diese an if und if else Anweisungen, die verwenden beide
+ bulsche Ausdrücke, um zu entscheiden, ob der if-Part oder der else-Part ausgeführt
+ werden soll und diese Ausdrücke sind meist oft Vergleiche oder Kombinationen
+ von Vergleichen, ja. Und diese Ausdrücke werden ausgewertet und wenn das Ergebnis
+ tut, wird der eine Teil ausgeführt und wenn das Ergebnis false ist, wird entweder
+ nichts gemacht oder die andere Folge von Anweisungen ausgeführt, ja. Und diese
+ bulschen Ausdrücke, die verwenden natürlich auch wieder Operatoren, nicht
+ arithmetische Operatoren, sondern Vergleichsoperatoren. Also Vergleichsoperatoren
+ gehen hin und vergleichen etwas und dann entsprechend, wie der Vergleich ausgeht,
+ gibt es als Antwort entweder true oder false, ja. So, und da gibt es eben einen
+ Vergleichsoperator, den ich Ihnen bedauerlicherweise schon mal auf dem
+ Slide davor gezeigt hat, habe nämlich zweimal das Gleichheitszeichen und das
+ checkt, ob die beiden Werte oder Variable gleich sind, ja. Also wenn ich 1 plus 1
+ gleich 2 checke, dann ist die Antwort true und dann gibt es auch eben
+ Ungleich. Ungleich ist eben dieses Ausrufezeichen, gefolgt von dem
+ Gleichheitszeichen und das checkt eben, ob zwei Werte ungleich sind. Und dann gibt es
+ weniger als und größer als, ja. Und dann weniger als oder gleich oder größer als
+ oder gleich, ja. Also für die ganzen Werte und Doubles kann man die mehr oder
+ weniger sinnvoll anwenden, ja. Und das ist eben halt der Weg, wie wir da die
+ Ausführung kontrollieren. Und diese Vergleichsoperatoren haben einen
+ tiefen Rang, ja. Das macht auch Sinn, wenn ich hier 1 plus 1 gleich 2 checke, dann
+ will ich natürlich checken, ob eben 1 plus 1 als Summe gleich 2 ist und nicht
+ ob 1 gleich 2 ist, weil das wäre false und 1 plus false macht keinen Sinn,
+ darum haben die einen tiefen Rang, ja. So, also das ist der Weg, wie wir das
+ logisch aufbauen. Und weil sie eben tiefen Rang haben, werden erst die ganzen
+ arithmetischen Operationen ausgeführt nach den üblichen Regeln und am Ende
+ gibt es einen Vergleich und wenn das dann weniger ist, dann ist das false und
+ anderfalls ist es true, ja. Und in der Programmiersprache mit der wir arbeiten
+ können diese Vergleichsoperatoren keine Kette bilden, ja. Also sie können nicht
+ schreiben 2, keiner gleich, ich keine gleich 10. Das würde eben halt nicht
+ funktionieren. Das würde eben vom System, da würde das System beschweren. So,
+ jetzt haben wir also diese Bullschenausdrücke und im If-Statement, ja, da stehen die halt
+ in Klammern. Aber oft ist es ja nicht so, dass sie nicht nur einen einzigen
+ Vergleich machen wollen, sondern sie wollen verschiedene Vergleiche kombinieren.
+ Und da gibt es natürlich hier auch eben andere Möglichkeiten, das zu machen,
+ nämlich wir können mit uns und oder so wie sie das in der, in der
+ Diskretenmatematik gelernt haben, diese Ausdrücke kombinieren. Also oder wäre
+ eben halt hier diese beiden Strokes und hier und wäre diese beiden
+ unzeichen, ja. Das ist eben halt der Weg, wie wir das machen würden, wäre also
+ hier würden wir sagen, ist dieser Ausdruck hier wahr, ist dieser Ausdruck wahr, nur
+ wenn beide wahr sind, dann ist das ganze wahr. Aber da hier eben x, in diesem Fall,
+ wo wir annehmen x, vielleicht 15, ist der zweite Ausdruck false und daher ist
+ das ganze false, ja. Eben Klammern kosten heutzutage nicht mehr so viel,
+ von daher kann man den Gebrauch auch Studenten empfehlen, machen sie, benutzen
+ sie Klammern, um Klarheit zu schaffen. Und die, das also diese Bullschnau-
+ operatoren haben sie ja in der Diskretenmatematik kennengelernt.
+ Alles das, was sie da gelernt haben, können sie hier mit Gewinn einsetzen.
+ Und da sie das in Diskretenmatematik machen, erspare ich mir Ihnen den dritten
+ Cliffger heute und das lassen wir einfach bleiben, ja, gucken wir einfach an, was
+ da der Fall ist, ja. Eben Y hat den Wert 17, 17 kleiner ist kleiner als 42, also ist
+ das Truy, ist kleiner als Z, ist auch Tru und darum ist das Tru und so weiter.
+ Also das, was sie da gelernt haben, ist da immer der Fall. Und sie sehen hier, das
+ ist der Weg, wie ich prüfen kann, ob zwei Werte gleich sind, ja. Das ist eben,
+ das Gleichheitszeichen zweimal hintereinander, ja. Beachten Sie bitte
+ Ein-Leichheitszeichen in Java, ja. Das ist ein Zuweisungs-Operator, ja. Also ich kann
+ so in einer Deklaration zum Beispiel der variable K gleich den Wert zuweisen.
+ Oder ich kann später im Programm, nachdem ich das K einmal deklariert habe,
+ könnte ich schreiben, K wirklich bekommt den Wert 5, ja. Den können Sie diesen
+ Zuweisungs-Operator in Zuweisungen, also Assignment Statements, ohne weiteres
+ verwenden. Aber in einem IF Statement ist das nicht angebracht, ja. In einem IF
+ Statement gibt das eben eine Fehlermeldung, ja. Weil hier das System erwartet, dass da
+ ein Vergleich kommt, damit ein Bucher Wert gefunden werden kann. Und wenn Sie so
+ was machen sollten, weil Sie eben versehtlich vertippt haben, gibt es
+ erfreulicherweise in Java eine Fehlermeldung. Es gibt andere Programmiersprachen,
+ da geht es einfach weiter. Und Sie können dann irgendwann den Fehler finden, ja. Am
+ besten dann, nachdem Sie die Software released haben, ja. Also hier haben wir
+ das Problem nicht, hier gibt es ein Fehler und die Fehlermeldung wird dann eben
+ entsprechend, muss an Ihnen bearbeitet werden, ja. Daher geht das nicht, ja. Und das
+ Zweigleichheitszeichen hintereinander, ja. Das ist der Vergleichs-Operator und der
+ prüft auf Gleichzeit und Gleichheit. Und den können Sie natürlich gerne in einem
+ IF Statement verwenden, wenn das sinnvollerweise der Fall ist, ja. So. Also
+ solche Sachen haben Sie wiederholst, Sie haben schon gesehen, ja. Sie müssen
+ Bullschenausdruck finden, ja. Der True ergibt, wenn das Ja ein Schaltjahr ist.
+ Man erinnert sich, ah, Schaltjahr ist ja durch vierteilbar, ohne Rest, aber nicht
+ durch 100 ohne Rest und so weiter. Oder ist, aber doch, wenn es seit 100 ohne
+ Restteilbar ist, aber das ja auch ohne Rest durch 400 Teilbar ist, dann ist es
+ auch ein Schaltjahr, ja. Solche Sachen müssten Sie dann eben sich überlegen, wie
+ kann ich das ausdrücken, ja. Also ja durch vier ohne Restteilbar, also das hier ist
+ der Rest-Operator, ja. Wenn der Rest 0 ist, dann war das ohne Restteilbar. Ja ist
+ nicht durch 100 ohne Restteilbar oder aber das ja ist durch 400 ohne Restteilbar, ja.
+ Und wir sehen schon, wenn man das so schreibt, da ist da, ist da lohnt es sich
+ wirklich mit Klammer zu arbeiten, weil da sieht man klarer um was es geht.
+ So. Jetzt haben wir die If-Statements, ja. Mit denen können wir jetzt also kontrollieren,
+ was ausgeführt wird. Also haben wir hier irgendwo, meintwegen für ein Programm
+ und das setzt die Note fest, ja. Das kriegt von irgendwo her für den
+ Studenten oder die Studentin die Anzahl prozenten, die bekommt. Was bedeutet das
+ Prozentzeichen? Das Prozentzeichen heißt, dass sie mir 10 Prozent ihres ersten
+ Lohns auf mein Konto überweisen. Nein. Das Prozentzeichen hier ist der Rest-Operator,
+ ja. Das ist ein Operator, der mir den Rest gibt, wenn ich diese Zahl durch diese
+ Zahl dividiere, ja. Also sieben dividiert durch vier ergibt eins, ja. Und sieben
+ Rest vier ergibt drei, ja. Wenn ich das richtig gerechnet habe, ja. So, ja. Also,
+ hier habe ich das, wo jemand hingeht und guckt, ob die Prozentzahl größer 90 ist,
+ gibt es sechs und so weiter, ja. Gucken Sie sich das für 30, ja, 15 Sekunden an, ja.
+ Da haben wir noch, was sehen wir? Gibt es auch ein X-Operator, ja, vielleicht, aber das
+ ist, das kommt erst später. Machen Sie das Leben nicht so schwer. Ja, gucken wir es
+ an, ja. Ich nehme an, ein Student hat 85 Prozent der Punkte bekommen, ja. Also eine
+ 6,0 kriegt er nicht, aber eine 5,0 ist ihm oder ihr sicher. Aber dann drucken wir
+ auch noch aus, dass er eine 4,0 hat, 3,0 hat. Wir verwirren den armen Menschen
+ völlig, ja. Also, wenn Sie so eine Folge haben, ja, das ist, müssen Sie aufpassen,
+ was da genau passiert. Und Sie denken, das ist so, das Problem könnte man dadurch
+ lösen, dass wir vielleicht von unten her anfangen. Also, wenn wir jetzt
+ unter Studenten haben, der hier 85 Prozent, und Studenten haben, die 85 Prozent
+ hat, ja, dann, na, kriegt, gibt da, das wird nicht gedruckt, das nicht, das nicht,
+ das nicht, ah, hier wird das gedruckt, ja. Aber wer sich genau anguckt, der sieht,
+ dass dieses Problem auch, dieses Programm auch noch ein Problem hat. Aber was wird
+ danach gedruckt, ja. Es wird jedes Mal das If-Statement evaluiert und danach am
+ Ende wird immer noch ausgedruckt, dass die Note 6,0 sozusagen als
+ Ermunterung für die Zukunft, ja, ist also auch nicht so gut. Und wenn Sie meinen,
+ das ist rein akademisch, ja, das ist angeblich aus dem Code, der in der
+ niederländischen Identitätsmanagement Software verwendet wird, ja.
+ Da wollen wir den Prozentsatz aufgerundet visualisieren, ja. Und da hat dann das
+ Programm geschrieben, hier, das entsprechend machen, aber wenn man
+ pechert, gibt es, oder nicht pechert in allen Fällen, wird immer noch das hinterher
+ ausgedruckt. Also, bei diesen If-Statements müssen Sie aufpassen, was Sie, wie Sie die
+ anordnen, ja. Sie können die natürlich schachteln, ja, indem Sie eben halt eben
+ erst den einen Test machen und wenn dann dieser Test ja ist, dann geht es hier
+ durch, ja. Und dann Sie checken, wenn der nein ist, dann sind wir mit dem fertig.
+ Und dann gucken Sie jetzt den nächsten Test an und wenn der wahr ist, dann geht es
+ hier durch, ja. Und wenn der false sein sollte, ja, dann geht es halt hier durch, ja.
+ Also, das ist if-else, ja. Also, für jeden Fall gibt es einen Blockcode, der ausgeführt wird, ja.
+ Und manchmal natürlich brauchen Sie für den letzten Teil gar nicht, ja. Hier haben Sie
+ zum Beispiel, ja, können wir checken, ob die Zahl positiv-negativ ist. Wenn sie
+ weder positiv noch negativ ist, ja, dann ist das halt gleich null, ja. So.
+ Und dann eben haben wir die Situation, dass im letzten Fall vielleicht gar kein
+ Code ausgeführt werden soll. Dann haben wir also als letztes nur ein if-Statement, ja.
+ Und dann wird, wenn das ausgeführt, wenn das if-Statement wahr ist, ja, dann gibt es
+ natürlich hier diesen Fahrt. Aber wenn das if-Statement false sein sollte, was ja
+ auch vorkommen kann, dann gibt es hier diesen Fahrt und es wird nichts ausgeführt, ja.
+ Also, so was hätten wir zum Beispiel, wenn Sie sehen wollen, der erste bekommt Gold,
+ die zweite bekommt Silber, der dritte bekommt Bronzer, ja. Und wer eben nicht auf
+ einem der ersten drei Plätze gelandet ist, für den gibt es nichts. So. Also, Sie haben
+ diese, im Prinzip diese Möglichkeiten, die ifs anzuwenden, ja. Entweder eben als
+ verschachtelte if-else oder als verschachtelte if-else-if, also letztendlich noch eine
+ Bedingung oder eben als eine Folge von aufeinanderfolgenden if-Statements. Und ich
+ lasse Sie jetzt in der nächsten Pause eine weitere Poll machen, wo Sie für
+ diese vier Beispiele entscheiden können, welche dieser Varianten denn für die
+ richtigste oder beste wäre. Aber wir machen trotzdem daneben parallel Pause und
+ um 11.15 Uhr geht es dann hier weiter. Also, Sie sehen hier auf diesem Klicker
+ Beispiel vier Probleme, die Sie lösen wollen und natürlich interessiert uns
+ der Weg, der am einfachsten ist. Sie können natürlich alles beliebig
+ kompliziert machen, indem Sie noch paar mal tun, false und irgendwas mit rein werfen.
+ Das ist wirklich, darum geht es eigentlich nicht, darum, dass es
+ möglichst einfach machen. Das ist der Sinn der Sache. Also, wie würden wir das am
+ einfachsten denn lösen, wenn wir eben halt zum Beispiel entscheiden, ob jemand in
+ die ersten, zweiten oder letzten Gruppe bei einem Rennen mitmachen soll. Was ist der
+ Unterschied zwischen else if und if? Also, hier ist, sehen Sie, hier haben wir,
+ in einem if-Statement haben Sie nur ein if-Statement, hier haben wir es, ja, if-Statement
+ danach kommt ein Block von Anweisungen, die Sie ausführen wollen. Das ist alles,
+ ja, natürlich können Sie die hintereinander schalten. So, in einem if-else-Statement haben Sie
+ einen if-Statement, ein else-Statement. So, und dann in dem else-Statement, ja,
+ könnten Sie jetzt sagen, hier, ich habe hier das else, also beginne ich einen neuen
+ Block, ja, und in dem neuen Block habe ich ein if-Statement, aber das ist aber
+ kurz schnell unübersichtlich und darum können Sie dann sofort das if-Statement
+ dahinter tun, ja. Das heißt, also hier habe ich ein if-else-if, ja, das ist diese
+ Situation, die ich hier hatte, if, ja, if, ja, dann else, ja, hier ist der else-Part
+ und dann habe ich sofort ein neues if, ja, habe ich hier sofort ein neues if, ja, wo
+ ich den nächsten Test mache, ja, und dann habe ich da wieder in dem Fall sogar ein
+ weiteres else, if, habe ich hier ein weiteres, ein weiterer Test, ja, und jetzt in
+ dem Fall habe ich jetzt hier für dieses letzte if-Statement, da gibt es kein else, ja,
+ weil ich sage, in dem Fall ist nichts zu wollen, nichts zu tun, gibt keine
+ irgendwas und daher höre ich da mit dem if-Statement auf. Darum ist das ein if-else,
+ if-else verschiedene Male, am Ende mit einem if, das ist das Entscheidende, was ich
+ hier habe, ja, also das sind die, ja, es gibt verschiedene, also Sie können das
+ sicher auch auf andere Weise hinbekommen, ja, so, guck mal nach, was hier, oh, da habe
+ ich ja viel, viel Auswahl, es ist aber interessant, okay, also was machen wir als
+ Erstes, ob jemand abhängig vom früheren Rennen in der ersten, zweiten oder dritten
+ Gruppe startet, na ja, in irgendeiner Gruppe muss ja jeder starten, ja, sollte
+ jedenfalls, ja, darum, wenn jemand bei so einem Rennen mitmachen will, ja, darum
+ würden wir hier so eine Verschachtelung von if, else, if, else, if am Ende else haben, ja,
+ am Ende ist ein else da, weil die Leute, die weder in der ersten noch, zweiten noch
+ dritten Gruppe sind, die kommen dann irgendwann in die Masse rein, ja, jetzt
+ hier sehe ich das eben so ziemlich gleichmäßig, 37, 41 und 32 Prozent,
+ ja, vielleicht meinen Sie, natürlich kann man alles umformen, das Ding ist schon, ja,
+ aber leider lässt mich Quicker eben nicht sagen, sie dürfen nur aus dem
+ Bereich antworten oder aus dem Bereich antworten, ja, so, wenn ich jemand, ob
+ jemand eine Medaille oder eine Urkunde bekommt, na ja, es gibt auch Leute, die
+ bekommen nix, ja, darum if, else, if ist am Ende, ja, für den Fall, wenn es keine
+ Urkunde gibt, dann gibt es eben gar nix, ja, darum ist das eine if, else, if
+ Konstruktion und wenn auch eine Zahl durch zwei, drei oder fünf Teilbar ist, das ist
+ eigentlich unabhängig, ja, darum bräuchten wir eine Folge von ifs, ja, und ob
+ jemand, wenn wir runden, dann gehen wir hin und würden sagen, if, else, if, else,
+ if, else, irgendein Wert muss am Ende bei rauskommen und daher würden wir dann
+ eine Folge von ifs machen, ja, eine Folge von if, else, if, else, if, else machen, am
+ Ende ein else, so, jetzt haben wir gesehen, dass wir diese Tests haben, die eben
+ solche Werte wie true und die Werte true und false ergeben und manchmal will man
+ dann so einen Wert auch speichern und das geht nicht in einer Variable vom Typ
+ int und darum gibt es einen Typ Boolean, der nur die Werte var und false, true und
+ false kennt und so kann ich das Ergebnis eines burschen Ausdrucks in einer
+ solchen Variable speichern und diese Variable dann später in weiteren
+ Ausdrücken verwendet, ja, also wenn ich zum Beispiel feststellen möchte,
+ möchte ich festhalten, ob ein Punkt im Quadrant 1 ist, dann würde ich die
+ Boolean Quadrant 1 definieren und der könnte dann true oder false sein, je
+ nachdem wo diese Variable ist, ja, es ist eine gute Idee so was zu verwenden,
+ weil das macht alles übersichtlicher, aber wichtig ist die Komponenten dürfen
+ sich nicht ändern, wenn sich die Komponenten ändern, ist es dumm, dann hat
+ eben noch die Variable den alten Wert, ja, also einfaches Beispiel, ja, wenn sie
+ im Kanton Klaros eingebürgert werden wollen, ja, dann müssen sie eine gewisse
+ Zeit gelebt haben, zehn Jahre, davon drei in den letzten fünf, die Jahre zwischen
+ acht und acht Zählen doppelt und so weiter und so weiter, ja, so, und wenn sie
+ jetzt Software schreiben müssen, die eben annimmt, dass sie für irgendeine
+ Person die Anzahl Jahre, die die da hat, aber rechnen wollen, ob der oder die den
+ Antrag stellen darf, dann müssen sie alles durchgehen und entsprechend, da
+ empfiehlt es sich dann, irgendwelche Burschen Variable zu definieren, ja, wie
+ viele Jahre sind, ja, erstmal die Jahre müssen sie natürlich haben, sonst
+ können sie sich beantworten und dann würden sie Bursche Variable definieren,
+ eben die checken würden, ob die Bedingung erfüllt ist, die Bedingung und so weiter
+ und dann, wenn das erfüllt ist oder das erfüllt ist, dann kann und so weiter der
+ Antrag gestellt werden. Also es ist nicht zu unterschätzen die Schwierigkeit, solche
+ in normaltext angegebenen Bedingungen in korrekte Bursche Ausdrücke zu überwechseln,
+ ja, so, jetzt, wenn wir uns so ein Programm angucken, sieht man manchmal
+ Programme, da steht dann, gibt es die Bursche Variable, dann wird gecheckt, ob
+ diese Variable true ist. Das ist nicht falsch, aber es ist schlecht, ja, nach
+ unserem Prinzip, dass wir möglichst einfach einen Code schreiben wollen, würden
+ wir natürlich da viel für besser die Variable sofort checken und umgekehrt
+ ist es nicht besser, ja, also wenn sie checken, dass das false ist, ist auch
+ nicht richtig, also würden sie auch, ja, so. Jetzt habe ich Ihnen erzählt, dass wir
+ eben solche Vergleiche mit diesen Operatoren logisch und und logisch
+ ohr miteinander verbinden können und jetzt gilt, dass natürlich nicht immer
+ beide Operanten ausgewertet werden müssen, um das Ergebnis zu ermitteln.
+ Das ist eine Java-Spezialität, andere Formiersprachens auch, aber andere
+ wiederum auch nicht, ja. In Java hört die Auswertung eines solchen Burschenausdrugs
+ auf, sobald das Ergebnis feststeht, ja, und das nennt man eine Short-Zircuit-Auswertung
+ oder bedingte Auswertung, ja. Das If-State-Mit macht bedingte Ausführung,
+ diese Operatoren machen bedingte Auswertung. Das heißt folgende Teilausdrücke
+ werden nur dann werden abhängig von den zuerst ausgewerteten Ausdrücken entweder
+ evaluiert oder nicht evaluiert. Das ist eine Regel der Programmiersprache, die wir
+ beachten müssen und die wir auch zu unserem Vorteil ausnutzen können, wenn wir
+ solche Ausdrücke zusammenschreiben, ja. Also wenn ich zum Beispiel eben halt mit
+ diesen logischen Unoperator habe, ja, sobald das Ergebnis false ist, ja, hört
+ das, also bald ein Teilausdruck, false ist, hört die Auswertung auf, weil es geht
+ egal, was die anderen für Werte haben, der wird niemals mehr true und umgekehrt,
+ wenn ich einen Ausdruck habe, einen Ohrausdruck, ein Ausdruck mit logisch Ohr und
+ der ist true, dann brauche ich auch nicht weitermachen, weil ich eben weiß, das
+ bleibt true und daher habe ich das errichtliche Ergebnis gefunden, ja.
+ So, also, jetzt ist es wichtig, dass wir wissen, wie solche Ausdrücke ausgewertet
+ werden, deswegen habe ich Ihnen das erzählt, ja. Die werden von links nach
+ rechts ausgewertet, ja, gemäß Präzedenz, also Rangordnung und
+ Assoziativität, ja, weil das entscheidet dann, welche Ausdrücke in welcher
+ Reihenfolge bearbeitet werden und natürlich gilt auch hier wieder der
+ Preis für Klammern hält sich in Grenzen, ja. Klammern schaffen Klarheit, ja. Es ist
+ für Sieb von Vorteil und für jeden Leser oder jede Leserin von Vorteil, wenn
+ Sie das möglichst klar machen, ja. Also stellen Sie sich vor, Sie haben hier ein
+ Programm, das möchte irgendeine Variable x setzen, ja. Und das soll diese Variable x
+ soll gesetzt werden auf den Quotienten von a und b, alle sind ins wieder mal, ja.
+ Und alle sind initialisiert. Aber nur dann, wenn diese Ausdruck größer als null ist,
+ ja, wenn das nicht größer als null ist, dann wollen wir, dass x nicht irgendwie
+ verändern. So, das ist eigentlich nicht schwierig, ja, also könnten einen
+ Kommentar noch hinzuschreiben, nur positive Werte sollen gespeichert werden.
+ Und das ist wichtig, weil die integer Division a durch b kann ja null ergeben,
+ wenn eben h7 dividiert durch 8 für integer ergibt null, ja. Also muss man
+ aufpassen, muss man da irgendeinen Test haben, der checkt das und natürlich
+ wollen wir auch verhindern, dass wir durch null dividieren, weil das ja auch peinlich.
+ So, also, wenn unser b ungleich null ist, dann wollen wir natürlich das nicht machen,
+ ja. Und dann wollen wir eben halt, wenn a, a dividiert durch b größer als null ist,
+ dann wollen wir das setzen, ja. So, jetzt haben sie hier ein if statement, noch ein if
+ statement, ja. Und wenn sie das jetzt weitermachen, haben sie sehr schnell recht
+ viele if statements und sie sagen, das Programm wird dann so eine Verschachtlung
+ wird immer unangenehmer und immer schwieriger zu lesen. Und dann erinnern
+ sie sich, ach ja, ich kann ja diese burschen Variable benutzen oder ich kann
+ ja logische Operatoren benutzen, um das etwas besser zu machen. Also packe ich
+ das doch alles eben, ich will das a durch größer b, a dividiert durch b muss größer
+ als null sein und b ungleich null, packe ich das doch, wenn ich will, in einen
+ logischen Ausdruck, ja. Und dann schreiben sie hin, wenn a dividiert durch b größer
+ null ist und b ungleich null ist, dann möchte ich diese Variable x zur
+ kurzienten a durch b setzen. Und wenn sie das so gemacht haben, dann führt das
+ zu einer Fehlermeldung. Warum? Weil das wird evaluiert von hier nach da, ja. Und
+ das erste, was der macht ist, er dividiert a durch b und wenn das null sein
+ sollte, gibt es hier eine, gibt es hier eine Fehlermeldung, ja. Und dann gibt es
+ eben eine exception, ja. Das ist also nicht das, was wir wollen, ja. Also diese
+ Fehlermeldung ist eigentlich vermeidbar und was wir wirklich wollen ist, dass wir
+ eben, da wir wissen, dass das von rechts nach links ausgewertet wird und wir
+ wissen, dass dieser Ausdruck nur, dass dieser Operator, dieses logische
+ und aufhört Ausdrücke zu evaluieren, wenn das Ergebnis feststeht, kann ich das
+ so machen, ja. Wenn b ungleich null ist, klar, dann möchte ich mir das angucken.
+ Aber wenn b gleich null sein sollte, also wenn das hier den Wert false ergibt, ja,
+ dann wird das gar nicht mehr angeguckt und damit wird diese Division gar nicht
+ ausgeführt, ja. Also in der Mathematik ist das ein, dasselbe, ja. Aber hier für
+ uns spielt es eine Rolle, in welcher Reihenfolge die verschiedenen
+ Ausdrücke, verschiedenen Ausdrücke eben entsprechend aufgeführt werden, ja.
+ Das ist wirklich wichtig. Und was machen Sie, wenn Sie jetzt eben das umformen
+ müssen und, naja, Sie erinnern sich vielleicht noch an die demorgenschen
+ Regeln, hat sie gegeben in der diskreten Mathematik, ja, sehen Sie, die kommen
+ da aus einem guten Grund, ja. Da kann man eben halt entsprechend umformen, damit
+ das eben entsprechend die richtigen Sachen ist. So, jetzt haben wir also gesehen, wie
+ man mit solchen if-Statements arbeitet, ja. Und natürlich würden wir auch gerne
+ wissen, ob wir denn nicht diese Idee der, ist der Aussagen über Statements für die
+ if-Statementsanwalt verwenden könnten, ja. Und das werden wir jetzt sehen, das geht in
+ der Tat, ja. Also, wie sieht denn so ein if-Statement aus, wenn ich mir jetzt
+ überlege, dass ich da Aussagen machen will. Also, ich habe hier einen Test, ja.
+ Und dann wird entweder der if-Block ausgeführt oder el-Block. Und es gibt
+ irgendwelche ursprünglichen Annahmen und also unser P. Und danach gibt es unser Q, ja.
+ So, jetzt interessant ist, ja, können Sie noch mal erklären, wie das zu einer
+ Federmeldung kommt, gerne, okay. Also, sehen Sie, in Java, nehmen wir an hier, wir
+ hätten hier den Wert a ist 10 und b ist 0, ja. So, in Java wird die Ausdrücke von
+ links nach rechts entsprechend Präzedenz und entsprechende Errang-, Errangordnung und
+ entsprechend Assoziativität ausgewertet, ja. Assoziativität, hier in diesem Fall,
+ heißt es, dass wir von links nach rechts kommen und diesen Ausdruck zuerst
+ auswerten. So, und jetzt um diesen Ausdruck auszuwerten,
+ muss ich die Quotienten von a durch b bilden. Und a durch b, 10 durch 0, ergibt
+ eben eine Fehler-Situation, eine Exception, weil wir dürfen nicht durch 0
+ dividieren, ja. Also, gibt es hier eine Exception und das System beschwert sich
+ und bricht die Auswertung des Programms an dieser Stelle ab, ja. So, wenn ich
+ hingegen, gleichen Werte, ja, wenn ich hingegen dieses Beispiel habe, diese
+ Reihenfolge habe, ja, wird das wieder zuerst ausgeführt, ja. b ungleich 0
+ ergibt false, ja, weil das ist ja 0, das ist der Wert, der b zugewiesen worden war,
+ ja. So, und das heißt, ich habe jetzt hier ein logisches und und das kann
+ natürlich nur dann wahr sein, wenn beide Teile wahr sind, wenn einer der
+ operanten false ist, ist das Ergebnis false, das System sieht, ach hier ist ein
+ ein Teil ist false, damit brauche ich den nicht weiter, weiß ich, dass das false
+ ist und er springt gleich raus, weil eben, es gibt nichts, was hier hinten passieren
+ kann, was diesen Ausdruck insgesamt zu truh machen kann, ja. So, also deswegen die
+ Reihenfolge entscheidet, also die von links nach rechts und präzedenzmäßig
+ Reihenfolge entscheidet, wann was ausgeführt wird. So, also haben wir
+ jetzt hier dieses if statement, ja, und jetzt wollte ich zum if statement ist
+ wichtig, zwei Sachen, die wir uns überlegen müssen. Das erste ist, wenn wir
+ wirklich diesen Punkt erreichen, ja, den Punkt hier unten, wo nach dem if statement,
+ dann können wir sowohl durch den if block, als auch durch den if block gegangen
+ sein, also entweder sind wir diesen fad gegangen, oder wir sind so gegangen, ja,
+ ja, also wir haben niemals beide Blöcke ausgeführt, sondern abhängig davon, wie
+ der Test ausging, haben wir den einen oder anderen fad ausgeführt und weiter
+ können wir überlegen, wenn ich mir jetzt überlege, ob das hier gültige, die Frage
+ ist, sind hier, ist das ein gültiges Triple oder nicht, ja, ja, ja, da wären wir ja auch
+ wieder pre-condition oder post-condition brauchen, ja. Was für eine pre-condition kann
+ denn hier gelten, wenn wir in diesem Teil des Programmes gehen, also wenn wir den if block
+ ausführen wollen. Naja, dann wissen wir, wenn wir diese statements hier ausführen, ja, dann
+ wissen wir, dass der Test true ergeben haben muss, ja, der Test muss true ergeben,
+ anderfalls hätten wir nicht diesen if block ausführen können. Frage? Wenn Sie Fragen
+ haben, bitte ja, wenn Sie gute Frage haben, noch lieber ja, also insbesondere, wenn das
+ eine Frage ist, die Ihre Kolleginnen und Kollegen auch haben, es gibt keine dummen
+ Fragen, ja, wirklich, wenn Sie eine Frage haben, dann haben für andere die auch, ja.
+ Also, wir wissen, dass hier der Test true war und wir wissen auch, dass wenn wir durch diesen
+ Teil des Programmes gehen, dass der Test false war, ja. Also, die Grundidee ist jetzt, dass
+ ich, ich muss doch überlegen, wenn ich, was ich hier nicht irgendwie in der Aussage
+ Q habe, ja, dann muss doch folgendes der Fall sein, wenn ich durch den True-Fahrt gegangen
+ bin, also wenn ich durch diesen, wenn ich hier durch diesen Teil gegangen bin, ja, dann muss
+ eben es, ich irgendeinen Zustand erreicht haben, nennen wir den mal Q oben 1, ja, und ich habe
+ hier, wenn ich durch den Teil gegangen bin, dann gilt irgendein, habe ich irgendeinen Zustand Q oben 2,
+ ja, und dieser Aussage Q, die muss sowohl aus dem folgen als auch auf dem, ja, weil
+ anderfalls eben kann dieser Aussage nicht gültig sein, wenn ich durch den anderen Teil
+ des If-Statements gegangen bin. Also, ich muss eine Aussage Q so formulieren können, dass
+ sie entweder aus der Post-Condition, die ich hier habe, ja, oder aus der Post-Condition, die ich hier
+ habe gefolgert werden kann, ja. Sonst eben halt kann ich nicht diese Aussage machen, ja. Also, die
+ Pre-Condition für den If-Blocker und den Else-Block, die beinhaltet immer das Ergebnis des Tests, ja.
+ Also, hier, dass der Test 2 war und hier, dass der Test false war, ja. Und dann die Post-Condition
+ nach dem If-Statement ist die Disjunktion, also das "oder", ja, der Post-Condition nach dem If-
+ oder dem Else-Block, ja. Was immer ich also hier als Post-Condition Q für "if" habe, ja, und hier
+ Q für "else", ja. Meine Post-Condition danach ist eben entweder "oder", ja, entweder das "einer", ja,
+ oder das "andere", ja. Dann habe ich das richtig gemacht, ja. So, also, wenn ich mir also das
+ If-Statement angucke, ja, danach habe ich eine Post-Condition Q1, ja, danach eine, nach dem
+ Send-Block, "if" Block, nach dem Else-Block ein Q2, ja. Und danach muss ich eben eine Post-Condition
+ haben, die eben sowohl das beinhaltet, was ich im If-Block bekommen habe, kann als auch, was ich
+ eben Else-Block bekommen haben kann. So, und mit dieser Überlegung kann ich jetzt definieren, wann
+ ein Hortreppel gültig ist, das als Statement ein If-Statement enthält, ja. Also hier ist mein
+ If-Statement, ja, das ist mein Statement S, wenn Sie wollen, ja. Ich habe eine Pre-Condition P, ja,
+ und eine Post-Condition Q, ja. Und jetzt muss folgendes gelten, damit das gültig ist, dieses P
+ und B, also dieser Test B hier, ja, das ist die Pre-Condition für das Statement S1, dass ich hier
+ im If-Block habe, ja, und danach eben ist diese Aussage Q1 gültig, also P und B, S1, Q ist ein
+ gültiges Hortreppel. Und natürlich, statt S1 kann da auch eine Folge von Statements stehen, aber wir
+ machen es mal einfach, wir nehmen an, was immer wir da S1 ist, ein einziges Statement, das wir so
+ entsprechend behandeln, ja. Oder aber, was ich hatte ist das P, ja, P und nicht B, ja, nicht B, das ist das,
+ was ich bekomme, wenn ich hier den Else-Part ausführen muss, ja, das als Pre-Condition für das
+ Statement S2, erlaubt es mir zu sagen, nachdem S2 ausgeführt ist, ist Q2 gültig, ja, denn das ist,
+ das was die Aussage beinhaltet, dass Q1 und das eben halt nach der Ausführung von S2 gilt Q2,
+ wenn vorher die Pre-Condition P und nicht B, galt, ja. Wenn ich das habe und die Aussage entsprechend
+ für den IF-Part habe, ja, also wenn da die Pre-Condition P und der Test B als Pre-Condition
+ ausreichen, um zu zeigen, dass nach der Ausführung von S1 dieser Aussage Q1 gilt, wenn ich diese beiden
+ habe, ja, dann habe ich die Voraussetzungen, dass ich sagen kann, das IF-Statement selber ist ein
+ Gültiges Hortreppel. Und was muss da noch erfüllt sein, ja, noch erfüllt sein muss was anderes über
+ Q, nämlich dass dieses, dieses Q muss so aufgesetzt sein, dass ich aus Q1 Q zeigen kann, also aus
+ Q1 folgt Q und aus Q2 folgt Q, ja. Wenn das der Fall ist, dann kann ich sagen, danach gilt jetzt Q,
+ weil egal wie ich durch das IF-Statement durchgegangen bin, ja, ich habe entweder Q1 oder Q2 als
+ Post-Condition und aus diesen beiden kann ich jedes Mal zeigen, dass aus dieser Aussage die Aussage Q
+ folgt, also kann ich die Aussage Q als eben die Aussage annehmen, die nach der Ausführung dieses
+ IF-Statements gilt, ja. Also aus Q1 folgt Q und aus Q2 folgt Q, ja. Und das kann man dann eben auch
+ wieder so abkürzen, dass man sagt aus Q1 folgt Q und aus Q2 folgt Q und das könnte man auch weiter
+ vereinfachen, wenn man will und sagen eben aus Q1 oder Q2 folgt das Q, ja. Das hatten wir entsprechend
+ schon mal gemacht, ja. Das ist also der Weg, wie wir eine Aussage über einen IF-Statement machen
+ können und sagen können, dass das ein gültiges Hoortrippel ergibt, ja. Also machen wir ein Beispiel,
+ das ist vielleicht ein bisschen, und sagen Sie mir, was passiert, wenn P schon die Bedingung, ja,
+ okay, der fragt hier mich jemand, das ist eine gute Frage, was passiert denn, wenn hier, wenn P
+ schon die Bedingung erfüllt, ja, das ist einfach, ja. Weil dann ist P und B nichts anderes als P und
+ Q2 wird eh in die Ausgeführt werden können, ja. Und dann wissen wir, dass das eben nicht relevant
+ ist, ja. Sie brauchen ja nicht das P, Sie müssen nicht prüfen, ob das gilt. Hier fragt dann jemand,
+ da kann ich ja niemals P und nicht B prüfen, nein. Was ich nur zeigen muss, wenn ich das hier habe,
+ ja, dann nehme ich ein Q2-Stich, ja, indem ich eben, wenn ich nehme an, meine, mein Statement ist
+ dieser Form, ja, X wird gesetzt zu E. Ich ersetze das E hier in diesem Ausdruck, ja, in dem Ausdruck
+ Q und dann möchte ich zeigen, dass aus P und nicht B, das daraus eben folgt dieses Q2-Stich,
+ das ich so gezeigt habe, ja. Und wenn ich das zeigen kann, ja, dann bin ich bestens dran, weil ich
+ muss ja nicht, ich muss nie sagen, dass es eine Ausführung gibt, die das tut macht. Ich muss nur
+ zeigen, dass wenn das erfüllt ist, dann gilt dieser Aussage Q2, ja. Und wenn da zum Beispiel am Ende,
+ ja, den, ja, den, was das dann für eine konkrete Aussage ist, können wir das Beispiel gucken, ja,
+ ist das wieder einfach oder leicht zu zeigen, ja. Also die Tatsache, dass eben halt dieser Aussage
+ gemacht, dass diese, dass das Beispiel eben halt erfüllt ist, dass dieser Test immer true ergibt,
+ ist für uns eigentlich irrelevant. Uns interessiert nur, wenn das erfüllt ist, kann ich dann zeigen,
+ dass die Ausführung dieses Statements danach diesen Zustand bringt. Wir sagen nie, dieser Zustand wird
+ je erreicht, ja, das sagen wir nicht, ja. So, also, jetzt haben wir also hier ein If-Statement, ja. Also
+ hier ist mein Test, das ist mein Test B und dann habe ich hier mein S1, ich habe das mal so hingedretzt,
+ dass das hier hinpasst, ja. Und hier habe ich mein S2 und als Aussage danach habe ich die Aussage Q,
+ die da ist, Y, ist größer als 5, ja. So, das ist jetzt meine, und ich möchte gucken, ist dieses
+ Trippel ein gültiges Hortrippel oder nicht, ja. So, jetzt eben, was das, kann ich mir, muss ich mir
+ also Aussagen Q1 und Q2 raussuchen oder denken oder finden, ja. So, jetzt nehmen wir mal an, ich nehme
+ als Q1, Y ist größer als 7, ja. Genauso über dem R, wir können das relativ frei wählen,
+ fürs Erste, ja. Ich könnte auch eine andere Aussage nehmen, aber ich nehme mal Y ist größer als 7.
+ So, und als Q2 Aussage nehme ich Y ist gleich 20, ja. Andere Aussagen gehen auch, aber Y
+ gleich 20 bietet sich natürlich an, wenn ich das hier habe. Warum bieten sich die an? Naja, ich habe die
+ bekommen, indem ich halt eben diesen Test da gleich eingesetzt habe. So, so, jetzt, was heißt das jetzt?
+ Das heißt also, wenn ich mir das Programm ausführ' an, gucke, ja. Ich habe hier irgendwelche Werte
+ für X und Y, ja. Ich sage mal, dass die Tru, das muss in allen Fällen gelten, also ich habe keine
+ weiteren Annahmen, die ich machen kann, ja. Und nachdem ich das ausgeführt habe, soll gelten Y
+ ist größer als 5, ja. Das ist also die, das möchte ich eigentlich zeigen, ja. Das ist mein,
+ mein, das womit ich arbeiten möchte, ja. So, jetzt gucke mir das an, ja. Jetzt sehen wir, ob ich mit
+ dem Q1 zeigen kann, dass dieser, das hier eben p, das ist eben tru und b, b, das ist halt also
+ tru. Das war ja hier unser p, ja. Und X größer als 7, ja. Wenn ich diese beiden habe, ja. Und dann
+ kann ich danach, kann ich daraus folgern, ja. Dass mein Q1 gilt, also dass Y größer als 7 ist.
+ Kann ich das folgern, ja. Nachdem ich das da eingesetzt habe, ja. Also kann ich zeigen, dass
+ nachdem dieses Statement S, Y wird zu X gesetzt, ja. Jetzt gehe ich hin wie vorher, ersetze, das ist
+ mein E hier, meine Ausdruck, ersetze das hier in meinem Ausdruck hier. Also mein Ausdruck Q1 Strich
+ ist ja nichts anderes als eben X größer 7, ja. Also setze ich das ein, ja. Und jetzt wollte ich zeigen,
+ ob das eben gilt, ja. Setze ich das ein, also ist Y größer als 7, wenn ich das entsprechend
+ einsetze. Und das kann man jetzt gleich zeigen, weil eben halt, setze ich hier eben ein, dann habe
+ ich hier eben X größer 7, das hatte ich eben, ja. Kann ich aus tru und X größer 7 folg daraus, ja.
+ Folg daraus, dass eben X größer 7 ist. Und die Antwort ist ja, das ist der Fall, das gilt immer.
+ Und damit ist der ein gültiges hoher Triple. Und wir haben die erste Bedingung für diesen ersten,
+ für den Iff-Part erfüllt, ja. So. Und jetzt gucken wir uns den zweiten Teil an, also dieses Q2, ja.
+ Jetzt habe ich hier die als Precondition eben tru und X kleiner gleich 7, das ist mein Nicht-B, ja.
+ Wenn X nicht größer als 7 ist, dann muss X kleiner gleich 7 sein, ja. Ich habe hier meine
+ Aussage Q2, Q2 ist Y ist gleich 20. Jetzt setze ich hier die rechte Seite ein, dann habe ich also das
+ Q2 Strich, das ist dann 20, ist gleich 20. Und kann ich zeigen, dass aus dem hier aus tru und X
+ kleiner gleich 7 folgt daraus 20, gleich 20. Und die Antwort ist ja, das kann ich zeigen. Das heißt,
+ ich habe auch den zweiten Teil meiner Bedingung gezeigt, dass das ein gültiges hoher Triple ist.
+ Also das hier ist ein gültiges hoher Triple mit dem Iff-Part, das ist ein gültiges Triple mit dem
+ Els-Part. Und jetzt muss ich nur noch zeigen als Letztes, damit ich fertig bin, muss ich zeigen,
+ dass aus diesem hier, dem Q1 und diesem hier, das ist das Q2, ja, schon das hier ist mein Q1,
+ das aus dem und dem für Q2, das daraus folgt Y ist größer als 5. Und das kann ich zeigen,
+ weil in beiden Fällen ist das der Fall, wenn Y größer als 7 ist, ist es auch ganz klar größer
+ als 5. Also ich kann zeigen, aus Y größer 7 folgt eben Y ist größer als 5. Und ich kann zeigen,
+ aus Y gleich 20 folgt eben auch Y als größer als 5. Das ist dann sehr einfach. Und damit ist
+ das ganze hoher Triple eben ein gültiges hoher Triple. Also sehen, drei Sachen muss ich zeigen.
+ Erstens habe ich da ein gültiges Hoher Triple für den Iff-Part, habe ich ein gültiges Triple
+ für den Els-Part und kann ich aus beiden Teilen zeigen, das ist, so was ist der Sinn von Y
+ größer 5, wenn Y 20 zugeschrieben wird? Ja, sehen Sie, es wird ja nicht immer Y 20 zugewiesen.
+ Y 20 wird nur zugewiesen, wenn dieser Wert X einen bestimmten Wert hat. Und es hängt jetzt
+ davon ab und wir, es gehen auch andere Aussagen, auch da gingen vermutlich andere Aussagen,
+ kommen wir hier noch, vielleicht brauche ich die Information, dass Y größer 5 ist,
+ in einem weiteren Schritt eines anderen Beweises. Also das ist der Fall, wie ich das habe. So,
+ jetzt warum ist das nicht doch, wer findet das Trivial? Seien Sie ehrlich, können Sie auch,
+ ich verstehe es ja, okay, gut, wer findet das und ist bereit, das sogar zuzugeben? Alles andere
+ als Trivial, okay, das finde ich ja, oder Sie, okay, jetzt gucken wir uns mal an, warum wir so was
+ doch vielleicht irgendwo gebrauchen können. Nehmen wir einmal an, unser Programm wäre geändert
+ worden und hier wird der variable Y, der Wert zugewiesen, 4 zugewiesen, aber meine Post Condition,
+ Y größer 5 ist noch nicht, ist immer noch unverändert und jetzt ist die Frage, ist das,
+ sind das gültige hohe Trippel oder nicht? Naja, jetzt brauche ich also ein anderes Q1, weil das Q1,
+ was ich vorher hatte, ich hatte hier vorher dieses Y größer 7, das werde ich sicher nicht zeigen
+ können, also wähle ich mal als Q1 Y größer 3 und mein Q2 ist unverändert. So, und jetzt kann
+ ich zeigen, das ist immer noch ein gültiges Hohe Trippel, also wenn ich, wenn ich habe,
+ 2 und X größer als 7 und danach weise ich der Zahl, den Variable Y den Wert zu, 4 zu,
+ dann ist Y immer noch größer als 3, also den Hohe Trippel testen, ersten von den drei Teilen,
+ den besteht das locker und das ist ein gültiges Hohe Trippel und der zweite Teil hat sich nicht
+ geändert, ist also auch ein gültiges Hohe Trippel und jetzt wird es eben etwas schwieriger, jetzt
+ muss ich nur noch zeigen, dass aus Q1 folgt Q und aus Q2 folgt Q und das wird dann eben etwas
+ schwieriger, weil wenn ich das jetzt hier habe, sehen Sie sich, also wir haben hier einen Zustand,
+ irgendwas für X, Y wird danach zu viel gesetzt, wenn ich den einen Wert Fahrt genommen habe oder
+ anderfalls zu 20, wenn ich den anderen Fahrt genommen habe, wenn ich das jetzt den Fahrt gewählt
+ habe, in dem X den Wert 0 hat, dann führe ich dieses Statement aus und daher ist danach Y
+ hat den Wert 4 und damit ist diese Aussage eben in der Tat nicht mehr gültig, wohingegen wenn
+ ich eben einen anderen Wert habe, einen Wert der größer als 8, dann wäre das noch immer der Fall,
+ aber wenn eben X wie vorher gezeigt den Wert 0 hatte oder einen anderen Wert kleiner als 7,
+ dann wird das eben das Statement ausgeführt. So, also können wir jetzt zeigen, dass eben aus Q1 folgt
+ Q und aus Q2 folgt Q, also können wir zeigen, dass aus Y größer 3 folgt Y größer 5, ja,
+ das können wir ja eben nicht zeigen, das geht, wenn wir normale Entwerte haben und so weiter
+ gilt das nicht, wir können immer noch zeigen, dass aus Y gleich 20 folgt Y größer 5, aber
+ wir können nicht diesen ersten Teil zeigen und daher ist das nicht gültig, daher ist das kein
+ gültiges Hortrippel und das auch richtig so, weil diese Aussage gilt eben nicht, nachdem ich dieses
+ Statement ausgeführt habe, das gilt eben nicht und daher können wir das eben nicht erschießen.
+ Also, müssen aufpassen, Sie sehen dann in Texten manchmal eben das zusammengefasst als Y,
+ dann lassen Sie mich nicht, lassen Sie mich das in Y größer 3 oder Y gleich 20, dann aus
+ beiden muss ich folgen können, dass Y größer 5 ist. Das ist eine andere Art der Logik, als wenn
+ ich eben mit burschen Variablen arbeite, wenn ich sage zur Partie darf wer mindestens 18 oder
+ Etha Student oder Student ist, das kann ich informell beschreiben als Alter größer gleich 18
+ oder Etha Studentin, so kann ich das machen, der darf zur Partie, aber hier heißt das nicht,
+ dass das gültig ist, wenn einer von den Teilen gültig ist, das heißt nicht, wenn Y größer 3
+ ist oder Y gleich 20 war ist, dann Y größer 5 war. Nein, was ich sagen will, festhalten wir es,
+ aus diesem Teil kann ich folgern, dass Y größer 5 ist und aus diesem Teil kann ich folgern,
+ dass Y größer 5 ist. Und wenn ich das eben nicht machen kann, so wie ich es eben hier eben gezeigt
+ habe, weil Y größer 3 kann ich eben nicht folgern, dass Y größer 5 ist, dann habe ich da eben nicht
+ gezeigt, dass das ein gültiges Hoher-Trippel ist. Da müssen wir so aufpassen, Sie erinnern sich vielleicht
+ noch da an diese Wahrheitstabelle, was wir verhindern wollen ist, dass eben der Teil ist,
+ also A ist wahr und B ist false, dann gilt das Ganze als false, daran müssen Sie sich noch erinnern,
+ wenn Sie das machen. Also ich habe hier noch so ein Beispiel, wenn Sie das nicht zu langweilig finden,
+ kann man das wieder genauso angehen. Auch da müssen wir jetzt eben, wir haben hier als Post-Condition,
+ Y größer 0 und als Pre-Condition, X größer 0 und haben dieses Code-Segment. Wir müssen uns überlegen,
+ was könnten gute Zwischen-Aussagen Q1, Q2 sein. Also eine wäre zum Beispiel Y größer gleich 2
+ und für die andere wäre Y größer gleich 10. Und da muss ich wieder zeigen, dass eben diese
+ beide der IF-Part und der ELF-Part, beide eben mit diesen Pre-Conditions, also P und B, oder P und
+ nicht B, zusammen mit dem IF-Block oder ELF-Block eben die gewünschte Post-Condition Q1 und Q2 ergeben.
+ Und das ist jetzt nicht sehr schwierig, das kann man schnell machen. Und dann müssen wir halt zeigen,
+ wenn Y größer 2 ist, dann können wir daraus folgern, dass Y größer 0 ist oder wenn Y größer 10 ist,
+ können wir zeigen, dass Y größer 0 ist. Und das können wir in beiden Fällen machen und damit sind
+ wir dann eben in der Lage, das zu machen. So, jetzt also und weil das doch so eine, weil das vielleicht
+ für viele trivial ist, aber für einige doch nicht, habe ich hier nochmal einen dritten Klicker heute,
+ sondern jetzt machen wir holen wir die Klickers nach, die wir vorher nicht machen konnten. Also gucken
+ wir nach, ob das eben ein gültiges Hortrippel ist oder nicht. Ich habe hier zwei zur Auswahl und
+ Sie können mir sagen, ob das eben gültig oder nicht gültig ist. Und ich gucke nach, ob noch
+ irgendeine andere Frage im Chat ist. Für was werden wir Hortrippel anwenden? Eben, um zu sehen,
+ ob ein Programm das macht, was wir wollen. Habe ich danach, wenn ich noch dazu komme, wenn Sie
+ jetzt schnell die Antworten geben, komme ich noch dazu, ein kleiner weiteres Beispiel in zu zeigen.
+ So, warum man das Ganze vielleicht so machen will. So, okay, ich mache jetzt mal wieder zu und
+ sehe mal, wie viele Antworten wir haben. Also, erst mal jemand fragte mich, was passiert, wenn wir
+ nur ein If-Statement haben. Wenn Sie ein If-Statement haben, dann gibt es da kein Elst. Das ist genauso,
+ als ob Sie da einfach nur ein leeres Statement hätten. Also, ist nichts zu zeigen, ist einfach.
+ Also, das erste war gültig und das haben auch 96 Prozent von Ihnen richtig hinbekommen. Aber das
+ zweite ist ungültig und das heißt, es haben doch 78 Prozent von Ihnen das als richtig ungültig
+ erkannt, aber 22 Prozent eben dann doch als eben nulli. So, warum macht man das? Ich meine, das machen
+ Sie, um eben halt rauszufinden, wie ich Ihnen am Donnerstag zeigen werde, was für Bedingungen
+ erfüllt sein müssen. Wie kann ich das, dieses Elst-Statement mir vorstellen? Also, das heißt,
+ ich habe auch wieder hier Q1 und Q1, kann ich aber schnell finden, y ist größer, gleich 2 und
+ über S2, können Sie keine weiteren, genaueren Aussagen über den Zustand von y machen. Das
+ heißt, da x größer als 10 ist, ist also x mindestens 12 für den ersten Teil, weil wir wissen,
+ dass ergibt hier, das ist der Test, der ausgeführt wird und somit wissen wir nicht,
+ welchen Wert y vorher hatte und so kann man also nicht zeigen, dass y größer 2 ist und
+ darum ist das Ganze eben halt keine gültiges Trippel. Wenn wir hingegen eine Vorbedingung
+ hätten, wenn unsere, wenn es eine frekundische gegeben hätte, die auch eine Aussage über y
+ machte, dann hätten wir vielleicht als Trippel Q2 nehmen können und hätten dann sagen können,
+ okay, das und das ist erfüllt und daher können wir dann eben ein Trippel finden,
+ das für den Elst-Block richtig ist und dann wäre das ein gültiges Trippel geworden.
+ Also, damit habe ich Ihnen gezeigt, wie wir das für if-Statements machen und am logisch
+ morgigen Donnerstag unterhalten wir uns dann über die schwächste Vorbedingung. Da geht es dann
+ genauer darum, wie wir eben die verschiedenen Vorbedingungen vergleichen können. Alles Gute,
+ bis Donnerstag im 14 Uhr im Rühm im Anahörsaal.
+ [Beifall]

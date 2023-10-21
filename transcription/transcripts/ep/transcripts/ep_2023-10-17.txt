@@ -1,0 +1,794 @@
+ Wir wollen uns weiter mit dem Thema Errays beschäftigen und verschiedene Aspekte des
+ Arbeiten mit Errays kennenlernen. Also jetzt zuerst noch mal zur Einleitung oder Erinnerung,
+ dass eben eine Referenzvariable erlaubt uns den Zugriff auf einen Erray. Also wenn wir eine
+ Erray Variable deklarieren von der Art zum Beispiel sagen ein Integer Erray wollen wir gerne mit dem
+ wollen wir arbeiten. Dann ist das X eine Referenzvariable die es uns erlaubt Zugriff auf einen
+ Erray zu machen. So wie ich es hier unten auch hingeschrieben habe. Also das ist eben eine
+ nicht der Errays selbst sondern ist eine Variable die auf diesen Errays verweist und in Java ist es
+ halt so wir müssen angeben was für Elemente in diesem Erray drin sind. Wir können den nicht
+ für andere Sachen verwenden obwohl einige das gerne wollten und das werden wir hier noch mal sehen
+ was da genauer Einschränkungen sind. Aber das ist halt die Regel mit der wir leben müssen und
+ nachdem wir das gemacht haben nachdem wir also so eine Referenzvariable deklariert haben,
+ da existiert noch kein Erray. Das ist nur wir sagen jetzt hier ist eine Variable mit der wir uns
+ auf einen Erray beziehen können wenn diese Variable mal später auf einen echten Erray verweist. Also
+ um auf einen wirklichen Erray zu verweisen müssen wir jetzt erst dafür sorgen dass diese Referenz
+ Variable eine Referenz zugewiesen wird. Also ein Verweis auf einen echten Erray zugewiesen wird.
+ So könnte wir sagen hier wir haben diese Variable Mai Erray und die lassen wir jetzt hier auf einen
+ Erray verweisen der Platz für 10 Integers also Int hat, für 10 ganze Zahlen hat und der New Operator
+ den wir hier verwenden der New Operator der konstruiert und so einen Erray. Da ist Platz für
+ diese 10 Ints für diese 10 Zahlen und vielleicht noch ein bisschen mehr ist aber kein Problem für uns.
+ Also so können wir diese Referenz Variable auf einen richtigen Erray verweisen lassen oder
+ aber wir deklarieren die Referenz Variables an einem Punkt und dann später gehen wir hin und
+ weisen diese Referenz Variable jetzt in diesem Beispiel hier wieder die Referenz auf einen Erray
+ von 10 Elementen zu. Sie sind, warten Sie sich, jemand sagt der könne uns schlecht hören. Ich kann
+ schlecht lauter reden aber ich sollte in der Lage sein das hier zu erhöhen. So, gucken wir mal. Ich
+ habe jetzt die Lautstärke ein bisschen rauf gedreht. Ich hoffe sie haben jetzt keine Hörschäden. Ich
+ weiß, wenn sie mit ihrem Nachbar reden muss ich immer noch lauter reden aber wie gesagt wenn der
+ oder diejenige die das geschrieben hat bestätigen könnte, dass das jetzt besser ist oder schlechter
+ oder noch mehr, dann können wir das anpassen, dass es für alle richtig ist. Also ich kann also
+ diesem Erray hier, dieser Referenz Variable eben den Verweis auf diesen Erray zuweisen oder
+ ich könnte irgendwann im Verlauf des Programms oder aber ich könnte und das geht aber nur in
+ der Initialisierung. Ich könnte sofort einen Erray konstruieren lassen. Hier würde ich dann einen
+ Erray mit vier Zahlen bekommen. Die hätten gerade diese Werte. Das geht aber nur, das kann ich nicht
+ irgendwie im Programm machen. Das geht nur, wenn eben halt ich den Erray deklariere. Dann kann
+ ich das machen. Dann kann ich das gleich so machen. Also diese Referenzvariable kann ich verwenden wie
+ jede andere Variable. Ich kann also auch wiederholte Zuweisungen machen. Also ich kann schon einmal
+ diese Referenzvariable hier einmal deklarieren und gleich auf diesen Erray zuweisen lassen. Und
+ dann kann ich sagen, jetzt brauche ich diese Referenzvariable für was anderes. Und jetzt gehe
+ ich hin und lasse ich sich hier auf einen anderen Erray zuweisen, den ich jetzt gerade an dieser
+ Stelle konstruiere. Und wenn ich den Konstruiere und nichts anderes mache, dann besteht der aus drei
+ Elementen, die alle null sind. Und jetzt kommt der interessante Teil oder der Teil, der manchmal
+ zu nachdenken zwingen muss. Ich kann auch diese Referenzvariable benutzen, um einen anderen,
+ um sie in einem anderen, eine andere Referenzvariable zu speichern. Also ich habe hier die Referenzvariable
+ U-Array her und die lasse ich jetzt verweisen, das ist jetzt eine Zuweisung, auf denselben Array,
+ den ich jetzt hier oben konstruiert habe oder irgendwie verarbeitet habe. Ich habe jetzt hier
+ zwei Referenzvariable U-Array und Mai-Array, die beide auf denselben Array verweisen. Also so kann
+ ich eine Referenzvariable nutzen, um auch auf einen anderen Array zu verweisen. Also hier habe ich
+ in diesem einfachen Beispiel einen Array A, der hat fünf Elemente und dann habe ich einen Array B,
+ der hat hier vier Elemente. Mit diesen Werten habe ich die mal initialisiert. Und jetzt gehe ich
+ hin und benutze die Referenz, die in der Referenzvariable B, das ist hier, gespeichert ist, um sie in der
+ Referenzvariable A zu speichern. Das heißt also jetzt verweist A auf denselben Array wie auf
+ diesen WB verweist. Also A verweist nicht mehr auf den Array, auf den es am Anfang verwies,
+ sondern verweist jetzt auch auf diesen Array. Und wenn ich so was machen will, dann muss die rechte
+ Seite hier auch eine Referenzvariable sein. Und nicht nur irgendeine Referenzvariable, es muss
+ eine Referenzvariable sein, wo der Typ der Elemente stimmt. Die Anzahl muss nicht stimmen. Sie sehen,
+ der eine Array hatte vier, der andere hatte fünf Elemente. Die Anzahl der Elemente spielt keine Rolle,
+ aber der Typ muss stimmen. Also auf der rechten Seite wollen wir immer nur eine Referenzvariable
+ sehen, dasselben Typs, das richtigen Typs oder natürlich den New Operator, der eben einen neuen
+ anonymen Array erst mal konstruiert und den wir dann eben halt weiter verwenden können. Also,
+ wenn ich so was habe, jetzt habe ich jetzt hier die Situation, dass A und B auf denselben Array
+ verweisen. Und was mache ich denn jetzt, wenn dieses A nicht mehr auf diesen Array verweisen soll? Also
+ wenn ich praktisch verhindern will, dass das A weiter auf diesen Array verweisen. Naja, jetzt muss
+ ich dann dieser Referenzvariable A einen besonderen Wert zuweisen. Und dafür benutzen wir diesen
+ besonderen Wert Null. Das ist ein Wert, der geht für alle Referenzvariablen, der geht für also sowohl
+ für Arrays, als auch später, wenn wir sehen für Objekte, der geht für andere Objekte, der geht
+ für alles. Und wenn ich das gemacht habe, weil wenn ich der Referenzvariable A den Wert Null
+ zugewiesen habe, dann verweist die auf keinen Array, auf gar nichts. Die ist dann einfach da und ich
+ kann mit der nichts weiter machen. Und auf jeden Fall verweist sie ganz sicher nicht auf den Array.
+ So, und jetzt haben wir eben nur noch das B, das wieder auf diesen Array verweist. Also das ist,
+ da können wir mit Referenzvariablen arbeiten und so können wir eben dafür sorgen, dass die immer
+ auf den richtigen Array verweisen. Also, wenn sie mit diesen Referenzvariablen arbeiten, ja, da gibt's
+ zwei unterschiedliche Arten mit, wie wir den arbeiten können. Wenn wir also diese Referenzvariablen
+ zusammennehmen, ja, wenn ich diese habe, dann kann ich den einmal diesen Namen benutzen, um mittels
+ dieses äckige Klammeroperators ein bestimmtes Element auszuwählen. Also kann ich dann das Element
+ herausfinden, dass den gegebenen Index hat. Oder aber ich kann diese Referenzvariable benutzen,
+ um einen anderen Referenzvariable auf den selben Array verweisen zu lassen. Wenn ich also den,
+ diesen Namen auf die rechte Seite einer Zuweisung schreibe, dann wird diese Variable, die auf der
+ linken Seite steht, jetzt auf den selben Array verweisen auf die rechte. So, was passiert, wenn
+ keine Referenzvariablen, ein erregter weiß. Da kommen wir später noch zu sprechen. So, machen wir
+ erstmal hier, versuchen einfach zu verstehen, was passiert, wenn wir mit diesen Referenzvariablen
+ arbeiten, ja. Also, Referenzvariable ist eigentlich eine Kurzform, um zu sagen, dies ist eine Java-Variable
+ des Typs, Referenz auf einen Array. Interessant, das Wort Referenzvariable taucht weder in der
+ deutschen noch englischen Version in der Java-Sprach-Definition auf, aber viele, viele, viele Mal
+ im offiziellen Java-Tutorial. Also, es hat sich irgendwie eingebürgert, nachdem die Sprache
+ entwickelt worden war, dass wir eben sagen, das ist eine Variable, die auf irgendetwas verweist. Also,
+ hier habe ich eben einen Long Array, der verweist diese Variable, verweist auf einen Arrays von Long
+ Elementen, ja, oder ist Null, dann ist der verweist auf gar nichts, dann ist nichts, ja. Also, Null ist
+ natürlich immer noch eine Möglichkeit. Also, Null ist der Wert einer Referenzvariable, die auf
+ keinen Array verweist. Also, wenn ich hier den Array habe, ja, und jetzt habe ich zehn Elemente dazu,
+ das setzt sich das erste Element auf eins, das geht bestens, wenn ich die Länge drucke, dann kriege
+ ich das Länge natürlich zehn heraus, ja. So, wenn ich jetzt hingehe und dieses A auf Null setze, was
+ passiert dann, dann ist, existiert da kein Array mehr. Und wenn ich jetzt versuchen sollte, auf die
+ Länge festzuhalten, dann sagt das System, ups, A ist Null, es gibt keinen Array, was soll ich da eine
+ Länge liefern? Und dann gibt es eben eine entsprechende Fehlermeldung. Oder wenn ich versuchen
+ sollte, ein Element, irgendein Element auf einen Wert zu setzen, beschwert sich das System auch,
+ weil es eben kein, kein Array mehr gibt, ja. Also, aber ich kann diese Variable immer noch
+ ausdrucken, hier, das ist immer noch möglich, ja. Dann kommt halt das Ausgabe Null heraus, aber es ist
+ immer noch möglich, eben zu gucken, was da, was wir da in dem Array haben. So, was passiert jetzt,
+ jetzt kommt die Antwort zu der Frage, die jetzt eben im Chat kann, was passiert denn mit diesem
+ Array auf den niemand mehr verweist, ja. Okay, nachdem also jetzt, wenn wir das Programm so
+ geschrieben haben, dass eben halt hier erst setzen wir A, so dass es auf B verweist und danach gehen
+ wir hin und setzen A zu Null, also A Null verweist nichts mehr. Jetzt, wenn es keine weiteren
+ Referenzvariabeln gibt, die auf diesen Array verweisen, ja, es könnte ja noch irgendeine Variable C
+ geben, aber die nehmen wir jetzt mal an, existiert nicht, ja. Dann ist dieser Array unerreichbar,
+ ja. So, der, der, niemand kann diesen Array erreichen in einer ersten vernünftigen Apoximation
+ eines vernünftig geschriebenen Programms, ja. So, was, was für Auswirkungen hat denn jetzt
+ dieser Array auf das Programm? Also, im Prinzip hat der keine direkte Auswirkung, ja. Wenn der
+ Risik ist und deswegen unseren Speicherplatz wegnimmt, ist eine andere Sache, ja, aber und
+ deswegen alles langsamer läuft. Aber für das Programm, so wie wir uns mit unterhalten haben
+ über die, mit den Horschen-Trippeln und so, da existiert dieser Array nicht mehr, ja. Und der
+ Schöne ist jetzt irgendwann, ja, nicht einmal die Woche, sondern eben irgendwann, ja, kommt da die
+ Müllabfuhr, ja. Und das Java-System geht hin und entfernt den, ja. Und das Gute ist, das ist nicht
+ unser Thema, ja. Wir machen hier Programmieren langweilig, ja. Wir lassen Sie das nicht machen.
+ Sie brauchen nicht Stunden damit zubringen, rauszufinden, wo denn da irgendwelche Daten
+ verschwunden sind. Sie können sich darauf beschränken, ein korrektes Programm zu schreiben, ja.
+ Es gibt Programmiersprachen, die sind etwas interessanter vielleicht, ja. Da können Sie auch
+ noch solche Fehler finden, ja. Aber machen wir doch erst mal hier im ersten Semester einfache Sachen
+ und beschränken uns auf korrekte Programme, die wir selbst entwickeln. Also, das Schöne ist,
+ nicht unser Problem, ja. Wird irgendwann vom System eingesammelt, hat natürlich eventuelle
+ Auswirkungen auf die Laufzeit und so weiter. Aber das ist nicht etwas, was wir hier im ersten
+ Semester gründlichst diskutieren werden. Und daher ist das für uns kein Thema. So, also,
+ das ist das, was wir hier Referenzsementics nennen, ja. Wenn eine Referenzvariable als operant
+ einer Zuweisung auftritt. Also, hier haben wir zwei Referenzvariablen x und y, ja. Und y ist
+ der operant auf der rechten Seite, ja. Das ist der operant y. Dieser Array wird nicht kopiert,
+ sondern beide Variablen beziehen sich nun auf den selben Array. Wie wir eben gesehen haben,
+ a und b, beide zeigen jetzt auf a und b, ja. a und b zeigen jetzt beide auf den selben Array, ja. Und
+ das nennen wir Eliasing. Und das werden wir sehen, ist auch tricky. Das wird uns auch genug,
+ wird genug uns verlangen, ja. Wenn zwei oder mehr Referenzvariable auf den selben Array verweisen,
+ ja, dann sprechen wir von Eliasing, ja. Es könnten also zwei sein, mehr, je mehr, das ist
+ so schwieriger, ja. Das sind die Referenzsementics, ist, dass wir eben die Arrays nicht kopieren,
+ im Gegensatz zu den anderen Werten, also den Values, mit denen wir zu tun hatten, ja. So, ja. Also,
+ das ist wichtig, dass sie diesen Ausdruck immer wieder verstehen, was mit dem zusammenhängt, ja.
+ Also, jetzt warum verwenden die Arrays-Refahrenzsementics? Warum? Wenn wir eine Integer a haben, ja,
+ und eine Integer b und ich habe die Zuweisung a wird gesetzt zu b, dann wird ja der Wert
+ kopiert, ja. Warum machen wir das denn nicht auch für Arrays? Und der Hauptgrund ist eben
+ Effizienz, ja. Weil das Kopieren großer Arrays kostet doch recht viel Zeit. Sie sehen, also,
+ wir können diese Effizienzüberlegung nicht ganz unter den, nicht ganz wegbringen, ja. Und zum
+ zweiten sehr oft kann man gut ein Programm Datastrukturieren, dass man sagt, es gibt hier
+ ein großes Datenset und jetzt arbeiten verschiedene Methoden daran, ja. Die eine Methode, die andere
+ und so weiter, die arbeiten alle mit diesem Dataset, ja. Und das hat dann den großen Vorteil,
+ dass die eben alle, dass wir da nichts kopieren müssen. Aber das werden wir jetzt noch mal genauer
+ angucken, warum eben Referenzsementics so eine gute Idee sind, ja. Nur bevor wir dazu kommen,
+ viele Operatoren sind für Objekte nicht definiert und damit auch nicht für Arrays, ja. Die einzige
+ Ausnahme ist dieser Plus-Operator, der für Strings definiert ist. Da geht das, aber wenn
+ sie zwei Scanner haben, ja, und sie versuchen, die beiden Scanner mit dem Plus-Operator zu
+ verknüpfen, da wird sich das beschweren. Oder auch wenn sie versuchen sollten, bei Strings den
+ Multiplikations-Operator zu verwenden, ja, dann kriegen sie auch eine Federmeldung, weil das System
+ weiß nicht, was wir, was wir da machen können, ja. Und auch Output funktioniert nicht ganz so, wie
+ wir das wollen. Ja, manchmal wünschen wir es vielleicht, aber haben wir hier einen Array und
+ einen anderen Array und jetzt wollen wir die Summe dieser beiden Arrays bilden. Oder wir wollen
+ halt raussehen, wollen sehen, ob die Elemente des einen Arrays größer als dieses anderen sind,
+ oder so was. Aber Java unterstützt dies nicht direkt. Natürlich können wir das irgendwie auch
+ checken, aber wir können das eben halt nicht direkt checken, ja. So. Und unter anderem, was sehr
+ bedauernswert ist, gibt es kein Equals für Arrays. Wir hatten gesehen, wir zwei Strings hatten und
+ wir wollten gucken, ob die gleich sind oder nicht, ja. Dann hatten wir gesagt hier der eine String
+ und dann eben halt der andere String und dann haben wir diese Equals-Methode oder Operation
+ verwendet, um zu checken, ob diese beiden Strings gleich sind oder nicht, ja. Und das geht nicht,
+ ja. Wir können das weder mit diesem Gleichheitszeichen noch, mit diesem doppelten Gleichheitszeichen,
+ noch mit Equals vergleichen, ja. Das geht nicht, das System unterstützt das nicht. Wenn wir das
+ versuchen sollten, ja, dann ist das incorrect. Es gibt nicht das, was wir wollen. Wir werden
+ später mal sehen, was das genau ergibt, ja. Aber das ist incorrect und wenn wir so was
+ versuchen sollten, dann gibt sofort eine Fehlermeldung, weil es gibt für Arrays keine Equals-Operation, ja.
+ Also das ist nicht da. So. Jetzt müssen wir gucken, wie wir damit zurechtkommen. Da gibt es
+ auch noch Wege, wie wir daraus kommen. Aber bevor wir das jetzt weitermachen, wollen wir
+ gucken, genauer gucken, warum und wie funktioniert eigentlich Errays und Methoden, weil das ist
+ immer wieder ein Thema, das immer wieder Fragen aufwirft. Und da möchte ich zwei Aspekte
+ angucken, nämlich, wie wir Errays als Parameter übergeben und wie wir mit Errays mit Rückgabewerten
+ arbeiten können, was da die Vor- und Nachteile sind und was die Folgen sind. Und darum habe
+ ich so ein künstliches Programmproblem. Sie sollen Programm schreiben oder Programmsegment
+ schreiben, das in einem Array alle Elemente, die stricke kleiner als 0 sind, auf 0 setzt.
+ Also wenn sie so einen Array haben, wo hier zwei Werte sind, die kleiner als 0 sind, dann
+ sollen die auf diesem Array, wollen wir einen neuen Array haben, der gefiltert wurde und
+ in dem gefilterten Array haben wir alle diese Elemente auf 0 gesetzt. So. Und dieses Programm,
+ die einzige leichte Komplikation, sollte für eben Interrays, müssen wir schon sagen für
+ was, aber Interrays, jeder Größe funktioniert. Und das Programm selber schreiben, das ist
+ einfach, das haben sie jetzt ganz sicher schon drin, ja. Also wir haben hier einen Loop, wir
+ haben einen Loop, wo wir kontrollieren wollen, wie viel, dass wir durch alle Elemente einmal
+ durchgehen und angucken, ob die Größe oder kleiner sind und wie machen wir das, wenn der
+ Array Numbers heißt, dann nehmen wir das Längsattribut dieses Arrays und gucken nach, wie lang ist
+ dieser Array heute und dann arbeiten wir, gehen wir durch und wenn das Element kleiner als 0 ist,
+ dann setzen wir es auf 0. Das ist also, als die Arbeit, die wir da machen müssen, ist überhaupt,
+ ist gar kein Problem, ist ganz leicht. So. Also, jetzt haben wir das gemacht, jetzt haben wir also
+ dieses Programmsegmenten, jetzt wollen wir eine Methode entwickeln, weil wir wissen, die haben
+ wir gelernt, dass Methoden der Weg sind, wie wir Arbeit und wieder verwenden können, wenn wir
+ was in eine Methode stecken können, die Methode einen Weitrissmal verwenden und so weiter. Also
+ wollen wir eine Methode haben, die den Array, dessen Werte zu filtern sind, als Parameter
+ entgegen nimmt. Also wir haben hier diesen Array Numbers und jetzt wollen wir irgendwie dieser
+ Methode hier sagen, hier der Methode filter, sie möge doch bitte hingehen und irgendwie diese
+ Zahlen da nummerieren und werde ich nummerieren, überarbeiten und eben auf ihre Größe kontrollieren.
+ Und wenn wir das angucken, da gibt es zwei Fragen, wie schreiben wir eine Methode, die einen Array
+ als Parameter übernimmt und zweitens, wie können wir den Inhalt des geänderten Arrays nach der
+ Verarbeitung zurückgeben? Wie können wir das Ergebnis zurückgeben, weil das, was wir bisher gesehen
+ haben, reicht eigentlich nicht dafür aus, um sowas zu machen. Also es ist relativ einfach eine Methode
+ zu deklarieren, die einen Array als Parameter hat. Es geht genauso, wie wir andere Parameter
+ deklariert hatten. Jetzt ist eben halt der Typ des Arrays, ist eben ein Array. Array von einem bestimmten
+ Typ. Da haben wir also hier eine Parameter nehmen mit irgendeiner Methode und wir haben, wir verlangen,
+ dass diese Methode als Parameter einen Array eines bestimmten Typs bekommt. So und dann, wenn wir
+ einmal das so gemacht haben, dann nimmt die Methode einen Parameter entgegen, das ist gut, aber sie
+ verlangt es auch. Also wenn wir jetzt diese Methode definiert haben, dann muss da, da muss
+ ein Parameter kommen. Natürlich kann diese Methode einen beliebigen Wert zurückgeben und eben
+ wichtig ist, Typ ist der Typ der Elemente dieses Arrays. Also wenn wir das jetzt hier haben, dann
+ würden wir jetzt also unsere Methode so schreiben. Das erste Mal habe ich dir hier den, gebe ich einen
+ Int zurück, um eine Summe hier zu machen, das ist so, nicht das genannte, also das geht ja noch. Ich habe
+ hier den Array, also hier habe ich einen Array von Int, den nenne ich Numbers, in dieser Methode und
+ jetzt gehe ich hin und summiere zum Beispiel die Elemente dieses Arrays auf. Ich habe also hier den Array,
+ ich habe hier den Loop, der guckt sich alle Elemente an und addiert die, das ist heißt, das gleiche
+ wie Sum ist gleich Sum plus, was immer da auf der rechten Seite steht, ja, so summieren wir die auf und am
+ Ende dividieren wir die Summe durch die Anzahl der Elemente und so gibt es dann den Intwert, den wir
+ als Ergebnis zurück bekommen. Also können wir den Durchschnitt für die Elemente eines Arrays
+ berechnen, ja, so, also jetzt, jetzt eben haben wir die, angegeben, dass dann ein Arrayparameter
+ gebraucht wird, ja, wichtig ist, dass wir brauchen keine Angabe der Größe machen, ja, das Einzige,
+ was wir wirklich angeben müssen, ist der Typ, ja, der Typ der Elemente, der muss angeben sein, ja,
+ trotzdem können wir unser Programm, wie Sie ja auch hier gesehen haben, so schreiben, dass das
+ Programm immer noch rausfindet, wie lang der Array ist, ja, Nambers ist der Parameter und das
+ Längsattribut kann ich immer benutzen, um diesen, um herauszufinden, wie viele Elemente der gegebenen
+ Array hat, ja, unter der Annahme, dass dieser Array nicht nahe ist, wenn da nahe wäre, das wäre,
+ gucken wir später nochmal, dass wir nicht so gut, aber gehen wir davon aus, dass ein Richter
+ Array übergeben wird, dann können wir über das Längsattribut herausfinden, wie der, können wir
+ herausfinden, wie viele Elemente in dem Array sind. So, jetzt haben wir also diese, so die Methode
+ deklariert, jetzt müssen wir die aufrufen, ja, müssen wir irgendwie aufrufen und das geht genauso
+ wie der Aufruf einer Methode mit dem Basis, mit Basisypparameter, ja, wir haben den Namen der
+ Methode, die wir aufrufen und wir geben hier den Namen der Referenzvariable an, mit der wir uns auf
+ den Array beziehen, ja, also hier habe ich eine Methode, die, diese Durchschnittsmethode, die ich
+ eben zeigte, ja, die benutzen wir hier, um für diese, für diesen Array den Durchschnitt zu berechnen, ja,
+ und da sehen Sie, dass ich hier keine, ich wähle nicht irgendwelche Elemente aus, sondern ich wähle,
+ oder ich gebe die Referenzvariable direkt selber an, ja, das ist das, was ich angebe als Parameter,
+ wenn ich die Methode aufrufe, ja, und die gibt dann uns das Ergebnis zurück, so wie wir das gesehen
+ haben, ja, also das, das Argument oder der Argument Ausdruck ist hier in diesem Fall ein einfacher
+ Referenzvariable und die wird hier eben als benutzt, um den richtigen, den Verweis auf den richtigen
+ Array an diese Methode average weiter zu reichen, so, okay, jetzt haben wir also gesehen die erste
+ Frage geklärt, ja, es wissen wir also, wie wir die Methode schreiben müssten, damit wir eben ein
+ Array als Parameter übergeben können, jetzt kommt noch die Frage, die nächste Frage, wie können wir
+ eventuell das Ergebnis zurückbekommen und natürlich können Methoden auch Arrays zurückgeben und das
+ sieht dann in der Deklaration genauso aus wie wir das wahrscheinlich erwarten, als Return Type
+ gebe ich dann eben zu, an irgendein Typ für die Elemente und eben ein Zeichen, diese beiden
+ Ecken klammern, um anzuzeigen, dass sich ein Array von diesen Elementen haben will, ja, ich habe also
+ diese, ich dekariere die Methode mit irgendwelchen Parametern und diese gibt einen Array von Elementen
+ dieses Return Types zurück, ja, und um das natürlich richtig zu machen, brauchen wir im Programm
+ ein Return Statement, dass diese Art von Array dann eben auch wirklich zurückgibt, ja, sonst funktioniert
+ das Ganze nicht, ja, so, also hier habe ich eine Methode, die für jedes Element das eingereicht,
+ dass im Array, im Input Array ist, werden davon zwei Kopien gemacht, ja, also wenn ich hier den Input
+ Array 1407 einreiche, dann gibt das 11440077, also nicht gerade sehr, wie gesagt, nicht konzeptionär,
+ recht einfach, ja, und wie mache ich das, ja, ich habe hier den Parameter Numbers, das ist mein
+ Parameter, den ich eben in dieser Methode verwende, ja, als Rückgabe wert, gebe ich einen Array von
+ Integers zurück, weil ich nehme hier nur Integerays entgegen, ja, so, und was mache ich jetzt, ich
+ gehe hin in meinem Array, in meiner Methode und konstruiere einen neuen Array, ja, ich konstruiere
+ einen neuen Array, den ich resalt und wie groß ist der, na ja, wenn ich zwei Kopien von jedem
+ Element haben will, dann muss der doppelt so lang sein, ja, also habe ich hier einen Array, der ist
+ doppelt so lang wie der Ursprungs Array, auch natürlich vom Typ Int und natürlich gehe ich hin
+ und benutzt den Nu-Operator, um den zu erstellen, so, und dann habe ich jetzt hier diesen Array
+ erstellt und jetzt gehe ich, habe ich einen Loop, indem ich eben die Anzahl der Elemente dieses
+ Ein-Input-Arrays abfrage und das zur Loop-Kontrolle benutze und dann eben in den neuen Array, jeweils
+ an der Position 2 mal i und 2 mal i plus 1, das gewünschte Element ablege, ja, so, und dann bin
+ ich mit diesem Loop fertig, dann habe ich eben die Werte da kopiert und das Ganze ist hier
+ fertig und ich schicke das Resultat zurück eben und mache hier Return Statement, das Resalt ist
+ hier dieser Array und daher kommt der richtige Array zurück. Jetzt fragt mich eben jemand,
+ eine gute vernünftige Frage, warum ist das hier längs und warum nicht längs mit offener Klammer?
+ Sehen Sie, mit dem Eröffner und schließender Klammer, sehen Sie, das hier ist ein Attribut,
+ ja, das ist ein Attribut, das ist etwas, was eben mit dem Array existiert, das hier ist eine
+ Methode, eine Operation, können Sie so sagen, ja, eine Methode oder eine Operation und die ist nicht
+ für Arrays definiert, ja, ist aber nicht definiert, ja, hat sich nicht die Mühe gemacht, ja, die ist
+ für Strings definiert, wir werden sehen, dass die auch vielleicht für andere Sachen noch definiert ist,
+ ja, aber für Arrays ist sie hat nicht definiert, das ist eine Entscheidung, die die Sprachentwickler
+ gemacht haben, die haben entschieden, dass wir eben die länger als ein Attribut, wir werden noch mehr
+ über Attribute im Laufe der Woche hören, ja, als Attribut gemanagt wird und nicht als Methode,
+ man hätte auch genauso gut sagen können, wir wollen, dass das eine Methode ist, aber es gibt
+ gute Gründe, warum das keine Methode sein wird, aber die ganz guten, die vollen Gründe kann ich Ihnen
+ erst gegen Ende des Semesters erklären, ja, so, aber die für Arrays hat man sich entschieden,
+ ist ein Attribut und für Strings hat man gesagt, da wollen wir eine Methode haben, eine Operation und
+ daher, weil es eine Operation ist, ja, weil es eine Operation ist, kommen dann eben halt hier ist
+ eine Methode, die aufgerufen wird und daher kommen diese beiden Klammern, gibt keine Parameter,
+ sinnvollerweise und deswegen ist das eben die Methode längst für den Strings mit eröffnender und
+ schließender Klammer und sagt, nix dabei, wirkt sich das stark auf den Speicherplatz aus,
+ wenn man einen neuen Array macht, ja, die beiden sind dann halt weg, nicht wahr? Also ja, das mögt
+ sich natürlich schon, aushängt von der Größe des Arrays aus, ja, also je nachdem was für ein
+ System sie haben, kann das verschiedenste Folgen für die Laufzeit haben, aber das Gute ist,
+ damit darüber, das diskutieren wir später im dritten Semester, ja, also machen sich jetzt
+ nicht zu viel Gedanken, ja, machen sich darüber nicht Gedanken, ja, die Arrays, die wir Ihnen geben,
+ sind im Allgemeinen einer Größe, dass sie kein großes, kein Problem damit haben werden, ja, Sie
+ können gerne ein Array mit einer Million Elemente machen, das sollte auf einem konventionellen
+ Computer machbar sein. Trotzdem müssen wir daran denken, dass das nicht unendlich Zeit bauern darf,
+ aber das ist eigentlich etwas, was wir erst diskutieren, nachdem wir all die ganzen Aspekte
+ gesehen haben, okay? Also, jetzt kann diese Methode ein Array zurückgeben und das macht
+ die auch, aber natürlich muss da jemand sein, der den Rückgabewert entgegennimmt, ja, wenn ich
+ einfach nur die Methode aufrufe, die gibt ein Array zurück und der zurückgegebene Array, der fällt
+ dann auf den Fußboden und ja, weg ist er nicht wahr. Also wenn ich den, zum Beispiel, diese Methode
+ Duplicate Elements verwenden wollte, ja, und bekomme da jetzt eben diesen Array zurück, dann muss ich hier
+ auf der rechten Seite irgendeiner Zuweisung eine Referenzvariable haben, die diesen Array
+ entgegennimmt. Das könnte eine neue Deklaration sein, das könnte ein Alter, könnte eine existierende
+ Referenzvariable sein, das ist jetzt nicht so kritisch, aber die, die Variable muss halt den
+ richtigen Typ haben, ja, es muss eine Variable sein, die auf einen Int Array verweisen kann,
+ sonst beschwert sich das System. Okay, also, jetzt haben wir also gesehen, wie wir eine Methode haben,
+ die einen Array als Parameter entgegennimmt und müssen überlegen, wie genau wollen wir jetzt den
+ Inhalt des geänderten Arrays zu uns zurückgeben. Die erste Frage haben wir abgehakt, ja, und
+ jetzt sagt ihr, ihr könnt ja so hingehen und wir können eben diese Methode Filter so deklarieren,
+ dass sie auch wieder einen Int Array gibt, ja, und dann wird eben in dieser Methode ein Array
+ Filter bearbeitet und der wird dann mit das Return Statement zurückgegeben und dann können wir hier
+ in unserem Programm, wo wir die, wo wir das haben, wir haben diese Filter Methode und das Ergebnis
+ speichern wir hier in einer Referenzvariable, sagen wir Filter Numbers, die dann den gefilterten
+ Werte da speichert, ja. So, brauchen wir kein Wort für Methoden ohne Return, ja, wo ist eine Methode
+ ohne Return? Ich habe jetzt hoffentlich hier keine Methode ohne Return gehabt, oder? Hab ich ja eine
+ ohne, ja, alle Return gehabt, okay? Also, wenn sie, wenn sie Wort haben, brauchen sie kein Return,
+ aber zurzeit haben wir ja hier als Return einen Interay und darum haben wir hier auch als Return
+ Wert geben wir einen Interay zurück und daher haben wir hier einen Return, ja. So, also, hier
+ haben wir das Programm, gucken wir uns das mal an, also wir haben hier oben die Methode Filter,
+ diese Methode Filter, die nimmt entgegen eine Referenz auf einen Interay, wir benutzen die Länge
+ dieses Errays, um einen neuen Erray zu erstellen, den nennen wir hier in unserer Methode Filter
+ und jetzt gehen wir hin und gucken uns alle Elemente an und wenn der Wert kleiner als null ist,
+ dann setzen wir den gefilterten Wert auf null, ja, und dann sind wir, na ja, doch nicht ganz fertig,
+ ja, ja, alle heute morgen wach, ja, ja, ja, ja, ja, ja, ja, ja, nee, nicht wirklich, okay, also,
+ das sieht gut und schön aus, hat aber einen kleinen Nachteil, was passiert denn, wenn wir hier oben einen
+ neuen Erray erstellen, bekommen wir einen Erray von nullen, ja, und jetzt gehen wir hin und ersetzen
+ noch zwei dieser Elemente mit was, mit nullen, na ja, also da haben wir immer noch null, also dieser
+ Erray vergisst, oder diese Methode vergisst leider alle die Werte, die größer als null sind, ja, und
+ das können wir natürlich leicht fixen, wenn also der Wert kleiner als null ist, dann setzen wir den
+ auf null und anderfalls kopieren wir den Wert aus dem Input-Erray, ja, so, so haben wir ein Programm,
+ das ist zumindest korrekt, ja, das ist schon mal ein großer Vorteil, ja, das ist das Programm,
+ erfüllt unsere Anforderungen, ist korrekt, gibt keine Laufzeitfehler und so weiter, ja, ist immer
+ gut so was zu haben, ja, jetzt können wir noch besser machen, aber das ist zumindest mal eine gute
+ Basis, ja, so, so, jetzt eben was ist an dem, an der Lösung nicht ganz so gut, ja, weil die gibt
+ uns ja den gewünschten Erray, na ja, stellen Sie sich vor, Sie hätten jetzt diesen Erray, diesen
+ Input-Erray mit acht Millionen, acht Millionen Einträgen, ja, und 20 von denen wären auch grund
+ irgendwelcher Messfehler kleiner als null. Wie viele Zuweisungen würden Sie hier ausführen, ja, wenn
+ Sie sich dieses Programm angucken, wir haben hier acht Millionen, 499,980 Zuweisungen hier und
+ 20 Zuweisungen da, ja, also 20 mal ist die Zahl kleiner als null, dann wird diese Anweisung ausgefüllt
+ und die anderen acht Millionen, 499,000 und so weiter, Male wird diese Anweisung ausgeführt, ja,
+ und das ist vielleicht okay, aber wirklich notwendig sind nur die 20 für die Elemente, die null sind,
+ ja, und deswegen eben der Wunsch, dass man das so aufsetzen kann, dass die Elemente des Errays
+ modifiziert werden können, ja, ohne dass wir diese alle kopieren müssen, ja, dass wir also ohne diese
+ Elemente kopieren zu müssen, dass wir trotzdem mit denen arbeiten können und das ist die Motivation
+ für die Referenz-Semitics, ja, wenn Sie also eben mit großen Datenmengen arbeiten, sparen und eben
+ nicht alle Elemente verändert werden müssen, dann helfen Ihnen die Referenz-Semitics, ja, also
+ deswegen, wenn Sie eben eine Methode ein erlauben, den Erray oder später auch ein Objekt als Parameter
+ zu bekommen und dann zu modifizieren zu können, ja, ohne dass wir das kopieren müssen, dann können
+ wir Zeit und Platz sparen und wir können diese Updates oder die Veränderungen direkt im, direkt
+ machen, aber eben das große Problem ist jetzt eben haben wir die Situation, dass sowohl die eine
+ Methode als auch eine andere Methode, also ist ja Aufrufer oder irgendeine andere Methode, die
+ aufgerufen wird, dass die alle diese Errays modifizieren können, das heißt wir müssen dann viel
+ mehr aufpassen, was für Modifikationen das gemacht werden, ja, also das ist eben die Hauptmotivation
+ für diese Referenz-Semitics, ja, wenn die Variable eben eine Referenz auf einen Erray enthält und wir
+ übergeben jetzt diese Referenz, dann kann die Methode, die die Referenz bekommen hat, mit dieser
+ mit diesem Erray arbeiten, die kann modifizieren, die kann alles Mögliche mit den Elementen machen,
+ ja, denn das der Erray wird nicht kopiert, sondern wird übergeben, ja, so, also wenn sie so wollen,
+ wenn der eine Methode die Elemente änderte, dann eben bekommt die andere Methode oder der
+ Aufrufer bekommt diese Endungen mit, ja, und wie funktioniert das, sehen Sie, wir haben also
+ hier ein Programm, also zwei Referenzvariable hat, lässt diese Referenzvariable A auf den
+ selben Erray verweisen, wie diese Referenzvariable B, die verweisen beide auf den selben Erray, ja,
+ und jetzt habe ich, irgendwo habe ich eine Methode, die nenne ich mal method, ja, und die nimmt einen
+ Int-Parameter, einen Int-Erray als eine Referenz auf einen Int-Erray als Parameter entgegen, ja,
+ und wenn ich jetzt hier diese Methode aufrufe und diese Referenz übergebe, das ist ja der Verweis
+ auf dieses Element, ja, was passiert dann, das ist dann so, als ob ich dieser lokalen Variable P A,
+ das ist ja der Parameter, das ist ja eine lokale Variable in dieser Methode, als ob ich der die
+ Referenz auf den Erray zugewiesen hätte, die ich in meinem Erray, in meiner Referenzvariable
+ lokal A gespeichert habe, ja, also wenn die Methode hier aufgerufen wird, dann wird diese
+ Referenzvariable P A, dieser Parametervariable, die wird jetzt so aufgesetzt, dass sie auf den
+ selben Erray verweist, auf den das Programm hier mit lokal A und lokal B eben halt verwiesen hat, ja,
+ so funktioniert das ja und daher eben werden durch die, wenn ein Erray mit oder ein Erray-Parameter
+ da ist, dann werden die Werte eben nie kopiert, sondern es findet nur so eine Operation statt,
+ in der eben wie, als ob ich hier oben lokal das machen würde, ja, also lokal heißt in der Methode
+ das machen würde, wird die entsprechende Referenzvariable benutzt, um diese Referenzvariable
+ richtig zu initialisieren, ja, also wenn diese Methode so eine Referenzvariable bekommen hat,
+ dann kann sie den Erray verändern und die Veränderungen sind für den Aufrufer sichtbar, ja, und das war
+ eben anders bei den Variablen der Basestypen, ja, da hatten wir gesehen, dass die Methode machen
+ können, was sie wollen, der Aufrufer ist davon nicht betroffen, ja, so, also damit jetzt zurück
+ zu dem Problem, das wir hatten, ja, also wir können jetzt die Elemente hier in der Methode
+ selber verändern, also hier habe ich die Zuweisung, wo ich das entsprechende Element auf Null setze,
+ wenn eben das Element kleiner als Null ist, ja, und alle anderen Elemente sind davon nicht betroffen
+ und deswegen brauche ich auch keinen Return-Typ hier und deswegen fehlt auch hier ein Return, ja,
+ weil eben halt diese Methode erledigt die ganze Arbeit eben durch die Modifikation des Parameters,
+ ja, der Parameter wird hereingegeben, wird bearbeitet und wird dann eben halt am Ende von
+ der Aufrufermethode wieder angesehen und kann dann damit weiterarbeiten, das ist der Sinn der Sache,
+ ja, also hier habe ich das Programm, ja, hier nicht diesen Räh dann eingebe und danach das
+ Ausdruck, dann ist in der Tat das so, dass die Elemente, die kleiner als Null waren, die wurden
+ auf Null gesetzt, ja, also da müssen sie immer wieder im Kopf haben, wenn ein Räh als Argument
+ übergeben wird, dann wird der Räh nicht kopiert, sondern der Parameter verweist auf den
+ selben ursprünglichen Räh, ja, und wenn es irgendwelche Modifikationen gibt, dann eben halt werden
+ diese Modifikationen sichtbar sein, die sind dann so wie für alle sichtbar, ja, so, also deswegen
+ sagt man auch in manchen Texten lesen sie vielleicht, dass die Rähparameter by reference
+ übergeben werden, das ist so der, um darauf hinzuweisen, dass dieser, dass dieser Parameter eben
+ nicht kopiert wird, sondern dass wir eben die Referenz sehen, ja, so, also das immer wieder, ach,
+ denken sie da, ja, nochmal als Beispiel und dann können wir die Pause haben, ja, also ich habe
+ hier diesen Int Räh Z, den ich mit Z erreiche, ja, das heißt irgendwo habe ich hier in meinem System
+ den einen Räh mit drei Elementen, die so initialisiert wurden und ich habe das, können
+ sich vorstellen wie ich den Drucker, ja, und jetzt habe ich eine Methode, die ich aufrufen werde und
+ der ich diesen Parameter Z, die Referenz auf den Räh, auf den Z verweist als Parameter übergeben
+ werde, ja, also das erste, das erste Print ergibt natürlich hier oben sehen Sie das Output, ja,
+ gibt natürlich 1, 3, 5, ja, so, jetzt habe ich die Methode, habe ich irgendwo in meinem Programm
+ diese Methode geschrieben, ja, die nimmt eine Referenz variable x entgegen, die ein Int auf
+ einen Int Räh verweisen muss, ja, und dann setze ich das Element, das letzte Element setze ich auf
+ diese, auf den Wert 9, ja, ich finde das letzte Element, indem ich eben das Längstattributes
+ erregt mir an, gucke einen davon abziehe und dann das als Index benutze für x und das auf 9
+ setze, ja, so, und jetzt gehe ich, mach also ruf ich dich ja auf, das ist was passiert,
+ was passiert ist, dass diese variable x, ja, die verweist jetzt auf den selben Räh da, ja, so,
+ und jetzt macht ihre Arbeit und jetzt drückt sie eben aus, hier wie die Print in, ja, drückt sie aus
+ diese variable, diesen Räh x und was wird die da ausdrucken, da drückt sie aus eben 1, 3, 9,
+ weil diese Zuweisung hier hat diese 5 in einen 9 geändert, ja, so, und jetzt sind wir hier fertig
+ und wenn wir hier fertig sind, geht es hier weiter und was drückt diese Methode jetzt,
+ die drückt das selber, ja, weil die Veränderung, die wir da gemacht haben, ist auch im anderen
+ sichtbar, ja, so bekommen wir das, bekommt der das einfach mit, ja, so, und eben jetzt vielleicht
+ noch kurz so zum als kleiner Hinweis, jetzt, wenn wir diese Rays da so haben, ja, hier drücken wir
+ dir, wenn ich in der J-Share bin, dann drückt der, der ist ziemlich elegant, aber in meinen Programmen
+ drückt er sie nicht so elegant, ja, wenn ich hier das machen sollte, wenn ich sagen würde, hier
+ drücken sie den Räh, was gibt es dann das Output, dann gibt es irgend sowas komische, sowas,
+ solche komischen Stringe da, i und dann irgendwas, ja, das ist zwar richtig, ja, aber das hilft
+ uns auch nicht weiter, ja, und jetzt gibt es dafür eine Serviceklasse, die heißt Rays, ja, so, und
+ das ist eine Bibliothek, in der verschiedene Methoden sind, mit der ich Operationen machen kann,
+ und unter anderem gibt es da die Methode Thustring, ja, die geht nämlich hin und nimmt den Räh und
+ gibt mir dafür einen String zurück, ja, so, also wenn ich mit der arbeiten will, dann muss ich sie
+ importieren, sonst kennt das System die nicht, ja, aber wenn ich die einmal importiert habe,
+ dann kann ich mit der arbeiten, ja, und es gibt da auch eine Equals Methode, ja, mit der kann ich
+ jetzt checken, ob zwei Rays equal sind, egal was für Arten von Rays das sind, ja, wenn ich zwei
+ Rays habe, diese Equals Methode gibt Trut zurück, wenn sie dieselben Werte haben und falls
+ anderenfalls, ja, und eben auch dieses Thustring ist sehr praktisch, ja, weil das drückt halt den Räh,
+ drückt den Räh aus, ja, wenn ich das eben dahin gebe, dann drückt das mit den Räh auf einer
+ diese Weise aus und für die die jetzt aufgepasst haben, hier gibt es noch eine andere schöne
+ Methode, Binary Search, falls sie mal sowas brauchen sollten und zuverherweise ihren eigenen
+ Code nicht dabei haben, ja, in der Klasse Rays, in der Service Klasse ist der bereits verfügbar,
+ gibt eine Reihe anderer auch sort, ja, das ist auch mit der Grund warum wir in einigen anderen
+ Vorlesungen sie nicht alles importieren dürfen, ja, aber bei uns dürfen sie, wir sind großzügig,
+ wir lassen sie importieren was sie wollen, okay, so, jetzt haben wir zehn Minuten Pause und dann
+ geht es weiter mit eben Invarianten, okay, hatten ja gesehen, dass wir Aussagen über Programme
+ machen, die Schleifen haben und so weiter und ich hatte ihnen da diese Methodologie vorgestellt,
+ wie wir Schleife und Invarianten zusammen entwickeln können und hatte auch schon damals darauf
+ hingewiesen, dass das kein Kochrezept ist, aber ich habe jetzt auch ein Beispiel, wie wir das mit
+ Rays machen können, ja, das ist also der gleiche Ansatz eben, diese vier Schritte, Invariante
+ bestimmen, den Rumpf bestimmen, dann den Loop Test so auswählen, dass am Ende die Aussagen
+ ausreichen, um zu zeigen, was der Loop machen soll oder das Programm machen soll und dann gegeben
+ falls Initialisierung, dass das die Invarianten am Anfang sicher sind, so, also wir hätten hier einen
+ Rays und ein Rays von Intwerten, den nennen wir items und wir wollen das größte Element da finden,
+ wir wollen das größte Element finden, das in diesem Rays auftritt, so, und das erste Schritt ist,
+ wir versuchen die Invariante zu bestimmen, wir müssen natürlich alle Elemente des Rays uns
+ angucken, um das größte Element zu finden, da gibt es nicht viel mehr zu machen können, ja,
+ also wenn wir das Invariante nehmen, dass der Rays hat irgendeine Anzahl N Elemente und wir fangen
+ da an von 0 bis k minus 1 mal durch zu gehen und wir machen das so, dass diese, die Invariante soll
+ ausdrücken, dass diese Zahl Max oder dieser Variable Max den größten Wert der Elemente in
+ diesem Bereich speichert, ja, und natürlich macht das nur dann Sinn oder ist das nur dann sinnvoll,
+ wenn wir sicher sind, dass die Anzahl der Elemente größer ist als k und größer ist als null,
+ weil sonst haben wir natürlich ein Problem damit, ja, so, und um das etwas einfacher zu machen,
+ da kürzen wir das manchmal einfach ab, ja, so, und es wäre eine mögliche Invariante,
+ die wir haben könnten, könnten viele andere finden, je nachdem wie viel Zeit ich habe,
+ werde ich Ihnen noch ein paar andere Erwarten im Lauf des Semesters zeigen, also andere Beispiele
+ für Situationen, wo andere cleverere Invarianten nötig sind, aber hier ist eine einfache Invariante,
+ die hilft uns eigentlich ziemlich gut weiter, so, also nehmen wir das also Invariante, ja, also
+ unsere Invariante sagt eben, dass Max den größten Wert in diesem Bereich enthält und eben, dass
+ natürlich die Länge größer gleich k sein muss und größer gleich null sein muss. Wenn wir solche
+ Aussagen, Sachen schreiben, da sind wir ein bisschen sloppy, ja, es ist nicht korrektes Java, das ist
+ halt einfach eine Aussage, die wir mal so machen. Klar ist für alle, um was es geht, das ist wichtig,
+ ja, so, also jetzt haben wir das Invariante und jetzt wollen wir den Rumpf so schreiben, dass die
+ Invariante gültig bleibt, ja, das heißt, dass wir jetzt also uns das nächste Element angucken
+ müssen, das wäre das Element in der Position k, ja, wir wissen ja, dass die Länge ist größer
+ gleich k, ja, gehen wir also hin und gucken, ob dieses nächste Element kleiner ist als Max oder
+ größer und wenn es größer ist, dann haben wir ein neues größeres Element gefunden und dann
+ müssten wir hier eine Zuweisung machen, in der wir jetzt in Max diesen Wert speichern, ja, und das hat
+ natürlich zur Folge, dass unsere Invariante jetzt erstmal gar nicht gültig ist und wenn eben das
+ kleiner ist, dann brauchen wir nichts zu machen, da ist nichts zu erledigen, ja, so und jetzt am
+ Ende, nachdem wir das gemacht haben, erhöhen wir das k um eins, ja, dann wissen wir, ah, jetzt
+ können wir hier weitermachen und jetzt gilt die Invariante wieder, ja, das können wir leicht
+ überlegen, dass das in der Tat der Fall ist, weil jetzt entweder war dieses Element kleiner als
+ das alte Element von Max, dann ist nichts passiert, dann ist Max noch immer das größte Element oder
+ das Item in dieser Position war größer, das Element in dem Rät, den wir mit Items erreichen, war
+ größer als Max, dann haben wir Max da gespeichert und damit ist, haben wir diesen Wert in Max gespeichert,
+ und damit gilt die Invariante immer noch, so, jetzt der nächste Schritt ist, wir wollen versorgen,
+ dass wenn der Loop mal aufhört, dass dann, wenn dieses Test falls, die Post Condition, die wir
+ gerne hätten, impliziert, jetzt was wäre ein guter Weg, das zu machen, na ja, wir wollen
+ halt sicher sein, dass eben dieses k nicht gleich der Länge ist, wenn k gleich der Länge wäre,
+ wenn das mal je gleich der Länge wäre, dann hätten wir hier potenziell ein Problem, so lange
+ das k echt kleiner gleich, kleiner, kleiner als die Länge ist, greife ich damit nur auf ein
+ legales Rähelement zu, und wie Sie sehen, wir haben hier sichergestellt, dass das k größer
+ gleich null ist, also das heißt wir durch das Erhöhung k, also wir sind sicher, dass es mindestens
+ null ist, das heißt wir haben keine negativen Zahlen, das heißt wird auch so immer ein gültiges
+ indexwert sein, so, und wenn wir das haben, dann können wir sicher sein, dass danach eben halt die,
+ das gewünschte, die gewünschte Aussage gilt, ja, danach gilt eben halt k ist gleich der Länge,
+ ja, das haben wir hier oben, das war unsere Bedingung, die wir gehabt haben, ja, und weiterhin gilt Max
+ ist das größte Element im Bereich von null bis k minus eins, ja, also da k jetzt die gleich der Länge
+ ist, ist das Max das größte Element in diesem Räheitems insgesamt, weil das geht jetzt ja eben
+ halt bis zur Länge minus eins, das ist das letzte Element, ja, so, ja, so, also damit habe ich also
+ erreicht, dass ich nach Ende des Loops das gewünschte Ergebnis zeigen kann, so, und jetzt müssen wir uns
+ sicherstellen, dass die Initialisierung so ist, dass der Kot, den wir da schreiben, die Invariante
+ sicherstellt, ja, unsere Invariante war das hier, ja, wir wollen sicher sein, dass das Max den
+ größten Wert in dem Bereich hält, ja, und die Länge, also Max, items dort längs, ja, größer als
+ größer gleich k ist, dass auch größer gleich null sein muss, und wie machen wir das? Naja, ein
+ Weg, das zu machen ist, indem wir k mit eins initialisieren und Max auch mit den Wert geben,
+ den wir im ersten Element, im Element mit index null finden, ja, damit haben wir eine, das ist
+ zumindest der größte Wert im Bereich von null bis null, ja, klar, da ist ja nur ein Element und
+ danach haben wir gesehen, macht der Loop das, was wir wollen, ja, so habe ich dann sichergestellt,
+ dass das funktioniert. So, jetzt wäre ich eigentlich fast fertig, aber da ich eben mit arrays arbeite,
+ muss ich noch paar Sachen mir überlegen, ja, nämlich ich muss sicherstellen, dass wirklich die,
+ dieser array eine Länge hat, die größer als null ist, ja, wenn der array eine Länge von null hat,
+ also keine Elemente hätte, dann könnte ich nicht auf dieses Element zugreifen, ja, also muss ich
+ sicherstellen, als eben zusätzliche Voraussetzung, ja, dass dieser array mindestens ein Element hat,
+ mindestens das Element mit dem index null, ja, das wird hier, muss ich auch noch verlangen, ja,
+ und das ist dann die Pre-Condition, die ich für das ganze Programm brauche, damit das eben funktioniert,
+ ja, so, unsere Pre-Condition eben entweder wird die in der Aufgabenstellung bereits vorgegeben,
+ das ist sehr schön, ja, manchmal eben ist das nicht, dann müssten sie sie eben angeben, damit
+ eben ein Klient, also jemand, der ihr Programm später oder ihre Methode später bearbeitet,
+ benutzen möchte, weiß, was für eine Bedingung erfüllt sein muss, ja, das heißt also,
+ dann kann man das nur dann machen, wenn der array wirklich Elemente hat, ja, und außerdem müssten
+ wir eventuell noch feststellen, ob die Referenz, die wir bekommen, eben null ist, das müssten wir
+ auch noch vielleicht ausschließen, ja, wenn ich sage hier, dass die, dass die Länge mindestens
+ eins ist, dann weiß ich, da muss etwas sein, da kann das, kann das keine Null-Referenz sein, ja,
+ also da kann keine Referenz auf Null sein, ja, das müssten wir auch noch festhalten, oder sie müssten
+ eben eventuell eine if-Statement einführen, das testet, dass das der Fall ist oder nicht, so,
+ also, wie gesagt, das Gute ist, wenn wir das genau festhalten, können wir nicht später in die
+ Belangt werden, wenn jemand unsere Methode aufruft und sich nicht an die Pricondition
+ gehalten hat, ja, wenn jemand dann irgendwas versucht, dahin zu rufen, dann reinzustecken,
+ dann beschwert sich das System, oder wir sind zumindest nicht verantwortlich, ja, so, also,
+ Erre ist nochmal kurze Zusammenfassung, so, was heißt das hier, ja, wenn ich hier das sehe, ja,
+ Sie müssen dieses klammer, diese eckigen Klammern sehen, als ich habe hier ein Erre von, ja, mein
+ X verweist auf ein Erre von Intz, immer ist kein gutes Deutsch, aber Sie wissen, was ich meine, ja,
+ ja, Intz, ja, oder was heißt das hier, ja, das heißt, Y verweist auf einen Erre von Strings, ja,
+ also von String-Elementen, ja, so, und was heißt denn das jetzt, überlegen Sie, was heißt denn das
+ jetzt, das heißt, ich habe hier einen Verweis auf einen, auf was, ich habe einen Verweis auf
+ Verweise auf Erre, ich habe einen Verweis auf einen Erre von Erre von Intz, ja, das ist so, so kann
+ ich ein mehrdimensionales Erre in Java konstruieren, ganz logisch, ja, also was heißt das hier,
+ gucken wir es an, ja, wenn ich hier ein Erre von Erre verweisen, ja, ich habe hier einen Erre,
+ hatten wir hier schon mal, ja, der blaue Teil, ja, das ist der Teil hier, auf den sich dieser
+ Erre hier verweist, ja, so, der verweist hier auf diesen Erre von Intz, ja, und hier jeder von denen,
+ ja, ist eben ein Erre, also hier ein Erre von Intwerten, ja, hier habe ich jetzt also einen Erre,
+ der Länge 5, also mit 5 Elementen, ja, und hier habe ich eben gesagt, ich möchte davon Erre von 10
+ Elementen haben, ja, also habe ich hier einen Erre mit 5, wenn Sie wollen, Zeilen, ja, von je 10
+ Elementen, und wir werden alle, wenn ich das so mache, mit 0 initialisiert, also hier habe ich
+ ein paar weggelassen, aber da sehen Sie schon, wie das geht, ja, so geht das, ja, so, ja, und so was,
+ also experimentieren Sie mit so was, ja, dass das eben richtig für Sie funktioniert, ja, wenn ich jetzt,
+ jetzt können Sie in Java etwas machen, was Sie auch in anderen Programmiersprachen können, ja,
+ dieser Erre hier, der ist ja nur ein Erre von Verweisen, der sagt jetzt nicht, ja, hier wo ich
+ das deklariert habe, der sagt nicht, wie lang diese Zeilen sein müssen, ja, Sie könnten, wenn Sie
+ wollten, ein System haben, in dem vielleicht diese, erst diese Zeile, eine andere Anzahl Elemente hat,
+ das System lässt das zu, dann würde das nicht funktionieren, aber Sie können das machen, ja,
+ wie würden Sie das machen? Nehmen wir an, wir hätten jetzt mit dem eben deklarierten Rezett, wir
+ würden den Element mit Index 1 einen neuen Indere zuweisen, ja, also hier Index 1, da würde ich hier
+ das wegnehmen, und dann hätte ich jetzt hier einen neuen Erre mit Index, mit Index 012, also drei
+ Elemente, ja, und die hätten alle die Initialisierung, den Wert 0, ja, das könnte ich machen, ja, da ist
+ also für die, die das schon mal benutzt haben, die J-Share sehr praktisch, ja, wenn Sie das also
+ so in der J-Share machen, und Sie geben jetzt das Z aus, dann sagt, aha, wir haben hier einen Erre mit
+ fünf Elementen, die Verweise auf einen Erre sind, ja, und was sind diese fünf? Der erste ist ein Erre
+ mit zehn Elementen, der zweite verweist, also auf einen Erre mit zehn Elementen, der zweite verweist
+ auf einen Erre mit drei Elementen, das ist, was ich eben dazu gewiesen habe, und danach habe ich
+ wieder Verweise auf Erre mit zehn Elementen, ja, also damit, ich meine nicht, dass das, was ist, was wir
+ jetzt jeden Tag benutzen wollen, aber so können Sie eben, wenn Sie wollten, Erre, Erre konstruieren,
+ in denen die unterschiedliche Zeilen unterschiedlich lang sind, ja, so, also für Erre es gilt in Java
+ Referenz Semantics, andere Programmiersprachen, andere Regeln, ja, wenn ich also eine Zuweisung habe,
+ wo für zwei Referenzvariable A und B, ich die Zuweisung A wird gesetzt zu B machen, ja, dann
+ verweist A, danach auf den selben Erre wie B, und die werden nicht kopiert, ja, und dasselbe gilt,
+ wenn eine Referenzvariable als Parameter übergeben wird, ja, die aufgerufene Methode hat eine
+ Referenz auf den selben Erre, kann diesen selben Erre modifizieren und kann so Ergebnisse,
+ das Ergebnis an den Aufrufer zurückgeben, ja, und das war bei Ver.io Semantics eben anders, ja,
+ bei den Basestypen ging das anders, ja, da werden die Werte kopiert, ja, ja, und das heißt, wenn immer
+ wir einen Basestyp haben, ja, also wenn ich immer hier, jemand fragte mich auch im Chat, ja, wenn ich
+ hier ein Integer A habe und ich setze das, nehmen wir an, wir haben diesen Erre Numbers, ja, wir Numbers
+ von 3 oder irgendwas, ja, was heißt das, das geht, wir gehen jetzt nur hin, wir nehmen das Element und
+ speichern es hier in dieser Variable des Basestyp, dann gibt es keine Referenzen mehr, die Referenz,
+ die hatten wir hier in dem Numbers, das Numbers verwies auf den Erre und dann haben wir uns da
+ das Element mit dem Index 3 genommen und haben das dann entsprechend gespeichert, so, ja, also wenn
+ ich Basestypen habe, dann werden die eben immer kopiert und das gilt auch, wenn sie als Parameter
+ übergeben werden und deswegen sprechen wir da von Ver.io Semantics, ja, ich habe hier diese Variable A,
+ die wird die Richtung Wert 1, ich habe irgendwo eine Methode, nennen wir diese Methode MyMesset,
+ die erwartet einen Parameter x, die geht jetzt hin, ein Int, ein Intwert, ja, und dupliziert das und
+ speichert das in der Variable x, ja, das macht die so und dann druckt sie dieses x auch nochmal aus, ja.
+ Und was passiert jetzt hier bei der Ausführung, ja, wenn wir das Programm laufen lassen, wir haben
+ hier A auf 1 initialisiert, wir rufen die Methode MyMesset auf, ja, x bekommt den Wert 1, wir berechnen
+ hier 2 mal 1 ist 2, wir speichern den Wert 2 und wenn wir das drucken, gibt das hier als Output 2, ja,
+ und danach sind wir hier fertig und jetzt geht es hier weiter und was macht diese Anweisung,
+ wo wir jetzt diese Variable A drucken, die gibt uns natürlich wieder die 1 auf, weil was immer hier
+ in der Methode mit dem Basiswert passiert, in dem Basistypwert passierte, hat keinen Einfluss auf
+ die aufrufende Methode, das A hat immer noch den Wert 1 und ist unverändert, ja, das ist, ja, so.
+ Also, da hier war die Frage, sind alle Variable, Referenzvariable, die Antwort ist, nein, ja,
+ sehen Sie, dieses ist eine Basistypvariable, das ist der Wert, der wird gespeichert, übergeben,
+ die Methode kann machen, was sie will, was immer in der Methode passiert, bleibt in der Methode und
+ am Ende wird eben halt hier der Wert gedruckt, in diese Variable, in dieser anderen aufrufenden
+ Methode hat, ja, bei Referenz Semantics, ja, da werden die eben die Variable, die Re-Referenzvariable,
+ die werden da als mit Referenz übergeben, ja, das heißt die Parametervariable verweist auf
+ den selben Re, wie, oder später, wenn wir sehen, dasselbe Objekt, das gilt da genauso, ja, wie die
+ Variable im Aufrufer, ja, da haben hier den Re, haben hier den Int-Re initialisiert mit 1 und 2
+ und wenn wir jetzt das, da haben wir hier eine Methode, die nennen wir wieder mal Methode,
+ und die erwartet jetzt eben einen Int-Re-Referenz, ja, die erwartet hier eine Referenz auf einen
+ Int-Re, habe ich immer noch X genannt, um zu zeigen, dass die, dass der Name der Variable
+ überhaupt keine Rolle spielt, so, wenn ich jetzt also hingehe und das zum ersten Mal hier drucke, ja,
+ was bekomme ich daraus, bekomme ich 1 und 2 heraus, ja, bekomme ich hier als Ergebnis, ja,
+ dann druckte ich hier, habe ich den Re, da bekomme ich hier eben als Ergebnis 1 und 2, je nachdem,
+ wie der das gedruckt hat, ja, so, jetzt rufe ich diese Methode MyMesset auf, was macht die,
+ die setzt das Element mit Index 0 auf 9, ja, und danach druckt sie das wieder aus, und was gibt
+ die jetzt ja als nächstes aus, die gibt aus 9 und 2, ja, weil das Element mit Index 0 habe ich auf 9
+ gesetzt, ja, danach bin ich fertig und mache ich hier weiter, und jetzt ducke ich nochmal diesen
+ Re A aus, ja, und was ergibt das, na ja, das hat sich ja nichts mehr geändert, das ergibt wieder
+ 9 und 2, ja, so, das ist das, was ich hier bekomme, wenn ich dieses einfache Beispiel durchrechne, ja,
+ so, jetzt weiß ich nicht, finden Sie das langweilig? Wer findet das langweilig, sagen Sie ehrlich,
+ okay, wer findet das eine Herausforderung, wer ist überhaupt hier, also wer findet das, okay,
+ wer findet das interessant, aber möchte nicht mehr davon hören, okay, und wer möchte noch mehr
+ davon hören? Okay, ein paar Leute, okay, ja, aber ganz wenige, jetzt sage ich, soll ich mich an, also,
+ also, mach mal paar Quizzes habe ich, die restlichen Quizzes, die können Sie dann in der Übung
+ uns grob vermachen, also haben wir hier eine Methode plus 1, die nimmt einen Parameter vom Typ
+ int entgegen, verändert, erhöht ihn um 1, gibt den Wert zurück, und ich habe hier, möchte danach
+ wissen, was ist der Output von, wenn ich j und k ducke, denken Sie, grunde nach, während ich die
+ Tür wieder mal zu mache, und überlegen Sie, was für Zahlen da gedruckt werden müssten,
+ der kam wieder rein, also der kam aber rein, ja, kam aber rein, bin ich ziemlich sicher,
+ wenn ich würde da klopfen, also ist so die Klimaanlage flippt aus, die Klimaanlage flippt aus, wenn die
+ Tür offen ist, und dann wird es hier, vielleicht wollen wir es jetzt alle warm haben, aber okay,
+ was klar, die Antwort ist, es wird 3 und 4 gedruckt, ja, warum die Methode gibt hier,
+ die kriegt die als Parameter 3, das ergibt den Wert 4, wir geben 4 zurück, das heißt,
+ wir speichern 4 hier und geben das raus, aber die variable j natürlich ist davon nicht betroffen,
+ ja, so, jetzt haben wir hier eine andere Methode, die einen, die haben wir oben,
+ re x und wir geben den, das Element mit index 0 als Parameter, und hier haben wir wieder die
+ gleiche Methode, Plastvan, die wir davor hatten, und jetzt drucken wir aus diesen re x, nachdem
+ diese Methode ausgeführt wurde, oder wir könnten die auch einfach so separat austrucken, ja, so,
+ was, was gibt es denn hier als Aufgabe? Sollte wahrscheinlich M sein, es ist dann leichter zu
+ sehen, so, was gibt es hier, ja, also, wenn ich hier eben die Methode Plastvan habe, die das
+ erste Element erhöht, ja, die nimmt dieses Element, das hat den Wert 2, ja, dem Wert,
+ hier kommt, hier kommt der, hier ist der Wert 2, hier kommt der Wert 2 hin, das wird auf 3 erhöht,
+ daher gibt es als Rückgabe den Wert 3, das heißt M bekommt den Wert 3, aber der re x ist unverändert,
+ weil wir machen keine Änderungen bei x, ja, so, ja, das ist also, daher ist das eben die Ausgabe,
+ die wir haben wollen, wir haben wahrscheinlich falsch gedruckt, so, okay, hier haben wir noch einen,
+ nehmen wir hier einen Methode Plastvan, die erwartet eine Referenz auf einen int re, so,
+ hier oben haben wir wieder unseren re x und was macht diese Methode jetzt, die geht hin über alle
+ Elemente oder zumindest alle die da verfügbar sind, erhöht sie den Wert um 1, ja, so, was passiert
+ denn jetzt, wenn wir nach Ausführung dieser Methode jetzt hier den, diesen re x drucken,
+ ja, was macht ihr, kommen wir hier hin, ja, wir haben hier e y, bezieht sich hier auf diesen re,
+ ja, denselben re wie x, ja, jetzt gehen wir hin, erhöhen alle Elemente um 1, das ist 3, 5 und so
+ weiter, ja, und wenn wir das dann drucken, bekommen wir genau das heraus, ja, so, also, wer fand das jetzt,
+ wer hat Frage dazu oder wer, ja, genau, hier gibt es keinen Return, weil ich habe die Methode auch
+ mit "w" deklariert, die hat keinen Return Wert, ja, ich muss keinen Return Wert ist nicht zwingend,
+ wenn ich das nicht will, dann mache ich Return Typ "w" und das sagt dann, es ist kein Return Typ,
+ okay, dann nehmen Sie mal Ihre, Ihre Device raus, wir haben noch ein paar mehr von denen, aber ich
+ habe hier einen, die bisschen, so, nehmen wir doch den, ja, und sie sollen mir jetzt sagen, was für Output
+ da herauskommt, ja, so, und das schicken Sie mir, also, das schreiben Sie als Antwort rein, aber bitte mit
+ diesen eckigen Klammern und mit den Komma wie nötig, ja, Lehrzeichen können Sie nach eigenem
+ Gusto machen, aber eben die Kommas und die eckigen Klammern, die brauche ich halt, so, hier haben wir
+ also eine Methode plus ohne Frage, ja, so, und wir rufen das hier auf, erwarten einen Parameter Y,
+ das ist ein Int, eine Referenzvariable, die auf ein Int erhebeziehen kann und ja, da arbeiten wir ein
+ bisschen was und dann ist die Frage, nachdem wir das für die, nachdem wir das mit dem Parameter G,
+ den wir hier oben initialisiert haben, aufgerufen haben, was ist die Ausgabe, wenn ich danach diesen
+ Array mittels, so, Pretty Print mache, ja, so, und bitte schicken Sie, ich freue mich immer für
+ Antworten. So, wer fand denn diese Aufgabe leicht trivial, langweilig oder irgend sowas? Wer fand
+ denn, okay, heben Sie sich an, wer fand die leicht trivial, langweilig? Okay, okay, was sind die richtige
+ Antwort, ja, die richtige Antwort ist 2, 4, 6, 8, ja, so, jetzt warum? Ich meine, so, warum ist das
+ die richtige Antwort? Sehen Sie, wir haben hier diesen Array, ja, haben diesen Array, wir haben hier
+ den, diesen Array G, ja, der Rays G, der ist, hier wird hier erstellt und G bezieht sich auf
+ diesen Array jetzt hier, ja, und jetzt rufen wir die Methode auf mit G als Parameter, woraufhin das
+ Y sich auch auf diesen Array bezieht, ja, so, jetzt als nächstes geht aber das Programm hin und
+ erstellt ein Array T mit Referenzvariable T und das ist auch wieder ein Array, gleiche Länge, damit
+ es auf das Leid passt und dieser Array wird jetzt entsprechend verändert, was immer der Loop da sagt,
+ ja, und wenn der fertig ist, dann lassen wir dieses, also kriegen da neue Zahlen rein, ja, jetzt lassen
+ wir danach die Referenzvariable Y, die bisher auf den Array da oben verwies, jetzt auf diesen
+ Array verweisen, ja, so, und danach sind wir fertig, ja, und wenn wir jetzt hingehen und danach drucken,
+ was dieser, was dieser Array, was in dem Array G ist, bekommen wir genau das raus, was sie davor
+ auch hatten, ja, jetzt, ich kann Ihnen jetzt nicht auf die Schnelle sagen, wie das, wie das,
+ wie das diesmal ausging, aber hier zeige ich Ihnen das Ergebnis aus dem letzten Jahre, ja, also wenn
+ Sie es nicht richtig hinbekommen haben, ja, also eben 37, 38% haben es letztes Jahr richtig hinbekommen
+ und dann gab es diverse andere Vorschläge, ja, also wie gesagt, wenn Sie es nicht richtig hinbekommen
+ haben, ist das kein, soll das nicht entmutigen, ja, aber Sie müssen wirklich da genau gucken, Sie
+ müssen genau sehen, was in so einem Programm gemacht wird, paar Leute haben wir das hier in den Chat
+ geschrieben, das ist für mich nicht ganz so einfach zu auszuarbeiten, wie wenn ich es eben mit,
+ mit dem, mit der Edu App bekommen, da kann ich das dann nach bearbeiten, so, also wie gesagt,
+ das ist ein einfaches Beispiel, was einem da alles passieren kann, so, und damit sind wir eigentlich
+ mit Errace fürs erste Mal fertig und wir kommen jetzt dazu uns etwas mehr, wie ich sagte, die mit
+ den Klassen zu beschäftigen, weil die beiden hängen ja ganz dicht mit den Errace zusammen,
+ das ist ja alles Errace und Klassen-Objekte sind verwandte Themen und darum wollen wir jetzt da
+ weitermachen. Und da haben wir verschiedene Sachen, die wir uns angucken wollen, ja, und jetzt gucken
+ wir mal allgemein an und vielleicht können wir dann am Freitag sehen, wie wir Klassen selber
+ entwickeln. Also, also Klassen können in Java für verschiedene Zwecke verwendet werden. Einen
+ Zweck haben wir bereits in der ersten Teil dieser Folie gesehen, ja, wir implementieren einen Algorithmus
+ oder eine Applikation, ja, und diese Service wird dann von der, wird dann zur Verfügung gestellt
+ und wenn immer wir das Programm ausführen, dann führen wir eben diesen einen Algorithmus auf,
+ wobei Algorithmus für einige der Probleme, die wir jetzt hier hatten, ein ziemlich hochtrabender
+ Begriff ist, ja. Dann gibt es die Möglichkeit, das haben wir jetzt gesehen, dieser Klasse Errace,
+ wo jemand eben so eine Bibliothek zusammenstellt. Diese Klasse oder dieser Bibliothek lieferte
+ uns verschiedene Methoden, wie zum Beispiel die Möglichkeit zwei Errähreferenzen zu vergleichen,
+ ob sie auf Errace verweisen, die dieselben Elemente haben oder wir konnten einen Erräh besonders
+ gut drucken, ja. Es gibt eine andere, die heißt MES, die enthält diverse MES-Routinen, ja. Und dann
+ können wir Klasse benutzen, um irgendwelche Services für Objekte zu realisieren. Und das
+ hatten wir so ein bisschen gesehen, wir hatten das gesehen im Scanner und in dem Zufahrt-Zahlen-Generator,
+ ja. Wir haben ein Objekt erstellt für den Scanner und dann hat der Scanner uns die Zahlen
+ geliefert, ja, oder wir hatten einen Zufahrt-Zahlen-Generator erstellt und dann gab es die Möglichkeit,
+ da nächst eben die nächste Integer zu bekommen. Und das haben wir, da haben wir eben diesen
+ New-Operator verwendet, um die zu erstellen und wir haben auch ein paar Mal das benutzt, ohne den
+ New-Operator zu verwenden, warum? Weil die bereits existierten, ja. Also wie System.out oder System.in,
+ das sind zwei weitere Objekte im System, die wir für Ein- und Ausgabe verwenden konnten, ja. So,
+ also und das ist der gleiche Ansatz, den wir benutzen werden, wenn wir jetzt selber Services,
+ Objekte implementieren, die Services anbieten, oder wenn wir irgendetwas realisieren wollen, ja. Und
+ das ist der Ansatz, den wir benutzen werden, um selbst entwickelte Klassen eben in dieses System
+ einzubauen und damit eben etwas zu machen, ja. So, also diese Trennung ist nicht so strikt, ob
+ sie jetzt hier einen Algorithmus haben oder ob sie da aufgrund irgendwelcher Eingaben zwischen
+ mehreren Auswählen oder sowas, ja. Das ist alles letztlich Einschätzungssache. Aber im Prinzip
+ sollten Sie sehen, dass es eben halt diese drei Möglichkeiten gibt, Klassen einzusetzen. Einmal
+ so als eine Stand-alone-Applikation, das der erste Fall eine Bibliothek mit verschiedenen
+ Services oder eben Objekte, die wir selber realisieren, um Services zur Verfügung zu stellen, ja. Und
+ natürlich, wenn wir sagen Algorithmus, gibt es eventuell Teilprobleme, die durch Teilalgorithmen
+ behandelt werden, ja. Also, in dem ersten Fall, ja, wo wir eben einen Algorithmus da implementierten,
+ wie ging das? Wir haben diese Methode Main benutzt, die hat dann eventuell andere Methoden
+ aufgerufen, aber diese Methode Main wurde automatisch ausgeführt und der Name des
+ Programms war quasi der Name des Services oder der Applikation, die wir entwickelt haben.
+ Wenn immer wir diese Anwendung ausgeführt haben, wurde Main ausgeführt und das machte dann
+ was Last Eventual, etwas vom Input oder so, aber das machte das so. Und dann haben wir gesehen,
+ für den zweiten, dass wir so Klassen eine Bibliothek gefunden haben, wie diese Race Bibliothek oder
+ die Scanner Bibliothek, mit der wir eben dann eben Input erledigen können oder eine bessere
+ Ausgabe haben, ja. Und jetzt eben kommen wir dazu, dass wir die Klassen selber entwickeln,
+ wenn wir anfangen, werden die noch sehr einfach sein und es geht da mehr ums Prinzip, aber später
+ werden wir eben andere Klassen entwickeln, die dann etwas komplizierter Aufgaben für uns erledigen
+ können, ja. Also, und so eine Klasse wird eben dadurch implementiert, dass wir eben diesen
+ Glaskonstrakt verwenden, ja. Dadurch sagen wir, hier ist eine Klasse, ja, und das hatten wir eben
+ auch an sich bisher gemacht, ohne genauer zu sehen, was das hieß, weil wir hatten eben da am
+ Anfang nur mit dieser Methode Main gearbeitet, gegebenenfalls mit Untermethoden, ja. Und das
+ Keyword Public ist da wichtig, weil das erlaubt ist im System diesen Service auch zu finden, ja. Und
+ diese Klasse enthielt letztlich das Programm, das dann in dieser Methode Main untergebracht wurde,
+ ja. So, also das war so der Ansatz, den wir bisher gewählt haben, ja. Und wenn wir jetzt eben so
+ ein Programm dafür diese geschrieben haben, dann hatte das Programm eigentlich keinen
+ richtigen Namen, ja. Wir haben halt diesen den Namen der Klasse genommen, der war in einer
+ bestimmten Datei und das war dann der Service, den wir aufgerufen haben. Aber der Service selber
+ hatte eigentlich keinen Namen und deswegen sprechen wir da von einem namenlosen Dienst, ja. Also,
+ der, die Klasse, die wir hatten, stellte den Dienst zur Verfügung und die Klasse war der
+ Programmname und der Dienst hatte keinen weiteren eigenen Namen und das lief dann entweder in der
+ Eclipse oder in der, in der Shell ganz gut, weil dieses Main automatisch aufgerufen wurde, ja. So.
+ Und das ist praktisch, wenn Sie eine Anwendung haben, die Sie da überall verwenden wollen. Aber
+ das ist nicht der Weg, den wir haben wollen, wenn wir eben etwas kompliziertere Sachen selber
+ kontrollieren wollen. Und dann hatten wir in dem zweiten Fall, wo wir eben mit diesen Service-Klassen
+ arbeiten, ja. Da brauchten wir ein Objekt oder den Klassennamen, ja. Also, Erreys war der Name
+ der Klasse und dann hatten wir die Methode Tustring, die es uns erlaubte, einen Erreys zu
+ konstruieren, ja. Oder wir hatten hier ein Objekt, die Konsole, die wir gebaut hatten oder erstellt
+ hatten, indem wir den New-Operator mit dem Scanner verwendet haben und dann konnten wir da die
+ Methode Tustring aufrufen, sorry, und die Methode Next-Int aufrufen, um den nächsten Wert vom
+ Terminal zu bekommen, ja. Also, da geben uns diese Klassen eben Dienste, die wir entweder namenlos
+ oder durch aufrufen bekommen können, ja. So. Jetzt ein etwas anderer Gesichtspunkt wäre doch, dass
+ wir sagen, egal, was wir da haben, alles stellt uns irgendeinen Dienst zur Verfügung, ja. Das
+ Scanner stellt den Dienst zur Verfügung, nachdem wir ihn erstellt haben, mit dem wir den Next,
+ also, dass wir die nächste ganze Zahl bekommen können, ja. Und das ist so der Diensteblick. Aber
+ der andere Blick wäre doch zu sagen, ha, wir arbeiten hier mit Daten, ja. Und diese Daten sind
+ zum Beispiel Scannerobjekte. Und für diese Scannerobjekte, da gibt's Operationen, ja. Ein Scannerobjekt,
+ das den System.out als Parameter bekam. Für das ist dann irgendeine Operation, oder System.in als
+ Parameter kam, sind dann Operationen definiert, ja. Oder ich kann eben System.out benutzen,
+ um PrintLine zu machen. Aber das geht alles immer nur, wenn diese Objekte in einem bestimmten
+ Zustand sind. Ich muss das vorher organisiert haben, ja, sodass dann der Scanner, wenn er von
+ System.out inlesen will, oder der Drucker, wenn er eben halt etwas ausgeben will, der muss in
+ den bestimmten Zustand sein. Der muss zumindest wissen, wo ist das Fenster, von dem ich lese und
+ wie bekomme ich dadurch Daten, ja. Und wenn ich diesen Datenblick habe, dann sind die Dienst
+ da eigentlich, sagen wir, sekundär. Wichtig ist, dass ich meine Objekte in einen bestimmten
+ Zustand bekomme, in dem ich dann bestimmte Schritte machen kann, ja. Und das ist so eine der Grundideen,
+ mit der wir uns jetzt mehr beschäftigen werden, ja. Also ein Typ besteht letztlich aus einem oder
+ mehreren Zuständen und die eben ein Objekt annehmen kann und verschiedenen Operationen,
+ die mit diesem Objekt gemacht werden können, ja. So ein Datentyp beschreibt letztlich, und das gilt
+ unabhängig von, wie ich meine Dat, was für Typ mich habe, ja. Der Datentyp beschreibt Operationen und
+ zulässige Werte und das gilt auch für die einfachen, Basistypen, die wir vorher hatten, nur gab es da
+ keine Klassen, ja. Da gab es einfach aräthmetische Operatoren, die waren vom System vorgeschrieben,
+ ja. Und es gab eine Methode, mit der wir das in Strings umwandeln können, aber es gab auch
+ Einschränkungen, zum Beispiel dürfen wir nicht durch Null dividieren, ja. Oder beim String, das war
+ auch so ein, den wir kennengelernt hatten, da gab es den Plus-Operator und wir wussten, dass wir,
+ wenn wir die Tor-Upper-Case-Methode, Operation verwenden, oder die Tor-Upper-Case-Methode ausführen,
+ dann gibt es irgendein neuen String. Und jetzt hatten wir heute Vormittag oder letzten Woche gesehen,
+ ja, mit, wir haben hier Rays für ganze Zahlen und da gibt es dann auch vorgeschriebene Operatoren,
+ ja, die vorher bereits definiert sind, wie diese eckigen Klammern, mit denen wir auf die, auf
+ einzelne Elemente zugreifen können, oder wir können auf das Längsattribut zugreifen und so
+ die Länge dieses, dieses Rays herausbekommen, ja. So, also diese allgemeine Idee, was ein Typ ist,
+ ja, die wird jetzt auch für die Klassen angewendet, ja. Klassen beschreiben auch einen Typ, das heißt,
+ sie beschreiben auch wieder Eigenschaften von Daten, Zustände, die das System annehmen kann, ja.
+ Mathematisch könnte man sagen, der Typ beschreibt eine Menge oder eine Kategorie von Datenwerten,
+ ja. Der sagt dann, was für Datenwerten, werte legal sind. Wenn wir jetzt die Konsole angucken,
+ ist das wahrscheinlich schwer zu visualisieren, wie diese Datenwerte aussehen, aber in anderen
+ Situationen könnten wir uns auch ein leichter vorstellen, ja. Und dieser Typ schränkt dann auch
+ die Operationen ein, die wir mit diesen Datentypen machen können. Also auch wenn ich den Scanner
+ habe, kann ich die eine ganze Zahl lesen oder eine reelle Zahl lesen, aber ich kann nichts
+ was Scanner miteinander erdieren. Und die Basitypen, ja, die sind eben so die Ausnahme,
+ das sind eben Typen ohne Klasse, ja. Die sind eingebaut mit den üblichen Operatoren und Operationen
+ und in Java können wir da keine neuen hinzufügen, ja. Da sind eben halt, die sind auch ein Typ
+ aber eben ein Typ ohne Klasse, ja. So. Und den Begriff Objekt verwenden wir jetzt als Sammelbegriff
+ für alle Datenwerte, die durch irgendeine Klasse beschrieben werden können oder durch oder errasseln
+ oder aus errasseln, ja. Also Scanner ist ein Objekt, also ein konkreter Scanner, den wir erstellt haben.
+ Ein konkreter Zufallszahlengenerator ist ein Objekt, ein stringes ein Objekt, ein erhees ein
+ Objekt, ja. Das sind die Regeln, das sind die Sachen mit denen unsere Programme erarbeiten.
+ Und wenn wir uns auf ein Exemplar, auf ein Objekt beziehen wollen, also auf ein konkretes Objekt
+ beziehen wollen, dann sagen wir manchmal, das ist ein Objektexemplar oder wenn wir Zeit sparen wollen,
+ dann sagen wir ein Exemplar. Aber bevor ich mich auf, genauso wie mich auf ein erhees arbeiten kann,
+ nachdem der existiert, ich muss diesen erhees erschaffen oder erstellen. Und manche Leute benutzen
+ im Deutschen das Wort "instanzieren", was aber nicht sehr gut ist, weil es auch verschiedene andere
+ Nebenbedeutungen haben könnte, ja. So. Und wir erstellen wir Objekte, naja, wir erstellen Objekte
+ mit dem New-Operator. Das haben wir schon gesehen. So haben wir einen neuen Scanner bekommen oder so
+ haben wir einen neuen Zufallszahlen-Generator bekommen. Wir können manchmal, es gibt auch ja,
+ manchmal können wir das durch eine Initialisierung machen, ja. Wir können für den String, den
+ können wir eben ein anonymes Objekt erstellen und dann eben so eine Initialisierung machen. Oder
+ wir können das so für die Integer-Errace machen, ja, für die Errace machen, ja. Jetzt kommt vielleicht
+ schon die Frage, aber könnten wir dann auch Strings mit dem New-Operator erstellen? Und die Antwort
+ ist im Prinzip ja, aber das ist nicht empfohlen. Und die kurze Antwort ist, weil Strings sind
+ besonders optimiert und dann ist das eben halt nicht, können das System etwas ärgern, wenn das
+ eben halt nicht anders, wenn wir sowas machen, es ist erlaubt, ja, aber machen sie es nicht, ja. So.
+ Und wenn ich jetzt auf irgendein Objekt zugreifen will, ja, wie bei den Erraces, ich brauche einen
+ Namen, der Name muss deklariert sein, der Name verweist auf das Objekt, ist also eine
+ Referenzvariable, ist nicht das Objekt selber, sondern eine Referenzvariable und dann gibt es eben
+ die Möglichkeit mehr Informationen eventuell über diesen Errace zu bekommen, ja. Und dann mit
+ der Einliste, die einzige Ausnahme, die ist Strings, da können sie auch mit Objekten arbeiten,
+ ohne dass sie eine Referenzvariable haben. Also Referenzvariable beziehen sich entweder auf
+ ein Array oder einen Strings oder einen Scanner oder irgendwas, beziehen sich immer auf ein Objekt
+ und sie brauchen so eine, um entweder eine Methode auszuführen, auf ein Element zuzugreifen, für
+ die Errace gibt es diesen Operator, für andere gibt es einen anderen Weg, das zu machen oder um mit dem zu arbeiten.
+ Ja, so, das also ist das, womit wir uns im nächsten, der nächsten Folgen um Beschäftigung
+ werden. Das wäre es für heute. Schönen Tag noch.
+ [Applaus]
+ [Beifall]
+ [Beifall]
