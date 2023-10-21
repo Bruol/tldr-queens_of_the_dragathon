@@ -26,6 +26,35 @@ def populate_lectures():
 
 def populate_videos():
     print("populating videos")
+    vid_dir = "../transcriptions/jsons/"
+    for js in os.listdir(vid_dir):
+        data = json.load(open(vid_dir + js))
+        video = Video()
+        video.inferred_title = data["lecture_title"]
+
+        for t in data["topics"]:
+            top = Topic()
+            top.title = t[0]
+            top.bulletpoints = t[1]
+            top.summary = t[2]
+
+            lenght = len(t[3])
+            if (length > 0):
+                top.chunk1 = data["chunks"][int(t[3][0])]
+            if (length > 1):
+                top.chunk2 = data["chunks"][int(t[3][1])]
+            if (length > 2):
+                top.chunk3 = data["chunks"][int(t[3][2])]
+
+            top.save()
+            video.topics.add(top)
+
+        with open ("../transcriptions/transcripts/" + js[:2] + "/" + js[:-5] + ".txt", "r") as f:
+            file = f.read()
+        video.transcript = file
+        
+
+
 
 def populate_topics():
     print("populating topics")
