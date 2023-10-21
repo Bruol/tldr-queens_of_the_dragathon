@@ -1,0 +1,876 @@
+ Okay, good morning. So today we'll talk about the Fourier transform. It's already announced
+ this earlier, this is a really important part of the lecture. So let's actually start with
+ a little video. You know, just, I don't know actually if I have the sound. But you know,
+ just to, okay I guess there's no sound, I think. Okay, well unfortunately no sound.
+ Anyway, so you might recognize this from the Blade Runner movie, the first one. Anyways,
+ it's the sequence where he's kind of step by step zooming in on, you know, a photograph,
+ scan photograph. Actually maybe there's sound. Actually there is sound. So you see these often
+ in movies, this kind of zooming in and zooming in and zooming in more and even in a sense
+ changing viewpoint a little bit, things like this. So this, of course there's limits. And
+ so as we look at this, the goal of these lectures and in general of this course, one of the
+ things is for you to really understand what those limits are, what makes sense, what's
+ feasible, how far you can push things and you know, beyond what point, it's just pure imagination.
+ So let's first actually look a little bit back at what you saw last week with Züria.
+ Also if you have any questions related to this, don't hesitate to ask. So the core concept
+ last week was really this two operations which are really very closely related. I think Züria
+ was even saying that there was some confusion going around and this indeed has to do with
+ some of the ways that some of this is used in neural networks. But essentially there's
+ two main concepts that end up mathematically with more or less the same representation
+ up to a mirroring of the kernel. But conceptually they are very different. And actually the filters
+ that you use or the kernels you use will typically also be different. So one of those
+ is correlation. And as you know of the word correlate and so on, it's looking for things
+ that have some similarities are related to each other. That's what correlations are about
+ in terms of semantically what the word means. So when you read correlation you should think
+ of template matching. So if we have an image processing, we do correlations, we essentially
+ talk about comparing a template to the image and seeing where we get a good response. That
+ also means that typically to avoid being biased to just a bright spot in the image, if you
+ just do the correlation without normalizing it and having a zero mean, you will always
+ have the strongest correlation with the strongest positive signal. That's not very useful. So
+ typically the template with the question mark, typically you would actually have a template
+ that has zero average. So that on average with a random image it has zero correlation.
+ So typically that's the case with for correlation you would have kernels with zero average. And
+ essentially you're looking for the pattern in your template. You're going over the image
+ and everywhere you apply this correlation, you essentially in a sense you look at this
+ here, this for example three by three matrix, you look at this, you vectorize that, you
+ make a vector out of it, so a nine vector. And then for every patch of the image you
+ will also generate a nine vector and then you will see how correlated those vectors
+ are. So if there's zero average they will correlate well with something that's well
+ aligned, they will anti-correlate with something that's exactly the opposite pattern. With
+ linear systems, as I said with linear systems you can avoid that. If you're positively correlated
+ with a signal you are automatically negatively correlated with the opposite signal. That's
+ where in neural networks they insert functions, non-linear functions that can separate those
+ and say okay positive correlation I care about, the negative correlation I'll ignore, I'll
+ put a zero there and I'll clip it off. But anyways, this is about computing correlation.
+ So it means that for the point i you have the corresponding shift in the image, you're
+ shifted by the same amount i. So your template and your here, your template and the position
+ in the template and the position in the image relative to the central point is the same
+ offset. Because you really want to compare apple to apples. So you compare the template
+ directly overlaid on the image. That's this one. The convolution is something completely
+ different and you should conceptually think about it as an operation as the one there.
+ So point spread function for example. So for example if you, it means imagine you have,
+ you know you would normally measure everything at exactly one location but then there's some
+ stuff happening, it gets a little bit spread around. Imagine you put a whole pile of things
+ exactly in one location but then you shake things a little bit and they kind of fall
+ a bit around it and they spread themselves out. That's what this model will model in
+ the sense. It will say okay for something that should have landed here how do I distribute
+ it? For example this is a great model for a blurred image. Okay the perfect image with
+ a perfect lens, perfectly sharp, you know focused would put everything on exactly this
+ pixel would translate things coming from that specific direction in space to the lens, to
+ the pinhole and would have that all land exactly on a single pixel. But because the lens is
+ not perfectly focused or any other issues it will actually be a little bit spread around.
+ That modeling that is we take that value here and we will distribute it to all the neighbors.
+ So if we want to model that in the same way not as something where we take a value and
+ distribute it but as an operation similar to this one as an operation not on the output
+ and then distribute it on the output somehow but more on the input and so take essentially
+ here for a particular which image values will land in a particular pixel. So at this pixel
+ here the output function what pixels will end up influencing that so that means that
+ well whatever was the signal here you know part of it if I shake this pixel part of it
+ will land there. And it's actually what should go to the right of it but this is the pixel
+ on the left. But it's what from this pixel would land on the right is what this pixel
+ will end up impacting on the output side here. For example this pixel if I shake this pixel
+ around I spread it a bit around then some of it will land there. What will land there
+ is what from this pixel is on the upper side of the kernel. But of course if I compute
+ for this pixel then I kind of end up with from this pixel it's this is the value one
+ down but I have to use in the kernel the value one up okay for seeing what impacts there.
+ So that's why I end up here with exactly the same formulation except I have minus signs
+ here okay the minus sign can be here or here you can switch it around but essentially you
+ have a mirroring of the kernel here. But for the rest my triangle is the same and of course
+ probably many of you have noticed wait a moment you're flipping the kernel so you know like
+ here I flip an image but I could do a plus here and a minus here it's the same thing
+ it's just changing it actually doesn't change anything. And so putting minus signs here
+ is the same as actually doing a mirroring I mean a point mirroring so mirroring like
+ this and like this a point mirroring of the kernel right by just putting minus signs here
+ it's the same as replacing this keeping plus signs but replacing it with a mirror kernel
+ and of course if my kernel is symmetric you know I haven't done anything because mirroring
+ a symmetric kernel like that one well that's you know doing nothing. So that's where a lot
+ of the confusion comes from and where people use often convolution and correlation mix
+ up you know like inconsistently or don't pay attention which one they use. But I want for
+ this lecture I want you really to be able to make the difference between the two the
+ conceptual difference between the two. Even if in practice it doesn't matter much but
+ it's important to know at the origin where the two come from because they really are
+ representing completely different their models for the really different things even if in
+ the end you can mathematically end up with the same thing. Actually here again the visualization
+ so for that one you know you move from that pixel you do the point spread function and
+ you move things over here or so. So like it's for the upper left corner you end up evaluating
+ the thing with the down right and so on right. So here's the visualization of that. Okay so
+ is that was that clear to everyone or do you have any questions related to this? Okay then
+ what you also saw last week was edges and different types of features so how to extract
+ edges starting with looking at high gradient regions so high gradient regions are the gradient
+ is just how quickly you know neighboring pixels change are different from each other. So those
+ are of course where there are edges so that's the place to start and then you saw the type
+ of operations you can do to actually retrieve change of these edge pixels and so therefore
+ retrieve connected edges in the image. You saw the Kani edge detector which you know
+ essentially is looking at these high gradient regions or high gradient you know you can
+ label the high gradient regions but then you look for local maxima in that and of course
+ you really care about local maxima across the direction of across the edge along the
+ edge you actually want to connect pixels in connected edges right so you have an edge is
+ the separation between two regions across this direction we want to find the strongest
+ area for the edge because you could have a slope and so you're caring about the steepest
+ part of the slope that's where you want to localize the edge but in the other direction
+ along the edge of course you just want to chain all those pixels together right so that's
+ where you did the difference between those two directions you have to treat them separately
+ connect along the edge and essentially find the maximum across the edge. You saw a few
+ other concepts therefore edges you also saw the concept of as we said with region growing
+ so the edges also can be seen as a specific type of you know linear region and so the
+ concept of saying okay if I start from a strong edge I can do region growing even to slightly
+ less clear edges because if I found a nice edge to start with I might want to extend
+ it also in regions where it becomes a little bit less obvious so we had these two levels
+ of thresholds for doing that. Then there was the Huff transform the Huff transform is an
+ interesting transform that transforms from a pixel space to a parmeter space for example
+ for lines it will transform from the XY pixel coordinates it will essentially determine
+ for every pixel coordinate it will determine for what parmeter does it vote for so in other
+ words what are the lines that go through this point and then that line that point sorry would
+ vote for all these possible lines and if you in the parmeter space accumulate the votes of all
+ the points you can quickly end up with a peak where there is a real line supported by many points
+ because if there is essentially a hundred points on the lines then you will get a hundred votes
+ for that particular parmeter while other spurious you know where there's just one line goes through
+ but it's kind of just random those would not get a lot of support for no data right.
+ You could actually think of extending that and making it more direct if you say well I actually
+ have an idea of my gradient at my point as an example you could say I'm not going to vote for
+ all possible lines going through this point I could vote for example for just the lines that are
+ approximately aligned with the gradient and that way you could you know for example refine
+ your vote already and only vote for the plausible lines that somewhere are aligned with the you
+ know with the gradient that you observe at a particular location as one possible extension
+ many many possible extensions there you saw that this is this can be done for lines this can be
+ done for circles this can be done for any parametric representation as long due to curse of dimensionality
+ as long as it's not too high dimensional. Then corners these are essentially areas like in this
+ example here where you're not just looking for a single gradient you're looking for kind of
+ unique points and so you're not looking for a single gradient like in an edge but you're now
+ looking for you know gradients one way and gradients the other way coming together in one location.
+ So we're looking where of course at every single point at a single point you only have one gradient
+ but we're looking for a small neighborhood where we have multiple gradients showing up
+ we've got a strong edge in one direction then if I look at the neighborhood I will actually
+ have all the gradients locally you know less and more strong and so on but they'll all be aligned
+ and if I accumulate them in this matrix I have essentially this is an inner product
+ you can also see this as a sum of inner products of the gradients and of the sorry of the other
+ product of the gradients and that would if all of those vectors are aligned it would by definition
+ give you a rank one matrix if all of them are the same vectors because it's a rank one
+ matrix times the rank one matrix so it's a vector times a vector that would be a rank one matrix.
+ So it's only if there's actually different gradients coming together in a small patch
+ in a small window which can really be just a few pixels but if multiple gradients are coming
+ together like in a corner then you will actually have a full rank matrix here okay and that's
+ essentially what you know you've seen in different ways a full rank matrix would indicate that you
+ have a corner or you know like cornerness and then the corners themselves identified again
+ as with the edges will find the local maxima of this so we have many points in the neighborhood that
+ with a particular integration window we'll have you know we'll see two gradients two different
+ orientations of gradients but then we're looking for the strongest one the best localized one
+ yeah we have to do that if we want really corners well localized corners we have to do that with a
+ small a small aperture and ideally one not a flat filter but a filter that has a peak because
+ otherwise if it's flat it will you can freely shift it around within the flat region and not
+ see a difference so you need a peaked thing like a Gaussian to evaluate to integrate this this on
+ here so the window here should actually be a Gaussian to really have a corner anyway so and
+ then I think the the last one on the last kind of slide is the sift transform now there are many
+ machine learned feature detectors like superpoint is one example and then many others
+ that have been trained on many examples of corners and images and all kinds of things
+ but before that for for you know 15 years or so this was the dominant and it's still today
+ actually in many systems it's still the dominant feature that's used and in many practical settings
+ now they are better features that have been learned but it's still competitive and it's still
+ used in many many existing systems and in on real world scenes and if you don't have priors and it's
+ you just want to generally apply it it's still one of the most used features there and works really
+ well the important thing is also if you then want to later design your own learned features and this
+ and that the important thing is to understand a little bit the main concepts that are leveraged here
+ at the at the principle level and then because those are probably good inspirations for your
+ network structures for you know all of the things that you might want to put in place for the network
+ to be able to efficiently compute things okay so the first thing is we're not only doing a local
+ maxima in the x y positions here we're actually also doing it in a scale pyramid okay so we want
+ to find a blob again how do we find a blob well we actually do convolution of actually sorry correlation
+ we do correlation of of a blob with the image and we see where we get the strongest response now
+ as i told you a blob is actually not a good idea because a blob is fully positive so we actually
+ need to do something different what we will do we will actually do a difference of of blobs okay
+ it's written there difference do g difference of gaussians so you can implement that efficiently
+ because you can implement the scale pyramid and what we'll do is we'll do a difference of a large
+ blob with a peak a smaller blob so the smaller blob is the peak the blob will actually look for
+ a bigger blob but we'll average it out to have a zero response by subtracting from it a wider blob
+ okay so we'll have something that goes like this and and then goes to zero so we want to find an
+ extent of course but so we'll have essentially a big blob like a peak blob within a flatter blob
+ subtracted from it they have the same integral so they average out to exactly zero but that way
+ we have essentially a response like this so positive negative and then to zero okay but in the end
+ that looks like a blob i don't have a picture here but i'm sure there was a picture in the in the
+ slides so it's essentially something that looks like a blob within a little bit of negative around
+ it and then it averages out to zero it will find you a blob of that particular size okay of the
+ inner of this inner blob it will it will correlate very well with these type of blobs okay and now
+ what do you do you can correlate this over the whole image you get you will get the strongest
+ response where there is kind of a nice blob of that shape that's kind of circular blob kind of
+ feature like a bright patch or a dark patch remember it will correlate equally with a positive or
+ negative patch you would have an equally strong response just the sign will change okay so you
+ don't have to look separately for bright blobs and dark blobs the and it's really the contrast to
+ the neighborhood to the direct neighborhood that matters right because we subtract this blob from
+ the twice as large blob then we not only do that in location but we actually also do the correlation
+ across scales so what are we doing and and we and what we do is we then take the maxima in the spatial
+ position x y but also in the scale okay so we'll essentially what it means is we'll try to correlate
+ with a blob this size but also with a blob this size and a blob this size and a blob this size
+ and we'll see which one actually gives us the strongest response okay well when do we get the
+ strongest response when our blob that we fit is kind of the same size as the visual blob we see in
+ the image okay then we'll have a really strong response if it's a bit too big or a bit too small
+ we'll get a less good response because some of the some of the bright region will kind of you
+ know be cancelled out will come negatively because our filter has a negative effect on the periphery
+ and so essentially you'll get things like this here for example right or like this here so you get
+ the inner blob is here so this is darker and then outside is brighter no this is not exactly a blob
+ here it's actually some triangle feature but of course this is let's say darker this is brighter
+ this is also brighter and here it's also brighter so together this actually responds quite well
+ and a bigger blob or a smaller blob will have a less good response and a shifted blob would also
+ have a less good response okay so this will then be a local maxima at this scale okay and then we
+ pick this as a shift feature as a response to that filter notice this is the non-maxima suppression
+ so if this one is the maxima of all its its large and all its neighbors and all the neighbors above
+ and below then that's a point that we extract okay and then once we extract that then we look for
+ gradients why gradients because not directly look at the patch but actually at gradients because
+ gradients are much more invariant if the image if we look at the same image but with slightly
+ different exposure it will be a little bit brighter or a little bit darker so we don't care about the
+ exact intensity that we see we care about the patterns of so what this thing is going to look at is
+ what are the patterns of edge arrangements that we have and we just care about having edges we don't
+ care how bright or how strong the edges are we look at the edge statistics like first we find
+ somehow a dominant orientation so for example here if I look around here the strongest edge is here
+ so that leads us to this orientation here it actually has two maxima it will end up using both
+ or they slightly displaced actually etc but so you find a dominant orientation the strongest edge
+ orientation and then you reorient the patch the reference patch based on that orientation
+ and then once you did that so it's located based on the location of the blob and it's oriented
+ based on the dominant orientation of the edges where are the what is the orientation of the
+ strongest set of edges and then once you did that then you divide this patch here that is scaled
+ based on the feature size on the the response size you are in it and then you divide it in these 16
+ in the 16 regions and in every region you make a statistic of you know how many edges are in each
+ of those orientations so how many edges are you into this way and how many are this way and how
+ many are this way etc and you just make that statistics and essentially that 16 times 8 orientation
+ and that gives you 128 values and that's now a vector 128 long vector that describes
+ what happens in this patch here okay visually like a visual pattern but in a way that if you change
+ a bit the brightness if you do things like that it would not be affected you would roughly keep the
+ same statistics okay so under slightly variations of brightness and so on you would still end up
+ with the same vector here or roughly the same vector and so in the end to find points in one
+ image and then in another image to put them in correspondence you would actually correlate
+ those vectors and see how well they correspond to each other the actual way it typically works is
+ if you get a you pick the strongest response and that's then your probable match between two images
+ and then you actually look at okay but wait a moment maybe there's confusion here
+ let me check how strong the second strongest matches if the second strongest matches you know
+ within point eight or so or point seven of the correlation of the best match then you say okay
+ this is too close to call I'm not declaring this a match but if it is actually if it has you know
+ enough of a gap to the second best match then you declare the match okay so that's actually the whole
+ algorithm pretty much in a nutshell for matching between images and that can be the starting point
+ you know from a collection of images to have all of them kind of aligned to each other geometrically
+ okay okay so that's that was kind of a quick overview of what you saw last week any questions yes
+ yeah yeah exactly this circle is that circle yes okay and so it means that on on on this one you
+ have a small rectangle a small grid on which we evaluate the gradients and on this one you'll have
+ a big grid it also means that if you have two different images and one is taken from a lot
+ closer than the other you would hopefully have this still find a consistent peak and so what in
+ one image looks this small in the other image could look this big but because you renormalize it
+ it should actually you know you should actually find the same actual region in the world ideally that
+ corresponds to the same things and therefore has the same patterns and therefore you can get it in
+ in correspondence okay any other questions for the previous week yes
+ that's right so well if you flip it like this yes you would not normally be able to match it
+ if if you just you know if you just take a picture upside down then it would actually work
+ because that's just a rotation and this is invariant to rotations because instead of finding the
+ edge the strongest edge in this orientation if you turn it upside down this would not point in the
+ other direction and after you know and you would actually extract consistently things so if you
+ just rotate it's fine if you flip it's not fine like you wouldn't know about it now we actually
+ did a paper in 2012 where we explicitly looked for symmetries we actually did that for you know I
+ could probably I could probably find it let me quickly show you something if I can okay
+ okay so we let me actually go to another example here that you'll recognize so here you go so
+ so many of you know this building right so this is ccab and you can see that this is the
+ left side of the building this is the right side of the building and we exactly played on this
+ so we wanted to find symmetries so normally would not automatically match those in this case we
+ explicitly looked for symmetric regions because we wanted to determine the architectural symmetries
+ and use those to connect or reconstruction and say that this was an exact mirroring of this
+ and therefore you know geometrically they should also be mirror images of each other and so on and
+ so on and to discover that what we did was we took those sift vectors these 128 vectors and
+ essentially it boils down to simply you know reordering those 128 numbers because if you
+ you know if you look at my cursor here and actually let me just show a few more images first
+ so this was about
+ okay lots of stuff so here so we detected symmetries here symmetry planes and so on and so on
+ and therefore could do a better reconstruction here because we impose that symmetry in the
+ reconstruction okay so a few more examples here etc skip that let me get back to the slides now
+ okay mirroring this and then changing the order of this these are just statistics of which edges
+ on which orientation it turns out you can just take those 128 vectors and just shuffle them around
+ in the right way and you get the mirrored one so you can easily correlate with the mirrored one
+ without having to do much you don't have to recompute it you just shuffle the numbers around
+ and correlate with the shuffled numbers and you can find the symmetric regions which has
+ which is interesting in itself to be able to find symmetries also within a facade
+ facades are very symmetric also something we looked at in the past and so on so they are
+ interesting things you can do in that space for for symmetries okay any other questions related to last week
+ okay so let's start with this week then almost at the end of the first hour so
+ so we'll talk about aliasing in particular so aliasing is really about the fact that you can't
+ you can't shrink an image by just you know sub sampling if you do that you will have strange
+ type of effects appearing so we'll see in the next few slides or actually in some of those pictures
+ what it does is you will have small phenomena like very detailed things to suddenly show up at a
+ completely different scale as like big patterns now and if you look at video it means fast phenomena
+ can now show up as like slow phenomena for example so it's essentially things that one
+ frequency that show up at another frequency this is kind of the wagon wheels in movies that seem to
+ roll backwards for example or checkerboards that look funny in ray tracing or striped shirts that
+ look funny on television and so on so let me show you an example I used to have an example
+ I had to change the example wait where do we go here
+ okay I used to have an example where in windows I could just open an image with high frequency
+ and then I could
+ okay and I could actually rescale it and you would see the aliasing happen on the fly
+ in the meanwhile Microsoft has fixed that you know their viewer their basic viewer even the
+ basic viewer that's built in actually properly handles aliasing now so I cannot show you that
+ live anymore but here's an example of aliasing you know of a webpage that kind of illustrates that
+ so this building if you don't pay attention and you sub sample the image by factor of two for example
+ it might look like this obviously this pattern is probably not on the real building right this is
+ this is essentially how the image properly treated would look like and so what's the issue well the
+ issue is essentially that you have this very fine pattern here and as you as you would just
+ rescale the image by sub sampling you might end up hitting you know multiple times the brick
+ and miss the cement or vice versa and so those are the things you see here right you see suddenly
+ you're hitting a lot of cement and then in this area you're hitting a lot of bricks and so you
+ get these kind of strange effects showing up okay and they show up at a completely different scale
+ than where they were in the original image okay so you get high frequency things that once you
+ somehow mess up and don't sample densely enough those high frequency patterns show up now as very
+ slow frequency patterns right and so you get these kind of effects okay so in other words it's going
+ to be important to you know to figure out how to handle this and actually at two stages one is
+ before we digitize before we sample for the first time so going from the continuous image
+ continuous real-world scene and then discretize it at that point we have to be very careful
+ to avoid these things because if you then you're if you do it wrong then you're then it's done it's
+ finished you can't repair that anymore or the second thing is if we are re-sampling we go from
+ for example we have a high resolution image and now we re-sample it to a low resolution image
+ for example to show it on the screen there also we always have to be careful and always do the
+ appropriate steps to make sure that we don't get into aliasing issues um let me also show this video
+ here so this is then temporal aliasing yeah sorry for the noise there
+ okay so what do you see here so you see two things two motions so you see the kind of the
+ wheel motion which this reflector is kind of showing you and then if you focus on the central
+ area here for example for now it looks like it's going in the reverse direction right so obviously
+ you know this is a rigid wheel it all turns in the same direction but as the wheel is decelerating
+ you kind of see things kind of switch from turning one way to turning the other way to
+ again turning the same way so clearly something something funny is going on here right
+ okay
+ yeah i got this kind of wondering what's going on there
+ okay
+ okay so essentially what do we have we have something like this going on here
+ initially we're sampling and and you know we've seen is a little bit the first lecture right so
+ initially we're sampling up you know more than fast enough to actually capture consistently the
+ pattern that's actually there right the visual pattern in the image on the right we kind of just
+ at the edge we're just still sample enough so we'll have a black pixel a white pixel a black
+ pixel a white pixel we'll actually still have the main pattern that's visible there in the image
+ we'll actually still capture it with our sampling but then once we get here or here we start seeing
+ issues right so here we completely miss this white pixel so we have a big black region it looks like a
+ big big black region then we again have a white pixel so but so we we essentially have the pattern
+ show up at a different frequency than the one that's actually in the image and of course here
+ in the end we wouldn't here we would just end up consistently you know sampling in the black region
+ and so we'd have a fully black image instead of a you know ideally actually a question what should
+ we have ideally as an image you know if we sample at this resolution what would we like to have
+ so if if you represent that pattern right I mean this pattern here at this resolution what would be
+ what would be the correct thing to do
+ okay so what do you mean like
+ but so you would have one black one white or well but then you would actually have a checkerboard but
+ at you know half the resolution right so you have a checkerboard at a different frequency
+ it would be twice as you know like it would look like it's twice as big a checkerboard than the one
+ you actually started from right so that's probably not the best option
+ well that's what we have but that's what clearly we know is wrong right
+ exactly so the correct thing would be actually saying well if we can't represent the individual
+ patterns anymore the correct thing to do is actually to you know you would look at this if you look
+ so if you look at the you know black and white very fast alternating black and white from very far
+ away what are you seeing you're not seeing either black or white image you're actually seeing something
+ grayish right that's what you will see that would actually be the correct representation at that
+ point it's the best you can do you know it's disappointing you cannot actually show the
+ checkerboard anymore but hey it's beyond what you can still sample so at that point you don't want
+ to hallucinate patterns that are not there you just want to say okay on average this is essentially
+ grayscale okay so that's that's actually what we will want to have and will be the correct thing
+ you can still do essentially those high frequencies you know on average is a gray image and the high
+ frequencies are just beyond what we can represent so if we can't represent them anymore we just want
+ to abstain as opposed to hallucinate something different okay and invent patterns that are not
+ there at all that that's what we want to avoid okay so here's an example you see here a pattern
+ smoothly varying pattern that essentially goes from a you know slow in the upper left corner
+ to fast varying in the lower right corner and then we are slowly sub sampling it we're strictly
+ sub sampling here okay so we just these are you know I don't know maybe 256 by 256 or so and then
+ that's 128 and so on so we just sub sample every time it all goes well for a while you know qualitatively
+ this picture and this picture and this picture and this picture they're all the same they just have
+ less pixels but they still qualitatively show the same patterns but then something funny happens
+ right when we get here suddenly we are we it's a different picture right it looks different
+ it has different patterns that's the zooming of that picture right so we essentially have
+ hallucinated or we have now new patterns that show up okay and so that's the thing we want to avoid
+ like with the checkerboard we don't want to invent a checkerboard at a different resolution
+ we actually want to say well you know we can't represent it anymore so you know we just have a
+ gray thing because that's the only thing that still is kind of that's the average
+ that's something we can still represent correctly okay
+ so in a sense the open questions are still you know what causes the tendency of differentiation
+ to emphasize noise there's something we didn't explicitly discuss but when you actually in
+ filtering and so on if you if you look for sharpening filters and so on what they tend to do is
+ actually to enhance the noise to create more noise make the image look more noisy
+ we're still also discussing what's exactly the difference between discrete and continuous images
+ as we go from one to the other what happens the key question on the previous slides is okay what is
+ aliasing and how do we avoid it and in general we'll actually address that with the Fourier transform
+ which is a language you know which is changing the representation of the image from a localized
+ pixel per pixel description of this point looks like this and the next point looks like that and so
+ on to more something in terms of broad patterns describing the image in terms of broad patterns
+ that are global over the whole image so we're saying well on average the image is
+ you know gray for example but then we have the left is brighter than the right
+ and then we have this kind of wave pattern you know at this particular frequency going through
+ and then also the top is darker than the bottom for example etc etc so we and so we can gradually
+ describe in all these kind of global patterns over the image and as we'll see also very important
+ of how exactly those patterns are shifted with respect to each other so that's a Fourier transform
+ after the break we'll formally introduce when the Fourier transform is okay okay so
+ so this is Fourier transform so what we do is in any sense think of
+ so we will define the Fourier we define the Fourier transform actually both in a
+ in for continuous image as well as for discrete image it's the easiest to think about a discrete
+ case in that case think of taking the image as you know it's a matrix of numbers and so in that
+ case you can always take that matrix of numbers and just all you know as they actually you know
+ organized in memory anyways as a long list of numbers so you can also just decide that this
+ matrix of numbers is actually a vector of numbers very long vector of numbers right but it's still a
+ vector and as with any vector space as you've seen in linear algebra you can actually do a basis
+ transform okay so in many ways it's nothing else than a basis transform now it's not a three by three
+ you know it's not a three vector that you apply a three by three matrix to that kind of corresponds
+ to a rotation for example rotation is nice because it preserves the length of vectors we'll actually
+ see we'll see much more of that next week that these also in a sense preserve lengths of vectors
+ so these are kind of good transforms in a sense and again we'll define that next time
+ there's actually you here because those are unitary transforms so kind of like rotations
+ but okay so essentially very long vector we apply transform so this is a basis transform so that's
+ essentially a square matrix now if this was a thousand by thousand image that's a million
+ dimensional vector, million dimensional vector space or basis transform is now a million by a
+ million numbers that's this matrix and then you know so that's 12 zeros at one with 12 zeros
+ lots of numbers here but essentially here again we then obtain something of the same length
+ both a vector of with as many components and actually the vector also has the same length
+ because this is unity unitary transform anyway so so in that case you can kind of think of you have
+ numbers you multiply with the matrix you get other numbers and you know they're somehow equivalent
+ but they're in a different space okay different bases so so that's what we'll do we'll actually
+ look at doing the same in the continuous domain okay so we can also there do a basis transform
+ okay it's a little bit maybe more abstract but it's the same thing anything here the matrix is
+ essentially you can write it as a sum of you know components that you multiply with other you know
+ components of the basis vectors that get multiplied with components of the vector and this and that
+ okay if you go to the continuous space you go from you go from components
+ from sum of components you go to integrals it's the natural you know continuous representations
+ of what would here end up being sums in in this operation okay so in the end what what you end
+ up doing is you have your function here function j of x y so you have a function that's defined in
+ x y coordinates that's your image and now what we'll do is we'll multiply that with something that
+ depends on x y but also depends on you know two other numbers u and v in this case okay
+ and then what we'll do is we'll integrate this over the whole image that's the same as you know
+ summing over all the vectors of our input space so we'll integrate over the whole and this is
+ two-dimensional so it's even a bit more complicated we'll integrate over both x and y direction over
+ the whole image here so this is integral over the whole image we integrate that and so we multiply
+ with these basis vectors so this happens to be our basis vectors or sorry the vectors are here
+ here we talk about functions so these are basis functions these are functions that
+ depend in every point of our x y space okay and they have we want to transform we need this the
+ equivalent we need this to be square so if we started from two dimensions of a full two-dimensional
+ space in a sense we need to end up also with a two-dimensional space otherwise obviously there
+ is a mismatch we cannot map a two-dimensional space to one-dimensional space and accept that we can
+ you know that we preserve the information so we need to map it to a full two-dimensional space
+ the two-dimensional space is the uv space here okay and so so essentially we will at every point
+ here we'll multiply it with the basis function essentially and we'll we'll multiply it with
+ how that basis function the value of that basis function at that particular x y location
+ and we do that for all of the x y locations over the whole two-dimensional space
+ and do a big integral and end up with one number right and because we integrate over the whole
+ x y space essentially after this integral x and y have disappeared right because we integrated
+ over all the x y so we summed over all the x y's essentially or integrated in the continuous case
+ so we're not dependent on x y anymore right if you integrate over x y then you're not dependent
+ anymore so the only variables left will be u and v right because those are still here right so they're
+ not integrated away because you know we don't integrate over them we integrate over x y so u
+ and v will remain as will not be the variables okay so we get a function in u and v okay so we
+ start from a function in x y we do this integral here of all the basis functions for the free
+ transfer and we end up with a different function that's not dependent on u and v that's our transform
+ so we went from a function in the x y space defined over the x y space we end up with a
+ function that is defined over a different space the u v space okay now what are those functions
+ here they look a bit funny uh notice this is essentially square root of minus one so this is
+ actually a complex basis there's reasons that it's complex in particular at the intuitive level
+ you can see it as this function you should know is actually equivalent to this function so it's a
+ cosine at a particular frequency defined by u and v here the frequency is can be different in the x
+ and y domain so there's a different multiplier to how quickly x changes to how quickly y changes
+ right the u and the v the ratio of u and v will tell you how how quickly one change corresponds to
+ in one dimension corresponds to a change in the other direction on the one hand you have a cosine
+ here as a real component of this function and you have a sign that corresponds to the imaginary
+ component of this function okay why does why is this somehow useful or why do we have a complex
+ function here well it's because with a single complex number in a sense we so we can capture
+ both the cosine and the sine now as you probably as you should all remember the cosine and the sine
+ function actually the same functions except they're shifted by 90 degrees okay and interestingly enough
+ you can take so you can change a cosine to a sine by shifting it but more importantly
+ if you have a cosine and a sine you can actually create any shifted and you know scaled up and down
+ sine or cosine by just doing a linear combination of a sine and a cosine so with linear combinations
+ of sines and cosines at the you know the canonical locations of the canonical cosine and the canonical
+ sine you can actually generate any shifted version also it's actually just a sum of a cosine and a
+ sine so by being it by using this basis function and being able to you know multiply this with an
+ imaginary number with a sorry with a complex number combinations of sine of a real part and an
+ imaginary part you can choose and of course by doing that you can bring so let's say well let's
+ look at the real part if I do want you know the real part is one but then I add to it here I do times
+ the imaginary part would be something with i then I get i times i that gives me minus one
+ and so I get another real component to come in in it right so by multiplying with a complex number
+ I can actually bring some of the sine into the real domain also okay and so I can end up with
+ my real part of my function be a combination a linear combination of a cosine and a sine
+ with whatever combination I want by choosing different real and imaginary numbers that I
+ multiply this one okay so it turns out this function is actually a very generic function
+ that allows me to represent any possible sine or cosine shifted you know with an arbitrary phase
+ and scaled up with an arbitrary amplitude by just choosing different linear combinations
+ with complex numbers right of this thing that's what a real part and there's also always going
+ with it an imaginary part okay um okay so I think those are the the main points that I wanted to
+ bring here so that's essentially here the formal definition of the Fourier transform okay now we'll
+ look a little bit at you know a few more points of why this is important and then also what those
+ two-dimensional Fourier bases actually look like okay first in one dimension and oh yes
+ [ Inaudible ]
+ Yeah, I mean, so essentially, yes, so the X and Y and U and V can also be complex numbers, yes.
+ [ Inaudible ]
+ Yes, yes, that's correct. Yes.
+ Yes. Yes, so we start from real numbers here, but we end up with essentially a complex function, yes.
+ And so what I was trying to explain is that the reason we do complex numbers is that that gives us this way to have the cosine and the sine and the combination of those kind of mixed up.
+ Okay, so in a sense, or actually, you know, I don't know if there's any electrical engineers here, probably not.
+ The reason that electrical engineers, you know, and actually studied electrical engineering long ago, the reason electrical engineers, you know, look at this very much in detail is because, you know, they look at systems,
+ they try to model systems with inputs and outputs and stuff like that.
+ And then within systems, all the possible systems, in general, you always, you know, the simplest way and actually, as long as you, you know, as long as you operate in a certain regime, you hope that your system behaves linearly.
+ So that means that if you, you know, you do something at the input, whatever you do, you get kind of, like, if you move a little bit up, then you also expect your output to be a little bit bigger.
+ And if you move a little bit down, it's a little bit down, and that's all, that should all be proportional.
+ Proportional means linear, right?
+ If I do a small change, I will maybe, you know, here for a parameter, maybe it will go up a little bit. The output will also go up a little bit.
+ If I do a twice that small change, I would expect the output to also be changed by twice the amount I saw before with this, you know, like with a small change.
+ So you expect those things to be proportional, at least within some regime.
+ You know, if you do a huge change, then, you know, things could saturate, complicated things could start coming in and so on.
+ There would be some non-linear effects.
+ But as long as you operate in a reasonable regime, you expect that whatever you do at the input, you kind of see reflected at the output, like proportionally at the output.
+ Now, if you have a dynamic system, where instead of just, you know, you change a setting and you wait for it to settle, you have something where you, you know, you do, you move, you keep moving something up and down and this and that and so on.
+ The interesting thing is, these Fourier bases, which are sines and cosines, essentially, they turn out to be, for a linear system, linear dynamic system, these Fourier functions turn out to be, for linear systems, they turn out to be the eigenfunctions.
+ If you remember eigenvectors, what is an eigenvector? You start from a vector, you multiply it with a matrix and you get the same vector out, except that it's longer or shorter.
+ So it can be scaled differently, but it's the same vector.
+ Same thing here, for functions, the same concept for functions mean I put a function at the input, I get the same function at the output.
+ You know, again, think of this as a discretized vector, for example, you get a vector at the input, you get the same vector at the output, except it's bigger or smaller.
+ And of course, in this case, it can also be shifted, right? It can be a bit delayed. So I oscillate something at the beginning.
+ It will also oscillate at the output, but it could be a bit delayed or a bit accelerated. That delayed or accelerated is a shift.
+ That's why we need a way to somehow blend cosines and sines, because that's also a way to represent a shift, a phase difference.
+ That's why we need districts with complex numbers to have the cosine and the sine together with one complex coefficient.
+ We can actually represent a shifted sine or cosine.
+ Anyway, so in electrical engineers use this all the time, because it's essentially the simple version of systems, and then as soon as it's nonlinear, it gets all crazy and impossible to model and stuff like that.
+ And you get chaotic behavior and literally chaotic for meaning that you get very strange behaviors and stuff like that, and often very hard to model.
+ So in general, everything is you try to operate within a linear regime, and then everything will follow these things and etc.
+ So your colleagues in ETH see a lot of Fourier transforms.
+ So it means essentially that if I now put in a different frequency at the input, if it's a linear system, I will have that same frequency show up at the output, which is quite interesting, right?
+ If it's a linear system, whatever frequency I applied input, I get that frequency at the output. I cannot get a different frequency.
+ If you have a nonlinear system, I can also get multiples of that frequency typically.
+ These are called harmonics. If you play music or so, you know that it's actually a nonlinear system. You play a note, you don't get exactly the same sine coming out, but you get also multiples of that sine, which actually correspond to having different wave shapes, like four different instruments.
+ Anyways, enough of that. So now let's get back to our images.
+ Here's one example of a basis function.
+ So we'll assume it's defined over the whole space.
+ Here we just have it limited to a particular region.
+ We'll actually also see what that means and what the assumptions are outside of that region.
+ But for now, let's assume that this extends out to infinity, you know, to the whole plane.
+ So this is an example of one of those basis elements. Of course, I just showed a real part here.
+ So it's essentially a kind of a wave pattern, sine cosine in intensity, right?
+ So it goes from dark to bright to dark to bright, kind of alternates as a consistent wave pattern.
+ And you see it has a certain orientation.
+ So if we look now in the UV space, right, this is our other space.
+ So this is the function in the XY space.
+ And now if we, so this is actually a basis function, one of those basis functions.
+ If we look in the UV space, we actually have just one dot.
+ Actually, we have two dots because they actually, those two will actually do the same thing.
+ And so this is where you actually get those two and they are somehow coupled together.
+ But that doesn't really matter.
+ But essentially you get that kind of paired dot.
+ They're symmetric around the origin.
+ So the frequency and the negative frequencies is kind of essentially morning down to the same thing.
+ The, it's the combination of those, you know, is sines and cosines at that frequency.
+ And so we get two things here that matter.
+ It's the magnitude.
+ And so actually, sorry, so the length of this here corresponds to the frequency.
+ And the orientation of this, for example, in this case, oriented this way,
+ you can see that that's actually exactly the orientation of the biggest change, right?
+ The fastest change are in this orientation, which is the same as the direction of this vector here.
+ Okay?
+ And the length of this corresponds to, corresponds to the frequency.
+ In particular, this is a small length compared to this size here.
+ So this is a small vector.
+ So that means we have a small frequency.
+ Now a small frequency means a slow frequency.
+ That's small.
+ That means slowly change.
+ So it actually means in the image is like big waves because they slowly change.
+ Here's another example.
+ Notice it's a different orientation.
+ It's this orientation.
+ Okay, so you can find back that orientation of fastest change here.
+ And it's a longer vector.
+ So what is a longer vector correspond to?
+ It corresponds to a higher frequency.
+ A higher frequency means faster change.
+ So that means that essentially the pattern is smaller.
+ The wave here is a smaller wave because it changes faster.
+ Okay?
+ So notice that kind of somewhat an intuitive thing.
+ So a bigger frequency means actually smaller, you know, more quick changes,
+ so smaller, smaller patterns showing up in the image.
+ Here at the edge, even longer, so you see then how this kind of looks like.
+ Again, this is the orientation.
+ So that's the orientation of fastest change.
+ Okay?
+ Does that all make sense to everyone?
+ Yep.
+ Okay, so here's then an example of how to look at this as basis functions.
+ Right?
+ So essentially, and here in this case for just some discrete values.
+ So we have this kind of cosine sign kind of combination.
+ So the four zero, zero zero.
+ So if we fill in zero here for u and for v, we get essentially, well,
+ no dependency on, you know, like we get essentially something that's just constant.
+ Right?
+ In particular, if we fill in zero here, we just get a one.
+ And if we're in zeros here, so here and here,
+ meaning that the whole thing in between here is essentially zero.
+ Sign of zero is zero.
+ So we get a one here and a zero here.
+ Okay?
+ So we just get a constant one and no imaginary part.
+ That's essentially this here.
+ It's a fully bright image.
+ No change.
+ Constant.
+ Okay?
+ Then with one for u and zero for v.
+ Right?
+ So what do we get?
+ We get essentially something that just depends on x at a particular frequency.
+ So it will, in this case, just do one period.
+ That's this guy here.
+ Okay?
+ The, because we normalize you to pi, so over, you know,
+ essentially as we do, as we have x here from zero to one,
+ we essentially just kind of go through one full period from bright to dark to bright.
+ Okay?
+ If we now multiply, you know, we have, here we have two and zero.
+ So what do we get?
+ We get two x plus zero y.
+ Okay?
+ So we're not dependent on y.
+ So essentially you can see we're not dependent on y.
+ Okay?
+ In the y direction, nothing changes.
+ It's always constant in the y direction, in the vertical direction.
+ But in the horizontal direction, it changes, but now it changes not with x, but with two x.
+ So by the time we reach one, we've done two periods.
+ Okay?
+ Because of the normalization with two pi again.
+ Right?
+ Okay?
+ And so on.
+ Right?
+ And you see that then as we start having, for example, one one, now it will change kind of diagonally.
+ And so along the diagonal, by the time we get here, we get to one and then we get to kind of two here.
+ So I'm not sure it's perfectly.
+ Yeah, so essentially we get one period here from zero to one and we get one period here from zero to one and then it's constant along this line.
+ And then by the time we're here, we actually have moved two.
+ And so on.
+ Right?
+ And so you see that depending on the different one and three, we get kind of three periods here and only one period there.
+ Yeah.
+ Could you explain again why there are two pi factors in there?
+ Is that thinking that for the weight functions that we multiply there, it's like two pi, it should be both the same thing.
+ Wait, wait.
+ So two pi is there because if you not put one in there, you end up having exactly one period.
+ Right?
+ You're not exactly one weight.
+ Well, you will.
+ So you do from zero to one times two pi, you go from zero to two pi.
+ Right?
+ So.
+ Okay.
+ Any, any other questions?
+ Oh, okay.
+ Okay, so it turns out that the, the actual complex numbers are a little bit complicated to work with.
+ So in practice, it makes a lot more sense to, to not look at, you know, the real and the imaginary part, but to look at the phase and magnitude.
+ Okay.
+ So meaning that, you know, we, we essentially look at when we get a number, when we get a complex number, what we look at is, okay, for that complex number.
+ Is it like how, how long is the vector of the complex number?
+ So what's the, the, the length of that vector, the, you know, the A plus I times B, how long is that vector?
+ And, and then what is the orientation of that vector?
+ Don't confuse it with the UV space, right?
+ I'm now talking about in, in, I'm talking about essentially this, the, the, what the Fourier transform, the value that comes out of the Fourier transform.
+ So for every frequency, for every UV value, the number we get, which is now a complex number, right, we started from a real image, but the transform of it is now a complex number for each value.
+ For each of those values, we get essentially a real and imaginary component, and those are hard to kind of get, you know, much understanding from.
+ What we care about is how strong is the signal there, how, how strong is the response for that UV value, for that frequency?
+ So that pattern, how strongly is that, so essentially what we're talking about, remember, it's when you do apply a filter or this or that, what you're talking about is how strongly is that pattern present?
+ When I say that pattern, I'm talking about these patterns. How strongly is there a constant pattern? How strongly is there this, this frequency at that orientation? How strongly is that present?
+ The question, how strongly is, what is the magnitude of the response?
+ I don't care if it's in the imaginary or the real part, that's less important, but I want to know how strong is the response, how strong is that signal?
+ Because really the real versus imaginary part, we're really just talking of how, you know, that pattern, how is it shifted?
+ Right? The real versus imaginary. Is it this pattern or is it this pattern shifted here or here? That's what we're talking about.
+ That's the ratio of real versus imaginary, that's what we're talking about.
+ So essentially, first is how strong is the pattern, is one, and then what is the phase? The phase means how is it shifted?
+ Okay, it's the ratio between real and imaginary. So instead of having the real and imaginary part and care about those two numbers, we care about, well, how long is that vector on the one hand,
+ and then what is the orientation of that vector, which actually means where is the dark part, where is the white part, how is it shifted?
+ Okay, how much cosine versus sine is it? Okay? That's what this is about.
+ What's interesting is that for real images, real world images, the rough pattern of the magnitude transform, right?
+ So essentially, we take a single image and we now do the Fourier transform and we get a real and imaginary part.
+ So we're not going to look at the real and imaginary image separately. We cannot look at both together.
+ I mean, we could maybe put them in some colors or something complicated.
+ But what we'll do is we'll generate two images. One is how strong is the response for a particular frequency for a particular pattern, and the second one is how is it shifted?
+ Okay? What's interesting is if we look at that magnitude, like how strong is this frequency present, it turns out that most natural images have roughly the same magnitude transform.
+ Okay? That magnitude part, so essentially, it looks almost the same for all images. What looks very different is the phase transform.
+ That's like what are the particular shifts of these different frequencies we respect to each other.
+ So we'll do an interesting experiment. We'll take here one natural image, an image of the natural world.
+ This is the magnitude transform for the sheet picture. What do you see here? It's like it's a lot darker. It's a lot brighter here.
+ So there's more low frequencies. So this is 0, 0 in the middle here.
+ And then, you know, you have, it gets essentially as you go away from the center to higher frequencies, you get less and less response.
+ This is the phase transform. Okay?
+ And then we have another animal, which of course also, as you can notice, some very strong, you know, patterns present here.
+ This is the magnitude transform, and this is the phase transform.
+ So now what we'll do is we'll actually mix up, we'll switch out the, so we'll take the magnitude of one animal picture and the phase of the other and recombine them.
+ Okay? And so here, if we take the zebra phase and the cheetah magnitude image and recombine them, so we take the strength of each pattern's presence
+ from the cheetah, but we take the phase shift from the zebra, then what do we see here? We see the zebra, right?
+ So what ends up being important, it seems for, you know, like the reconstruction in a sense, you don't see a cheetah here, right? It's just a zebra.
+ So it turns out that it's really this phase, the phase turns out to really be the thing that determines and the magnitude is actually less important,
+ and also it's kind of very similar for most natural images.
+ So this is kind of interesting. The reverse experiment here, so here we have the, which one is it, the cheetah phase and the zebra magnitude,
+ and we see that we see the cheetah, so the phase is the kind of the specific factor, the discriminatory.
+ Now why is that? Well, it's because we've done this decomposition in waves of different frequencies, okay?
+ So waves of this frequency and waves of, you know, higher frequency and so on.
+ What we'll see also in this lecture, the coming lecture, what we'll see is that the way to get a hard edge, like, you know, a black and white edge like here,
+ the only way to construct that from signs and cosines, signs and cosines are always soft, you know, transitions.
+ The only way to get a really hard edge from a combination of signs and cosines is actually to put a lot, to exactly shift them at the right place,
+ to have the maximum slope of all of your signs and cosines to align exactly in the right location.
+ So that's essentially what you see here. To get hard edges, you actually need a very precise phase alignment of it to get a hard edge at a particular location.
+ You get exactly all of your signs and cosines to align exactly correctly.
+ Aligning is essentially a phase property, which cosine combination do I have so that I shifted exactly at the right place.
+ So that's what you see here, okay?
+ Here's another experiment.
+ So here, another, you know, picture taken in the wild.
+ You see, of course, a very strong, you know, pattern here, a particular set of frequencies that should be strongly present in the image.
+ If you actually look at the Fourier transform, in this case, so this is the magnitude transform, you see that you actually have, you know, strong response, of course, at 0, 0.
+ But then, also, beyond that, you actually see that there's a number of frequencies that show up strongly, and then, you know, multiples of that also.
+ So these are higher frequencies.
+ So those are, you know, so this frequency here, this essentially corresponds to this distance here, so to that wave.
+ And then, of course, you also have multiples of that to be able to represent the more intricate patterns.
+ Okay?
+ So interesting if we mask that out, this is kind of what you would get.
+ So if you mask that out, and then you do a reconstruction, so you do essentially the inverse transform.
+ So you see we can actually do inverse transforms.
+ If you do the inverse transform of that, then you get this image here.
+ So you see, it's kind of, you still recognize the thing, but somehow that really strong, that's the strong edges.
+ Those have been attenuated now.
+ That's kind of what you see here.
+ And notice also, you get some ghost effects here.
+ That's because by taking those things out, remember, these are all global patterns.
+ And so if you change them in one location, they will actually somehow tend to show up, then, you know, like have ghost effects in other locations.
+ Okay?
+ Now, we look at a few important Fourier transform pairs, or properties of the Fourier transform.
+ Okay?
+ So first, it's a linear transform.
+ That means that if you have the same function, but like you multiply it by a factor of two, it's twice as big.
+ At the output, you will have an output that's twice as big also.
+ So if your function is twice as bright, then your Fourier transform will also be twice, the magnitude will be twice as big.
+ The phase will not change, and the magnitude will be multiplied by a factor of two.
+ Okay?
+ Et cetera.
+ If you do a linear combination of two images, you will get a linear combination of the two Fourier transforms.
+ Okay?
+ With the same combination.
+ Very important, there is an inverse Fourier transform.
+ This kind of rather trivial in the case to prove in the case of the discrete Fourier transform, obviously, because this is a basis transform.
+ A basis transform is always invertible.
+ So obviously, that inverse matrix should exist, or that matrix, that U matrix is invertible, has to be invertible, otherwise it wouldn't be called a basis transform.
+ This can actually also be, there is an inverse Fourier transform also in the continuous domain.
+ So if you work on the continuous representation.
+ So remember here, we both look, we define it both on the continuous space as well as on the discrete space.
+ That's the discrete representation, but the integrals was our representation.
+ So we can do, what we've seen today is we can do the Fourier transform both on the continuous, in the continuous domain representation, as well as in the discrete domain representation.
+ What's important is that if we scale down the function, we shrink things.
+ Right?
+ So we have now the scale of the patterns, we make them smaller.
+ That actually means high frequencies.
+ So if we scale down in the spatial domain, then we'll scale up in the frequency domain.
+ So if we go to smaller details, so we take an image and we shrink it by a factor of two.
+ Our Fourier transform will actually increase by a factor of two, because the frequencies now get bigger.
+ So this is kind of not so intuitive.
+ So it actually means high frequencies, small details.
+ So shrinking spatial domains mean increasing our images in the frequency domain.
+ So that's important to really know that it's that inverse behavior.
+ Really, really interesting.
+ You know, this is again where the Gaussian is just this amazing function.
+ The Fourier transform of Gaussian is a Gaussian.
+ And of course, this is still valid here.
+ So it means that if we make a bigger blob in the spatial domain, we get a smaller blob in the frequency domain and vice versa.
+ If you go to a very peak thing in the spatial domain, then we get a very spread out thing in the frequency domain.
+ So we still have that, but it's a Gaussian and gives a Gaussian.
+ The size of the Gaussian, as we increase in one domain, it will shrink in the other domain for its inverse.
+ Or it's Fourier transform or inverse Fourier transform.
+ Then there's also this interesting function, which is a box.
+ What's special about a box?
+ Well, a box is essentially a function that's perfectly spatially limited.
+ It's constant, and then it's zero.
+ So it's a perfectly spatially limited function.
+ The inverse, the Fourier transform of that is this function here.
+ It's a sinus function divided by x.
+ So it's called a sinc function, sinc x or whatever, but it's essentially, it's a sinus divided by x.
+ So it's, you know, the envelope of this function is the one over x.
+ So it's a sinc function that gets gradually smaller and smaller, scaled by one over x, essentially.
+ And then essentially in two dimensions it looks like this.
+ So we have that effect in one dimension and in the other dimension.
+ What's critical about this is if you compare this function that goes to zero
+ and this function that also goes to zero, if you remember from analysis and so on,
+ this one goes to zero with one over x, this one goes to zero with a double exponential.
+ That's very different.
+ This goes to zero very fast.
+ A Gaussian has a finite extent and very quickly goes very fast towards zero.
+ So if you know like this is kind of the probabilities, for example,
+ and the probabilities that you are at three sigma or five sigma or ten sigma is almost perfectly zero.
+ Something that goes with one over x, well, if you're ten out, you're still at one tenth, right?
+ The function value, right?
+ So as a probability function, you're quite likely to have things at one over, at factor ten out.
+ Like I said, the equivalent sigma, you have your box and then you do the Fourier transform.
+ At ten you're still likely at hundred, it's still one over hundred.
+ That's still a reasonable number, that's one percent or so.
+ So it's actually, it only degrades very slowly.
+ So this will create issues.
+ The fact that this has this infinite extent.
+ So being perfectly bound in the spatial domain means you actually have quite an extent,
+ your function is quite large in the frequency domain.
+ Here's a few more.
+ Okay, that one we've already seen in a sense.
+ These are basis function.
+ So a sine transforms to just these two peaks, these kind of coupled peaks, plus and minus the value,
+ but essentially it's just, it's exactly those values and then a shifted sine and so on
+ is different linear combinations of these, also these complex numbers.
+ The vice versa, if you haven't, this is something we'll look more in detail at next, on Thursday.
+ But if you have a perfect, exactly localized point in one, and we'll have to discuss that more in detail,
+ what that means, because we're talking integrals and a single point would lead to zero integral
+ and we don't want a zero integral, we want a finite integral and so on.
+ We'll discuss all of that in detail on Thursday, but this is a special function called delta function,
+ which is perfectly localized.
+ It's zero everywhere except at one location.
+ Somehow we'll see it integrates still to one, which is a bit magic, so we'll see how we get there.
+ But essentially that perfectly localized spatial function in the frequency domain
+ essentially needs all the frequencies to come together to create that perfectly localized thing
+ in the spatial domain is perfectly spread out, fully spread out over the whole frequency domain.
+ Also very interesting is this function, which, so if we assume we have this function,
+ you can kind of make copies of this function, like just a regular copy of this function.
+ Then, if they're spaced by a distance of t, then the Fourier transform of that will be the same function
+ but spaced with one over t.
+ We'll, as again, as we'll define the delta function Thursday, and then of course that thing is kind of defined
+ as a copies of delta function, so we'll get to that.
+ The reason I already showed this here is because it's really, really important in this course,
+ because this will be our model for sampling.
+ These are essentially the exactly measuring in one location or in all these regular grid locations.
+ That's the Fourier transform of it.
+ So this is how we'll model sampling, that will be the Fourier transform of our sampling function.
+ And this is what, on Thursday, will really make us understand what happens when you do aliasing,
+ what happens when we do sampling and then when does it go wrong.
+ This will essentially be the key to explaining that.
+ Then we define this box function, perfectly localized finite extent in space.
+ This has this kind of very slowly extinguishing function, alternating positive and negative in the frequency domain.
+ The Gaussian is this very nice function we set that has its own, you know, the Fourier transform of Gaussian is a Gaussian.
+ Again, don't forget the scale, that larger scale here makes smaller scale there, vice versa.
+ And then also quite interesting, and you actually know this at just mirror of the picture,
+ but actually the Fourier transform, if you want a perfect filter, this will end up being the perfect filter,
+ because why is it a perfect filter?
+ Well, it's essentially something that is exactly preserves a certain set of frequencies exactly, all flat,
+ so it doesn't distort anything, it preserves exactly within a certain frequency range,
+ and then, you know, kills off all the other frequencies.
+ So in that sense, it will be something that will be the perfect filter,
+ because it preserves exactly the signal we care about, and zeros out exactly everything else.
+ But sadly enough, it's a filter that we see here is kind of an infinitely large filter,
+ it kind of doesn't want to die out, it keeps kind of, you know, like only very slowly dying out,
+ and so applying that filter to a finite image will already be a challenge by itself and so on.
+ Okay.
+ And so I think, I'll leave it at that, I'll just give you a preview of this thing.
+ This will be the key, this is really one of the most important theorems of the course.
+ The convolution theorem, we're not going to derive it, but essentially,
+ the convolution theorem can be used in two ways.
+ So the Fourier transform of the convolution of two functions is the product of their Fourier transforms.
+ Okay.
+ So if we convolve two functions, which is a model for applying a filter operation, right,
+ you saw that last week.
+ So doing a convolution, which, you know, can be to blur the image,
+ or to do, you know, all these kind of linear filter operations,
+ or also, you know, convolutions and correlations, as we've seen, we can represent all of those the same.
+ So those filtering operations in the spatial domain, in the frequency domain,
+ they're just the product of those functions.
+ Product of the functions, if you remember, if you think of this in discrete,
+ in a discrete representation, it really means, like, if you think of basis transforms in linear algebra
+ and all that stuff, this is really where you can do a point-by-point,
+ direct kind of effect computation, like, you know,
+ like if you want to know what happens to a certain frequency,
+ it's not dependent on all the frequencies, all the, so if you want to know what happens to a point in the space here,
+ you have to combine many points.
+ With a convolution, you have to bring many points together, isn't that?
+ In the frequency domain, what happens to one frequency is completely separate from what happens to another frequency.
+ Every frequency just gets multiplied through a filtering operation.
+ That frequency just has its own effect, it doesn't depend on other frequencies.
+ What happens to frequency, whatever, you know, UV, it's directly based on what the filter does to UV,
+ it doesn't depend on the presence of other frequencies in the image or something like that.
+ And vice versa, there's the opposite one, so we'll look at that in detail on Thursday.
+ (Applause)

@@ -1,0 +1,1905 @@
+ [MUSIC PLAYING]
+ OK, so good afternoon, everyone.
+ So today we'll talk about what digital images, both how--
+ we'll talk about sensors, how to represent images,
+ about how we can sense images, look
+ at a bit of different aspects and issues
+ that you can encounter there.
+ And then we'll also look at image representation
+ and all the different aspects and things
+ that are important there and how we actually represent images.
+ And we'll touch just a very little bit on how we actually
+ represent digital images by samples and things like that.
+ Some of those concepts we'll then revisit much more in depth
+ in the coming weeks.
+ But that's essentially the program for today.
+ I also apologize the slides are not yet online.
+ I was trying to exchange them or give access
+ to the assistance to upload the slides.
+ And there was some issue with draw box quotas and stuff
+ like that that couldn't--
+ we haven't yet set it up so.
+ But in the future, you should get the slides ahead of time
+ available.
+ OK, so just a random picture here.
+ But essentially, if you think of--
+ take any cell phone, look out at the world,
+ grab a picture.
+ If you actually think of what this sensor actually does,
+ it's actually quite amazing.
+ So if you just a little bit think through,
+ there are sensors that will measure, I don't know,
+ like temperature or other things that will locally give you
+ one measurement at a time at a rate that's not too fast or so.
+ If you look here, what do we have?
+ We have a sensor, essentially a huge grid of sensors
+ that all can snap a joint kind of observation of this scene
+ with millions of coordinated measurements
+ in a very strictly aligned grid.
+ So very precise kind of measurements next to each other
+ in slightly different directions,
+ differing by literally arc seconds or fraction of arc
+ seconds in angle.
+ The other thing that's actually really interesting
+ is to realize that it's not a local measurement.
+ I mean, it's a local measurement of incoming light.
+ But in a sense, given the speed of light,
+ you're essentially observing anything
+ that happens in any direction that it means light towards
+ or reflects light towards you up to, in this case,
+ many, many kilometers away.
+ All of that in an instance, you're
+ measuring all of these points, like the light coming in
+ from all of this.
+ So if you just think a little bit about that,
+ it's actually quite amazing.
+ And we have very few other sensors
+ that do anything near this type of amount of sensors
+ and the flexibility to be able to scan,
+ to measure some property that could come from just
+ like nearby from a half meter away all the way
+ to tens or hundreds of kilometers potentially away.
+ Or if you take pictures of the stars,
+ it's of course even much further away.
+ But then you start noticing maybe the speed of light
+ would actually play some non-trivial effect.
+ But anyway, so in a sense, really,
+ I think it's good to pause just a little bit
+ and kind of realize actually what you get out of the sensor.
+ Also, if you think then video sensors, think of this,
+ then also at actually quite sustained rate
+ of capturing one image after the other
+ in a very systematic way.
+ So in a sense, you could say this here.
+ So these are the cameras.
+ They're the best sensor ever in many dimensions,
+ if you look at it.
+ Of course, that's not fully true.
+ And here it's just a little--
+ this is more a gimmick video.
+ And I'm not sure if the sun will play.
+ [INAUDIBLE]
+ Let me bring it over here.
+ OK.
+ So our movie.
+ [BEEPING]
+ Focus on the drop.
+ Enhance, then forward, frame by frame.
+ OK.
+ Some people imagine even better sensors.
+ Just before the views blocked, there's
+ a shape change in Dean's bag.
+ See the shadow variance?
+ See?
+ The shadow's wrong.
+ Xavits changed the configuration of Dean's packages.
+ Is it a tape?
+ It's hard to say for sure.
+ These things are--
+ Computer takes around the other side?
+ It can hypothesize.
+ Chris?
+ Yeah?
+ Can you rotate a 75 degrees around the vertical, please?
+ What do you think it is?
+ It looks a lot bigger than the tape.
+ Xavits had digital compression equipment in his apartment.
+ He could have downloaded it to anything.
+ Or maybe the bag twisted in Dean's pants
+ or something moved in front of light
+ and then altered the shadow.
+ Maybe it's nothing.
+ Maybe it's everything.
+ Let's get it and find out.
+ OK.
+ I'll leave you with that.
+ Anyway, so we can't do that type of stuff, of course.
+ Watch everything that happens anywhere with sensors.
+ But still, so video cameras or digital cameras
+ are actually quite amazing.
+ But there's also plenty of problems,
+ plenty of things that you might not be aware of.
+ But are happening under the hood.
+ And that in some circumstances can actually
+ create challenges.
+ Here's one example.
+ There can be issues of transmission interferences.
+ If you are sending the data-- so the sensor might not
+ be the problem.
+ But then if you are transmitting from somewhere
+ else the data, there might be issues with transmitting.
+ There are-- you're not necessarily in a position
+ to always be able to get the actual, all the raw exact
+ measurements.
+ You might have to compress your data
+ to be able to transmit it.
+ So in many images, you might--
+ instead of having the actual raw signal,
+ you might have something like this
+ where you might kind of notice a certain regular pattern that
+ probably has nothing to do with the landscape
+ that you're looking at.
+ But it's just something that comes from the image.
+ And image compression in particular.
+ We'll see this in a few weeks.
+ Why these all are-- if you would count the pixels here,
+ I think these are all eight pixels or so, probably.
+ Eight points by eight points or so.
+ Or this is kind of a--
+ you can kind of see a grid pattern showing up here.
+ And that has to do with how images typically get compressed.
+ OK.
+ Let me switch off the sound.
+ There can be issues with the pixel sensors saturating,
+ in certain ways.
+ So there might be a very bright point over here.
+ And that could overflow neighboring pixels.
+ The way that it's measured, every sensor is--
+ these sensors are physical things next to each other.
+ There can be situations where this can transfer.
+ And you have unwanted one pixel kind of gets--
+ doesn't directly get the light, but the neighbor
+ has a lot of electrons way too many to contain there.
+ And they spill over to neighbors.
+ There can be scratches or other issues, sensor noise.
+ There can be issues of bad contrast.
+ It can be hard to get the contrast you want in the images
+ due to a multitude of reasons.
+ If you have low contrast, just somehow digitally boosting
+ contrast, or in this case, maybe analog,
+ in an analog way, boosting the contrast.
+ But anyways, just boosting the contrast
+ and trying to take the values you have and pull them apart,
+ which is what boosting contrast would be,
+ doesn't necessarily--
+ it's not necessarily that helpful in getting a better image.
+ So we'll have to kind of somehow--
+ there are limits in what we can do in restoring images,
+ in processing images, and so on.
+ Resolution can be an issue.
+ If you take a picture, you might only have this many
+ measurements, and therefore only see things that
+ are certain-- up to a certain resolution.
+ For example, struggling to read here a license plate.
+ And then you might have heard already of super resolution
+ methods that somehow manage to go beyond what you can see
+ in the original image or images.
+ There's also there are significant limitations
+ in what you can do.
+ But here's an example, a little bit showing what can be done.
+ So let's say you start here from a relatively low resolution,
+ but a low resolution video, where if you look at it,
+ most of the pictures actually really picture--
+ the same picture just with a little bit of displacement.
+ In a sense, that means that we're now
+ having many measurements of the same thing that
+ are kind of redundant measurements.
+ And that can actually be leveraged,
+ as you see in this video here.
+ And what we'll actually see then with in terms of what
+ principles we can apply.
+ And we'll understand the math and the mathematical models
+ underlying this and it allows us to do super resolution,
+ to restore resolution that's actually not present in any
+ of the images that we actually have at our disposal.
+ But by combining them, we can actually
+ restore some of a higher resolution.
+ But we'll also see that, yes, you can maybe get a factor of 2
+ or a factor of 3 with normal images coming
+ from normal cameras, but that it will not be possible.
+ That intrinsically, there's no hope
+ to really get much beyond that because of reasons
+ that you'll actually learn about in this course.
+ You see here, for example.
+ So you see that you can actually really boost the resolution.
+ And maybe at a high level, what happens
+ is because we have this slightly displaced--
+ this was a kind of video that was taking slightly displaced
+ images.
+ In a sense, what we do is every of those measurements
+ is a slightly displaced version.
+ And so it's as if you were taking measurements
+ at a high resolution in between.
+ So an image that's shifted by half pixel
+ essentially allows you to get a little bit of a view
+ in between the two pixels of the original image, et cetera.
+ And so if you get many measurements,
+ you can start recovering a little bit the resolution,
+ except that you don't actually--
+ as we'll see with typical cameras,
+ you actually don't get a strict point measurement, a point
+ sample at one exact location, in which case you could actually,
+ with infinite many images, you could recover a super resolution
+ image of infinite resolution.
+ But you actually get a somewhat blurred version
+ because the size of the pixel actually corresponds
+ to some type of blurring.
+ And therefore, this will intrinsically limit
+ how much resolution we can recuperate
+ based on issues of how precise the signal is that we can read,
+ with a limited signal to noise ratio, et cetera, et cetera.
+ So all of this is probably--
+ you don't have enough information yet
+ to be able to really exactly understand what I'm saying now
+ so that that's normal.
+ But these are a little bit of different concepts
+ that will come back in the coming weeks that will allow you
+ to really understand what are the intrinsic limitations
+ of super resolution.
+ Then another effect is effect of motion blur.
+ You've probably all seen if you take a picture,
+ either if you move with your camera while you take the picture,
+ or there's very little light and you're somehow not holding
+ the camera very still, or you're zooming in very far.
+ And so the image moves a lot.
+ But you need a long exposure because there's not much light.
+ Or you have a very fast moving object like here.
+ So you have maybe a static camera,
+ but there's not much light.
+ The camera needs to accumulate light for a little bit of time.
+ So the exposure takes a little bit of time.
+ And you have a fast object that moves past the camera.
+ Then that gets smeared out, essentially.
+ Because essentially, what is this effect here?
+ It's simply the fact that while the camera is getting light
+ to come into every pixel from every direction
+ and creates the image that way, it
+ does that for a finite period of time.
+ And during that finite period of time,
+ you actually have observable motion,
+ meaning that at the beginning you see the car,
+ and then the car has moved on, and now you see the background.
+ So the pixels over here, for example.
+ So those are mixed pixels.
+ Also the pixels here are essentially
+ like accumulated from a whole stripe across the back of the car,
+ because it kind of shifted while you were taking the picture,
+ while you were accumulating incoming photons
+ to form the image.
+ So typically, you see here, you get something
+ that's very hard to use.
+ So there are possibilities.
+ If you know the motion of the vehicle here,
+ you know that it moved, for example,
+ that you can approximate this as a simple shift by whatever.
+ For example, you would have measured this,
+ and it's like 30 pixel shift during the exposure,
+ and it's kind of linear motion, so it's kind of shifting
+ continuously.
+ You can model that, and we'll see that in the coming weeks.
+ You can model that, and then you can invert that process.
+ But as you can see here, it becomes very noisy.
+ That looked like a better quality image, but it's blurred.
+ But in terms of the actual values you get,
+ it's a nice move, et cetera.
+ Once you do this inversion, you get a very noisy picture.
+ But it's sharp now, or kind of sharp.
+ You can actually read the license plate here.
+ So we'll see that it's actually really challenges
+ in the inversion that you lose precision,
+ because we actually have to take compute small values
+ and then boost them again, because this effect would
+ actually have reduced what we can see.
+ And then in version, we boost things
+ that almost had disappeared.
+ But that means that they are now much more noisy,
+ because the noise kind of plays a big role there.
+ Here's actually a nice-- just as an example,
+ a nice paper from 15 years ago.
+ Or so that was attacking this problem,
+ trying to change the camera.
+ Not do a posteriori algorithmically
+ change the-- do some fancy image processing
+ to get rid of the motion blur.
+ But what they did was actually try
+ to do something smart at the level of the physics before--
+ like on the incoming light that was going to the sensor.
+ So here they say the two classical ways
+ to try to take a good picture here of a moving object,
+ like in this case, a little toy train.
+ So this was taken in the lab.
+ Either you take a very short exposure
+ to get a sharp image, but then of course, it's actually--
+ there's almost no light.
+ So it's pretty dark.
+ And then you try to boost by raising--
+ by taking every value you find here
+ and multiply it by 100 or whatever it is to get a proper
+ image, and you get something like this here.
+ Pretty bad.
+ Or you say, OK, I need more time.
+ I need to accumulate more light, more information.
+ And I will do essentially this here.
+ So you see up there the exposure.
+ This little blip there means that the camera, at that point
+ in time, switches on, starts accumulating light.
+ And then very quickly after, it switches off.
+ And it doesn't take light anymore.
+ While this one would actually switch on,
+ so you open the--
+ let's say you had a plate in front of the lens.
+ In the first one, you take it away and immediately cover it
+ again.
+ In the other one, you let the light come in.
+ The train is kind of moving.
+ You wait a bit, then you close again.
+ So that's this long exposure time.
+ You get this nice amount of light, clear colors, et cetera,
+ not much noise.
+ But if you then need to do all the processing to remove,
+ you can see two things.
+ One, it's a very noisy image.
+ Two, there's this kind of funny artifacts showing up here.
+ There's some kind of frequency, pattern of a certain frequency
+ that seems to have encountered a problem
+ and that we somehow have lost or has disappeared or something.
+ What they did was based on some of the concepts
+ that we will see through this lecture,
+ they figured out that actually we could do better
+ if instead of just opening, waiting, and closing,
+ we kind of accumulate the same amount of light.
+ But what we do is we'll actually be opening and closing
+ a number of times very fast at a certain irregular rhythm
+ somehow.
+ So open, close, but changing the amount of time
+ they keep it open and closed and so on.
+ And so they instrumented the camera to do that.
+ And then what they obtained is this here.
+ So you see they call it the flutter-chutter.
+ Instead of having it open all the time,
+ they actually are only one time very briefly,
+ they do something in between which is kind of open, close,
+ open, close.
+ That's kind of random durations, roughly.
+ Not really random, but you could kind of do it random
+ and it probably work.
+ Similarly, so something chosen in a certain way
+ so that you don't get this loss here anymore
+ at a particular given pattern, that you
+ get the quality of the much better noise reconstruction,
+ actually all the frequencies--
+ and we'll see what that means--
+ are recovered here, including the one that
+ had fully disappeared here.
+ And so you get a much better image or so.
+ So there's also-- just to tell you
+ that there's actually many situations where
+ to really get an improvement, you
+ need to do it before you are in a digital form
+ where you intrinsically already have some limitations baked
+ in your data.
+ OK.
+ OK, this is just for the exercises as a bit of a preview.
+ So the exercises will be in Python this year
+ or have been for a few years.
+ They used to be in MATLAB before.
+ Before that, I'm not going to do that here,
+ but I actually encourage you before the first exercise
+ session.
+ So this week, there are no exercises.
+ Just go through the slides when you get access to them
+ and just play a bit around, set this up,
+ kind of loading an image, show it, et cetera.
+ So you can show the image, you can let it kind of display.
+ Then also look at just printing the image
+ or a fraction of the image, like a sub-image or so.
+ And just look at the numbers.
+ Just play a bit around with a digital image.
+ OK, so again, let's get back to what is an image.
+ An image in general, not yet a digital image.
+ An image in general, you can really see it typically
+ as a 2D signal.
+ It's a function depending on some variable
+ with physical meaning.
+ So typically, the variables are x, y coordinates.
+ Could also be x, y plus time.
+ You could also have in medical scanning,
+ you could have x, y, z, and then potentially x, y, z plus time.
+ So of course, this will lead to varying amounts of data.
+ Mostly in the lecture, we'll mostly
+ look at the situation of two variables,
+ so a two-dimensional space in which for every value,
+ at the conceptual level, for the analog image--
+ so the original function that we will then
+ sample and represent digitally--
+ but the original signal will consider it
+ as a continuous function in two dimensions typically
+ that represents a physical variable.
+ So typically, this will be the intensity, the light intensity
+ that hits the sensor.
+ But these can be other things like temperature, pressure,
+ et cetera.
+ Here's a few examples.
+ Ultrasound, an ultrasound image.
+ This is actually with essentially light,
+ but in the far infrared when it actually really corresponds
+ to temperature.
+ As we can have cameras that actually directly measure
+ temperature, for example, of the surfaces
+ that you look at.
+ Normal camera image or here, CT, computational tomography,
+ that's typically 3D volumes.
+ It's often also measured in slices,
+ but you often measure many slices.
+ So there, you have 3D volumes typically.
+ So those are just a few examples of possible images.
+ Mostly in this lecture, we'll look at just classical images,
+ either grayscale, just a single light in general,
+ or color within three channels, red, green, and blue.
+ It's also important to understand what we mean by images.
+ We'll mostly talk about natural images,
+ so images like this one, for example.
+ This looks like a random image.
+ Could be anything like a random image from the web or so.
+ But actually, this is really not the random image in a strict,
+ let's say, mathematical sense.
+ So this would be mathematically a random image.
+ Just randomly draw every pixel independently
+ from some Gaussian distribution or from a uniform distribution.
+ Then you get something like this here
+ with essentially no correlation between neighboring pixels.
+ This pixel and the next one are as correlated as this pixel
+ and a pixel somewhere completely different.
+ They're all independent.
+ That you could call a random image.
+ When we talk about images, essentially all the images
+ we look at, natural images, they have already
+ a lot of structure.
+ We can make a lot of assumptions.
+ There's a lot of statistics in the random natural image,
+ an image of the real world.
+ Maybe a question, why is that?
+ Why is there already, what is the structure,
+ what's different in natural images
+ than something that looks like this here?
+ >> [inaudible]
+ >> Yes. So essentially,
+ these textures, they are essentially expressing
+ a certain, these patterns are essentially
+ a certain correlation or if I see this over here,
+ then there's a good chance if I have this texture going on,
+ that I see, that implies some statistics on the neighbors
+ if they follow that pattern.
+ Also just in general,
+ you see that essentially if I take a pixel here, for example,
+ well many of the neighbors have roughly the same value.
+ So one of the patterns is just constant, for example.
+ So if you look at natural images at all the different scales,
+ you see that there's a lot of correlation between neighbors.
+ Both very close neighbors are very correlated,
+ further away neighbors are more weakly correlated,
+ but they still correlated.
+ So at all the different scales,
+ you have some level of correlation going on and so on.
+ These are things that we'll come back to when we'll discuss
+ about compressing images.
+ Compressing this image, okay, it's actually impossible.
+ You cannot compress this image and this is full information,
+ random, like you are definitely losing signal when, you know,
+ it will start like you cannot really compress this
+ because it's every number, you know,
+ one pixel doesn't, is not correlated with previous pixels.
+ So knowing one pixel doesn't tell you anything
+ about the next pixel.
+ But however, because there's a lot of correlation
+ in the image here, you know, here you have an orange pixel,
+ well there's a lot of orange pixels around it, right, et cetera.
+ So here there's shadow, well many pixels are also
+ in the shadow next to it.
+ All these correlations, they will give us an opportunity
+ to compress images, to leverage that,
+ to compress images in ways that we barely notice, okay?
+ Okay, so a bit more formally, images really,
+ we assume it's kind of a function defined
+ over an n dimensional space of real numbers,
+ so it's continuous.
+ That's, in general, so it's really just a function,
+ and you know, actually it can be one value,
+ it can also be multiple values.
+ As we discussed, if it's RGB color image,
+ then we'll have three values, for example, at every location.
+ In the digital form, we'll have to discretize,
+ and so then we're actually first starting
+ by making it finite for sure.
+ I mean, here we didn't explicitly make it finite,
+ but in general it will actually only talk
+ about a finite domain typically.
+ You know, if you have an image,
+ you have a certain field of view for the image.
+ So definitely in the digital form,
+ it definitely has to be a finite set of numbers.
+ So we have a grid, a regular grid,
+ in two dimensions, for example, here,
+ and so we have a countable, actually a discrete set
+ of values that we'll remember,
+ that we'll represent the image with.
+ Okay, so typical case, n equals two,
+ and we only have positive numbers here.
+ Here I still have a real number.
+ We'll actually see that even that we have to simplify.
+ Now we could put floating numbers for each of those,
+ which is a pretty good approximation to represent,
+ you know, a very good approximation of any real number.
+ We'll actually see that even that will really typically
+ simplify and just spend a fixed number of bits
+ and have an integer representation
+ of the function value that we want to represent.
+ Then what is a pixel?
+ So etymology is picture element, okay, pixel.
+ And then you have close by, you have voxel,
+ as like the thing in 3D, the equivalent in 3D, et cetera.
+ But okay, so a pixel, it's a point in that image,
+ location in the image.
+ It does, you know, it's,
+ there can be a misconception that this could be
+ a little square, that's not what it is.
+ There's actually, especially in graphics,
+ it's really important to understand that.
+ So there was a whole paper dedicated to explaining this.
+ Right, a pixel is not a little square,
+ a pixel is not a little square,
+ a pixel is not a little square.
+ And by the way, a voxel is also not a little cube, okay.
+ Why is that?
+ Because we'll see that it's really,
+ what the way we model this,
+ that we go from in terms of signal processing,
+ in terms of mathematically modeling things.
+ We will go from a continuous function,
+ we will make discrete measurements
+ exactly at a single location.
+ You know, a pixel is really the measurement
+ that we make at one exact location,
+ not over a square or so.
+ This gets blurred a little bit
+ when you actually look at cameras,
+ which we'd like to measure at a single point,
+ but hey, that doesn't quite work physically.
+ You need to both in time, you know, have an exposure,
+ but also in spatial extent,
+ you can't have a point measurement physically
+ in your camera.
+ So you have a little bit of,
+ you use a bit of space on the sensor array
+ to integrate light over a certain spatial area.
+ Still, the way we'll represent things,
+ mathematically represent things,
+ we are still really talking about
+ single point measurements.
+ But then to model the fact that
+ that this actually integrated light
+ over a certain region,
+ we will actually, we will have a way to model this
+ with an arbitrary shape,
+ so it's anyways not always,
+ it's anyways not exactly a square,
+ and there are a number of reasons for that.
+ Even if it looks like on the CCD or the sensor array,
+ the CCD or CMOS array,
+ it's approximated by a square.
+ For mathematical modeling purposes,
+ we are strictly talking about a point measurement.
+ But a point measurement potentially of a function
+ that takes into account the shape of,
+ you know, not the original light coming in,
+ but that light,
+ and you know, again, I'll use a word
+ that we'll actually only define
+ two weeks from now or so,
+ but a light convolved with the shape of your pixel,
+ with, of your, you know, of your sensor.
+ So that way we'll still be strictly talking
+ about single point measurements,
+ a single measurement,
+ and not an integral,
+ but in a sense that integral will be incorporated
+ in that convolution operation
+ that represents the shape of the pixel measurement.
+ So in order to know for the purposes that we,
+ that we discussed and for,
+ for strictly being able to mathematically handle all of this,
+ we're talking about point measurements.
+ Okay.
+ So here an example,
+ so point measurement and then as we do,
+ so this is then our digital representation,
+ it's a number of a discrete set of point measurements.
+ And then as we want to reconstruct the signal,
+ because, well, this is all good and well
+ to have a digital representation,
+ but now if I want to represent that image on my screen,
+ potentially my screen has a different resolution
+ than this grid.
+ So now I actually,
+ if I want to show it on the screen,
+ I need to have a function,
+ a mathematically well defined way to define,
+ like if now I have on my screen a pixel over here,
+ what value, what color should I put at that pixel?
+ Right, that's not necessarily exactly
+ at one of my sample locations.
+ So one thing is to take an image,
+ the two dimensional continuous function
+ and measure it at a number of discrete locations,
+ potentially having modified that function
+ to take the sampling,
+ the measurement sensor shape into a condense on,
+ but anyways, so point measurements there,
+ we store those point measurements on a grid,
+ but then in the later stage,
+ we might want to resample it
+ so that I can now display it on a different grid,
+ for example, my computer screen,
+ or I might want to print out the picture
+ or whatever it is, right,
+ that's whatever resolution now,
+ I need to reconstruct or to be able to at any point
+ in the whole continuous 2D space,
+ be able to reconstruct mathematically
+ by combining numbers and computing a function
+ that takes a number of neighbors into account or so,
+ or potentially all of my values into account,
+ I need to be able to now have a function
+ that reconstructs the value at that particular given location.
+ Here you see, you could kind of say,
+ well, for this value here with a reconstruction filter
+ that takes for this value would kind of apply it,
+ in a sense, a pixel here would be impacted by this one
+ or a pixel here would be impact by this one and this one
+ and actually also those two, et cetera.
+ So in a sense, is the sphere of influence
+ of a particular measurement can be typically
+ for practical reasons will have a finite range
+ that measurements will be taken into account
+ to do the reconstruction.
+ But again, we'll talk a lot more about that later.
+ Here's for example, cubic reconstruction filter might,
+ this point might be applied in this whole large region here
+ would have an influence on our reconstruction.
+ So this point here would take this measurement,
+ this measurement, also other measurements,
+ lots of measurements into account
+ to actually compute the value at that given location.
+ Again, this is from that paper, right?
+ In a sense, notice that also on the reconstruction side
+ or if you print something, for example,
+ you might not actually try to exactly print the function
+ that we're talking about, but just print something
+ that's also a variant of it, like here with some dittering
+ or some printing techniques that from close by,
+ this doesn't look at all like the function you wanna render.
+ But it turns out that our eyes also are not perfect sampling,
+ infinite resolution, everything.
+ If I look at these things from a little bit further away,
+ would actually, or I will also in a sense do some kind of
+ blurring in operations that this will actually look okay,
+ to our eyes, essentially.
+ It would kind of look like this,
+ even if that's printed on the paper,
+ we will see something like this here.
+ So our eyes also are not strict measurement.
+ So where do we just come from?
+ So of course, digital cameras,
+ and that's what we'll focus on in this part of the lecture.
+ They can also come from other devices like MRI scanners
+ or CT scanners.
+ Of course, also computer graphics,
+ and that's what you'll spend the second half of this course on,
+ and also additional types of sensors and so on that,
+ like a laser range finder could be scanning the world
+ with a laser, and then some mirrors or other things
+ that move the laser around so that it scans
+ a two dimensional pattern, for example.
+ So as I said, we'll focus on images, camera images.
+ Here's kind of a, you know,
+ schematics of a typical camera.
+ Light comes in.
+ In a sense, conceptually, we have a pinhole camera.
+ So conceptually, we have light coming from a certain direction.
+ It goes through a point, and it projects onto the sensor
+ array behind the camera.
+ In practice, if we just had a pinhole camera
+ with just this very small hole,
+ there again, we don't get enough light
+ to actually get a good signal on the back.
+ So the way we compensate that is we put a lens.
+ What's the function of the lens is to,
+ you know, if you have a lens of, let's say, this size,
+ of course, you know, they're much smaller here,
+ but they're still like, you know, reasonable size.
+ Let's say I have a lens like this,
+ then what happens is that from a particular point in space,
+ all of the light that comes on the lens
+ from a particular, you know, point,
+ ideally will be refocused and all land on a single pixel.
+ And to make that really work out,
+ you actually have to choose what distance you're focused on.
+ But if you're focused on the right distance,
+ then this would actually really work.
+ So you would have all the points at a certain distance
+ would kind of, you know, spread out to the lens here,
+ and then all those points would really be focused.
+ For simplicity here, let's say that it's a point
+ that's really far away.
+ So all the incoming rays from that point are parallel, right?
+ So that's when your camera is focused at infinity.
+ So you have parallel incoming rays,
+ and then those rays would be focused, not like here,
+ but would be focused essentially for a particular direction.
+ For example, all focused exactly over there on that pixel.
+ And notice exactly it's actually already good enough
+ if it all falls within the same little pixel area.
+ So we don't need to have it exactly, exactly focused,
+ but, you know, let's say within the size of a pixel.
+ So this depends a bit on the resolution of your camera,
+ how, you know, the lens and the lens focusing
+ needs to match also in a sense,
+ the resolution of your camera.
+ There's some relationship there.
+ Or at least the lens should be good enough
+ to actually allow you to see every pixel independently
+ and not have a blurry mess on your pixels
+ and have anyways 20 pixels next to each other,
+ and then we'll see the same thing, yes.
+ - [Man] The rays look high away,
+ and still miss the grid, right?
+ - The what?
+ - [Man] The rays with a high wavelength
+ will still miss the grid then, right?
+ Could they have a wavelength that's longer
+ than the grid has size?
+ - I'm not sure, I think that's actually still,
+ I mean, if you really get into the fraction issues
+ and stuff like that on there,
+ but that's really something different.
+ That's really not what I'm talking about here.
+ This is kind of just geometrically here.
+ We're not going to the point where this becomes an issue.
+ So I don't know if you're like from the physics department
+ or something like that, or...
+ - [Man] Okay, well, so there are certainly ranges where,
+ there are situations where this becomes an issue.
+ This is not an issue in the normal ranges
+ that we'll talk about in this course or something.
+ - [Man] Remember, this is one of the things
+ that happens when you stare at the sun,
+ which is bad for your right to know.
+ - Well, that's bad in many ways.
+ So I wouldn't do it.
+ Anyway, so okay, so we'll assume,
+ similarly geometrically that, you know,
+ rays from a certain, that come from points in the scene
+ that we'll be able to focus them,
+ you know, on a point here,
+ on a single sensor element here.
+ And then we'll have, a program will go more in detail,
+ but for each of those here,
+ they will go through an analog digital conversion.
+ So ADC here.
+ So that we get from actually just having a bunch of electrons,
+ we'll actually get to a number representing digital form.
+ And then we store that in a memory or image array, right?
+ We'll store this somewhere in memory.
+ Here's a slightly, you know, more specific example here
+ of that where you see essentially this pixel array.
+ You kind of also notice that there's something funny
+ going on here.
+ We have these little color filters in front of pixels.
+ So we have actually two greens, one red and one blue.
+ This is actually one of the mechanisms
+ that allows us to generate color images
+ is that we'll actually, the incoming light,
+ in front of every pixel,
+ on front of one will only keep green,
+ in front of the other will only keep red, et cetera.
+ And so that way we'll be able to regenerate color pictures.
+ It's not a perfect mechanism,
+ it's actually the cheapest and simplest one.
+ And so it's the one that's used pretty much
+ in all kind of consumer cameras or so.
+ But we'll talk about this a little bit later in the lecture.
+ Very conceptually, to give you some intuition,
+ do a little bit of how a CCD camera works.
+ CCD stands for charge couple devices.
+ And so, imagine that's your, you know,
+ behind your lens, this is your sensor,
+ and you have like raindrops falling,
+ and you know, let's say the image would be
+ that in some areas there's a lot more rain
+ than in others and so on.
+ And so buckets will be filled in different amounts.
+ And then essentially those buckets to be read out,
+ they'll actually be moved over here,
+ fill one of those, so essentially they'll move all one motion
+ this way, this will empty this one in here.
+ And then once that happens, this whole line moves this way,
+ one by one you will have this bucket, but in here,
+ you measure, so there's a measurement unit,
+ you measure this is the analog digital conversion,
+ right, the model they for.
+ And so you read the whole line out,
+ you have all the numbers now for that line,
+ and then you move all of those one more line,
+ so you copy one more line from the image area
+ to this line here to read out, and you digitize, et cetera.
+ So every time you move line by line,
+ you can already imagine that while you do that,
+ it keeps raining, so this is actually an issue
+ that we'll see later is that this can perturb images
+ a little bit.
+ So image area can be quite large, not that large in here,
+ but in digital cameras, they can actually be really
+ physically this kind of size.
+ So it's really electric charges that you get in these buckets,
+ and the charges are essentially really proportional,
+ and by that I really mean proportional,
+ so it's actually a linear response.
+ So for if you have three times as much light,
+ you will have three times as many electrons popping up
+ in those buckets.
+ And then you convert them, so let's say here,
+ the example is go like this, you go to the
+ analog digital conversion, this is then the translation
+ from the electrons to actual digital numbers,
+ then you read the next one in, oops, sorry,
+ you read the next one in here, you shift through further,
+ you read the next one, et cetera,
+ and that's the way you build up the image.
+ They can be fixed here that are problematic,
+ so for example, if you have something that's really
+ many, many times brighter than one you can actually
+ contain in a single bucket, you will tend to get
+ these tricks here because of the fact that this is
+ set up in a way that you can actually, with current,
+ you can actually move from one bucket to the other,
+ it means that they're not fully isolated between
+ the different sensing elements, because they actually
+ have to be able to move things from one to the next
+ to measure it, it means that you have the risk to
+ if you have a really strong saturation in one location,
+ and way too many electrons there that they just flood
+ over everything and the whole, but the whole vertical line.
+ If you see this, it means that the electrons actually
+ transferred in the vertical direction, right?
+ It tells you something about the orientation of your
+ sensor, in a sense.
+ You can also have some of these bleeding and smearing,
+ which would come from the fact that you keep measuring,
+ so if you have in particular very short exposure times,
+ so that in the end, the time it takes to read out
+ the image, which is kind of a fixed time that it takes
+ to shift through the whole image, that that time is about
+ of the same order as the time you actually
+ exposed your image, then that kind of, you know,
+ think of the rain there, you expose a little bit for it
+ to get some rain, and then while you move through,
+ it takes about the same amount of time, so you're gonna have
+ still the same amount of rain that still falls through
+ in the wrong buckets, because you are actually moving out
+ and shifting through those buckets.
+ That's kind of these lines that you see here,
+ this brighter, I don't know how much contrast there is,
+ but you see like brighter stuff over here,
+ this is due to this type of issues.
+ Here's something like dark current.
+ The sensors, they also actually based on temperature,
+ they will actually generate by themselves without any light,
+ they will generate some electrons, okay?
+ And this can actually evolve over time,
+ so this is here from a satellite, I think,
+ nine years apart, initially it was like this,
+ after a long time, it was actually had more of this problem,
+ and so this resulted in degraded capability
+ to take high quality images for this satellite here over time.
+ So the dark current is in CCDs,
+ it's thermally generated charges,
+ they give non-zero output, even in darkness,
+ so this is dark current, and it also is not,
+ okay, it's not perfectly deterministic.
+ So maybe just to wrap up before the break,
+ any idea, any suggestions how we can essentially
+ reduce this dark current?
+ Sorry?
+ What do you mean by that?
+ Maybe compress the image and then try to decompress it again?
+ That's not gonna do too much about it.
+ You had a--
+ - The camera?
+ - Sorry?
+ Cool down the camera, yes, so you read
+ that it was thermally generated, so yes,
+ so the cooler it is, the less you will have from it,
+ and the warmer it is, the worse,
+ so that's a very good point, yes?
+ - Professional thing, like if it's less than,
+ maybe say five electrons, probably,
+ maybe you have to ignore it, or do you mean
+ for pressure to--
+ - Maybe, I mean, yes, but that also means
+ that then small signals you will also fail to register,
+ so it's not great, same thing, okay?
+ So one other thing that can be done is actually,
+ so it's partially, it fluked to it randomly,
+ but it's not fully random, right, so it still has,
+ so therefore, what people are doing is they were taking
+ dark images, so they would actually close the camera,
+ make sure there's no light coming in, and take a picture,
+ and then they could actually subtract that picture,
+ or they could take a few of those, average those,
+ and so get an average, so it fluked to it,
+ but it still fluked to it around some values,
+ and so they could take a dark image,
+ and essentially subtract that from every image,
+ and that's also a way to cope with it,
+ but indeed, the cleanest way is to actually,
+ really cool down your sensor, and actually,
+ high quality in observatories and so on,
+ where they really want the best possible images,
+ they would actually really cool down actively their sensors
+ to get the best possible thing.
+ It also means that a satellite in space, in outer space,
+ as long as it's not in direct sunlight and so on,
+ it's in pretty good shape already in general,
+ because it could actually be, it would be very cold out there.
+ Okay, so we'll have to break now, and resume after that.
+ Okay, so we'll continue.
+ Maybe also hear something that's kind of interesting,
+ is this is now about wavelength,
+ proper wavelengths of the light,
+ which ranges visible to the human eye,
+ is about here, about 500 to 700 or so,
+ so that the eyes can kind of see the light well.
+ Within that we'll see, we have like three different ways to,
+ we can perceive three different shades here,
+ red, green and blue kind of.
+ CCDs actually perceive light in a much larger area,
+ and actually also can be actually very, very effective
+ in terms of efficiency of picking up even all the way
+ to single photons, so the efficiency of conversion
+ photons to electrons is very high.
+ Anyway, so also now that more and more sensors
+ actually not CCDs, this was more in the past,
+ now it's mostly all CMOS sensors,
+ it's actually the same technology,
+ or the same intrinsically same sensor element,
+ so essentially photo diodes that will convert
+ incoming photons into electrons.
+ With the CMOS, each photo sensor has its own amplifier,
+ here also there is a need to reduce,
+ to subtracting a black image, also in the sense of,
+ so there is a pattern of noise that's fixed,
+ that you can actually remove.
+ In the past, it also had lower sensitivity,
+ because around every pixel you need a bit of electronics,
+ and so in particular the higher the resolution you made,
+ the more space this was taking on the sensor area.
+ I think now as far as I understand,
+ they actually, they change the process around,
+ and they actually do it in a way that they,
+ but all the electronics on one side,
+ and then actually flip it,
+ put stuff on top and then flip it around,
+ and then shave away everything up to the sensor,
+ and that way actually can have a close 200% fill rate.
+ So you don't need space next to the pixel anymore,
+ to handle all of the rest,
+ but you can actually have that simply,
+ by flipping the, literally flipping the chip around,
+ and then scraping around,
+ and having the light sense the area
+ really from the other side of the chip,
+ they can actually avoid that particular problem.
+ And of course, because this standard CMOS technology,
+ you can actually put on the same chip,
+ you could actually put lots of other
+ digital electronics, essentially.
+ And by the way, this is already a wild back,
+ but essentially CMOS chips can go to very high resolutions.
+ Here's a little bit of a comparison.
+ In particular, this is cheaper,
+ because it doesn't need its own chip processing facility,
+ that is made custom for CCDs,
+ because they had kind of different electronics.
+ It's just standard lines.
+ It's lower power, because this transfer actually of charges,
+ to read out the image,
+ you have to trend and get a certain voltage
+ over the whole line.
+ Those kind of issues disappear, so it's lower power.
+ It's a little bit less sensitive,
+ but you have a lot more flexibility,
+ essentially, with this technology.
+ Also, potentially, if you do per pixel amplification,
+ you can better handle high dynamic range images.
+ We'll discuss later, kind of really,
+ what the issue is with range,
+ but essentially, because you can only have,
+ if you have one common,
+ amplification of the whole image,
+ and you have, let's say, only eight bits
+ to represent your image,
+ then you're stuck, essentially,
+ either having this be white and seeing something here,
+ or vice versa, having contrast here,
+ but then all of this will just be black,
+ will be zero value, essentially.
+ There, you can actually do better.
+ They also issue with CMOS sensors.
+ Here's kind of one example
+ of what you get with CMOS sensors.
+ This is actually because CMOS sensors, typically,
+ it's not strictly needed, but most CMOS sensors,
+ where is the cursor, here we go, have rolling shutter.
+ Okay, so what is rolling shutter?
+ It essentially means that,
+ to keep the, to in particular,
+ make the chip really cheap and everything,
+ the way it works is that,
+ they're actually never stopping to integrate on the chip.
+ So the chip is actually always photosensitive,
+ so there's no shutter in front.
+ It always has light coming in.
+ The light always gets transformed into incoming light,
+ gets transformed from, you know, into electrons.
+ The only thing that happens is that every once in a while,
+ you say, okay, flush everything you have now,
+ so you clear the line,
+ so you flush all the electrons that are there,
+ you reset the line,
+ and then you restart accumulating from that point on.
+ And then at another point in time,
+ you can actually read out the line.
+ Okay, and so this is also organized in lines,
+ essentially, in scan lines.
+ For example, as you see here,
+ essentially you have lines,
+ and different things happen at different times,
+ and that's why along the line, everything is fine,
+ but across lines, you see strange distortions.
+ This is because actually every line is read out
+ at a different point in time.
+ So if you build electronics,
+ it is much simpler to build electronics
+ that just reads out systematically
+ at a sustained readout rate,
+ meaning that, you know, for example,
+ if you want to do a camera that reads
+ 30 images per second, right, 30 frames per second,
+ then, you know, you shouldn't over dimension
+ your readout system.
+ You can take a 30th of a second to read out your image,
+ right, that's gonna be the,
+ that you need to have that bandwidth
+ to read out at 30 images per second,
+ but ideally you read really just at that fixed rate
+ to achieve 30 images per second,
+ you don't have to read the whole image
+ in a very quick burst,
+ and then, you know, wait for like,
+ you know, what is it like,
+ 30 milliseconds, for example,
+ you know, read out for three milliseconds,
+ and then wait 30 milliseconds until the next frame is ready.
+ The way you actually, that these chips do it
+ is they just read out, you know,
+ at their rhythm, line per line,
+ until they're at the bottom of the image,
+ and then they go back to the top,
+ and they start reading out again.
+ And then how do they do to have the right amount of exposure?
+ Well, they just reset the line,
+ you know, the amount of time exposure they want
+ before they are going to read out the line.
+ So essentially, as you read out the line,
+ there's like, in front of it, there's a reset going on,
+ and so you reset this line, you read out this line,
+ and then, you know, you move down,
+ and this amount of time between the two,
+ you know, will mean that every line is exposed
+ by that amount of time, essentially,
+ it takes to travel from here to here, right,
+ over that distance, essentially.
+ Yeah, in that way, you can have a system
+ that just very regularly just reads out pixels
+ at a fixed constant bandwidth,
+ you know, rate of reading pixels, essentially.
+ So that's very cheap, makes the electronics simple,
+ et cetera, et cetera, all very regular processing,
+ but, you know, if you move quickly with your camera
+ while this process is happening,
+ then this is kind of what it can look like, okay?
+ Especially with things, you know, here, the helicopter,
+ you see a nice picture of the helicopter, or less,
+ but the things that move really fast, you know,
+ essentially have significant motion between scan lines,
+ or, you know, across part of the time it takes
+ to read out this part of the image,
+ you already have a lot of motion of the,
+ of this part of the helicopter here,
+ then it's, you know, you get funny effects here.
+ And also here, when you have a lightning,
+ this can also create funny effects.
+ I think I should have something to,
+ an example to show here.
+ Okay, I think this is actually nice here.
+ - I'd like to show you around
+ our new plugin, Rowling Shutter.
+ (upbeat music)
+ (upbeat music)
+ - It's designed to help correct skewing distortion
+ that Seamoth chip in some modern digital cameras can create.
+ - The problem arises, because there's a slight delay
+ between the camera recording top and the bottom of the picture.
+ This time difference means that movement in the scene
+ can end up distorted.
+ You can see the trouble here in a shot
+ where the camera is panning sideways.
+ Not only can it look hot, but it makes shots
+ difficult or time consuming to track.
+ Our plugin, available for after effects and new,
+ attempts to correct for this distortion
+ by working out motion in the scene
+ and sliding objects back into their proper place.
+ Being able to correct for this not only helps
+ the look of the shot, but it can also allow you
+ to extract the camera from a previously untrackable shot.
+ Unlike some other global solutions,
+ our technology allows us to look at each
+ of the moving objects in the scene individually
+ and move them back to the right place
+ rather than applying the motion blur here.
+ This stops any objects that weren't actually moving
+ relative to the camera being distorted
+ by the correction process.
+ The main piece of information you need
+ in order to use the plugin is how much lag
+ there is in your camera.
+ The easiest way to work this out is to film a little test shot
+ where you pan your camera around the scene
+ with some quite strong vertical edges,
+ maybe a wall or a door.
+ You simply apply the plugin and adjust the--
+ Okay, anyways, that's good enough.
+ But that gives you an idea of those kind of problems.
+ You can actually have fun with this.
+ If you wanna give it a try with your phone,
+ then you can try it, I don't know exactly
+ in what orientation.
+ You can actually try both, take a video like this
+ and a video like that as you are in the tram
+ and you watch out of the window
+ and just record a video as the tram moves by
+ and look at the video and you'll see essentially things
+ at different angles as you do that.
+ - Is there already such a correction
+ in when the mobile phone takes the video
+ because of some pre-built model or something?
+ - Not that I know, actually, no.
+ Not that I know.
+ There might be, you know, they keep putting new things
+ in all the time, but I don't think so.
+ What's actually interesting is that
+ because things that are close to you
+ visually move faster than things that are further away,
+ you will actually, as you film like that,
+ and if you have the right orientation
+ so that essentially your readout is kind of vertical.
+ So try both, but one of the two should definitely do that.
+ If you record a video and you watch at a still frame then,
+ you will actually see that things closer
+ will be more tilted than things further away, for example.
+ Because the things close by move fast
+ while the things far away are much more stable
+ as you kind of, you know, just go like this in the tram,
+ past the facades or past the things.
+ Anyway, something to homework if you want,
+ or on the way homework.
+ Okay, so here's another type of camera.
+ So we mostly will look at frame-based cameras,
+ but I also wanted to briefly show you here the DVS camera,
+ which is an event-based camera,
+ which is actually, and I think I mentioned it,
+ on Tuesday is a human-inspired,
+ human-eye-inspired camera.
+ It has some of the principle of the human eye,
+ only some of them, but it's actually quite interesting
+ and has a number of advantages, but also disadvantages,
+ but can do some very interesting things.
+ - Standard camera transmits full frames
+ at a fixed frame rate.
+ By contrast, the DVS has smart pixels.
+ Its pixels are all independent of each other
+ and only transmit information
+ if they detect a change of brightness in the scene.
+ We call these bits of information events.
+ Since these events are generated asynchronously,
+ the output of a DVS is a sequence of events
+ instead of full frames.
+ To visualize this principle, in this animation,
+ we show the output of a camera and that of a DVS
+ when they are both looking at a black dot
+ on a rotating disk.
+ As we can observe, for the DVS,
+ the events form a spiral in space and time.
+ When the disk stops rotating,
+ no events are generated at all.
+ However, the standard camera continues
+ to wastefully send full image frames.
+ When we speed up the dot,
+ the images of the standard camera suffer from motion blur
+ while the spiral of events is still clearly visible.
+ This is due to the very high temporal resolution of the DVS,
+ which is in the order of microseconds.
+ When we keep the DVS steady,
+ only motion in the scene generates events.
+ However, when we start moving the DVS,
+ gradients in the scene become visible.
+ In the following experiment,
+ we mounted the DVS on a standard camera
+ on a quadruple-optor and performed flips.
+ When we replay the flips in slow motion,
+ we can clearly see motion blur effects
+ on the standard camera.
+ However, if we render the DVS output appropriately,
+ we can still see sharp lines.
+ For these DVS renderings,
+ we accumulate all the events over a time interval
+ of delta T in one image.
+ By choosing this delta T small,
+ we can render slow motion video.
+ The high temporal resolution of the DVS
+ allows us to track the quadruple-optor
+ during flips with rotational speeds
+ of up to 1,200 degrees per second.
+ We believe that a DVS is the most promising onboard sensor
+ for enabling highly aggressive maneuvers
+ with flying robots.
+ - Right, and so you know,
+ like David is doing,
+ competing with human capabilities
+ in terms of robot racing and so on,
+ including some of the technology.
+ Okay, so now let's get to our first look at sampling.
+ This is more cartoon look at it.
+ We'll get much more in detail at this
+ further in the lecture,
+ but to already give you a preview
+ or some intuition and some kind of basic idea
+ of what are the important concepts here.
+ So here we look at, in this case,
+ just a 1D function, so this curve, right?
+ We will sample it in 1D,
+ so what we're really talking about is at discrete locations,
+ these locations here,
+ we're going to measure the value of the function.
+ Again, we're not integrating over certain areas,
+ this is that we just really measure at that one location.
+ So that's what we call sampling.
+ So here's an example, for example, some audio signal.
+ This would be another signal with an increasing frequency.
+ So kind of type of sound, right?
+ That's what it would look like.
+ Here's this is actually,
+ and we'll see the actual example later
+ where this was cut out from.
+ There's also 1D signal,
+ it's actually one line from a 2D image.
+ So we can also sample two-dimensional signals this way,
+ in this case it's one line cut out of a 2D signal,
+ and as we sample it,
+ we also have this continuous function there,
+ and now we make measurements at a set of discrete locations,
+ we make a point measurement,
+ and we write down the value essentially
+ at each of those locations.
+ So that's sampling.
+ So it's pretty straightforward, right?
+ Just write down the function's value at all these points.
+ And then, so let's say this was audio or something like that,
+ then we have now a digital audio,
+ like what you have on DVD,
+ or what you will stream from Spotify or whatever.
+ And then of course, as you get it back to your phone or whatever,
+ you actually want to regenerate a continuous signal
+ that you can send into your ears,
+ and actually appreciate the music, for example.
+ Or as I said before,
+ if you want to display the image on the screen,
+ you have to essentially be able to remeasure
+ at potentially not those exact locations that you're given,
+ but at any location you would need for your screen or for your display.
+ So there's really always in tandem when being able to discretize,
+ we also need to be able to go from the analog continuous world
+ to a discrete representation,
+ we also need to be able to go back from the discrete representation
+ to a continuous representation.
+ That is actually called reconstruction.
+ And so, in a sense, it corresponds to, as you see up there,
+ guessing what the function did in between.
+ Okay, so with no more information,
+ if you remember the random image,
+ if this was coming from a random signal,
+ then all bets are open in between,
+ those few measurements we have say nothing about the other points,
+ if they're all random and uncorrelated.
+ So we actually have to make assumptions
+ of what this function actually can be doing in between measurements,
+ or in other words, we need to have a certain level of correlation
+ between the measurements we took
+ and assume that the function in between does something reasonable.
+ It behaves in a certain way.
+ You see me hintwaving now, literally.
+ We will actually very strictly formalize
+ what the assumptions are that we make in between
+ to allow for actually a perfect reconstruction.
+ So under some conditions,
+ which have to do with how quickly the signal can change,
+ and this will be translated into frequencies and so on,
+ we will actually be able to say, as long as this is satisfied,
+ these constraints are satisfied,
+ we will be able to go exactly from that signal
+ back to the original signal.
+ So the one that we started from, essentially.
+ This is under some assumptions,
+ which in practice we can not exactly satisfy in this and that,
+ but it will still work quite well.
+ So here's the example with the sound,
+ microphone, continuous waveform.
+ This gets translated to digital,
+ sampled into a discrete set of numbers that are digital,
+ and represented with finite number of bits
+ that get stored on a disk or something else,
+ in store in memory, or transmitted,
+ and then gets back to a digital analog converter.
+ Reconstruction happens, you get a continuous signal,
+ and then you can listen to the music.
+ Okay, so let's look at a seamless possible waveform,
+ a sinusoid, just rhythmically going up and down
+ at a certain rhythm.
+ If we sample this, for example like this,
+ so at each of those locations,
+ we measure the value of the function, for example here.
+ So we sample the function,
+ the only thing we're left with is this.
+ So we forget the function, we don't have the function anymore,
+ it's passed, we measured things, it's gone,
+ the signal is gone.
+ This is what we have from the function.
+ So now we should reconstruct.
+ Now looking at these measurements going like this,
+ you can probably reconstruct this out of it, right?
+ That'd be quite easy.
+ But what happens if we sample at a different rate?
+ For example here, I measure here,
+ and then I measure here, and then I measure here,
+ and then here, and here, and here, here, and here.
+ Okay, can we do the same trick?
+ Oh, now if we actually just look at those data points,
+ there's a much simpler explanation,
+ which is this much slower moving.
+ So this is clearly something funny going on here, right?
+ We had this perfect sine wave,
+ and we sampled it at a discrete rate,
+ okay, maybe a bit too slow,
+ but it's kind of funny that essentially this sine wave
+ that we sampled kind of looks,
+ if we look just at the samples,
+ the original sine wave or this much slower sine wave
+ look essentially identical.
+ If we only look at those particular points here, right?
+ They are indistinguishable, they are identical.
+ So that's what you see there, right?
+ So if we don't sample fast enough, this could happen, right?
+ We could, you know, we might have this signal
+ that actually happens, but we sampled too slowly,
+ and now when we just see these points,
+ of course, what would we reconstruct?
+ Well, we'll probably just think like,
+ oh, this is slow moving signal that just moves,
+ and so we'd probably reconstruct the dark curve here
+ instead of the original one, right?
+ So this is going to be a fundamental problem
+ that we'll have to care,
+ and you see already with a simplest possible waveform,
+ like a sine wave, we fundamentally have this problem
+ that shows up here.
+ This is a problem that we'll actually call aliasing.
+ Aliasing from essentially, you know,
+ they are indistinguishable from each other,
+ they can be confused with each other.
+ So this is essentially, you can see these as signals
+ traveling in disguise as other frequencies.
+ Notice that before, the signal that we thought
+ we were sampling, maybe it was actually the fastest signal
+ that one also looks the same.
+ So there's not only those two that can be confused,
+ there's a whole family of different sine waves,
+ exact sine waves that all go exactly through the same points.
+ Here's another signal, so again, like a sine wave,
+ but accelerating sine wave.
+ If we take a picture of this,
+ you know, so you would look at it this way here,
+ you generate this, you can quickly generate this yourself,
+ and so you essentially just display that discrete locations,
+ this is essentially the same,
+ this is sampling essentially, right, that you do.
+ You just display at these exact locations,
+ you sample this function,
+ you read out the function value of this function.
+ You know, essentially, this all behaves properly
+ as you would kind of expect,
+ but then as you get here, something funny happens,
+ you see that you know it was a high frequency over there,
+ but what you see is actually a smooth,
+ wide continuous signal.
+ So clearly that effect that we had theoretically before,
+ like it really shows up here.
+ So we have this aliasing going on.
+ So it's that kind of behavior here.
+ Not enough samples, so what we see there
+ is essentially something like this here.
+ There's actually a fast wave,
+ but it's kind of in sync with a kind of slow pattern,
+ and so when we just look at it,
+ we see the slow pattern.
+ Okay, so of course, we're talking about
+ two dimensional images.
+ What we really do is not one d functions,
+ but two d functions, so two d continuous functions,
+ and then we'll have essentially something here,
+ like what a fact here would have a bit of nails or so,
+ or essentially a two dimensional array
+ of those sample points, right?
+ Here's for example an image.
+ You know, this image here,
+ which we'll use as an example
+ throughout some of this lecture.
+ So this image here, this is actually
+ the two dimensional function,
+ or the two dimensional set of samples,
+ what it looks like.
+ Again, so this image is a bunch of numbers.
+ This is here, you know, the numbers shown as like
+ the height of the point for each of those numbers.
+ Then like, here's a very simple reconstruction algorithm.
+ Right, so we haven't yet seen
+ how do you actually reconstruct,
+ so we hand over it, it's like,
+ oh, you know, we get these measurements,
+ well, we draw a smooth curve through it or so.
+ Okay, so here's actually a proper
+ simple mathematical reconstruction formula.
+ It's called bilinear interpolation.
+ We just assume that, you know, like, let's say,
+ in one dimension, we at this point and this point,
+ we say, okay, along the way, between the two points,
+ we assume linear behavior.
+ So if you ask me what's the value here,
+ I take this and this,
+ I measure how far from both it is,
+ and then I do the linear combination
+ that will make it land on the line between the two.
+ That's essentially this formula here,
+ and then we apply it both in the X and in the Y direction.
+ And so, you know, you see here the linear factors
+ for the different points,
+ and we'll get to define this value here.
+ If this is A, and so A is smaller than one, of course,
+ so the distance between two grid points
+ is assumed to be one here, right?
+ If we have a value in between,
+ you know, we'll apply to each of the weights here,
+ to each of those corners,
+ the values at each of the corner locations,
+ we apply these weights in front here,
+ so these linear combinations of weights,
+ to each of those, and sum that up,
+ and obtain essentially this equivalent.
+ If you only do this in one D,
+ so in one D, so let's say forget these two terms here,
+ so forget this, forget this,
+ this and just look at this and this,
+ so you have one minus A times this one,
+ plus A times this one,
+ as long as, let's say this was constant,
+ it's the same value,
+ then of course one minus A plus A, it's just one,
+ so this in general will just, you know,
+ it's really just a linear combination
+ between a line structure between the two,
+ in two D it's a bit more complicated of course,
+ but this is essentially why it's called
+ bilinear interpolation,
+ it's kind of linear in one direction,
+ linear in the other.
+ Okay, now of course, as the four points
+ don't have to be on a plane,
+ it's not linear in two dimensions,
+ but that's why it's called bilinear,
+ so per dimensions linear,
+ globally it actually does,
+ can do a distorted, a non-linear surface.
+ So this is one of the simplest algorithms,
+ actually the simplest is just look at,
+ you know, the simplest algorithm that we'll also see
+ is like, okay, if this point,
+ just look at which of the four it's closest to,
+ if it's closest to this one,
+ then just actually take this value,
+ okay, that's the simplest reconstruction algorithm,
+ that's the one that we actually had here in a sense.
+ If you look at this image,
+ you see we have like these constant values here,
+ that's because for all the values in that range,
+ we just copied the value from the central point, okay?
+ So that's the simplest reconstruction
+ is actually just copy the closest value,
+ but that's really not a very good reconstruction algorithm,
+ this is actually a quite decent reconstruction algorithm.
+ We'll actually see how decent a little bit later,
+ we'll look at, and again with,
+ once we get to Fourier transforms
+ and this understanding and so on,
+ we'll actually see what different reconstruction algorithms
+ actually have as an effect on the reconstruction
+ and how good they actually are.
+ Okay, so simple reconstruction here.
+ Now we get to a really important concept
+ and we'll revisit this later,
+ but we'll define the Nyquist frequency
+ or the Nyquist channel and sampling theorem
+ as half the sampling frequency
+ of a discrete signal processing system.
+ The signal's max frequency bandwidth
+ must be smaller than this, okay?
+ It must be smaller in the sense that we can,
+ if it is smaller, so with frequencies,
+ we mean like the sine waves, for example,
+ they have a certain frequency,
+ like how long it takes to go back,
+ the inverse of the wavelength,
+ how long it actually takes to go through,
+ this is not the wavelength of the light
+ that we're talking about here,
+ we're talking about the wavelength
+ of the pattern in the image.
+ It's like how quickly the thing goes up and down
+ for what we'll talk about is we'll talk about
+ representing a signal or decomposing a signal
+ in just a linear combination of a whole bunch of signs
+ and cosine functions and just adding all of those up
+ to form, to represent the signal.
+ And when we do that, we essentially,
+ we essentially want to say how fast signals
+ can we add to or can we still have present
+ in our signal that we will sample.
+ And you can kind of guess, given the previous things here,
+ these kind of problems, we see that we kind of
+ have to put samples close enough
+ so that we don't miss like a major behavior
+ in the function.
+ In particular, if we look at the sine and cosine functions,
+ as what this Nyquist frequency is saying,
+ we need to sample at least twice per wavelength.
+ So essentially here, the wavelength is like a full cycle.
+ You start here, you go up, you go down, and you come back.
+ And then again, you go up, down, and back.
+ This is the wavelength.
+ Within this, we need to make at least two measurements.
+ That's what this is saying here, the sampling theorem.
+ It says that if for all of the signals we have in there,
+ they're superposition of all these alternating signals
+ that patterns of all these things mixed together,
+ as long as this is satisfied, we will be fine
+ by just sampling at the rate given by this.
+ So as long as we sample at least twice
+ for the fastest changing thing, we sample twice as fast
+ so that we really see it actually go up and down,
+ essentially, that we can be confused with another signal.
+ Then we'll be fine.
+ We'll actually also see what happens
+ and how to treat things when this is not satisfied
+ later in the lecture.
+ For now, we'll just assume that we can somehow
+ take care that it will be smaller.
+ If that's the case, then we'll be in a position
+ to actually be able to do also a perfect reconstruction
+ if we do the right things.
+ Okay, so we'll cover all of this in a lot more detail
+ in the coming weeks, but this is already some
+ of the really key fundamental concepts,
+ and so we'll spend more time on this,
+ but it will be, you don't need to exactly understand
+ all of this now, but it will be really important
+ that at the end of the lecture, you really, really understand
+ this because it's really some of the fundamental concepts
+ that we see in this lecture.
+ Sampling can be done at, doesn't have to be strictly regular.
+ Theoretically, we could sample like this here,
+ hexagonal or even random non-uniform.
+ There are some applications for this.
+ This can make sense in some situations.
+ If you're talking about building a sensor,
+ you want to do something regular and fixed,
+ but in computer graphics, you could, for example,
+ do some non-uniform samples and avoid some of these
+ fixed patterns to show up or stuff like that,
+ but so these things can make sense.
+ You can build also different geometries of sensors and so on.
+ In practice, especially in this part of the lecture,
+ we'll always assume that we are sampling
+ with a normal regular grid,
+ a two-dimensional regular sampling grid.
+ But other things are possible.
+ This is one example here.
+ People have experimented with doing something like this.
+ Similar to the DVS camera that was trying
+ to model how the eyes doesn't take frame
+ and another frame and another frame,
+ but actually has a very different way to sample
+ and handle the time dimension in particular.
+ Also, the spatial dimension is handled very different
+ in human eye.
+ It's not a uniform grid in two dimensions.
+ It's actually something that looks much more like this.
+ You have high resolution in about two degrees
+ of your field of view.
+ So if you're reading, your eye will actually scan the letters
+ with this kind of two-degree small window
+ that you can actually see high resolution.
+ And in the rest, you don't actually see it.
+ You have the impression, you know, the whole world is,
+ you have an image of the whole world sharp,
+ but that's actually not true.
+ You really have to look locally to see like detail
+ with your fovea, with the place where the sensors
+ are very densely present in your eye.
+ And in other areas, you actually have very coarse representation.
+ So you could build sensors like this.
+ You know, people have done that.
+ This was actually a real sensor built like that.
+ In practice, it's just not very practical.
+ I mean, so it's just not very practical.
+ And there's a lot of challenges with this in many dimensions.
+ And so this doesn't really exist.
+ Like nobody uses it in practice, essentially.
+ Okay.
+ So we talked a lot about discretizing
+ in discretizing the domain in the two-dimensional domain,
+ for example, on which the function is defined.
+ Now we'll talk about also discretizing
+ in the actual function space,
+ like in the actual value that we measure.
+ That one actually also has to be discretized.
+ Okay.
+ Typically, we'll use an integer representation.
+ And so this, so deciding that representation
+ is actually called quantization.
+ We'll round it off.
+ So we'll define like a unit,
+ and then we'll represent the value as,
+ you know, how many times this unit do we have.
+ So we'll round off to the closest number we can represent.
+ This is lossy.
+ I told you before that under some conditions,
+ we could perfectly reconstruct the signal, right?
+ That as long as the signal wasn't varying too fast,
+ the Nyquist theorem, the Nyquist frequency,
+ as long as that was satisfied that, you know,
+ and for now it's still a bit of hand waving,
+ but as long as the signal wasn't changing too quickly,
+ as long as that is strictly satisfied,
+ then we'll see what it means to be strictly satisfied
+ in the coming lectures.
+ As long as that property was satisfied,
+ then we could actually,
+ there was a way to get to a perfect reconstruction
+ of the original signal.
+ So we could exactly invert the process of sampling.
+ We could exactly go back to the original signal.
+ As soon as we say, well, this is the value,
+ but I can't represent this value exactly,
+ I have to clip it to here,
+ or, you know, like round it to a nearby value,
+ okay, then we lost this property
+ of being able to exactly reconstruct the signal.
+ Now we'll still be able to do a good approximation,
+ depending also on how many bits we spent,
+ and so how much we are making rounding errors there,
+ everywhere, but we do lose that exactness kind of property.
+ Okay, so here you see after the quantization,
+ the original signal cannot be reconstructed exactly anymore.
+ It can of course be reconstructed, but not exactly.
+ Okay, and so typically the way we'll choose this,
+ because we work in a computer with binary representations
+ and so on, the number of, the finite number that we'll use
+ will typically be a power of two, right,
+ because we'll spend a number of bits per pixel
+ to represent the value.
+ Typically, I don't know if it's indicated here,
+ but typically this would be in most systems,
+ it's eight bits, is the standard.
+ So 256 values going from zero to 255.
+ If you have a color image, it's zero to 255 for red,
+ for green and for blue, so that gives you two to the 24th,
+ which is what, 16 million roughly colors, for example.
+ Right, so quantization works like this.
+ This was our function, we have our sample points.
+ We'll actually see later why there's some errors here.
+ Let's say these are, we spend two bits in this case,
+ so we'll have four values, zero, zero, zero, one, one, zero,
+ one, one, those are our four numbers that we can represent.
+ So we have to clip it to the closest one
+ or round it to the closest one.
+ So this one goes to zero, this one goes to one,
+ to two and to three, et cetera.
+ And so you see you have significant errors,
+ but that's essentially what you would have to do, right?
+ Of course, hopefully you can spend
+ more than two bits per pixel.
+ It's also important to discern
+ between a few different types of resolution.
+ So we have the image resolution,
+ that's simply the size of the image,
+ how many pixels by how many pixels.
+ But you can also have something
+ that's also related to that,
+ which is the geometric resolution.
+ That's more in, let's say,
+ if you're in a remote sensing situation, for example,
+ or in a more specific situation,
+ it's essentially not how many pixels do you have in total,
+ but it's how many pixels do you have per unit
+ in the real world.
+ So if you're looking at,
+ from the air, you're taking pictures of the ground,
+ how big is a pixel on the ground, actually,
+ the projection of a pixel on the ground, yes?
+ - Does HDR just use more bits per pixel?
+ - Sorry?
+ - Does HDR just use more bits per pixel?
+ - Yes, so high dynamic range images, so HDR,
+ uses,
+ well, actually there,
+ so HDR would, I think the formats there,
+ typically would actually use a floating point representation,
+ but it depends, but,
+ I mean, you can have different versions,
+ but ideally, you could really go to floating point,
+ you can also just have 10, 12, 16 bits or so per pixel,
+ or per value, so yes.
+ Different things are possible there,
+ and different formats exist.
+ Okay, so,
+ so you can have, if you're, or,
+ let's say actually you would be in biology,
+ and you would look at through a microscope
+ and take images also, you might care about,
+ how many millimeters, or fractional millimeter,
+ and nanometers or so is every pixel.
+ So really, to have that link directly
+ to a dimension in space,
+ so that's this geometric resolution,
+ and then we have the radiometric resolution,
+ which is how many bits per pixel do we spend.
+ So here's the image resolution,
+ so you see that the geometric resolution
+ actually doesn't change,
+ we just crop the image differently.
+ The, here the geometric resolution is we vary actually
+ for the same picture,
+ we vary how many pixels we have in the image,
+ and it gets coarser and coarser, as you see here.
+ Okay, and then we have the radiometric resolution,
+ where now we have the same amount of pixels,
+ but we spend, you know, from here eight bits per pixel,
+ we go all the way down to only one bit per pixel,
+ which just means really, you know,
+ is this brighter than a value,
+ or darker than a value in the end, right?
+ So you just have two levels now.
+ Okay.
+ So, yeah, so maybe a question here.
+ So what's the disadvantage of a low sampling resolution?
+ Oh, yes?
+ Yes, so we'll have aliasing,
+ we'll have problems like that.
+ So we could say, okay,
+ we'll always use a very high sampling resolution,
+ what's the disadvantage of that?
+ Assuming higher storage and computation costs,
+ when it comes to storage or computing,
+ we have to convert it to...
+ Exactly, right, so we'll kind of be forced
+ to do a trade-off there somewhere.
+ And so we'll have to kind of deal with the issue,
+ we don't have an easy way out, essentially.
+ And so as you already see here,
+ there's, you know, we'll kind of,
+ this hints that we might compress or not the images,
+ so because these are actually properties of compression,
+ lossless and lossy image representations,
+ but essentially lossy means
+ that we'll do some kind of compression,
+ we'll try to spend less bits
+ than we would strictly just, you know,
+ naively represent the image.
+ Do you guys know some formats for pictures?
+ Yes, exactly.
+ So there's many different formats,
+ and indeed JPEG, and then there's also variants of JPEG,
+ but essentially JPEG is the classical kind
+ of lossy compression, and it's actually one we'll see
+ in detail in, I think the fourth week,
+ if I'm fourth or fifth week, we'll discuss in detail.
+ Also JPEG 2000, which, although it says 2000,
+ is still not very adopted yet,
+ and doesn't seem like it will be picked up so much,
+ but has some very nice properties.
+ But yes, so essentially representing raw images
+ with full format can become quite expensive,
+ and so many images actually all represented
+ in compressed formats, especially because our eyes
+ actually really, there's a lot of stuff you can get away with,
+ and we wouldn't really notice.
+ So therefore there's not a high cost of,
+ you can compress by a significant amount,
+ say easily a factor of five,
+ and really not notice anything,
+ even without using too complicated compression mechanisms.
+ Because also by the way in compression,
+ there also the computational power would matter.
+ You could do very, very fancy compression,
+ but that could actually be very costly,
+ in both in compression and also in decompression.
+ So reading your image from this can,
+ putting it on the screen, you don't wanna spend
+ too much effort on having to do computations
+ to make that happen.
+ So we'll see also that's why JPEG has a few trade-offs
+ that is done the way it is.
+ Actually also, not only computations,
+ there's also actually the question,
+ and in particular with video, that's also the case.
+ A big part is also not only the compute cost,
+ but actually can you build hardware
+ that can do this very efficiently?
+ Because if your phone had to just run a compression,
+ standard video compression algorithm on the CPU
+ of the phone, like on the standard CPU,
+ run some stuff, you would never be able
+ to actually record videos and store them on your phone.
+ So you can only do that because there's actually
+ custom hardware that does just that,
+ that is specialized to do these operations
+ that you need for video compression.
+ That also means that you need something
+ that's actually efficient,
+ that can actually efficiently be mapped to hardware.
+ And not a very complicated algorithm
+ that's gonna look all over the image
+ and figure things out, right?
+ Okay, so we'll leave it at that.
+ For today, I'll see you next week.
+ (audience applauding)
+ [APPLAUSE]

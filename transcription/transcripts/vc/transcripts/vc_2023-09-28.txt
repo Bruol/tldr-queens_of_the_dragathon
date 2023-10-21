@@ -1,0 +1,1788 @@
+ [MUSIC PLAYING]
+ OK, good afternoon.
+ First announcement next week.
+ I will not be here.
+ And one of my postdocs will teach instead of me, Zuri
+ Abaur.
+ So she will be teaching.
+ OK, so we continue on segmentation.
+ This is one of the main concepts we looked at.
+ If we have segmentation, we try to tune a system
+ to make the right decisions.
+ In this case, the decision is segmenting a pixel in or out
+ foreground or background.
+ Typically, in most scenarios, we would want to operate
+ in a situation where we label some images with ground truth.
+ And so we have the answers for some data.
+ And then we hope that by tuning parameters on that set of data,
+ we will get good results on other incoming data,
+ on new images.
+ But hopefully, that our kind of have the same properties
+ as the ones where we go through the effort of actually
+ generating ground truth segmentations, for example.
+ So key thing is we have ground truth, so positives and negative.
+ And then we have our labelings, positive or negative,
+ and a combination of a positive that
+ should actually have been positive.
+ That's a true positive.
+ A positive that actually gets labeled negative.
+ That's a false negative.
+ And then same thing for false positives and true negatives.
+ If you looked at the histograms here,
+ we looked at it if we have overlapping distributions
+ in our single feature we use for segmentation,
+ then we will not be able to have a perfect system.
+ We'll have to take errors into account.
+ Our goal is somehow to choose our parameter in a way
+ each of those crosses is one setting of our parameters
+ to choose it such that we have the best possible result.
+ And this was essentially clearly--
+ as long as we go straight up--
+ there's my cursor here.
+ OK.
+ I can find-- there it is.
+ As long as we go straight up, of course, it's pure wind,
+ so we do better.
+ But at some point, we start making a trade-off here.
+ And there it depends on the value of decisions on both sides,
+ false positives and false negatives,
+ the relative cost of those.
+ Which operating points you would want to choose?
+ OK.
+ So now we'll start taking into account a little bit
+ connectivity between pixels.
+ So again, pixels are samples, they're not squares.
+ So we often draw them as squares,
+ but remember them as sampling points of this function.
+ But essentially, we want to define what are neighbors--
+ what are neighboring pixels--
+ so that we can do neighboring operations
+ decide, hey, this pixel should maybe look at its neighbors
+ to make a decision.
+ So we need to formally define what neighborhoods are.
+ For example, one question would be,
+ are dark pixels in this plot or in this picture here,
+ are they connected or are they not connected?
+ Clearly, the kind of complicated situation is this here.
+ Do we consider this connected or not?
+ So we want a formal definition.
+ In particular, we can define four neighborhoods
+ or eight neighborhoods.
+ So we define which are the pixels that
+ are neighbors of a particular pixel.
+ And depending on the choice, it's a choice.
+ Depending on the choice, the previous image here
+ would be considered fully connected.
+ So all the black pixels would be considered all connected,
+ all forming one region, one connected region or not.
+ OK?
+ So we'll define also formally a pixel path.
+ As a four connected path between pixels p1 and pn
+ is a set of pixels p1, p2, and pn,
+ such that pi is a four neighbor of pi plus 1.
+ So that's a path.
+ And then, of course, the four eight connected path
+ is the same definition, but now with the eight neighborhood.
+ And in that context, we can define connected regions
+ as long as a region is four connected
+ if it contains a connected path between any two pixels
+ in the region.
+ Then it's a connected region and the same four eight connected.
+ So coming back to this, with the four neighborhood,
+ this would be two regions.
+ With the eight neighborhood, this
+ would be one region.
+ Maybe a question, what about the white pixels?
+ How many regions do we have for white pixels?
+ It's one region in both cases, right?
+ Because we can go all around also.
+ We can label each connected component of a binary image
+ with a separate number.
+ So for example, here, we have all the white pixels.
+ So we label separately the white and the black pixels.
+ And so essentially, if we label all the white pixels,
+ we can go everywhere.
+ We cannot reach these guys.
+ This will have to be a separate region.
+ But all the rest is labeled as one.
+ The next region we encounter, if we just go through the image,
+ will be-- now it's a black pixel,
+ so different pixels that belongs to a different group.
+ So we start from that one.
+ So this one would be what we're doing the exercise with,
+ what, four or eight connected, if you look at this.
+ Four connected, right?
+ Because we see that over there.
+ If it was eight connected, region two and three
+ would be one single region.
+ And so we can see also here, this is here
+ considered two regions.
+ And then of course, here, we have this one
+ is separate from the other white pixels.
+ All make sense?
+ If we just care about the foreground, for example,
+ here, the white pixels, we'd only care about two regions.
+ In this case, all the rest would be ignore set to zero.
+ So now, if we have an image like this one here,
+ we could essentially do a segmentation, something
+ like this, would leave this.
+ And then we could essentially look at connected regions
+ and count the number of keys that are flying here
+ or that are visible in the picture by counting regions.
+ If we look a little bit more at these regions,
+ they typically start from a seed region, point or region.
+ And then you can actually--
+ if we had a binary image, it was all easy.
+ We could just then make a few basic decisions
+ and then just count.
+ And it would all be well posed.
+ But if we start directly from an image,
+ it might be a little bit more complicated.
+ In particular, we could start from a certain point
+ and then not just look if you're connected as we did before,
+ but essentially decide to include neighboring pixels based
+ on them satisfying a certain criteria that
+ is defined for the region.
+ This criteria can also be adaptive.
+ It can be adjusted once you include more pixels.
+ You can adjust your criteria and then potentially include
+ even more pixels and things like this.
+ So all of those are options.
+ And so you would repeat this until you cannot include more
+ pixels.
+ So essentially, here's some code or some set of code.
+ And so essentially, here's the decision point
+ where if you can include another pixel next point given
+ the seed, then you can do that.
+ I leave that for you to look at by yourself.
+ So let's say we start here.
+ So let's try that on our duck example here.
+ So how would we set this up here?
+ Let's say the seed region could be a safe threshold.
+ So one where you say, OK, we know that everything
+ above this threshold is definitely part of the duck.
+ So we'll start with this as a start region.
+ T150, for example.
+ So that would be the seed selection as an example,
+ a very safe threshold.
+ We've seen that if we take a safe threshold,
+ then we're probably really good.
+ It's just that once we try to go all the way with just
+ a single threshold, then it becomes challenging.
+ So here, instead of just doing a seed
+ and taking one fixed threshold, we'll
+ start there with a conservative estimate for threshold.
+ And then we look at a more refined and based on connectivity
+ to include more pixels.
+ This can both happen at the level of the region.
+ Sometimes we'll see you can also actually look at the boundary.
+ Because sometimes you might say that, well,
+ I'll decide to add a pixel or not based on my boundary
+ following some being relatively smooth, for example,
+ not making these kind of strange excursions
+ along a single path and add a number of pixels that way.
+ So for seed selection, you could do point and click.
+ Just selecting a point.
+ As we said, we can, for example, do it automatically
+ based on a very conservative threshold.
+ You could also indicate it by hand, multiple options there.
+ You could also start from multiple seeds if you wanted to.
+ OK, inclusion criteria, of course, simple gray level
+ thresholding.
+ You're going to say, well, we did thresholding before.
+ What's different then?
+ Here, we would only consider two pixels that are directly
+ connected to previously included pixel.
+ So this is actually a difference.
+ You had another region, a small region
+ somewhere else in the image.
+ Remember, on the duck, all of these small regions all over,
+ we would not include those this way.
+ We would start from the big region,
+ and then we would take maybe a weaker threshold,
+ but only at pixels that are directly connected
+ to the main duck region, for example.
+ So this is not the same as just taking a weaker threshold all
+ up for the whole image.
+ And then as you see here, sometimes, beyond thresholding,
+ you could also look at a color or grayscale or color
+ distribution of the region, and then gradually adjust that.
+ You have the option to update this.
+ You add pixels, and then you say, OK, let
+ me re-estimate my variance, my distribution of what
+ I expect to see in the region, and then I can iterate on this.
+ And so beyond gray level, of course, you can do color.
+ You can also do texture.
+ Now, we haven't seen yet how to characterize texture,
+ how to choose that, and so on.
+ In the coming weeks, we learn how you can also not only
+ characterize a fixed color, but also variations, essentially.
+ This will be when we'll start talking or looking
+ at the Fourier transformation, which
+ is essentially expressing instead of expressing things
+ in individual pixels, expressing them in patterns.
+ And those patterns are the basis of describing textures.
+ OK, so here's an example.
+ So let's say we have an image like this here.
+ How could we do an inclusion criteria?
+ Well, you could start from--
+ let's say you started from somewhere in the image here,
+ very--
+ for example, a safe threshold here.
+ Although there's-- you see actually a little bit here
+ also included, but let's say you have something like this.
+ So essentially, thresholds won't work very well here.
+ In general, there's no threshold that actually works
+ if you just do thresholds.
+ However, if you somehow start from the middle of the region
+ and over some set of neighboring pixels,
+ you would fit a model that's not only looking
+ at the grayscale value, but looks at the combination here
+ of the grayscale value that actually expresses
+ the grayscale value not purely as a constant,
+ but actually as something that depends on the x and y
+ coordinates.
+ So this is something here that depends on the x and y
+ coordinate also.
+ So you have a model that combines intensity and x
+ and y coordinates.
+ So you can see this as--
+ you can solve this for the intensity.
+ And then you have this expression divided by a
+ is equal to the intensity.
+ So there's a linear relationship between intensity, x,
+ and y coordinates.
+ There's a constant here.
+ Does that make sense?
+ So we have now expressed--
+ in some sense, you can look at this model
+ as expressing the intensity as a linear combination
+ of x and y coordinates.
+ We're saying that essentially intensity and x and y
+ coordinates all are related through a linear equation.
+ And so this is this linear equation.
+ We squared that.
+ So we're saying the absolute value, in a sense,
+ of what comes out of that equation.
+ If I exactly follow this linear equation,
+ I have a 0 here.
+ If it's different from 0, here I square it.
+ So if it's different from 0, both positive or negative.
+ If I'm not on that linear constraint,
+ that tells me how much I deviate from this linear model,
+ I will essentially say, OK, I will threshold how close
+ or not close I am to that linear model.
+ The simple model was just without x, y dependency.
+ We just have the intensity with--
+ this expression would be 0.
+ If we take those two terms away here, the x and y term,
+ then we have the intensity would be--
+ when the intensity is equal to d divided by a,
+ this would be satisfied.
+ This would be 0.
+ So that's essentially just a constant.
+ In this case, we add this dependency on x and y.
+ If we do that, you can kind of see
+ that there seems to be a linear gradient here.
+ So this is brighter.
+ This is darker.
+ And along the way, it seems to vary kind of linearly.
+ So as you move, every time you move a little bit to the left,
+ it gets a little bit brighter.
+ And it seems to behave kind of linear.
+ So we're going to try that model.
+ In a sense, we're kind of seeing,
+ if you look at it at that image as a height map,
+ it looks like this.
+ And you kind of see that in 3D here,
+ you can kind of hit a plane.
+ There's some noise, but it's kind of a plane.
+ The general behavior is a planar behavior.
+ A planar behavior, a plane is a linear equation in 3D.
+ This is a three-dimensional I, x, y, a three-dimensional equation.
+ It's a linear equation in a three-dimensional space,
+ the space being I, x, and y.
+ This is x, y, and the vertical is I.
+ Does that all make sense to everyone?
+ OK.
+ OK.
+ So essentially, we decided to use a little bit more complicated
+ inclusion criterion than just taking a threshold and saying,
+ above it's in and below it's out.
+ Here we say we want to be close to that relationship.
+ And if it's close, it's in.
+ If it's far, it's out.
+ And now if we have a seed--
+ let's say we have a seed over here somewhere--
+ and we say, OK, we'll take a bunch of neighbors here.
+ We'll kind of do an approximation.
+ So we'll fit to a few points around here.
+ We'll fit a linear plane here.
+ We'll solve the linear equation for all of those points.
+ We'll approximately solve it because they will not
+ be an exact solution.
+ It's not exactly a plane.
+ It's approximately a plane.
+ So we'll solve this in a least square sense.
+ Best solution in least squares.
+ You've all seen that in the algebra normally.
+ So we'll solve this for some pixels.
+ We'll get a model.
+ And then what we do is we now use essentially that model.
+ That will be our inclusion model.
+ This guy.
+ We essentially-- what we do is we do the difference between this
+ and this.
+ And where we close, it's in, where we far it's out.
+ And so in this case, we will kind of in one go
+ have the full segmentation.
+ I mean, in one go, iteratively.
+ So we take a few pixels, fit the plane,
+ and then say everything that agrees with this, we take in.
+ Everything that disagrees is out.
+ Potentially, you might have to run this a few times.
+ If, let's say, the first time around, you almost had the plane,
+ but it was still a little bit tilted the wrong way,
+ in the middle, it will be good enough.
+ You will add a bunch of pixels, grow the region.
+ But it might be that the edges, you were still
+ a little bit too far off.
+ Because we have a threshold here,
+ it might be that the model is not great yet
+ at fitting the corners further away,
+ because the plane is a little bit tilted.
+ So the absolute distance is larger, further away
+ from the middle where you fitted it.
+ And so maybe you do an iteration.
+ You rerun it.
+ You include more pixels.
+ You rerun it.
+ You fit the plane better, because now you have more pixels included.
+ And then after a few iterations, you
+ have the whole plane, essentially.
+ That's how it would work.
+ And I think this is after--
+ I'm not really sure.
+ Anyways, it looks already quite separated.
+ So I think it's after.
+ But I'm not sure if it's the histogram before after.
+ Anyways, once you've done this, you can actually properly
+ separate.
+ You see also that there might be a few pixels here
+ that get close to inclusion.
+ So that's kind of what you see here.
+ So you see if you fit the plane here,
+ it's probably going to be not too far from those edge points.
+ The edge points are here.
+ The plane is going like this.
+ Now we look a little bit at the boundary.
+ Are there things that one could do there?
+ In particular, one example is snakes.
+ This is a type of active contour.
+ It's essentially a polygon, which is an ordered set of points
+ joined by lines.
+ Each of those points on the contour
+ moves away from the seed while its image neighborhood
+ satisfies an inclusion criterion.
+ So here instead of growing pixel by pixel arbitrarily,
+ as long as it's satisfied, we keep adding pixels.
+ So we add pixels.
+ We look.
+ Is there another-- all of my neighboring pixels.
+ Does any of them satisfy the criterion?
+ We keep adding them.
+ And as soon as we add a pixel, that
+ means there's new neighboring pixels.
+ So we keep going at it.
+ Here we do that in a slightly more controlled way.
+ We actually move a neighborhood at a time.
+ So we cannot just include one pixel.
+ If we move the boundary, we include a whole bunch
+ of pixels at the same time.
+ So we do it in a more structured way.
+ And we want to keep control of the shape of this boundary.
+ And often the contour also has to satisfy a smoothness
+ constraint.
+ So we're not going to allow it to somehow make a really long
+ extension out, but we'll want to keep
+ the bending of this contour to also satisfy some constraints.
+ For example, this paper here was a seminal paper in that space.
+ Like Casvid, Kylian, Tezopoulos, it combined.
+ It essentially expressed that shape,
+ or it expressed that fit of that boundary
+ as a combination of three terms.
+ We'll actually, in image processing computer vision,
+ often express regularization problems
+ or optimization problems as an energy minimization problem.
+ We'll try to optimize the problem.
+ We'll formulate the problem as one that
+ combines different energy terms.
+ For example, one typically will have at least one
+ that expresses the relation to the data.
+ How well does our model fit the data?
+ On the one hand, how close are we to explain the data
+ that we observe?
+ On the one hand, so a data term.
+ And then another term is actually one or multiple terms
+ are expressing how close our solution satisfies
+ or prior assumptions.
+ Prior assumptions might be we want a smooth boundary.
+ We don't want too large of a boundary and so on.
+ So in this case, you have one energy term
+ that expresses the tension and one the stiffness.
+ And so it will evolve the boundary only in a way
+ that optimizes those terms of what
+ you expect of how the boundary should behave
+ and tries to, at the same time, look at the image
+ and choose a boundary where the inside satisfies
+ the criterion as much as-- but all of the pixels you know
+ as you move this boundary that you label inside actually
+ do look like inside pixels.
+ So for example, in this example here,
+ you minimize this would be the energy then.
+ For all the pixels inside, you want this to be small.
+ So this quadratic term here would, for example,
+ could be that E image here.
+ So for every pixel that you include,
+ you could essentially do the quadratic function of the inclusion.
+ So now instead of strictly thresholding,
+ you might include a few pixels that don't look
+ like they would be inside.
+ But if it helps having a nice boundary,
+ you might still include them.
+ So now you trade off having a nice boundary,
+ having your solution satisfy your prior assumptions
+ of how the solution should look like,
+ like being smooth and things like this,
+ versus the strict things that come from the data.
+ That's what you get here.
+ So here's an example of this.
+ So this is the start.
+ So you have here this polygon with-- what is it here?
+ Five points.
+ And so you say, OK, this is inside.
+ And so what you would actually do here, in a case like this,
+ is you would say, I will somehow try
+ to estimate a model for how these pixels look like.
+ So first thing is you can look at this and say, OK,
+ what's the average color here?
+ That's the simplest model.
+ And if you're closer to that color,
+ it's in.
+ If it's far from that color, it's out, for example.
+ But you could also say, well, this is clearly not
+ just a single color.
+ So maybe I'll fit a distribution to all of these colors.
+ So in that case, instead of just a point with a sphere around it,
+ a distance criterion in the color space,
+ you could actually say, let me actually look at all those points.
+ Maybe they're like they form a distribution.
+ So you fit a distribution to that.
+ And you say, now, if I'm inside this ellipsoid,
+ it's in.
+ And if it's outside, it's out, stuff like that.
+ You could also say, well, just a color
+ is not really a great description of this.
+ What I really want is a kind of--
+ I want these kind of patterns here, these type of variations.
+ So you could kind of look at, OK, what type of variations?
+ For one pixel versus another pixel,
+ how much do they differ for a certain distance between them?
+ Like you could start, and again, we'll
+ look at that in the coming weeks.
+ You could also do more advanced way
+ to describe what's going on in this part of the image.
+ Eventually, you have a model that allows you to say,
+ a pixel here looks a lot like these pixels or doesn't.
+ So we'll have a model.
+ So we apply that model on a per pixel basis, and we get this.
+ So you see that actually even some of the pixels inside here
+ are actually not labeled as being--
+ like by themselves, they're not actually
+ being labeled as looking a lot like the pixels in there.
+ And that's normal.
+ And of course, you see a lot of pixels outside,
+ but you see also that not all of the pixels are--
+ it's not a uniform continuous region.
+ On a per pixel basis, you might have quite some random choices.
+ And you see, of course, that there's a bunch of things here
+ a bit all over the place that kind of randomly
+ happen to satisfy, to look a lot like the pixels in the middle.
+ They're at least based on the few features
+ that we would have computed and fitted.
+ OK.
+ This is actually with some very simple morphologic operations,
+ kind of starting growing the region from here
+ and looking at connected pixels.
+ And maybe-- and we'll talk a little bit more
+ about that towards the end of the lecture--
+ maybe also doing simple operations where from here,
+ if there's a single pixel, we just say, OK,
+ this single pixel is clearly--
+ if all of my neighbors say they're inside,
+ I will just join them.
+ And then you flip the color.
+ So it's a few operations like that, purely on a local level,
+ purely based on connectivity, forgetting
+ what the data actually says at this point
+ and just kind of overrule based on those things.
+ You can get something like this here, which is interesting,
+ which is a good thing you could do.
+ This is what comes out of the--
+ by evolving doing these snakes.
+ So the thing that we were talking about here,
+ we start from here.
+ And if we evolve this, and then if these points get too far
+ apart, you can insert another point, for example.
+ So you can evolve the boundary.
+ Then this is the type of thing that comes out of this,
+ out of the snakes.
+ Again, this is applying it back to the image.
+ So notice here, we have one nice--
+ all of the points inside the boundaries
+ are labeled inside.
+ All of the points outside are labeled background.
+ So inside, foreground, outside, background,
+ which we didn't fully achieve with these simple morphological
+ operations here, for example.
+ But also, what else do you see?
+ So do you see some things that are actually
+ not very satisfying here?
+ OK, indeed.
+ Bottom right corner here.
+ So what's the issue?
+ [INAUDIBLE]
+ Like-- OK, so this region should probably
+ have been labeled inside.
+ And a little bit-- not so much, a little bit here,
+ but it's obvious there's a few things here.
+ So anybody has an idea what the problem is here?
+ Why this happens?
+ [INAUDIBLE]
+ Sorry?
+ If you just pick up a bit, I just couldn't hear it.
+ [INAUDIBLE]
+ Actually, let me--
+ if you look at this, so you're right,
+ it's a little bit less obvious.
+ Clearly, just the data driven--
+ oh, actually, let me go even one further back.
+ If we just look at the data, it's
+ clear that this is more white on average than here.
+ So there's less peaks.
+ The motor is a bit hesitating.
+ But still, like we're clearly cutting a lot away here.
+ The reason is that our model is just saying in general--
+ oh, yes, go ahead.
+ [INAUDIBLE]
+ Exactly.
+ [INAUDIBLE]
+ Exactly.
+ So what is happening here is essentially
+ that we have this very simple geometric model that
+ treats the whole image as kind of--
+ we just want one region.
+ It doesn't do anything special at the edge, for example, here.
+ It doesn't interpret this as a three dimensional representation.
+ So this here, for example, we could probably--
+ both this and this here--
+ we could probably solve by doing something different
+ at the boundary and saying, OK, if I connect straight
+ to the boundary at whatever angle,
+ there's no cost to that.
+ Here, there's actually cost to go here and then go back,
+ have the boundary, go all the way back.
+ And so if we actually put zero cost to reach the boundary here,
+ then it is likely to go further.
+ Although it's still going to prefer going straight
+ to the boundary.
+ But essentially, we could try to normalize it and address that.
+ Here we have a simple model.
+ It's not addressed.
+ It does what we ask it.
+ There's actually something in general
+ when you do those regularizations.
+ It will just literally minimize what you ask it
+ and quite literally.
+ Everything with computers, you ask it something it will literally
+ do.
+ It will not use good judgment to somehow interpret
+ or this or that.
+ Also towards the top, indeed, you see data actually
+ sees the road further.
+ But here we cut it off.
+ Although it's actually maybe not that bad actually here.
+ It's a bit unclear what's happening there.
+ But it's right that essentially the 3D nature
+ could allow us to do things slightly differently that
+ are far away because of perspective
+ or assumptions of smoothness could actually
+ be different close or far.
+ But this is a very simple algorithm.
+ OK, so inter-insummary segmentation is hard.
+ It's easier if you define the task carefully.
+ Is the segmentation task binary or continuous?
+ This was this mixed pixels and blurred boundaries
+ and things like this.
+ What are the regions of interest?
+ How accurate are the algorithms?
+ Locate the region boundaries?
+ Actually still lots of--
+ in some-- in many ways, there's still
+ an open research problem still today.
+ Here's showing a little bit in application.
+ This is background segmentation.
+ In this case, separating a static background of the foreground.
+ So we are looking for something like this.
+ How do we do it?
+ What we'll actually do is we'll try to estimate
+ a background image.
+ We'll actually do this by--
+ this is a static camera.
+ So you keep recording it and then cars drive by.
+ But if you take the average over a long period of time,
+ or the median, let's say, the median values,
+ then you can essentially have an image
+ with no dynamic objects in, a background image.
+ So once you form that background image, which now
+ means that we don't have like we had with the green,
+ one green value that is applied to all the image,
+ to do the chroma keying, for example.
+ In this case, every point here has its own background model.
+ Because this one has a gray background model.
+ This one has a blue background model, like a sky background
+ model, et cetera.
+ So everyone has just its own pixel color.
+ It's the background model.
+ If you actually do that as an average of many images,
+ you can actually do something a little bit better.
+ So you can have a median here or a mean value,
+ and also a distribution, a varying distribution.
+ Yes?
+ Did neural networks overtake these methods that we looked at,
+ or are they used in tandem?
+ So nowadays, you would use neural networks.
+ I'll actually show one later, segment anything.
+ The neural networks don't allow a lot of introspection.
+ It's not clear.
+ If you just look at a neural network,
+ I can show you here's a big neural network.
+ Look at a nice end result.
+ That's it.
+ You wouldn't actually know what's going on.
+ So the people that design--
+ if you want to design those neural networks,
+ if you want to try to improve them, isn't that?
+ You actually need to understand the concepts we discuss here.
+ All of those ideas get translated in neural networks,
+ but in a typically pretty opaque way.
+ You need to make sure that the structure in the neural network
+ can represent some of the main concepts we discuss here.
+ So here, they explicit.
+ You can learn them.
+ You can get intuition for them.
+ You can understand when they work and when they fail.
+ And now if you do a neural network,
+ and you see it fail in certain ways,
+ because it's-- we'll also have similar kind of failure cases
+ and behaviors, you can kind of see like, oh, OK,
+ this is going wrong.
+ So I should actually put something in my neural network
+ that allows it to pick up or take better into account
+ these aspects and so on.
+ So that's why it's actually really important to understand
+ the fundamentals, the principles, essentially,
+ the trade-offs that are happening in all those automatic
+ decisions.
+ And yes, then once all of this is clear,
+ then you can actually-- so a neural network
+ works as follows, right?
+ You don't have any principles.
+ You don't have any-- this or that.
+ You provide a certain architecture.
+ How you do that, you actually need
+ to understand all of this to know what makes sense
+ in terms of architecture.
+ But in the end, you just--
+ if somebody tells you this neural network,
+ this neural architecture should do well on that problem,
+ then at that point, you'd really just
+ need to feed enough examples of data with solution
+ and many thousands of it.
+ And then you can train the network,
+ and then the network would essentially reproduce
+ and be able to generate answers.
+ But you don't actually learn a lot from that.
+ And you wouldn't necessarily be able to design a network that
+ would do it properly.
+ But given the network knowing that this network will give
+ the result and then having a lot of labeled data,
+ yes, you can then solve the problem quite well
+ with a neural network.
+ But that's not the purpose of this lecture.
+ That would be very easy and very hard in the sense
+ you need to label a lot of data.
+ But if you somehow can get your hands on labeled data
+ and you know what architecture could solve the problem,
+ then it's pressing a button and letting the computer figure it out.
+ But OK.
+ So let's see.
+ So here, also as an example, you need to make sure,
+ also with neural networks, it will
+ be really important to make sure that you provide
+ the right information to the neural network
+ to be able to solve the problem.
+ I've done projects with students where the students were coming
+ to me and said, hey, I'm trying really
+ hard to make this thing work with a neural network
+ and it doesn't work.
+ But then if you actually think through the problem
+ and the principles that are like what the neural network kind
+ of needs under the hood to be able to make a decision,
+ to be able to actually solve the problem in a sense,
+ it can fit a function to stuff to an input-output relationship.
+ So it can learn an input-output relationship.
+ Like given this input, this is the output.
+ It can do that.
+ But if you feed it the wrong information,
+ or if along the way you do something to the information
+ so that you kind of lost the information that is actually
+ relevant to solve the problem, then
+ those things don't do magic.
+ If you don't provide the information you need
+ to actually allow to solve the information,
+ so if you don't give the information that's
+ relevant to solve the problem, it's somehow not there anymore
+ in the input because you didn't understand what
+ was needed to solve the problem.
+ Then it doesn't work, of course.
+ So it is really important to have some understanding of how
+ problems are solved, what is relevant, what's not relevant,
+ et cetera.
+ And of course, also you could try to play it safe and feed it
+ every possible information, but that's also typically not
+ a great idea that requires a ton more data of labeled data,
+ et cetera, et cetera.
+ OK, so here, foreground and background,
+ we've seen before, so the background color here
+ could be a per pixel background color.
+ The threshold could be also a threshold.
+ In this case, you could have an ellipsoid,
+ you could have something simple like just a fixed threshold,
+ spherical, you could have a kind of a cuboid kind of threshold.
+ 2020-10, that would be more of a cuboid kind of around the point.
+ If you know that in R and G, there's more variation than in B,
+ for example, and so indeed, this is per pixel,
+ this really based on the background image.
+ Ideally, you have more something like this.
+ This represents covariance.
+ This represents essentially an ellipsoid,
+ a threshold that has the shape of an ellipsoid.
+ And then this is kind of the generalized radius or distance
+ from the center from this point here.
+ That's generalized in a sense.
+ It's not a sphere, but it's an ellipsoid.
+ And if you're above a threshold, so that
+ draws this elliptic boundary.
+ And so this is something you can easily fit to data,
+ this thing here.
+ That's the variance of that data.
+ Of all this, for example, background pixels
+ at a certain location.
+ So for example, here the segmentation
+ would give something like this.
+ There's something interesting is shadows.
+ Are they part of the object or not?
+ So that's something to kind of decide again.
+ Like, do you care about the shadows?
+ Do you want them-- do we part of your segmentation mask?
+ Or do you actually want to exclude them?
+ Again, it's a decision that can depend.
+ It's asymmetric because it's really always darker.
+ So a Gaussian can get confused.
+ Gaussian is fully symmetric around the average.
+ Clearly, shadows are asymmetric.
+ It only makes pixels darker.
+ And so on.
+ Now we'll pivot to adding spatial relations.
+ So we've already seen that a little bit with connectivity.
+ We've seen that with the snake.
+ That was actually explicitly the boundary itself.
+ Here we'll see a way to express that
+ in-- with an optimization algorithm.
+ We'll formulate this as a mark of random field.
+ Mark of chains are 1D structures on which you
+ can do dynamic programming and get exact solutions
+ to influence problems, et cetera.
+ Mark of random fields are a generalization
+ to two-dimension or high dimensional,
+ but to two-dimensional structures in this particular case.
+ Let me actually go here.
+ So they represent an image like this here with connectivities
+ between all neighboring pixels.
+ In this case, a four neighborhood.
+ And we'll essentially now express
+ the problem we want to solve, the segmentation problem,
+ as explicitly an energy minimization, which
+ is also related in physics to ising models and other things.
+ That's also where it's actually--
+ because of the relation to problems in physics,
+ that we talk about energy minimization,
+ because in physics it's actually about solving
+ energy minimization problems.
+ And so we will both have a preference
+ for each of those pixels to be either foreground or background
+ based on the data, as we've seen before.
+ And we'll have also-- we'll express a preference for neighbors
+ with those that are connected to have the same label.
+ So we'll put a cost for this label
+ to deviate from what the data is telling us.
+ And we'll also put a cost for neighbors to be different.
+ And so we'll have two sets of things.
+ We'll have a sum of all of the cost per pixel
+ of having a labeling follow the data.
+ And so this is a unary cost.
+ It's called unary because it's per pixel, single pixel.
+ And then we'll have binary cost, which essentially combines
+ two sides, two sides that are connected.
+ So only neighbors.
+ And so this is for these edges.
+ And essentially, it will be what we'll choose is actually
+ to have them-- I think I have it here--
+ we'll put a cost of 0 if both have the same label, 0, 0,
+ or 1, 1, and a fixed cost, k, if they have a different label.
+ So this cost will either be 0 or k for each of the weights.
+ And this one will be something that
+ can be more complicated that's based on the data.
+ OK.
+ So it's essentially a label smoothing on the grid.
+ Oh, actually, here's the cost.
+ So this is the negative log likelihood of the label given
+ the data.
+ So given the measurement you have,
+ what does it cost to assign it label 0?
+ How likely is it to assign it label 0?
+ What is it if you assign it label 1?
+ Yes?
+ What is the meaning of the good time of sign?
+ Wait.
+ Which one?
+ Good time of sign.
+ Yes, so this here--
+ so this is just this function, this unary cost function.
+ So this is just a function.
+ The function is given there.
+ And that's just a parameter.
+ So this is meant to represent parameters and data.
+ So essentially, the way we will solve this--
+ I will discuss it a bit more in detail after the break--
+ is essentially to represent all of this
+ as a discrete optimization problem.
+ So it turns out that this corresponds to--
+ it can be solved--
+ the binary problem actually exactly.
+ And there's some conditions on both those functions here.
+ You can actually solve the problem exactly
+ through a graph cut problem.
+ Well, essentially, we have these weights here,
+ represent the unary terms.
+ These connections here represent--
+ so we have now a fully connected graph that
+ connects the source to the sink, which
+ corresponds to both labels.
+ And so in the end, we'll do a cut.
+ And this cut will decide what is assigned to the one label,
+ what is assigned to the other label.
+ What you're connected to is what you're assigned to.
+ We'll discuss this more in detail after the break.
+ OK, so we'll use Markov-Ranon fields.
+ We'll solve them with a graph cut.
+ So essentially, typically, a max flow algorithm.
+ So essentially, we'll try to estimate
+ how to get the maximum flow through,
+ and then the main cut.
+ So all the places that are saturated
+ are the ones that get cut.
+ That's just the algorithms that you
+ might have seen in some of the theory courses
+ that have been used for this.
+ And then you would essentially determine that, OK,
+ all of those edges are saturated edges.
+ So those are the ones that are cut.
+ So essentially, the principle, if you
+ want to determine the maximum flow,
+ you just keep pushing more through the network
+ until a bunch of edges are saturated.
+ At some point, there must not be a single path
+ from source to sink.
+ All the possible paths need to at least somewhere
+ be saturated, because if not, then along that path,
+ you could push a little bit more through.
+ So once everything is saturated, the main cut
+ is essentially the place of this kind of one connected region.
+ There could be other random saturated edges,
+ but there's at least one connected separating cut
+ that would separate the source from the sink
+ at that point of saturated edges.
+ That happens to be the algorithm.
+ Or that's the problem that can be solved in discrete
+ optimization that actually solves the optimal solution.
+ As I said, under some conditions, in particular,
+ someone was asking, can we have this case negative?
+ So can we say it's better if neighbors are different?
+ No, we cannot.
+ In that case, then you cannot optimize this anymore
+ with a guaranteed optimal solution at the exit.
+ So if we essentially find this as the main cut,
+ we'd cut all of those.
+ And then essentially, what we have
+ is that now all of those guys would be labeled with this label.
+ All of those guys would be labeled with that label.
+ And that would be the optimal solution for the joint problem
+ of optimizing all of this energy that
+ has both unary and pairwise terms, so data terms
+ and smoothness terms.
+ This is a smoothness term.
+ If you have the same--
+ again, this was here.
+ If the label is the same, there's no cost.
+ If two neighbors have the same label, they're both 0.
+ They're both 1.
+ No cost.
+ If they're different, then there's a boundary in your--
+ that means really, literally, if they're different,
+ one element of the boundary between your foreground
+ and your background, then you pay a cost for that.
+ So in other words, you were saying,
+ what I'm minimizing is how many boundary connections--
+ what is the length of my boundary in this four neighborhood.
+ That's literally discussed here.
+ k times the length of the boundary.
+ So also realize that this in a way
+ is a different formulation when we looked
+ at the snakes, we also wanted to minimize
+ how long the boundary was and how bent it was.
+ It's the same thing expressed in a different way, in a sense.
+ Again, all those concepts always come back.
+ If you want to now use modern deep learning and some methods,
+ you do want to have those terms somehow expressed in there.
+ This is about choosing your loss function, for example.
+ That's what you minimize when you train your network.
+ Again, in a sense, the loss function in a network
+ is again, you can never solve a problem exactly perfectly,
+ only if you totally overfit.
+ So you always have to do trade-offs.
+ And then the question is, how do you do that trade-off?
+ How much do you care about these properties versus those properties,
+ et cetera?
+ OK, so here just showing a few examples.
+ This by itself, you don't really need to know.
+ It's more to illustrate.
+ This was a foreground label's kind of basics.
+ And then here, this is actually a model that
+ tries to look for shadows.
+ And then somehow, you can unlabel as foreground the things that
+ actually seem to come from shadow, for example.
+ So here's a bit an example.
+ Background image, one of the random images of the live video.
+ The initial background weight, then here,
+ a shadow weight that essentially says,
+ this looks a lot like shadow.
+ The combination of both gives you this here
+ as the foreground result that takes the shadow region into account.
+ And then applying a graph cut to this,
+ so what we just saw before, could give you something like this,
+ which regularizes a lot of the small issues.
+ But if a few too many pixels are labeled the wrong way,
+ then it can certainly actually increase that,
+ because by smoothing also the error essentially, in a sense.
+ So it's not perfect, but it kind of shows you
+ what you would get a few more examples of this.
+ I forgot why I was--
+ I think I mixed this up somehow.
+ OK, let me switch this.
+ Here's an example.
+ This was a paper that was based on graph cuts
+ and also really placed with the inclusion region
+ and was iterating between a graph cut, solving the problem,
+ and then adjusting the inlier distribution,
+ so both the foreground and background distributions.
+ So it would use a graph cut to adjust,
+ to solve the problem based on an inclusion criterion.
+ Then it would change the inclusion criterion based
+ on the result of the graph cut, and it would iterate between those two.
+ This is a very interesting paper published
+ that Microsoft Research does in years ago or so,
+ or even a bit more.
+ So you would start by giving a bounding box, for example,
+ like this.
+ And then it would actually-- what it would do
+ is it would train a model on the foreground.
+ It would train a model on the background.
+ So the bounding box is only saying what's inside.
+ It's also saying what's outside is definitely background.
+ And what's inside could be both foreground and background.
+ And here's kind of them playing around for this.
+ This-- I mean, it should still be-- I
+ don't know what algorithms they use now,
+ but up to a few years ago, this was the actual algorithm
+ that they was put in office and would allow you to cut out
+ the foreground from an image and do this type of thing.
+ So this was one of the guys working on this.
+ These are some of the slides from their presentation
+ at the time.
+ In some of the Photoshop and stuff like that,
+ they had some of these tools that required
+ you to label a whole bunch of foreground pixels,
+ and it would do something like this.
+ Then people did things like intelligent scissors.
+ The idea here is to-- you label what's definitely inside.
+ You label what's definitely outside.
+ And then-- so you can do that very coarsely and fast,
+ manually.
+ And then there's-- the algorithm will refine the decision
+ boundary in the middle.
+ And how does it do it?
+ You can actually do a-- essentially,
+ you can solve this with dynamic programming that
+ will kind of optimally determine a 1D solution that
+ closes the loop there.
+ Anyway, so that would be the kind of result they got.
+ You could also apply snakes and so on to this.
+ And then GraphCut required a lot less interaction, just
+ a box, and would do this.
+ Again, actually, another illustration.
+ It's kind of nice in some sense.
+ So you'll see here, GraphCut, here 1D line in the image.
+ That's then that kind of illustrated
+ for that one line, the source and the sync.
+ And now you kind of see the connections.
+ This kind of nicely illustrates how the data term, when
+ it is very likely to be labeled a certain way,
+ if you're very likely to be labeled foreground,
+ you actually make a very strong connection between you
+ and the pixel and the foreground label,
+ which is the source in this case.
+ So if you make a very strong connection here,
+ it means that you're very unlikely to cut that connection
+ with all the rest being the same in the network,
+ you're very unlikely to go cut that connection.
+ It's much more likely that, for this one, for example,
+ it's much more likely that you end up
+ with your cut saturating this edge
+ versus saturating that connection, obviously.
+ Because the other connection is a lot thicker pipes,
+ so you're unlikely to end up saturating that one.
+ This is a pure data term.
+ This also means if you want to do a GraphCut
+ and you only have data terms, it's trivial.
+ It's just the best--
+ just choose a label individually, one by one.
+ There's nothing will change.
+ But if you add those sideways connections,
+ these are the smoothness connections
+ that say I prefer neighbors to have the same label,
+ then that could influence the solution.
+ In this case, it will not really--
+ in this case, the min cut will end up actually doing this,
+ having this shape, because essentially the data
+ term is very clear.
+ And so the small additional connection,
+ you pay the price here to cut the connection here
+ and the cut the connection there.
+ So in this particular example, our boundary
+ has a length of 2 in some sense.
+ It cuts two connections.
+ And for the rest, it follows the data very, very nicely.
+ So great solution.
+ And by the way, that's the thing.
+ You can find a global minimum energy in polynomial time.
+ So it's not an NP-compete problem.
+ OK, so how did they do that?
+ As I said, they will do actually two things.
+ They will solve this problem, and they
+ will solve it multiple times, the graph cut problem.
+ But they will iterate on it also.
+ So initially, you pay, for example, in this example,
+ this as the box, the bonding box.
+ So the meaning of the bonding box is everything I care about
+ is inside the box.
+ Therefore, everything that's outside the box
+ is something I definitely don't care about.
+ There might be stuff I don't care about inside the box also.
+ And then what they do is a k-means
+ for learning the color distribution.
+ We're not going to discuss what k-means is here.
+ I'll just briefly explain it.
+ But essentially, k-means essentially
+ means that you have a bunch of data,
+ and you will typically randomly initialize k different seeds.
+ And then you will determine essentially which values are
+ closest to each of those k centers.
+ So for every data point, you will look at which of those k
+ centers is closest to.
+ You will assign it to that center,
+ and then you will fit an average to all of the points
+ assigned to that center.
+ You will fit a distribution in ellipsoid
+ to the data closest to that center.
+ And so you'll have these k distributions, essentially,
+ that will approximately model your data distribution.
+ So that's what k-means is.
+ And so you iterate, so you fit this.
+ And then once you fit this, you say, OK, now
+ given this distribution, all of these different distributions,
+ you can reassign.
+ And say, oh, now that I fit this here,
+ it turns out this pixel is actually
+ a better fit to this other cluster.
+ So you reassign to the better cluster,
+ and then you again refit.
+ And you do that until you converge.
+ You converge once you don't flip any assignment anymore.
+ As soon as you don't fit any assignment anymore,
+ you haven't changed your data, so you would refit exactly
+ the same distribution.
+ Anyway, so that's k-means.
+ It's a typical way of data-driven way
+ to fit kind of a multimodal distribution.
+ OK, so we do that.
+ We fit that to these pixels, to all these colors there.
+ So the way it works is you fit that,
+ and you have now a distribution based on these pixels here
+ for the background.
+ You have a distribution based on all the pixels
+ there for the foreground.
+ And now you apply this graph cut, the one we described before.
+ You do that, and you get something like this.
+ It clearly wants really to keep definitely
+ all of those red pixels.
+ There were no red pixels outside, no yellow pixels outside,
+ so those are clearly inside.
+ They kept.
+ The other ones, the green ones, were a bit more of a mix.
+ They were kind of both in the inside distribution
+ but also in the outside distribution.
+ They ended up being cut.
+ Your total energy goes down because what they did here
+ was to have a common energy, a consistent energy description
+ that both covers the--
+ that contains how the data is fitted with these k-means,
+ as well as the graph cut problem.
+ So the two are in one energy formulation,
+ meaning that they can consistently optimize both steps
+ separately.
+ So after one iteration of fitting and doing graph cut,
+ the combined energy goes down.
+ And then a second, third, fourth, and then they can stop,
+ essentially.
+ This is the segmentation.
+ This is guaranteed to converge.
+ That means it's guaranteed to not end up oscillating
+ because both steps minimize the same energy.
+ Therefore, you're bound to converge.
+ It doesn't say that it has to converge to a minimum.
+ We're not saying that.
+ Also, we're certainly not saying that it has to converge
+ to the global minimum.
+ But it is bound to converge.
+ So it's bound to stop somewhere and not oscillate.
+ OK, so here's actually more interesting in a sense.
+ You can kind of see what's happening.
+ Initially, you have these k-means.
+ k in this case would have been 1, 2, 3, 4, 5.
+ So 5, k was 5 here.
+ You have the foreground and the background distribution.
+ Or in a sense, initially, it's foreground and background
+ together for the red distribution.
+ And it's only background for the blue distribution.
+ And things that are well modeled by both,
+ I kind of, because of normalization,
+ they're kind of more likely to be background, for example.
+ Anyway, so what you see is it starts
+ with both distributions really overlapping.
+ But then as you refit and you get something that's
+ much closer as we had here, after one iteration,
+ you have this.
+ After this happens and you refit your distributions,
+ you see all that green stuff, it's
+ much more likely to be background at this point.
+ And therefore, in your second iteration,
+ you can further refine and help make the decision.
+ So that's what you see here.
+ And after a while, you can actually
+ separate those distributions.
+ Initially, the foreground and the background
+ were very much overlapping.
+ Here, they've actually been separated into distributions.
+ Some more examples.
+ Of course, it doesn't always work.
+ You might have to refine and do some more interactions
+ to solve the problem.
+ Here's some further-- some database
+ that they used to tune parameters.
+ Again, some comparisons.
+ I'll skip through most of this.
+ You have these in the slides.
+ But what I want to show was this here.
+ If you actually want to refine--
+ and again, you saw that.
+ And I think there might have been some of related things
+ in the exercise.
+ But definitely, we saw it last time with blurred frames
+ and things like this.
+ You might not want to have a binary mask that's like,
+ this pixel is 100% inside and the next pixel is 100% outside.
+ Because as you can see here, it's
+ more likely to be a bit of a smooth transition.
+ And you will have mixed pixels.
+ Because some pixels, because of blurring and so on,
+ they will actually integrate a little bit of light
+ coming from the foreground and a little bit from the background.
+ Definitely with hair and things like that.
+ Same transparent things, but even just
+ at the edge of a surface.
+ So what they do is they instantiate the region of interest
+ around it.
+ And then they will fit a model to foreground,
+ fit a model to background, and then
+ find the right continuous transition between the two.
+ See here, foreground, background fit.
+ And then you actually fit a curve there and smooth that.
+ And essentially have that as a model.
+ And so now you get essentially this kind of known integer
+ transition, where this is this alpha mask.
+ So it means the alpha mask says, how much percentage
+ do you take of the foreground?
+ And then one minus that you take from the background.
+ So that together it's like a full pixel.
+ And so DP means dynamic programming.
+ So use dynamic programming to find that line.
+ And then you have a smooth transition.
+ Skip through that.
+ I wanted to show you segment anything.
+ So if we're talking about neural networks,
+ this is actually quite recent.
+ It's a few months old.
+ This was published by Meta.
+ It has a lot of press.
+ And if you look at it, I think there's a demo here.
+ You'll kind of recognize a number of things from others.
+ So let's click on this one, for example.
+ So you kind of see what happens here.
+ My cursor is the seed.
+ So we're still using the same concepts.
+ It's not doing things that differently.
+ So the cursor is the seed.
+ Even I'm here, it's all pre-segment, of course.
+ They don't compute this on the fly here in the demo.
+ They pre-computed all of this.
+ But essentially, if I move the seed on the dog,
+ it kind of finds the dog.
+ I didn't have to tell it.
+ I didn't have to draw a bonding box.
+ So I have two corners.
+ Just one point here is enough.
+ This triggers the kind of inclusion region and so on.
+ And it kind of finds this.
+ You can also see here they have essentially
+ different versions.
+ You can upload your own images or gallery.
+ And then it will compute these things.
+ You can also do a box.
+ If I do this, I don't know what's going to happen.
+ It's what is doing something.
+ It determines that this is the best foreground.
+ Obviously, if I do this, then it's
+ kind of redoing what I expect.
+ But essentially, this is all using quite advanced deep nets
+ to do all of this here.
+ But it kind of solved the same problem.
+ And they trained it on lots of examples.
+ Remember last lecture, we showed a few examples
+ of people having manually segmented things.
+ So they train on lots and lots and lots of data
+ that has ground truth segmentations
+ for these type of problems.
+ And then essentially, given that, they
+ can now predict segmentations on new images.
+ As this one-- let's try another one.
+ Where was it here?
+ Actually, you can do everything.
+ So this will segment everything.
+ And it will actually just determine
+ kind of a reasonable set of segmentations.
+ And so you see a bit of funny stuff.
+ But overall, doing a quite decent job at--
+ if you don't tell it what you care about,
+ it will just do a generic segmentation.
+ And you see it in actually-- also, a little bit
+ is a hierarchical thing.
+ You can kind of see that this tree is part of the tree region
+ in the back and so on and so on.
+ But it finds the relevant segmentations here.
+ Where is-- OK.
+ Any preference which image we should try?
+ Next?
+ Which one?
+ This one?
+ OK.
+ Let's try this one.
+ OK.
+ Yes, let's see.
+ So this is interesting, right?
+ Sometimes it actually figures out it's one cat, sometimes not.
+ It's kind of really interesting.
+ It does kind of give it enough data.
+ And it actually does really interesting stuff.
+ OK.
+ It didn't figure out it's a tripod.
+ I don't know if there's another-- no.
+ So you see, right?
+ So these methods can do a lot.
+ They're not necessarily fully at holistic interpretation
+ of the image yet.
+ It does have some signs of getting there, right?
+ So being able to associate this region with this region
+ means that you're definitely going beyond the region.
+ You're actually interpreting this as kind of one unit
+ that has some occlusion.
+ The tripod, it didn't figure out.
+ Probably if it was-- if you saw the whole tripod,
+ it would probably figure it out.
+ OK.
+ I encourage you to try this yourself, right?
+ Just look for a segment, anything.
+ You'll find this, play with it around with it.
+ Get some idea of how it works and where it doesn't work.
+ And you saw you can upload your own images,
+ so just play around with it.
+ OK.
+ So now we'll switch from--
+ first, we look purely at the data.
+ Right?
+ So we purely look at the data.
+ OK.
+ Right?
+ So we purely looked at the images
+ and decided inclusion criteria purely
+ based on the pixel value, for example,
+ or the color or whatever.
+ Then we included the spatial component,
+ and we were trading off spatial components
+ with data components, right?
+ What we see in the image, but traded off
+ with what we expect in terms of how the segmentation should
+ look like.
+ Now we'll pivot a little bit even further,
+ and we look purely at the spatial component.
+ And so we'll do operations that just kind of relabeled
+ based on how the binary mask looks like independently
+ of data labeling.
+ This part, you won't need to study this in detail
+ for the exam or so.
+ So I'll just go briefly over it.
+ There's a lot of slides, and I won't cover probably all of it
+ in the next 20 minutes.
+ So we'll define them or operations.
+ For example, here, the eight neighbor erode,
+ or which is also called the Minkowski subtraction,
+ it will erase any foreground pixel
+ that has one of its eight connected neighbors
+ that is background.
+ OK?
+ So let's say you have an image, an image segment like this.
+ You threshold it.
+ You get something like this.
+ One time running that erosion means that every white pixel
+ here, it only affects white pixels.
+ Every white pixel here, you look at all its neighbors.
+ If one of them is black, boom, you erase that pixel.
+ You actually, at the bottom here, you see which pixels flipped.
+ So each of those are at least one neighbor,
+ so you kind of get rid of them.
+ You get that image.
+ Given that image, you can run it again if you want.
+ The same process.
+ Now, the next ones, these now have a neighbor that's black,
+ and so they get erased.
+ And you can keep running that until there's nothing left,
+ for example.
+ Then it stops, because it only affects foreground pixels.
+ You can do also the inverse of this.
+ Eight neighbor dilate.
+ Again, remember, it's important to actually always check what
+ is the neighborhood structure here.
+ It would behave differently if it was a four neighborhood.
+ You can also do this with a four neighborhood, of course,
+ but it would just behave differently.
+ This is called Minkowski addition.
+ Also, so essentially, it's the reverse.
+ So paint any background pixel that
+ has at least one eight connected neighbor that is four broad.
+ So it's kind of the reverse.
+ You start from the same picture, but now it gets essentially
+ fatter and fatter, essentially.
+ So like this until all the pixels are white.
+ Why would you do this?
+ Well, it can be a simple way to clean up an image,
+ to do some boundary shape analysis,
+ remove noise and artifacts from imperfect segmentations
+ in a kind of straightforward way.
+ So those take two arguments, these operators.
+ They take a binary image and a structuring element.
+ Now, you're going to want to-- what's
+ this structuring element?
+ Well, that's actually the neighborhood
+ we were talking about earlier.
+ You can actually do also different things.
+ So we looked at eight neighborhood, four neighborhood.
+ You could actually choose any shape
+ you want as a structuring element.
+ Those two together determine the output.
+ These are examples of structuring elements.
+ So this is clearly an eight neighborhood, right?
+ Given this pixel, all of the surrounding ones
+ are the neighborhood.
+ Given this pixel, this is the four neighborhood,
+ but you could also define one like this.
+ That says given this pixel, this pixel actually is not
+ included, but you have more pixels on this side included,
+ for example.
+ We can actually represent--
+ one way to represent these binary images,
+ that makes sense in this context,
+ is really just as a list of pixels that are one.
+ So this image here corresponds to this list here.
+ It's just a different way to represent that binary image.
+ And then you can essentially--
+ but I leave this to those of you that are interested.
+ This will not be asked at the exam or so.
+ You can define, essentially, or you
+ can use all these set notations here,
+ unions and intersections, complements and differences.
+ Those are the definitions here as a refresher.
+ Then you can define these operations based on that.
+ Fitting, hitting, and missing.
+ And you see the definitions are a little bit complicated.
+ You can look at this quietly.
+ If you're interested, conceptually, it works as follow.
+ So here, we have this element is fitting here.
+ It's hitting here, and it's missing here.
+ So here, it's this element here.
+ If you apply it to this pixel here,
+ wherever it has a one here, it also has a one here.
+ So center it here.
+ It has a one here, a one here, one here, one here,
+ and one here.
+ So that's a fitting.
+ That is-- you can go through this here,
+ through this definition for fitting and verify this yourself,
+ if you're interested.
+ The missing, the hitting, you see that actually,
+ if you apply this over here, it's missing here.
+ It's not a hit here, not a hit here, not a hit here,
+ not a hit here, but here it's actually hit.
+ So at least one of the pixels hits,
+ overlaps with an existing pixel in the image.
+ So we have a hit there.
+ And then a miss means that from here,
+ there's nothing here, here, here, here, or here.
+ So it's a miss.
+ So none of those pixels that are on there are actually
+ on here for that location.
+ So erosion can be also defined in the context of fitting,
+ et cetera.
+ Here's some examples of how you could apply this
+ to our ever recurrent segmentation example here.
+ So you see here, you have this region.
+ You can kind of apply a structuring element that's much
+ more than an 8 neighborhood.
+ It's much bigger.
+ Let's see, you could call this a 25 neighborhood, if you want.
+ If you apply that to this image, that's what would result.
+ So you see, so this is applying erosion.
+ And then this is applying actually
+ a different structuring element to one of those diagonal
+ elements.
+ So you see that it behaves differently.
+ So you can choose different structuring elements.
+ They will actually make the thing look different.
+ You can also do dilation.
+ Again, here, defined with these set principles,
+ that's how it looks like.
+ So you see now with this structuring element,
+ every little dot here, a single dot that occurred,
+ now becomes essentially-- each of those dot
+ becomes after the dilation, becomes a big blob.
+ And again, every dot here becomes a stripe
+ with that structuring element.
+ Then you can actually define, opening and closing,
+ what are those where they're a sequence of doing first--
+ opening is first erosion, then dilation.
+ So they, of course, are a little bit each other's inverse.
+ So by doing them in that order, first eroding, then dilating,
+ in most places, nothing will happen.
+ You will just cancel out.
+ But in places where you had a single dot,
+ that dot is not gone.
+ And so now when you do dilation, well,
+ there's nothing coming back.
+ It's gone.
+ So you're getting that effect.
+ And vice versa, closing means you're going to close up stuff.
+ A small hole will be closed up.
+ Then you will not reopen it.
+ So then that's the closing.
+ So here you see that applied to the duck here.
+ Original closing means that all the small holes, like here
+ and here and so on, those are all nicely closed now.
+ And then vice versa here, the opening
+ gets rid of all of this mess that was randomly spread around.
+ Meaning you can actually also do both after each other,
+ if you want in a sense.
+ So these type of filters are typically
+ used for removing holes and foreground
+ and islands in the background.
+ You can do both opening and closing.
+ Size and shape of destructive elements
+ will determine what size of things survive.
+ And so if you don't know better, you
+ could use a circular structure element.
+ You know, a big blob or a square or a circle is even better.
+ Here's kind of an example of how this could be applied
+ to counting these red blood cells.
+ This is kind of basic image processing.
+ Let me actually skip through this here.
+ But essentially, the idea is to threshold and then label.
+ And then here it does an opening with a disk of size 11.
+ Meaning that all of the small things, like here,
+ these small things that are smaller than a size 11 disk,
+ they would actually disappear.
+ And the bigger you make it, the size 19, still most things
+ are here, size 59, boom, now, certainly most of the blobs
+ are gone because they were too small to survive an opening
+ with a disk of 59.
+ You can kind of keep track of this, of how this behaves.
+ So initially, you have 400 blobs.
+ But very quickly, you get at about here 200 or a bit
+ below 200 blobs, red blood cells.
+ There's a nice plateau.
+ And then at some point, you kind of start losing all of them.
+ You clearly were looking for two big blobs that are bigger
+ than your typical red blood cell.
+ So this could be one way to count for these things.
+ Here, there's hidden mistransformations.
+ This one essentially wants to have an exact match.
+ Or it's kind of combining-- essentially,
+ it wants to hit those two places,
+ and it wants to miss here.
+ So essentially, if you apply that,
+ this pattern shows up here.
+ Therefore, we'll have a one here.
+ So that's what you see here.
+ It also shows up here.
+ So that gives a one here.
+ So it's only when you have the exact pattern
+ that it actually says, OK, good.
+ I put a one here.
+ If you don't have the exact pattern, both the hit and the
+ miss together, then it doesn't work.
+ Yes?
+ Isn't that basically building a cell or automaton?
+ These are all things that you build with cell or automaton.
+ Yes.
+ You can also just leave one and define, for example, as well.
+ OK, so this would be one way to find corners.
+ For example, a simple way.
+ You say, I want to hit this.
+ And I want to miss this.
+ That's a way to say I want an upper right corner.
+ I want ones with this pattern and zeros with that pattern.
+ So that essentially corresponds to a pattern like this here,
+ where you don't really care what happens at the excess.
+ People have done things like where they use this.
+ This fitting and this thickening with these patterns,
+ something that you see there, applied also here.
+ But now it's kind of more directional.
+ So they can apply all these different orientations,
+ finning and thickening, et cetera, with something like
+ this here, so from all sides.
+ And as you sequentially apply this, it will lead to this.
+ But because of the hit and miss combination,
+ this requires things to still be there.
+ It cannot really fully erase pixels because then you don't
+ have on pixels anymore.
+ You need a combination of some pixels on and some pixels off.
+ So if you look for a pattern that has this is off and this is on,
+ and then you can move it inside.
+ And so you can keep doing that.
+ But at some point, there's nothing on the other side anymore.
+ There's no inside anymore.
+ Then you have to stop.
+ So in a sense, what does it do?
+ It kind of finds you a skeleton, in a sense.
+ It just shrinks the thing until there's just one line left.
+ By the way, you can find this and play around with this in Python.
+ You can also do the same sequential thickening,
+ going through the whole alphabet of all orientations
+ of boundaries, and just thicken things.
+ But you can also not get rid of these regions here, for example.
+ So in the end, you end up with an image like this here,
+ for example.
+ So people have used this in image processing and medical image
+ processing in particular.
+ They introduced something that's called a medial axis transform.
+ So this is essentially-- they kind of represent this kind
+ of stick figure type stuff.
+ Conceptually, what it does is you could kind of think of it
+ as start a grass fire at the boundary,
+ and it starts burning inside.
+ Let's say like this here.
+ So if you start a fire there, in the end,
+ you're going to end up with just one--
+ where the fire will meet will be at the one point in the middle.
+ So the fire goes, and it collapses in the middle.
+ That's where it stops to burn.
+ But if you do it like this here, then this will move this way.
+ This boundary will move this way.
+ Along this boundary, the two fronts
+ will always end up meeting at that location.
+ So in this case, this kind of skeleton
+ would go like this, until, of course,
+ the two boundaries here collapse,
+ and then you have this whole boundary.
+ So this is a way to determine a kind of skeleton.
+ And you can see this as--
+ you can actually define this properly
+ as the union of the centers of all the maximal disks
+ within the shape.
+ Where a maximum disk is a circular subset of x
+ that touches the boundary in at least two places.
+ If you look back here, if I want a circle that touches here
+ and here, these two boundaries, a circle here,
+ it will touch here and here.
+ The center of it will be on this line.
+ And I can do a smaller circle.
+ It will be over here.
+ A bigger circle will be over here.
+ At some point, the bigger circle will have touch here, here,
+ but also here.
+ That's when I'm here.
+ And that size circle, I can keep sliding in back and forth here.
+ It touches here and here, and the midpoint is here.
+ So essentially, and those are all the ones that
+ are as big as possible.
+ So when it touches two sides, so all of the ones
+ that touch two sides, the union of all of them
+ will give you this skeleton.
+ This is the medial axis transform.
+ Almost, actually.
+ That's the skeleton.
+ And then the medial axis transform
+ is actually going to--
+ it looks like this.
+ It will actually remember, at each of those points,
+ it will actually remember a value,
+ which is how big was the circle.
+ The interesting thing is, if you have that,
+ you can actually reconstruct.
+ So the medial axis transform allows
+ you to reconstruct this binary shape.
+ Because if I know here, I have this radius, the one I read
+ off here.
+ So this radius, I can do this.
+ And then that one there has this radius.
+ And if I take the union of all those circles,
+ I actually can reconstruct the original shape.
+ This works in 2D.
+ Let's skip this.
+ But it also works in 3D, for example.
+ So in 3D, you will have the curves and shapes in 3D,
+ like here.
+ And the color, each of those points has a color that's
+ the size now not of a disk, but the size of a sphere.
+ And so you have essentially-- this
+ is a collection of spheres that all
+ lives on these surfaces here, these kind of strange surfaces.
+ And if you take the union of all those spheres,
+ you will have the original shape back.
+ And of course, with a sphere, you need three points
+ where you touch.
+ Here's another example of this medial axis transform.
+ In a way, again, on every point here,
+ you have a sphere that is tangent to the surface
+ of the object in at least three points.
+ Yeah, and so essentially, you can get these kind of things.
+ And so that's kind of the definition of us.
+ Like the skeleton would look like this here,
+ the ones with the medial axis transform, and so on,
+ that you obtain with those concepts,
+ with the maximal circles.
+ This would be the finned, what is left
+ after sequential finning.
+ So they're very related, but there's
+ a little bit of a difference.
+ So how would you qualify the difference between the two?
+ Between the skeletons, which are related to the medial axis
+ transform, can be computed through them,
+ and then the finned structures here.
+ So how would you describe the difference or so?
+ Yes, so essentially, the way they differ,
+ it's mostly where also these guys are kind of unstable,
+ in a sense.
+ If you could actually slightly change the surface here,
+ now it's like this, and then you change it a little bit in shape,
+ and suddenly the skeleton would look completely different.
+ But the stable part of the skeleton
+ is kind of what you also see back in the fin structure,
+ typically.
+ So the common part between the two, or this thing here--
+ so if you have strong edges, for example, like this here,
+ then you have here this whole shape,
+ then it's kind of the same, essentially.
+ That's because it's also very stable.
+ The circle in this example here, you fit the circle,
+ and it's kind of tangent in multiple points,
+ and it's kind of-- if you rounded this off a little bit
+ different, instead of a little bit like this,
+ you do a little bit more like that,
+ you would certainly have a completely different skeleton.
+ While in place where it's sharp, this is stable,
+ and you see things being the same.
+ So in a sense, what this fin structure is,
+ is really it gives you the stable part of the skeleton
+ that would not be affected by small changes.
+ When is it unstable?
+ It's unstable when you have something that has roughly
+ a circular shape, because then the smallest deviation will
+ lead to a completely different skeleton.
+ Does that make sense?
+ [INAUDIBLE]
+ The skeletons also have to go essentially kind of all the way
+ to the surface, right?
+ And branch out further and further
+ until they touch the surface.
+ Yes?
+ So reconstruction is possible with the skeleton,
+ but not with the fin?
+ That's right.
+ Yeah.
+ You could still do an approximate reconstruction with this.
+ Let's say you-- if you would encode the circles here,
+ you would still be pretty close, and it would be
+ qualitatively close, but in exact inverse,
+ you only get with the other one.
+ And we'll leave it at that.
+ So here's a kind of segmentation exercise for you
+ on ice.
+ Next week, as I said, it will be image features.
+ You'll start looking--
+ you look at how to extract edges and how
+ to extract corners and images and so on.
+ And this will be Zuria that will do that for you.
+ I will be at a conference in Paris.
+ OK, see you in two weeks then.
+ [APPLAUSE]
+ [MUSIC PLAYING]
+ [MUSIC PLAYING]
