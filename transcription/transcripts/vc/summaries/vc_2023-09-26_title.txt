@@ -1,5 +1,1 @@
-1. Image Segmentation and Evaluation using ROC Curves
-2. Understanding Image Noise and Light Distribution
-3. Color Perception and Representation: Rods, Cones, and Color Channels
-4. Camera Sensor Technologies and Gestalt Phenomena in Image Segmentation
-5. Evaluating Segmentation Algorithms with ROC Curves and Threshold Selection
+Image Segmentation 
