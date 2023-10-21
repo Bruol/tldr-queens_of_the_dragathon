@@ -21,9 +21,14 @@ def videos(request, class_id):
     lecture = Lecture.objects.get(id=class_id)
     videos = lecture.video_set.order_by("-presentation_date").all()
     template = loader.get_template("views/video.html")
+
+    test = [[video, video.presenters[:-2].split(';')] for video in videos]
+    print(test)
+
     context = {
         "lecture": lecture,
         "videos": videos,
+        "names": test,
     }
     return HttpResponse(template.render(context, request))
 
