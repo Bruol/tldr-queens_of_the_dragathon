@@ -47,18 +47,30 @@ body {
 .header .page-title {
     position: relative;
     width: fit-content;
+}
+
+.header .page-title a {
+    text-decoration: none;
+    display: block;
     font-family: "Open Sans-Regular", Helvetica;
     font-weight: 400;
     color: #000000;
-    font-size: var(--variable-collection-font-size-large);
+    font-size: var(--variable-collection-font-size-xlarge);
     letter-spacing: 0;
     line-height: normal;
+    transition: transform 0.1s ease-in-out;
+}
+
+
+.header .page-title:hover a {
+    transform: scale(1.05);
 }
 
 .header .welcome-text {
     font-family: "Open Sans-Regular", Helvetica;
     font-weight: 400;
     color: #000000;
+    font-weight: bold;
     font-size: var(--variable-collection-font-size-large);
     letter-spacing: 0;
     line-height: normal;
@@ -103,6 +115,7 @@ body {
     justify-content: center;
     gap: 10px;
     padding: 10px;
+    margin-bottom: 75px;
     position: relative;
     flex: 0 0 auto;
 }

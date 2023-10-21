@@ -52,7 +52,7 @@ def summary(request, summary_id):
         "bulletpoints": filtered_bps,
         "presenter": vid.presenters[:-1],
         "date": vid.presentation_date,
-        "trasncript": vid.transcript,
+        "transcript": vid.transcript,
         "source": vid.source_url,
     }
 

@@ -11,14 +11,16 @@
   <body>
     <header class="header">
         <div class="first-row">
-          <div class="page-title">TLDR; <sub>Lectures</sub></div>
+            <div class="page-title"><a href="/">
+              TLDR; <sub>Lectures</sub>
+          </a></div>
           <div class="account-login-wrapper">
             <div class="welcome-text">Welcome, Patricia!</div>
             <img class="log-out-icon" src="img/log-out-icon.svg" />
           </div>
         </div>
         <nav class="breadcrumbs">
-          <div class="breadcrumbs-text"><a href="/">Home</a> » <a href="/classes/{{ video.lecture_id.id }}">{{ lecture.lecture_name }}</a> » {{ video.infered_titel }}</div>
+          <div class="breadcrumbs-text"><a href="/">Home</a> » <a href="/classes/{{ video.lecture_id.id }}">{{ lecture.lecture_name }}</a> » {{ topics.title }}</div>
         </nav>
       </header>
     <main class="main">
