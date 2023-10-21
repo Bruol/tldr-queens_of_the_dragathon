@@ -1,5 +1,1 @@
-- "Programming Concepts and Software Development"
-- "GitHub Copilot and Programming Tools"
-- "Importance of Practice and Exercise Groups in Programming"
-- "Enrollment Options for Course Groups"
-- "EBNF Description for Programming Languages"
+Programming Concepts and Software Development

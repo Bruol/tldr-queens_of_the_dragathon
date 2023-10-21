@@ -1,0 +1,68 @@
+# Summary
+
+## Unitary Transforms and Image Analysis
+### Sourced from Summary 1
+- Sub-topic: Representing photo collections as vectors in a high-dimensional space
+  - Key takeaway: Subtracting the average to center the distribution and choosing a rank k approximation for significant singular values
+- Sub-topic: Differentiating between meaningful changes in the data and irrelevant changes
+  - Key takeaway: Fitting ellipses to represent within-class and between-class variations to maximize meaningful changes while minimizing irrelevant changes
+- Sub-topic: Generalized eigenvector problem and singular value decomposition
+  - Key takeaway: The principled approach to addressing meaningful and irrelevant changes in images can be solved using the generalized eigenvector problem or singular value decomposition
+
+## Inverse of a Matrix and Image Analysis
+### Sourced from Summary 2
+- Sub-topic: Inverse and pseudo-inverse of a matrix
+  - Key takeaway: The inverse can be obtained by taking the reciprocal of a non-zero singular value
+- Sub-topic: Principal Component Analysis (PCA) and Fisher linear discriminant
+  - Key takeaway: PCA identifies the direction of biggest variation, while Fisher linear discriminant focuses on the direction that represents the difference between classes
+- Sub-topic: Lighting and reflection in image analysis
+  - Key takeaway: Lighting variations and within-class variations need to be considered when applying dimension reduction techniques
+
+## Albedo and Object Recognition
+### Sourced from Summary 3
+- Sub-topic: Albedo and brightness of objects
+  - Key takeaway: Albedo determines how much light is reflected by a surface, affecting object brightness
+- Sub-topic: Linear models and principal component analysis
+  - Key takeaway: Linear models can effectively capture most variation in light, but more complex models are needed for non-linear spaces
+- Sub-topic: Object recognition and viewpoint variations
+  - Key takeaway: Principal component analysis can be used to recognize objects from different viewpoints
+
+## PCA and Image Compression
+### Sourced from Summary 4
+- Sub-topic: PCA for image projection and recognition
+  - Key takeaway: PCA can be used to project images into a lower-dimensional space and recognize faces
+- Sub-topic: Relationship between PCA and Fourier transform
+  - Key takeaway: PCA of natural images can produce similar results to the Fourier transform
+- Sub-topic: JPEG compression and contrast sensitivity
+  - Key takeaway: JPEG compression utilizes the human eye's lower sensitivity to higher frequencies and the quantization of coefficients
+
+## Image Compression and Discrete Cosine Transform (DCT)
+### Sourced from Summary 5
+- Sub-topic: Variation of contrast and frequency sensitivity of the human eye
+  - Key takeaway: The human eye is less sensitive to higher frequencies, which is used for compression in JPEG
+- Sub-topic: Discrete Cosine Transform (DCT) and JPEG compression
+  - Key takeaway: DCT decomposes an image into coefficients capturing low and high frequencies, suitable for JPEG compression
+- Sub-topic: Quantization and entropy coding
+  - Key takeaway: A quantization matrix is used to reduce the number of bits representing coefficients, and entropy coding further compresses image data
+
+# In-Depth Summaries
+
+## Unitary Transforms and Image Analysis
+
+In this topic, the lecture discusses unitary transforms and their application in image analysis. It starts by focusing on representing photo collections as vectors in a high-dimensional space (Summary 1). The lecture emphasizes centering the distribution by subtracting the average and choosing a rank k approximation to capture significant singular values. Next, the lecture explores the importance of differentiating meaningful changes in the data from irrelevant changes, such as noise or lighting variations, when comparing images for recognition. To address this, the lecture introduces the fitting of ellipses to represent within-class and between-class variations, aiming to maximize meaningful changes and minimize irrelevant changes. This approach can be solved using the generalized eigenvector problem or singular value decomposition. The lecture acknowledges that more complex methods are available but focuses on principled baseline methods.
+
+## Inverse of a Matrix and Image Analysis
+
+This uses on the inverse of a matrix and its relevance to image analysis (Summary 2). It explains that for a non-zero singular value, the inverse can be obtained by taking the reciprocal of that singular value. The lecture also discusses the concept of Principal Component Analysis (PCA) and Fisher linear discriminant, using a simple example of two dimensions and different classes. PCA identifies the direction of the biggest variation, while Fisher linear discriminant focuses on the direction that represents the difference between classes. The lecture further highlights the importance of considering lighting variations and within-class variations when analyzing images and applying dimension reduction techniques such as PCA and Fisher faces.
+
+## Albedo and Object Recognition
+
+The lecture delves into the concept of albedo and its impact on object recognition (Summary 3). Albedo refers to how much light is reflected by a surface. The lecture states that the brightness of an object is proportional to the amount of light present and the object's albedo. It also explains that linear models can effectively capture most of the variation in light but fails to account for factors like shadows. The lecture highlights the use of principal component analysis in recognizing objects from different viewpoints. It concludes by mentioning the need for more complex models when the space is non-linear due to objects undergoing 360-degree rotations.
+
+## PCA and Image Compression
+
+This uses on the application of Principal Component Analysis (PCA) in image compression (Summary 4). The lecture explains that PCA can be used to project images into a lower-dimensional space, specifically a three-dimensional space in this case. The lecture also mentions the use of PCA in recognizing and analyzing faces. Additionally, the lecture discusses the relationship between PCA and the Fourier transform, demonstrating how PCA of natural images can produce similar results to the Fourier transform. The lecture also touches on the artifacts and limitations of JPEG compression and highlights the contrast sensitivity curve in human visual perception.
+
+## Image Compression and Discrete Cosine Transform (DCT)
+
+In this topic, the lecture explores image compression techniques, with a focus on the Discrete Cosine Transform (DCT) (Summary 5). The lecture discusses the variation of contrast and the human eye's sensitivity to different frequencies in images. It explains that the human eye is less sensitive to higher frequencies, which can be leveraged for compression in JPEG. The lecture introduces the DCT, which decomposes an image into coefficients representing low and high frequencies. It also mentions the use of a quantization matrix to reduce the number of bits used to represent the coefficients and highlights the zigzag scan pattern to describe the coefficients efficiently. The lecture concludes by mentioning the encoding of the DC component relative to the previous block.
