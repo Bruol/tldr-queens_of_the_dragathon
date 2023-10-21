@@ -95,7 +95,7 @@ def summary(request, summary_id):
 
 
 def istitle(str):
-    if(len(str) < 60 and str.count(":") > 0):
+    if(len(str) < 60 and (str.count(":") > 0 or str.count("*")>2)):
         return True
     else:
         return False
