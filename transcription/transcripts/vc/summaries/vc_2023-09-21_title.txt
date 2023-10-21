@@ -1,1 +1,1 @@
-Title: Digital Images, Super Resolution, Motion Blur, Color Capture, Sampling, DVS Camera, and Image Resolution
+Digital Images, Super Resolution, and Image Resolution
