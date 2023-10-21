@@ -55,7 +55,8 @@ ROOT_URLCONF = 'TLDRserver.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['TLDRserver/TLDR/templates/views', 'TLDRserver/TLDR/templates/styles', 'TLDRserver/TLDR/templates'],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -126,5 +127,5 @@ import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATICFILES_DIRS = [
-    "TLDRserver/TLDR/templates/styles",
+    os.path.join(BASE_DIR, "TLDR/templates/styles/"),
 ]
