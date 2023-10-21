@@ -25,7 +25,6 @@ def videos(request, class_id):
     return HttpResponse(template.render(context, request))
 
 def summary(request, summary_id):
-    latest_lecture = Lecture.objects.order_by("-lecture_number")[1]
     template = loader.get_template("views/summary.html")
     
     vid = Video.objects.get(pk=summary_id)
@@ -33,24 +32,45 @@ def summary(request, summary_id):
     topics = vid.topics.all()
 
     for topic in topics:
-        bps = topic.bulletpoints.split("-")
+        bps = topic.bulletpoints.split(" -")
+        bps = [i.split("\n-") for i in bps]
+        bps = flatten_list(bps)
         filtered_bps = []
         for bp in bps:
             if not (bp.isspace() or bp == "" or istitle(bp)):
+                bp = bp.replace("\n", "")
                 filtered_bps.append(bp)
                
 
-    tp_dict = {}
+    tp_dict = {
+        "title": vid.infered_titel,
+        "topics": topics,
+        "bulletpoints": filtered_bps,
+        "presenter": vid.presenters[:-1],
+        "date": vid.presentation_date,
+        "trasncript": vid.transcript,
+        "source": vid.source_url,
+    }
 
     context = {
-        "lecture": latest_lecture,
-        "topics": tp_dict, 
+        "lecture": tp_dict, 
     }
+    
     return HttpResponse(template.render(context, request))
 
-def get_dict():
-    print("test")
 
 
-def istitle(string):
-    return True
+def istitle(str):
+    if(len(str) < 60 and str.count(":") > 0):
+        return True
+    else:
+        return False
+    
+def flatten_list(nested_list):
+    flattened = []
+    for i in nested_list:
+        if isinstance(i, list):
+            flattened.extend(flatten_list(i))
+        else:
+            flattened.append(i)
+    return flattened

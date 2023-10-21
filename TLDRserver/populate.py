@@ -43,7 +43,7 @@ def populate_videos():
         
         pres = ""
         for lecturer in meta_data["Lecturer"]:
-            pres = pres+lecturer+","
+            pres = pres+lecturer+"; "
 
         video.presenters = pres
 
@@ -94,8 +94,13 @@ def delete_duplicates():
             print("deleting lecture: " + d_lec.lecture_name)
             d_lec.delete()
     
-
+def delete_database():
+    Lecture.objects.all().delete()
+    Video.objects.all().delete()
+    Topic.objects.all().delete()
 
 populate_lectures()
 populate_videos()
-delete_duplicates()
+# delete_duplicates()
+
+# delete_database()
