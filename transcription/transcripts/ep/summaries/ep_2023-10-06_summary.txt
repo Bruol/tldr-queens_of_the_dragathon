@@ -1,4 +1,6 @@
-I. Loops in Java
+# Summary
+
+## Loops in Java
 - **Generating Random Numbers** (Summary 1)
    - Import the `Random` class
    - Create an instance of the `Random` object
@@ -12,12 +14,12 @@ I. Loops in Java
    - Use multiple loops within each other
    - Important to correctly set loop conditions and updates
 
-II. Indefinite Loops
+## Indefinite Loops
 - **The While Loop** (Summary 4)
    - Used for loops with an unknown number of repetitions
    - Syntax and functionality explained in detail
 
-III. Methods in Programming
+## Methods in Programming
 - **Benefits of Using Methods** (Summary 5)
    - Saves lines of code and makes programs shorter and easier to read
    - Allows for easy modification and reusability of code
@@ -26,12 +28,12 @@ III. Methods in Programming
    - Formal parameters are defined in the method declaration
    - Actual parameters are passed during method invocation
 
-IV. Return Statements
+## Return Statements
 - **Returning a Value in a Method** (Summary 7)
    - Return statements used to give back a value in a method
    - Return true for prime numbers and false for non-prime numbers
 
-V. Writing a Method (Summary 8)
+## Writing a Method (Summary 8)
 - **Task of Writing a Method** (Summary 8)
    - Required structure and return type (integer)
    - Parameters to determine the quadrant of a point
