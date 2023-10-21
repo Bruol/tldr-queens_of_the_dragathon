@@ -1,11 +1,13 @@
 from TLDR.models import *
+from django.db.models import Count
+
 import os 
 import json
 
 dir = "../transcription/transcripts/"
 
 
-def popuiate_lectures():
+def populate_lectures():
     for lecture_folder in os.listdir(dir):
         if not lecture_folder.startswith("."):
             meta_data = json.load(open(dir + lecture_folder + "/metadata.json"))
@@ -22,7 +24,26 @@ def popuiate_lectures():
 
             print("lecture saved")
 
+def populate_videos():
+    print("populating videos")
+
+def populate_topics():
+    print("populating topics")
 
 def delete_duplicates():
-    lectures = Lecture.objects.all()
+
+    # delete duplicate lectures
+
+    duplicate_lecs = Lecture.objects.values('lecture_number').annotate(lecture_number_count=Count('lecture_number')).filter(lecture_number_count__gt=1)
+
+    for lec in duplicate_lecs:
+        lec_num = lec['lecture_number']
+        lecs_to_delete = Lecture.objects.filter(lecture_number=lec_num).order_by('pk')[1:]
+        for  d_lec in lecs_to_delete:
+            print("deleting lecture: " + d_lec.lecture_name)
+            d_lec.delete()
     
+
+
+
+delete_duplicates()

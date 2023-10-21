@@ -1,1 +1,1 @@
-Title: Loops, Loop Invariants, and Loop Termination
+Loops, Loop Invariants, and Loop Termination

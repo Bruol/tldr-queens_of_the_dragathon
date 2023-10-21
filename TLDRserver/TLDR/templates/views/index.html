@@ -4,15 +4,57 @@
   <head>
     <title>TLDR; Lecture</title>
     {# TODO: Add Favicon #}
-    <link rel="stylesheet" href="{% static 'main.css' %}" />
-    <link rel="stylesheet" href="{% static 'index.css' %}" />
-    </head>
+    
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="icon" type="image/png" href="/Users/kristijonas_buciunas/Desktop/Queens_of_dragathon_23/tldr-queens_of_the_dragathon/TLDRserver/TLDR/templates/views/LOGO.png">
+    <script>
+      window.onload = function () {
+          var pathArray = window.location.pathname.split('/').filter(function (segment) {
+              return segment.trim() !== '';
+          });
+          var currentURL = window.location.href;
+          console.log(currentURL);
+          var filename = currentURL.substring(currentURL.lastIndexOf("/") + 1);
+
+  
+
+          var breadcrumbContainer = document.querySelector('.breadcrumbs');
+          var breadcrumbTrail = [];
+
+          for (var i = 0; i < pathArray.length; i++) {
+              var breadcrumb = document.createElement('a');
+              breadcrumb.href = '/' + pathArray.slice(0, i + 1).join('/');
+              breadcrumb.textContent = pathArray[i];
+
+              breadcrumbTrail.push(breadcrumb);
+          }
+
+          // Add the current page to the breadcrumb trail
+          var currentPage = document.createElement('span');
+          currentPage.textContent = pathArray[pathArray.length - 1];
+          breadcrumbTrail.push(currentPage);
+
+          // Clear the existing content and append the breadcrumb trail
+          breadcrumbContainer.innerHTML = '';
+          for (var j = 0; j < breadcrumbTrail.length; j++) {
+              if (j > 0) {
+                  breadcrumbContainer.appendChild(document.createTextNode(' &gt; '));
+              }
+              breadcrumbContainer.appendChild(breadcrumbTrail[j]);
+          }
+      };
+    </script>
+  </head>
+
   <body>
     <header class="header">
       <div class="page-title">TLDR; <sub>Lectures</sub></div>
+      <div class="breadcrumbs">
+        <!-- Breadcrumb trail will be generated here using JavaScript -->
+      </div>
       <div class="account-login-wrapper">
-        <div class="welcome-text">Welcome, Patricia!</div>
-        <img class="log-out-icon" src="img/log-out-icon.svg" />
+        <div class="welcome-text">Welcome, PATRICIA!</div>
+        <img src="{% static 'images/logout.png' %}" alt="Logout icon">
       </div>
     </header>
     <main class="main">
@@ -43,7 +85,7 @@
         <div class="text-wrapper"><a href="#">Impressum</a></div>
       </div>
       <div class="div-wrapper">
-        <div class="text-wrapper"><a href="#">Video Portal</a></div>
+        <div class="text-wrapper"><a href="https://video.ethz.ch/lectures/d-infk/2023/autumn.html">Video Portal</a></div>
       </div>
     </footer>
   </body>

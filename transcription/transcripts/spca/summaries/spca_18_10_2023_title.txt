@@ -1,1 +1,1 @@
-Title: x86 Assembly and Control Flow Concepts
+x86 Assembly and Control Flow Concepts

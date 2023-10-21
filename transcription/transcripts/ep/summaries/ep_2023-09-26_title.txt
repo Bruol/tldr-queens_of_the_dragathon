@@ -1,3 +1,1 @@
-1. EBNF: Description and Generation of Symbols
-2. Writing Correct Java Programs: Execution and IDE
-3. Objects in Programming: Creation, Modification, and Methods
+Objects in Programming: Creation, Modification, and Methods

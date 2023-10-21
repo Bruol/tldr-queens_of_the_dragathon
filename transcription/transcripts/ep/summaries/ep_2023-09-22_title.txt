@@ -1,1 +1,1 @@
-eBNF: Introduction, Symbol Validation, Digit Representation, Equivalence, Modifying Descriptions
+eBNF: Introduction, Symbol Validation, and Modifying Descriptions
