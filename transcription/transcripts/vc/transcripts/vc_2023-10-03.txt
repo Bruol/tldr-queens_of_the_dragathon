@@ -1,0 +1,1337 @@
+ (audience murmuring)
+ Excuse me.
+ Let's start the class.
+ Okay, well I'm covering from Professor Mark Poliface
+ because he is on a conference.
+ And well, we are going to do today convolutions
+ and filtering.
+ So basically a small recap of what you did last week
+ as far as he told me.
+ You did segmentation, so you basically learned
+ to do foreground and background segmentation
+ and based to evaluate it with Rock Curve.
+ Basically if you don't remember something of this,
+ please look it up since you will have the practice classes.
+ So I would recommend to look that
+ because it's really important.
+ Okay, so let's start.
+ What is image filtering?
+ So basically the definition of image filtering
+ could be the modification of pixels in an image
+ based on some functions of a local neighborhood of the pixels.
+ So basically as you can see here,
+ this is a local image data.
+ So basically this is a random image.
+ We are applying something on it
+ which basically gives us a modified output with a seven.
+ What is this something?
+ So basically those are image filters.
+ Okay, so basically one of the simplest types
+ of image filters are line shift invariant filtering.
+ What is line shift invariant filtering?
+ Basically they are modified pixels
+ based on the neighborhood.
+ So if you have worked before with pixels,
+ they are the ones that you have probably seen.
+ They are as said the simplest ones.
+ They are linear means, linear combination of neighbors,
+ linear methods.
+ Again, it's the simplest ones and how to apply.
+ And basically, yeah, so they are shift invariant.
+ Sorry, I had to run to get the adapter.
+ So I'm kind of out of breath,
+ but yeah, we'll get better.
+ Okay, so basically they are shift invariant
+ means doing the same for each pixel
+ and basically for what they are used for.
+ Basically you have applied them on images,
+ so low level image processing,
+ smoothing and noise reduction,
+ sharpening and detecting or enhancing features.
+ Okay, so basically how do we know it's a linear filter?
+ Basically this equation has to be every time true.
+ So basically a linear filter is every time
+ for a constant alpha and beta for each of them,
+ we need to basically be able to prove this equation.
+ So if we separate them, this needs to be true.
+ Okay, so basically you can see here,
+ basically as an example of a linear operation
+ is a weighted summation.
+ So basically the output is the image filter
+ on a linear image operation is the weighted sum
+ of a constant alpha multiplied by the image
+ on coordinates i and g.
+ Okay, so basically you have here the equation,
+ so basically k is the kernel,
+ which is what we're going to multiply.
+ It has normally a size on coordinate x and y
+ and then we have the image on the coordinates i and j.
+ Okay, so basically what's the important part out of this,
+ it's basically they are shift invariant.
+ So this basically means k does not depend on x and y,
+ so it's always the same on the entire image.
+ This is kind of the most important part,
+ you need to kind of keep in mind for this.
+ So let's start with basically image filters.
+ We have first of all correlations.
+ So an example template matching.
+ So what is the correlation?
+ Basically you can see here, we have our image
+ with our coordinates j minus y, j and j plus one,
+ which is the section we have decided to apply the filter.
+ And then we have the coordinates on the horizontal,
+ which is i minus one, i and i plus one.
+ And this basically our correlation mask,
+ which we are going to apply on that image.
+ Does anyone know what, how this is going to look like,
+ the correlation equation?
+ Anyone?
+ Nobody has any idea?
+ Okay, that's great.
+ So basically the first coordinate is going to be
+ the correlation in position one one.
+ And we're basically having the image in the position
+ one minus one, j minus one.
+ Does anyone can tell me what's the next term?
+ Anyone?
+ It's going to be a long class if you don't participate.
+ I'm just letting you know.
+ Well, so as it is obvious, the coordinate one two
+ and the correlation, we have the image
+ and basically the coordinate is j and i minus one.
+ Next one.
+ Exactly.
+ Okay, so you got the gist out of it.
+ So basically it's the summation of each of the positions
+ here as you can see.
+ So basically this is how we move over the image.
+ There.
+ So this is how basically the correlation on an applied
+ three by three filter on an image is going to look.
+ Okay, so this is kind of like logic until here.
+ Everyone, everything's clear, right?
+ Okay.
+ Let's move to the next part.
+ Basically, how do we say that in a mathematical formula?
+ So basically the mathematical formula of a correlation is
+ the linear operation is equal to a kernel,
+ which is always the same on the entire image,
+ correlation of an image.
+ So basically what is the correlation?
+ It's a summation of k and coordinates a and g
+ and multiplied by the image in the coordinate x plus one,
+ i plus j.
+ And yeah, basically k is the weight
+ and it's always constant.
+ So okay, let's move to one of the examples.
+ So basically, not the examples,
+ we are doing now the opposite.
+ So this is a convolution.
+ Has anyone of you maybe worked with deep learning?
+ Yes?
+ You know convolutions?
+ You have noticed that it is the correlations in this case.
+ So do you know how a convolution works?
+ The classic standard convolution?
+ Okay, it's an explanation.
+ But it's good that you know the difference.
+ So okay, basically what your colleague said,
+ but in a bit more detail is basically,
+ we're having here the kernel with the coordinates,
+ which is basically what you had beforehand.
+ And we're having our image,
+ but in this case we're not having a size of three by three.
+ We just want to basically do what we can see here.
+ We're having that point and we are actually spreading it.
+ So basically you can see what's going to happen.
+ In this case we start from the other end.
+ So basically the first term is our kernel position one by one
+ on the image x minus y i minus one.
+ So basically who knows the next one?
+ Anyone?
+ Wow, okay.
+ So basically that will be the first one,
+ which brings us to the next one.
+ So as basically you correctly said,
+ in this case the filter is actually not static
+ on the position, it's pivoting over it.
+ So we're actually moving over the image.
+ As you can see in the next,
+ we're literally every time the kernel is moving
+ and basically aiming for that one pixel.
+ And basically this is how it's going to look.
+ As you can see, okay.
+ So basically this is the main difference
+ between a correlation and a convolution.
+ Okay, so basically this is the mathematical function
+ of a convolution, which is basically a convolution
+ is a kernel convoluted on an image,
+ which is basically the outcome of the summation
+ of a basically constant kernel on coordinates ij
+ on an image x minus one i minus one minus j.
+ Here you can see actually showcased
+ basically the difference on the math,
+ like what is the difference between one and another.
+ You can see it's a change of symbols.
+ Okay.
+ So basically these are the two things
+ you need to keep in mind because basically
+ for image filters, we are going to use this.
+ So yes, basically these are the two most important ones.
+ So now I need you to participate
+ because literally this is not going to work if you don't.
+ We're having this image.
+ Some of you maybe have seen it.
+ This is the image of Albert Einstein.
+ We're having that filter.
+ What happens?
+ (audience member speaking off mic)
+ Exactly.
+ Just remains the same.
+ Can you tell us why?
+ (audience member speaking off mic)
+ Exactly.
+ Okay, so have the next one for you.
+ Original image.
+ This is the convolution.
+ What will happen?
+ There are a lot of these.
+ So the earlier you start participating,
+ the funnier it gets.
+ Yes?
+ (audience member speaking off mic)
+ Are you sure it's to the right?
+ (audience member speaking off mic)
+ No, so basically it's, you were sure close,
+ but yeah, it's literally in the other way,
+ in the other direction.
+ It's just a one pixel shift.
+ What happens here?
+ Yes?
+ (audience member speaking off mic)
+ What?
+ (audience member speaking off mic)
+ The opposite.
+ (audience member speaking off mic)
+ This is like, okay, this is really a mean one.
+ So it's basically, we are assuming each three by three
+ neighborhood which ends up saturating the image.
+ So that's why a wide image is coming out of here.
+ Okay, next one.
+ (audience member speaking off mic)
+ Exactly, really good.
+ Okay, now we have different convolutions
+ that we're applying all on the same.
+ Any guesses?
+ Yes?
+ (audience member speaking off mic)
+ Nope, we are sharpening actually.
+ So basically with this filter,
+ what we're doing is basically,
+ as you already said before,
+ we have the averaging but basically we're giving
+ actually more importance to the filters,
+ which is this one.
+ So that's why you're literally,
+ it looks sharpener but just because you're enhancing
+ the pixels that have actually a variation,
+ like a higher number.
+ Okay, so this is how a sharpened image looks.
+ As you can see, so it's kind of relative
+ what sharpening means.
+ It's basically you're having the before image,
+ you're having the after image.
+ You can see we have of course sharpened details
+ on the scene but we're also having more noise
+ because we are enhancing also smaller details
+ that we maybe don't want.
+ Okay, so now that you're experts on convolutions
+ and correlations, we basically have here
+ just a quick reminder what we had basically.
+ Yes?
+ I'm sorry, these are not my slides.
+ Okay, so basically as you just remind this
+ because now we're going to see some outputs of MATLAB
+ actually applying this kind of correlations
+ and convolutions to images.
+ Yes.
+ So basically you can see here,
+ this is how you would do this in MATLAB.
+ So you're having a kernel of nine by nine
+ and you're basically applying convolution
+ on the image and on the kernel.
+ And as you can see, we're having this image of the fishes
+ and basically by applying that kernel,
+ we're seeing that we are blurring it
+ and basically you can also see this kind of
+ interesting phenomenon which is basically
+ because of the application of the kernel,
+ we're getting this black border around the image
+ which you will see in a bit.
+ We will talk about that there's,
+ this can't really get to extreme results basically.
+ Okay, so here's another filter
+ which is basically as you can see,
+ we're having basically a vertical filter.
+ So it's basically going to enhance actually
+ vertical information in the image.
+ So as you can see, it's quite hard to see sadly
+ with the projector.
+ But so we are having of course some horizontal lines,
+ but they are less sharpener than actually here,
+ the lines of the fishes which are basically the details.
+ So basically what this filter is literally doing
+ is enhancing actually the vertical information in the image.
+ And basically also since it is this type of filter,
+ what we're doing is we are changing,
+ that's why the image is actually black.
+ So basically it's actually like saturating the part
+ that is stark in the other part, not.
+ Okay, so basically this brings us to this kind of details,
+ what happens with the edges?
+ Of course we have been already having always
+ this kind of nice kernel which we were applying
+ in the middle of the image,
+ but what do we do with the borders?
+ So basically here we have different options
+ to what to do.
+ So basically we can do a clip filter
+ which is basically this.
+ We can add a black filter,
+ but so basically if we apply convolution,
+ we're having this which is a blurred image.
+ And as you can see,
+ like literally if we're cutting this out,
+ we're having this black border
+ which we literally don't want
+ if we're applying this on images, right?
+ I mean, we're basically putting artifacts
+ in the image that we don't want.
+ So we have a second option
+ which is basically rub the image around.
+ So basically as you can see,
+ this is just copies of the same image,
+ but does anyone can guess what the issue with this is?
+ Okay, so basically as you can see in the upper part,
+ so probably in an image
+ that does not have that much changes,
+ kind of like this would work,
+ but in the upper part you can actually see
+ that basically the red part
+ which is the copy of this.
+ If we apply convolution or a filter on it,
+ we have the blur of the red.
+ So you can see actually the red pixels
+ are really present up there.
+ So if we basically cut it out,
+ we're having red artifacts in the upper part.
+ So that's again, not interesting for us.
+ So other options we have,
+ we can copy the edges
+ which basically gives you this kind of fun looking image
+ which basically has,
+ this is all kind of extended.
+ So basically this one is actually one of the best ones
+ because literally we're convoluting
+ and you can already see
+ that the borders are staying in the same kind
+ of color patterns.
+ So basically if we cut this out,
+ we're actually having a blurred image.
+ We don't have any random artifacts in the scene
+ and it's all kind of like looking good.
+ Okay, which moves us to the next one.
+ We are having the reflect across,
+ basically as you can see here.
+ So what we're doing is we're reflecting a part of the image.
+ We're actually reflecting it.
+ Any guesses what will happen here?
+ Yes.
+ (man speaking off mic)
+ (man speaking off mic)
+ Exactly.
+ Exactly.
+ Just in this case,
+ it will be much smaller than in the other case
+ where we literally were duplicating the image.
+ So in this case,
+ if we apply the convolution,
+ we won't just not see what you were mentioning
+ because basically we could see this here in this line,
+ but basically since it is convoluted,
+ we can't really see any difference.
+ And then basically this is kind of what happens cut out.
+ Or the other option we have is basically
+ we can vary the filter in the borders.
+ So basically on the borders,
+ we just change the kernel size
+ to basically do the kind of adaptations.
+ Okay.
+ Which brings us to the next thing.
+ Since we were talking about the kernel,
+ lastly, basically let's talk about separable kernels.
+ So basically a separate kernel
+ as a part of two dependent filters
+ along rows and columns respectively.
+ So basically you can see F is rows, G is columns.
+ So as you can see,
+ this is the output of a separable kernel.
+ So that's kind of the function that you're going to have
+ and this can be split in these two.
+ So basically what we're doing first
+ is we're doing a convolution on the columns or on the rows.
+ And then we're doing the second one,
+ basically on both of them.
+ Which basically, okay.
+ Question time, I know you don't like it, but yeah.
+ Which basically are the computational advantages
+ of doing this?
+ Any guess?
+ Yes.
+ (man speaking off mic)
+ Exactly, that's one of the reasons.
+ From a mathematical point of view,
+ we're also changing, basically you can see,
+ we're having complexity two M plus one multiplied two N plus one
+ which basically we can actually change
+ from quadratic to linear because by doing it like this,
+ we transform this in a summation actually.
+ So it would be two M plus one plus two N plus one.
+ So basically that's why we are really using separable kernels
+ because they are really interesting for us.
+ Mostly, okay.
+ So now you basically have talked about like blurring kernels.
+ We have talked about some sharpening kernels.
+ Okay, let's move to smoothing kernels.
+ We have basically the low pass filters,
+ which basically you have the mean filter
+ which you have seen before.
+ So basically this is going to blur the image
+ since it is basically the top filter gives the same way
+ to all the pixels.
+ Basically the bottom left filter, which is that one,
+ is basically giving more importance to the central pixel
+ while the bottom right one also gives more importance
+ to the closer pixels to the center.
+ So basically you can see the difference between them.
+ Why to the pixels to the center basically
+ because the distance between this one is actually considered one
+ while between the other ones is literally considered
+ basically distance of the square root.
+ So it's over one.
+ So basically that's why there's bigger distance
+ in the diagonals than actually on the lines.
+ Okay.
+ So basically yes, these are the smoothing kernels.
+ You have seen them before,
+ which brings us to Gaussian kernels.
+ Okay, I mean I assume you mostly have seen Gaussian kernels.
+ I think you're third semester, right?
+ So you have started to see already these things.
+ So basically a Gaussian kernel is mostly known.
+ It's actually used mostly for your scores.
+ That's why maybe a lot of people know it.
+ Basically a Gaussian kernel,
+ this is a representation of a 2D Gaussian kernel in 3D.
+ As you can see here,
+ basically you're having the representation.
+ So what does this mean?
+ Basically this is the mathematical equation.
+ So we're basically giving more importance
+ to the center kernel and the neighborhood
+ while we are not giving importance to the other ones.
+ So basically one of the interesting things about this
+ is that the constant factor at front
+ makes volume summation of one.
+ Okay.
+ So basically this is how a Gaussian kernel
+ actually looks like.
+ So as you can see what we're doing literally smoothing.
+ So we are having this original image,
+ which is already quite blurry.
+ Not sure if it is because of this resize of it
+ or what it is exactly.
+ But yeah, basically is the blurry outcome
+ that you can see not a great outcome.
+ Okay.
+ And basically to kind of show you a difference
+ because in this case like a Gaussian,
+ it has the Gaussian form, so it's kind of circular.
+ That's why you're having that image.
+ We can also have box filters.
+ So basically box filters,
+ if some of you have worked with neural networks,
+ you can actually often see in convolutions
+ when you can sadly not see it.
+ Technically you would be able to see in this image
+ that there is actually like a grid appearing.
+ And basically this grid is often happening
+ from the convolutions that we're doing in deep learning.
+ So it basically often means that the network is not trained
+ but it's not related in this case.
+ But basically you're doing box kernels
+ which is kind of, it's giving a pattern on the image.
+ So basically this is kind of that you know
+ you have two different types.
+ You have the gaussians and you have the box filters
+ which are basically giving importance
+ to the entire filter.
+ Okay.
+ So basically the Gaussian smoothing kernel,
+ basically this is the mathematical equation.
+ It's basically depending on the standard deviation.
+ And as you can see again,
+ maybe if you remember from some slides five minutes ago,
+ this is actually separable.
+ So that's why we like Gaussian kernels
+ because basically we can work with them
+ and we can do them quicker
+ and basically they are much more cost efficient
+ and memory efficient.
+ Okay.
+ So to show you basically because I'm showing you a lot of like
+ how this is kind of applied on a mathematical term.
+ But let's see.
+ So basically here you can actually see the Gaussian smoothing kernel,
+ how it looks when we apply this actually.
+ So basically this depends on the standard deviation
+ of the window size.
+ So basically to keep in mind one of the,
+ basically one of the conclusions you need to kind of keep out of this
+ is basically that the result reminds roughly the same
+ for filter sizes greater than three standard deviation.
+ So basically that's kind of the important one.
+ So basically this is the original image.
+ We have a kernel seven by seven
+ with a standard deviation of one.
+ Applying this on a standard deviation of nine,
+ you can already see we're blurring the image.
+ And since in this one we were already having a black border,
+ you can see, not great, but you can see
+ the border is already getting thicker.
+ This is basically depending on the application of the kernel.
+ Doing the same thing with the kernel size of 19 by 19
+ with a standard deviation,
+ you can see that the border from here to actually here,
+ duplicated already.
+ While if we apply standard deviation of nine,
+ you can see that actually,
+ first of all the image is much blurrier
+ than before with the bigger kernel size.
+ And second, we're having a much thicker black border.
+ Also keep in mind that here the images are cut out.
+ So there's some part missing.
+ So just keep that in mind.
+ This is kind of to give you an idea
+ of what basically you are looking into.
+ I'm going quite quick.
+ So basically, do you have any questions so far?
+ Is there anything?
+ Okay.
+ Um, that's good.
+ I mean, you will probably be able then to leave earlier.
+ Okay.
+ Or do you want to do the break now?
+ Any comments?
+ What, yeah?
+ Okay, then go for the break.
+ Okay.
+ Some of you basically came to ask me some questions.
+ Would I'm kind of assume that basically,
+ if some of you asked,
+ then basically all the others have no clue about it.
+ Which is a strong assumption, I know.
+ But it's just, I want to really clarify
+ because in the end you are starting the semester right now
+ and especially convolutions and correlations
+ are actually really important.
+ And they are really something that kind of like,
+ you should have kind of clear and understood.
+ So, I mean, I think correlations,
+ you kind of all understood them correctly.
+ There was, I think, no question in that.
+ You basically understood that we're having
+ a fixed correlation mass that is applied on the image.
+ So basically it's moving,
+ but basically it's always this three by three
+ by three by three on an image.
+ And we're basically doing the summation
+ of all the operations.
+ Is that clear?
+ (student speaking faintly)
+ Okay.
+ Basically now comes the part where basically
+ it's a bit more abstract to understand
+ with the convolution.
+ So in this case, I can just tell you
+ how it was for me the easiest to understand this,
+ but basically it's a bit of an abstract term to understand.
+ So first of all, as you can see,
+ it is already starting different.
+ Why?
+ Because basically what we're doing is we're having our point
+ and what the kernel is doing,
+ it's actually moving over the neighborhood of that point.
+ So that's why the first kernel point is not the one
+ as we had in the correlation, which was the upper one.
+ It's the other diagonal.
+ That's why K11 is the first one.
+ And basically in the next image,
+ you can see that the kernel, what it is doing,
+ it's basically moving over the neighborhood of the blue pixel.
+ In every of the operations,
+ you can see that what we are doing is moving
+ of the neighboring pixel.
+ So we're basically pivoting over the neighborhood.
+ And this is what comes out.
+ That's also why basic, sorry, I was told
+ I should not use basically.
+ It's just a filling word.
+ But what, the main difference is as you can see
+ on a mathematical point of view is the difference of sign.
+ Yes?
+ - I have a question.
+ In the image, it seems like every time you use K00
+ for each neighboring pixel,
+ that's your K because you have the center of the kernel
+ and then you always took the center
+ for each one of the neighboring.
+ - Wait, what?
+ - In the image control.
+ - Yes.
+ - It seems like you're always using the center
+ of the kernel because you are currently in the kernel
+ and always to take the center.
+ So every time you take K00
+ (audience member laughs)
+ No, I'm not taking that.
+ As you can see in the Mathematic Formula,
+ it's a bit difficult to draw.
+ It's the pixel of the kernel that is over that point.
+ So the one that is in blue,
+ but the center of the kernel is the one
+ that is basically shown to you.
+ So you're having the arrow that is pointing to it,
+ but it's because the convolution is
+ the entire kernel position one, one
+ on the image in position X minus one,
+ I minus Y minus one.
+ So even if the image is made confusing
+ you see that we're actually not using
+ always kernel size in the center.
+ We are not using kernel 00.
+ We're actually moving.
+ The image is, I apologize for the image
+ but I didn't make the slides.
+ I also don't know how to better draw it
+ because if I put you just a point
+ and I make it move over them
+ you then would be probably more confused.
+ But is the difference like on a mathematical point of view,
+ you have the two compared?
+ Like is that clear now?
+ Yes.
+ - [Man] Notice the bottom,
+ do you always represent a correlation
+ whatever that effect on the image
+ could you achieve the same effect with the convolution
+ because there always a corresponding correlation
+ for every convolution?
+ - Yeah.
+ - [Man] It's just a different way of achieving the same.
+ I guess why would you use one or the other?
+ - Because one is the opposite of the other.
+ It's basically, you have the kernel of ij
+ which is the correlation and the convolution is the opposite
+ which brings me to the next point
+ which there were some questioning
+ which was with this image.
+ It says use convolution
+ but if you actually use the correlation it's the inverse
+ and when you're using a correlation
+ basically what you're doing is on the right side
+ you're taking the white pixels
+ so you're shifting everything
+ that's why it shifted to the left.
+ So this convolution turned is a correlation
+ with the one on the other side.
+ I'm trying to just come up with other ways
+ of explaining you things
+ and basically you can then make your own mental path
+ on how this makes sense or not
+ and now is your chance to ask
+ if you have some questions.
+ - Yes.
+ - Before going over this again,
+ I expected the shift to be in the other direction.
+ Would it be possible to explain it yet again
+ maybe as an equation?
+ - As an equation, not really.
+ I can't really like help you on that.
+ I just really like can explain to you on a theoretical level
+ but yet.
+ - Maybe am I allowed to ask
+ if someone understands why the direction is to the left?
+ Why is it the left?
+ - So I had the exact same confusion.
+ I think your current thing is that we apply the one
+ to the pixels to the left of the center, right?
+ So the new pixel is just a pixel
+ that is originally to the left.
+ Is that what you're currently thinking?
+ That's why it shifts to the right.
+ If you look at the convolution,
+ you see that you actually apply the left factor
+ of the filter to the pixel
+ that is to the right of the center.
+ It's kind of reflected along the middle point
+ along the center.
+ We look at the slides afterwards
+ with the equation of the convolution.
+ So if this was a kind of a mask for a correlation,
+ you would have exactly what you think.
+ So it would shift to the right.
+ - But if I take the right pixel,
+ the original image,
+ then I get the shift to the right.
+ - You know, so you have this pixel
+ and then you pixel in this position
+ is just the position to the pixel to the right.
+ So you just kind of do everything to the left.
+ - I don't know.
+ Can I have any order of word here, explain it?
+ - Yes.
+ - I stated it before,
+ also that you shift it to the right,
+ but the convolution, I think this filter,
+ I misunderstood in the way that I thought
+ for each pixel we would take the left,
+ the one to its left,
+ because the left, the center left cell in the filter is one,
+ but it's actually the other pixel
+ but it's actually the other way around for each pixel.
+ We apply the filter and spread its value according to this.
+ So for each, in this case for each pixel,
+ the thing in this position is shifted one to the left
+ because that's the only cell in the filter that's the one.
+ If I understood this correctly.
+ - Does that make sense? - Thank you.
+ - Yes.
+ - Does correlation and convolution the same
+ just mirror across the diagonal?
+ - I mean, you can.
+ - Not across the diagonal, not across the center.
+ - Yeah.
+ - Yeah.
+ - Just to see if I have it right,
+ if the pixel, like the only entry in the filter
+ that was one with the top left corner,
+ would every pixel be shifted off into the left?
+ - Yeah.
+ - Yes.
+ I think so.
+ Yeah?
+ - I think what it does is it tells you
+ when you have to filter on a pixel,
+ and the pixel is what is in the middle of the filter,
+ it tells you how much it goes to the left.
+ So the one on the left side, the middle pixel,
+ will get once the middle pixel,
+ and all the other ones will get zero from this middle pixel.
+ And then you move to filter.
+ So every pixel will get some add-on from different pixels.
+ But the best is to see the picture where you see the splinter,
+ then it spreads it out.
+ - The point where it spreads it out?
+ - Yes. - Yeah.
+ Imagine the pixel on the edge of the black point,
+ and now you put the filter on it.
+ That means part of the filter is on the point,
+ and part of the filter is out of the point.
+ And now the center pixel of your filter
+ will be spread out around with the numbers in this integrated.
+ And then you move to filter.
+ So every pixel also gets added up from different central pixels.
+ - More comments?
+ Yeah.
+ - I'm not confused why you would use the convolution over a correlation.
+ It feels like a more convoluted representation.
+ So I can tell you what you will use mostly if you decide,
+ as an example, to move into research where we're using deep learning,
+ which is the confusing part often when you have not teach,
+ which is in my case.
+ So basically a correlation is in deep learning actually convolution.
+ Yes, it is totally contradictory.
+ But literally what we are using in a convolution with pie torch,
+ and the flow and everything is literally this.
+ So the other thing, nobody is really using it of us.
+ But you need to learn the basic knowledge of these things
+ because right now you're really focusing on image filters,
+ so you're really focusing on blurring,
+ you're really focusing on sharpening,
+ or all these things because you're third semester.
+ But you need to learn the basics
+ and then move to the more fun stuff.
+ Yes.
+ - I'm still a bit confused about the sequence of the...
+ - Yeah?
+ - ...if we go back to the...
+ - Which slide?
+ - The slide where the kernel is moving.
+ - But isn't it this one?
+ Or do you want another one?
+ - I think it's the other one where you have to...
+ - But wait, I think it's the same image,
+ but just with the correlation next to it.
+ - Okay, yeah.
+ - So, like, if you go on...
+ ...through each step, what is the x, y,
+ and like in this image,
+ each step, if you go to one step where there is a kernel,
+ in display?
+ - Wait, I'm...
+ - Yeah, yeah.
+ - Okay.
+ - So, in this image, where is our x, y?
+ That's the blue square, right?
+ - Yeah.
+ - And which...
+ Where is the...
+ ...the position of the kernel
+ with that key multiplied?
+ I mean...
+ ...basically, I'm just trying to figure out where k0 -1 times ix, y + 1 is.
+ But, okay.
+ Let's start from the beginning,
+ just because that's easier.
+ So, you're having kernel 1, 1.
+ Why is it that one?
+ That, yes, right?
+ - So, that is...
+ - That one, yes.
+ You understood that one.
+ - Yeah.
+ - Okay.
+ K1, 1, you can see in the red, it's the lower pixel.
+ And then, x - 1, i - 1,
+ is because the center, so,
+ x, y would be 0, and x - 1, i - 1.
+ And then you're moving over it.
+ So, the red square is giving you x, i - 1.
+ [pause]
+ You can see in k0 - 0, which is the blue is on top of the red, it's i, x, y.
+ Now?
+ - Yeah.
+ - Okay.
+ Makes sense?
+ Okay.
+ Is there anything more that you want to kind of go over that something is unclear
+ that I went too fast?
+ I know I went too fast.
+ Yes?
+ - How do you get to the computation of the rampage when you separate?
+ - I had that question as well.
+ Okay.
+ Give me a second.
+ I can show you the slide.
+ [pause]
+ Okay.
+ You - I have heard from your colleagues that you already had, like, complexities and, like,
+ basically, that you kind of know when a operation is linear or quadratic, so you have learned that before.
+ You have seen that.
+ So, basically, what you're having here, so, normally, a kernel, you can do two things.
+ You would have this function, which is basically, you're having the columns and you're applying
+ the - basically, the convolution on it, on the columns, and then you do the horizontals.
+ Okay?
+ So, basically, that's how it would work.
+ You would do first diagonal, second horizontal, and that would be your operation.
+ This, you can, of course, separate in two operations, two separate ones.
+ One is just a convolution over the vertical, and the other one is a convolution of this.
+ So, we are convoluting this, but over the horizontal.
+ Okay.
+ So, this is the mathematical equation.
+ Why is it computational advantage?
+ Of course, it's quicker, but why?
+ And speaking in complexity, if we are doing all this in one step, we are having that complexity.
+ So, it's actually a quadratic, which is basically two m, two columns plus one, multiplied by
+ two horizontals plus one.
+ While if we are basically separating this, we are having just the summation of two operations.
+ So, it's linear.
+ So, it's quicker.
+ Doesn't make sense.
+ It's not one inside of the other.
+ It's one summed with the other.
+ Does that...
+ So, that's the filter size.
+ Yeah.
+ So, it's the filter size.
+ Yeah.
+ Yeah.
+ Yeah.
+ Yes.
+ You've clarified some of the speed m and n terms.
+ Is that the filter?
+ Yeah.
+ Yeah.
+ Yeah.
+ Yeah.
+ Okay.
+ If there...
+ Until here, it's everything clear.
+ Then I will continue with the normal slides.
+ I think we came until here, right?
+ Yes.
+ Does anyone remember?
+ Okay.
+ So, yeah.
+ Basically, the scale space, which is basically what you have seen after seeing the Gaussian
+ smoothing kernel, this brings us to the scale space.
+ So, basically, a convolution of a Gaussian with standard deviation, which is going to
+ be represented.
+ Sigma with itself is a Gaussian standard deviation, which is the deviation of the square of two.
+ So, basically, this sentence, which is repeated convolutions by a Gaussian filter, produces
+ the scale space of an image.
+ So, you're going to see this here.
+ We're having the first image, which is the fishes you have seen before.
+ Probably when Philip, who is the head TA of this, is going to upload the slides to you,
+ you will have much sharper image.
+ It technically should look quite good.
+ But, basically, we're applying a convolution size 11 by 11 with the standard deviation of
+ three.
+ So, as you can see, every time I apply the convolution over the image, first, as you can see, this
+ one is cut out, but the border should be actually much thicker.
+ It was just cut out.
+ But you can see that the image is getting blurr and blurr.
+ Here, still, we are having some small details like on the fishes.
+ We're having kind of like, we're still seeing some, like, also lighter details.
+ There, already, most of the fish patterns are gone.
+ Here, nothing's left besides the fishes.
+ And the light fishes are also, like, gone already.
+ So, this is kind of how, basically, the scale space.
+ Yeah.
+ [ Inaudible ]
+ Wait, what are you pointing?
+ [ Inaudible ]
+ So, it is a bit tricky to say in this kind of case, because at this point, this is just
+ the blurr.
+ So, if you had this in MATLAB, you would be able to actually see the pixel, like, what
+ is basically happening on the image.
+ You could kind of check the coordinate.
+ And, yeah, it's not growing inward.
+ You're right on that.
+ Is that what you said?
+ [ Inaudible ]
+ It's actually, sorry, it's growing inward.
+ Yes.
+ It is growing inward.
+ But the problem is at this point, I can't even tell you on my high quality slide.
+ If --
+ [ Inaudible ]
+ Yeah.
+ The pictures are actually -- maybe I can show you, but, yeah, there is -- these pictures
+ are from someone, from a photographer.
+ So, they are just taken for the slideshow.
+ It's not really that Mark made this.
+ Yeah.
+ Not only that.
+ I mean, you can see in this image that just already the image size is different.
+ And it's just because he cropped it.
+ Okay.
+ So, which basically brings up to the top five reasons to choose the Gaussian kernel, which
+ is first, they are rotationally symmetric.
+ Second, they have a single lobe.
+ So, neighbors influence decreases monotonically.
+ Still, one open frequency domain.
+ Simple relationship between the standard deviation and easy to implement efficiently.
+ Those are kind of the top reasons if you want to choose a Gaussian filter for your images
+ from now on.
+ So, now you have seen Gaussian filters.
+ You have seen basically the ones that we are using for blurring and the one that we are
+ using for sharpening.
+ This brings us to differential filters.
+ So, we are having proits and several operators.
+ They look like this.
+ So, you can see that they are mostly focusing on the vertical information on how the filters
+ are made.
+ These are the standard filters that you normally find when you Google image filters.
+ Like, they are the general ones that you will find information about.
+ Has anyone used them before or heard of them before?
+ One person?
+ Okay.
+ You are not -- as far as I know, you are actually going to see these ones in more detail in
+ the practical part.
+ So, you are actually going to work with these.
+ So, you are going to get more information about these.
+ That is why we are currently moving to the high pass filters.
+ Which maybe if they remind you a bit, at least to me, they remind me of a Gaussian filter.
+ So, we are having the importance on the center pixel and we are having the surroundings.
+ That one is basically enhancing the neighbors of the center.
+ And this one is the high pass filter.
+ Which in this case is of course not like Gaussian.
+ But, yeah, basically we are putting the strength on the center pixel and, yeah, moving over
+ the neighborhood.
+ This is how this looks.
+ So, in both cases, they are really similar.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ So, basically, I am going to show you how this looks.
+ [ Inaudible ]
+ Yes, it is minus.
+ No, it is not. Sorry.
+ [ Inaudible ]
+ Okay.
+ Any questions?
+ No. Okay.
+ So, we have seen now blurring filters.
+ We have seen sharpening filters.
+ These are face detection filters.
+ So, does anyone notice something on these filters?
+ What could those filters be showing?
+ Maybe.
+ Yeah.
+ One of them looks like nose.
+ Exactly.
+ So, in this one, you --
+ the part of the eye in the really pixeled image
+ is going to be darker of the eye section because of --
+ in most cases,
+ data sets are also, like,
+ made on the most general part of society.
+ So, mostly, you have darker persons.
+ So, pixels are going to be darker in that area.
+ So, that is the eye part and the lower part below is white.
+ And in this one, you are having the nose part
+ and you are having the eyes.
+ And that is how face detection filter works.
+ I mean, you have seen -- yeah.
+ Isn't it?
+ This is the nose.
+ Like, the white part is the nose.
+ Yeah.
+ Yeah.
+ Yeah.
+ Yeah.
+ It's this part.
+ It's also this example is really to make --
+ to show you that you have vertical and horizontal filters.
+ Most of these, you have seen them probably in cameras,
+ your own phone, which does face detection.
+ It actually is capable of detecting your faces.
+ And if you are using even image filters,
+ that is how they -- in an easy way,
+ detect your face right now.
+ They are using other algorithms,
+ but this is an easy way to do this.
+ And it is from 2001.
+ So, before any of the social media existed,
+ you have seen it in vertical and horizontal.
+ And yes, we can also do it diagonal.
+ So, this is how it would look.
+ Which means, when you are moving your head,
+ that is why the camera still detects you,
+ even if you are not straightforward looking at the camera.
+ And, yeah.
+ This brings us to the last slide,
+ which basically on Thursday you are going to learn image features.
+ Any questions before --
+ here is some crazy animation that Marc has put in?
+ I know.
+ (Applause)
+ (Applause)
+ (audience applauding)

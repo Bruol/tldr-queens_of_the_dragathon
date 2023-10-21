@@ -28,7 +28,7 @@ def break_up_tokens(tokens, chunk_size, overlap_size):
         yield chunk
         yield from break_up_tokens(tokens[chunk_size-overlap_size:], chunk_size, overlap_size)
 
-def break_up_file(fn, chunk_size=2000, overlap_size=100):
+def break_up_file(fn, chunk_size=2000, overlap_size=200):
     with open(fn, 'r') as f:
         text = f.read()
     tokens = word_tokenize(text)

@@ -1,1 +1,0 @@
-Folder for Visual Computing Lecture

@@ -1,0 +1,1152 @@
+ Okay, good morning.
+ So, this week we'll continue talking about transformations on images.
+ So we saw last week the Fourier transform.
+ We'll quickly go through some of that now,
+ but we'll continue then with other types of transformations of images.
+ And today we'll focus on transformations that, you know,
+ so we'll focus on unitary transformations,
+ so those are transformations that at some level are a change of basis in going from pixels.
+ We went to the Fourier space, the frequency space.
+ Here we'll look at this lecture more specifically at transformations that, you know,
+ are aligned to a particular type of images that are specifically suited for solving some problems on a particular set of images.
+ Then next week, sorry, on Thursday, we'll then finish that and continue with image representations,
+ more generic image representations that are useful for compression of images,
+ and so compressed image representations, specifically lossy compression.
+ So where we can represent images in a way that they look the same to us, to our eyes,
+ but actually, you know, need a lot less bits to represent.
+ Okay, and so for that we'll also use several types of transformations.
+ What did we see last week? Of course, first the Fourier transform,
+ but then beyond that, on Thursday, we saw in particular the convolution theorem,
+ again, very important for in two directions.
+ So first, that a convolution in the image domain, in the spatial domain,
+ corresponds to, once you go to the Fourier domain,
+ corresponds simply to a frequency per frequency multiplication of the frequency content in the image
+ with the equivalent frequency content, you know, the ratio of preservation
+ and also, let's say, the shift in phase given by the filter.
+ So instead of having to do a convolution over the whole image
+ with your filter kernel and apply that, you know, kind of consistently over the whole image,
+ here you can essentially just look at every frequency in isolation
+ and look at what happens to this frequency.
+ Oh, you know, I just get multiplied by this factor and so on.
+ So essentially, we get a very simple view and understanding of filtering.
+ We saw how we could use this.
+ For example, in this case here, for image restoration,
+ this is our kernel in the spatial domain.
+ Sorry, this is our kernel in the frequency domain.
+ This was the equivalent of a block function in the image space
+ that would describe this blurring operation, motion blurring of horizontal motion.
+ This was what happened to each frequency in the frequency domain,
+ and then we can, as best as we can, invert that.
+ Here it's really just looking at, okay, this function got multiplied by 0.2.
+ Okay, now I'll multiply it by a factor of 5,
+ and that will undo the effect of multiplying by 0.2.
+ And so I determine this, and then I can do the inverse Fourier transform
+ if I want the convolution filter that I would apply in the spatial domain.
+ So that's this filtering operation.
+ We can now do that because the convolution term tells us that it's very simple.
+ That's the product, and then we can use the product here
+ because that's easy, one over is kind of easy.
+ Of course, with the caveat that if it's, you know,
+ the 0 divided by 0 is, you know,
+ the divide by 0 cannot be undone,
+ so we needed some tricks to avoid blowing up noise in those situations.
+ Okay?
+ Then the second one,
+ the second part of the convolution theorem, the reverse way,
+ is essentially something we use to mathematically represent sampling,
+ sampling operations.
+ In particular, in the spatial domain, we do now a product of two functions.
+ We had to work out a special function, a delta function,
+ which again is a function that is 0 everywhere,
+ except taking exactly one point,
+ but it's determined in such a way,
+ the size of that peak at that point is determined in such a way
+ that the integral of that function is equal to 1.
+ Okay?
+ That allows us to measure in exactly one location or function,
+ and then we can actually have a whole train of those,
+ you know, a whole periodic repetition of those in 1D or in two dimensions,
+ or in three dimensions if we would, you know,
+ work in three-dimensional spaces like for medical imaging.
+ So, for example, in two dimensions, we have all these repeated peaks,
+ which each individually measure exactly one location,
+ the function value at exactly one location.
+ You can observe it by doing the integral,
+ and do the product of that sampling function with the actual function,
+ which would rescale the delta function to have an integral now equal
+ to the function value at exactly that location.
+ Okay?
+ So, we can model things that way in a way that we can actually
+ properly execute the Fourier transform,
+ because the Fourier transform is based on integrals
+ of the product of the function with the Fourier basis,
+ and then do the integral.
+ So, we can properly model this in the continuous domain
+ and end up with a discrete representation,
+ and we see that essentially what happens, you know,
+ the phenomena like aliasing and so on,
+ that happen when we do this, when we do sampling,
+ we can actually now nicely model them going from the continuous domain
+ to the discrete domain, and having aliasing phenomena and so on show up.
+ We can understand this now very easily by having the convolutions
+ of the sampling function.
+ So, the product of the sampling function, the spatial domain,
+ becomes a convolution of the sampling function transformed
+ in the Fourier domain, and the actual signal function,
+ the one we cared about that we tried to sample,
+ also transformed in the Fourier domain,
+ and we have a convolution of those.
+ Remember this was where if the spectra,
+ which typically have a lot of low frequency,
+ but then have also some high frequencies,
+ if those spectra, as we convolve them with these spikes,
+ again the Fourier transform of this spike train,
+ or spike bed kind of all these peaks,
+ the Fourier transform of that was also essentially a set of these peaks
+ in the Fourier domain, and the closer we put them together
+ in one in the spatial domain, the further apart they were in the frequency domain,
+ when they're far apart, those copies of these blobs
+ that represent the signal are far enough apart that they don't overlap,
+ but if you sample not fast enough in the spatial domain,
+ you move things farther apart, you sample in the spatial domain,
+ it means that in a frequency domain they come closer together,
+ and then these things start overlapping,
+ the signals start overlapping with its copy kind of coming over from the sampling function,
+ and then you get essentially, this is what you see here,
+ then you would have, if you don't do things properly,
+ those things would overlap, they would add up,
+ and then when you try to filter away things,
+ you would be left with essentially a mess here
+ because you have part of the signal overlapping here,
+ and you get a blend, and you get some high frequencies that show up as low frequencies
+ after your filtering operation, after your reconstruction operation essentially.
+ So that's why the second part, there is sampling,
+ the convolution term in the other direction is important for us,
+ very quickly the digital processing pipeline,
+ you guys have something interesting to tell?
+ No? Okay.
+ Then you can wait for outside lecture today.
+ Okay, so digital processing,
+ so we start from a high frequency, from an unlimited, not band limited signal,
+ before we sample it,
+ when we know that we're going to sample at a certain rate,
+ from this construction or from,
+ maybe in the Nyquist sampling theorem,
+ we know that at this sampling rate,
+ we can only cope with things that have about this width,
+ so before we sample,
+ we first have to band limit the signal to avoid aliasing,
+ so we'll first take the signal, we'll band limit it,
+ if we're still in the analog domain,
+ so in a continuous domain,
+ the way to do that is actually to apply some analog filter,
+ for example with a camera you would just blur slightly,
+ enough so that you suppress these high frequency spikes,
+ so you get something like this,
+ you are band limited,
+ now as you sample, you avoid the overlap, you're good,
+ and then for reconstruction,
+ you essentially, for example, here have this perfect reconstruction filter,
+ in practice we might have one that has a little bit more of a slope here,
+ but in exchange has little less extent here in the spatial domain.
+ Okay, so that's what we had last week,
+ any questions still for that?
+ Anyone?
+ Okay, so then this week,
+ we'll talk about other transformations and Fourier transform,
+ Fourier transform actually one example of these unitary transforms,
+ so let's look more in general,
+ so we saw images can essentially are really digital images,
+ are represented as a matrix typically,
+ as a two dimensional arrangement of measurements,
+ but of course we can also just rewrite this,
+ rearrange those numbers in a single vector,
+ a very long vector of course, right?
+ If this is a thousand by thousand pixel image,
+ let's say just a grayscale image of just one dimension,
+ then here we'd have a million dimensional vector space,
+ and then in that vector space,
+ a point in that vector space,
+ so a vector is now represents a full image,
+ and it has a million dimensions in that vector space.
+ Now, if we revisit briefly what are linear operators,
+ so linear image processing,
+ essentially any linear image processing can be written as follows,
+ as here, as you have this very long vector,
+ say a million dimensional,
+ multiplies with million by million matrix for example,
+ and gives you a vector, gay,
+ that is now also million dimensional.
+ This matrix doesn't necessarily have to be square,
+ say it could be a million,
+ if this is a vector of a million,
+ then of course the width of that matrix is a million,
+ but let's say if it's an operation that will filter and subsample
+ to have the resolution in both directions,
+ then gay could for example also be 250,000 in that case, right?
+ If you start from a million, you divide by four pixels,
+ the pixels you get,
+ but it could be a combination of both the filtering and the subsampling,
+ that's a linear operation,
+ that would essentially also be written as a big matrix,
+ you could write it in a big matrix,
+ with of course a lot of structure,
+ because it would be your convolution kernel,
+ let's say with your Gaussian,
+ at every, you know, split out in every location for exactly,
+ for this pixel, these are the convolution,
+ the pixels that get affected by the convolution, etc.
+ So you get a huge matrix, huge sparse matrix,
+ if you have a small kernel, only a few non-zeros, right?
+ So to get to compute one output,
+ you really only have the few pixels affected by the kernel,
+ touched by the kernel,
+ would be the ones that have a non-zero coefficient here,
+ so that's an example of how this matrix could look like
+ to represent that particular type of homography,
+ of operator.
+ So if it's a linear operator,
+ it needs to satisfy here this particular constraint here,
+ okay?
+ So it means that your operator here,
+ applied to function, to, you know, a vector f1,
+ operator applied to vector f2,
+ multiplied with some coefficients here,
+ so you apply the operator to f1,
+ you apply the operator to f2,
+ you multiply them each with a coefficient alpha_1, alpha_2,
+ that's for every choice of f1 and f2 in that space,
+ and every choice of alpha_1 and alpha_2,
+ this should be valid.
+ That if you do the first linear combination,
+ and then compute the output, the linear operator,
+ or vice versa, you first apply the operator
+ on the individual vectors,
+ and then apply the linear transformation,
+ that those are essentially, they commute,
+ they're equal for every, for all scalars,
+ and for all vectors, okay?
+ So if this is the case, then that's the definition
+ of a linear operator, okay?
+ And so that, for example, is a linear operator, okay?
+ Almost all image processing systems
+ contain at least some of those linear operators.
+ For example, you know, deep neural networks,
+ well, they have a lot of convolutional operators,
+ for example, those are linear operators,
+ and then on the output of this,
+ so you have this, and then they will apply
+ a nonlinear function, for example.
+ Okay, so this is how this linear image processing system
+ looks like, it can always be written in this form.
+ Now it can often be written in much more compact form,
+ of course, than having this huge matrix,
+ because often that huge matrix has a very structured way,
+ like a convolution, same coefficients
+ applied systematically throughout the image.
+ So always the same coefficient showing up,
+ just showing up at different locations in the rows.
+ Okay, so the question is how do we choose H?
+ For example, you could choose it to separate salient features
+ from the rest of the image signal, okay?
+ This was when we did feature detection, right?
+ So we wanted to find corners, for example,
+ where we would have this filter that looks like a corner,
+ and we'd apply it on the whole image,
+ convolve it to the whole image,
+ and we'd get now a new image that, you know,
+ highlights that has a strong response where
+ the local pattern looks like a corner, okay?
+ So that's one way.
+ Maybe as a way to make the image look better,
+ for example, blur it a bit to get rid of noise,
+ or vice versa, sharpen the image,
+ depending on what happened to the image before
+ and what you want to do to fix it.
+ Also potentially to make game more sparse.
+ So instead of having, remember, if we have,
+ this is partially what we did with the Fourier transform,
+ for example, where we would, for simple images,
+ that don't just have some wave patterns,
+ if you do the Fourier transform,
+ you will then just get those few peaks,
+ those main patterns to be extracted,
+ and all of the other frequencies would essentially
+ end up being zeros.
+ So this can sometimes be desired,
+ and we'll look more in detail at that.
+ So how to only have a few non-zero coefficients, for example.
+ So now we'll look at unitary transforms.
+ We'll look in particular, so here we choose,
+ A, not to be an arbitrary operator here,
+ linear operator, or matrix,
+ but we'll actually want that matrix to,
+ this to be essentially a basis transform,
+ and in particular a unitary transform.
+ You can think of this,
+ so essentially for it to be unitary transform,
+ first, if this is the size of the image,
+ then this has to be square,
+ because it has to be a basis transform.
+ So if it's a basis transform,
+ the input and the output dimension need to be the same.
+ So you have your function,
+ you multiply it with the square matrix,
+ and you get coefficients.
+ So therefore the matrix has to be mn times mn
+ in terms of dimensions,
+ with m times n being the size of the image.
+ So these are big matrices, of course.
+ And so the transform is unitary,
+ if and only if the inverse of this matrix,
+ if it's a basis, remember it has to be invertible for starters.
+ But here we want something special from the inverse.
+ We want the inverse to be equal to the,
+ essentially to the transpose,
+ but also essentially here with a star,
+ that means that actually,
+ so if this is a real matrix,
+ only real numbers,
+ then it's just a transpose.
+ This is what you have with the rotation matrix.
+ The inverse of a rotation matrix is just this transpose.
+ However, this is slightly more general.
+ This actually also accounts for complex matrices.
+ Remember, or Fourier transform actually had complex coefficients.
+ So for complex, this is what unitary is.
+ Otherwise it would just be orthonormal.
+ Unitary means that we actually,
+ whenever we have minus i something,
+ we'll change the minus i into plus i and so on.
+ So this is what means the Hermitian conjugate.
+ So it means that besides just transposing,
+ transposing means you just do this to the matrix,
+ or actually, sorry, you do this.
+ Instead of doing that,
+ you also, every complex number,
+ if you had a plus sign, plus i times something,
+ you do now minus i times something, and vice versa.
+ So you change the sign of your complex,
+ of your imaginary, the imaginary part of numbers.
+ That's what this is here, the Hermitian conjugate.
+ So this is essentially a kind of generalized transpose
+ for complex matrices.
+ So if a is real valued, a is equal to a star,
+ the complex, the conjugate here,
+ and so then it's just a equals a transpose that you require.
+ That's then called an orthonormal matrix,
+ and that's essentially a rotation matrix.
+ That we're talking about.
+ So in three-dimensional space, you see those.
+ This is, if I have vectors in three-dimensional space,
+ if I just rotate them around the origin,
+ that's essentially what these matrices would be about.
+ Now think of this in a million-dimensional space, for example.
+ But the same thing is you just rotate things around.
+ You change coefficients, but the key thing with rotations,
+ and with these things is you don't change the length.
+ If this is the length of the vector from this origin,
+ this is the length of the vector, I can rotate it around
+ arbitrarily into this million-dimensional space,
+ but the length of the vector stays the same.
+ That's what these unitary transforms are.
+ So this is actually what we see here.
+ For any unitary transform here, say equals a times f,
+ we get the length of the vector is c Hermitian times c here,
+ which is f Hermitian times a Hermitian times a times f,
+ simply applying definition, applying--
+ and so now we have the property that this should be true,
+ because that's the definition of unitary.
+ Therefore, this disappears here,
+ and so therefore this is simply the length of the vector f,
+ and so the length of the vector f is the same as the length of the vector c.
+ So if we have a Hermitian--
+ if we have a unitary transform, by definition, the length doesn't change.
+ So in other words, every unitary transfer is simply a rotation
+ of the coordinate system with, in addition,
+ possible sine flips and stuff like that.
+ But again, sine flips also, they're just mirroring,
+ they also don't change the length.
+ So it means that instead of this, I can do a mirroring and get this,
+ but that's still the same structure, all the vectors at the same length,
+ but they might change, they might be mirroring involved also.
+ So the vector lengths, the energies, essentially are conserved.
+ So now, is that clear to everyone?
+ So then, now we'll go from applying the transformation to a single image,
+ we'll actually look at a whole collection at once.
+ So F_i is a single image, it's one image,
+ we now stack, so these are all long vectors,
+ we'll stack these long vectors, a whole collection, into one big matrix.
+ So now we get, this is still, let's say, a million dimensional this way,
+ and then if we have a thousand images, then we have a thousand dimensions that way.
+ That's now a photo collection, let's say, an image collection.
+ Okay, and now what we'll do is, we'll do, we'll compute the auto correlation function of that image collection.
+ So what was correlation again?
+ Correlation was kind of taking, you know, when we look at a template, at a small region of the image,
+ we would take a template, so a kernel,
+ and we'd kind of compare it like one by one, you know, for this one, we compare it to this one,
+ this one, this one, this one, this one, and we kind of compare how well they correlate, in a sense,
+ coefficient by coefficient, right, between the kernel and the image patch.
+ Here, we want to compute the correlation between, you know, two full images.
+ So our template is the whole image now, and so we don't have to move it across the other image,
+ no, there's actually, you know, it's the full image, correlated to the full image,
+ so it's how much does the first pixel look like the first pixel, you know,
+ and the second pixel looks like the second pixel, etc.
+ So that's what we do here, right, so we'll take the two vectors,
+ and so to multiply them, right, so the two vectors, you know, let's say f1 and f2,
+ what do we do? Well, we take f1 transpose, right, or Hermitian actually, sorry,
+ and then multiply it, and essentially get, actually, sorry, we do it the other way around,
+ we take this one, we transpose it, and then we get here the product of the first one with the first one,
+ so we'll get the first, what do we get here?
+ So essentially, we want to have the expected value, so the average,
+ of every first coefficient with itself, we can also get, I think there needs to be a j here somewhere,
+ this is i and j actually, sorry, so we'll look at how much does the first coefficient, for example,
+ correlate with the first coefficients of the other ones, etc., etc.,
+ and so we essentially get here this image collection of the correlation function.
+ So in the end, so we, after unitary transform, this correlation function, this correlation function,
+ matrix, sorry, that indicates how much a particular coefficient, a particular pixel,
+ correlates with another particular pixel, so here, so this is actually about how much pixel one correlates with pixel one,
+ how much pixel one correlates with pixel two, how much pixel one correlates with pixel five,
+ how much pixel five correlates with pixel ten, etc., so it's a correlation within the image.
+ So that matrix, it's essentially, what we look at is the expected value of how all those coefficients
+ correlate with each other, so also we can look at the correlation between those coefficients
+ after a transformation, okay?
+ So essentially, this would be the transformation, so if we want to look at the correlation matrix
+ of the coefficients, so not the original elements here, but the coefficients after a transformation,
+ then we have the expected value of this matrix here, which is the same as this operation here,
+ which if we look at this here, this and this is constant, so this can be moved out,
+ and essentially we get the autocorrelation function of this here.
+ And so the mean squared values, the average energies of the coefficients C here,
+ C_i are on the diagonal of this matrix here, these guys here,
+ but this matrix can, would still be dense typically,
+ but then what we'd like to do is to choose this, this eigenmatrix,
+ so that, you know, this one here, so we choose this to be unitary,
+ and choose this here in the way that we get from the original function here,
+ the original autocorrelation function, which is a dense matrix.
+ If we compute this matrix here in such a way that we get the eigenmatrix here of the autocorrelation matrix,
+ so if we actually do the diagonalization of the matrix, so we compute the eigenvalues
+ and the eigenvectors here of this matrix, we get something like this.
+ And so essentially we can apply a transformation to this here,
+ so if you apply this transformation, then to the autocorrelation matrix,
+ it diagonalizes the autocorrelation matrix.
+ So RFF is actually a symmetric non-negative matrix,
+ therefore all the, because it's all this, you know, the way it's constructed here,
+ as in the product of all those vectors.
+ So therefore the eigenvalues are all larger than zero,
+ and it is a normal matrix, so this is a normal matrix,
+ and hence the unitary eigenmatrix always exists.
+ And so if we actually pick this transform matrix to be the Hermitian of this matrix,
+ we can diagonalize the matrix.
+ So in other words, so this was our original autocorrelation function
+ of our image collection, which was looking at how all coefficients were correlated.
+ We can actually do, apply a transformation that we choose to be this eigenmatrix
+ or the Hermitian of the eigenmatrix, and if we apply that, you know,
+ if this is what we take, then this autocorrelation of the coefficients now,
+ not of the original pixels, but of the coefficients after the transformation,
+ they, you know, they are, we choose the matrix like this,
+ if we choose the matrix like this, through the eigenvalue,
+ because this was the eigenvalue, we can replace this, you know, this is diagonal,
+ so we can, we actually get this, just the eigenvalues here,
+ this has to be equal if this is the eigenvalue matrix.
+ So we get this, and in other words, this of course disappears,
+ and so we just get this here, right, so that's just the diagonalization of the matrix.
+ Okay, so you've seen this before.
+ So essentially this matrix, if we choose the transformation to be the one that comes out of the eigenvalue,
+ the composition of, of this autocorrelation function,
+ then we essentially just get a diagonal matrix here for the coefficients,
+ the autocorrelation between the coefficients.
+ What does that mean? It means that actually, you know, all of this math
+ essentially means that we've now, instead of having, you know,
+ in an image, this pixel and this pixel often be correlated with each other, right,
+ because if this is wide, this is also often wide, for example, so they're,
+ they move together, they're correlated with each other.
+ In this case, we changed the representation in such a way for our particular image collection,
+ this is for our particular image collection, right, not in general,
+ this is for this particular image collection, so that this pixel and, sorry,
+ in the new basis, in the new basis, two coefficients are completely uncorrelated.
+ Okay, because this is a diagonal matrix, this autocorrelation function,
+ here, this is a diagonal matrix, which is the eigenvalues along the diagonal,
+ so it means that coefficient one only correlates, only have a nonzero correlation with itself,
+ but it has zeros with all the other ones.
+ These are all the off-diagonal numbers, are the correlation between one element
+ and other elements, they're all zero, okay?
+ That's what you have here, okay, so, so that's the first thing,
+ the second thing is, and this is the same that you've seen in linear algebra
+ for, you know, of the fact that this is essentially the equivalent of the single-evalued composition,
+ and that the single-evalued composition packs the most energy in the first k,
+ for every k, in the first k elements, you pack the most energy,
+ so you get the best approximation of the matrix with the first k single vectors,
+ or, you know, here with the first k, if you order them in order here,
+ with the first k eigenvalues, right, so it packs the most energy in the first k coefficients,
+ so in this case, j, where j is arbitrary,
+ and the mean square approximation error by choosing only the first j coefficients,
+ that error is minimized, okay?
+ This is something we can also derive here,
+ so we don't necessarily have to go for the math here,
+ but essentially this is kind of re-deriving this property of the eigenvalue of single-evalued composition,
+ so if you express here b as being the first j coefficients,
+ so this is now a rectangular matrix, that is, you know,
+ the length of the original number of coefficients, and then j high,
+ and it's a unit matrix, but clipped at just j coefficients,
+ so now b is therefore just the first j coefficients,
+ then essentially if we do here the energy in the first, the trace,
+ so the trace is the sum of the first b diagonal elements,
+ I mean in this case the first b diagonal elements,
+ that's the same as the original, but multiplied with this matrix here,
+ which clips the things, which is equal to, you know,
+ RCC can be replaced by here, the eigenvalue of the composition,
+ and so that's also the sum simply of these elements here,
+ where these are the rows of this, so this is just all simple rewriting,
+ then if we want to minimize something, we use Lagrangian representation,
+ so minimize something subject to a constraint,
+ so we say we want to minimize this energy term here,
+ so the Lagrangian would be this energy term that we want to minimize,
+ but with some constraints, the ones that have to be satisfied
+ multiply by some lambda, right, that's the usual Lagrangian way to write things,
+ so if you now minimize this Lagrangian, you will kind of,
+ the minimum means that this, the minimum towards lambda
+ will ensure that the constraint is satisfied,
+ because it's only there that it's satisfied,
+ and minimum towards the other variables will be in here,
+ and so you get, this allows you to compute the minimization of the function
+ E under the constraints expressed with the lambda here,
+ with the Lagrangian multiplier, okay?
+ Again, this can be expressed this way, let's start there,
+ and then this, the second part is expressed this way,
+ the unit constraints, and no surprise that these are the lambdas,
+ these ends up being actually the eigenvalues,
+ and so if you differentiate L with respect to A_j,
+ so which are those vectors,
+ then you essentially obtain these constraints here,
+ that, you know, A_j* here,
+ R_ff times A_j* should be equal to lambda_j times A_j*,
+ which is essentially just, you know,
+ this is the expression for eigenvectors,
+ therefore these guys have to be these first J_eagen vectors, okay?
+ Okay, so you can look at it again,
+ or you can just look at your first year linear algebra,
+ this is what we derived there, or what you have derived there also.
+ Okay, what does that actually mean in practice,
+ which let's say, let's get some intuition in what that actually means,
+ it means that if we have, let's say here, we have our image collection,
+ it consists of, you know, let's not,
+ it's hard to imagine things in a middle dimensional space,
+ so let's start in a two dimensional space,
+ we only have two coefficients, f_1 and f_2,
+ and so every image in this case, or two pixel image,
+ is actually just one point in this two dimensional space, okay?
+ And so our points would be,
+ our image collection would be essentially a bunch of points
+ that are distributed this way here,
+ you know, this is one image in our collection,
+ this is another one, this is another one, you know, another one, etc.
+ These are essentially all our points in our image collection,
+ and what we see here, of course, is that coefficient f_1 and coefficient f_2
+ are strongly correlated, whenever f_1 is big, f_2 is also big,
+ whenever f_1 is strongly negative, f_2 is also strongly negative,
+ so we have a strong correlation between the two coefficients,
+ they don't actually move independently, they move together, they're correlated, okay?
+ However, if we choose the right basis transformation,
+ in this case just a two dimensional rotation,
+ we get in a different coefficient space, okay?
+ We have preserved the length, notice, you know, the shape of this is just rotated,
+ all the vectors still have the same length,
+ but essentially in this case, we now have c_1,
+ the coefficient c_1 and the coefficient c_2
+ now can essentially are uncorrelated.
+ We have diagonalized this correlation matrix,
+ c_1 and c_2 aren't correlated,
+ it means that in this square matrix, the two by two matrix,
+ we have the two eigenvalues on the diagonal,
+ and the two that express the correlation between c_1 and c_2,
+ the two diagonal elements, of diagonal elements, those are both zero, okay?
+ And so essentially by doing that,
+ we've also placed the most energy along c_1
+ and then only very little energy along c_2 in this case, right?
+ So we've concentrated all the energy in the variation along the c_1 axis, okay?
+ So obviously this is now potentially a much better representation
+ to look further into our image collection, okay?
+ Okay, so again, this was in two dimension,
+ but imagine this in millions, you know,
+ million-dimensional space, for example, okay?
+ What's also important to realize is, okay,
+ so we have now those coefficients, right?
+ So we have, for example, here, coefficient c_1 and c_2.
+ So now if we're given c_1 here, let's say c_1 is this value,
+ we could go back to this space through this inverse rotation,
+ so we take this point, we apply the inverse rotation,
+ and we get a point over here, okay?
+ So we can actually say that, you know, the 1, 1 here,
+ so this direction here is expressed by a vector 1, 1, right?
+ And this is 1, 1, for example, right?
+ Or it's two equal values.
+ It's actually, you know, whatever, 0.07071 or something like that, whatever,
+ square root of 2 divided by 2.
+ And the same value here, right?
+ So this is this vector here.
+ The second vector is actually the orthogonal vector, it's this vector, right?
+ So you can notice, right?
+ So going back, I will do c_1 times this here,
+ and I just obtain kind of a vector.
+ So that's here, the Hermitian of the A matrix,
+ times the coefficients, whatever coefficient vector I have, I can reapply that,
+ and so I take the vector, I multiply this way,
+ and the coefficients get multiplied, you know, and instantiate the whole image,
+ like, let's say it's just 1, 0, 0, 0 for my coefficients,
+ then what do I get?
+ I will just select the first column of A Hermitian, right?
+ Which is mostly the transpose of A, okay?
+ So in other words, I take the first column of this matrix is the first row of the matrix A.
+ It doesn't matter, it's one of those vectors, one of those eigenvectors,
+ and so we can essentially interpret this,
+ each of those columns of this matrix here as something we'll call a basis image,
+ and if these are eigenvalues, then we'll call this an eigenimage, essentially.
+ Right?
+ So if the transform is a Karenel-Leuver transform,
+ or you know, the way we just explained it, say these eigenvalues,
+ then we'll call these eigenvectors of this other correlation matrix,
+ we'll call them eigenimages, because these are long vectors that actually represent images,
+ they're actually in the space of images,
+ and therefore we'll call them eigenimages.
+ If the energy concentration works well,
+ so in other words, if the first few singular values are very big and then all the rest becomes very small,
+ so if we really can capture most of what's going on with a few coefficients
+ and not with a million coefficients,
+ then we might be able to really represent our image collection with only a few eigenimages,
+ a small dimensional basis that would capture most of what's going on in our image collection.
+ Okay?
+ So let's look at this applied to the recognition problem,
+ for example, for recognizing faces.
+ So if we want to recognize a complex pattern like a face,
+ large portions of the image, say an image, might have to be considered,
+ so you would have to look at the whole face essentially to recognize it.
+ This high dimensionality, let's say even you just look at a small template of the image,
+ it would still be, let's say, at least 30 by 30, that's 900 coefficients,
+ and so essentially looking for these 900 coefficients that represent one face,
+ and then I have a whole database, for example, of all of your faces in a database,
+ and I have a few hundreds of those,
+ and then I have this 900 vector that would have to multiply to correlate
+ with essentially each of the existing faces in my database and do that operation,
+ and so that's relatively expensive.
+ If I can transform that to a space that's much more compact,
+ where I can capture most of the energy in only a few coefficients,
+ and I can work in that coefficient space,
+ then I know that I'll be able to do very similar operation, but a lot cheaper.
+ We'll get to that in more detail in a second.
+ So the nearest neighbor operation could be a lot cheaper
+ if we can actually work in this much smaller dimensional space.
+ So if we can go from faces, for example, here in face images,
+ by choosing the right transformation, we can go to a lower dimensional space,
+ but where we preserve most of the energy,
+ meaning we preserve more or less exactly the length of the vector,
+ so we preserve most of what's actually there,
+ then we might actually be able to do it much more efficiently.
+ So the idea is to tailor a Kahun and Lever transform to a specific set of images
+ of the recognition task to preserve the salient features.
+ So let's look at it like this.
+ So a very simple recognition system would be simply doing the Euclidean distance,
+ which is the sum of squared differences between pixels in the images.
+ So that means that I have two images.
+ I have my query image, and then I have an image from the database.
+ I compare them pixel by pixel.
+ I look at what is the difference between those two pixels,
+ difference between those two pixels, difference between those two, those two, and those two.
+ And then, you know, so I do the difference between all the pixels,
+ and I compute the length of that vector.
+ That's actually the sum of squared differences,
+ and then, you know, the square root of it.
+ But essentially, it's that number that I would compute.
+ So I subtract, for each pixel I subtract, I look at the difference,
+ and I square that, and then I add it all up,
+ and then, you know, potentially I can take the square root of the whole sum,
+ but that's less important.
+ But essentially, I minimize that thing, so I will pick the image.
+ I've all the images in my database.
+ I will pick them, I compare them, each of them.
+ I will compare, I will compute this number,
+ and then I will pick the one that has the smallest distance between, you know,
+ database image and my query image.
+ But as I said, this can be computation-expensive if you have a high-resolution image,
+ or if you have even a low-resolution image, this can be expensive.
+ Okay, so we'll continue with this after the break.
+ Okay, so let's continue.
+ So essentially, we're doing this simple recognition system.
+ We have, we essentially are going to, in a whole,
+ let me get the cursor, in a whole, we have a whole collection of images here.
+ We want to find which of the images in our collection is closest to the query image.
+ We do the difference between the two on a per-pixel basis,
+ and then essentially do the square of those differences,
+ and then if we want, we can do the square root,
+ but as we minimize, if we do the square root,
+ or we don't do the square root, it doesn't matter.
+ We essentially have here a positive number,
+ and we take the smallest one of them.
+ And so we pick the coefficient, we pick the image that has the smallest difference
+ with the query image.
+ Okay, so this can be expensive.
+ So we'll apply what we just did before.
+ In this case, I chose the singular value representation of this.
+ Also what we described as the KLT, the Kahöne-Leuvert transform.
+ In other places, this is known as PCA, principal component analysis.
+ Or again, you know, you can also just simply describe it as SVD.
+ So just for you to know that all those concepts are actually all the same.
+ They're just depending on what field they have been derived in.
+ They come with different names,
+ but they're all really the same basis concept of being able to do an eigenvalue
+ or a singular value decomposition and diagonalize this correlation matrix, essentially.
+ Okay, or to approximate a matrix by, you know,
+ doing a singular value decomposition and keeping the k-first coefficients.
+ Okay, so essentially what we want to approximate is this image,
+ a particular query image, no, sorry, a database image.
+ We want to approximate it with a set of, an eigenbasis times, you know,
+ some smaller set of coefficients, right?
+ What was C in the slides before is a P here.
+ So we hope to be able to, you know, have a matrix that's kind of,
+ so this is the length of the original images.
+ So these are quite tall matrix, but we hope it do not have to be too wide.
+ And while having this almost equality, you know, be well satisfied, right?
+ So to only introduce a small error.
+ So how do we do that?
+ We start from the, this is the matrix that contains our image collection.
+ So it's all the vectors of the images next to each other.
+ We do a singular value decomposition of this.
+ And what we hope to get is essentially a small matrix here, you know,
+ height of the image times the number of images that, the number of,
+ sorry, the number of coefficients we have to keep here.
+ Times, you know, for each of the original images,
+ essentially the coefficients that we preserve.
+ We pick this, we put the sigmas on this side.
+ So in other words, these are just unit vectors, each of those.
+ So those are all normalized vectors.
+ They're the first case singular vectors, left singular vectors of this matrix.
+ Okay.
+ So, and we know that, and we really arrived at with the Lagrangian,
+ but you also know this simply for your first year linear algebra.
+ You know that essentially this is a good approximation, you know, depending,
+ this can be a good approximation or it's the best possible approximation.
+ And if you're a little bit lucky or depending on your images actually showing a lot of correlation
+ between pixels and so on and having, looking a lot the same and so on,
+ being quite predictable in terms of what's going on,
+ then you can have a good approximation with only a limited set of singular values.
+ So most of the energy would be contained in the first few singular values, hopefully.
+ So if this is satisfied, so if you throw all kinds of different images in,
+ this will not be satisfied because one pixel will not tell you much about what happens somewhere else in the image.
+ But if it's all faces, for example, then, you know, this pixel and this pixel,
+ they will be very correlated for everyone.
+ Okay.
+ And, you know, same for this pixel and this pixel and this pixel and this pixel and so on and this pixel and this pixel also, etc.
+ Okay.
+ So in that case, we probably can compact quite well.
+ And in that case, we can assume that our original metric that we use here,
+ the difference between the images in pixels, in pixel values,
+ would be, well, would be, would be also well approximated by this here.
+ Remember, if you do SVD or if you do something, you actually want to work,
+ also if we looked, let me go back here.
+ Okay.
+ We kind of assumed here that this was centered around zero, right?
+ I didn't make it explicit here, but we, for all of this, we assumed that we have a centered distribution around zero.
+ So how do you guarantee that?
+ Well, you know, it's very simple.
+ You subtract the average, right?
+ So you first, with all of these things, it's really important, you shouldn't forget that.
+ You first have to subtract the average.
+ There's something I still remember that I forgot long ago when I was doing exercise of this type,
+ so that's like 30 years ago or so.
+ I remember that I was getting trouble getting things to work out because I forgot to subtract the average vector.
+ And therefore, nothing worked.
+ Okay.
+ So you have to subtract the average vector because the assumption is otherwise you find the biggest correlation to be in the direction of the average vector, right?
+ If your whole distribution is not centered around, let's say zero is here, it's not centered around zero,
+ but it's somewhere over there, then your biggest thing on the vector is just going to be pointing to the average vector.
+ Okay.
+ So you don't want that.
+ You subtract it out first.
+ So this is simply the average.
+ And so you take, for every image you first subtract the average,
+ which means that you take your whole distribution that's out there, you shift it to be centered around zero.
+ So that's what we do first.
+ And then we do the best approximation of that distribution around zero doing this way.
+ So this thing here is done on the shifted distribution, the one that's centered around zero.
+ But of course, in terms of difference, the difference between vectors is not at all affected by shifting the vectors around.
+ So this actually doesn't change anything.
+ So this is actually equality here.
+ The distance between the vectors before centering them around zero or after sending them around zero, that's identical.
+ There's no error introduced here.
+ Then we want actually to use our closest rank K approximation of the SVD or what we just showed with Lagrangian,
+ that taking the first K coefficient is the best we can do for taking the eigenvalues of the autocorrelation matrix.
+ So essentially we apply that.
+ And so the advantage is that if we do that, this was the full space.
+ This is now only a K dimensional space.
+ So it's potentially a much smaller space if we have a highly correlated set of images.
+ So in other words, we end up with if this is true, then this vector should be well approximated by this vector.
+ And so in other words, we can approximate this, which was initially what we're going to do.
+ Just compare all the images pixel by pixel.
+ We actually can get a good approximation of that.
+ Hopefully we actually get the same coefficient here because this distance is pretty close to this distance.
+ And therefore the minimum of this is likely to actually, we're likely to preserve the right minimum here.
+ And this would be a lot cheaper to compute because this distance is now say this was, let's say this was 30 by 30 pixels.
+ This was 900, 900 dimensional vectors that you have to subtract from each other.
+ Here you might be say 10 dimensional or so.
+ And so it's only 10 vectors that you have to vector dimension 10.
+ He's actually some nice illustration of this concept.
+ So this is a nice kind of cut out.
+ So this would work by on an image first doing a phase detection, a filter that would look for face patterns across the image.
+ And then find a few places where there is a good something that looks like a face.
+ You then around that detection cut out a nice little box that kind of, you know, squares in the face,
+ samples it at a reasonable resolution, right?
+ We don't need to have, you know, 1000 pixels on the, we don't need to have 1000 by 1000 pixels on the face.
+ Maybe 30 by 30 is just fine.
+ So that's still about 900 or so pixels, for example, here.
+ And you arrange it in a vector.
+ That's your observation vector.
+ You know, first pixel there is the first coefficient.
+ Second pixel is the second coefficient, et cetera.
+ But of course you can see that there's huge correlation between all these pixels here.
+ Also between pixels on this side and picks on that side.
+ So everything here is more or less mirror image.
+ So strong correlation there, et cetera, and large areas are also highly correlated, et cetera, et cetera.
+ Clearly we're probably, you know, we can do better than represented in all these pixels as supposedly independent variables.
+ So essentially what we have is we have the observed dimensions.
+ This is really the pixel dimensions, which in this, you know, eventually very high dimensional space,
+ and we have distance between pixels there.
+ From that we would like to go to a feature dimension.
+ This is then, you know, so this is a kind of a general thing.
+ So we would go from this with a deterministic transformation to a different space,
+ but we could potentially have a much lower dimensional space here.
+ We won't cover all of those in detail.
+ The one we're now talking about is egg and faces.
+ We'll briefly talk also about feature faces.
+ But there are also other choices there, but we want more advanced concepts there, which we will not discuss.
+ But the logic is essentially to do the projection from a high dimensional observation space,
+ so direct measurements, right?
+ Your pixels are directly measured in the image as incoming light or so.
+ Direct measurements projected into a more suitable space to actually measure things.
+ Typically more compact space also.
+ Also actually with the added advantage to reduce the noise.
+ Actually if you think of it, the original image might have been a thousand by a thousand pixels,
+ and actually going to measure each of those thousand by a thousand pixels and compare them one to one with the ones of a detected face,
+ you will already have a lot of noise because, you know, any small shift here,
+ you know, a reasonable alignment will have the nose kind of aligned on the nose,
+ but if you go to a thousand by a thousand pixels having, you know, the right pixel in your eye and your, you know, iris correlates with the iris of someone else and so on,
+ this on the pixel by pixel base actually not never going to really align.
+ Even you with yourself, the slightest misalignment will have all the high frequency kind of misalign.
+ So if the alignment is only up to a certain resolution, you actually don't want to compare pixels at a resolution beyond the quality of your alignment
+ because you will just have a degraded result.
+ In general, it's actually a good idea to project things down,
+ partially also because of the noise ratio and so on.
+ One is because you go to a space where most of the energy is captured compactly, so an advantage in computations,
+ but actually also because you eliminate a lot of small detailed noisy variations
+ and you have actually a better measurement of what actually matters.
+ So here's an example of Eigen faces.
+ Again, really important, don't forget to subtract the average.
+ In this case, we can call it the average face or the mean face.
+ So if you take your collection of all these faces, you first compute the average, this one, and you subtract that.
+ And so the actual identity of a person is now how much the picture of a particular person differs from the average face.
+ That actually makes sense.
+ The signal that's in the average face, that's not useful.
+ What you care about is how different you are from the average in a sense.
+ That's kind of your identity.
+ That vector literally represents your identity in this space.
+ That difference will not represent it as a difference per pixel from the average face,
+ but as a difference in a different coordinate system.
+ A coordinate system that's much better suited to actually observe the major differences between faces.
+ So if we look at this here, what do we see?
+ For example, any idea what this one kind of correlates to?
+ Exactly.
+ So this kind of seems to capture the correlation that in many pictures there seems to be a correlated change.
+ If this pixel is darker, then this one also tends to be darker.
+ Why is that?
+ Well, it's because people tend to have glasses that have all more or less the same shape.
+ And so whenever it's dark here, it's also dark there and there and there.
+ And when it's a bright frame, then it's the other way around.
+ Or in particular, compared to the average face, when it changes in both directions.
+ This is, again, remember, this is actually linear, meaning that positive and negative correlation always have to go together.
+ Even if all the glasses are dark, this essentially cannot differentiate between deviating to the dark side and to the brighter side.
+ So bright glass or dark glasses, they have to be captured in the same linear deviation from the central point.
+ So even if all the deviations are in one direction, here the vector actually captures both directions at once.
+ That's again where nonlinear systems like neural networks that introduce nonlinearities can actually start separating those.
+ But here they would all be captured together.
+ Anyway, so that's like glasses.
+ Okay, great.
+ If you look more at this, like the ones at the top there, the biggest one, because actually they're ordered.
+ I think they're ordered one, two, three, four, five, six, seven, eight or so, I think.
+ I'm not actually exactly sure, but I think it's in that order.
+ You know, the first one, the biggest variation, which is the one associated with the biggest variation.
+ What, you know, what, what is that one?
+ So it's not glasses.
+ What, what is it?
+ Anyone?
+ What is captured in that image, in the first image there?
+ No.
+ I mean, what do you see?
+ Maybe someone can describe what they see in that upper left image there.
+ Yeah, but what's the difference between that image and this image?
+ Exactly, right?
+ What you capture there is really lighting.
+ You have kind of bright lighting from the right side.
+ That's what's captured there.
+ You know, and then actually if you look at these also, right, it's not so much identity as really kind of lighting that's captured there.
+ So that's, you know, something to remember actually we'll get back to that in a few slides.
+ Okay.
+ Okay, so this is actually from many years ago, a simple, a simple, a good image for a cognition kind of system.
+ It was, so given a new image coming in here, it would normalize so a face, a detected face, you know, it would normalize it.
+ Also, it would subtract the mean face here, the average face, right?
+ And so the vector that goes through here, you would do a projection.
+ Okay, so you project it on, on these egg and faces.
+ So projecting means you take the full image, full resolution image, you subtract it, you subtract the average from it.
+ Then you multiply coefficient by coefficient.
+ So pixel per pixel, you multiply your incoming image after you subtracted out this, you multiply it with this image, this image with each of those templates, and you get a coefficient, right?
+ For each of those.
+ So that's what you get here.
+ So you get essentially your image coming in here, you multiply it with this, you get a number of coefficients coming out, right?
+ Which is simply the product of each of the image, the difference image with each of those, for example.
+ So in this case, you would get eight numbers, for example, coming out based on the previous image.
+ And those eight numbers, you will now compare to the pre-computed eight numbers for, for example, eight numbers for each of your database images.
+ And you get a similarity.
+ And then you get here a nonlinear simple rejection system, which says it's just a threshold actually.
+ It says if the difference is smaller than this much, then I will declare, you know, for the best one, if the difference is smaller than a certain number, then I will essentially output the, the coefficient, the, sorry, the identity of the face that I recognize.
+ So which, which of those, which the, the index of which of those faces it was that I am the closest to, even below a threshold, if not, if I'm not below that threshold, if the error is too big, then I would say, okay, forget it.
+ This is not good enough.
+ Okay.
+ So that's essentially what you would do here.
+ Okay.
+ Then, then let me actually show here this video.
+ Let me see.
+ Actually, if I can show it, I might have forgotten to update the link.
+ Okay.
+ Okay.
+ Works.
+ Okay.
+ Normally, there should be no more face model is derived from a data set of 200 colored 3D scans of faces.
+ Individual faces are combined into a single morphable model by computing dent.
+ Actually, let me first give you some, some context here.
+ So essentially, this is the same idea as we just saw before for two dimensional faces.
+ Two dimensional faces.
+ What did we have?
+ We had, you know, we essentially detected a face.
+ So detecting the face means we actually found the detection and the localization of the face in the image and cropping, taking a crop.
+ Then we actually really had determined for, you know, the upper, for you, the upper left pixel, you know, is here and, you know, then the next one.
+ And so we really, in a sense, had arranged for an alignment pixel to pixel so that we can, could then meaningfully subtract the average.
+ And then, you know, project on the different basis functions.
+ And if we actually collected a lot of images this way, we could actually take that whole collection and compute this SVD from this matrix of faces and so on and so on.
+ Right.
+ Here, we essentially do the same, but with three these cans of faces.
+ Okay.
+ So the same concept of actually cropping out nicely and getting that alignment that the nose pixel corresponds to the nose pixel and you know, etc.
+ The eyes correspond to the eyes by finding the face and aligning it properly and cutting it out consistently between all the images.
+ That's how you get correlation.
+ If you do a message job at aligning, notice this will, the correlation will be terrible because if the nose moves around in your detected image, it means that suddenly, you know, you cannot predict anymore so well what, you know, where the nose would be and therefore you have to start
+ modeling, you know, nose in many different locations and you need a lot more basis images to actually represent faces if you don't have a good alignment.
+ Okay.
+ Here also in 3D, they'll do the same thing.
+ They actually had scans of people faces.
+ They all carefully aligned those ahead of time.
+ And then you'll see they'll actually look at the face at the color of the face, but also the geometry of the face.
+ But for that, they first had to create an alignment between all those 3D faces to each other.
+ So that's what they do.
+ And so in a sense, instead of having just a grayscale image as we had before, so a single value, what they do here is they actually at every location.
+ They have six values.
+ What are those six values?
+ R, G, B, so color, X, Y and Z.
+ The 3D coordinates of the point.
+ But of course they need alignment.
+ So they need the XYZ coordinate of the point on the nose.
+ They need the XYZ coordinate of, you know, a particular point here.
+ So they need like alignment of all the 3D faces to each other.
+ But once they have that, they can actually compute things that way.
+ So it's really exactly the same thing as before.
+ Now you have XYZ, RGB coordinates.
+ So you have like six values, but that's okay.
+ If you linearize in a long vector, you know, instead of having every pixel just have one value, you can now have every pixel have six values.
+ It doesn't actually matter.
+ You just have a longer vector.
+ It's still just a vector and you still can subtract the average.
+ Once you align everything, you subtract the average, you do SVD, blah, blah, blah.
+ It all still is exactly the same thing.
+ Okay. So let me continue playing the video now.
+ So it's actually very nice illustration.
+ The key author here was Thomas Vetter, who's a professor at the University of Basel actually.
+ But this was, you know, when he was still, this was still earlier before he was.
+ Point correspondences to a reference face.
+ A modified optic flow algorithm establishes 3D correspondence automatically.
+ We'll actually talk about optical flow next week.
+ Okay. So, but it's about finding correspondences between, you know, in this case, it's like different faces will do it in video between from one video frame to the next.
+ The morphable model combines 3D shape and texture information of all example faces into one vector space of faces.
+ We can form arbitrary linear combinations of the examples and generate continuous transitions.
+ Starting from the average face, individual original faces are caricatured by increasing their distance from the average.
+ Forming the average for male and female faces separately, the difference can be added to or subtracted from an individual face to change the perceived gender.
+ Other facial attributes, such as the fullness of a face, can be manipulated in a similar way.
+ From a labeled set of faces, the characteristic changes are extracted automatically.
+ In our model, they're controlled by a single parameter.
+ Differences in facial expressions captured from another face can be mapped to any individual.
+ We now reconstruct 3D shape and texture in order to animate a face, given only a single photograph of a person.
+ First, we manually align the average face to the target image, roughly estimating position, size, orientation, and illumination.
+ Then, a fully automated algorithm finds the best reconstruction of the face within the morphable model.
+ 3D shape and texture are optimized along with parameters such as size, orientation, and color contrast.
+ The output is a high resolution 3D mesh of the face.
+ This is an estimate of 3D shape and surface colors based on a single image.
+ Additional texture extraction improves details and texture.
+ The construction can now be rendered into the image, and a whole range of facial variations can be applied.
+ Here we simulate weight gain and weight loss.
+ Facial expression can be post-processed in images, forcing a face to frown or to smile.
+ From this image, we also estimated 3D shape and texture and combined the photograph with 3D computer graphics.
+ Cast shadows of novel objects are rendered correctly into the scene.
+ Illumination conditions can be changed and pose can be varied to some extent.
+ From a single black and white image, we obtain a full estimate of 3D shape.
+ The result of the matching procedure includes an estimate of surface color since the morphable model contains color information.
+ Finally, we show the application of our model to a painting.
+ This is all purely linear.
+ The morphable face model is derived from a data system.
+ Linear models can be powerful with the right amount of data and linear fits to the data.
+ On top of that, people will bring in nonlinear methods, neural networks that will mostly start from there, but then add additional capabilities.
+ This is quite impressive what you can get out of this.
+ In many ways, you could actually see this as training.
+ It is essentially just computing an SVD on a big matrix.
+ This is where I want you to learn in this course.
+ You have the understanding of what is happening here with the simple linear methods and what you can already capture.
+ In the end, 90% of what is happening is probably this stuff with some additional capabilities captured by having nonlinear representations.
+ In terms of how many you have to use, I think in this case they only used, I think, I am not exactly sure anymore, but I think it was maybe 256 scans only.
+ It was actually quite a small number.
+ The reason is, so essentially, the reason that they could use that small of a number is because they strongly normalize the problem.
+ What do I mean by that?
+ If you would try to train a neural network to do similar things, but you do not help it by aligning the pictures.
+ Remember, here they had the alignment.
+ If you do not help it to align the pictures in advance, you are essentially just providing it random images with random lighting, with random poses.
+ Then you actually have to explicitly, in a sampling way, and actually also there, the sampling that we learned here is relevant also for that, the understanding of how that works.
+ You essentially have to sample every possible pose, multiply it with every possible lighting, multiply it with every possible identity.
+ If you need 100 samples, or let's say 50 samples for pose, and you need, let's say, 50 samples for illumination, and you need 250 for identity, then the number of data points you need is 50 times 50 times 250, or something like that.
+ Then you need many, many images.
+ If you actually take out some of those variations, you normalize for lighting.
+ How did they normalize for lighting?
+ They had all those 256 people, or whatever the number was, but I think it was really in that order.
+ They all had them sit down on a chair.
+ They had a special setup that would capture them with the same lighting, same everything, fully controlled.
+ Therefore, there was no pose variation.
+ There was no light variation.
+ They actually made sure they, as they told you, they actually did a modified optical flow to get a one-to-one kind of correspondence between all the points on the face and so on.
+ All that variability was gone, and then just the identity, you know, with a few hundred faces, they actually could capture, you know, enough variability.
+ I mean, more faces would probably be better, but it was already enough to do quite impressive things.
+ So that's the way, you know, that's how, that's what you have to remember.
+ It depends on the size of the space you have to, in a sense, sample with your data.
+ If you normalize your space, then if there's only one dimension or a few dimensions of variability, then a few points, you know, randomly distributed there will be good enough to capture that.
+ If you live in a lot of kind of uncorrelated variations, then, you know, you might have to sample many, many times more,
+ because the space that intrinsically you're trying to capture is a space with a lot more variability.
+ You know, this is when cell driving car companies want to capture what happens in the street, you know, by driving around and just capture situations.
+ Well, the problem is the relevant situations come with this really long tail.
+ So, you know, just driving around like nothing happens, you drive straight, people around you drive normally, pedestrians do no crazy things, etc.
+ That's pretty quick to capture enough to understand that.
+ But if you actually need to also be able to react to surprises, you actually need to capture enough of those and so on.
+ So that's where certainly the sampling becomes very difficult to actually get enough examples of everything,
+ especially if you want to do end-to-end deep learning where you're not normalizing things.
+ And so if you've seen it like, I mean, in the end, with the right algorithms, you know, somewhere there's the input space and the output space.
+ But in between there might be a latent space that captures in a sense the intrinsic dimensionality of things.
+ Okay, in this case, the latent space is very simple.
+ It's like the dimensionality here that's relevant.
+ Okay, how many singular values are different here?
+ It's actually very simple.
+ The dimensionality of the problem intrinsically.
+ We're really capturing this by looking at the data.
+ Also, again, here you can really directly understand this just mathematically get the number.
+ You look at this matrix here.
+ How many phases do you need to capture?
+ Well, you don't know, but, you know, you capture a whole bunch of phases.
+ You do the singular value decomposition.
+ And if you see that, you know, after a hundred values, like the rest is really irrelevant,
+ you can model every phase that you keep adding to your data set is already perfectly modeled inside the space of, you know,
+ your hundred first singular values, for example, for the veteran Lance model, for example.
+ Well, you know, then there's really not much more to be captured, right?
+ If you can capture 99% of the appearance of the phase from your first hundred singular values,
+ it means intrinsically you actually didn't need more than a hundred phases to actually capture this.
+ If you have hundreds randomly distributed phases, you should actually have had captures.
+ Now, if you only take a hundred phases, you don't know this, right?
+ It's only once you capture 200 phases that you see what actually, you know, a hundred is good enough.
+ Having had 200 is still good because it will have reduced the noise on your, you know,
+ a hundred dimensional space of how phases, you know, typically look like and so on,
+ because it averages out a bit the noise and so on, right?
+ Okay, so those are some of the insights on to know the dimensionality of the problem.
+ Literally in the linear space is pretty easy.
+ It's you just look at a single values and see how many are actually useful.
+ Okay, and that really depends on what you want to do.
+ Being able to still see the difference between people might need less than being able to have a fully photorealistic representation of every single person.
+ You know, and then if you have like a Tom Hanks, you know, like really be able to recognize the, you know,
+ once you project in this lower dimensional space to recognize Tom Hanks, you know,
+ you might need a little bit more than just being able to differentiate between people, for example, right?
+ Differentiating between people means preserving of difference, you know,
+ so that you can still tell them apart, being able to, you be happy and, you know,
+ you'll be able to see that it's Tom Hanks might be another level of, you know,
+ you might see like, well, it looks like Tom Hanks a bit, but it's not quite him.
+ There's something off, you know, like, because there's still too much error that you left in,
+ although it would be enough to recognize him compared to the rest of the people in database.
+ It might not be enough to, you know, have you think it's a photorealistic representation of the actor, right?
+ Okay, so again, we start from, we know, you know, here we normalize the pose.
+ Notice it's just a frontal pose, right?
+ Pixel by pixel correspondence is what we assume here and so on.
+ Assuming that, you know, we do that, we subtract the average face,
+ we get same dimension of matrix, we simplify that by doing ceiling of value decomposition,
+ we clip it to a smaller set of singular values, whatever is relevant to our problem,
+ like which error can we ignore? Essentially here, this determines how much we can clip off
+ and how compact we can make it.
+ And then we can do the sum of square difference matching in the approximate space here.
+ And so be more efficient. Essentially, we're doing something like this.
+ We represent the face as the average face plus a number of coefficients,
+ meaning what we actually do is we subtract this and then we project on those coefficients, right?
+ So multiply which is each of those images and get one scalar per product here.
+ We do the inner product between this and the actual face with this subtracted out.
+ Okay? And then we can easily compare in this coefficient space.
+ Okay? Okay, so now we'll continue with this on Thursday,
+ but essentially something really interesting here, which shows the limitations of egg and faces.
+ So here people looked at differences due to varying elimination
+ and seeing that those can actually be much more important than the actual differences between faces.
+ Okay? So what those guys did here was they looked at the error.
+ They got in a simple -- this is with the number of principal components.
+ So from 0 to 150 here.
+ So this is -- the principal component is how many singular values where they're actually using, right?
+ They looked at this from 0 to 150 here and looked at how the error in recognition --
+ so they took a vector, you know, they took the first 50, for example,
+ and so they had a -- you know, instead of the fulls every pixel,
+ they just took the first 50 coefficients after going to the egg and face space
+ and correlated it with the incoming vector and then saw how often they found the correct one versus the incorrect one.
+ And I'm not sure exactly -- so this is the error rate they had,
+ and I'm not sure exactly how big the database was they were comparing to, so how hard the problem was.
+ Obviously if you only compare to two faces, which of the two is it,
+ that's an easier problem than if you have a thousand faces in your database,
+ because then the random distance between faces is going to be a lot smaller,
+ and a small mistake could already make you recognize the wrong face, right?
+ Anyways, they were getting an error rate as soon as they had --
+ so you see here they needed about, say, 30 faces, 30 egg and faces, 30 coefficients,
+ to get a decent recognition, but then adding more didn't help, okay?
+ So using a more model that better approximates the original face was actually not helping them.
+ And then something very interesting, if they had dropped the three first coefficients,
+ they actually did a lot better, a lot less error, right?
+ They went from 25% error to 15% error, or like even a bit below that.
+ So why is that? Well, you know, it has to do with the elimination that was in the database here,
+ the elimination change. If we look back here, right?
+ If you look at the first three here, it's mostly capturing elimination changes.
+ So it means that most of the energy, you know, the differences between images is mostly captured here,
+ which means that even my database, if people start with someone has light from here in the database,
+ and someone else is stored with light from there in the database,
+ but now that person actually have a query image with a light not here, but over here,
+ then this picture of that person, of the person that was in the database with the light over here,
+ suddenly that picture might actually look much closer in the difference to this other person,
+ but that had light from the same side in the database.
+ So essentially that's because these are the biggest coefficients,
+ so that's where most of the energy is actually in the lighting and not in the identity.
+ So that was essentially, that's the problem that is illustrated here,
+ that if you take away the first three coefficients, this actually corresponds to this,
+ that this actually does better, and that's because those first three actually irrelevant variations,
+ and so if you actually take them out, you do better.
+ So we want, I won't have the time to explain this today, but just like to get started,
+ the idea is that we have, let's say here one, two, three, four, five classes, five people, five individuals,
+ and we want to differentiate between those five individuals.
+ So essentially we have, you know, this is the center of each of those,
+ this is the average of the red individual and the average of the gray individual, etc.
+ And what we want to do is, we want to somehow ignore,
+ we want to treat differently the variation within an individual and the variation across individuals.
+ And we care about the variation across individuals and we don't care about the variation within an individual.
+ If my task is, again it depends on the task, if my task is to determine what is the identity of the person,
+ then I care about the difference between individuals, I don't care about, you know, how the individual appearance can vary.
+ Actually I'm going to care about to model it and then to explicitly ignore it.
+ That's what we'll see next week, how you can also with linear algorithms actually do something quite interesting there.
+ Okay, so we see that on Thursday.
+ [APPLAUSE]
+ (audience applauding)
