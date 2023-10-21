@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'main.css' %}" />
     <link rel="stylesheet" href="{% static 'summary.css' %}" />
   </head>
+
   <body>
     <header class="header">
       <div class="page-title">
@@ -56,20 +57,34 @@
           </li>
         </ul>
         <div class="topics-wrapper">
-          <ol>
-            {% if topics %}
-              {% for topic in topics %}
-                <li>
-                  <div class="summary">
-                    <div class="summary-title">{{ topic.title }}</div>
-                    <div class="short-summary-content">{{ topic.content.short }}</div>
-                    <div class="medium-summary-content">{{ topic.content.medium }}</div>
-                    <div class="long-summary-content">{{ topic.content.long }}</div>
-                  </div>
-                </li>
-              {% endfor %}
-            {% endif %}
-          </ol>
+          {% if topics %}
+            {% for topic in topics %}
+              <div class="topic-title-wrapper">
+                <span class="topic-title">{{ topic.title }}</span>
+                <div class="button-wrapper">
+                  <button class="less-detailed disabled">Less Details</button>
+                  <button class="more-detailed">More Details</button>
+                </div>
+              </div>
+
+              {# Short Summary #}
+              <div class="summary short">
+                <ul class="bullet-point-list">
+                  {% for bullet_point in topic.summaries.short.bullet_points %}
+                    <li class="bullet-point">
+                      <span class="bullet-point-title">{{ bullet_point.title }}</span>: {{ bullet_point.text }}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+              {# Medium Summary #}
+              <div class="summary medium" style="display: none;">{{ topic.summaries.medium }}</div>
+
+              {# Long Summary #}
+              <div class="summary long" style="display: none;">{{ topic.summaries.long }}</div>
+            {% endfor %}
+          {% endif %}
         </div>
       </div>
     </main>
