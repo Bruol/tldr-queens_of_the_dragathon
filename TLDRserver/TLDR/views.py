@@ -22,13 +22,13 @@ def videos(request, class_id):
     videos = lecture.video_set.order_by("-presentation_date").all()
     template = loader.get_template("views/video.html")
 
-    test = [[video, video.presenters[:-2].split(';')] for video in videos]
-    print(test)
+    list_of_videos_and_presenters = [[video, video.presenters[:-2].split(';')] for video in videos]
+     #print(list_of_videos_and_presenters)
 
     context = {
         "lecture": lecture,
         "videos": videos,
-        "names": test,
+        "names": list_of_videos_and_presenters,
     }
     return HttpResponse(template.render(context, request))
 
@@ -43,12 +43,19 @@ def summary(request, summary_id):
     tps = []
 
     for topic in topics:
+        # find bulletpoints in string
         bps = topic.bulletpoints.split(" -")
+        # find bulletpoints after newline
         bps = [i.split("\n-") for i in bps]
+        
         bps = flatten_list(bps)
+
+        # filter out empty strings and strings that are only whitespace and titles
         filtered_bps = []
         for bp in bps:
             if not (bp.isspace() or bp == "" or istitle(bp)):
+                if bp.startswith("-"):
+                    bp = bp[1:]
                 bp = bp.replace("\n", "")
                 filtered_bps.append(bp)
 
