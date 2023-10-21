@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TLDR; Lecture</title>
+    {# TODO: Add Favicon #}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    {% if lectures %}
+        {# Create Course Cards #}
+        {% for lecture in lectures %}
+        <div class="course-card">
+            <div class="title-frame">
+            <div class="text-wrapper">{{ lecture.lecture_name }}</div>
+            </div>
+            <div class="lectures-frame">
+            <div class="div">Lectures:</div>
+            <div class="text-wrapper-2">{{ lecture.video_set.count }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <div class="cards">
+      <div class="div">
+        <div class="lecture-card-v">
+          <div class="title-frame">
+            <div class="text-wrapper">Lecture Title</div>
+            <div class="text-wrapper-2">01</div>
+          </div>
+          <div class="div-2">
+            <div class="text-wrapper-3">Held on:</div>
+            <div class="text-wrapper-4">03.03.2023</div>
+          </div>
+          <div class="div-2">
+            <div class="text-wrapper-5">Topics Covered:</div>
+            <div class="text-wrapper-6">6</div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="div-wrapper"><div class="text-wrapper">Course Title</div></div>
+          <div class="lectures-frame">
+            <div class="text-wrapper-3">Lectures:</div>
+            <div class="text-wrapper-7">6</div>
+          </div>
+        </div>
+        <div class="lecture-card-v-2">
+          <div class="title-frame">
+            <div class="text-wrapper">Lecture Title</div>
+            <div class="text-wrapper-2">01</div>
+          </div>
+          <div class="div-2">
+            <div class="text-wrapper-3">Held on:</div>
+            <div class="text-wrapper-8">03.03.2023</div>
+          </div>
+          <div class="div-2">
+            <div class="text-wrapper-9">Topics Covered:</div>
+            <div class="text-wrapper-10">6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
