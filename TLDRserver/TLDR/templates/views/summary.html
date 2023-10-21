@@ -5,11 +5,13 @@
     <title>TLDR; Lecture</title>
     {# TODO: Add Favicon #}
     <link rel="stylesheet" href="{% static 'main.css' %}" />
-    <link rel="stylesheet" href="{% static 'index.css' %}" />
-    </head>
+    <link rel="stylesheet" href="{% static 'summary.css' %}" />
+  </head>
   <body>
     <header class="header">
-      <div class="page-title">TLDR; <sub>Lectures</sub></div>
+      <div class="page-title">
+        TLDR; <sub>Lectures</sub>
+      </div>
       <div class="account-login-wrapper">
         <div class="welcome-text">Welcome, Patricia!</div>
         <img class="log-out-icon" src="img/log-out-icon.svg" />
@@ -17,18 +19,75 @@
     </header>
     <main class="main">
       <div class="content">
-        
+        <h1>Automatically Generated Lecture Title</h1>
+        <!-- List of infomations about lecture -->
+        <ul class="lecture-information">
+          <li>
+            Course: <span class="course-name">Course Name {# TODO: #}</span>
+          </li>
+          <li>
+            Lecturer(s): {# TODO: Only display 's' if lecture has multiple lecturers #}
+            <ul class="professor-list">
+              <li class="professor">
+                Professor 1 {# TODO: #}
+              </li>
+              <li class="professor">
+                Professor 2 {# TODO: #}
+              </li>
+              <li class="professor">
+                Professor 3 {# TODO: #}
+              </li>
+            </ul>
+          </li>
+          <li>
+            Year: <span class="year">Year {# TODO: #}</span>
+          </li>
+          <li>
+            Semester: <span class="semester">Semester {# TODO: #}</span>
+          </li>
+          <li>
+            Language: <span class="language">Language {# TODO: #}</span>
+          </li>
+          <li>
+            Duration: <span class="duration">Duration {# TODO: #}</span>
+          </li>
+          <li>
+            Number of Words: <span class="number-of-words">Number of Words</span>
+          </li>
+        </ul>
+        <div class="topics-wrapper">
+          <ol>
+            {% if topics %}
+              {% for topic in topics %}
+                <li>
+                  <div class="summary">
+                    <div class="summary-title">{{ topic.title }}</div>
+                    <div class="short-summary-content">{{ topic.content.short }}</div>
+                    <div class="medium-summary-content">{{ topic.content.medium }}</div>
+                    <div class="long-summary-content">{{ topic.content.long }}</div>
+                  </div>
+                </li>
+              {% endfor %}
+            {% endif %}
+          </ol>
+        </div>
       </div>
     </main>
     <footer class="footer">
       <div class="div-wrapper">
-        <div class="text-wrapper"><a href="#">About</a></div>
+        <div class="text-wrapper">
+          <a href="#">About</a>
+        </div>
       </div>
       <div class="div-wrapper">
-        <div class="text-wrapper"><a href="#">Impressum</a></div>
+        <div class="text-wrapper">
+          <a href="#">Impressum</a>
+        </div>
       </div>
       <div class="div-wrapper">
-        <div class="text-wrapper"><a href="#">Video Portal</a></div>
+        <div class="text-wrapper">
+          <a href="#">Video Portal</a>
+        </div>
       </div>
     </footer>
   </body>
