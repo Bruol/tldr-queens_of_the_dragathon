@@ -1,0 +1,12 @@
+{% load component_tags %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TLDR; Lectures</title>
+    {% component_css_dependencies %}
+  </head>
+  <body>
+    {% component 'course_card' number_of_lectures=42 %}
+    {% component_js_dependencies %}
+  </body>
+</html>
