@@ -23,18 +23,22 @@
     <main class="main">
       <div class="content">
         <div class="cards">
-          {% if videos %}
+          {% if names %}
             {# Create Course Cards #}
-            {% for video in videos %}
+            {% for video in names %}
             <div class="course-card", onclick="window.location='/transcripts/{{video.id}}/';">
                 <div class="title-frame">
-                  <div class="text-wrapper">{{ video.infered_titel }}</div>
+                  <div class="text-wrapper">{{ video.0.infered_titel }}</div>
                 </div>
                 <div class="lectures-frame">
-                  <div class="text-wrapper-2">{{ video.presentation_date }}</div>
-                  <div class="text-wrapper-2">{{ video.presenters }}</div>
+                  <div class="text-wrapper-2">{{ video.0.presentation_date }}</div>
                   <div class="text-wrapper-2">
-                      <a href={{video.source_url}}>ETH Videoportal</a>
+                    {% for presenter in video.1 %}
+                    <div >{{presenter}}</div>
+                    {% endfor %}
+                  </div>
+                  <div class="text-wrapper-2">
+                      <a href={{video.0.source_url}}>ETH Videoportal</a>
                   </div>
                 </div>
               </div>

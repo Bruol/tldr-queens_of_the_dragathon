@@ -1,1 +1,1 @@
-Title: Java Programming Tips and Guidelines
+Java Programming Tips and Guidelines

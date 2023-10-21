@@ -1,32 +1,32 @@
 # Summary
 
-## Topic 1: Fourier Transform and Convolution
+##  Fourier Transform and Convolution
 ### Sourced from Summary 1
 - The Fourier transform is used to transform a two-dimensional image space, involving integrating over both the x and y dimensions and multiplying the function with basis functions parameterized by u and v.
 - Shrinking details in the spatial domain corresponds to higher frequencies in the frequency domain, and vice versa.
 - The Gaussian function is important in Fourier transforms, and its transform is also a Gaussian.
 - The convolution theorem states that the Fourier transform of the convolution of two functions is the product of their Fourier transforms.
 
-## Topic 2: Non-local Nature of Convolution
+##  Non-local Nature of Convolution
 ### Sourced from Summary 2
 - Convolution operations in image processing are non-local, where a pixel in the output image depends on multiple pixels in the input image.
 - In the frequency domain, the effect of a filter is simple and can be represented as a component-wise multiplication.
 - Sampling can be modeled mathematically by multiplying the original function with a function that is non-zero only at discrete locations.
 - The use of delta functions in approximating integrals for Fourier transforms allows for proper integration.
 
-## Topic 3: Filtering in the Frequency Domain
+##  Filtering in the Frequency Domain
 ### Sourced from Summary 4
 - Filters in the frequency domain are used to preserve specific frequencies and eliminate everything outside of that range.
 - Low pass filters are commonly used for this purpose, such as the Gaussian filter.
 - Aliasing occurs when sampling a signal with too low of a sampling rate, causing high frequencies to overlap with low frequencies and leading to distorted signals.
 
-## Topic 4: Aliasng and Image Reconstruction
+##  Aliasng and Image Reconstruction
 ### Sourced from Summary 7
 - Aliasing can be reduced by adjusting the focus when capturing an image or by using appropriate reconstruction filters in the digital domain.
 - Different reconstruction filters, such as nearest neighbor and bilinear interpolation, have different effects on the reconstructed image.
 - Convolution operations and the convolution theorem play a role in understanding aliasing and its effects on frequency domains.
 
-## Topic 5: Image Blurring and Restoration
+##  Image Blurring and Restoration
 ### Sourced from Summary 8
 - Image degradation involves a blurring process represented by a filter, and image restoration aims to reverse the blurring effect.
 - Convolution in the frequency domain can be used to combine filters for restoration, but full recovery of the original image is not always possible.
@@ -34,19 +34,19 @@
 
 # In-Depth Summaries
 
-## Topic 1: Fourier Transform and Convolution
+##  Fourier Transform and Convolution
 The Fourier transform is a mathematical tool used to transform a two-dimensional image space, and it involves integrating over both the x and y dimensions and multiplying the function with basis functions parameterized by u and v (Summary 1). By applying Fourier transform, details in the spatial domain can be adjusted to correspond to different frequencies in the frequency domain (Summary 1). The Gaussian function plays an important role in Fourier transforms, and its transform is also a Gaussian, allowing for Gaussian-shaped functions to be effectively represented in both domains (Summary 1). The convolution theorem states that the Fourier transform of the convolution of two functions is the product of their Fourier transforms, enabling the modeling of filtering operations and understanding the effects of filters in the frequency domain (Summary 1).
 
-## Topic 2: Non-local Nature of Convolution
+##  Non-local Nature of Convolution
 Convolution operations in image processing are non-local, meaning that a pixel in the output image depends on multiple pixels in the input image (Summary 2). However, in the frequency domain, the effect of a filter is simple and can be represented as a component-wise multiplication, simplifying the filtering process (Summary 2). Sampling can be mathematically modeled by multiplying the original function with a function that is non-zero only at discrete locations, allowing for an understanding of aliasing in the frequency domain (Summary 2). Delta functions are used as approximations in integrals for Fourier transforms, facilitating proper integration (Summary 2).
 
-## Topic 3: Filtering in the Frequency Domain
+##  Filtering in the Frequency Domain
 Filters in the frequency domain are used to preserve specific frequencies and eliminate everything outside of that range (Summary 4). Low pass filters, such as the Gaussian filter, are commonly used to achieve this (Summary 4). Aliasing occurs when sampling a signal with too low of a sampling rate, leading to high frequencies overlapping with low frequencies and causing distortion (Summary 4).
 
-## Topic 4: Aliasing and Image Reconstruction
+##  Aliasing and Image Reconstruction
 Aliasing, the distortion caused by insufficient sampling, can be mitigated by adjusting the focus when capturing an image or by using appropriate reconstruction filters in the digital domain (Summary 7). Different reconstruction filters, such as nearest neighbor and bilinear interpolation, have different effects on the reconstructed image (Summary 7). Convolution operations and the convolution theorem provide insights into aliasing and its effects on frequency domains (Summary 7).
 
-## Topic 5: Image Blurring and Restoration
+##  Image Blurring and Restoration
 Image degradation involves a blurring process represented by a filter, and image restoration aims to reverse the blurring effect (Summary 8). Convolution in the frequency domain can be used to combine filters for restoration, but complete recovery of the original image is not always achievable (Summary 8). Regularization techniques are utilized to prevent values from becoming too large during restoration (Summary 8).
 
 Note: Due to the length of the available summaries and the limited amount of detail provided, the in-depth summaries are relatively concise.

@@ -1,1 +1,1 @@
-Title: "Java Expressions, Types, Variables, and Operations"
+Java Expressions, Types, Variables, and Operations

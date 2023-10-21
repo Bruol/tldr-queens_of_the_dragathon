@@ -16,18 +16,19 @@ class Video(models.Model):
     presenters = models.TextField()
     lecture_id = models.ForeignKey(Lecture, on_delete=models.CASCADE)
     topics = models.ManyToManyField("Topic", related_name = "discussed_in")
-    source_url = models.URLField()
     transcript = models.TextField()
+    source_url = models.URLField()
 
 
 class Topic(models.Model):
     title = models.CharField(max_length=100)
     bulletpoints = models.TextField()
     summary = models.TextField()
-    tags = models.ManyToManyField("Tag", related_name = "topics")
     chunk1 = models.TextField()
     chunk2 = models.TextField()
     chunk3 = models.TextField()
+    tags = models.ManyToManyField("Tag", related_name = "topics")
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
