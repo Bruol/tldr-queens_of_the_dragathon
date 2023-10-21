@@ -5,7 +5,7 @@
     <title>TLDR; Lecture</title>
     {# TODO: Add Favicon #}
     <link rel="stylesheet" href="{% static 'main.css' %}" />
-    <link rel="stylesheet" href="{% static 'index.css' %}" />
+    <link rel="stylesheet" href="{% static 'video.css' %}" />
     </head>
   <body>
     <header class="header">
@@ -18,16 +18,19 @@
     <main class="main">
       <div class="content">
         <div class="cards">
-          {% if lectures %}
+          {% if videos %}
             {# Create Course Cards #}
-            {% for lecture in lectures %}
-            <div class="course-card", onclick="window.location='/classes/{{lecture.id}}/';">
+            {% for video in videos %}
+            <div class="course-card", onclick="window.location='/transcripts/{{video.id}}/';">
                 <div class="title-frame">
-                  <div class="text-wrapper">{{ lecture.lecture_name }}</div>
+                  <div class="text-wrapper">{{ video.infered_titel }}</div>
                 </div>
                 <div class="lectures-frame">
-                  <div class="div">Lectures:</div>
-                  <div class="text-wrapper-2">{{ lecture.video_set.count }}</div>
+                  <div class="text-wrapper-2">{{ video.presentation_date }}</div>
+                  <div class="text-wrapper-2">{{ video.presenters }}</div>
+                  <div class="text-wrapper-2">
+                      <a href={{video.source_url}}>ETH Videoportal</a>
+                  </div>
                 </div>
               </div>
             {% endfor %}

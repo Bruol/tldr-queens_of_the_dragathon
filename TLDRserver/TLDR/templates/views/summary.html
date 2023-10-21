@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TLDR; Lecture</title>
+    {# TODO: Add Favicon #}
+    <link rel="stylesheet" href="{% static 'main.css' %}" />
+    <link rel="stylesheet" href="{% static 'summary.css' %}" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="page-title">
+        TLDR; <sub>Lectures</sub>
+      </div>
+      <div class="account-login-wrapper">
+        <div class="welcome-text">Welcome, Patricia!</div>
+        <img class="log-out-icon" src="img/log-out-icon.svg" />
+      </div>
+    </header>
+    <main class="main">
+      <div class="content">
+        <h1>Automatically Generated Lecture Title</h1>
+        <!-- List of infomations about lecture -->
+        <ul class="lecture-information">
+          <li>
+            Course: <span class="course-name">Course Name {# TODO: #}</span>
+          </li>
+          <li>
+            Lecturer(s): {# TODO: Only display 's' if lecture has multiple lecturers #}
+            <ul class="professor-list">
+              <li class="professor">
+                Professor 1 {# TODO: #}
+              </li>
+              <li class="professor">
+                Professor 2 {# TODO: #}
+              </li>
+              <li class="professor">
+                Professor 3 {# TODO: #}
+              </li>
+            </ul>
+          </li>
+          <li>
+            Year: <span class="year">Year {# TODO: #}</span>
+          </li>
+          <li>
+            Semester: <span class="semester">Semester {# TODO: #}</span>
+          </li>
+          <li>
+            Language: <span class="language">Language {# TODO: #}</span>
+          </li>
+          <li>
+            Duration: <span class="duration">Duration {# TODO: #}</span>
+          </li>
+          <li>
+            Number of Words: <span class="number-of-words">Number of Words</span>
+          </li>
+        </ul>
+        <div class="topics-wrapper">
+          {% if topics %}
+            {% for topic in topics %}
+              <div class="topic-title-wrapper">
+                <span class="topic-title">{{ topic.title }}</span>
+                <div class="button-wrapper">
+                  <button class="less-detailed disabled">Less Details</button>
+                  <button class="more-detailed">More Details</button>
+                </div>
+              </div>
+
+              {# Short Summary #}
+              <div class="summary short">
+                <ul class="bullet-point-list">
+                  {% for bullet_point in topic.summaries.short.bullet_points %}
+                    <li class="bullet-point">
+                      <span class="bullet-point-title">{{ bullet_point.title }}</span>: {{ bullet_point.text }}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+              {# Medium Summary #}
+              <div class="summary medium" style="display: none;">{{ topic.summaries.medium }}</div>
+
+              {# Long Summary #}
+              <div class="summary long" style="display: none;">{{ topic.summaries.long }}</div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="div-wrapper">
+        <div class="text-wrapper">
+          <a href="#">About</a>
+        </div>
+      </div>
+      <div class="div-wrapper">
+        <div class="text-wrapper">
+          <a href="#">Impressum</a>
+        </div>
+      </div>
+      <div class="div-wrapper">
+        <div class="text-wrapper">
+          <a href="#">Video Portal</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
