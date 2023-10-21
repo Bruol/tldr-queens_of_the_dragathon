@@ -18,10 +18,12 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def videos(request, class_id):
-    latest_lecture = Lecture.objects.order_by("-lecture_number")[1]
+    lecture = Lecture.objects.get(id=class_id)
+    videos = lecture.video_set.order_by("-presentation_date").all()
     template = loader.get_template("views/video.html")
     context = {
-        "lecture": latest_lecture,
+        "lecture": lecture,
+        "videos": videos,
     }
     return HttpResponse(template.render(context, request))
 
