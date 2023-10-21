@@ -1,0 +1,1101 @@
+ Ich hoffe, der Overflow-Raum kann mich hören und ich hoffe auch, dass es für
+ Sie hier im Raum nicht so laut und nicht so leise ist. Wenn ich dann benutzen
+ Sie den Coast Channel. Morgen ist das erste Treffen der Übungsgruppen und
+ wirklich der Hauptsinn der Sache ist, dass Sie halt soweit kommen, dass Sie
+ selber Java-Programme schreiben können. Also das erste Assignment ist wirklich
+ nicht schwierig und Sie haben nicht mehr zu tun als eben Java auf einem System zu
+ installieren und so weiter. Von daher und dann können wir auch schon, wenn Sie
+ wollen, morgen versuchen mittels JIT, wie wir die Aufgaben später einsammeln,
+ das auszuprobieren. Wenn Sie das morgen noch nicht hinbekommen, ist auch kein
+ Problem. Können wir noch auf der Woche noch probieren, sollte halt in einer Woche
+ funktionieren. Und zweitens die nächste Vorlesung ist natürlich, wenn nichts
+ Stimmes dazwischenkommt, die nächste Vorlesung ist am Donnerstag um 14 Uhr
+ 15 anstelle einer Vorlesung Algorithmen und Datenstrukturen und zwar nicht hier
+ sondern drüben in dem großen Hörsaal, indem Sie Algorithmen und Datenstrukturen
+ haben. Das nur so kurz zur Erinnerung. Okay, warum machen wir jetzt, ich möchte
+ noch mit ebnr weiter machen, warum machen wir das? Sehen Sie, das ist auch eine Form
+ des Programmierens. Stellen Sie sich vor, Sie müssen eine Menge von Symbolen
+ erzeugen, z.B. alle, die ein A, ein B und dann wieder ein A oder auch zwei Bs haben,
+ also die A und B untereinander gemischt haben. Wie würden Sie das machen? Da
+ würden Sie eine ebnf-Regel aufstellen, die eben diese, beschreibt, wie man diese
+ Symbole erzeugt. Natürlich im Allgemeinen haben Sie nicht so ein
+ einfaches Muster, das Sie beschreiben müssen, aber stellen Sie sich vor, Sie
+ müssen wieder Kollegen einigen, wie die Zahlen aussehen sollen, die von einem
+ System ans andere übergeben werden. Da können Sie versuchen, das umgangssprachlich
+ zu machen, aber besser ist es, wenn wir dafür eine formale Beschreibungsmethode
+ nehmen. Oder Sie wollen beschreiben, wie sehen legales Statements aus, wann, was
+ besteht, also was besteht ein Statement in einer Programmiersprache? Umgangssprachlich
+ ist so was schlecht zu beschreiben und da ist dann so ein System wie ebnf von
+ Vorteil. Wir hatten gesagt, dass diese ebnf-Regeln haben die rechte Seite und
+ auf der rechten Seite gibt es eben diese vier Kontrollforms, mit denen wir eben
+ die kombinieren können. Und da hatte ich Ihnen in der letzten Woche bereits drei
+ von denen gezeigt, die Aufreihung, Auswahl, wo Sie eine Entscheidung machen
+ können und dann Optionen Wiederholung. Sie werden sehen, die beiden gehören jetzt
+ zusammen, wenn Sie eine Wiederholung haben, müssen Sie eben entscheiden, ob Sie
+ null oder eins oder wie oft Sie das wiederholen wollen. Und uns
+ interessiert eigentlich jetzt nur der Weg der Beschreibung und das zu checken, dass
+ ein Symbol korrekt ist. Ein Compiler wird etwas Ähnliches verwenden. Wir wissen
+ halt immer, wie viele Wiederholungen stattfinden. Das wissen wir halt,
+ dass es in der für ein Computer nicht ganz so einfach ist. Und das ist
+ später etwas, was Sie mehr untersuchen werden. Aber wir gehen jetzt mal davon
+ aus, dass wir wissen, wie das geht. Und dann bleibt da eine weitere Möglichkeit der
+ Kombination übrig. Das war die Rekursion. Das hatte ich schon erwähnt und
+ jetzt wollen wir uns ein bisschen mit der beschäftigen. Also erinnern Sie sich, die
+ ebnf-Regeln bestehen aus der linken Seite und der rechten Seite und auf der
+ rechten Seite können eben auftreten die Namen von ebnf-Regeln und Kombinationen
+ dieser vier Kontrollelemente. Und darunter natürlich auch Zeichen. Das ist der
+ einfache Geteil. Und da eben heute jetzt das letzte Kontrollform, das eben
+ halt vernünftig geht. So, wollen wir mal gucken.
+ So, es wurde gewünscht, dass es lauter ist. Ist es jetzt lauter? Und wenn ja, also
+ wenn es zu laut ist, müssen Sie auch sagen. Also wir haben es noch versucht, ja.
+ Wir haben jetzt versucht, etwas lauter zu machen und gucken, ob das geht und wenn
+ nicht, dann müssen wir wieder anpassen. Also, wir hatten da die Regel für
+ positive Zahlen und jetzt wollen wir die Zahlen so machen, dass die gar keine
+ Vorzeichen haben. Und wir hatten da schon die Regel für Digit und ich hätte
+ gesagt, Digit ist eben entweder 0 oder 1 oder 2 oder 9.
+ Und jetzt können wir anfangen, da eben ebnf-Regeln zu erstellen. Dann
+ würden wir sagen, also wir wollen diese Regel, die nennt man positive integer und
+ eine Zahl muss, soll mit einem Ziffer mindestens anfangen. Wir wollen ja das
+ ganze ohne Vorzeichen haben. So, und natürlich kann da, wenn ich jetzt so
+ rede, mache ich hier paar Punkte und dann wissen sie, ja, da kommt noch was.
+ Und natürlich, was da noch kommen soll, sind weitere Ziffern, weitere Ziffern, die
+ dahin kommen könnten. Ja, jetzt würden wir sagen, okay gut. Also,
+ könnten wir ja hingehen, das war auch eine Möglichkeit, die einer von ihnen
+ oder einer von ihnen in den Chat geschrieben hat, ja. Wir könnten das
+ ja eben versuchen, so zu machen. Eine positive integer ist definiert als eine
+ Folge von Digits in einer Wiederholung. Dann aber haben wir natürlich das
+ Problem, wenn wir das so machen, dass epsilon auch eine legale positive Zahl
+ ist und das wollen wir natürlich nicht. Das ist nicht gewünscht, daher machen
+ wir das nicht. So, also so eine ganz einfache Wiederholung, so was hier, so
+ was einfaches, das erledigt nicht das, was wir haben wollen. Wir müssen
+ ein bisschen cleverer rangehen. Und zwar, die Wiederholung hat, die hilft uns
+ auch, können wir auch, haben wir ja gesehen, machen können, aber das ist noch nicht
+ alles. Und daher ist diese so eine Wiederholung vielleicht ein Anfang. Wir
+ wissen, okay, wir brauchen Digits, wir brauchen Wiederholung, also wir können den
+ Weg einschlagen, aber nur Wiederholung geht auch nichts. Jetzt, wir müssen das
+ angucken, dann könnten wir sagen, wir haben hier eine Digit und vielleicht
+ danach noch mal mehr, was so aussieht, wie eine Zahl. Wir können ja auf der rechten
+ Seite beliebige Namen verwenden, auch den Namen der Regel, die wir jetzt gerade
+ definieren. Diesen Namen können wir auch verwenden und wir werden sehen, was dann
+ passiert. Also können wir sagen, wir verwenden den Namen dieser Regel auf der
+ selben rechten Seite und machen das optional. Das ist hier, das ist eben nicht
+ erzwungen, sondern eben halt optional. Das heißt also, nach dieser Regel könnte
+ eben eine positive integer, das könnte eben irgendeine Digit sein, oder es könnte,
+ das wäre eben, wenn die Option nicht genommen wird, oder es könnte sein, eine
+ Digit mit eben dem, was wir positive integer nennen. Das heißt, wir müssen
+ überlegen, wie wir eventuell, das allein ist ja noch kein legales Symbol, weil wir
+ wollen ja oft gar keinen Fall auf der rechten Seite den Namen einer Regel
+ stehen sehen, wenn wir einen Symbol angucken. Da sollen ja nur diese
+ Entzeichen auftreten. Aber das wäre doch ein Weg für uns, das Problem anzugehen.
+ Und wenn wir das so machten, was wären denn dann legale Symbole? Also ein
+ legales Symbol wäre, wie ich Ihnen zeigte eben schon, wir haben die
+ positive integer, das nehmen wir, machen wir so Tabellenartig, machen was
+ Tabelle, wir wählen die rechte Seite aus und dann gehen wir hin und nehmen keine
+ Option. Wir nehmen die Option nicht und dann haben wir also als Ergebnis auf
+ diese Weise genau eine Digit, wie ich es eben zeigte. Oder aber wir gehen hin,
+ das ist wieder unsere Tabelle der Anfang, wir nehmen die positive integer, wir
+ wählen in der ersten Schritt die rechte Seite, inklusive der Option, da haben
+ wir so digit, positive integer und dann im nächsten Schritt wählen wir hier wieder
+ für diese positive integer, die zweite die digit und nehmen die Option nicht.
+ Da hätten wir jetzt auf diese Weise eine Zahl erstellt, die aus zwei Ziffern
+ besteht. Sie können sich denken, wie das weitergeht. Also wenn Sie das so
+ machen, könnten Sie im Prinzip beliebig lange ganze Zahlen immer ohne
+ Vorzeichen das eben entsprechend machen. So, also so kann ich das jetzt also machen.
+ Also wenn wir die linke Seite auf der rechten Seite haben, dann muss es
+ mindestens einen Weg geben, wie wir die linke Seite durch eine rechte Seite
+ ohne diesen Namen ersetzen. Wenn ich eben halt hingehe und nur eben da etwas
+ habe, was immer wieder durch die rechte Seite ersetzt werden muss, also wenn
+ ich keine Option hätte, dann würde das Ganze mir nie erlauben zu dem Punkt
+ zu kommen, dass ich eben halt hier drei digits oder zwei digits oder eine
+ digit habe. Ich muss also immer einen Weg haben, wie ich eine rechte Seite finden
+ kann, in der der Name, der auf der linken Seite auftritt, nicht auftritt. Und das
+ kann eben dadurch geschehen, dass ich hier so eine Option habe, weil wenn ich
+ das in der Option habe, die kann ich nehmen oder nicht nehmen, wenn ich die
+ Option nicht wähle, dann habe ich nur digit auf der rechten Seite. Und
+ natürlich, da gibt es x Möglichkeiten, können wir das nicht einfach ohne das
+ komische Epsilon. Das Epsilon ist definieren. Das Epsilon ist nicht komisch.
+ Das Epsilon erlaubt es uns genau zu sagen, was wir hier wollen. Eine andere
+ Möglichkeit, wie ich jetzt zu sagen, ich gehe hierhin. Ich habe hier die positive
+ integer definiert als, ich habe jetzt noch mal die Klammern gesetzt, weil ich
+ dachte, vielleicht ist doch nur einer Bevorzug, dass jemand, ja. Also ich habe
+ hier entweder digit und positive integer, also wieder das, oder das nicht komische,
+ sondern sehr zweckmäßige, sehr geschätzte Epsilon. Das heißt, also wenn ich
+ diese Seite, ich habe hier also die erste Regel, die erste rechte Seite und das
+ ist die zweite Auswahlmöglichkeit. Ich muss eine von den beiden nehmen, wenn ich
+ die mit Epsilon nehme, dann verschwindet das und damit ist das erreicht, was ich
+ eigentlich haben wollte. Dann habe ich auf diese Weise eben dieses Symbol.
+ Da habe ich hier diesen Namen verschwinden lassen. Es gibt kein
+ weiteres Symbol, das so erzeugt werden kann und es bleiben nur diese Symbole
+ übrig, die ich vorher bereits produziert habe. Also Sie können das dann so sehen.
+ Das Beispiel, das ich Ihnen vorhin zeigte, ja, statt eben zu sagen, Option wird nicht
+ genommen, würde ich einfach sagen, da wird ein Epsilon genommen und das Epsilon
+ verschwindet. Ja, das ist ja nur etwas, was wir benutzen, um uns darauf hinzuweisen,
+ dass hier eigentlich nichts ist. Also was wirklich übrig bleibt, sind hier zwei
+ Digits oder hier bleibt eine Digit übrig. Das bleibt da einfach übrig.
+ Also das ist ein anderer Weg, wie wir das machen könnten.
+ Beide sind völlig, bedeutet, dass Epsilon, dass man einfach das von
+ davor nimmt. Naja, wenn Sie das Epsilon haben, das verschwindet einfach.
+ Das ist wie Geld, das Sie irgendwo investiert haben und weg ist.
+ Einfach weg, ja. Ist einfach weg. Das heißt, dass diese, als wir das auf der
+ rechten Seite stehen hatten, unserer Tabelle, haben wir uns entschieden, dieses
+ Symbol durch Epsilon zu ersetzen und damit ist es weg.
+ [Unverständlich]
+ Okay, Sie haben eine andere Frage, die ist auch gut, aber das ist nicht das, worauf
+ ich jetzt hinauswille. Wir können das auch so machen, dass da kein Null am Anfang ist.
+ Das können wir auch machen, macht das Ganze ein bisschen kompliziert. Da haben wir
+ Digit mit null, haben wir mit null, ohne null, ist aber nicht das, was worauf wir
+ eigentlich jetzt heute hinauswollen. Ist eine gute Frage, können wir nachher
+ mal weiter diskutieren. Also, uns interessiert einfach nur, wie wir solche
+ Zahlenfolgen erstellen. Also, null, null, sieben ist halt für uns okay.
+ Ich meine, ist sonst kein guter Film, aber hier ist es an sich okay.
+ Weil wir wollen uns, also, jetzt, also es muss mindestens einen Weg geben,
+ den, dieses Symbol, dieses, diesen, den Namen der Regel verschwinden zu lassen.
+ Ja, und eben, ich hatte gesagt, eine Möglichkeit wäre das eben mit, mit
+ diesen Epsilon, mit Optionen, die andere Möglichkeit wäre mit Epsilon. Beides
+ geht und Sie sehen, es habe ich hier ohne Klammer gemacht, ja, weil wir der Auffassung
+ sind, dass, wenn was wir hier haben, ist enger aneinander gekoppelt, als das, was
+ hier durch diesen Strech, durch diesen Stroke, senkrechten Strich getrennt wird.
+ Also, wenn Sie die Klammern machen wollen, ist das okay, ist eigentlich für uns nicht
+ so so kritisch. Also, so eine Regel hier, in der der Name, der auf der linken Seite
+ auftritt, auch auf der rechten Seite auftritt, so was nennen wir eine
+ rekursive Regel. Und hier haben Sie zwei Beispiele von rekursiven Regeln. Und
+ das Wichtige ist immer daran denken, es muss einen Weg geben, daraus zu kommen,
+ ohne dass es das eben ein neuer Name eingefügt wird. War da eine Frage?
+ Ja, vier.
+ Wenn wir das Epsilon werden, heißt das also, dass die Reihe immer der Ende fehlt?
+ Ja, natürlich, weil der Epsilon ist weg, genau. Wenn es Geld ausgegeben ist, ist es weg,
+ nicht wahr? Ja, genau, richtig. Also, ist dann einfach verschwunden, ja.
+ Okay.
+ Ja, okay, jetzt, jemand hat zu Recht bemerkt, dass wenn wir das so machten, dann
+ hätten wir ja wieder Epsilon als Zahl, das stimmt, das ist hier möglich.
+ Also, wollen wir vielleicht nicht, aber mir geht es eigentlich nur darum, dass
+ Sie sehen, dass es möglich ist, den Namen, den wir auf der linken Seite haben, auch
+ auf der rechten Seite zu haben. Und zweitens, wenn ich das mache, muss es ein Weg
+ gehen, sei es durch Option, sei es auch durch eine Wiederholung, geht ja auch mit
+ nullmal, oder sei es mit einem expliziten Epsilon, eben eine rechte Seite zu finden,
+ die eben nicht den Namen enthält, der bereits auf der linken Seite definiert ist,
+ weil sonst eben wir nie den Punkt erreichen, dass wir alle diese Namen der Regeln
+ aus unseren Symbolen entfernt haben. Also, und so eine Regel, die nennen wir
+ Rekursiv, der Name wird in der Definition verwendet. Also, hier, das war das
+ Beispiel, so wie ich es gerne sehen würde, eine positive Integer fängt mit einer
+ Digit an und danach eben kommt nochmals gleich hinterher. Und wir sagen, eine
+ Beschreibung ist Rekursiv, wenn mindestens eine Rekursive Regel in dieser
+ Beschreibung vorhanden ist. Und eben eine Rekursive Beschreibung enthält dann
+ eben Rekursive Regel. Jetzt, wenn Sie ein bisschen weiter verfolgen, da gibt es
+ eben die Unterscheidung zwischen direkt und indirekt Rekursiv. Wir sagen
+ direkt Rekursiv, wenn der Name der Regel in der Definition selber verwendet wird.
+ Also, ich habe hier das R auf der linken Seite und ich habe hier das R auf der
+ rechten Seite. Sie sehen, je nachdem, mit wem Sie reden, da gibt es da
+ verschiedenen Stil. Also, hier kann ich, was kann ich auf diese Weise erzeugen? Ich
+ kann also erzeugen ein A, ich kann zwei As erzeugen, ich kann aber auch Epsilon
+ erzeugen, weil hier im Grunde genommen davor steht eigentlich nichts. Daher
+ manche Leute bevorzugen, dass Epsilon hinzuschreiben. Deswegen ist das
+ manchmal sinnvoll, wenn Sie sich diese Regel hier und diese Regel hier angucken,
+ mit oder ohne Klammerspielkeine Rolle. Hier ist es leicht zu übersehen, dass da
+ eigentlich auch eine Epsilon- rechte Seite existiert. Wenn ich das so mache, dann
+ sehe ich sofort, hoffe ich mal, da könnte ja auch Epsilon gewählt werden und
+ in dem Fall würde diese Regel nicht weiter ausgespielt werden.
+ Und eben, Sie können es mit Klammer machen oder nicht, das ist für uns nicht so
+ wichtig. Also, das ist der Grund, das ist die Sache der, das ist die einfachste Form
+ einer rekursiven Beschreibung. Ja, rekursive Beschreibung besteht nur aus
+ einer Regel, die Regel hat zwei rechte Seiten und auch einer Seite
+ erscheint der Name noch mal, das haben wir da als rekursive Sache.
+ Und jetzt fragen sich natürlich, warum machen wir das eigentlich überhaupt?
+ Warum machen wir das eigentlich überhaupt? Ist das nur so gedacht, also gucken wir
+ diese letzte Regel noch mal an. Also, R ist definiert als Epsilon oder A R.
+ So, mit dieser Regel kann ich genauso arbeiten, wie ich vorher mit meinen
+ Tabellen arbeiten könnte. Wenn ich zeigen will, dass A A A, also dreimal der Buchstabe
+ A, ein legales Symbol ist, ja, dann fange ich an mit R, dann nehme ich einmal die
+ rechte Seite, dann nehme ich nochmal dafür die rechte Seite, nochmal diese
+ zwei, also diese rechte Seite, hier eins, zwei, ja. Also, hier habe ich die erste,
+ die, hier habe ich die zweite Seite genommen, hier habe ich nochmal die zweite
+ Seite genommen, hier habe ich nochmal die zweite genommen und jetzt im letzten
+ Schritt gehe ich hin und benutze wähle Epsilon, ja, das war so die erste Option,
+ die ich da hatte und das Epsilon verschwindet dann und übrigbleiben eben
+ dieser String, von dem ich zeigen wollte, dass er da ist, ja. Also, das, was wir hier
+ gesehen haben über Tabellen oder Ableiterungsbäume, wie hier genauso,
+ wir können, wir haben hier R, als unser, als der Regel, der mit der wir arbeiten
+ wollen, jetzt bauen wir den Baum auf, ja, auf dem Baum kommt hier ein A hin und hier
+ ein R, weil wir nehmen die Regel auf der Seite 2, ja. Jetzt gehe ich hin für das
+ R hier, wähle ich wieder A und R, wieder die zweite rechte Seite, ja, hier benutze
+ ich nochmal diese rechte Seite und dann gehe ich hier hin und benutze die erste
+ Regel und dann habe ich hier auch der gezeigt, dass der Baum dafür genauso zu
+ verwenden ist. Also Baum und Tabelle, beides ist ohne weiteres möglich, ja.
+ So, okay, also direkt Rekursiv eben, Rekursiv ist,
+ Name wird in Edition verwendet und das hätten wir natürlich auch anders haben
+ können, das habe ich Ihnen auch mal gezeigt, ja, so haben wir am Anfang die
+ positiven Integers definierte und da haben wir auch genauso gut, statt der
+ Option da oben, hätten wir das wählen können, ja. Und da fragen sich natürlich,
+ hm, warum macht er das eigentlich? Ist das nur hier um uns, ist das jetzt nur,
+ hm, warum dieser Aufwand, hätten wir nicht die Rekursion weglassen können, ja.
+ Weil ich meine, das Beispiel, das ich da eben hatte, ja, hätte ich doch auch genauso
+ gut hier diese, hm, EBNF Regel haben können, ja. R ist definiert als eine beliebige
+ aufeinanderreihung von A, ja. Das hätte uns auch, epsilon, A, A, A und so weiter
+ gegeben, ja. Also, ja, warum brauchen wir das, ja. Dann kommt dann die Frage,
+ jetzt habe ich uns hier genauso, ja, ich habe hier noch ein Beispiel, ja, das hätte
+ ich auch machen können. Ist die Frage, ist das nur eine Idee, die wir machen,
+ um Studierenden das Leben interessant zu machen, ja. Könnten wir eigentlich jede
+ Rekursion durch Wiederholungen ausdrücken, ja. Also, gibt es diese, diese Umformung,
+ wie ich sie hier ist, im Kopf gemacht habe, die dazu führte, dass wir hier diese beiden
+ Regeln haben, ja. Ist das immer möglich, ja. Und umgekehrt, wenn ich schon mal eine
+ Wiederholung habe, es könnte ja sein, dass mir irgendein Mensch so eine Wiederholung
+ gegeben hat, ja, kann ich die dann auch durch Rekursion ausdrücken. Also, sind
+ Rekursionen und und Wiederholung eigentlich letztlich gleichwertig, ja. In dem
+ Sinne, dass ich das eine immer benutzen kann, um das andere auszudrücken. Ja.
+ Gibt es einfach, gibt es eventuelle Beispiele, in denen die Wiederholung nicht
+ helfen kann? Vielleicht haben Sie ja die Frage schon mal in einer anderen
+ Zusammenhang gehört, weil die Frage ist nicht ganz neu, die hat es auch schon
+ gegeben. Aber überlegen Sie mal, sind die beiden Sachen, ist da wirklich ein,
+ ist da, können wir jede Rekursion durch Wiederholung oder Wiederholungen
+ ausdrücken oder nicht? Was ist so Ihr intuitiver Gedanke, ja. Was ist so,
+ Ihr fragt mich jemand über irrektere Rekursionen, kommen wir nachher noch
+ aufzusprechen. Überlegen Sie erstmal, ja. Jetzt, die Sache ist die, es wäre
+ schön, wenn man jede Rekursion durch Wiederholungen ausdrücken kann. Aber die
+ Antwort ist leider, kann jede Rekursion, die Antwort ist leider nein, ja. Die
+ Antwort, ich kann ja, ich kann jede Wiederholung durch Rekursion ausdrücken,
+ das ist der einfache Teil, ja. Aber es gibt Situationen, wo Rekursion
+ zwingend nötig ist, ja, zwingend nötig, wo also wir ohne Rekursion das nicht
+ ausdrücken könnten, ja. Und deswegen eben halt diese Diskussion oder diese
+ Konzentration auf Rekursion, ja. Jetzt, wie, was für ein Problem könnte es
+ denn geben, was wir mit Wiederholungen nicht ausdrücken können. Stellen Sie sich
+ vor, Sie haben die Aufgabe, Strings zu erzeugen, in denen wir eine Menge von
+ A's haben, gefolgt von einer Menge von B's und, jetzt kommt das wichtige
+ unter, ja, und die Anzahl der A-Zeichen, ja, soll sein gleich die Anzahl der B-Zeichen,
+ ja. Oder wenn wir das ein bisschen formaler ausdrücken sagen, also als legale
+ Symbole sind A hoch N, ja, hoch N, kennen Sie ja, so neben A hoch N, B hoch N, ja.
+ Mit N eine Digit können wir sagen Null oder Eins, das zwei, wo wir anfangen lassen
+ wollen, spielt keine Rolle, ja. Das ist jetzt nicht so wichtig, ja. Aber eben
+ die Zeichen, die wir, oder die Symbole, die wir akzeptieren wollen, sind dieser
+ Form, ja. Die haben N, A's gefolgt von N, B's, ja. Oder das können ein A, ein B,
+ oder zwei A, zwei B, aber eben nicht zwei A und drei B sein, ja. Also das wäre
+ eine Menge von Zeichen, die wir nicht mit Wiederholung ausdrücken können, ja.
+ Aber Sie könnten versuchen, das mit Wiederholung zu machen, ja. Sie könnten
+ sagen, ja, ich definiere mal das D, und das wäre halt ja eine Menge von A's
+ gefolgt von einer Menge von B's. Naja, das ist es auf jeden Fall nicht, das geht
+ nicht, ja. Weil das würde ja auch A, B, B zulassen, ja. Sie könnten sagen, ja,
+ vielleicht kann ich es definieren als A, B Wiederholung, ja. Weil dann habe ich
+ zumindest immer die gleiche Anzahl A's und Alkwärke B's. Aber das geht auch
+ nicht, weil das wäre ja A, B, A, B, das wäre ein legales Symbol, ja. Ist nicht
+ das, was wir wollen, ja. Sie können das jetzt noch ein bisschen weiter, wenn
+ Sie Zeit haben in der Pause ausprobieren, ja. Aber Sie können mir glauben, es gibt
+ keinen einfachen Weg, keinen Weg das mit Wiederholung auszudrücken, ja. Also das
+ ist eine Situation, wo wir Rekursion zwingend brauchen, um das eben halt
+ machen zu, um eben das beschreiben zu können oder machen zu können, ja. Also
+ das ist halt der Grund, warum wir uns für Rekursion interessieren, ja. Die,
+ was wir hier haben, kann eben nicht durch eine Wiederholung ausgerückt werden, ja.
+ Sie können das in verschiedensten Formen machen, ja. Aber hingegen eine einfache
+ Regel erlaubt es uns mit einer Rekursion das auszudrücken, ja. Hier habe ich
+ ein einfaches Beispiel. Ich gehe hin, ich nenne das Balance, entweder Epsilon
+ oder A Balance B, Klammer für die, die es noch wollen, ja. Und wenn er kann
+ ich jetzt hingehen, wenn ich also zeigen will, dass A B ein legales Symbol ist,
+ dann fange ich an mit Balance, ja. Dann wollen Sie das als Baum, wenn jemand
+ was als Baum, gehe ich hin, wähle, hier habe ich die Regel 1, hier habe ich
+ nicht die Seite 1, die Seite 2, ich wähle die Option, der zweiten Seite, dann
+ habe ich also hier A Balance B und dann wähle ich jetzt hier die aus der
+ ersten, mache das Epsilon, habe ich da A B, ja. Oder wenn ich zeigen will, dass A
+ A B B ein legales Symbol ist, fange ich wieder mit Balance an, ja.
+ Gehe ich hin, habe ich hier A Balance, wieder die zweite Seite der Regel
+ genommen, ja. Jetzt gehe ich hin, nehme nochmal A Balance B, wieder also
+ zweite, zweite Auswahl da genommen und jetzt nehme ich die erste, mache
+ Epsilon und Sie sehen, so kann ich also beliebige Folgen erzeugen, in denen
+ die Anzahl der Aß gleich Anzahl der Bß ist, ja. Also das ist halt eben, das
+ können Sie wiederholung nicht machen. Aber umgekehrt, eben jede
+ Wiederholung kann durch Rekursion ausgedrückt werden und wir werden
+ noch mehr über Rekursion später auf der Zeit lernen und sehen, was der
+ Unterschied ist, wo das einmal besser ist als das andere. Das ist für uns
+ heute noch nicht so wichtig und was Sie aber mitnehmen sollten ist, dass
+ eben Rekursion ist mächtiger als die Wiederholungen. So, da fragte
+ mich jemand, wie funktioniert indirekte Rekursion, das kann ich Ihnen
+ auch sagen. Also indirekte Rekursion ist das, wenn wir eine Folge von
+ Rekursion haben, N1, N2 und so weiter bis NK, ja. So, dass N2 erscheint
+ auf der rechten Seite von N1 und N3 auf der rechten Seite von N2 und so
+ weiter, bis wir dann zu dem Punkt kommen, dass N1 auf der rechten Seite von
+ NK erscheint, ja. Also hier ist ein einfaches Beispiel. Ich habe hier die
+ Beschreibung für N1, das ist die Beschreibung, ja. Und das ist definiert
+ als der Buchstabe A, gefolgt von N2. Und N2 ist hier oben definiert, ja.
+ Und N2, habe ich jetzt mit Klammern noch gemacht, ja. N2 ist definiert
+ als die Auswahl entweder N1 gefolgt von B oder ein X gefolgt von B. X, A,
+ X und B sind die Zeichen, die am Ende erscheinen dürfen, ja. Also so
+ kann ich dann hier eben eine indirekte Rekursion, weil eben,
+ das kann ich auch anders schreiben können, ja. Das ist einfach nur wie man die
+ Regeln aufteilen will, ja. Wenn Sie direkte Rekursion verstanden haben,
+ wie das, das hier ist nur fancy Footwork, ja. Das bringt nicht viel, das ist
+ auch wichtig, weil da nicht mal übersichtlicher wird und so weiter,
+ aber das konzeptionell Interessante ist eben die Rekursion, ja. So, also
+ wie gesagt, die können wir mit oder ohne Klammern machen, ganz wie Sie wollen, ja.
+ Also, so nochmal kurz als Zusammenfassung, ja. Wir haben also gesehen, es gibt
+ für uns verschiedene Wege, so eine EBNF Beschreibung zu gebrauchen.
+ Wir können die benutzen, um Ableitungsbäume zu erstellen, Tabellen zu
+ erstellen, die Grafen haben wir kurz gesehen, wenn wir viel Zeit haben,
+ keine noch kurz paar Mehrsachen dazu sagen, ja. Im Grunde genommen,
+ alles sind das Wege, wie wir demonstrieren können, das ein Symbol,
+ das wir haben, legal entsprechend dieser EBNF Beschreibung ist, ja. Und der
+ EBNF Graf ist halt ein anderer Weg, das zu machen, ist aber nicht fundamental
+ anders, ja. Und das geht eben mit und ohne Rekursion, ja. Ich habe Elastas hier
+ drinnen, Beispiel mit einer anderen EBNF Beschreibung, mit paar anderen Regeln,
+ sowohl als Tabelle als als Baum, ja. Können Sie alles machen, also wie Sie,
+ wie Sie das wollen, ja. So. Und eben der Grafen erlauben uns eben halt,
+ das eben ein bisschen bildlicher darzustellen, hatte ich am Freitag morgens noch
+ kurz gesagt, wenn wir hier diese EBNF Beschreibung für Integer haben, ja.
+ Dann könnten wir eben einen Grafen haben für die ganze Auswahl bei Digit, ja.
+ Und dann könnten wir die kombinieren und sagen, okay, eine Integer besteht
+ eben entweder aus diesem Block oder eben nicht, das ist der Epsilon-Fahrt, ja.
+ Und dann kommt eine Digit, die muss da sein, ja. Und danach kommen entweder
+ beliebig viele Digits, ja, oder gar nichts, der Epsilon-Fahrt, ja.
+ Das wäre ein anderer Weg, die zu beschreiben. Und manche Leute finden das
+ sinnvoll, wenn sie, oder besser, wenn sie sich jetzt diese Grafen ineinander
+ einsetzen, ja. Das nennt man Substitution, da könnten sie diesen
+ Digit-Graf hier einsetzen, ja. Da könnten sie also den da reinsetzen,
+ dann bekämen sie sowas, ja. Also das Gleiche wie vorher, ja. Also Integer
+ ist definiert als plus oder minus oder gar nichts, ja. Und danach eine von diesen
+ Digits, wie damit der Null am Anfang erlaubt, ja. Und danach eben beliebig
+ viele von diesen Digits oder gar nichts, ja. Und dann eben ein legales Symbol
+ ist eben ein Fahrt durch diesen Grafen, ja. Also wenn sie zeigen wollten,
+ dass plus 7 1 legal ist, ja, sie würden hier anfangen. Jetzt wüssten sie halt,
+ dass sie hier oben durch das Plus gehen müssten, ja, kommen hier runter, ah, hier
+ haben wir die, haben wir die, über die 7, dann nehmen wir hierhin, ja.
+ Jetzt haben wir hier, machen wir nicht Epsilon, weil wir haben ja noch die
+ Einstiehverlust, die wir verarbeit erklären müssen, kommen wir hierhin.
+ Jetzt hier an dem Punkt könnten wir noch mal durchgehen, wenn wir wollten und
+ längere Zahl haben, aber haben wir nicht. Also gehen wir zum Ausgang und sind
+ wir dadurch fertig, ja. Also das ist so ein anderer Weg, wie man, wie man eben
+ auch so eine EBNF Beschreibung machen kann, ist für manche Leute leichter
+ oder einfacher, ja. So. Und dann eben können wir gucken, was haben diese,
+ was für EBNF Regeln könnten wir gebrauchen, um hier diese, sollte ich mal
+ diese drei Grafen zu beschreiben, dann können wir doch vom Grafen zurück zur
+ Beschreibung, ja. Könnten Sie auch den Kopf gehen lassen und schon mal den
+ Computer rausholen, ja. Also wenn wir so was hier haben, was ist das, ja.
+ Was ist legal, ja. Also können wir uns angucken, also Epsilon ist auf jeden Fall legal, ja.
+ A ist legal, B ist legal. Wenn ich einmal A hatte, kann ich noch ein A haben,
+ oder wenn ich ein A habe, kann ich im nächsten Durchgang auch ein B haben, ja.
+ Oder wenn ich ein B habe, kann ich danach noch mal ein A haben, oder kann ich danach
+ noch mal ein B haben, oder und so weiter, ja. Also das sind so die Symbole, die ich dir
+ legal durchgehen könnten, ja. Wie würde ich das eben jetzt hier als, wenn ich eine
+ Regel erstellen müsste, ja. Was würde ich da sagen, okay, ich habe die Wahl zwischen A
+ oder B, ja. Und davon beliebig viele, ja. Also G ist definiert als beliebig viele
+ Wiederholungen von A oder B, ja. So kann ich aus dem Grafen ohne weiteres den
+ gewünschten, die gewünschte Regel bekommen, ja. Und genauso wenn Sie hier dieses
+ Beispiel nehmen, ja. Wenn Sie hier dieses hätten, ja. Was wäre denn da der, wäre denn
+ da richtig? Ich habe hier, was habe ich hier? Ich kann eine C haben, oder ich kann A
+ gefolgt von B haben, ja. Also ja, das wäre also entweder habe ich A, B gefolgt von C
+ oder C, ja, nicht A, B gefolgt von C, aber entweder A, B oder ich habe C, ja.
+ Oder ich sage, ich habe C oder ich habe A, B, ja. Also A gefolgt von B wäre eine Option
+ oder C die andere. Ja, das hatten wir auch schon mal gesehen. So. Und um mal zu gucken,
+ ob Klickern auch lebt, habe ich hier eine Dritte und die könnten Sie sich mal überlegen,
+ was da denn da die richtige, die rechte, richtige, eine richtige rechte Seite wäre.
+ Das ist ja nicht eindeutig, ja. Da können Sie beliebig viele, da gibt es beliebig viele
+ Möglichkeiten, das zu machen. Aber Sie könnten mal gucken, ob da, oh, gucken, please start.
+ Sie haben noch als positive, als positive Information für Sie, es hat sich jetzt eine
+ Taskforce gebildet, die versucht rauszufinden, warum hier das Klickern nicht funktioniert,
+ mit Glück schaffen, die eine Lösung zu finden. Und was mich die aber bitten zu sagen ist,
+ Sie sollten, wenn Sie sich aufs Weiharles des drahtlose Netz hier einloggen,
+ gucken, dass Sie nicht alle auf Public gehen, es gibt da auch ETH, ETH5 und so weiter
+ und die könnten Sie auch alle versuchen. So. Also, ich läuft es, ich sehe einzelne
+ Leute stimmen ab, das ist super. Also, was ist die, was ist die gewünschte Form dafür?
+ Okay, ich sehe gute Antworten. Noch eine Minute. Okay. Noch die letzte Chance,
+ paar Stimmen abzugeben. So, was finden wir denn hier? Also, was sind denn legale Symbolen,
+ die hier erzeugt werden könnten? Also, einmal natürlich sofort, dass Epsilon,
+ können hier durchgehen und sowohl hier oben als hier unten durch ist nichts Epsilon.
+ Oder A, oder zweimal A, oder beliebig oft A, oder B, oder zweimal B, oder dreimal B,
+ oder beliebig oft B. Also, als mögliche Antwort wäre also entweder beliebige
+ Wiederholungen von A, oder beliebige Wiederholungen von B, oder beliebige Wiederholungen
+ von B, oder beliebige Wiederholungen von A. Es ist kein Unterschied, ob Sie das so
+ oder anders machen. Also, hier die richtige, eine richtige Antwort wäre
+ Wiederholungen von A, gefolgt von Wiederholungen von B. So, ja, das also ist ein anderer Weg,
+ wie wir das da, wie wir da weitermachen können. So, und jetzt noch eben zwei Sachen
+ zum Thema EBNF-Geschichte. Ich hatte Ihnen gesagt, das E steht für Erweiter,
+ dass eben das die erweiterte Form von BNF, wo kommt dieses Extended her?
+ Weil früher gab es nur BNF, und BNF war eben Bakus Naurer oder Bakus Normalform,
+ und die hatte eben nur Rekursion und Auswahl. Und als Niklas Wirt, der früher mal hier
+ Professor war, eine Programmiersprache namens Pascal definierte, das ist schon lange her,
+ aber da stört er ihn das, und er fand das nicht so elegant, und der hat dann eben
+ halt die Option und Wiederholung hinzugefügt. Und das hat dann eben doch
+ Anklang gefunden, und deswegen heißt das jetzt E die erweiterte Extended Form von BNF.
+ Also, wie würde so Integer aussehen ohne Wiederholung? Sehen Sie hier mit Rekursion,
+ ja? Eine Integer ist eben hier sign or digit, or digits, und digits kann dann
+ dahingehen. Also so können Sie das auch machen, geht auch, ist vielleicht nicht ganz
+ so einfach, aber ist auch möglich. Ja, und das war es, was ich, ich kann ja, was zum
+ Thema EBNF ich Ihnen sagen wollte, ja? Und Sie hatten noch eine Frage.
+ [Unverständlich]
+ Ich verstehe, was meinen Sie mit Implicit?
+ [Unverständlich]
+ Ja, genau, auch bei BNF können Sie es auch machen. Die Aufreihung ist mit dabei.
+ Die Aufreihung haben Sie immer, weil ohne Aufreihung könnten Sie hier das nicht machen.
+ Aufreihung ist eine didaktische Idee, die wir benutzen, um Ihnen das Einstieg zu erleichtern.
+ Das ist nicht so essentiell, essentiell und wichtig sind eben halt hier, ob Sie eben
+ Rekursionen und Auswahl machen oder ob Sie auch Optionen und Wiederholung haben wollen.
+ Ausaufreihung ist immer mit dabei. Ja, so. Okay, ja, das war es zum Thema EBNF.
+ Und ich würde sagen, die drei Minuten bis zur Pause überskippen wir, und wir machen dann
+ um zehn Minuten nach elf, schaffen wir das? Zehn nach elf, machen wir weiter, ja?
+ Oder soll ich jetzt doch drei Minuten machen? Machen wir jetzt Pause.
+ Um elf Uhr zehn geht es weiter, ja? Bis elf Uhr zehn Pause, ja?
+ Aber wirklich elf Uhr zehn, ja? Um dann zu sehen, wie es geht, ja?
+ Okay, also alle haben das gesehen, die meisten von Ihnen sind ja eingetragen und das sollte
+ kein Problem sein. Also, machen wir jetzt weiter und fangen wir mit einfachen Java-Programmen an.
+ Ganz einfachen, ja? Also, wenn Sie Java schon kennen oder schon programmieren können,
+ Sie das langweil, dann bitte verwenden Sie mehr Zeit auf andere Vorlesungen, ja?
+ Wie gesagt, es gibt einige, die das noch nicht kennen und trotzdem würde ich Sie bitten,
+ deswegen würde ich Sie bitten, das zu berücksichtigen.
+ Okay, also wir fangen mit den einfachsten Java-Programmen an und dann kommen wir auf Methoden zu sprechen,
+ einen Weg, wie wir einem Programm etwa Struktur geben können.
+ Und dann, wahrscheinlich in der nächsten Vorlesung am Donnerstag, rede ich dann über Typen und Variable.
+ Also am Anfang machen wir wirklich ganz, ganz einfach, ganz, ganz einfach.
+ Also, eBNF hält die Sündtagsregeln von Java-Programmen fest, ja?
+ Das hält also fest, was für Namen wir verwenden können.
+ Also heißt es da, Bezeichner, also Identifiers, müssen bestimmte Anforderungen erfüllen.
+ Sie müssen mindestens ein Zeichen lang sein, also Epsilon geht nicht, ja?
+ Sie müssen mit einem Buchstaben anfangen, ja? Das ist entweder A bis Z oder klein oder große.
+ Und diejenigen von Ihnen, die sich aus Sprachen kommen, in denen solche Sachen existieren, ja?
+ Das ist alles interessant, aber, ja?
+ Mein Ratschlag ist keine Umlaute, keine Sonderzeichen und so weiter.
+ Damit handeln Sie sich nur später Probleme ein, ja?
+ Oder eben ein Name kann Buchstaben oder Ziffern enthalten.
+ Das ist nicht die ganze Java-Geschichte, ja?
+ In Java gibt es noch ein paar mehr Regeln und andere Sachen,
+ aber das ist ja nicht unser Ziel, alle Java-Sachen Ihnen beizubringen, sondern nur das Wichtigste.
+ Und die EBNF-Beschreibung für also legale Bezeichner wäre eben so etwas, ja?
+ Ein Bezeichner besteht aus einem Buchstaben, gefolgt von Buchstaben oder Ziffern und so weiter, ja?
+ So, und das sind ja die Regeln.
+ Aber damit natürlich können Sie nicht, das ist nicht programmieren.
+ Programmieren ist was anderes, hatten wir gesagt.
+ Nämlich das Erstellen von Programmen.
+ Und natürlich in diesen Programmen werden wir solche Bezeichner brauchen, ja?
+ Das ist nicht den Grund.
+ Und wenn man also von sagt Programmieren ist Erstellen von Programmen,
+ da sind da zwei Aspekte.
+ Einmal müssen wir die Programme erstellen und zum anderen müssen wir die Programme ausführen, ja?
+ Das haben wir ja gesehen, das ist das Interessante an der Informatik,
+ dass wir nicht nur ein Programm schreiben sollen,
+ sondern auch das Programm auch von einem Menschen oder einer Maschine ausgeführt werden kann.
+ Und da gibt es zwei prinzipielle Möglichkeiten, das zu machen.
+ Und die erste Möglichkeit ist, wir nehmen das ein ganzes Programm
+ und dann dieses Programm ist dann in einer Datei oder in mehreren Dateien.
+ Und dann haben wir das Problem, also müssen wir eben die Datei erstellen,
+ dann muss das Programm ausgeführt werden, dann muss eventuell das modifiziert werden
+ und dann geht das vielleicht nochmal wieder zum Ausführen und so weiter hin.
+ Aber das Entscheidende ist, wir haben das ganze Programm
+ und das ist in einer oder mehreren Dateien.
+ Und der andere Weg, den wir wählen können
+ und beide Wege haben ihre Vorteile, ja,
+ ist, dass wir einzelne Anweisungen aus Java ausführen können.
+ Da könnten wir für jede dieser Anweisungen, könnten wir jetzt über das Computer hingehen,
+ der würde die lesen, der würde ausführen,
+ würde gucken, was bedeutet diese Anweisung überhaupt
+ und gibt dann das Ergebnis aus.
+ Dann gibt es die nächste Anweisung vor und macht das hintereinander.
+ Und sowas nennt man den Rappel.
+ Ried evaluate print loop, ja, Ried, also der liest hier eine Anweisung,
+ der Computer evaluiert sie, also führt sie aus,
+ dann gibt er aus, was für eine Ausgabe da immer Sinn macht
+ und dann fängt er von vorne an, loop, ja.
+ Also beide dieser Wege existieren, wir werden auf beide zu sprechen kommen,
+ aber überwiegend werden wir uns hier in dieser Vorlesung mit dem Weg beschäftigen,
+ indem wir mit ganzen Java-Programmen arbeiten, die dann in irgendwelchen Dateien sind.
+ Und der Grund, warum wir das machen, ist, das ist der Weg zu größeren Programmen.
+ Wenn ich einzelne Java-Anweisungen ausführen kann, ist das super,
+ weil so kann ich rausfinden, was genau die denn eigentlich machen wollen, ja.
+ Aber wenn ich größere Programme schreibe, dann sind das nicht nur Anweisungen,
+ da sind das große Sammlungen von Anweisungen, Programme und so weiter.
+ Und andere Vorlesungen eben verlangen das auch
+ und deswegen benutzen wir hier in der Vorlesung diesen Ansatz,
+ dass wir also halt unsere Programme in der Datei ablegen oder in Dateien ablegen
+ und dann da entsprechend durcharbeiten, ja.
+ Also müssen Sie sich so vorstellen, wenn Sie es schon mal gesehen haben,
+ es ist wahrscheinlich trivial, aber wir haben also unser Java-Programm
+ und das ist geschrieben in Text, ja.
+ Das besteht aus einer Folge von Java-Anweisungen, ja.
+ Und dann wollen wir irgendwelchen Output haben.
+ Der Output könnte auch wieder Text sein
+ oder könnte, wenn wir etwas ambitionierter sind,
+ vielleicht eine Grafik sein, ja.
+ Oder könnte auch irgendeine Folge von Bits oder Bytes oder irgendwas sein,
+ was von irgendeinem anderen System dann später irgendwie verarbeitet wird, ja.
+ So, jetzt, wie komme ich von der linken Seite auf die rechte Seite, ja.
+ Na, da gibt es bei Hilfswerkzeuge, ja.
+ Da gibt es ein Hilfswerkzeug, das heißt Compiler, ja.
+ Der Compiler nimmt den Text des Java-Programms
+ und übersetzt das in einen anderen Text.
+ Und zwar in Text, der von einem, dem Java-Prozessor später verstanden werden kann.
+ Das heißt, dieses Programm besteht jetzt aus Instruktionen für irgendeinen Prozessor.
+ Der Prozessor weiß, was der Compiler weiß, was für ein Prozessor sie verwenden werden
+ und daher wählt der entsprechende Befehle aus
+ und schreibt die in diesen, in irgendeinen Programm rein, ja.
+ Das übersetzt der, macht der übersetzt der das, ja.
+ Wir nennen das der Compiler übersetzt oder kompiliert, ja.
+ So, und dann diese Anweisungen, die werden dann von einem Prozessor genommen, ja.
+ Und dieser Prozessor geht dann hin und führt die Anweisungen außen.
+ Eine Anweisung könnte sein eben, drucken sie was oder zeichnen sie ein schönes Bild
+ oder irgendwas anderes, ja.
+ So, jetzt, das ist so die, der Workflow.
+ Jetzt, manche Leute, die auch ich gehöre, schreiben nicht immer korrekte Programme.
+ Ich weiß, sie sind, sie werden das besser machen, ja.
+ Aber vielleicht kann auch Ihnen mal ein Fehler unterlaufen.
+ Und darum eben, geht der Compiler hin und übersetzt nicht nur,
+ sondern der Compiler prüft auch.
+ Der Compiler guckt nach, ob das, was Sie hier haben, legal ist.
+ Dass irgendwelchen Regeln entspricht oder genehmigt wird, ja.
+ Und wenn das ich der Fall ist, dann beschwert sich der Compiler und sagt, das geht nicht.
+ Sie wollen das und das machen, ist nicht erlaubt, ja.
+ Und daher, dann beschwert sich der Compiler.
+ Und dann geht der Compiler hin, produziert das Java-Programm als Prozessorinstitutionen.
+ Aber der Compiler sagt sich, na ja, ich kann ja nicht alles prüfen, ja.
+ Es gibt ja Sachen, die kann ich erst dann prüfen, wenn das Programm ausgeführt wird, ja.
+ Darum geht dann der Compiler hin und fügt in das Programm weitere Instruktionen ein,
+ die checken zur Laufzeit später, ob alles in Ordnung ist.
+ Das heißt, wenn jetzt das Programm ausgeführt wird, dann checken der Prozessor
+ und das Laufzeitsystem, das Laufzeitsystem ist die Software, die das Programm zur Ausführung bringt und so weiter, ja.
+ Die gehen dann hin und prüfen auch, ja.
+ Die prüfen teilweise aufgrund dieser Instruktionen und vielleicht auch anderer Weise, ja.
+ Und wenn ich sage Prozessor, dann meine ich damit irgendein System, das diese Java-Instruktionen versteht.
+ Das kann hardware sein, das kann Software sein, das kann seine Kombination von hardware und software,
+ das kann ein general purpose Prozessor sein, wie er in meinem Laptop ist, das kann ein spezieller Prozessor sein,
+ wie er in ihrer Java-Shift-Card ist, ja.
+ Das ist alles für uns relativ uninteressant, also schon interessant, aber wichtig ist eben,
+ diese beiden Prozessor- und Laufzeitsystem zusammen prüfen auch nochmal, ja.
+ Und beschweren sich dann, wenn irgendetwas nicht richtig funktioniert, ja.
+ Also das ist so der Blick von ganz oben über das, was da passiert.
+ Das heißt, wir haben also die Aufgabe für unser Programm, wenn wir das erstellen wollen,
+ wir müssen irgendein Editor benutzen, um das Programm als Text zu erstellen.
+ Dann müssen wir einen Compiler benutzen, der eben das Ganze übersetzt und dann müssen wir das Ganze ausführen,
+ gegebenenfalls den Output angucken oder analysieren und dann vielleicht modifizieren und so weiter und so was nochmal zu machen.
+ Und da gibt es natürlich X-Möglichkeiten, das zu machen, ja.
+ Und wir haben uns entschieden, ein IDE, das heißt ein Integrated Development Environment, zu verwenden,
+ und zwar das Eclipse-System. Es gibt auch andere, alle haben Vor-Nachteile, ja.
+ Das ist eine Umgebung, die diese ganzen Komponenten, den Editor, den Compiler, den Prozessor und einiges mehr, zusammenfasst, ja.
+ Und dieses System erlaubt es uns, dann eben halt die Programme auszustellen, auszuführen, zu checken und so weiter.
+ Und das ist wie Java auch ein Industrial Strengths-System.
+ Das heißt, es ist für Leute, Gedacht, die wirklich jeden Tag Programme schreiben.
+ Und natürlich hat das daher viele, viele Aspekte, die wir jetzt am Anfang unserer Vorlesung noch gar nicht alle brauchen.
+ Das ist halt ja wie mit Java, das ist auch alles Mögliche in der Sprache enthalten.
+ Wir werden nicht alles immer brauchen, genauso mit dem Eclipse-IDI brauchen wir auch nicht immer alles, aber es ist verfügbar, wenn wir später brauchen, ja.
+ Und die alle sollten jetzt, oder die meisten von Ihnen, hoffe ich, haben sich schon mal diese Übungsaufgabe 0 angesehen und haben das installiert.
+ Dann haben Sie, Entschuldigung, haben Sie eben die Eclipse auf Ihrem System zum Laufen bekommen, dann sieht das ungefähr so aus, ja.
+ Kleine Unterschiede zwischen Windows und Mac und so weiter, ja.
+ So, wir haben da alles alles da.
+ Und da sind natürlich eben, wie sagte, viele Aspekte abgehandelt, die für uns gar nicht so wichtig sind, ja, oder die wir noch gar nicht angucken wollen.
+ Und wir wollen ja wirklich sehen, wie wir erstmal einfache Programme erscheinen.
+ Und was machen wir jetzt da? Wir können dieses Eclipse natürlich umschreiben, aber die Zeit haben wir nicht.
+ Also decken wir einfach all das ab, was uns nicht interessiert, ja.
+ Ich mag e-Blau sehr, ja.
+ Also haben wir eine große Menge an blauer Folie, mit der decken wir alles das, was uns nicht interessiert und was uns nicht angeht, einfach ab, ja.
+ Mit unser Leben um einiges einfacher.
+ Und dann sieht das nämlich dann so aus, ja.
+ Alle die Sachen lassen da weg und nur dieses eine Fenster interessiert uns da weiter, ja.
+ So, das ist der Weg, das ist das, was uns hier interessiert.
+ Und natürlich, es gibt viele, viele andere Systeme, es gibt IntelliJ und so, auch andere gute Sachen.
+ Es gibt Grund, warum wir Eclipse verwenden ist, dass, erstmal, es ist nicht ganz einfach so was aufzusetzen.
+ Und zu zweit haben wir da einen Weg, wie wir auch die, wie wir ihre Lösungen einsammeln können und so weiter.
+ Also, also, und das ist etwas, was sie in der Prü-, was die ETH Informatikdienste bereit sind, in einer Prüfung zu unterstützen.
+ Ja, es tut Ihnen keinen großen, ich tue Ihnen keinen Gefallen, wenn ich sage, machen Sie doch die Übungsaufgaben mit IntelliJ
+ und dann am Prüfungstag bekommen Sie zum ersten Mal Ihrem Leben Eclipse, ja.
+ Ach, wäre das schön, ja.
+ Also, das wäre nicht fair, ja. Und darum machen wir das nicht, ja.
+ So, darum, ja, ist halt, nichts ist perfekt, ja.
+ So, und weil wir eben, weil wir eben auch nicht ganz gut sehen können, gehe ich jetzt hin und vergrößere mal den Teil, der uns das erste interessiert.
+ Aber diese Idee mit der blauen Farbe können wir ja weiter verwenden, weil auch wenn ich mir das hier ansehe, ja,
+ da gibt es auch noch viele Sachen, die mich eigentlich nicht interessieren, ja.
+ Und das Ziel ist ja einfach, ein einfaches Programm zu schreiben, ein einfaches Programm zu verstehen und das einfache Programm dann auszuführen, ja.
+ Also, das heißt, wir wollen nicht alles behandeln, denn aber eben manche Sachen können wir auch nicht ignorieren, ja.
+ Wir können also nicht einfach blaue Farbe für alles nehmen, dann bleibt das, dann funktioniert das auch nicht, ja.
+ Also, habe ich dieses Programm hier, wo fahren wir jetzt an, blaue Farbe los zu werden, ja, oder einzusetzen.
+ Hier fangen wir also an, Public, Class, Public, oh Gott, ja.
+ Was heißt das? Ah, am besten ignorieren, ja.
+ Also, da kommt jetzt hier die blaue Farbe, ist erst einmal für uns nicht so wichtig, ja.
+ Aber jetzt kommt was, das Class, das können wir nicht mehr ignorieren.
+ Und jetzt kommt was Weiteres, was wir auch nicht ignorieren können.
+ Jetzt kommt hier hinter ein Bezeichner, ein Name, ja.
+ Das ist der Name für unser Programm, können wir nicht ignorieren,
+ weil nämlich dieser Name muss identisch sein mit dem Namen der Datei, in dem das abgelegt ist, ja.
+ Das muss identisch sein, ja.
+ Wenn Sie da einen anderen Namen wählen, sagt der Compiler, Sie haben sich etwas geirrt, ja.
+ Und dann müssen Sie das eine oder andere korrigieren, ja.
+ Also, das ist wirklich wichtig, dass Sie, dass Sie, dass diese beiden Namen stimmen.
+ Und in unserem System muss auch noch diese Dateiname eine Extension haben, die dort Java heißt, damit das System zufrieden ist, ja.
+ Also, das ist halt der, das Public können wir also wirklich nicht ignorieren, ja.
+ Also, das ist wirklich wichtig, dass wir das nicht vergessen, ja.
+ Also, hier eben halt das muss identisch sein, ja.
+ Der Name des Programms muss für das, dem Namen der Dateien sprechen.
+ Und jetzt am Anfang machen wir nur eine Klasse in eine Datei, ja.
+ Es gibt auch Wege, das anders zu machen, aber wir wollen unser Leben nicht unnötig komplizieren, ja.
+ Darum eben halt eine Datei, eine Klasseinfallname, der für beides ist, ja.
+ Also, in unserem Java-Programm angucken, ein Java-Programm besteht eben aus diesen beiden Wörtern Public Class,
+ einem Bezeichner, einen sich öffnenden Klammern, ja.
+ Aber diese öffnenden Klammern muss eben im Text erscheinen, das ist keine EBNF-Regel, ja.
+ Hier sehen wir die öffnenden Klammern, die sind hier und hier.
+ Das sind richtige Klammern, ja, die nicht eben EBNF kontrollieren, sondern in unser Programm auftauchen.
+ Und dann kommt irgendwas, was noch jetzt fehlt, ja.
+ Und danach eben kommt ein, wieder eine sich schließende Klammer.
+ Und die sagt mir, so ist mein Java-Programm vollständig erstellt.
+ Und was fehlt hier? Hier fehlt eben die Definition einer Methode, ja.
+ Jetzt gucken wir es also an, aha.
+ Hier habe ich also eine Methodendefinition.
+ Und zum Glück erinnere ich mich jetzt an meine blaue Farbe, ja.
+ Und es sind natürlich auch wie Public or God Static, ja.
+ Wir sind doch alle so dynamisch, dass wir, ah, woid, was ist das schon wieder, ah, main und so weiter.
+ Also hier können wir kräftig blaue Farbe einsetzen und das alles mal abdecken, ja.
+ Also was übrig bleibt hier ist main, ja.
+ Main ist ein Wiederbezeichner, ja.
+ Und das ist der Name der Java-Methode, mit der wir hier arbeiten, ja.
+ Dieser Name ist fürs erste Mal vorgeschrieben, ja.
+ Da können Sie nicht irgendeinen anderen Namen nehmen.
+ Das muss main sein, ist vorgeschrieben, ja.
+ Und alles andere Zeugstarr, Public Static, Woid und und und, ja.
+ Genauestens bitte kopieren, ja.
+ So, ja.
+ Und diese Methode main, die enthält jetzt die Anweisungen, die wir ausführen wollen oder können, ja.
+ Hier ist eine Folge von Anweisungen, die wir hier haben.
+ Da ist eine, da ist noch eine.
+ Ich zeich mal genauer an, ja.
+ Das ist eine Aufreihung eines Folges von Anweisungen.
+ Und statt Anweisungen sagen wir oft Statements oder wenn wir kürzer schreiben wollen, dann STMT, ja.
+ Das sind also die Java Anweisungen, ja.
+ So, das heißt, wenn wir unser Java-Programm angucken, ja, dann sieht es eigentlich so aus.
+ Also das haben wir ja eben schon gesehen, ja.
+ Public Class, Bezeichner und so weiter.
+ Und haben wir hier eine Messe-Definition.
+ Die Messe-Definition ist eben definiert als auch wieder diese Parki-Words, Public Static, Woid, ja.
+ Dann Main, dann eine sich öffnende Klammer, ja.
+ Und das ist eben eine Klammer im Text, keine EBNF-Konstruktion, keine EBNF-Hilfsanweisung, ja.
+ Das Wort String, zwei eckige Klammer.
+ Sie sehen, die haben alle Verwendung für all die ganzen Klammern gefunden, ja.
+ Aber das muss da auch erscheinen, also nicht optional, das muss da stehen.
+ Irgend ein anderer Name und dann wieder eine sich schließende Klammer.
+ Und dann geht es wieder los mit einer sich öffnenden und später wieder sich schließenden geschweiften Klammer, ja.
+ Also das ist unser einfachstes Programm, mit dem wir erst mal arbeiten können.
+ Und natürlich die Anweisungen, da werden wir später noch mehr sehen, da gibt es viele, viele Möglichkeiten.
+ Zuweisungen, Schleifen und so weiter, ja.
+ Da werden wir uns mal später ein bisschen mehr herum kümmern.
+ Für das erste Mal gucken wir da gar nicht so gauer an, ja.
+ Also es gibt da sehr, sehr viele Anweisungen.
+ Eine Art von Anweisungen werden wir aber schon raten, die früh brauchen, nämlich den Aufruf einer Methode.
+ Der haben dann Methoden, um einfach die aufgerufen.
+ Und zwar Aufruf von Methoden, die global bekannt sind.
+ Also Aufruf von global bekannten Methoden, etwas, was wir recht früh brauchen.
+ Und das ist nicht nur eine Java-Sache, das gibt es auch in vielen, vielen anderen Programmiersprachen.
+ Und daher müssen wir das eben relativ früh benutzen.
+ Und da gibt es zwei verschiedene Formate, wie wir eine Methode aufrufen können.
+ Der erste ist, dass wir einfach den Methoden Namen nehmen, jetzt noch für das erste Mal einfach nur zwei, also eine sich öffnende und eine sich schließende Runde Klammer nehmen und dahinter ein Semikohler stecken.
+ Und das ist der Aufruf einer Methode, ja.
+ So, das ist ein Weg, wie wir das machen können, ja.
+ Diese Methodename muss global bekannt sein, ja.
+ Sonst funktioniert das nicht.
+ Das System muss halt wissen, was jetzt hier, was das für eine Methode ist.
+ Und wenn das global bekannt ist, dann weiß das System, wie das möglich ist, ja.
+ So.
+ Und die andere Weg, Methoden aufzurufen, ja, ist, wenn wir jetzt eben ein Objekt verwenden wollen, das eben so einen Aufruf da ermöglicht.
+ Also da haben wir ein bestimmtes Objekt, da kommt gleich ein bisschen mehr dazu.
+ Und dann machen wir das so, dass wir eben halt das Objekt nehmen, diesen Punkt nicht vergessen und dann den Methoden, den Namen der Methode, den wir haben wollen.
+ Und fürs erste Mal gehen wir auch davon aus, dass da gar einfach nur die sich öffnenden und schließenden Klammern da stehen werden, ja.
+ Also ein einfaches Beispiel wäre eben irgendein Objekt.
+ Sie sehen, die blaue Farbe hilft uns, die Details zu verhindern, nicht zu verhindern, zu verheimlichen.
+ Ein Punkt und dann der Name einer Methode, ja.
+ Und das hatten wir eben schon gesehen, auch wenn sie sich vielleicht nicht bemerkt haben, ja.
+ Das haben wir auch in dem einfachsten Beispiel, in dem wir das eben halt haben können, ja.
+ Also wir haben hier eben, das werden wir später nochmal genauer angucken, ja.
+ Da kommen eventuell Details, ja.
+ Aber die, die wir heute noch nicht brauchen, ja.
+ So können wir auch eine Methode aufrufen, ja.
+ Und das muss jetzt eben eine Methode sein, die eben irgendwie für diesem Objekt zusammenhängt.
+ Die muss vielleicht gar nicht mal global bekannt sein, ja.
+ Ihr fragt natürlich, was sind denn Objekte, ja.
+ Jetzt muss ich doch irgendwann das blaue wegnehmen und ihnen die, ein bisschen die Wahrheit da sagen, ja.
+ Also da können wir, das Thema Objekt wird uns noch das ganze Semester beschäftigen.
+ Und darum am Anfang jetzt eine Vereinfachung, ja.
+ Nicht alles, wenn wir behandeln können.
+ Aber ist ein sehr wichtiges Konzept, das in vielen Programmiersprachen mehr oder weniger gut durchdacht auftritt, ja.
+ Also, vereinfacht.
+ So ein Objekt ist ein, etwas, was von einem Programm erstellt, gelesen oder verändert werden kann.
+ Also eine Einheit der Programmierung, wenn sie so wollen, ja.
+ Etwas, was eben im, da sollte man jetzt nicht mehr blau nehmen, so machen wir jetzt eben Grün, ja.
+ Ein Objekt, das wird vom Programm erstellt, gelesen oder verändert, ja.
+ Und so ein Objekt hat eben einen Zustand.
+ Und der Zustand ist ein Wert, ja.
+ Ein Wert aus einer Menge möglicher Werte, ja.
+ Was die möglichen Werte sind, wenn wir später sehen, wenn wir konkrete Objekte sehen, aber Objekte haben einen Zustand.
+ Zum Weiteren haben Objekte einen Verhalten.
+ Es gibt Operationen, die man mit diesen Objekten machen kann, ja.
+ Entweder mit diesem Objekt oder für dieses Objekt oder in irgendeiner anderen Form gibt es Operationen, die mit dem Objekt zusammen definiert sind.
+ Und dann der dritte Aspekt ist, jedes Objekt hat eine Identität.
+ Das heißt, wenn ich zwei Objekte habe, ja, ein Objekt x und ein Objekt y, dann kann ich fragen, ob x gleich y ist, ja.
+ Was gleich ist, wenn wir später nochmal sehen, wir können unterscheiden zwischen Objekten, wir können die Frage stellen, sind diese beiden Objekte gleich oder nicht gleich, ja.
+ Und was Gleichheit heißt, das wird, das ist ein gutes Thema, wenn wir später sehen, ja.
+ Aber wichtig ist eben, dass wir zwischen Objekten unterscheiden können, weil sie eine Identität haben, ja.
+ Also Objekte können sich vorstellen, sind irgendwelche Bausteine, die unser Programm erstellen kann, die es dann inspizieren kann und dann gegebenenfalls verändern kann.
+ Und mit diesen Bausteinen kann es eben Operationen ausführen, weil jedes Objekt ein Verhalten hat, ja.
+ So, also eben, jetzt hatten wir vorhin gesehen, ja, eben, dass es gibt im System ein Objekt, das heißt System.out, ja.
+ Das ist ein Objekt, das da existiert.
+ Und dieses Objekt erlaubt es uns, bestimmte Operationen auszuführen.
+ Unter anderem eine Operation, die heißt Print Line, Print drucken, ja.
+ Und auch, wenn das heute nicht mehr auf Papier gedruckt wird, der Name ist irgendwie stecken geblieben, ja.
+ Und jetzt sehen Sie hier, wie hatte ich gesagt, so was wird, wie wird so eine Methode aufgerufen, ja.
+ Wir haben hier das Objekt, ja.
+ Ja, hier ist das Objekt, hier ist der fette Punkt, ja, der Dot, ja, Punkt.
+ Und dann ist hier der Name der Operation, die wir ausführen wollen, fürs erste Mal einfach nur mit sich öffnen und schließen Klammern.
+ Natürlich ist das nicht interessant, wir wollen auch irgendwas drucken, da kommen wir gleich darauf zu sprechen, ja.
+ Also so was, diese Methode Print Line, die gibt Text aus, ja.
+ Und es gibt in Java viele Methoden, die mit Text arbeiten.
+ Das ist relativ gut durchdacht, ja.
+ Hier habe ich also ein anderes Objekt, ja.
+ Und für dieses Objekt, ja, habe ich eben halt auch wieder den Dot.
+ Und hier habe ich eine Operation und die heißt To Upper Case.
+ Und dieser Name sagt schon, was die Operation macht, der setzt die kleinen Buchstaben in Großbuchstaben, ja.
+ Also ein E wird zu einem E gemacht und ein L wird zu einem L gemacht und so weiter, ja.
+ Das ist so ein Objekt, ja.
+ Das ist halt, das ist das, was ich eben erzählte, ja.
+ Gleiches System, Objekt, die Methodenname, ja.
+ Das hatten wir auch in dem Programm gesehen, ja.
+ In Java gibt es eine ganze Menge von Operationen, die uns eben erlauben, mit Text zu arbeiten.
+ Und das Schöne ist, oder Gute ist, alle diese Methoden, die wir hier haben,
+ die verändern nicht das Objekt.
+ Das Objekt bleibt, wie es ist, ja.
+ Hier haben wir das Objekt, ja, oder mit Kavins auf Deutsch wollen, ja.
+ Hier haben wir das Objekt, ja.
+ Und das wird nicht verändert, wenn ich eine Operation mit ihm ausführe, ja.
+ Es ist ganz einfach, das Objekt wird genommen und verarbeitet, ja.
+ Hier habe ich das Objekt, das wird in diese, die Methode können sich vorstellen,
+ ist so eine Magie, die schluckt das, guckt sich es einmal an, kommt das Ergebnis raus
+ und das Original ist unverändert.
+ Das müssen Sie immer im Hinterkopf haben, ja.
+ Diese ganzen Methoden, die arbeiten mit Objekten, aber das Objekt bleibt unverändert, ja.
+ So, und dann gehen wir jetzt also hingehen auf unser, unser, das Beistellprogramm,
+ das ich Ihnen zeigte, ja.
+ Also, jetzt sehen Sie schon, ja.
+ Hier haben wir die Objekte, die wir erst mal wieder blau abdecken,
+ weil wir wollen nicht genau da reingucken, wie das geht.
+ Aber hier haben wir dann die Methoden, ja, diese Java-Methode,
+ die eben eine Operation macht, die etwas ausgibt, ja.
+ Und jetzt sehen wir schon, die hat hier Parameter, die hat hier ein Parameter,
+ also, in den Klammern, zwischen den Klammern steht etwas, was eben gedruckt werden soll, ja.
+ Das ist eine Operation dieses Print-Line, das einen String nimmt und den eben druckt, ja.
+ Und String, jetzt werden wir uns gleich nochmal genauer angucken, ja.
+ Ein String ist, lässt sich, Text zwischen diesen Anführungszeichen, ja,
+ durch einen Hoch, durch einen Apostrophe, oder hochkommen, was ich auf Deutsch sage, ja.
+ In Java müssen beide oben sein.
+ Also, beide oben, diese beiden Hochkommers, müssen beide oben sein, ja.
+ Lassen Sie sich nicht von der, es gibt eine Anweisung des Bundesrates, ja.
+ Welcher Art von Anführungszeichen wir offiziell verwenden dürfen, ja.
+ Gut, ist schön, aber nicht für uns, ja.
+ Also, hier, das muss es sein, das und nichts anderes, ja.
+ Und wenn andere Sprachen, es gibt eigentlich die Sprachen, die fangen unten an und hören oben auf,
+ auch nicht bei uns, ja. Also, alles muss am Anfang und am Ende, muss das immer oben sein, ja.
+ Aber wenn ich sonst String habe, dann kann meine Print-Line-Methode mir diesen Text drucken,
+ in irgendeinem Fenster oder irgendeiner Datei, das können wir bei Gelegenheit dann nochmal sehen, ja.
+ Also, jetzt haben wir also das hier abgedeckt, ja.
+ Und jetzt können wir ein bisschen weiter gucken, um zu sehen, was, also,
+ was wir jetzt dem Programm machen können, weil jetzt haben wir das Programm geschrieben
+ und dann wollen wir es ausführen.
+ Und natürlich, da kann ich nicht nur das Programm gucken, da muss ich mir ein bisschen mehr von dieser Eclipse-Umgebung
+ ansehen und ein bisschen mehr blaue Farbe wegnehmen.
+ Und wenn ich das mache, dann sehe ich hier oben einen grünen Pfeil.
+ Ja, grün ist gut, ja. So, hier sehe ich einen grünen Pfeil.
+ Und wenn ich jetzt auf diesen grünen Pfeil klicke, ja, dann wird mein Programm ausgeführt.
+ Und je nachdem, was für ein System Sie haben, sieht das dann vorher so aus oder ein bisschen anders, ja.
+ Hier haben Sie auch einen Fenster, das es Ihnen erlaubt, die Dateien zu finden und so weiter, ja.
+ Aber auf jeden Fall, wenn Sie hier oben drauf klicken, dann wird das Programm automatisch übersetzt und ausgeführt.
+ Weil ausführen können Sie ja nur übersetzte Programme.
+ Wenn Sie es nicht übersetzen, dann kann es nicht ausgeführt werden.
+ Aber in der Java-IDI, das wir haben, wird das eben automatisch gemacht.
+ Und wenn das Programm ohne Fehler ist, wird es entsprechend ausgeführt.
+ Und dann, was passiert, dann sehen wir hier in einem anderen Fenster, habe ich jetzt ein bisschen vergrößert.
+ Dann sehen wir hier das Ergebnis. Hier sehen wir das Programm, wird ausgeführt.
+ Es drückt einmal "Hello World", da sehen wir es, ja.
+ Und dann drückt es das nochmal "Hello World Again", ja.
+ Hier haben wir dann die nächste Zeile gedruckt, ja.
+ Also, nach dem Klicken hier oben, Programm wurde übersetzt, ausgeführt.
+ Die Ausführung wurde dieses Print-Line ausgeführt.
+ Hier sehen wir die erste Zeile, hier sehen wir die nächste Zeile.
+ Und das war die Ausführung des Programms, ja.
+ Wirklich nicht sehr schwierig.
+ So, jetzt, wie gesagt, ich habe hier kräftig helllaue Farbe verwendet,
+ um die Sachen abzudecken, die Sie jetzt am Anfang mal nicht berücksichtigen müssen.
+ Aber wir können natürlich nicht alles weglassen und ignorieren.
+ Sonst kann das Programm entweder nicht übersetzt werden oder nicht ausgeführt werden
+ oder es gibt andere Probleme, ja.
+ Wenn Sie irgendwie Teile weglassen oder Teile vertippen,
+ dann gibt es eben Probleme entweder mit dem Compiler oder mit der Ausführungsumgebung.
+ Jetzt nehmen wir mal an, das Public hätten wir nicht gemocht
+ und wir hätten das Public weglassen, ja.
+ Ja, was passiert dann?
+ Wenn wir jetzt auf den grünen Pfeil klicken, ja, dann sagt das System
+ Main method not found in class hello world.
+ Please, please, ja, please define the main method S, ja.
+ Public static void main.
+ So hat das auszusehen, ja.
+ So und nicht anders, ja.
+ Oder Sie können auch irgendwas anderes machen, genau.
+ Wenn Sie wissen, wie das geht, ist gut.
+ Dann brauchen Sie es hier heute nicht zuhören.
+ Also, dass wenn das Main nicht da ist, ja, dann beschwert sich das System
+ und Sie müssen so eine Main-Methode definieren, ja.
+ Das ist einfach der Fall, weil wenn wir dem System sagen,
+ dass es dieses Programm ausführen soll, dann geht es hin und sucht eine Methode Main,
+ die so aussieht, Public static void und so weiter und führt die dann aus, ja.
+ Und wenn es die nicht findet, beschwert es sich, so wie hier, ja.
+ Also, machen Sie das nicht, ja.
+ Genauso, wenn Sie hier das in der Mitte weglassen zwischen den runden Klammern,
+ brauchen wir zwar zur Zeit noch nicht, aber das heißt noch lange nicht,
+ dass Sie es weglassen können, ja.
+ Das System beschwert sich.
+ Dann sagt er Main method not found, please define a Main method S,
+ Public static void Main, Klammer auf, string,
+ komische Ecke geklammern, args, klammer zu, ja.
+ So, das ist verlangt, ja.
+ Und machen Sie nichts anderes.
+ Und wenn Sie da etwas anderes machen wollen,
+ müssen Sie sich irgendwie sehr gut auskennen oder Sie kriegen Ärger.
+ Nun ist es leider so, dass das System nicht immer Antworten gibt,
+ die so schön sind wie die, ja.
+ Bitte, ja, please, machen Sie doch das, ja.
+ Please, ja, ist es schön, ja.
+ Manchmal haben wir aber auch Pech, und es gibt ganz komische Meldungen,
+ und da muss man aufpassen, was man falsch gemacht hat, ja.
+ Das könnte ja jemand dummerweise hier oben das U weglassen haben, ja.
+ Jetzt, je nachdem, wenn Sie Eclipse verwenden und die Einstellungen richtig sind,
+ dann sehen Sie hier so ein rotes Zeichenbereich.
+ Das heißt, Eclipse ist nicht sehr zufrieden,
+ und hätte gerne, dass Sie noch irgendwas machen, ja.
+ Aber wenn Sie jetzt das gar nicht beachtet haben
+ und trotzdem ausführen wollen,
+ dann gibt es eben halt eine andere Fehlerfällung.
+ Und die sagt eben, Errors existen, es existieren Fehler.
+ Das ist eine sehr allgemeine Aussage, ja.
+ Und jetzt müssen Sie wissen, wo kommt der Fehler denn her, ja.
+ Machen Sie weiter, ja.
+ Je nachdem können wir ja weiter machen, was passiert dann,
+ dann gibt es auf einmal eine Exception, ja.
+ Wenn Sie Exception sehen, das ist schon mal wie so Hochspannung.
+ Vorsicht, da ist irgendwas schief gelaufen, ja.
+ Da ist irgendwas nicht in Ordnung, ja.
+ Also bitte beheben, ja.
+ Ärgerlicher ist es, wenn Sie mal wegen die letzte Klammer vergessen, ja.
+ Das kann man leicht übersehen.
+ Aber auch hier Sie sehen, hier in dieser Spalte ist so ein rotes X,
+ das heißt, da ist da irgendwann nicht in Ordnung, ja.
+ Wenn Sie das aber nicht beachtet haben,
+ bekommen Sie wieder diese schöne Fehlermeldung, es existieren Fehler, ja.
+ Und da müssen Sie damit zurechtkommen.
+ Also, Zusammenfassung, ja.
+ Unser Programm besteht aus eben einer,
+ etwas mit dem, dass die Keywords Public Class hat,
+ dann kommt ein Bezeichner, dann kommen diese geschweiften Klammern,
+ dann kommt eine Methode mit Namen Main, die hat diese, die sieht so aus.
+ Und in dieser Methode sind dann eben verschiedene Anweisungen,
+ und die sind es dann eben halt, die für uns wichtig sind, ja.
+ Also hier dieses Name, hier ist eine Klasse mit Namen Main,
+ und das muss in einer Datei mit genau diesem Namen abgelegt werden,
+ sonst funktioniert das System nicht, ja.
+ Also jedes ausführbare Programm besteht aus dieser Klasse,
+ oder aus einer Klasse, die enthält diese Methode Main.
+ Diese Methode Main wird automatisch ausgeführt,
+ wenn wir auf den grünen Falt klicken,
+ und dann geht alles in Ordnung und am besten, ja.
+ Und während später mit mehreren Klassen arbeiten
+ und mehreren Methoden und so weiter,
+ das ist aber nicht das, was wir heute machen wollen.
+ Jetzt hatte ich gesagt,
+ es gibt auch noch einen anderen Weg, klar, war, Programme auszuführen,
+ und die will ich kurz zeigen.
+ Das ist der Weg, den ich auch in dem Vorkurs verwendet habe,
+ dass wir einzelne Anweisungen ausführen können, ja.
+ Können also eine Anweisung eingeben,
+ und das System geht dann hin und führt diese Anweisung auf.
+ Und wenn Sie das machen, dann brauchen Sie kein Eclipse,
+ das ist so der Grund, warum wir es im Vorkurs gemacht haben,
+ wir brauchen ein Programm, das diese Java Anweisungen liest,
+ und das ist die JShell, die Java Shell, ja.
+ Und das würde dann so aussehen auf Ihrem System,
+ dass Sie halt die JShell auf Ihrem System aufrufen, ja.
+ Und dann können Sie hier zu diesem eben Anweisungen eingeben.
+ So können Sie eingeben die Anweisung,
+ wir nehmen das Objekt System dort out,
+ und wir haben dann den Punkt und dann den Name einer Java Methode,
+ und wir drucken dann, was ist hier, Hello World, ja.
+ Und wenn wir das machen, wird das Programm, liest das JShell,
+ diese Anweisung sieht, ah, ich soll was drucken,
+ und druckt dann hier die Ausgabe hin, ja, das kann man da sehr gut machen.
+ Das ist gut und praktisch, wenn Sie eben irgendetwas mal kurz ausprobieren wollen,
+ oder Ihnen nicht klar ist, wie so was genau funktioniert,
+ aber eben der Nachteil ist, können auch mehrere machen,
+ können die Methode definieren, können die Methode Main definieren.
+ Auf der Stufe JShell, da brauche ich mir diese komischen Keywords,
+ Public und Static und so weiter, die brauche ich da gar nicht erst benutzen,
+ da genügt es, wenn ich das hier sage, ich habe eine Methode Main,
+ das Keyword "Woid", da komme ich, da muss ich wieder Blau anwenden,
+ brauche ich, aber kann ich nicht ignorieren,
+ aber so könnte ich das auch machen, ja.
+ Das ist eben halt der andere Weg, wie ich das mache,
+ entweder tippe ich das ein oder ich lese das aus irgendeiner Datei,
+ kann ich auch machen.
+ Das ist gut für kleinere Programme, für einzelne Sachen,
+ eben der Aufruf muss jetzt explizit sein,
+ das wird nicht automatisch ausgeführt,
+ ich muss hier die Methode selber aufrufen, ja.
+ Also ja, das ist gut, wenn Sie keine Programme haben,
+ die Sie ausprobieren wollen, aber für die Art von Programmen,
+ die wir hier in dieser Vorlesung und vor allen Dingen auch in der anderen
+ Vorlesung machen wollen, ist das nicht so praktisch.
+ Aber was Sie da gelernt haben über das Programmieren mit Java,
+ das geht natürlich in beiden Systemen, ja.
+ Die Regeln für Programme, die Regeln für Anweisungen
+ und so weiter sind identisch, ja.
+ Der Weg über, dass wir mit Dateien arbeiten, der ist kalierbar, ja.
+ Viele Dateien haben, der Weg über einzelne Anweisungen,
+ der ist sehr flexibel, ich kann eine Anweisung modifizieren,
+ ich kann gucken, was passiert denn, wenn ich das ändere und so weiter.
+ Also beide von diesen Wegen haben ihre Bedeutung
+ und je nachdem, was für ein Problem sie haben,
+ ist mal der eine oder mal der andere besser.
+ Aber wenn Sie eben insgesamt hier weitermachen,
+ dann werden Sie sehen, dass dieser Weg in vielen Situationen
+ noch eingesetzt werden muss oder begangen werden muss.
+ Und darum nehmen wir diesen Weg hier in dieser Vorlesung.
+ Also, hat gesagt, jedes Programm braucht einen Namen
+ und die Konvention ist, dass die mit einem Großbuchstaben anfängt.
+ Konvention heißt, alle Leute auf diesem Planeten,
+ die Java programmieren, haben sich entschieden, das so zu machen.
+ Sie können die Ausnahme sein, ja,
+ und können auf Ihrem System das anders machen.
+ Aber wenn Sie mit anderen Leuten zusammenarbeiten wollen,
+ erleichtern Sie allen das Leben, wenn Sie sich auch in die Konvention halten.
+ Und dann eben die Konvention ist,
+ dass man gelegentlich weitere Großbuchstaben verwendet,
+ um die Lesbarkeit zu erhöhen.
+ Weil wenn dann der Name sehr lang wird,
+ dann ist das hilfreich, dass man so gewisse Landmarken hat.
+ Und die Regel ist, und die Regel heißt, wir können das nicht ignorieren,
+ dass der Dateiname genauso ist wie der Programmname.
+ Also, die Datei muss den Namen des Programms haben.
+ Sonst funktioniert das nicht.
+ Und nochmal, wenn ich schon sage, die Konvention des Großbuchstaben,
+ dann in Java sind Klein- und Großbuchstaben unterschiedlich.
+ Sie beiden sind nicht identisch, können sie nicht einfach den einen oder anderen ersetzen.
+ Also, ja.
+ Und dann eben halt, nachdem Sie mit einem Buchstaben angefangen haben,
+ können Sie natürlich den mit anderen Buchstaben oder Ziffern weiter machen.
+ Sie können auch diesen Anderschor verwenden.
+ Das ist so ein Unterstrich.
+ Es gibt noch mehr Konventionen und so weiter.
+ Aber das sind die praktisch vor allem vereinfachen Programme reichen.
+ Die alle mal.
+ Ich meine, es gibt halt noch diverse andere.
+ So, jetzt sage ich Bezeichner, könnten eben sein,
+ den Namen für die Methode, den Namen für das Programm.
+ Aber es gibt ein paar und auch später Bezeichner für Variable, die wir einführen werden.
+ Es gibt paar Wörter, die können Sie nicht als Bezeichner verwenden.
+ Insofern reservierte Wörter, die das Java-System für sich reserviert hat.
+ Und ein paar von denen können Sie in manchen Situationen einsetzen.
+ Wenn Sie es doch mal nach falschen machen, beschwert sich der Kompiler.
+ Es gibt so ein teilweise reservierte Symbole.
+ Dann gibt es reservierte Symbole für besondere Werte.
+ Truf, Fort und Null, werden wir später kennenlernen.
+ Und dann gibt es Worte, die sind reserviert, aber nicht benutzt, zum Beispiel Goto.
+ Einfach, weil es andere Programmiersprachen gab,
+ in denen so etwas mal später früher verwendet wurde,
+ will man verhindern, dass hier einer Unsinn macht.
+ Und natürlich, wenn Sie so ein Programm haben,
+ dann kann man sagen, hier der Nächste, der das Programm bearbeiten muss,
+ möge doch bitte das Programm lesen und verstehen, um was es geht.
+ Und das ist im Prinzip möglich, wenn Sie sich die Java-Anweisungen angucken.
+ Aber manchmal hilft es, wenn man im Programm sich selber noch ein Hinweis einfügt
+ und sagt, hier, das meine ich damit oder das soll gemacht werden.
+ Solche Hinweise nennt man Kommentare.
+ Und die werden eben halt ins System in das Programm eingefügt, um einem Leser zu helfen.
+ Und der Leser, denken Sie, das können auch Sie sein,
+ die nach dem Ende des Semesters nochmal die Programme angucken will.
+ Und da hilft es Ihnen vielleicht, dass Sie sich daran erinnern,
+ erinnert werden, was Sie damals meinten.
+ Diese Kommentare haben im Allgemeinen keine Auswirkungen auf die Ausführung.
+ Aber sie sind sehr hilfreich.
+ Und in Java gibt es zwei Varianten, die eine ist, so zwei Slashes.
+ Dann ist alles von hier bis zum Ende der Zeile ein Kommentar
+ oder eben Slash-Stern bis zum nächsten Stern-Sflash.
+ Alles das ist auch Kommentar.
+ Gute Kommentare machen das Leben der Leser einfacher.
+ Hier hätten wir einfaches Beispiel.
+ Hier würden wir sagen, hier oben ist ein Kommentarblock.
+ Was das für ein Programm ist.
+ Warum haben wir das so gemacht, aus den und den Gründen.
+ Und das ist alles.
+ Und jetzt noch kurz zum Schluss für heute.
+ Ich sage diese Methode Printline, drückt irgendwelche Strings aus.
+ Und ein String ist eben eine Folge, die zwischen diesen Zeichen steht.
+ Das ist sehr zweckmäßig, aber es gibt auch ein paar Einschränkungen oder Regeln.
+ So ein String darf nur eine Zeile lang sein.
+ Also so was hier, wo wir versuchen von einer Zeile auf die nächste zu gehen,
+ das ist kein Jar-Was-String.
+ Und so ein String darf nicht so ein, solche Anführungszeichen enthalten.
+ Also hier so was geht nicht, ist nicht erlaubt.
+ Gibt Wege, wie wir das machen können, aber ist eben halt nicht erlaubt,
+ nicht einfach erlaubt.
+ Also wenn ich das Programm habe, ich kann, dass ich Ihnen eben zeigte,
+ das Printline drückt eine Zeile und drückt dann die nächste.
+ Und wenn ich keine Argument angebe, also keine String da angebe,
+ dann sagt er sich, ach, da war ein Epsilon, das wollte der Benutzer doch nur
+ eine neue Zeile gedruckt bekommen.
+ Und hier habe ich Ihnen den Gefallen getan und habe hier eine neue Zeile gedruckt.
+ So können Sie sich Informationen über das Programm verschaffen,
+ die da eben wichtig sind.
+ Und jetzt kommt natürlich, heute noch nicht, kommt die vor, was mache ich denn,
+ wenn ich so ein Anführungszeichen ausgeben will?
+ Oder was mache ich, wenn ich eine Ende einer Zeile ausgeben will?
+ Ich kann ja im String selber kein Zeilenende angeben.
+ Dafür gibt es sogenannte Ersatzdarstellungen.
+ Die erlauben es mir trotzdem so was auszudrücken.
+ Und die fangen alle mit so einem Backslash, einem Rückwärtsstrich an.
+ Also Backslash T ist der Tab-Charakter, Backslash N heißt hier eine neue Zeile beginnen.
+ Und hier Backslash Anführungszeichen heißt bitte ein Anführungszeichen ausgeben.
+ Das ist nicht Teil meiner Definition des Trings, sondern das ist einfach nur ein Anführungszeichen.
+ Wenn ich jetzt den Backslash selber ausgeben will, dann kann ich hier zwei Backslashes machen.
+ Ich habe ein paar Beispiele davon, die können Sie ausprobieren.
+ Ist wirklich nicht sehr, sehr schwierig, können Sie da in Ruhe machen.
+ Also, was wir jetzt eben gesehen haben, wir haben gesehen, wie wir ein einfaches Programm schreiben.
+ Ein Programm mit dem Namen Hello World.
+ Und das machen wir, indem wir diese Methode Main dahin gehen.
+ Und ich verrate Ihnen kein Geheimnis, wenn ich sage, dass eine Klasse natürlich mehrere Methoden enthalten kann.
+ Also, was wir hier hatten, ich hatte Ihnen erst gesagt und ich will ja nichts zu viel Falsches sagen.
+ Unser Programm hier besteht aus dieser Methode Main.
+ Und hier ist dann eine andere Methode, die ich auch einbringen könnte.
+ Also, ich habe hier die Möglichkeit, nicht nur die eine Methode Main anzugeben,
+ sondern ich habe hier die Möglichkeit auch weitere Methoden anzugeben.
+ Das ist eine andere Methode, die ich hier definiert habe.
+ Die kann auch in diesem Programm mit diesem Namen drin sein.
+ Und da kann ich mir irgendeinen Namen ausdenken.
+ Da kann ich mir den Namen ausdenken, den ich selbst für am besten halte.
+ Und das Gute ist, auf diese Weise kann ich meine Programme etwas besser strukturieren.
+ Sonst hätte ich ja nur die Möglichkeit, in meinem Programm Main Anweisungen unterzubringen.
+ Eine Anweisung nach der anderen.
+ Wenn ich jetzt Methoden habe, dann kann ich diese Folge von Anweisungen strukturieren.
+ Ich kann also hingehen, um diese Methoden, die fassen dann die Anweisungen zusammen.
+ Und der große Vorteil ist, auf diese Weise kann ich Wiederholungen vermeiden.
+ Wenn ich etwas wiederholt mache, dann kann ich halt dieselbe Methode wiederholt aufrufen
+ und muss nicht nochmal dieselben Anweisungen dafür hinstellen.
+ Also, Sie können so sehen, eine neue Methode stellt neue Anweisungen zur Verfügung.
+ Weil ich kann diese Methode aufrufen, um das ebenso zu machen.
+ So, und jetzt gleich ein Wort zum Abschuss heute.
+ Ich hatte gesagt, da kommt dieses Keyword Static.
+ Und das ist ein Keyword, das wir jetzt noch immer benutzen müssen.
+ Das ist zur Zeit vorgeschrieben.
+ Das ist hier bei uns vorgeschrieben.
+ Und das sind Methoden, die haben weitere Eigenschaften.
+ Und Main ist so eine Static Messer.
+ Weil die das eben das Keyword Static vor dem Namen hat.
+ Und Main wird automatisch aufgerufen.
+ Und dass dieses Keyword Static sagt, das ist eine besondere Methode.
+ Wir arbeiten zur Zeit nur mit denen.
+ Versuchen Sie das nicht, das Keyword woanders einzusetzen.
+ Dann hat es ganz andere Bedeutungen.
+ Das war leider eine unglückliche Entscheidung der Java Entwickler,
+ dass sie dieses Keyword für verschiedenste Sachen verwenden.
+ Zur Zeit ist das Keyword Static nur erlaubt vor dem Namen einer Methode.
+ Und das ist vor dem Namen aller Methoden, die wir hier in diesem
+ einfachen Teil der Welt schreiben werden.
+ Hier sehen wir das Static.
+ Und da sehen wir das Static.
+ Alle Methoden, die wir zur Zeit haben, haben dieses Keyword Static.
+ Und auch Blau das Keyword Public davor.
+ Und das Keyword Void, um unser Leben einfach zu gestalten.
+ Das ist alles, was ich für heute habe.
+ Am Donnerstag machen wir dann weiter.
+ Wir gucken uns das ein bisschen genauer an.
+ Wünsche Ihnen bis dahin eine schöne Woche.
+ (Beifall)

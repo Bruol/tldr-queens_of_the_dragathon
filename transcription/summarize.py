@@ -47,7 +47,7 @@ def create_chunk_summaries(filename):
 
     for chunk in chunks:
         text_part = convert_to_detokenized_text(chunk)
-        prompt_request = "Summarize this lecture transcript and return it in markdown format: " + text_part
+        prompt_request = "Make a summary of the following lecture transcript excerpt. Format your response in markdown: " + text_part
         
         message = [
              {"role": "user", "content": prompt_request}
@@ -68,13 +68,16 @@ def create_chunk_summaries(filename):
 
 def get_chunks(infile="input.txt",outfile="output.txt"):
 
-    print("Getting chunks from file: " + infile)
+    print("trying to get chunks from file: " + infile)
 
     if os.path.exists(outfile):
+        print("getting chunks from file")
         # read summary from file if it exists
         with open(outfile, 'r') as f:
             chunk_summaries = f.read()
         
+        chunk_summaries = chunk_summaries.split("\n\n\n\n")
+
         # return summary
         return chunk_summaries
     else:
@@ -90,21 +93,23 @@ def get_chunks(infile="input.txt",outfile="output.txt"):
             for chunk in chunk_summaries:
                 f.write("Summary " + str(i) + ":\n")
                 f.write(chunk)
-                f.write("\n\n")
+                f.write("\n\n\n\n")
                 i += 1
         # return summary
         return chunk_summaries
 
 
-def summarize_chunks(chunk_summaries,outfile):
+def summarize_chunks(chunk_summaries,outfile,prompt):
     
+    print("use chunks to create a summary of the lecture")
+        
     if os.path.exists(outfile):
         # read summary from file if it exists
         with open(outfile, 'r') as f:
             lecture_summary = f.read()
         
     else:
-        prompt_request = "Using the following summaries of different parts of a lecture that together comprise the entire lecture, make a summary that lists the 3-5 main topics along with short key take-aways from those topics. Add subtopics with their own short key take-aways when reasonable.  For each topic: mention from which summary number the information was sourced. \n Finish your response with another section with in depth summaries for each of the topics. Format your response in markdown" + str(chunk_summaries)
+        prompt_request = prompt + str(chunk_summaries)
 
 
         response = openai.ChatCompletion.create(
@@ -122,10 +127,46 @@ def summarize_chunks(chunk_summaries,outfile):
     return lecture_summary
 
 
+def generate_title(lecture_summary, outfile, prompt):
 
+    if os.path.exists(outfile):
+        
+        print("use title from file")
+        # read summary from file if it exists
+        with open(outfile, 'r') as f:
+            lecture_title = f.read()
+        
+        return lecture_title
+    else:
+                
+        print("use lecture summary to create a title for the lecture")
+        
+        prompt_request = prompt + lecture_summary
+
+        response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "user", "content": prompt_request}
+                ]
+            )
+
+        lecture_title = response["choices"][0]["message"]["content"].strip()
+
+        with open(outfile, "w") as f:
+            f.write(lecture_title)
+
+        return lecture_title
+
+    
 if __name__ == "__main__":
 
-    #root_dir = "./transcripts"
+    root_dir = "./transcripts"
+
+    with open("../Prompts/Summary_prompt.txt", "r") as f:
+        summary_prompt = f.read()
+    
+    with open("../Prompts/Title_prompt.txt", "r") as f:
+        title_prompt = f.read()
 
     transcript_files = []
         
@@ -133,20 +174,30 @@ if __name__ == "__main__":
         if os.path.isdir(os.path.join(root_dir,dir)):
             cur_dir = os.path.join(root_dir,dir)
             for file in os.listdir(os.path.join(cur_dir, "transcripts")):
-                infile = os.path.join(cur_dir, "transcripts", file)
-                chunkfile = os.path.join(cur_dir, "chunks", file.replace(".txt", "_chunks.txt"))
-                outfile = os.path.join(cur_dir, "summaries", file.replace(".txt", "_summary.txt"))
+                if file.endswith(".txt"):
+                    infile = os.path.join(cur_dir, "transcripts", file)
+                    chunkfile = os.path.join(cur_dir, "chunks", file.replace(".txt", "_chunks.txt"))
+                    outfile = os.path.join(cur_dir, "summaries", file.replace(".txt", "_summary.txt"))
 
-                tr = [infile, chunkfile, outfile]
+                    tr = [infile, chunkfile, outfile]
 
-                transcript_files.append(tr)
+                    transcript_files.append(tr)
 
+    print(transcript_files)
+    
 
-    for tr in transcript_files:
+    for i in range(0,len(transcript_files)):
+        tr = transcript_files[i]
+
+        print("processing file number: " + str(i) + "\n")
+
         infile = tr[0]
         chunkfile = tr[1]
         outfile = tr[2]
+        outfile_title = tr[2].replace("_summary.txt", "_title.txt")
 
         chunk_summaries = get_chunks(infile, chunkfile)
 
-        lecture_summary = summarize_chunks(chunk_summaries, outfile)
+        lecture_summary = summarize_chunks(chunk_summaries, outfile, summary_prompt)   
+
+        lecture_title = generate_title(lecture_summary, outfile_title, title_prompt)

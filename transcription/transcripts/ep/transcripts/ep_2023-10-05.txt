@@ -1,0 +1,414 @@
+ So einen schönen guten Tag. Ich hoffe der Lautsprecher funktioniert heute und wenn es zu laut ist,
+ Sie wissen ja, den Kurskanal können Sie benutzen, um da was zu sagen.
+ Und wir hatten uns in der letzten Vorlesung eben mit Verzweigungen beschäftigt, mit eben diesen IF-Anweisungen,
+ IF-ELS und so weiter, hatten gesehen, dass wir eben diese Vergleichsoperatoren benutzen können,
+ um Ausdrücke zu formulieren, die dann eben entweder True oder False ergeben
+ und hatten dann uns mit Pre- und Post-Conditions für IF-Anweisungen beschäftigt.
+ Und dann blieb übrig als letztes Thema in dieser Gruppe das Thema der schwächsten Vorbedingungen.
+ Und Sie wissen ja, Sie können dieses Kurskanal benutzen, um Fragen zu stellen,
+ aber eine Frage eben, was ist der Sinn von Y größer 5, wenn Y bekommt den Wert 20 geschrieben wird?
+ Ich vermute, bezieht sich auf dieses Statement hier.
+ Na ja, sehen Sie, erstmal, hier steht zwar Y wird zu 20 gesetzt,
+ aber das ist nur der Fall, wenn Y nicht größer gleich 7 ist,
+ wenn X eben einen anderen Wert hat, wenn nämlich das ja True ist, dann geht es hier durch
+ und in dem Fall findet diese Anweisung statt, wird diese Anweisung ausgeführt und nicht die untere.
+ Ja, warum könnten wir sowas denn vielleicht haben wollen?
+ Ja, nun vielleicht deswegen, weil an einem späteren Teil des Programms
+ dividieren wir die Zahl, die Variable Z durch diesen Ausdruck, Y dividiert durch 6.
+ Und wir wollen vielleicht sicher sein, dass Y mindestens den Wert 6 hat,
+ weil wenn wir eben den Wert 5 hätten, dann würde natürlich Y dividiert durch 6,
+ da ist eine integer Division, ist den Wert 0 ergeben und das würden wir natürlich nicht wollen.
+ Also das kann so ein Grund sein, warum wir so eine Aussage da haben.
+ Aber natürlich, das ist halt eben die Situation, die wir da haben.
+ In diesem Beispiel, aber in allgemeinen Fragen, wo ist natürlich immer,
+ was für eine Vorbedingungen wollen wir eigentlich haben, nach was für einer Vorbedingungen sollten wir suchen?
+ Wenn wir hier so eine Postcondition haben, Y größer gleich 2, dann würde es natürlich für uns,
+ nach dem, was wir jetzt gelernt haben, völlig ausreichen, wenn wir jetzt wüssten, dass X größer als 10 ist.
+ Wenn X größer als 10 ist, dann ist Y wird dann zu einem Wert gesetzt, der mindestens 12 ist.
+ Weil eben wenn es größer als 10 ist, muss es ja mindestens 11 sein und eins dazu ist mindestens 12.
+ Also wäre das erfüllt.
+ Also könnten wir das in der Tat als Vorbedingungen nehmen und könnten noch genauso gut sagen,
+ ja es genügt ja, wenn wir zeigen können, dass Y größer 5 ist.
+ Auch in dem Fall wäre die Bedingung, die wir als Postcondition haben, hier nachher erfüllt.
+ Das ist auch noch, aber wenn wir jetzt hingehen und sagen, X größer gleich 1, das wäre doch eigentlich besser.
+ Das wäre eigentlich die Bedingung, die am wenigsten anspruchsvoll ist.
+ Und um das eben etwas formaler zu machen, führe ich jetzt die Idee ein, dass wir sagen können,
+ dass eine Aussage stärker oder schwächer ist.
+ Also wenn Sie eine Aussage P1 haben und eine zweite Aussage P2 und diese Aussage P1, die Aussage P2 impliziert,
+ also wir können schließen, dass wenn P1 gilt, dann gilt auch immer P2, dann ist P1 stärker als P2.
+ Und umgekehrt sagen wir, dass P2 ist schwächer als P1.
+ Also wenn wir jetzt die Aussage haben, nehmen wir an, dass wir haben die Aussage X ist größer 3
+ und wir haben die Aussage X ist größer 5, dann impliziert die Aussage, dass X größer 3 ist, dass auch,
+ umgekehrt, ich habe jetzt falsch gezeichnet, wenn ich hier X größer als 5 habe und X ist größer 3,
+ wenn ich weiß, dass X größer 5 ist, dann impliziert das auch die Aussage, dass X größer 3 ist.
+ Also das wäre meine Aussage P1 und das wäre meine Aussage P2.
+ Wenn immer P1 gilt, dann gilt auch P2.
+ Also es ist schwieriger P1 zu erfüllen oder zumindest genauso schwierig, wie es ist P2 zu erfüllen.
+ Und wenn wir sagen stärker als, dann sagen wir stärker als oder gleich stark.
+ Wir machen da keinen Unterschied.
+ Also stärker ist stärker als oder genauso stark wie.
+ Die Aussage X ist größer als 3 ist genauso stark wie die Aussage X ist größer als 3.
+ Das würden wir auch noch sagen, weil wenn immer X ist größer als 3 gilt, gilt wirklich auch,
+ X ist immer größer als 3.
+ Also das ist einfach nur jetzt, jetzt warum ist das für uns interessant?
+ Jetzt wir haben uns mit Pre- und Postconditions beschäftigt.
+ Wir haben hier eine Pre-Condition P und eine Post-Condition Q.
+ Und jetzt haben wir eine Pre-Condition P1, sagen wir mal, die ist stärker als die Pre-Condition P.
+ Wenn das P1 ist stärker, das heißt aus P1 impliziert P, dann gilt doch auch,
+ dass aus das P1 als Pre-Condition für das Statement S die Post-Condition Q dann nachgültig sein lässt.
+ Warum? Weil aus P1 folgt P und wir wissen, dass wenn das ein gültiges Hoartrippel ist,
+ das ist nämlich die Annahme, das hier gültiges Hoartrippel, dann ist das auch in der Tat der Fall,
+ wenn ich P1 als Pre-Condition nehme.
+ Und umgekehrt, wenn ich jetzt eine Post-Condition habe, eine Aussage Q1 und diese Aussage ist schwächer als Q
+ oder umgekehrt, Q ist stärker als diese Aussage.
+ Naja, wenn eben P als Pre-Condition mir erlaubt zu sagen, dass nachdem ich S ausgeführt habe,
+ gilt die Post-Condition Q, dann gilt auch danach, dass die Aussage Q1 gilt dann auch.
+ Warum? Weil aus Q folgt Q1 und Q war stärker als Q1 und daher ist das auch ein gültiges Hoartrippel.
+ Und natürlich kann ich genauso argumentieren, dass eben P1 mit dem Statement S und der Post-Condition Q1
+ auch noch wieder ein gültiges Hoartrippel ist, weil aus P1 folgt P, P ist Pre-Condition für S,
+ danach folgt Q und aus Q folgt Q1.
+ Also, dann muss man sich das angucken. Stärkere Pre-Conditions sind kein Problem
+ und schwächere Post-Conditions sind kein Problem.
+ Aber jetzt warum überlegen wir uns das? Wir wollen doch, wenn wir jetzt so ein Statement S haben
+ mit einer Post-Condition Q und wir suchen die beste Pre-Condition P,
+ dann wollen wir doch an sich eine Pre-Condition haben, die so ist, dass es die schwächste Pre-Condition ist,
+ die gerade noch ausreicht, um mir zu zeigen, dass nach der Ausführung von S gilt die Post-Condition Q.
+ Also, wenn wir zeigen könnten, dass wir eben ein PS finden, so, dass das PS die schwächste Pre-Condition ist,
+ dann haben wir die Situation, dass wir gerade so viele Annahmen machen für die Ausführung dieses Programmes,
+ wie nötig sind, dass wir das eben halt machen können.
+ Das ist also der Gedanke, warum wir das machen, weil wenn wir nämlich das so gewählt haben,
+ dann können wir uns irgendeine Pre-Condition wählen, die das auch gültig machen lässt
+ und dann ist diese Pre-Condition stärker als unsere Schwächste oder zumindest genauso stark,
+ wenn wir daran denken wollen, dass wir die Gleichheit mitberücksichtigen.
+ Also, wenn wir so eine Situation haben, dass wir die Pre-Condition suchen,
+ dann wollen wir eine Pre-Condition, die so schwach ist wie irgend möglich.
+ Und das Gute ist nämlich jetzt, dass wir für jedes von den Statements, die ich Ihnen bisher erklärt habe,
+ nämlich für Zuweisungen und Conditionals, gibt es für jedes Programmsegment und jede Post-Condition,
+ gibt es eine eindeutige schwächste Pre-Condition.
+ Also eine eindeutige schwächste Pre-Condition PS, wenn Sie so wollen,
+ oder die kürzen wir ab eben als, das ist die weakest Pre-Condition für S unter der Annahme,
+ dass wir die Post-Condition Q haben wollen.
+ Aber das gilt eben ohne Schleifen.
+ Deswegen habe ich die Schleifen bisher noch nicht diskutiert, kommen nachher, gilt das nicht.
+ Aber ohne Schleifen gibt es die eindeutig und es gibt einen Weg, wie wir diese schwächste Vorbedingungen erfüllen können.
+ Also, fangen wir mit einem einfachen Statement an, das ist wieder das einfachste, was wir denken können.
+ "Ist die schwächste Pre-Condition nicht true?", fragt mich jemand.
+ Oh nein, ganz und gar nicht.
+ "True" heißt ja, dass egal, was der Fall ist, das ist immer gültig.
+ Wenn ich aber true als Pre-Condition und jetzt ein S und danach irgendeine Post-Condition Q, dann gilt das immer.
+ Und je nachdem, also zum Beispiel unser X wird gesetzt zu X plus eins und meine Post-Condition ist,
+ dass X ist größer als zehn, dann gilt das ganz sicher nicht immer.
+ Dann gilt das nur dann, wenn X eben eine Vorbedingung erfüllt.
+ Also eine Vorbedingung könnte zum Beispiel sein, dass wir sagen, X ist größer als zehn.
+ Wenn ich das als Vorbedingungen habe, dann ist X plus eins sicher größer als zehn.
+ Das ist aber nicht die schwächste Vorbedingung.
+ Die schwächste Vorbedingung wäre doch wahrscheinlich, dass X größer als zehn ist.
+ Wenn X größer als zehn ist, dann habe ich die Aussage, dass danach eben, nachdem ich das um eins erhöht habe,
+ X sicher strikt größer als zehn ist.
+ Also die schwächste Vorbedingung wäre hier und nicht dieses hier.
+ Und true wäre ganz sicher falsch, weil das gilt ja nicht in allen Situationen.
+ Wenn X den Wert neun hätte zum Beispiel, dann würde eben danach diese Verbedingungen nicht gelten.
+ Also true heißt eben keine Annahmen und das ist am anderen Ende.
+ Wohin ergibt sich denn, dass P aus Folk Q stärker ist?
+ Wir definieren halt so, wir sagen, wenn ich also erst mal, wenn ich irgendeine Bedingung P1 habe und die impliziert P2,
+ dann sagen wir, dass P1 ist stärker.
+ Das haben wir halt so fest, das definieren wir, um das einfacher ausdrücken zu können.
+ Das heißt jetzt nicht, dass wenn ich hier P, S und Q habe, dass das Q impliziert.
+ Wenn ich hier ein P habe und das gilt im Allgemeinen nicht, weil das gilt ja nur dann, nachdem dieses Statement S ausgeführt wurde.
+ Im Allgemeinen gilt nicht, dass aus dem P Q folgt, sondern nachdem das Statement S ausgeführt wurde, gilt das Q.
+ Also zurück zu diesem einfachen Beispiel, dass wir eben halt eine Zuweisung uns angucken wollen.
+ Wir wollen jetzt eben für eine Zuweisung finden, was ist die schwächste Vorbedingung,
+ die für eine gegebene Postcondition erfüllt sein muss, damit nach dieser Zuweisung diese Postcondition gilt.
+ Und das machen wir so, indem wir jedes X durch E ersetzen.
+ Das ist die rechte Seite, das ist irgendein Ausdruck.
+ Und in dem Q soll natürlich diese Variable X irgendwo auftreten.
+ Und da ersetzen wir die durch die rechte Seite E und dann haben wir eine neue Aussage.
+ Und das ist unsere schwächste Vorbedingung.
+ Also wenn mein Statement zum Beispiel hier X wird gesetzt zu Y² und meine Postcondition Q ist X soll größer als X4 sein, dann ersetze ich das.
+ Dann nehme ich also das E, das ist Y², ersetze das und dann bekomme ich eben hier als neue Aussage Y² größer 4.
+ Und das ist meine schwächste Vorbedingung, die ich haben muss oder die erfüllt sein muss, um für dieses Statement und diese Postcondition sicherzustellen,
+ dass danach die Postcondition erfüllt ist.
+ Und Y mal Quadrat größer 4 kann ich umformulieren.
+ Der Betrag von Y muss größer 2 sein.
+ So kann ich also für ein gegebenes Statement und eine gewünschte Postcondition herausfinden, was erfüllt sein muss, bevor ich das Statement ausführe, damit eben nachher die Postcondition gilt.
+ So, jetzt ein Statement ist einfach.
+ Was machen wir denn, wenn wir eine Folge von Statements haben?
+ Das ist ja die nächste Frage, die uns hier berührt.
+ Also wir haben hier zwei Statements und wir haben wieder eine Postcondition Q.
+ Und jetzt suchen wir die schwächste Vorbedingung für diese beiden Statements, damit nachher Q gelten soll.
+ Und die schwächste Vorbedingung dafür ist die, dass ich erstmal die schwächste Vorbedingung finde, mit der ich S2 erfüllen kann.
+ Und diese Vorbedingung, die ich da habe, das nehme ich als Aussage Q für mein Statement S1 und finde dann dafür die schwächste Vorbedingung.
+ Und das ist dann die schwächste Vorbedingung für diese Folge von Statements.
+ Also rückwärts gehen Sie hin, Sie sehen, was will ich am Ende dieser Statementfolge haben?
+ Am Ende will ich, dass eben die Aussage Q gilt.
+ Was muss gelten, bevor es Statement S2 ausgeführt wird?
+ Weil die werden ja in dieser Reihenfolge ausgeführt.
+ Also erst S1 und dann S2.
+ Was muss gelten, bevor S2 ausgeführt wird?
+ Ah, ok, jetzt habe ich diese Aussage.
+ Was muss dann erfüllt sein, bevor Statement S1 ausgeführt wird, damit ich nachher eben diese Aussage bekomme?
+ Und das ist die schwächste Vorbedingung.
+ Also wenn ich hier als einfaches Beispiel das erste Statement habe, das Y wird gesetzt auf X + 3
+ und das nächste Statement geht hin und setzt Z zu Y + 1.
+ Und meine Aussage am Ende soll wieder sein, dass Z größer als 4 ist.
+ So, dann setze ich die rechte Seite hier, das ist mein erstes E da ein.
+ Und dann bekomme ich eben Y + 1 wird hier eingesetzt, muss größer sein als 4, kann ich umwandeln usw.
+ Und kann, also gehe ich also hin, gucke, was ist die Vorbedingung dafür?
+ Ich nehme diese Vorbedingung hin und sehe mir, aha, setze das da ein.
+ Y + 1 ist größer als 4, das heißt Y muss größer als 3 sein.
+ Das ist meine schwächste Vorbedingung für das Statement Z wird gesetzt zu Y + 1.
+ Und meine Bedingung danach ist Z größer als 4.
+ Und jetzt gehe ich hin, nachdem ich das als Bedingung gefunden habe, gehe ich hin und setze ein,
+ was muss denn jetzt hier gelten, damit die Ausführung des Statements Y wird gesetzt auf X + 3,
+ diese Aussage gültig macht.
+ Das ist ja meine Aussage, die vor S2 gelten muss.
+ Dann setze ich das ein, aha, X + 3 wird hier eingesetzt, größer 3.
+ Und das kann ich umformen in X größer als 0.
+ Das heißt, die die die schwächste Vorbedingung für diese ganze Folge ist eben X größer als 0.
+ Das ist die schwächste Vorbedingung, die erfüllt sein muss, damit das eben funktioniert.
+ Also wenn ich ein anderes Beispiel mir nehme, ja, weiß nicht, ob das schon sagen Sie mir, wenn Sie als Folge haben,
+ Y, das ist mein S1, wird gesetzt zu X + 1 und Z ist Y - 3, das ist mein Z2.
+ Und meine Bedingung am Ende sollte sein Z = 10.
+ Was ist dann die schwächste Vorbedingung?
+ Da fange ich also an, okay, gucke ich mir an, also ich hier, das möchte ich bestimmen.
+ Da gehe ich jetzt hin und setze jetzt erst mal diese rechte Seite hier in diese Bedingung hier ein.
+ Das ergibt dann, also ich versuche jetzt die Vorbedingung zu finden, indem ich hier,
+ also die die schwächste Vorbedingung für S2 und dieser Aussage Z = 10 zu finden.
+ Also das will ich hier haben, das mache ich jetzt genauso, wie ich es gesagt habe.
+ Ich setze das in die hier ein, also ich setze das E, Y - 3 hier ein, also habe ich dann Y - 3, muss gleich 10 sein.
+ Das ist meine Zwischenbedingung, wenn Sie so wollen.
+ Das kann ich jetzt umformen und zum Beispiel eben sagen, Y muss hier gleich 7 sein.
+ Und dann setze ich das wieder ein, also X + 1 - 3 muss gleich 10 sein, kann ich umsetzen, 12 habe ich X = 12.
+ Oder wenn das für Sie zu schnell ist, nachdem wir hier diesen Punkt erreicht haben,
+ also wir wollen hier, da habe ich einen Fehler gemacht eben, tut mir leid, das war ein Fehler, Entschuldigung.
+ Sehen Sie das nicht 10, das muss ja 13 sein, so sehen Sie, da muss das 13 sein, so stimmt es dann wieder.
+ Danke, wenn ich also Y - 3 = 10, dann ist das erhöht, kann ich auf beiden Seiten das 3er zuaddieren,
+ dann habe ich also Y = 13 und dann habe ich hier, setze ich diese rechte Seite wieder da ein,
+ dann ist X + 1 = 13 und daraus kriegen wir raus X = 12.
+ Also, wer findet das langweilig, seien Sie mir ehrlich. Rechnen Sie mit, wenn es langweilig ist,
+ dann finden Sie bitte diese Rechenfehler von mir schneller.
+ Okay, so, jetzt haben wir also einzelne Zuweisungen, jetzt haben wir Folgen von Zuweisungen.
+ Wenn ich zwei Statements kann, dann kann ich auch drei machen und so weiter.
+ Jetzt, was bleibt noch übrig, um das interessant zu machen? Okay, jetzt kommt die If Statement.
+ So, jetzt zur Erinnerung, also wir hatten gesagt, wir haben hier so ein If Statement,
+ also If oder If-L Statement, das macht keinen Unterschied,
+ und wir sagten, so ein Triple ist gültig, wenn es solche Aussagen Q1 und Q2 gibt,
+ sodass eben erstens hier der If-Part oder der If-Teil, der muss gültig sein, also mit P und B,
+ und S1 ist danach Q1, gilt danach Q1, und der L-Part muss ein gültiges Triple ergeben,
+ also wenn ich P und nicht B habe und dann S2 ausführe, dann muss danach Q2 gültig sein.
+ So, und dann muss gelten nach dem If Statement, aus Q1 folgt Q und aus Q2 folgt Q.
+ Und ich empfehle Ihnen das praktisch so zu merken, also ich hatte Ihnen das auch ein bisschen anders zusammengefasst,
+ aber so ist es an sich am einfachsten zu merken, weil Sie müssen halt in der Lage sein,
+ zu zeigen, dass aus Q1 das Q folgt und aus Q2 folgt das Q.
+ Und jetzt haben wir irgendeine Aussage Q und jetzt würden wir gerne wissen, was für eine Precondition P brauche ich denn,
+ damit nachher, nach der Ausführung dieses If Statements die Precondition gültig ist.
+ So, also, jetzt können wir folgendes überlegen.
+ Wir könnten natürlich hingehen und sagen, ok, wenn ich das habe, aus Q1 muss Q folgen und aus Q2 muss Q folgen,
+ also können wir doch einfach hingehen und sagen, meine Precondition ist B und die weakest Precondition für S1
+ und aus nicht B und die weakest Precondition für S2 und Q2 habe ich das dann.
+ Und das wäre ok, das wäre gültig, aber das würde nicht unbedingt unsere schwächste Vorbedingung sein.
+ Denn Q1 muss ja stärker sein als Q, weil sonst könnten wir ja nicht zeigen, dass aus Q1 das Q folgt.
+ Und daher ist eine weakest Precondition, die ich für Q1 bekomme, stärker oder zumindest genauso stark wie die weakest Precondition,
+ die ich für Q bekäme.
+ Und genauso haben wir gesehen, dass eben Q2 ist auch stärker als Q und daher die weakest Precondition, die ich für S2
+ und die postcondition Q2, die ich bekomme, die ist auch stärker als die weakest Precondition, die ich für S2 und Q bekomme.
+ Also zumindest ist stärker oder genauso stark.
+ Das heißt, die würde uns auch ein gültiges Statement geben, aber nicht unbedingt die schwächste Vorbedingung.
+ Also das heißt, was wir also wirklich brauchen, ist nicht, dass wir eben halt diese postcondition Q benutzen,
+ um die weakest Precondition für den IF-Part zu finden, und dass wir Q benutzen, um die weakest Precondition für den ELF-Part zu finden.
+ Wenn ich das nehme, dann habe ich die weakest Precondition bekommen für dieses IF-Statement.
+ Weil dann, egal wie ich durch das IF-Statement durchgegangen bin, entweder durch den ELF-Part oder den ELF-Part,
+ in beiden Fällen erreiche ich einen Zustand, aus dem ich dann eben der Q den Zustand, den ich haben möchte,
+ nach dem das IF-Statement ausgeführt wurde, impliziert.
+ Ich habe also einen Zustand, den ich benutzen kann, um das abzuleiten.
+ Und dann bin ich an sich in der Lage, das entsprechend zu folgern, dass das gilt, wenn das erfüllt ist.
+ So, jetzt so ein Ausdruck ist natürlich manchmal etwas mühsam, und da können Sie natürlich den gern vereinfachen.
+ Aber das ist letztlich, was Sie brauchen, um die weakest Precondition für dieses IF-Statement mit dieser Postcondition zu finden.
+ So, da habe ich auch ein Beispiel für Sie.
+ Nehmen wir mal an, wir hätten hier dieses Statement, IF x kleiner als 5, dann setzen wir y zu x², und andernfalls setzen wir y zu x+1.
+ Und unsere Aussage Q, am Ende sollte jetzt sein, dass y größer als 3 ist.
+ Das wäre jetzt die Aussage, die ich am Ende dieses Statements machen will.
+ Jetzt, wenn Sie das gucken, also hier habe ich mein Statement S1 und mein Statement S2.
+ Und da will ich jetzt eben gucken, wie ich das so hinbekomme, dass das funktioniert.
+ Also, jetzt will ich eben rausbekommen, wie ich dafür das entsprechende Postcondition habe.
+ Also, fange ich mal an, ich fange an, dass ich mir erst überlege, also hier, ich brauche die weakest Precondition für dieses Statement mit der Postcondition y größer als 9.
+ Jetzt gehe ich also hin und setze das in die Formel ein, die ich leider jetzt nicht zeigen kann.
+ Also, diese Formel hier ein.
+ Also, mein Q ist y größer als 9 und S1 und S2 sind so, wie ich es hier gezeigt habe.
+ Und dann bekomme ich diese Aussage.
+ Also, hier ist meine Condition B, hier ist meine Condition nicht B und die weakest Precondition für y, das ist hier mein Statement S1, wird gesetzt zu x mal x.
+ Und hier ist mein Statement S2, y wird gesetzt zu x plus 1.
+ Und in beiden Fällen benutze ich als Postcondition Q, was am Ende dieses Blockes gelten soll.
+ Und das kann ich natürlich jetzt, diese weakest Precondition hier, diese hier, die können Sie ja berechnen und diese hier auch, weil haben wir gesehen, entweder ein Statement oder eine Statement Folge.
+ Also, gehe ich jetzt hin und berechne das. Jetzt gehe ich also hin und setze jetzt eben halt hier diese rechte Seite und diese rechte Seite in diese Aussage Q ein.
+ Und dann bekomme ich hier eben x kleiner als 5 und x Quadrat oder x mal x größer als 9 oder x größer als 5 und x plus 1 größer als 9.
+ Und das kann ich jetzt vereinfachen.
+ Und dann bekomme ich, also sehe ich hier, also x muss sein kleiner als 5 und x Quadrat muss sein größer als 9.
+ Daraus folgt, dass dieses sind ja alles Ins, dass x kleiner gleich minus 3 sein muss.
+ Und für das andere sehe ich das x oder aber ich habe eben x ist größer als 3.
+ Das wäre auch ein Weg, wie ich das bekommen kann.
+ Und x ist kleiner als 5.
+ Oder eben hier kann ich das einsetzen x plus 1 gleich 9 kann ich setzen als x größer als 8.
+ Kann ich also sehen, aha das oder das muss gelten.
+ Wenn ich also x größer als 5 habe und x kleiner als 3, dann habe ich das.
+ Und wenn ich also das sehe, dann kann ich also gucken, das sind die Bedingungen, die jetzt für x erfüllt sein müssen.
+ Entweder ist x kleiner als minus 3 oder x ist zwischen 2 und 5 oder x ist zwischen 8 größer als 8, also 8, 9 und so weiter.
+ Also wenn Sie jetzt ein Beispiel haben, wo Sie eben überlegen müssen, was für Werte sind legal, dann können Sie dieses, dann können wir in diesem Fall diese Aussagen hier machen.
+ So, jetzt fragt mich jemand, wie unterscheidet sich Q1 und Q2 von Q?
+ Na ja sehen Sie, ich habe jetzt hier Q gewählt. Ich hätte auch, wenn Sie sich an die Aufgaben oder die Probleme von der letzten Folgerung erinnern,
+ ich könnte auch ein anderes Q1 mir hier einfallen lassen oder ein anderes Q2 mir hier einfallen lassen.
+ Dass ich jetzt hier Q als die Bedingung nehme, die hier und hier gelten muss, das ist etwas, was ich mache, weil ich die schwächste Vorbedingungen will.
+ Sie erinnern sich an das Beispiel, das ich heute zu Beginn der Vorlesung hatte, wo ich sagte, am Ende wollen wir haben x größer als 5.
+ Da kann ich eben halt jedes beliebige, da hätte ich auch eine andere Aussage nehmen können als Aussage Q1 und Q2.
+ Damit wäre dann das Triple immer noch gültig, aber es wäre eben nicht mehr die schwächste Vorbedingung, die wir in dem Fall haben.
+ Also die schwächste Vorbedingung ist halt die, die so ist, dass eben alle anderen Vorbedingungen, die das gültige Triple machen, die implizieren diese Vorbedingungen.
+ Und jetzt nochmal zur Erinnerung, was heißt es denn jetzt, wenn ich sage, die weakest precondition ist true, wenn die weakest precondition für ein Statement S
+ oder eine Folge von Statement S und eine Aussage Q tools, dann heißt das, dass die Ausführung, dass nach der Ausführung von S diese Aussage Q immer gilt.
+ Es gibt keine weiteren Annahmen. Jetzt warum machen wir das Ganze?
+ Also stellen Sie sich vor, Sie haben so ein Programm oder Programmsegment mit irgendeinem Statement S und irgendeine Aussage Q, die nach der Ausführung gelten soll,
+ wie zum Beispiel diese Aussage Y größer als 5, weil Sie sicher sein wollen, dass die Division mindestens 1 ergibt oder was.
+ Und jetzt suchen Sie ein P, sodass eben wenn diese Bedingung erfüllt ist, dann ist die Aussage Q nach der Ausführung von S gültig.
+ So, und jetzt könnten Sie ja verschiedene Aussagen finden, P1, P2, P3 und zwar so, dass das PI immer schwächer ist als die vorhergehende.
+ Also das wäre die stärkste Aussage. Das wäre eine etwas schwächere. Das wäre noch eine etwas schwächere und so weiter eine ganz schwache Aussage.
+ So und jetzt nehmen wir mal an, dass eben wenn wir so eine Folge von Aussagen haben P1, P2 und so weiter sind immer noch P1 mit dem Statement S und der Aussage Q ist gültig.
+ P2 mit dem Statement S und der Aussage Q ist gültig. Aber das P5, das wir haben, gilt nicht mehr.
+ Also wenn wir P5 als Vorbedingungen haben, dann genügt das nicht, um zu zeigen, dass nach der Ausführung von S die Aussage Q gültig ist.
+ Also P5 reicht nicht aus, um das zu zeigen.
+ So, also wie könnte sowas aussehen? Wir hätten hier zum Beispiel als Statement X wird gesetzt zu 5 plus A.
+ Und ich möchte, dass danach X sicher sein, dass X größer als 5 ist.
+ Ja, können Sie ja sehen, dass, hoffentlich bleibt das.
+ Okay, bleibt nicht die Farbe hier auf dem, können Sie sehen, dass also aus der Aussage P1, wenn ich weiß, dass das A hat den Wert 4, das ist meine Aussage P1.
+ Und ich führe jetzt dieses Statement aus, dann gilt ganz sicher, dass X größer als 5 ist, weil eben X wird gesetzt zum Wert 5 plus A.
+ A hat den Wert 4, also ist das der Fall.
+ Wenn ich die Aussage P2 nehme, dass wir hier A ist größer als 3, dann gilt das auch.
+ So, also so weit zu gut.
+ Und jetzt gehen wir weiter mit P4, überspringen wir P3, mit P4 der Aussage A ist größer als 2.
+ Können wir immer noch zeigen, dass 5 plus A größer, wenn wir jetzt X zu 5 plus A setzen, ist X immer noch größer als 5.
+ So, und jetzt nehmen wir uns die Aussage P5 vor, wo wir sagen hier A ist größer als minus 1.
+ Na ja, setzen wir das ein.
+ Da haben wir hier 5 plus A und das können wir jetzt nicht mehr zeigen, dass eben X größer als 5 ist.
+ Das gilt also nicht.
+ Das ist kein gültiges hoher Trippel.
+ Das heißt, diese Aussage 5 ist nicht ausreichend, ist zu schwach, um zu zeigen, dass das eben halt gilt.
+ Das heißt, wir haben also jetzt diese verschiedenen Aussagen und wir haben jetzt eben eine, die eben nicht mehr gilt.
+ Jetzt könnten wir natürlich sagen, was war denn einfacher zu zeigen?
+ War es denn einfacher zu zeigen, wenn wir P1 als Voraussage machen oder war es einfacher, das zu zeigen, wenn P4 als Aussage genommen wird?
+ Und natürlich ist das einfacher zu zeigen, wenn wir die stärkst mögliche Vorbedingungen haben.
+ Wenn ich weiß, dass A hat den Wert 4, ist das einfacher zu zeigen, als wenn ich eben die Aussage nehme, A ist nur größer als 2.
+ In diesem einfachen arithmetischen Beispiel macht es vielleicht nicht viel aus, aber mit einer starken Aussage ist es einfacher zu zeigen,
+ dass danach die Aussage Q gilt.
+ Also, dass ich starke P1 habe, ist es leichter zu zeigen, dass nach S die Aussage Q gilt.
+ Das ist ja gerade der Grund, warum wir sagen, P1 ist stärker.
+ Nur, wenn Sie ein Programm haben, dann haben Sie im Allgemeinen nicht nur ein einziges Statement, sondern Sie haben auch eine Folge von Statements.
+ Und wenn Sie jetzt sagen, ich benutze P1, um zu zeigen, dass nach der Ausführung von S die Aussage Q gilt,
+ dann müssen Sie vielleicht irgendwann einmal zeigen, dass diese Aussage auch gilt.
+ Weil klar, wenn Sie P1 haben, dann gilt nach der Ausführung von S die Aussage Q.
+ Aber jetzt müssen Sie erst einmal zeigen, dass dieses P1 gilt.
+ Und je stärker das ist, desto schwieriger wird das.
+ Deswegen sind Sie daran interessiert, die schwächste Aussage zu finden.
+ Weil wenn Sie die schwächste Aussage haben, mit der Sie gerade noch zeigen können, dass das ein gültiges Tupel ist,
+ dann ist es leichter, diese schwache Aussage zu zeigen.
+ Weil irgendwann müssen Sie eben diese Aussage, die zwischen S und M steht, zeigen.
+ Und da wollen Sie natürlich, wenn es geht, die Schwächstmögliche haben.
+ Wenn Sie hier eine starke Aussage haben, dann müssen Sie zeigen, dass das ein gültiges Tupel ist.
+ Und wenn ich hier eine schwache Aussage habe, ist das etwas leichter, als wenn ich eben zeigen muss, dass das eben eine schwache Aussage ist.
+ Und ich muss zeigen, dass diese Aussage gilt.
+ Deswegen sind wir an der schwächsten Aussage interessiert, weil das ist die Aussage, die wir mindestens brauchen,
+ um danach dieses Statement zu zeigen, dass das ein gültiges Tupel ist.
+ Und zu zeigen, dass dieses Statement die gewünschte Aussage Q mit sich bringt.
+ Wenn Sie rückwärts schließen, dann wollen Sie eben ein P finden, das gerade noch gültig ist.
+ Das also die schwächste Vorbedingung ist, weil dann haben Sie das gezeigt, was da am besten oder das für Sie am einfachsten macht.
+ Also, ich habe Ihnen noch ein weiteres Beispiel auf die Slides gelegt, die Sie auf dem Web finden.
+ Es gibt dann noch ein paar kleinere Komplikationen, die sich eigentlich mehr so aus der Nomenklatur ergeben.
+ Wenn Sie sich das hier angucken, aber die sind alle trivial.
+ Sie haben hier ein "setzen Sie W zu X + Y" und Sie wollen am Ende eine bestimmte Aussage über W.
+ Jetzt haben wir ja gesehen, wenn wir so vorwärts schließen, dann können wir einfach hingehen und sagen,
+ ok, hier das W ist X + Y, also kann ich das da entsprechend einsetzen.
+ Hier habe ich das als Postcondition, jetzt habe ich X = 4, also kann ich das hier einsetzen als Postcondition.
+ Ich weiß ja, dass das gilt. Und dann habe ich das eingesetzt und habe ich hier aufgrund der Statements, die ich hatte als Postcondition,
+ das W = X + Y und X = 4 und Y = 4.
+ Und jetzt könnte man schnell falsch schließen, dass dieses W den Wert 7 hätte, weil X ist ja 4 und Y ist ja 3.
+ Und wenn wir das uns so anschauen, dann haben wir halt einen Fehler gemacht, weil das X + Y, das wir hier benutzt haben,
+ um W zu setzen, war natürlich ein X + Y mit anderen Werten.
+ Und deswegen unterscheiden wir zwischen den verschiedenen Varianten, weil diese Werte, die wir da vorher benutzt haben,
+ sind nicht unbedingt die, die nachher gültig sind.
+ Also wir könnten hingehen und zum Beispiel sagen, jetzt wird hier ein, das hier das X ist das, das hier oben eingesetzt wurde.
+ Wir können das X alt nennen oder wir können das irgendeinen anderen Namen geben.
+ Das ist einfach ein Weg, das zu machen.
+ Oder Sie können einfach ganz andere Namen sich da ausdenken, um das ebenso zu machen.
+ So können Sie dann auch zeigen, dass der Austausch zwischen zwei Werten funktioniert.
+ Und die Pol machen wir jetzt aber nicht, weil ich habe noch eine andere Sache für Sie, die ich Ihnen noch zeigen will.
+ Weil nämlich einige von Ihnen haben mir gesagt, dass die Programme, die Sie schreiben können, doch sehr langweilig wären.
+ Und das kann ich ja im Prinzip verstehen, weil Sie haben eben da nicht so viele Möglichkeiten, irgendwas auszudrücken.
+ Und darum machen wir hier einen Schub.
+ Wie können wir denn unsere Programme etwas interaktiver machen?
+ Also ein interaktives Programm ist ein Programm, das Benutzerinput einliest und dann aufgrund des Benutzerinputs irgendetwas macht.
+ Und wir machen jetzt das mal einfach.
+ Den Benutzerinput, den wir zulassen, ist auch nur Text.
+ Macht das Leben einfacher.
+ Wir können später sehen, wie wir auf andere Weise Input machen.
+ Aber fürs erste Mal genügt es uns, wenn wir das nur mit eben mit Text arbeiten.
+ Und da gibt es eben eine Bibliothek oder einen Service in Java, der das sehr einfach möglich macht.
+ Das ist ja so ein Scanner.
+ Und da können wir mit dem eben einlesen und Ausgaben können wir machen, wie wir es schon gelernt haben, nämlich mit Printline ohne weitere Schwierigkeiten.
+ Also so ein interaktives Programm liest Input von der Konsole.
+ Da sage ich gleich, was das ist und dann praktisch abhängig von dem, was für Werte Sie da eingeben, können Sie das eine oder das andere machen.
+ Wie gesagt, später können wir mit der Maus arbeiten, aber das ist für den ersten Tag noch ein bisschen viel.
+ Also so eine Konsole, das war früher ein Gerät, das mit dem Computer verbunden war und das Eingabe erlaubte so eine Art Schreibmaschine mit eben besonderen Fähigkeiten.
+ Manchmal war die auch in der Lage, Ausgaben zu machen.
+ Der Name ist halt geblieben.
+ Und heute ist der Konsole ein Fenster in unserem Benutzer Interface, also in Eclipse.
+ Und in Java gibt es zwei vordefinierte Fenster.
+ Das eine heißt System.in und das andere heißt System.out.
+ Und die haben halt vordefinierte Fenster.
+ Und es ist möglich, das kann man machen, und das ist auch so eingestellt im Normalfall,
+ dass System.in und System.out dasselbe Fenster sind.
+ So jetzt warum haben wir mit Input bis heute gewartet?
+ Input ist schon um einiges komplizierter als Output.
+ Warum? Weil die Benutzer können dann auf unvorhergesehenen Weise Eingaben machen, die man nicht erwartet, können Fehler machen und so weiter.
+ Deswegen ist das ein bisschen trickiger.
+ Und wir haben eben ein Fenster in Eclipse, mit dem wir eben den Input eingeben können und den Output sehen.
+ Und das machen wir mittels eines Bibliothek.
+ Die heißt Scanner.
+ Das ist ein Programm, das eben halt solche Daten aus dem Fenster einliest und in eine vernünftige Form aufbereitet.
+ Und Input, Output ist in Java sehr gut geregelt.
+ Was Sie heute mit dem Scanner machen, können Sie oder lernen, können Sie später auch mit ganz anderen Sachen wie Dateien und so weiter, weiter verwenden.
+ Also der Benutzer tippt ein und der Scanner liest das.
+ Und so können wir dann eben halt das verarbeiten.
+ Und um das zu machen, müssen wir wieder ein bisschen blaue Farbe verwenden.
+ Wir müssen dieses Statement hinzufügen, unser Programm.
+ Import java.util.scanner.
+ Und dann haben wir den Scanner bekannt gemacht.
+ Und dann brauchen wir eben ein Exemplar von dem Scanner und den müssen wir auch deklarieren.
+ Den können wir irgendeinen Namen geben.
+ Scanner Name gleich Eclipse wird gesetzt zu New Scanner.
+ Und dann sagen wir, wir hätten gerne einen Scanner, der von der Konsolessystem dort in für uns das liest.
+ Dann können wir den MyConsole nennen und dann haben wir so einen Scanner.
+ Und der hat jetzt drei Methoden, die uns eigentlich interessieren, mit denen wir Int, Doubles und Strings lesen können.
+ Ganz einfach.
+ Ich gehe also hin.
+ Ich habe diese Konsole und dann lese ich die nächste Eingabe.
+ Und dann wartet das System so lange, bis der Benutzer eine Eingabe gemacht hat und mit dem Return Key abgeschlossen hat.
+ Wenn der Benutzer Enter oder Return aus immer gedrückt hat, dann wird der wird das gelesen und dem Programm zur Verfügung gestellt.
+ Und natürlich ist es gut, wenn Sie vorher den Benutzer oder der Benutzerin sagen, was Sie jetzt als Eingabe erwarten.
+ Zum Beispiel Wie alt sind Sie?
+ Da wird ausgedruckt und dann wartet das System, bis die Eingabe kommt.
+ Hier ist das komplette Programm.
+ Können Sie nachher kopieren?
+ Ich habe hier den Scanner und jetzt kommt hier der Prompt.
+ Ich tippe das System aus.
+ Das tippt dann aus.
+ Wie alt sind Sie?
+ Und jetzt ist Sache des Benutzer oder der Benutzerin, das Alter einzugeben.
+ Und wenn das Alter eingegeben ist, dann gibt das System diese Zahl zurück an die variable Alter und dann findet eine Überrechnung statt.
+ Und dann findet die Berechnung statt, dass das eben wie viele Jahre noch bis zur Pensionierung sind unter der Annahme, dass sich das nicht wieder ändert und so weiter.
+ Also das können Sie ganz einfach machen ohne Schwierigkeiten.
+ Können auch mehr als eine Zahl lesen.
+ Wichtig ist, dass Sie das Richtige machen.
+ In der Java Doc finden Sie mehr Informationen und da können Sie alles lesen.
+ Aber so können Sie, wenn Sie wollen, interessanter Programme machen.
+ Machen Sie es nur richtig.
+ Wenn Sie falsche Eingabe machen, noch haben wir eine Minute, dann sind wir damit fertig.
+ So, also das ist halt, wie Sie das machen können.
+ Diese drei Methoden können Sie benutzen und können auf diese Weise etwas interessanter Programme schreiben.
+ (Glockenzeichen)
