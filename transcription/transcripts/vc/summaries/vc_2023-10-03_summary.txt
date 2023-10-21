@@ -1,6 +1,6 @@
 # Summary
 
-## Topic 1: Image Filtering
+## Image Filtering
 ### Sourced from Summary 1
 - Convolution and correlation are important concepts in image filtering.
 - Line shift invariant filters are used for low-level image processing.
@@ -9,7 +9,7 @@
 - Correlation involves applying a correlation mask to an image.
 - Convolution involves spreading a kernel over an image.
 
-## Topic 2: Types of Filters
+##  Types of Filters
 ### Sourced from Summary 2
 - Sharpening filters enhance pixels with higher variations in an image.
 - Correlations and convolutions can be used to apply filters to images.
@@ -17,7 +17,7 @@
 - Separable kernels offer computational advantages and can transform quadratic complexity to linear complexity.
 - Smoothing kernels include low pass filters and Gaussian kernels.
 
-## Topic 3: Gaussian Smoothing Kernels and Box Filters
+## Gaussian Smoothing Kernels and Box Filters
 ### Sourced from Summary 3
 - Gaussian smoothing kernels blur images, while box filters create a grid-like pattern.
 - Gaussian kernels are efficient and effective due to their separability.
@@ -26,11 +26,11 @@
 
 # In-Depth Summaries
 
-## Topic 1: Image Filtering
+## Image Filtering
 The lecture introduces the concepts of convolution and correlation in image filtering. Image filtering involves modifying pixels based on functions of a local neighborhood. Line shift invariant filters are discussed as one of the simplest types of image filters, used for low-level image processing. Linear filters are explained as modifying pixels based on neighboring pixels, and examples of linear operations such as smoothing, noise reduction, sharpening, and feature detection are provided. The lecture also covers the difference between correlation and convolution. Correlation involves applying a correlation mask to an image, while convolution involves spreading a kernel over an image. The lecture concludes with examples of applying different convolutions on an image, allowing the audience to guess the outcomes.
 
-## Topic 2: Types of Filters
+## Types of Filters
 The lecture discusses different types of filters and their effects on images. Sharpening filters are introduced as enhancing pixels with higher variations, resulting in a sharper appearance. Correlations and convolutions are explored as methods for applying filters to images, with options for handling borders when applying filters. The advantages of using separable kernels, including computational advantages and linear complexity transformation, are explained. The lecture also covers different types of smoothing kernels, including low pass filters and Gaussian kernels. Gaussian kernels give more importance to center and neighborhood pixels, resulting in a smoothing effect. Visual examples are provided to illustrate the differences between Gaussian and box filters.
 
-## Topic 3: Gaussian Smoothing Kernels and Box Filters
+## Gaussian Smoothing Kernels and Box Filters
 The lecture focuses on the concepts of Gaussian smoothing kernels and box filters in image processing. Gaussian smoothing kernels are circular and are used to blur images, while box filters create a grid-like pattern. The lecture emphasizes the efficiency and effectiveness of Gaussian kernels due to their separability, making them faster and more memory-efficient. Visual examples are provided to demonstrate how different standard deviations and kernel sizes affect the blurriness and thickness of borders in an image. The lecture also clarifies the difference between convolution and correlation in image processing, noting that convolution is the opposite operation of correlation. The direction of the shift in convolution calculations depends on whether the left or right pixel is used.
