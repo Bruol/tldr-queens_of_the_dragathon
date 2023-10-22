@@ -45,6 +45,14 @@ body {
     justify-content: space-between;
 }
 
+.header .second-row {
+    display: flex;
+    padding: 0 50px;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
 .header .breadcrumbs {
     display: block;
     padding: 0 50px;
