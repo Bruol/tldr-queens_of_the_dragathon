@@ -237,6 +237,7 @@ body {
     align-items: stretch;
     flex-wrap: nowrap;
     height: 30px;
+    min-width: 200px;
 }
 
 .search-wrapper .search-input {
