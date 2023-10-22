@@ -14,25 +14,30 @@
   <header class="header">
     <div class="first-row">
         <div class="page-title">
-          <a href="#">TLDR; <sub>Lectures</sub>
+          <a href="#">TLDR;<sub>Lectures</sub>
           </a></div>
       <div class="account-login-wrapper">
         <div class="welcome-text">Welcome, Patricia ✨</div>
         <!--<img class="log-out-icon" src="img/log-out-icon.svg" />--> <!-- TODO: Add image -->
       </div>
     </div>
-    <nav class="breadcrumbs">
-      <div class="breadcrumbs-text">
-          <a href="/" class="breadcrumb-link">Home</a> » Search
+    <div class="second-row">
+      <nav class="breadcrumbs">
+        <div class="breadcrumbs-text">
+            <a href="/" class="breadcrumb-link">Home</a> » Search
+        </div>
+      </nav>
+      <div>
+        <form method="get" class="search-form" action="/search">
+          <input type="text" name="query" value="{{ query }}" class="search-input">
+          <button class=".button" type="submit">Search</button>
+      </form>
       </div>
-    </nav>
+    </div>
   </header>
   <main class="main">
     <div class="content">
-        <form method="get" class="search-form">
-            <input type="text" name="query" value="{{ query }}" class="search-input">
-            <button type="submit">Search</button>
-        </form>
+
         <div class="cards">
 
         {% if results %}

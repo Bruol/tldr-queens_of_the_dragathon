@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Work+Sans:wght@400;700&display=swap');
 :root {
     /* Colors */
     --variable-collection-bright: rgba(244, 242, 243, 1);
@@ -15,7 +14,7 @@
     --variable-collection-font-size-xlarge: 24px;
 
     /* Font Families */
-    --variable-collection-font-family-sans-serif: 'Open Sans', Helvetica, sans-serif;
+    --variable-collection-font-family-sans-serif: 'Work Sans', sans-serif;
     --variable-collection-font-family-serif: 'Merriweather', serif;
 }
 
@@ -38,6 +37,14 @@ body {
 }
 
 .header .first-row {
+    display: flex;
+    padding: 0 50px;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.header .second-row {
     display: flex;
     padding: 0 50px;
     flex-direction: row;
@@ -191,6 +198,7 @@ body {
 }
 
 .button {
+    display: block;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
