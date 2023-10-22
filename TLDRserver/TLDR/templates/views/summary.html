@@ -50,7 +50,7 @@
               <a href={{video.source_url}}>Video Link</a>
           </li>
           <li>
-            <a href="/download/{{video.id}}">Transcript</a>
+            <a class="link" href="/download/{{video.id}}">Transcript</a>
         </li>
         </ul>
         <div class="topics-wrapper">
@@ -84,6 +84,14 @@
                   {% endfor %}
                 </div>
                 {# TODO: Replace with full implementation #}
+                <div class="tag">
+                  <span class="tag-title">Tags:</span>
+                  <ul class="tag-list">
+                    {% for tag in topic.tags %}
+                      <a href="https://en.wikipedia.org/w/index.php?search={{ tag }}" class="link">{{ tag }}</a>
+                    {% endfor %}
+                  </ul>                  
+                </div>
               </div>
             {% endfor %}
           {% endif %}
