@@ -41,6 +41,9 @@ def search(request):
 
     return render(request, 'views/search.html', context)
 
+def about(request):
+    template = loader.get_template("views/about.html")
+    return HttpResponse(template.render({}, request))
 
 def download_text_file(request, summary_id):
     vid = Video.objects.get(pk=summary_id)
