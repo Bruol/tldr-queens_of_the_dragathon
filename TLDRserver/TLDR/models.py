@@ -19,6 +19,7 @@ class Video(models.Model):
     transcript = models.TextField()
     source_url = models.URLField()
 
+
 class Topic(models.Model):
     title = models.CharField(max_length=100)
     bulletpoints = models.TextField()
@@ -27,6 +28,7 @@ class Topic(models.Model):
     chunk2 = models.TextField()
     chunk3 = models.TextField()
     tags = models.ManyToManyField("Tag", related_name = "topics")
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)

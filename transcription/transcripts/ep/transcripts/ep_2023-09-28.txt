@@ -1,715 +1,717 @@
- So funktioniert es jetzt besser?
- Okay, ich hoffe es ist jetzt nicht zu laut, um den Nachmittag zu stören.
- Okay, wir wollen heute hier weitermachen mit der Einführung in die Programmierung.
- Die Algorithmen und Darinstrukturen werden dann später mal eine Vorlesung in unserem Zeitfenster abliefern.
- So, und wir hatten in der letzten Vorlesung uns angefangen mit Methoden zu beschäftigen
- und hatten gesehen, dass die ein Weg sind, eine Struktur in ein Programm hereinzubekommen.
- Also eine Methode erlaubt es uns eine Sequenz, also eine Folge von Anweisungen zusammenzufassen
- und dieser Folge einen Namen zu geben, den Namen dann der Methode.
- Und da hatten wir als erstes Beispiel, das ganz einfache Beispiel,
- dass wir so eine Methode Main gesehen hatten, die in diesem Programm Hello World war
- und diese Methode eben hält Anweisungen.
- Und diese Methode ist insofern was Besonderes, weil die wird automatisch aufgerufen.
- Das gilt für die anderen Methoden nicht, aber so gefängt das Programm an, ausgeführt zu werden
- und das ist eine gute Idee.
- Okay, also solche Methoden, die strukturieren die Anweisungen,
- statt so einer langen Folge von Anweisungen können wir die in bessere, kleinere Blöcke aufteilen
- und das ist ein großer Vorteil, sondern sonst müssten wir ja alle Anweisungen
- in dieser einen Methode Main unterbringen und das wäre ziemlich mühsam.
- Und der zweite Punkt ist, wenn wir einmal Methoden haben, dann können wir Wiederholungen vermeiden,
- weil wenn ich dieselbe Folge von Anweisungen nochmal ausführen will,
- dann brauche ich ihn nicht nochmal hinzuschreiben, sondern genügt, wenn ich einfach sage,
- diese Methode bitte nochmal ausführen.
- Und so gesehen sind eigentlich Methodendepinitionen ein Weg für uns, neue Anweisungen zu erstellen.
- Nachdem wir einmal gesagt haben, hier ist die Methode mit diesen Einzelanweisungen,
- haben wir eine neue Anweisung, so eine mächtige Anweisung, die jetzt alles zusammen auf einmal macht.
- Und das wäre also hier natürlich möglich, weil eine Klasse mehrere Methoden enthalten kann.
- Wenn eine Klasse nur eine Methode enthalten könnte, ginge das nicht.
- Also wir hatten gesehen, programmieren hatten wir am Anfang der Vorlesung gesehen,
- ist im Grunde genommen ein Begriff für allgemeine Programmentwicklung.
- Und jetzt sehen wir als nächstes, dass Programmentwicklung eigentlich heißt, Methoden zu definieren.
- Wirklich eine Aufgabe, die wir haben, in Teilaufgaben zu zerlegen,
- ja, die haben wir Teilaufgaben, die wir haben wollen.
- Und diese Teilaufgaben sollen dann im Allgemeinen durch eine Methode gelöst werden.
- Gibt es ein Problem?
- Gibt es ein Problem?
- Es gibt einen guten Witz.
- Nicht, das ist aber schade.
- Also wenn Sie einen wirklich guten hätten, würden wir ihn gerne hören.
- Also die Idee ist, wir zerlegen die Aufgabe in Teilaufgaben,
- und diese Teilaufgaben werden dann durch Methoden gelöst.
- Und natürlich kommt dann der nächste Schritt, wir müssen die Teilergebnisse irgendwann zusammenfügen.
- Und jede Methode liefert irgendwelche Ergebnisse ab und die müssen wir dann zusammenfügen,
- um am Ende das gewünschte Ergebnis für die Lösung zu haben.
- So, jetzt habe ich ein ganz einfaches Beispiel,
- weil bisher haben wir ja wirklich noch fast nichts an Java Repertoire oder an Anweisungen und so weiter kennengelernt.
- Darum habe ich als einfachstes Beispiel die Aufgabe, dass wir einen Text aufgeben sollen, diesen Text hier,
- der hier angegeben ist.
- Den wollen wir also ausgeben.
- Und jetzt suchen wir halt ein Programm, das diese Aufgabe erfüllt.
- Könnte man natürlich hingehen und ganz einfach ein einziges großes Print Statement, also eine einzige Print Anweisung haben.
- Aber jetzt nehmen Sie mal an, diese längere Erklärung wäre etwas cleverer.
- Die würde Rücksicht nehmen auf die Person, die die Anweisung bekommt,
- und wäre also mehr los, also das könnte man nicht einfach in einem einzelnen Print Statement unterbringen.
- Man sieht hier, da ist vielleicht ein Muster in dem, was da ausgegeben werden soll,
- das können wir vielleicht auch für uns vorderhaft aussuchen.
- So, jetzt haben wir diese Aufgabe.
- Und der erste Versuch ist, dass wir versuchen, die so weit zu vereinfachen, dass je das dann ein Schritt reicht,
- dass also im Grunde genommen wir diese Aufgabe in Teilaufgaben zerlegen
- und jede Teilaufgabe kann dann in einem Schritt erledigt werden.
- Und es wäre jetzt schön, wenn ich Ihnen eine fixe Regel geben könnte, die immer zum Erfolg führt,
- dann sagen wir, so machen wir T1, T2, T3 und so weiter, aber es gibt leider keine fixe Regel.
- Wir haben nur Heuristiken, das heißt, wir haben also Ratschläge oder Hinweise oder Hinze,
- mit denen Sie manchmal weiterkommen, aber die Ihnen nicht letztlich garantieren,
- dass Sie immer eine gute Zerlegung finden.
- Deswegen brauchen Sie da Übung, um rauszufinden, was denn eine gute Zerlegung ist.
- Also irgendwie versuchen wir das hier in Teilaufgaben zu zerlegen
- und natürlich dann die Hoffnung, dass vielleicht im besten Fall jede Teilaufgabe eine einzelne Java-Anweisung ist
- oder ein einzelner Schritt ist.
- Dann haben wir unser Programm erstellt, haben die Teilaufgaben implementiert
- und haben auf diese Weise alles erledigt.
- Also in diesem privalen Beispiel hier würden wir jetzt also hingehen und sagen,
- wir zerlegen das hier so, dass die Teilaufgabe TI die I-Tezeile, hier oben ist die erste, zweite, dritte und so weiter, Zeile.
- Und die geben wir dann in einer Print-Line-Anweisung auf.
- Und dann haben wir diese, die Programme, vielleicht sollten wir das in Anführungszeichen setzen,
- weil der Begriff Programm für eine Print-Anweisung ist vielleicht etwas zu viel.
- Also diese Programme, die können wir dann hintereinander ausführen,
- erste Print-Statement, dann das zweite und so weiter.
- Und am Ende würden wir dann die Ergebnisse zur Lösung zusammenfügen.
- Wobei natürlich Print macht ja keine richtigen Ergebnisse, sondern drückt einfach nur auf.
- Aber das Grundproblem sehen wir hier schon.
- Wir zerlegen die Aufgabe in Teilaufgaben, die Teilaufgabe werden in Programme übersetzt
- oder dafür schreiben wir Programme.
- Und dann fügen wir am Ende alles wieder die Ergebnisse zusammen.
- Also wir haben das Problem zerlegt und dann haben wir eben für jede Teilaufgabe Operationen oder Anweisungen
- und die führen wir hintereinander aus.
- Und so können wir dann zu unserem Ergebnis kommen.
- Und da gibt es verschiedene Wege, wie wir hintereinander ausführen können.
- Also eins habe ich Ihnen schon mal gezeigt.
- Wir können also hier irgendein, sagen wir mal, Objekt, mit dem wir arbeiten nehmen.
- Dann haben wir eine Aufgabe, eine Operation an dem.
- Wir haben hier diese Operation, wir machen diese Substring-Operation.
- Und das Ergebnis hatten wir gesehen, können wir dann mit der Tor-Upper-Case-Methode weiter bearbeiten.
- Hier sehen Sie also, wie das Resultat der ersten Operation hier dieser Operation wird von dieser Operation weiter bearbeitet.
- Also hier in dem einfachen Beispiel mit dem Print gibt es ja eigentlich keine richtigen Teilaufgaben.
- Aber im Allgemeinen würden wir so was machen, würden wir so was haben wollen,
- weil so können wir dann erreichen, dass unser Gesamtaufgabe gelöst wird.
- Hätten wir also für jede dieser Teilaufgaben ein Programm und die fügen wir zusammen
- und eins nach dem anderen führen wir dann aus.
- Also in dem einfachen Beispiel, das wir hier haben,
- hätten wir also hier diese, hätten wir in der Methode Main, hier diese T1,
- das Programm für die erste Teilaufgabe, T2 für die zweite und so weiter für alle Statements.
- Hätten wir das so erledigt, dass wir da diese Aufgabe für uns lösen würden.
- Da können wir sagen, okay, gut, haben wir die Aufgabe gelöst und richtig ist es.
- Und wir interessieren uns ja für die Korrektheit und dann ist das ja gut.
- Aber wenn wir uns jetzt diese Aufgabe nochmal angucken, da hat man doch gesehen,
- da ist irgendein Muster drin.
- Und vielleicht, also hier ist dieser Block hier, wo wir eine Warnung ausreich geben
- und der taucht hier hinten nochmal auf und eigentlich würden wir ja gerne die Aufgaben so zerlegen,
- dass irgendeine Struktur in der Aufgabe ausgenutzt wird.
- Letztlich hat dieses Programm, was wir sagen, Rettondanz,
- das Programm wiederholt sich.
- Es ist nicht ganz der Begriff, wie die Technik Rettondanz verwenden,
- aber wir sagen, das Programm oder die Aufgabenstellung enthält Rettondanz,
- wenn es eben halt Blöcke gibt, die mehr als einmal abgearbeitet werden können.
- Das heißt, wir würden also jetzt gerne versuchen, eine Zerlegung zu finden,
- die diese Struktur widerspiegelt.
- Wir wollen also nicht irgendeine Zerlegung, so wie es Ihnen eben hier gezeigt hatte,
- einfach eine Zerlegung in sieben verschiedene Tats,
- sondern wir wollen eine Zerlegung, die es uns erlaubt, Aufgaben wiederzuverwenden
- oder Teilaufgaben wiederzuverwenden.
- Also in dem Beispiel hier würden wir gerne Teilaufgaben finden,
- diese TI, so dass wir die wiederverwenden können.
- Also hier in diesem Beispiel vielleicht, dass wir T2 mein wegen zweimal aufrufen können,
- zweimal ausführen können.
- Dann hätten wir eine unserer Aufgabe erleichtert,
- weil wir hätten jetzt weniger an Anweisungen, um die wir uns kümmern müssen
- und können das entsprechend unser Programm besser strukturieren.
- Also hier in dem Beispiel, wo wir diesen achtsurströmigen Text auszugeben haben,
- könnten wir sehen, da gibt es ja so eine Möglichkeit,
- diese Warnung als Beispiel zu erkennen.
- Die taucht hier zweimal auf und ist daher für uns,
- der will hier nicht so richtig, aber okay, die taucht hier zweimal auf.
- So, und zum zweiten können wir dann eben die Erklärung nehmen,
- die hier einmal ausgedruckt wird,
- und da könnten wir dementsprechend unser Programm strukturieren.
- Also wenn Sie sehen, unser Ziel ist es, Programme zu erstellen
- und wenn wir Glück haben, können wir die Aufgabe so zerlegen,
- dass ein Schritt oder eine Java Anweisung genügt.
- Wenn das nicht der Fall ist, dann können wir vielleicht Anweisungen
- hintereinander schalten, also hintereinander ausführen.
- Es gibt einen anderen Fall, der kommt später noch,
- den werde ich jetzt noch nicht behandeln.
- Und jetzt als vierte Möglichkeit gibt es die Gelegenheit,
- eine selbst definierte Methode zu nehmen, also wir definieren Methoden
- und die führen dann einzelne dieser Teilaufgaben aus.
- So gehen wir vor, wenn wir eine schwierigere Aufgabe uns vornehmen
- und wenn wir die da entsprechend bearbeiten wollen.
- Also hier in diesem Beispiel würden wir jetzt eben eine Methode definieren,
- die würde die Warnung drucken und der PrintLine Text ist gar nicht mal so wichtig
- und wir hätten dann eine zweite Methode, die würde die Erklärung drucken
- und natürlich auch hier ist die Erklärung einfach,
- dass sie eben auf das Slide raufpasst.
- So, das wären die beiden Methoden, die ich habe
- und natürlich das Main fehlt hier noch,
- aber das sind die beiden Methoden, die ich jetzt hier mal hätte.
- Also wir haben dann die Aufgabe zerlegt in Teilaufgaben.
- Jede Teilaufgabe wird durch eine Methode erledigt
- und dann verketten wir, also führen wir hintereinander
- die verschiedenen Programme für diese Teilaufgaben aus.
- Also Sie sehen, Teilaufgaben zerlegen,
- erster Schritt Methoden schreiben, zweiter Schritt dritter Schritt verketten
- und dann sind wir schon mal soweit,
- dass wir die Aufgaben etwas mehr in den Griff bekommen haben.
- So, jetzt, wie verketten wir die Ausführung der verschiedenen Methoden?
- Nun, das hatten wir schon mal kurz am Dienstag gesehen,
- wir müssen die Methoden aufrufen, wir müssen die irgendwie aufrufen
- und da gibt es zwei Wege, der eine Weg war der mit dem Objekt,
- das hatte ich schon mal gezeigt,
- und der zweite Weg ist der, den wir auch jetzt schon mal gesehen haben,
- nämlich ohne Objekt.
- Das geht aber nicht immer, das geht nur für besondere Methoden,
- für Methoden mit besonderen Eigenschaften.
- Die können wir ohne Objekt aufrufen.
- Und eine Gruppe von Methoden, die diese besonderen Eigenschaften haben,
- das sind die, die diese Static-Keywort haben.
- Also die Methoden, für die wir das Keywort Static davorgeschrieben haben,
- die sind eben besonders.
- Das sind Methoden, die kann ich ohne Objekt aufrufen.
- Da genügt jetzt fürs erste Mal der Methodenname allein.
- Das heißt, diese, so eine Methode, die kann ich aufrufen,
- die mich einfach den Namen der Methode gebe,
- dann die Klammern dahinter nicht vergessen, und dann bin ich fertig.
- Und dann ist der Aufruf erlaubt.
- Das ist das, was ich hier mit Static besonders machen kann.
- Und das ist das, was wir die ersten zwei, drei Wochen im Semester machen werden,
- bis wir mal anfangen, uns mit dem Objektsystem ein bisschen mehr zu beschäftigen.
- So, und dann ist es natürlich einfach.
- Dann gehen wir jetzt hin, und hier rufen wir erstmal die Methode Print Warning auf.
- Die geht hin und druckt die Warnung.
- Dann rufen wir die Methode Print Erklärung auf.
- Die druckt hier diese wichtige Erklärung.
- Und dann rufen wir nochmal die Methode Print Warning aus,
- die dann eben nochmal diese Anweisungen, die hier zusammengefasst sind, ausführt.
- Also, das ist wirklich der Weg, wie wir das machen.
- So, jetzt bin ich sicher, Sie haben das auch in anderen Programmiersprachen schon mal gesehen.
- Das ist super, weil wenn Sie schon in anderen Programmiersprachen gelernt haben,
- wie man dort Probleme zerlegt,
- dann können Sie dieses Wissen auch hier anwenden und auch hier mit Gewinn verwenden.
- Wichtig ist folgendes.
- Wenn Sie also so eine Methode aufrufen,
- hier haben wir eine Methode mit dem Namen "name".
- Das sei unser End-to-State mit unserem Programm.
- Wenn jetzt diese Methode aufgerufen wird,
- wir sagen aufgerufen oder auch manchmal, sagen wir invoked oder called,
- das sind andere Ausdrücke, die man verwendet,
- dann, was passiert dann?
- Dann beginnt die Ausführung dieser Methode.
- Dann beginnt die Ausführung der Methode, die ich hier benannt habe.
- Und dann fängt das System an, die Ausführungen,
- die in dieser Methode drin stehen, auszuführen.
- Dann werden die ausgeführt.
- Und irgendwann ist diese Methode fertig.
- Und wenn das kommt, dann geht es hier mit dem nächsten Statement,
- das ist hier, das danach folgt, geht es mit dem weiter.
- Also, wenn diese Methode hier fertig ist, dann geht es hier weiter.
- Dann geht es einfach da mit dem nächsten Statement,
- weil das System weiß, wo diese Methode angefangen hat,
- weiß von wo die aufgerufen wurde und geht dahin wieder zurück.
- So.
- Und was heißt das jetzt aufgerufen?
- Das heißt, dass die erste Anweisung dieser Methode wird ausgeführt.
- Und dann guckt das System nach, ob es weitere Anweisungen gibt.
- Und wenn es keine weiteren Anweisungen gibt, dann sind wir fertig.
- Wenn keine weiteren Anweisungen kommen, dann ist wir fertig.
- Aber wenn es noch weitere Anweisungen geben sollte,
- dann wird diese Anweisung ausgeführt wie oben.
- Da geht es wieder nach hier oben zurück.
- Und dann wird die nächste Anweisung ausgeführt.
- Und es geht so lange, bis wir den Punkt erreichen,
- dass es eben keine weiteren Anweisungen gibt.
- Dann sind wir fertig.
- Dann kommt der Punkt, wo wir zurückgehen zu der Methode,
- die uns aufgerufen hat.
- Und dann gehen wir zurück.
- Und dann führen wir hier die nächste Anweisung, die danach folgte aus.
- Und dann sind wir mit der einen Methode fertig.
- Und die nächste Anweisung wird ausgeführt.
- Das kann wieder ein Methodenaufruf sein.
- Das kann was ganz anderes sein.
- Und diese Abfolge der Ausführung, die nennen wir "Control Flow".
- Das ist der Control Flow, der in dem Programm stattfindet.
- Und in Java haben wir Glück.
- Die Ausführungsreihenfolge ist explizit.
- Sie haben hier ein Statement nach dem anderen.
- Und eins nach dem anderen wird fürs erste Mal ausgeführt.
- Wir werden später andere Wege kennen, wie man das machen kann.
- Aber am Anfang wollen wir es einfach halten.
- Und da ist es so, dass die Ausführungsreihenfolge explizit ist.
- Und die ausgeführten Anweisungen folgen im Programm aufeinander.
- Eine nach der anderen.
- Das macht es ihnen leichter zu verstehen, was da los ist.
- Trotzdem ist das Ganze nicht trivial.
- Wenn eine Minute aufgerufen wird,
- dann können sich vorstellen,
- dann springt diese Ausführung zu der Methode
- und führt die Anweisungen aus, die in der Methode sind.
- Und wenn das dann fertig ist, dann nach,
- dann springt die Ausführung wieder an den Ort zurück,
- von dem der Aufruf erfolgte
- und führt dann die nächste Anweisung aus.
- Sonst würde das ja nicht vorwärtsgehen.
- Das würde man ja da stecken bleiben.
- Und das ist der Kontrollfluss,
- den das Java-System für uns realisiert.
- Und die Anordnung der Methoden im Programmtext,
- die ist völlig ohne Bedeutung.
- Sie können die in beliebiger Reihenfolge angeben.
- Das System findet schon heraus,
- welche Methode sie aufrufen, wo das hin müsste.
- Das alles passiert,
- ohne dass sie sich da den Kopf zerbrechen müssen.
- Und das geht wirklich einfach und ohne Probleme.
- Also hier habe ich ein einfaches Beispiel,
- um das noch mal zu illustrieren.
- Ich habe hier dieses Programm MessesExample.
- Da gibt es eine MainMethode.
- Die brauchen wir ja.
- Und dann gibt es eben eine Methode Message1
- und eine Methode Message2.
- Und ich habe die Slides aufs Web gelegt.
- Das können Sie da gucken.
- Also dann werden wir jetzt hier dieses Programm MessesExample aufführen.
- Was passiert?
- Wir führen erst diese Methode Main aus automatisch.
- Die wird automatisch aufgerufen vom System.
- Und die Ausführung fängt da an.
- Und das Erste, was wir machen,
- ist diese Anweisung ausführen.
- Und die dann aufruft dieser Methode.
- Also arbeiten wir jetzt da weiter.
- Arbeiten die ab.
- Zum Glück gibt es dann nur eine Anweisung.
- Dann liegt das schnell.
- Wir sind mit der fertig.
- Und dann geht es weiter hier mit diesem Aufruf,
- der dann der Nächste ist.
- Und das ist auch wieder ein Aufruf.
- Da geht es zu der Methode.
- Gehen wir hierhin.
- Jetzt fangen wir an, die erste Anweisung da abzuarbeiten.
- Dann die zweite Anweisung ist ja wieder ein Methodenaufruf.
- Nämlich der Methodenaufruf, dieser Methode da oben.
- Also geht der Kontrollfuss dahin.
- Führt die Anweisung da aus.
- Drückt die noch mal.
- Ist fertig.
- Und geht dann zurück zu dieser Methode Message 2.
- Und wenn die erledigt wurde,
- jetzt geht es da oben weiter in der Main Methode.
- Und dann wird eben das ausgeführt,
- was oben in der Main Methode steht.
- Das war die letzte Anweisung in Main.
- Dann hört das Ganze auf.
- Und wir sind mit Main fertig.
- Und wir können das Programm abschließen.
- Und das wäre dann eben halt der,
- der Text, der jetzt hier produziert worden wäre.
- Das können wir auch nochmal uns anders vorstellen.
- Wir haben hier das Programm.
- Wir rufen die eine Methode auf.
- Wir gehen weiter zur nächsten.
- Wir rufen die wieder auf.
- Da rufen wir eine andere Methode auf.
- Aus dieser aufgerufen Methode.
- Wenn wir mit der fertig sind, geht es da hier weiter.
- Wenn die fertig ist, sind wir fertig mit Main und so weiter.
- Also diese Beispiele hier mit Print sind natürlich so,
- einfach, dass man sich fakt, dass Köpfe auch anders haben.
- Aber diesen Ablauf müssten sie wirklich voll und ganz verstehen.
- Und wie gesagt,
- später werden wir noch mehr Anweisungen kennenlernen
- und andere Wege kennenlernen, Aufgaben zu zerlegen.
- Aber Kontrollschluss ist eine ganz wichtige Eigenschaft der Programme,
- die Sie berücksichtigen müssen.
- Also, das ist das, was wir jetzt machen.
- Wir haben hier die Aufmerksamkeit,
- die wir jetzt haben,
- die wir jetzt haben.
- Wir müssen die Beispiele wieder berücksichtigen müssen.
- Zusammenfassung des ersten Teils für die Methoden.
- Wir definieren zurzeit nur einfache Methoden.
- Die haben alle die Keywords "public static void", die drei Keywords.
- Dann kommt da eine Folge von Anweisungen, Statements.
- Das ist der Rumpf oder der Body der Methode.
- Und diese Methode kann überall aufgerufen werden.
- Und in diesem Fall gibt es ja auch keinen Weg, keinen Wert zurück.
- Damit haben wir im Grunde genommen das Programm für uns erstellt.
- So, und jetzt erinnert sich eBNF.
- Also, wir können sagen, eine Methodendefinition ist definiert als die Methode Main.
- Die muss sein.
- Und dann eben halt hier könnten noch weitere folgen.
- Weite, diese Asadeffs definiert sind definiert als eine
- Wiederholung weiterer Methoden.
- Das kann null Methoden sein.
- Das war das allererste Beispiel.
- Das kann eine Methode sein.
- Das können zwei sein, wie ich es in den beiden Beispielen hatte und so weiter.
- Und jede dieser Methoden besteht dann wieder aus diesen Keywords "public static void".
- Irgendeinem Namen.
- Jetzt noch den Klammern ohne irgendwas dazwischen.
- Und dann eben hier den geschweiften Klammer im Programmtext.
- Hier in da nochmal.
- Und hier kommt eine Folge von Statements, die Sie da haben.
- So, und also so können wir sagen, dass die Methoden definiert sind.
- Und jetzt müsste eigentlich schon jemand sagen, da ist aber nicht alles ganz akkurat.
- In der Kleinigkeit habe ich hier noch nicht ganz ausgedrückt.
- Nämlich, ich habe ja gesagt, dass in der Java-Welt spielt es keine Rolle,
- in welcher Reihenfolge die Methoden auftreten.
- Das heißt, diese Methode "main", "main" muss nicht die erste Methode sein.
- Oftmals ist es, weil das die Übersichtlichkeit erhöht.
- Aber es gibt auch andere Leute, die stecken die Main-Methode ans Ende.
- Das kann jeder machen, wie er will.
- Und das heißt, Main ist einfach nur eine Methode, die irgendwann aufträgt.
- Also eine korrektere EBNF-Beschreibung wäre diese.
- Wir können eine Folge von Methoden haben.
- Danach kommt diese besondere Methode, die wir unbedingt brauchen, namens "main".
- Und danach können noch mehr Methoden kommen, wenn wir das wollen.
- Also so können wir das ganz einfach machen.
- So, und damit sind wir jetzt fertig mit dem Thema Methoden.
- Und wollen jetzt sehen, wie wir diesen Methoden etwas mehr an interessanter Arbeit zu tun geben.
- Und dazu gehört eben, dass müssen wir diskutieren, das Thema der Typen
- und das Thema der Variable. Und die beiden hängen eng miteinander zusammen.
- Also, Typen beschreiben Eigenschaften von Daten.
- Ein Typ beschreibt eine Menge von Daten oder Werten von Daten.
- Und für die, die schon aus mehr Mathematik kennen,
- das kann man eigentlich auch mathematisch als eine Kategorie bezeichnen.
- Aber das ist für uns nicht so wichtig.
- Wichtig ist für uns, dass so ein Typ eben eine beschreibt, was für Daten das sein können.
- Und wenn ich jetzt eben einen Typ habe, dann bestimmt der die Operationen,
- die mit diesen Daten gemacht werden können.
- Wenn ich einen Typ habe, der das Datum angibt,
- kann ich im Allgemeinen nicht zweimal das Datum eineinander addieren.
- Das geht nicht.
- Und wir müssen, wenn wir jetzt programmieren, in vielen Programmiersprachen angeben,
- was für ein Typ wir arbeiten.
- Und eben klassische Beispiele, die wir auch schon ein bisschen gesehen haben.
- Da war der Typ der ganzen Zahlen.
- Wir hatten gesehen, es gibt preelle Zahlen.
- Und es gibt auch Strings.
- Das sind Typen, die im System vorgeschrieben sind oder bereits zur Verfügung gestellt werden.
- Und mit denen können wir arbeiten.
- Und dann dementsprechend sind dann auch bestimmte Operationen möglich
- oder eben nicht mehr möglich.
- Das ist durch den Typ vorgegeben.
- So, jetzt warum sind Typen so wichtig?
- Warum ist das so eine super gute Idee?
- So ein Typ auf der einen Seite ist wichtig für die Leute,
- die die Programmiersprache implementieren.
- Weil der Typ legt fest, wie die Daten zu implementieren sind.
- Die Programmiersprache hat entschieden, der Typ für ganze Zahlen werden auf diese Weise dargestellt.
- Also auf diese Weise implementiert mit irgendeiner, mit irgendwelchen Bits.
- Am Ende beruht ja alles auf einer Kombination von 0 und 1.
- Und da haben wir hier eben diese Folge für die Zahl 97 im Dezimalsystem.
- Und das haben Sie wahrscheinlich schon mal gesehen.
- Das ist die Edel dieser Bits an Wert.
- Das ist also die erste Position 2 hoch 0, 2 hoch 1, 2 hoch 2 und so weiter.
- Und wenn ich hier so was habe, dann heißt das im Grunde genommen 2 hoch 0,
- plus das hier ist jetzt 2 hoch 5, plus 2 hoch 6.
- 2 hoch 6.
- Und wenn Sie das auswächen, das ist 1 plus 32 plus 64.
- Und wenn Sie das zusammenaddieren, ergibt das genau 97.
- Also das ist, so werden die Zahlen in vielen Systemen dargestellt.
- Ist für uns eigentlich nicht so wichtig fürs Erste.
- Aber die Programmiersprache muss natürlich wissen, wie sie das macht,
- damit dann eben die richtigen Werte immer wieder verwendet werden können.
- So, jetzt für so Typen wie Zahlen ist das ziemlich einfach.
- Wie würden wir denn jetzt so ein, wie würden wir denn die Buchstaben A oder B darstellen wollen oder können?
- Was könnten wir denn da machen?
- Da müssen wir uns auch irgendwas einfallen lassen.
- Und die vernünftigste Auffassung ist, dass wir irgendeine Tabelle nehmen
- und sagen, dass A hat dieses Muster und dass B hat dieses Muster.
- Und die Länge, wie lange diese Folgen von 0 und 1 sein müssen
- und auch wie lange diese Folge sein muss, das wird von der Programmiersprache festgelegt,
- weil das hängt davon ab, wie viele von diesen verschiedenen Werten wir darstellen müssen.
- Also für A würden wir vielleicht sagen, dass auch wieder acht von diesen 0 und 1 genügen.
- Und für B auch, hätten wir das hier als Darstellung für A und B, weil es gibt eine Tabelle.
- Da steht eben drin für den Buchstaben A, nehmen wir diese Folge von 0 und 1.
- Und übrigens, das, wenn wir sie als ganze Zahl angucken, hat den Wert 97.
- Aber das ist für uns eigentlich nebensächlich, weil wir gucken uns ja nicht diese,
- wir gucken uns ja nicht die individuellen 0 und 1 an.
- Aber für unser Programm ist es schon sehr wichtig, weil wenn ich in unserem Programm auf einmal diese Folge von 0 und 1 habe,
- dann muss ich entscheiden, was ist denn das überhaupt?
- Ist das jetzt eben ein A oder ist das eine 97?
- Das kann ich aus den 0 und 1 sein heraus nicht feststellen.
- Das kann ich nur feststellen, wenn ich weiß, was für einen Typ ich da habe.
- Wenn es sich um Buchstaben handelt, dann ist die richtige Antwort B.
- Und wenn es sich um ganze Zahlen handelt, ist die richtige Antwort 97.
- Deswegen ist es so wichtig, dass wir eben festhalten, was für einen Typ durch eine bestimmte Verarbeitung wird
- oder mit was für einem Typ wir da arbeiten.
- So, jetzt in Java gibt es verschiedene fest eingebaute Typen.
- Die heißen Primitive Types.
- Und das sind die fest eingebauten Typen für Zahlen, Buchstaben und dergleichen mehr.
- Da haben wir eben die ganzen Zahlen, die heißen INS mit einem Kleinbuchstaben.
- Und da sind so Beispiele im 0, 42, minus 3 und irgendwelche anderen Zahlen darstellbar.
- Und dann gibt es die reellen Zahlen.
- Das sind die Doubles.
- Die sind eben die Zahlen mit einem Dezimalpunkt.
- In verschiedensten Formen kann man die darstellen.
- Also Ziffern folgen mit einem Dezimalpunkt.
- Das sind die reellen Zahlen.
- Und warum haben wir diese Unterscheidung zwischen IND und DOUBLE?
- Warum sagen wir nicht Zahl?
- Das ist so ein bisschen ein Trade-off, den wir machen.
- Wenn das System weiß, dass es sich um reelle Zahlen handelt,
- dann weiß es vielleicht, wie viel Platz es dafür braucht
- und kann ein anderthalbes Prozessor verwenden, um Apparationen schneller durchzuführen.
- Und bei INS wissen wir dann auch, wie groß die sein darf.
- Und wir haben dann einen anderen Weg,
- in Prozessoradditionen oder Subtrakzionen mit solchen Werten durchzuführen.
- Der Bereich, den wir in den INS darstellen können,
- hat sich in der Vergangenheit dann als doch nicht so zweckmäßig herausgestellt.
- Und darum hat man dann eben heutzutage diesen Typ LONG,
- der eigentlich in sehr vielen Programmen auch in anderen Vorlesungen verwendet wird,
- wo sie eben relativ, also sehr große ganze Zahlen darstellen können.
- Und das hat den schönen Vorteil,
- dass wir uns eigentlich im Allgemeinen nicht Gedanken machen müssen,
- ob die Ergebnisse, die wir berechnen, überhaupt darstellbar sind oder nicht.
- Also das sind hier die Basestypen IND, LONG und DOUBLE,
- mit denen werden wir uns ein bisschen beschäftigen,
- die anderen kommen dann noch später dazu, sind aber nicht so kritisch.
- So, jetzt haben wir hier ein Programm, das wir schreiben wollen,
- mit dem wir die Oberfläche so eines Quaders berechnen.
- Da erinnerst du sich vielleicht, die Oberfläche wird berechnet,
- indem wir zweimal Länge, Höhe, und so weiter zusammenrechnen.
- Und nach dem, was wir jetzt schon können,
- ist es ein einfaches Programm, das wir schreiben könnten.
- Das Programm würde eben halt die Methode MAIN haben,
- da hätte es drei Print Statements,
- und hier würde das Print Statement eben halt die Berechnungen durchführen,
- mit IND-Zahlen, und würde das richtige Ergebnis rausliefern.
- Und das wäre gut und schön, solange eben alles bestens läuft.
- Und natürlich haben wir vielleicht mal,
- hier haben wir wirklich eine aufmerksame Programmiererin gehabt,
- die hat gesehen, dass das eben halt hier dieses Mal,
- das Mal das muss multipliziert werden, und das Mal das,
- und das hier mal das.
- Das sind die Multiplikationen.
- Aber jetzt könnte es ja passieren,
- dass irgendjemand einen Fehler macht,
- und dummerweise hier eine falsche Zahl eingetippt hat.
- Und dann hätten wir ein großes Problem,
- weil jetzt eben die Berechnung einfach nicht mehr stimmt.
- Und das ist natürlich, wir wollen sowas gar nicht haben,
- und darum führen wir das Konzept einer Variable ein.
- Und eine Variable erlaubt es uns, einen Namen zu definieren,
- mit dem wir uns auf einen Wert beziehen können.
- Das heißt, wenn wir eine Variable einführen,
- dann müssen wir zwei Sachen angehen.
- Wir brauchen einmal einen Namen,
- und wir müssen sagen, auf was für Werte sich diese Variable beziehen kann.
- Also in dem einfachen Beispiel, das ich hier habe,
- da wären es Int-Werte, wir sagen, Int-Werte sind das.
- Und darum brauchen wir dann eine Variable für Int-Werte.
- Und die würden wir in Java einfach so deklarieren,
- dass wir halt den Typ, den wir haben wollen,
- und den Namen der Variable in einer Deklaration angeben.
- Wir würden dann sagen, wir brauchen hier eine Int-Variable-Länge,
- und dann feist das System, aha, das ist eine Variable,
- für eben der Typ dieser Werte ist Int,
- und der Länge ist der Name, unter der sich das Programm
- auf diesen Wert beziehen will.
- Und das nennen wir eine variablen Deklaration,
- wie Declaration of Independence, wir deklarieren das,
- und ob dann die anderen das mitmachen oder nicht,
- das hängt vom System ab, aber wir deklarieren das.
- Und hier hätten wir jetzt drei Int-Variable,
- und den können wir dann Wert zuweisen.
- Und diese Werte würden dann in der Zukunft verwendet werden,
- wenn immer wir uns irgendwo auf diese Variable beziehen.
- Dann wäre das einfach immer wieder gleich.
- Nun ist es natürlich so, eine variablen Deklaration,
- ohne eine Zuweisung ist nicht so praktisch,
- und darum erlaubt das System es uns auch,
- die Deklaration und die Definition zu kombinieren.
- Das heißt, wir hätten dann also einen Typ,
- es könnte eben Int sein, einen Namen wie die Länge,
- keine Umlaute bitte,
- und dann hätten wir irgend einen Wert, den wir den geben wollten.
- Und da könnten wir irgend einen Wert haben vorausgesetzt,
- es ist ein Wert des richtigen Typs.
- Also würden wir eigentlich das viel besser so machen,
- dass wir hier diese Variablen deklarieren,
- und dann entsprechend das haben.
- Also, so eine Deklaration liegt die Art
- oder den Typ der Werte feste,
- und dann kann ich jeden Wert dieses Typs darstellen.
- Und der Name wird bekannt gegeben.
- Jetzt sagt das System, hier ist ein Name,
- eine Variable, die ich gebrauchen kann.
- Und gute Namen sind sehr wichtig,
- und alles andere als leicht zu finden.
- Insbesondere dann, wenn die Variable
- in vielen Teilen des Programms wiederholt verwendet wird,
- ist es wirklich wichtig, dass sie einen guten Namen finden.
- Wenn eine Variable nicht wichtig ist, genügt ein kurzer Name,
- und in den Beispielen, die ich hier habe,
- finden sie die oft, weil die Beispiele sind einfach und kurz.
- So, jetzt kommt noch eine Sache, die wichtig ist.
- Jetzt haben Sie gesehen, ich habe hier diese,
- so habe ich diese Variable deklariert und gleich definiert.
- Und hier sehen Sie so ein Zeichen,
- und dieses Zeichen heißt im Deutschen Gleichheitszeichen.
- Das ist aber ein extrem irreführender Name.
- Es ist also wirklich irreführender Name,
- weil es hat überhaupt nichts mit Gleichheit zu tun.
- Das ist eine Zuweisung.
- Hier weisen wir dieser Variable den Wert zu.
- Wir weisen der Variable Länge den Wert 70 zu.
- Und natürlich, wenn wir jetzt mit der Variable Länge arbeiten,
- wird immer dieser Wert verwendet.
- Aber das hat mit Gleichheit nichts zu tun.
- So, jetzt können Sie natürlich fragen,
- ist das jetzt so eine Java-Spezialität,
- dass wir für alle, für irgendwelche Variablen,
- die wir brauchen, den Typ angeben müssen?
- Und die Antwort ist ja nicht richtig.
- Also es gibt viele Programmiersprachen,
- die verlangen, dass man den Typ angibt.
- Es gibt auch ein paar Programmiersprachen,
- die verlangen das nicht.
- Und da gibt es da manchmal sehr große Überraschungen,
- weil der eine meint, es wäre eine Gleit-innerielle Zahl,
- und der meint, es wäre eine Integer.
- Ja, und da ist die Sache weg.
- Und in Java verlangen wir eigentlich eine Spezifikation des Typs.
- Aber sozusagen als Genugtuung für die,
- die etwas fauler im Schreiben sind,
- Java verlangt nicht immer eine Spezifikation.
- Manchmal in der Tat kann der Compiler herausfinden,
- was für ein Typ gebraucht wird.
- Und das ist ja normal.
- Mein Ratschlag ist, dass Sie immer die Typen angeben,
- dass Sie sich so klarmachen, was Sie da arbeiten.
- Der Typ ist wirklich ein Teil der Dokumentation.
- Der sagt viel aus.
- Und wenn Sie den Compiler haben, zur Hilfe rufen wollen,
- dann müssen Sie etwas Besonderes machen.
- Wir empfehlen erst mal am Anfang,
- dass Sie die Typen immer explizit angeben.
- So, und was für Typen kann jetzt Ihr Java-Programm verwenden?
- Da gibt es drei verschiedene.
- Einmal die Typen, die in der Sprache definiert sind,
- eben wie Int, Long usw., die Typen aus Bibliotheken.
- Und dann gibt es, wie strings, haben wir auch schon gesehen,
- und dann gibt es eben die benutzerdefinierten Typen.
- Und darüber werden wir erst später was machen können.
- Also, Typen beschreiben eben die Eigenschaften von Daten,
- den Wertbereich, die Operationen usw.
- beschreiben, wie die dargestellt werden.
- Obwohl das für uns nicht beim Programmieren wichtig ist,
- ist es wichtig dafür, dass wir sicher sein wollen,
- dass das Programm auf unterschiedlichen Systemen
- gleich ausgeabt wird.
- Und die richtige Wahl des Typs ist wirklich entscheidend.
- Weil je nachdem, was für ein Typ Sie wählen wird,
- entweder die eine oder andere Operationen
- in der Hardware oder Software ausgeführt
- und Sonderfälle werden unterschiedlich behandelt.
- Wenn eine Zahl zu groß ist für eine Integer,
- dann wird irgendwas gemacht.
- Wenn die Zahl zu groß ist für eine Reelle Zahl,
- dann wird eben das auf unendlich gesetzt.
- Da gibt es Unterschiede, je nachdem,
- was für eine Art von Typs haben.
- Weil alle unsere Programme manipulieren letztendlich Symbole.
- Und wir hatten das schon bei eBNF als einfaches Beispiel gesehen.
- Die Symbole, die werden irgendwie verarbeitet usw.
- Am Endeffekt wird alles durch 0 und 1 dargestellt.
- Und wir müssen eben sicher sein,
- dass eben die Darstellung konsistent ist
- und dass der genügend Platz ist, das darzustellen,
- was wir da darstellen wollen.
- Typen verhindern Fehler in Ihrem Programm.
- Wenn Sie einen Typ haben, der eine AHV-Nummer ist
- und einen anderen Typ haben, der ein Gehalt darstellt,
- dann können Sie die beiden nicht addieren.
- Wenn das für Sie Zahlen sind, können Sie die einfach addieren.
- Oder Sie können nicht Volumen und Fläche addieren.
- Würde das System verhindern.
- Zum anderen eben erlauben auch Typen Optimierungen.
- Sowohl der Berechnung als auch der Darstellung.
- Weil ich sage, hier kann ich mit einer Int arbeiten.
- Hier genügen für mich 32 von diesen 0 und 1ern.
- Da kann ich das kompakter machen,
- als wenn ich das weiß, wie groß machen muss.
- Denn trotz aller Versuche, etwas Besseres zu machen,
- alle Darstellungen sind letztlich endlich.
- Und wenn wir eine zweckmäßige Darstellung treffen und wählen können,
- dann helfen wir dem System effizienter zu sein
- und helfen dem System.
- Und daher ist die richtige Wahl des Typs nötig.
- Und dann kann das System entsprechend Platz reservieren.
- Und das müssen Sie machen, wenn Sie das Programm eben erstellen.
- Also für die einfachen Primitivtyps ist es so Genügtes,
- dass wir eben den Namen des Typs angeben, den Namen und dann den Wert.
- Und das gibt dann, der Wert wird ausgewertet.
- Und dann ergibt es einen Wert.
- Und der wird dann mit dem Namen dieser Variablen assoziiert.
- Das ist also einfach.
- Und wenn wir so einen Ausdruck haben,
- dann wird der Ausdruck in Teilausdrücke zerlegt,
- bis wir eben einzelne Werte haben.
- Und dann wird auf diese Weise der Wert berechnet.
- Also wir könnten als einfachstes Beispiel nur die Zahl 4 haben,
- als diesen Value.
- Oder wir könnten den Ausdruck haben 1 plus 7.
- Das wird zerlegt in 1 und wird zerlegt in 7.
- Und die werden dann addiert.
- Also die ganzen Regeln, die Sie kennen, gelten da.
- Also einen einfachen Wert, den nennen wir einen literal,
- also einen direkt auftretenden Wert.
- Und komplexe Teilausdrücke, die werden dann eben entsprechend zerlegt.
- So, jetzt was für Operatoren können Sie jetzt mit den Intwerten verwenden?
- Na ja, da gibt es die bekannten Additionen, Subtaktion,
- Multiplikationen, Divisionen.
- Und dann gibt es hier dieses Zeichen, das heißt Modulus, der Rest.
- Das ist also der Wert, den ich bekomme, wenn ich eben 2 Ints miteinander,
- wenn ich eine Int durch eine andere addiere und ein Rest übrig bleibe.
- Und wenn ich jetzt so einen Programm habe mit zum Ausdruck,
- dann werden diese Ausdrücke während der Ausführung des Programms ausgewertet.
- Das Programm geht hin und nimmt die Werte, sei es in Variablen oder sei es als Literals,
- und produziert eben einen entsprechenden Wert.
- Also hier habe ich 1 plus 1 wird addiert, ergibt 2.
- Oder wenn ich hier so ein Printline Statement habe, wo ich das drucken möchte,
- da geht das System hin und her, 3 mal 4 ist 12, also druck das 12.
- Und wenn ich jetzt seitdessen nicht eben 12 haben wollte,
- sondern wollte den Text haben, ja, den ich den Text haben will,
- dann muss ich wieder diese Hochkommers verwenden.
- Und dann würde ich auf diese Weise sagen, das ist ein String.
- Und dann würde eben diese Printline, würde uns eben halt den entsprechenden String drucken.
- Also es gibt eine ebnf Beschreibung für die Ausdrücke,
- Warnung ist nicht vollständig und beschreibt nur die Sintag,
- das werden wir ja noch sehen,
- und haben dann eben diese arithmetischen Operatoren,
- mit denen wir die Werte oder die Variablen verknüpfen können.
- Und wenn wir jetzt so 2 Werte haben, dann ist das Ergebnis,
- dieser Operation ist der Wert, der der Typ festgelegt.
- Also wenn Sie eine Int und eine Int irgendwie kombinieren,
- dann ergibt es eben eine Int.
- Und wenn Sie eine Int und eine Long kombinieren,
- ja, müssen wir später gucken, haben wir heute noch nicht gemacht.
- Also diese Operatoren, die produzieren Werte eines festgelegten Typs,
- und wenn eben beide Operanden den selben Typ haben,
- dann zum Glück hat das Ergebnis auch diesen selben Typ.
- Und das ist das, was ich jetzt heute zum Thema Typ habe.
- Also wenn Sie zwei unterschiedliche Typen haben,
- also wenn Sie beiden Typen gleich sind,
- und arithmetisch ist es das Ergebnis des selben Typs,
- und wenn es unterschiedliche Typen sind,
- dann müssen wir halt später sehen, was da auf uns zukommt,
- und da müssen wir sehen, was dann zu machen ist.
- Bis dann.
- [Applaus]
- [Applaus]
- *Pfeifen*
+
+[00:00:00.000 --> 00:00:04.000]   So funktioniert es jetzt besser?
+[00:00:04.000 --> 00:00:09.000]   Okay, ich hoffe es ist jetzt nicht zu laut, um den Nachmittag zu stören.
+[00:00:09.000 --> 00:00:13.000]   Okay, wir wollen heute hier weitermachen mit der Einführung in die Programmierung.
+[00:00:13.000 --> 00:00:21.000]   Die Algorithmen und Darinstrukturen werden dann später mal eine Vorlesung in unserem Zeitfenster abliefern.
+[00:00:21.000 --> 00:00:26.000]   So, und wir hatten in der letzten Vorlesung uns angefangen mit Methoden zu beschäftigen
+[00:00:26.000 --> 00:00:31.000]   und hatten gesehen, dass die ein Weg sind, eine Struktur in ein Programm hereinzubekommen.
+[00:00:31.000 --> 00:00:37.000]   Also eine Methode erlaubt es uns eine Sequenz, also eine Folge von Anweisungen zusammenzufassen
+[00:00:37.000 --> 00:00:41.000]   und dieser Folge einen Namen zu geben, den Namen dann der Methode.
+[00:00:41.000 --> 00:00:45.000]   Und da hatten wir als erstes Beispiel, das ganz einfache Beispiel,
+[00:00:45.000 --> 00:00:50.000]   dass wir so eine Methode Main gesehen hatten, die in diesem Programm Hello World war
+[00:00:50.000 --> 00:00:52.000]   und diese Methode eben hält Anweisungen.
+[00:00:52.000 --> 00:00:57.000]   Und diese Methode ist insofern was Besonderes, weil die wird automatisch aufgerufen.
+[00:00:57.000 --> 00:01:03.000]   Das gilt für die anderen Methoden nicht, aber so gefängt das Programm an, ausgeführt zu werden
+[00:01:03.000 --> 00:01:06.000]   und das ist eine gute Idee.
+[00:01:06.000 --> 00:01:10.000]   Okay, also solche Methoden, die strukturieren die Anweisungen,
+[00:01:10.000 --> 00:01:16.000]   statt so einer langen Folge von Anweisungen können wir die in bessere, kleinere Blöcke aufteilen
+[00:01:16.000 --> 00:01:20.000]   und das ist ein großer Vorteil, sondern sonst müssten wir ja alle Anweisungen
+[00:01:20.000 --> 00:01:24.000]   in dieser einen Methode Main unterbringen und das wäre ziemlich mühsam.
+[00:01:24.000 --> 00:01:30.000]   Und der zweite Punkt ist, wenn wir einmal Methoden haben, dann können wir Wiederholungen vermeiden,
+[00:01:30.000 --> 00:01:34.000]   weil wenn ich dieselbe Folge von Anweisungen nochmal ausführen will,
+[00:01:34.000 --> 00:01:38.000]   dann brauche ich ihn nicht nochmal hinzuschreiben, sondern genügt, wenn ich einfach sage,
+[00:01:38.000 --> 00:01:41.000]   diese Methode bitte nochmal ausführen.
+[00:01:41.000 --> 00:01:49.000]   Und so gesehen sind eigentlich Methodendepinitionen ein Weg für uns, neue Anweisungen zu erstellen.
+[00:01:49.000 --> 00:01:54.000]   Nachdem wir einmal gesagt haben, hier ist die Methode mit diesen Einzelanweisungen,
+[00:01:54.000 --> 00:02:01.000]   haben wir eine neue Anweisung, so eine mächtige Anweisung, die jetzt alles zusammen auf einmal macht.
+[00:02:01.000 --> 00:02:08.000]   Und das wäre also hier natürlich möglich, weil eine Klasse mehrere Methoden enthalten kann.
+[00:02:08.000 --> 00:02:12.000]   Wenn eine Klasse nur eine Methode enthalten könnte, ginge das nicht.
+[00:02:12.000 --> 00:02:16.000]   Also wir hatten gesehen, programmieren hatten wir am Anfang der Vorlesung gesehen,
+[00:02:16.000 --> 00:02:21.000]   ist im Grunde genommen ein Begriff für allgemeine Programmentwicklung.
+[00:02:21.000 --> 00:02:27.000]   Und jetzt sehen wir als nächstes, dass Programmentwicklung eigentlich heißt, Methoden zu definieren.
+[00:02:27.000 --> 00:02:32.000]   Wirklich eine Aufgabe, die wir haben, in Teilaufgaben zu zerlegen,
+[00:02:32.000 --> 00:02:34.000]   ja, die haben wir Teilaufgaben, die wir haben wollen.
+[00:02:34.000 --> 00:02:41.000]   Und diese Teilaufgaben sollen dann im Allgemeinen durch eine Methode gelöst werden.
+[00:02:41.000 --> 00:02:44.000]   Gibt es ein Problem?
+[00:02:44.000 --> 00:02:46.000]   Gibt es ein Problem?
+[00:02:46.000 --> 00:02:49.000]   Es gibt einen guten Witz.
+[00:02:49.000 --> 00:02:51.000]   Nicht, das ist aber schade.
+[00:02:51.000 --> 00:02:54.000]   Also wenn Sie einen wirklich guten hätten, würden wir ihn gerne hören.
+[00:02:54.000 --> 00:02:58.000]   Also die Idee ist, wir zerlegen die Aufgabe in Teilaufgaben,
+[00:02:58.000 --> 00:03:01.000]   und diese Teilaufgaben werden dann durch Methoden gelöst.
+[00:03:01.000 --> 00:03:07.000]   Und natürlich kommt dann der nächste Schritt, wir müssen die Teilergebnisse irgendwann zusammenfügen.
+[00:03:07.000 --> 00:03:12.000]   Und jede Methode liefert irgendwelche Ergebnisse ab und die müssen wir dann zusammenfügen,
+[00:03:12.000 --> 00:03:16.000]   um am Ende das gewünschte Ergebnis für die Lösung zu haben.
+[00:03:16.000 --> 00:03:18.000]   So, jetzt habe ich ein ganz einfaches Beispiel,
+[00:03:18.000 --> 00:03:25.000]   weil bisher haben wir ja wirklich noch fast nichts an Java Repertoire oder an Anweisungen und so weiter kennengelernt.
+[00:03:25.000 --> 00:03:31.000]   Darum habe ich als einfachstes Beispiel die Aufgabe, dass wir einen Text aufgeben sollen, diesen Text hier,
+[00:03:31.000 --> 00:03:33.000]   der hier angegeben ist.
+[00:03:33.000 --> 00:03:35.000]   Den wollen wir also ausgeben.
+[00:03:35.000 --> 00:03:40.000]   Und jetzt suchen wir halt ein Programm, das diese Aufgabe erfüllt.
+[00:03:40.000 --> 00:03:48.000]   Könnte man natürlich hingehen und ganz einfach ein einziges großes Print Statement, also eine einzige Print Anweisung haben.
+[00:03:48.000 --> 00:03:53.000]   Aber jetzt nehmen Sie mal an, diese längere Erklärung wäre etwas cleverer.
+[00:03:53.000 --> 00:03:57.000]   Die würde Rücksicht nehmen auf die Person, die die Anweisung bekommt,
+[00:03:57.000 --> 00:04:03.000]   und wäre also mehr los, also das könnte man nicht einfach in einem einzelnen Print Statement unterbringen.
+[00:04:03.000 --> 00:04:07.000]   Man sieht hier, da ist vielleicht ein Muster in dem, was da ausgegeben werden soll,
+[00:04:07.000 --> 00:04:11.000]   das können wir vielleicht auch für uns vorderhaft aussuchen.
+[00:04:11.000 --> 00:04:14.000]   So, jetzt haben wir diese Aufgabe.
+[00:04:14.000 --> 00:04:20.000]   Und der erste Versuch ist, dass wir versuchen, die so weit zu vereinfachen, dass je das dann ein Schritt reicht,
+[00:04:20.000 --> 00:04:25.000]   dass also im Grunde genommen wir diese Aufgabe in Teilaufgaben zerlegen
+[00:04:25.000 --> 00:04:30.000]   und jede Teilaufgabe kann dann in einem Schritt erledigt werden.
+[00:04:30.000 --> 00:04:36.000]   Und es wäre jetzt schön, wenn ich Ihnen eine fixe Regel geben könnte, die immer zum Erfolg führt,
+[00:04:36.000 --> 00:04:43.000]   dann sagen wir, so machen wir T1, T2, T3 und so weiter, aber es gibt leider keine fixe Regel.
+[00:04:43.000 --> 00:04:49.000]   Wir haben nur Heuristiken, das heißt, wir haben also Ratschläge oder Hinweise oder Hinze,
+[00:04:49.000 --> 00:04:55.000]   mit denen Sie manchmal weiterkommen, aber die Ihnen nicht letztlich garantieren,
+[00:04:55.000 --> 00:04:58.000]   dass Sie immer eine gute Zerlegung finden.
+[00:04:58.000 --> 00:05:02.000]   Deswegen brauchen Sie da Übung, um rauszufinden, was denn eine gute Zerlegung ist.
+[00:05:02.000 --> 00:05:06.000]   Also irgendwie versuchen wir das hier in Teilaufgaben zu zerlegen
+[00:05:06.000 --> 00:05:13.000]   und natürlich dann die Hoffnung, dass vielleicht im besten Fall jede Teilaufgabe eine einzelne Java-Anweisung ist
+[00:05:13.000 --> 00:05:15.000]   oder ein einzelner Schritt ist.
+[00:05:15.000 --> 00:05:19.000]   Dann haben wir unser Programm erstellt, haben die Teilaufgaben implementiert
+[00:05:19.000 --> 00:05:22.000]   und haben auf diese Weise alles erledigt.
+[00:05:22.000 --> 00:05:27.000]   Also in diesem privalen Beispiel hier würden wir jetzt also hingehen und sagen,
+[00:05:27.000 --> 00:05:37.000]   wir zerlegen das hier so, dass die Teilaufgabe TI die I-Tezeile, hier oben ist die erste, zweite, dritte und so weiter, Zeile.
+[00:05:37.000 --> 00:05:40.000]   Und die geben wir dann in einer Print-Line-Anweisung auf.
+[00:05:40.000 --> 00:05:45.000]   Und dann haben wir diese, die Programme, vielleicht sollten wir das in Anführungszeichen setzen,
+[00:05:45.000 --> 00:05:51.000]   weil der Begriff Programm für eine Print-Anweisung ist vielleicht etwas zu viel.
+[00:05:51.000 --> 00:05:56.000]   Also diese Programme, die können wir dann hintereinander ausführen,
+[00:05:56.000 --> 00:05:59.000]   erste Print-Statement, dann das zweite und so weiter.
+[00:05:59.000 --> 00:06:03.000]   Und am Ende würden wir dann die Ergebnisse zur Lösung zusammenfügen.
+[00:06:03.000 --> 00:06:08.000]   Wobei natürlich Print macht ja keine richtigen Ergebnisse, sondern drückt einfach nur auf.
+[00:06:08.000 --> 00:06:10.000]   Aber das Grundproblem sehen wir hier schon.
+[00:06:10.000 --> 00:06:16.000]   Wir zerlegen die Aufgabe in Teilaufgaben, die Teilaufgabe werden in Programme übersetzt
+[00:06:16.000 --> 00:06:18.000]   oder dafür schreiben wir Programme.
+[00:06:18.000 --> 00:06:23.000]   Und dann fügen wir am Ende alles wieder die Ergebnisse zusammen.
+[00:06:23.000 --> 00:06:31.000]   Also wir haben das Problem zerlegt und dann haben wir eben für jede Teilaufgabe Operationen oder Anweisungen
+[00:06:31.000 --> 00:06:33.000]   und die führen wir hintereinander aus.
+[00:06:33.000 --> 00:06:37.000]   Und so können wir dann zu unserem Ergebnis kommen.
+[00:06:37.000 --> 00:06:40.000]   Und da gibt es verschiedene Wege, wie wir hintereinander ausführen können.
+[00:06:40.000 --> 00:06:42.000]   Also eins habe ich Ihnen schon mal gezeigt.
+[00:06:42.000 --> 00:06:47.000]   Wir können also hier irgendein, sagen wir mal, Objekt, mit dem wir arbeiten nehmen.
+[00:06:47.000 --> 00:06:53.000]   Dann haben wir eine Aufgabe, eine Operation an dem.
+[00:06:53.000 --> 00:06:57.000]   Wir haben hier diese Operation, wir machen diese Substring-Operation.
+[00:06:57.000 --> 00:07:04.000]   Und das Ergebnis hatten wir gesehen, können wir dann mit der Tor-Upper-Case-Methode weiter bearbeiten.
+[00:07:04.000 --> 00:07:12.000]   Hier sehen Sie also, wie das Resultat der ersten Operation hier dieser Operation wird von dieser Operation weiter bearbeitet.
+[00:07:12.000 --> 00:07:19.000]   Also hier in dem einfachen Beispiel mit dem Print gibt es ja eigentlich keine richtigen Teilaufgaben.
+[00:07:19.000 --> 00:07:22.000]   Aber im Allgemeinen würden wir so was machen, würden wir so was haben wollen,
+[00:07:22.000 --> 00:07:27.000]   weil so können wir dann erreichen, dass unser Gesamtaufgabe gelöst wird.
+[00:07:27.000 --> 00:07:32.000]   Hätten wir also für jede dieser Teilaufgaben ein Programm und die fügen wir zusammen
+[00:07:32.000 --> 00:07:35.000]   und eins nach dem anderen führen wir dann aus.
+[00:07:35.000 --> 00:07:38.000]   Also in dem einfachen Beispiel, das wir hier haben,
+[00:07:38.000 --> 00:07:44.000]   hätten wir also hier diese, hätten wir in der Methode Main, hier diese T1,
+[00:07:44.000 --> 00:07:50.000]   das Programm für die erste Teilaufgabe, T2 für die zweite und so weiter für alle Statements.
+[00:07:50.000 --> 00:07:57.000]   Hätten wir das so erledigt, dass wir da diese Aufgabe für uns lösen würden.
+[00:07:57.000 --> 00:08:02.000]   Da können wir sagen, okay, gut, haben wir die Aufgabe gelöst und richtig ist es.
+[00:08:02.000 --> 00:08:06.000]   Und wir interessieren uns ja für die Korrektheit und dann ist das ja gut.
+[00:08:06.000 --> 00:08:10.000]   Aber wenn wir uns jetzt diese Aufgabe nochmal angucken, da hat man doch gesehen,
+[00:08:10.000 --> 00:08:13.000]   da ist irgendein Muster drin.
+[00:08:13.000 --> 00:08:19.000]   Und vielleicht, also hier ist dieser Block hier, wo wir eine Warnung ausreich geben
+[00:08:19.000 --> 00:08:25.000]   und der taucht hier hinten nochmal auf und eigentlich würden wir ja gerne die Aufgaben so zerlegen,
+[00:08:25.000 --> 00:08:30.000]   dass irgendeine Struktur in der Aufgabe ausgenutzt wird.
+[00:08:30.000 --> 00:08:34.000]   Letztlich hat dieses Programm, was wir sagen, Rettondanz,
+[00:08:34.000 --> 00:08:36.000]   das Programm wiederholt sich.
+[00:08:36.000 --> 00:08:41.000]   Es ist nicht ganz der Begriff, wie die Technik Rettondanz verwenden,
+[00:08:41.000 --> 00:08:45.000]   aber wir sagen, das Programm oder die Aufgabenstellung enthält Rettondanz,
+[00:08:45.000 --> 00:08:51.000]   wenn es eben halt Blöcke gibt, die mehr als einmal abgearbeitet werden können.
+[00:08:51.000 --> 00:08:56.000]   Das heißt, wir würden also jetzt gerne versuchen, eine Zerlegung zu finden,
+[00:08:56.000 --> 00:09:04.000]   die diese Struktur widerspiegelt.
+[00:09:04.000 --> 00:09:10.000]   Wir wollen also nicht irgendeine Zerlegung, so wie es Ihnen eben hier gezeigt hatte,
+[00:09:10.000 --> 00:09:15.000]   einfach eine Zerlegung in sieben verschiedene Tats,
+[00:09:15.000 --> 00:09:22.000]   sondern wir wollen eine Zerlegung, die es uns erlaubt, Aufgaben wiederzuverwenden
+[00:09:22.000 --> 00:09:25.000]   oder Teilaufgaben wiederzuverwenden.
+[00:09:25.000 --> 00:09:29.000]   Also in dem Beispiel hier würden wir gerne Teilaufgaben finden,
+[00:09:29.000 --> 00:09:32.000]   diese TI, so dass wir die wiederverwenden können.
+[00:09:32.000 --> 00:09:38.000]   Also hier in diesem Beispiel vielleicht, dass wir T2 mein wegen zweimal aufrufen können,
+[00:09:38.000 --> 00:09:40.000]   zweimal ausführen können.
+[00:09:40.000 --> 00:09:43.000]   Dann hätten wir eine unserer Aufgabe erleichtert,
+[00:09:43.000 --> 00:09:47.000]   weil wir hätten jetzt weniger an Anweisungen, um die wir uns kümmern müssen
+[00:09:47.000 --> 00:09:52.000]   und können das entsprechend unser Programm besser strukturieren.
+[00:09:52.000 --> 00:09:58.000]   Also hier in dem Beispiel, wo wir diesen achtsurströmigen Text auszugeben haben,
+[00:09:58.000 --> 00:10:01.000]   könnten wir sehen, da gibt es ja so eine Möglichkeit,
+[00:10:01.000 --> 00:10:05.000]   diese Warnung als Beispiel zu erkennen.
+[00:10:05.000 --> 00:10:14.000]   Die taucht hier zweimal auf und ist daher für uns,
+[00:10:14.000 --> 00:10:19.000]   der will hier nicht so richtig, aber okay, die taucht hier zweimal auf.
+[00:10:19.000 --> 00:10:24.000]   So, und zum zweiten können wir dann eben die Erklärung nehmen,
+[00:10:24.000 --> 00:10:26.000]   die hier einmal ausgedruckt wird,
+[00:10:26.000 --> 00:10:31.000]   und da könnten wir dementsprechend unser Programm strukturieren.
+[00:10:31.000 --> 00:10:35.000]   Also wenn Sie sehen, unser Ziel ist es, Programme zu erstellen
+[00:10:35.000 --> 00:10:40.000]   und wenn wir Glück haben, können wir die Aufgabe so zerlegen,
+[00:10:40.000 --> 00:10:44.000]   dass ein Schritt oder eine Java Anweisung genügt.
+[00:10:44.000 --> 00:10:48.000]   Wenn das nicht der Fall ist, dann können wir vielleicht Anweisungen
+[00:10:48.000 --> 00:10:52.000]   hintereinander schalten, also hintereinander ausführen.
+[00:10:52.000 --> 00:10:54.000]   Es gibt einen anderen Fall, der kommt später noch,
+[00:10:54.000 --> 00:10:56.000]   den werde ich jetzt noch nicht behandeln.
+[00:10:56.000 --> 00:10:58.000]   Und jetzt als vierte Möglichkeit gibt es die Gelegenheit,
+[00:10:58.000 --> 00:11:02.000]   eine selbst definierte Methode zu nehmen, also wir definieren Methoden
+[00:11:02.000 --> 00:11:07.000]   und die führen dann einzelne dieser Teilaufgaben aus.
+[00:11:07.000 --> 00:11:13.000]   So gehen wir vor, wenn wir eine schwierigere Aufgabe uns vornehmen
+[00:11:13.000 --> 00:11:16.000]   und wenn wir die da entsprechend bearbeiten wollen.
+[00:11:16.000 --> 00:11:21.000]   Also hier in diesem Beispiel würden wir jetzt eben eine Methode definieren,
+[00:11:21.000 --> 00:11:26.000]   die würde die Warnung drucken und der PrintLine Text ist gar nicht mal so wichtig
+[00:11:26.000 --> 00:11:31.000]   und wir hätten dann eine zweite Methode, die würde die Erklärung drucken
+[00:11:31.000 --> 00:11:33.000]   und natürlich auch hier ist die Erklärung einfach,
+[00:11:33.000 --> 00:11:36.000]   dass sie eben auf das Slide raufpasst.
+[00:11:36.000 --> 00:11:39.000]   So, das wären die beiden Methoden, die ich habe
+[00:11:39.000 --> 00:11:42.000]   und natürlich das Main fehlt hier noch,
+[00:11:42.000 --> 00:11:47.000]   aber das sind die beiden Methoden, die ich jetzt hier mal hätte.
+[00:11:47.000 --> 00:11:50.000]   Also wir haben dann die Aufgabe zerlegt in Teilaufgaben.
+[00:11:50.000 --> 00:11:55.000]   Jede Teilaufgabe wird durch eine Methode erledigt
+[00:11:55.000 --> 00:11:58.000]   und dann verketten wir, also führen wir hintereinander
+[00:11:58.000 --> 00:12:02.000]   die verschiedenen Programme für diese Teilaufgaben aus.
+[00:12:02.000 --> 00:12:04.000]   Also Sie sehen, Teilaufgaben zerlegen,
+[00:12:04.000 --> 00:12:08.000]   erster Schritt Methoden schreiben, zweiter Schritt dritter Schritt verketten
+[00:12:08.000 --> 00:12:10.000]   und dann sind wir schon mal soweit,
+[00:12:10.000 --> 00:12:14.000]   dass wir die Aufgaben etwas mehr in den Griff bekommen haben.
+[00:12:14.000 --> 00:12:19.000]   So, jetzt, wie verketten wir die Ausführung der verschiedenen Methoden?
+[00:12:19.000 --> 00:12:23.000]   Nun, das hatten wir schon mal kurz am Dienstag gesehen,
+[00:12:23.000 --> 00:12:27.000]   wir müssen die Methoden aufrufen, wir müssen die irgendwie aufrufen
+[00:12:27.000 --> 00:12:30.000]   und da gibt es zwei Wege, der eine Weg war der mit dem Objekt,
+[00:12:30.000 --> 00:12:32.000]   das hatte ich schon mal gezeigt,
+[00:12:32.000 --> 00:12:36.000]   und der zweite Weg ist der, den wir auch jetzt schon mal gesehen haben,
+[00:12:36.000 --> 00:12:37.000]   nämlich ohne Objekt.
+[00:12:37.000 --> 00:12:42.000]   Das geht aber nicht immer, das geht nur für besondere Methoden,
+[00:12:42.000 --> 00:12:45.000]   für Methoden mit besonderen Eigenschaften.
+[00:12:45.000 --> 00:12:48.000]   Die können wir ohne Objekt aufrufen.
+[00:12:48.000 --> 00:12:52.000]   Und eine Gruppe von Methoden, die diese besonderen Eigenschaften haben,
+[00:12:52.000 --> 00:12:55.000]   das sind die, die diese Static-Keywort haben.
+[00:12:55.000 --> 00:12:59.000]   Also die Methoden, für die wir das Keywort Static davorgeschrieben haben,
+[00:12:59.000 --> 00:13:01.000]   die sind eben besonders.
+[00:13:01.000 --> 00:13:05.000]   Das sind Methoden, die kann ich ohne Objekt aufrufen.
+[00:13:05.000 --> 00:13:09.000]   Da genügt jetzt fürs erste Mal der Methodenname allein.
+[00:13:09.000 --> 00:13:13.000]   Das heißt, diese, so eine Methode, die kann ich aufrufen,
+[00:13:13.000 --> 00:13:16.000]   die mich einfach den Namen der Methode gebe,
+[00:13:16.000 --> 00:13:19.000]   dann die Klammern dahinter nicht vergessen, und dann bin ich fertig.
+[00:13:19.000 --> 00:13:21.000]   Und dann ist der Aufruf erlaubt.
+[00:13:21.000 --> 00:13:25.000]   Das ist das, was ich hier mit Static besonders machen kann.
+[00:13:25.000 --> 00:13:29.000]   Und das ist das, was wir die ersten zwei, drei Wochen im Semester machen werden,
+[00:13:29.000 --> 00:13:33.000]   bis wir mal anfangen, uns mit dem Objektsystem ein bisschen mehr zu beschäftigen.
+[00:13:33.000 --> 00:13:36.000]   So, und dann ist es natürlich einfach.
+[00:13:36.000 --> 00:13:41.000]   Dann gehen wir jetzt hin, und hier rufen wir erstmal die Methode Print Warning auf.
+[00:13:41.000 --> 00:13:43.000]   Die geht hin und druckt die Warnung.
+[00:13:43.000 --> 00:13:46.000]   Dann rufen wir die Methode Print Erklärung auf.
+[00:13:46.000 --> 00:13:48.000]   Die druckt hier diese wichtige Erklärung.
+[00:13:48.000 --> 00:13:51.000]   Und dann rufen wir nochmal die Methode Print Warning aus,
+[00:13:51.000 --> 00:13:57.000]   die dann eben nochmal diese Anweisungen, die hier zusammengefasst sind, ausführt.
+[00:13:57.000 --> 00:14:02.000]   Also, das ist wirklich der Weg, wie wir das machen.
+[00:14:02.000 --> 00:14:07.000]   So, jetzt bin ich sicher, Sie haben das auch in anderen Programmiersprachen schon mal gesehen.
+[00:14:07.000 --> 00:14:11.000]   Das ist super, weil wenn Sie schon in anderen Programmiersprachen gelernt haben,
+[00:14:11.000 --> 00:14:13.000]   wie man dort Probleme zerlegt,
+[00:14:13.000 --> 00:14:18.000]   dann können Sie dieses Wissen auch hier anwenden und auch hier mit Gewinn verwenden.
+[00:14:18.000 --> 00:14:21.000]   Wichtig ist folgendes.
+[00:14:21.000 --> 00:14:24.000]   Wenn Sie also so eine Methode aufrufen,
+[00:14:24.000 --> 00:14:27.000]   hier haben wir eine Methode mit dem Namen "name".
+[00:14:27.000 --> 00:14:30.000]   Das sei unser End-to-State mit unserem Programm.
+[00:14:30.000 --> 00:14:33.000]   Wenn jetzt diese Methode aufgerufen wird,
+[00:14:33.000 --> 00:14:38.000]   wir sagen aufgerufen oder auch manchmal, sagen wir invoked oder called,
+[00:14:38.000 --> 00:14:41.000]   das sind andere Ausdrücke, die man verwendet,
+[00:14:41.000 --> 00:14:43.000]   dann, was passiert dann?
+[00:14:43.000 --> 00:14:47.000]   Dann beginnt die Ausführung dieser Methode.
+[00:14:47.000 --> 00:14:52.000]   Dann beginnt die Ausführung der Methode, die ich hier benannt habe.
+[00:14:52.000 --> 00:14:56.000]   Und dann fängt das System an, die Ausführungen,
+[00:14:56.000 --> 00:14:59.000]   die in dieser Methode drin stehen, auszuführen.
+[00:14:59.000 --> 00:15:01.000]   Dann werden die ausgeführt.
+[00:15:01.000 --> 00:15:03.000]   Und irgendwann ist diese Methode fertig.
+[00:15:03.000 --> 00:15:07.000]   Und wenn das kommt, dann geht es hier mit dem nächsten Statement,
+[00:15:07.000 --> 00:15:10.000]   das ist hier, das danach folgt, geht es mit dem weiter.
+[00:15:10.000 --> 00:15:14.000]   Also, wenn diese Methode hier fertig ist, dann geht es hier weiter.
+[00:15:14.000 --> 00:15:17.000]   Dann geht es einfach da mit dem nächsten Statement,
+[00:15:17.000 --> 00:15:20.000]   weil das System weiß, wo diese Methode angefangen hat,
+[00:15:20.000 --> 00:15:25.000]   weiß von wo die aufgerufen wurde und geht dahin wieder zurück.
+[00:15:25.000 --> 00:15:27.000]   So.
+[00:15:27.000 --> 00:15:29.000]   Und was heißt das jetzt aufgerufen?
+[00:15:29.000 --> 00:15:35.000]   Das heißt, dass die erste Anweisung dieser Methode wird ausgeführt.
+[00:15:35.000 --> 00:15:40.000]   Und dann guckt das System nach, ob es weitere Anweisungen gibt.
+[00:15:40.000 --> 00:15:44.000]   Und wenn es keine weiteren Anweisungen gibt, dann sind wir fertig.
+[00:15:44.000 --> 00:15:48.000]   Wenn keine weiteren Anweisungen kommen, dann ist wir fertig.
+[00:15:48.000 --> 00:15:53.000]   Aber wenn es noch weitere Anweisungen geben sollte,
+[00:15:53.000 --> 00:15:57.000]   dann wird diese Anweisung ausgeführt wie oben.
+[00:15:57.000 --> 00:15:59.000]   Da geht es wieder nach hier oben zurück.
+[00:15:59.000 --> 00:16:02.000]   Und dann wird die nächste Anweisung ausgeführt.
+[00:16:02.000 --> 00:16:05.000]   Und es geht so lange, bis wir den Punkt erreichen,
+[00:16:05.000 --> 00:16:08.000]   dass es eben keine weiteren Anweisungen gibt.
+[00:16:08.000 --> 00:16:10.000]   Dann sind wir fertig.
+[00:16:10.000 --> 00:16:14.000]   Dann kommt der Punkt, wo wir zurückgehen zu der Methode,
+[00:16:14.000 --> 00:16:16.000]   die uns aufgerufen hat.
+[00:16:16.000 --> 00:16:18.000]   Und dann gehen wir zurück.
+[00:16:18.000 --> 00:16:23.000]   Und dann führen wir hier die nächste Anweisung, die danach folgte aus.
+[00:16:23.000 --> 00:16:26.000]   Und dann sind wir mit der einen Methode fertig.
+[00:16:26.000 --> 00:16:28.000]   Und die nächste Anweisung wird ausgeführt.
+[00:16:28.000 --> 00:16:30.000]   Das kann wieder ein Methodenaufruf sein.
+[00:16:30.000 --> 00:16:32.000]   Das kann was ganz anderes sein.
+[00:16:32.000 --> 00:16:37.000]   Und diese Abfolge der Ausführung, die nennen wir "Control Flow".
+[00:16:37.000 --> 00:16:42.000]   Das ist der Control Flow, der in dem Programm stattfindet.
+[00:16:42.000 --> 00:16:44.000]   Und in Java haben wir Glück.
+[00:16:44.000 --> 00:16:47.000]   Die Ausführungsreihenfolge ist explizit.
+[00:16:47.000 --> 00:16:50.000]   Sie haben hier ein Statement nach dem anderen.
+[00:16:50.000 --> 00:16:54.000]   Und eins nach dem anderen wird fürs erste Mal ausgeführt.
+[00:16:54.000 --> 00:16:57.000]   Wir werden später andere Wege kennen, wie man das machen kann.
+[00:16:57.000 --> 00:16:59.000]   Aber am Anfang wollen wir es einfach halten.
+[00:16:59.000 --> 00:17:03.000]   Und da ist es so, dass die Ausführungsreihenfolge explizit ist.
+[00:17:03.000 --> 00:17:07.000]   Und die ausgeführten Anweisungen folgen im Programm aufeinander.
+[00:17:07.000 --> 00:17:09.000]   Eine nach der anderen.
+[00:17:09.000 --> 00:17:13.000]   Das macht es ihnen leichter zu verstehen, was da los ist.
+[00:17:13.000 --> 00:17:16.000]   Trotzdem ist das Ganze nicht trivial.
+[00:17:16.000 --> 00:17:18.000]   Wenn eine Minute aufgerufen wird,
+[00:17:18.000 --> 00:17:19.000]   dann können sich vorstellen,
+[00:17:19.000 --> 00:17:22.000]   dann springt diese Ausführung zu der Methode
+[00:17:22.000 --> 00:17:26.000]   und führt die Anweisungen aus, die in der Methode sind.
+[00:17:26.000 --> 00:17:29.000]   Und wenn das dann fertig ist, dann nach,
+[00:17:29.000 --> 00:17:33.000]   dann springt die Ausführung wieder an den Ort zurück,
+[00:17:33.000 --> 00:17:35.000]   von dem der Aufruf erfolgte
+[00:17:35.000 --> 00:17:38.000]   und führt dann die nächste Anweisung aus.
+[00:17:38.000 --> 00:17:40.000]   Sonst würde das ja nicht vorwärtsgehen.
+[00:17:40.000 --> 00:17:42.000]   Das würde man ja da stecken bleiben.
+[00:17:42.000 --> 00:17:45.000]   Und das ist der Kontrollfluss,
+[00:17:45.000 --> 00:17:48.000]   den das Java-System für uns realisiert.
+[00:17:48.000 --> 00:17:52.000]   Und die Anordnung der Methoden im Programmtext,
+[00:17:52.000 --> 00:17:54.000]   die ist völlig ohne Bedeutung.
+[00:17:54.000 --> 00:17:57.000]   Sie können die in beliebiger Reihenfolge angeben.
+[00:17:57.000 --> 00:17:59.000]   Das System findet schon heraus,
+[00:17:59.000 --> 00:18:02.000]   welche Methode sie aufrufen, wo das hin müsste.
+[00:18:02.000 --> 00:18:04.000]   Das alles passiert,
+[00:18:04.000 --> 00:18:07.000]   ohne dass sie sich da den Kopf zerbrechen müssen.
+[00:18:07.000 --> 00:18:10.000]   Und das geht wirklich einfach und ohne Probleme.
+[00:18:10.000 --> 00:18:13.000]   Also hier habe ich ein einfaches Beispiel,
+[00:18:13.000 --> 00:18:15.000]   um das noch mal zu illustrieren.
+[00:18:15.000 --> 00:18:18.000]   Ich habe hier dieses Programm MessesExample.
+[00:18:18.000 --> 00:18:20.000]   Da gibt es eine MainMethode.
+[00:18:20.000 --> 00:18:22.000]   Die brauchen wir ja.
+[00:18:22.000 --> 00:18:26.000]   Und dann gibt es eben eine Methode Message1
+[00:18:26.000 --> 00:18:29.000]   und eine Methode Message2.
+[00:18:29.000 --> 00:18:31.000]   Und ich habe die Slides aufs Web gelegt.
+[00:18:31.000 --> 00:18:33.000]   Das können Sie da gucken.
+[00:18:33.000 --> 00:18:39.000]   Also dann werden wir jetzt hier dieses Programm MessesExample aufführen.
+[00:18:39.000 --> 00:18:40.000]   Was passiert?
+[00:18:40.000 --> 00:18:43.000]   Wir führen erst diese Methode Main aus automatisch.
+[00:18:43.000 --> 00:18:46.000]   Die wird automatisch aufgerufen vom System.
+[00:18:46.000 --> 00:18:48.000]   Und die Ausführung fängt da an.
+[00:18:48.000 --> 00:18:50.000]   Und das Erste, was wir machen,
+[00:18:50.000 --> 00:18:52.000]   ist diese Anweisung ausführen.
+[00:18:52.000 --> 00:18:54.000]   Und die dann aufruft dieser Methode.
+[00:18:54.000 --> 00:18:56.000]   Also arbeiten wir jetzt da weiter.
+[00:18:56.000 --> 00:18:57.000]   Arbeiten die ab.
+[00:18:57.000 --> 00:18:59.000]   Zum Glück gibt es dann nur eine Anweisung.
+[00:18:59.000 --> 00:19:00.000]   Dann liegt das schnell.
+[00:19:00.000 --> 00:19:01.000]   Wir sind mit der fertig.
+[00:19:01.000 --> 00:19:04.000]   Und dann geht es weiter hier mit diesem Aufruf,
+[00:19:04.000 --> 00:19:06.000]   der dann der Nächste ist.
+[00:19:06.000 --> 00:19:08.000]   Und das ist auch wieder ein Aufruf.
+[00:19:08.000 --> 00:19:09.000]   Da geht es zu der Methode.
+[00:19:09.000 --> 00:19:11.000]   Gehen wir hierhin.
+[00:19:11.000 --> 00:19:14.000]   Jetzt fangen wir an, die erste Anweisung da abzuarbeiten.
+[00:19:14.000 --> 00:19:17.000]   Dann die zweite Anweisung ist ja wieder ein Methodenaufruf.
+[00:19:17.000 --> 00:19:20.000]   Nämlich der Methodenaufruf, dieser Methode da oben.
+[00:19:20.000 --> 00:19:23.000]   Also geht der Kontrollfuss dahin.
+[00:19:23.000 --> 00:19:25.000]   Führt die Anweisung da aus.
+[00:19:25.000 --> 00:19:27.000]   Drückt die noch mal.
+[00:19:27.000 --> 00:19:28.000]   Ist fertig.
+[00:19:28.000 --> 00:19:31.000]   Und geht dann zurück zu dieser Methode Message 2.
+[00:19:31.000 --> 00:19:33.000]   Und wenn die erledigt wurde,
+[00:19:33.000 --> 00:19:36.000]   jetzt geht es da oben weiter in der Main Methode.
+[00:19:36.000 --> 00:19:38.000]   Und dann wird eben das ausgeführt,
+[00:19:38.000 --> 00:19:40.000]   was oben in der Main Methode steht.
+[00:19:40.000 --> 00:19:42.000]   Das war die letzte Anweisung in Main.
+[00:19:42.000 --> 00:19:44.000]   Dann hört das Ganze auf.
+[00:19:44.000 --> 00:19:46.000]   Und wir sind mit Main fertig.
+[00:19:46.000 --> 00:19:48.000]   Und wir können das Programm abschließen.
+[00:19:48.000 --> 00:19:51.000]   Und das wäre dann eben halt der,
+[00:19:51.000 --> 00:19:54.000]   der Text, der jetzt hier produziert worden wäre.
+[00:19:54.000 --> 00:19:57.000]   Das können wir auch nochmal uns anders vorstellen.
+[00:19:57.000 --> 00:19:59.000]   Wir haben hier das Programm.
+[00:19:59.000 --> 00:20:01.000]   Wir rufen die eine Methode auf.
+[00:20:01.000 --> 00:20:03.000]   Wir gehen weiter zur nächsten.
+[00:20:03.000 --> 00:20:05.000]   Wir rufen die wieder auf.
+[00:20:05.000 --> 00:20:07.000]   Da rufen wir eine andere Methode auf.
+[00:20:07.000 --> 00:20:09.000]   Aus dieser aufgerufen Methode.
+[00:20:09.000 --> 00:20:12.000]   Wenn wir mit der fertig sind, geht es da hier weiter.
+[00:20:12.000 --> 00:20:15.000]   Wenn die fertig ist, sind wir fertig mit Main und so weiter.
+[00:20:15.000 --> 00:20:18.000]   Also diese Beispiele hier mit Print sind natürlich so,
+[00:20:18.000 --> 00:20:21.000]   einfach, dass man sich fakt, dass Köpfe auch anders haben.
+[00:20:21.000 --> 00:20:25.000]   Aber diesen Ablauf müssten sie wirklich voll und ganz verstehen.
+[00:20:25.000 --> 00:20:27.000]   Und wie gesagt,
+[00:20:27.000 --> 00:20:30.000]   später werden wir noch mehr Anweisungen kennenlernen
+[00:20:30.000 --> 00:20:33.000]   und andere Wege kennenlernen, Aufgaben zu zerlegen.
+[00:20:33.000 --> 00:20:37.000]   Aber Kontrollschluss ist eine ganz wichtige Eigenschaft der Programme,
+[00:20:37.000 --> 00:20:39.000]   die Sie berücksichtigen müssen.
+[00:20:39.000 --> 00:20:41.000]   Also, das ist das, was wir jetzt machen.
+[00:20:41.000 --> 00:20:43.000]   Wir haben hier die Aufmerksamkeit,
+[00:20:43.000 --> 00:20:44.000]   die wir jetzt haben,
+[00:20:44.000 --> 00:20:46.000]   die wir jetzt haben.
+[00:20:46.000 --> 00:20:49.000]   Wir müssen die Beispiele wieder berücksichtigen müssen.
+[00:20:49.000 --> 00:20:52.000]   Zusammenfassung des ersten Teils für die Methoden.
+[00:20:52.000 --> 00:20:55.000]   Wir definieren zurzeit nur einfache Methoden.
+[00:20:55.000 --> 00:20:59.000]   Die haben alle die Keywords "public static void", die drei Keywords.
+[00:20:59.000 --> 00:21:04.000]   Dann kommt da eine Folge von Anweisungen, Statements.
+[00:21:04.000 --> 00:21:08.000]   Das ist der Rumpf oder der Body der Methode.
+[00:21:08.000 --> 00:21:12.000]   Und diese Methode kann überall aufgerufen werden.
+[00:21:12.000 --> 00:21:16.000]   Und in diesem Fall gibt es ja auch keinen Weg, keinen Wert zurück.
+[00:21:16.000 --> 00:21:21.000]   Damit haben wir im Grunde genommen das Programm für uns erstellt.
+[00:21:21.000 --> 00:21:24.000]   So, und jetzt erinnert sich eBNF.
+[00:21:24.000 --> 00:21:30.000]   Also, wir können sagen, eine Methodendefinition ist definiert als die Methode Main.
+[00:21:30.000 --> 00:21:32.000]   Die muss sein.
+[00:21:32.000 --> 00:21:36.000]   Und dann eben halt hier könnten noch weitere folgen.
+[00:21:36.000 --> 00:21:41.000]   Weite, diese Asadeffs definiert sind definiert als eine
+[00:21:41.000 --> 00:21:45.000]   Wiederholung weiterer Methoden.
+[00:21:45.000 --> 00:21:47.000]   Das kann null Methoden sein.
+[00:21:47.000 --> 00:21:49.000]   Das war das allererste Beispiel.
+[00:21:49.000 --> 00:21:51.000]   Das kann eine Methode sein.
+[00:21:51.000 --> 00:21:56.000]   Das können zwei sein, wie ich es in den beiden Beispielen hatte und so weiter.
+[00:21:56.000 --> 00:22:00.000]   Und jede dieser Methoden besteht dann wieder aus diesen Keywords "public static void".
+[00:22:00.000 --> 00:22:02.000]   Irgendeinem Namen.
+[00:22:02.000 --> 00:22:06.000]   Jetzt noch den Klammern ohne irgendwas dazwischen.
+[00:22:06.000 --> 00:22:10.000]   Und dann eben hier den geschweiften Klammer im Programmtext.
+[00:22:10.000 --> 00:22:12.000]   Hier in da nochmal.
+[00:22:12.000 --> 00:22:16.000]   Und hier kommt eine Folge von Statements, die Sie da haben.
+[00:22:16.000 --> 00:22:22.000]   So, und also so können wir sagen, dass die Methoden definiert sind.
+[00:22:22.000 --> 00:22:27.000]   Und jetzt müsste eigentlich schon jemand sagen, da ist aber nicht alles ganz akkurat.
+[00:22:27.000 --> 00:22:31.000]   In der Kleinigkeit habe ich hier noch nicht ganz ausgedrückt.
+[00:22:31.000 --> 00:22:37.000]   Nämlich, ich habe ja gesagt, dass in der Java-Welt spielt es keine Rolle,
+[00:22:37.000 --> 00:22:39.000]   in welcher Reihenfolge die Methoden auftreten.
+[00:22:39.000 --> 00:22:45.000]   Das heißt, diese Methode "main", "main" muss nicht die erste Methode sein.
+[00:22:45.000 --> 00:22:48.000]   Oftmals ist es, weil das die Übersichtlichkeit erhöht.
+[00:22:48.000 --> 00:22:52.000]   Aber es gibt auch andere Leute, die stecken die Main-Methode ans Ende.
+[00:22:52.000 --> 00:22:54.000]   Das kann jeder machen, wie er will.
+[00:22:54.000 --> 00:22:58.000]   Und das heißt, Main ist einfach nur eine Methode, die irgendwann aufträgt.
+[00:22:58.000 --> 00:23:02.000]   Also eine korrektere EBNF-Beschreibung wäre diese.
+[00:23:02.000 --> 00:23:04.000]   Wir können eine Folge von Methoden haben.
+[00:23:04.000 --> 00:23:09.000]   Danach kommt diese besondere Methode, die wir unbedingt brauchen, namens "main".
+[00:23:09.000 --> 00:23:12.000]   Und danach können noch mehr Methoden kommen, wenn wir das wollen.
+[00:23:12.000 --> 00:23:15.000]   Also so können wir das ganz einfach machen.
+[00:23:15.000 --> 00:23:20.000]   So, und damit sind wir jetzt fertig mit dem Thema Methoden.
+[00:23:20.000 --> 00:23:27.000]   Und wollen jetzt sehen, wie wir diesen Methoden etwas mehr an interessanter Arbeit zu tun geben.
+[00:23:27.000 --> 00:23:31.000]   Und dazu gehört eben, dass müssen wir diskutieren, das Thema der Typen
+[00:23:31.000 --> 00:23:36.000]   und das Thema der Variable. Und die beiden hängen eng miteinander zusammen.
+[00:23:36.000 --> 00:23:42.000]   Also, Typen beschreiben Eigenschaften von Daten.
+[00:23:42.000 --> 00:23:47.000]   Ein Typ beschreibt eine Menge von Daten oder Werten von Daten.
+[00:23:47.000 --> 00:23:51.000]   Und für die, die schon aus mehr Mathematik kennen,
+[00:23:51.000 --> 00:23:55.000]   das kann man eigentlich auch mathematisch als eine Kategorie bezeichnen.
+[00:23:55.000 --> 00:23:57.000]   Aber das ist für uns nicht so wichtig.
+[00:23:57.000 --> 00:24:06.000]   Wichtig ist für uns, dass so ein Typ eben eine beschreibt, was für Daten das sein können.
+[00:24:06.000 --> 00:24:11.000]   Und wenn ich jetzt eben einen Typ habe, dann bestimmt der die Operationen,
+[00:24:11.000 --> 00:24:13.000]   die mit diesen Daten gemacht werden können.
+[00:24:13.000 --> 00:24:16.000]   Wenn ich einen Typ habe, der das Datum angibt,
+[00:24:16.000 --> 00:24:20.000]   kann ich im Allgemeinen nicht zweimal das Datum eineinander addieren.
+[00:24:20.000 --> 00:24:22.000]   Das geht nicht.
+[00:24:22.000 --> 00:24:28.000]   Und wir müssen, wenn wir jetzt programmieren, in vielen Programmiersprachen angeben,
+[00:24:28.000 --> 00:24:32.000]   was für ein Typ wir arbeiten.
+[00:24:32.000 --> 00:24:37.000]   Und eben klassische Beispiele, die wir auch schon ein bisschen gesehen haben.
+[00:24:37.000 --> 00:24:39.000]   Da war der Typ der ganzen Zahlen.
+[00:24:39.000 --> 00:24:41.000]   Wir hatten gesehen, es gibt preelle Zahlen.
+[00:24:41.000 --> 00:24:43.000]   Und es gibt auch Strings.
+[00:24:43.000 --> 00:24:50.000]   Das sind Typen, die im System vorgeschrieben sind oder bereits zur Verfügung gestellt werden.
+[00:24:50.000 --> 00:24:52.000]   Und mit denen können wir arbeiten.
+[00:24:52.000 --> 00:24:57.000]   Und dann dementsprechend sind dann auch bestimmte Operationen möglich
+[00:24:57.000 --> 00:24:59.000]   oder eben nicht mehr möglich.
+[00:24:59.000 --> 00:25:03.000]   Das ist durch den Typ vorgegeben.
+[00:25:03.000 --> 00:25:06.000]   So, jetzt warum sind Typen so wichtig?
+[00:25:06.000 --> 00:25:08.000]   Warum ist das so eine super gute Idee?
+[00:25:08.000 --> 00:25:11.000]   So ein Typ auf der einen Seite ist wichtig für die Leute,
+[00:25:11.000 --> 00:25:13.000]   die die Programmiersprache implementieren.
+[00:25:13.000 --> 00:25:19.000]   Weil der Typ legt fest, wie die Daten zu implementieren sind.
+[00:25:19.000 --> 00:25:26.000]   Die Programmiersprache hat entschieden, der Typ für ganze Zahlen werden auf diese Weise dargestellt.
+[00:25:26.000 --> 00:25:31.000]   Also auf diese Weise implementiert mit irgendeiner, mit irgendwelchen Bits.
+[00:25:31.000 --> 00:25:35.000]   Am Ende beruht ja alles auf einer Kombination von 0 und 1.
+[00:25:35.000 --> 00:25:41.000]   Und da haben wir hier eben diese Folge für die Zahl 97 im Dezimalsystem.
+[00:25:41.000 --> 00:25:43.000]   Und das haben Sie wahrscheinlich schon mal gesehen.
+[00:25:43.000 --> 00:25:46.000]   Das ist die Edel dieser Bits an Wert.
+[00:25:46.000 --> 00:25:51.000]   Das ist also die erste Position 2 hoch 0, 2 hoch 1, 2 hoch 2 und so weiter.
+[00:25:51.000 --> 00:25:56.000]   Und wenn ich hier so was habe, dann heißt das im Grunde genommen 2 hoch 0,
+[00:25:56.000 --> 00:26:02.000]   plus das hier ist jetzt 2 hoch 5, plus 2 hoch 6.
+[00:26:02.000 --> 00:26:05.000]   2 hoch 6.
+[00:26:05.000 --> 00:26:11.000]   Und wenn Sie das auswächen, das ist 1 plus 32 plus 64.
+[00:26:11.000 --> 00:26:15.000]   Und wenn Sie das zusammenaddieren, ergibt das genau 97.
+[00:26:15.000 --> 00:26:21.000]   Also das ist, so werden die Zahlen in vielen Systemen dargestellt.
+[00:26:21.000 --> 00:26:25.000]   Ist für uns eigentlich nicht so wichtig fürs Erste.
+[00:26:25.000 --> 00:26:28.000]   Aber die Programmiersprache muss natürlich wissen, wie sie das macht,
+[00:26:28.000 --> 00:26:33.000]   damit dann eben die richtigen Werte immer wieder verwendet werden können.
+[00:26:33.000 --> 00:26:38.000]   So, jetzt für so Typen wie Zahlen ist das ziemlich einfach.
+[00:26:38.000 --> 00:26:44.000]   Wie würden wir denn jetzt so ein, wie würden wir denn die Buchstaben A oder B darstellen wollen oder können?
+[00:26:44.000 --> 00:26:47.000]   Was könnten wir denn da machen?
+[00:26:47.000 --> 00:26:50.000]   Da müssen wir uns auch irgendwas einfallen lassen.
+[00:26:50.000 --> 00:26:56.000]   Und die vernünftigste Auffassung ist, dass wir irgendeine Tabelle nehmen
+[00:26:56.000 --> 00:27:02.000]   und sagen, dass A hat dieses Muster und dass B hat dieses Muster.
+[00:27:02.000 --> 00:27:07.000]   Und die Länge, wie lange diese Folgen von 0 und 1 sein müssen
+[00:27:07.000 --> 00:27:12.000]   und auch wie lange diese Folge sein muss, das wird von der Programmiersprache festgelegt,
+[00:27:12.000 --> 00:27:17.000]   weil das hängt davon ab, wie viele von diesen verschiedenen Werten wir darstellen müssen.
+[00:27:17.000 --> 00:27:23.000]   Also für A würden wir vielleicht sagen, dass auch wieder acht von diesen 0 und 1 genügen.
+[00:27:23.000 --> 00:27:29.000]   Und für B auch, hätten wir das hier als Darstellung für A und B, weil es gibt eine Tabelle.
+[00:27:29.000 --> 00:27:35.000]   Da steht eben drin für den Buchstaben A, nehmen wir diese Folge von 0 und 1.
+[00:27:35.000 --> 00:27:40.000]   Und übrigens, das, wenn wir sie als ganze Zahl angucken, hat den Wert 97.
+[00:27:40.000 --> 00:27:45.000]   Aber das ist für uns eigentlich nebensächlich, weil wir gucken uns ja nicht diese,
+[00:27:45.000 --> 00:27:49.000]   wir gucken uns ja nicht die individuellen 0 und 1 an.
+[00:27:49.000 --> 00:27:57.000]   Aber für unser Programm ist es schon sehr wichtig, weil wenn ich in unserem Programm auf einmal diese Folge von 0 und 1 habe,
+[00:27:57.000 --> 00:28:00.000]   dann muss ich entscheiden, was ist denn das überhaupt?
+[00:28:00.000 --> 00:28:06.000]   Ist das jetzt eben ein A oder ist das eine 97?
+[00:28:06.000 --> 00:28:10.000]   Das kann ich aus den 0 und 1 sein heraus nicht feststellen.
+[00:28:10.000 --> 00:28:15.000]   Das kann ich nur feststellen, wenn ich weiß, was für einen Typ ich da habe.
+[00:28:15.000 --> 00:28:19.000]   Wenn es sich um Buchstaben handelt, dann ist die richtige Antwort B.
+[00:28:19.000 --> 00:28:23.000]   Und wenn es sich um ganze Zahlen handelt, ist die richtige Antwort 97.
+[00:28:23.000 --> 00:28:32.000]   Deswegen ist es so wichtig, dass wir eben festhalten, was für einen Typ durch eine bestimmte Verarbeitung wird
+[00:28:32.000 --> 00:28:35.000]   oder mit was für einem Typ wir da arbeiten.
+[00:28:35.000 --> 00:28:42.000]   So, jetzt in Java gibt es verschiedene fest eingebaute Typen.
+[00:28:42.000 --> 00:28:45.000]   Die heißen Primitive Types.
+[00:28:45.000 --> 00:28:50.000]   Und das sind die fest eingebauten Typen für Zahlen, Buchstaben und dergleichen mehr.
+[00:28:50.000 --> 00:28:55.000]   Da haben wir eben die ganzen Zahlen, die heißen INS mit einem Kleinbuchstaben.
+[00:28:55.000 --> 00:29:02.000]   Und da sind so Beispiele im 0, 42, minus 3 und irgendwelche anderen Zahlen darstellbar.
+[00:29:02.000 --> 00:29:05.000]   Und dann gibt es die reellen Zahlen.
+[00:29:05.000 --> 00:29:07.000]   Das sind die Doubles.
+[00:29:07.000 --> 00:29:11.000]   Die sind eben die Zahlen mit einem Dezimalpunkt.
+[00:29:11.000 --> 00:29:15.000]   In verschiedensten Formen kann man die darstellen.
+[00:29:15.000 --> 00:29:20.000]   Also Ziffern folgen mit einem Dezimalpunkt.
+[00:29:20.000 --> 00:29:22.000]   Das sind die reellen Zahlen.
+[00:29:22.000 --> 00:29:26.000]   Und warum haben wir diese Unterscheidung zwischen IND und DOUBLE?
+[00:29:26.000 --> 00:29:28.000]   Warum sagen wir nicht Zahl?
+[00:29:28.000 --> 00:29:32.000]   Das ist so ein bisschen ein Trade-off, den wir machen.
+[00:29:32.000 --> 00:29:36.000]   Wenn das System weiß, dass es sich um reelle Zahlen handelt,
+[00:29:36.000 --> 00:29:39.000]   dann weiß es vielleicht, wie viel Platz es dafür braucht
+[00:29:39.000 --> 00:29:45.000]   und kann ein anderthalbes Prozessor verwenden, um Apparationen schneller durchzuführen.
+[00:29:45.000 --> 00:29:48.000]   Und bei INS wissen wir dann auch, wie groß die sein darf.
+[00:29:48.000 --> 00:29:52.000]   Und wir haben dann einen anderen Weg,
+[00:29:52.000 --> 00:29:57.000]   in Prozessoradditionen oder Subtrakzionen mit solchen Werten durchzuführen.
+[00:29:57.000 --> 00:30:01.000]   Der Bereich, den wir in den INS darstellen können,
+[00:30:01.000 --> 00:30:06.000]   hat sich in der Vergangenheit dann als doch nicht so zweckmäßig herausgestellt.
+[00:30:06.000 --> 00:30:10.000]   Und darum hat man dann eben heutzutage diesen Typ LONG,
+[00:30:10.000 --> 00:30:14.000]   der eigentlich in sehr vielen Programmen auch in anderen Vorlesungen verwendet wird,
+[00:30:14.000 --> 00:30:20.000]   wo sie eben relativ, also sehr große ganze Zahlen darstellen können.
+[00:30:20.000 --> 00:30:22.000]   Und das hat den schönen Vorteil,
+[00:30:22.000 --> 00:30:25.000]   dass wir uns eigentlich im Allgemeinen nicht Gedanken machen müssen,
+[00:30:25.000 --> 00:30:30.000]   ob die Ergebnisse, die wir berechnen, überhaupt darstellbar sind oder nicht.
+[00:30:30.000 --> 00:30:35.000]   Also das sind hier die Basestypen IND, LONG und DOUBLE,
+[00:30:35.000 --> 00:30:37.000]   mit denen werden wir uns ein bisschen beschäftigen,
+[00:30:37.000 --> 00:30:41.000]   die anderen kommen dann noch später dazu, sind aber nicht so kritisch.
+[00:30:41.000 --> 00:30:44.000]   So, jetzt haben wir hier ein Programm, das wir schreiben wollen,
+[00:30:44.000 --> 00:30:48.000]   mit dem wir die Oberfläche so eines Quaders berechnen.
+[00:30:48.000 --> 00:30:51.000]   Da erinnerst du sich vielleicht, die Oberfläche wird berechnet,
+[00:30:51.000 --> 00:30:58.000]   indem wir zweimal Länge, Höhe, und so weiter zusammenrechnen.
+[00:30:58.000 --> 00:31:00.000]   Und nach dem, was wir jetzt schon können,
+[00:31:00.000 --> 00:31:03.000]   ist es ein einfaches Programm, das wir schreiben könnten.
+[00:31:03.000 --> 00:31:06.000]   Das Programm würde eben halt die Methode MAIN haben,
+[00:31:06.000 --> 00:31:08.000]   da hätte es drei Print Statements,
+[00:31:08.000 --> 00:31:14.000]   und hier würde das Print Statement eben halt die Berechnungen durchführen,
+[00:31:14.000 --> 00:31:18.000]   mit IND-Zahlen, und würde das richtige Ergebnis rausliefern.
+[00:31:18.000 --> 00:31:23.000]   Und das wäre gut und schön, solange eben alles bestens läuft.
+[00:31:23.000 --> 00:31:25.000]   Und natürlich haben wir vielleicht mal,
+[00:31:25.000 --> 00:31:28.000]   hier haben wir wirklich eine aufmerksame Programmiererin gehabt,
+[00:31:28.000 --> 00:31:31.000]   die hat gesehen, dass das eben halt hier dieses Mal,
+[00:31:31.000 --> 00:31:35.000]   das Mal das muss multipliziert werden, und das Mal das,
+[00:31:35.000 --> 00:31:38.000]   und das hier mal das.
+[00:31:38.000 --> 00:31:40.000]   Das sind die Multiplikationen.
+[00:31:40.000 --> 00:31:42.000]   Aber jetzt könnte es ja passieren,
+[00:31:42.000 --> 00:31:44.000]   dass irgendjemand einen Fehler macht,
+[00:31:44.000 --> 00:31:47.000]   und dummerweise hier eine falsche Zahl eingetippt hat.
+[00:31:47.000 --> 00:31:49.000]   Und dann hätten wir ein großes Problem,
+[00:31:49.000 --> 00:31:51.000]   weil jetzt eben die Berechnung einfach nicht mehr stimmt.
+[00:31:51.000 --> 00:31:54.000]   Und das ist natürlich, wir wollen sowas gar nicht haben,
+[00:31:54.000 --> 00:31:57.000]   und darum führen wir das Konzept einer Variable ein.
+[00:31:57.000 --> 00:32:02.000]   Und eine Variable erlaubt es uns, einen Namen zu definieren,
+[00:32:02.000 --> 00:32:06.000]   mit dem wir uns auf einen Wert beziehen können.
+[00:32:06.000 --> 00:32:08.000]   Das heißt, wenn wir eine Variable einführen,
+[00:32:08.000 --> 00:32:12.000]   dann müssen wir zwei Sachen angehen.
+[00:32:12.000 --> 00:32:14.000]   Wir brauchen einmal einen Namen,
+[00:32:14.000 --> 00:32:20.000]   und wir müssen sagen, auf was für Werte sich diese Variable beziehen kann.
+[00:32:20.000 --> 00:32:23.000]   Also in dem einfachen Beispiel, das ich hier habe,
+[00:32:23.000 --> 00:32:26.000]   da wären es Int-Werte, wir sagen, Int-Werte sind das.
+[00:32:26.000 --> 00:32:29.000]   Und darum brauchen wir dann eine Variable für Int-Werte.
+[00:32:29.000 --> 00:32:34.000]   Und die würden wir in Java einfach so deklarieren,
+[00:32:34.000 --> 00:32:38.000]   dass wir halt den Typ, den wir haben wollen,
+[00:32:38.000 --> 00:32:43.000]   und den Namen der Variable in einer Deklaration angeben.
+[00:32:43.000 --> 00:32:47.000]   Wir würden dann sagen, wir brauchen hier eine Int-Variable-Länge,
+[00:32:47.000 --> 00:32:51.000]   und dann feist das System, aha, das ist eine Variable,
+[00:32:51.000 --> 00:32:55.000]   für eben der Typ dieser Werte ist Int,
+[00:32:55.000 --> 00:32:59.000]   und der Länge ist der Name, unter der sich das Programm
+[00:32:59.000 --> 00:33:02.000]   auf diesen Wert beziehen will.
+[00:33:02.000 --> 00:33:06.000]   Und das nennen wir eine variablen Deklaration,
+[00:33:06.000 --> 00:33:10.000]   wie Declaration of Independence, wir deklarieren das,
+[00:33:10.000 --> 00:33:13.000]   und ob dann die anderen das mitmachen oder nicht,
+[00:33:13.000 --> 00:33:17.000]   das hängt vom System ab, aber wir deklarieren das.
+[00:33:17.000 --> 00:33:21.000]   Und hier hätten wir jetzt drei Int-Variable,
+[00:33:21.000 --> 00:33:24.000]   und den können wir dann Wert zuweisen.
+[00:33:24.000 --> 00:33:28.000]   Und diese Werte würden dann in der Zukunft verwendet werden,
+[00:33:28.000 --> 00:33:32.000]   wenn immer wir uns irgendwo auf diese Variable beziehen.
+[00:33:32.000 --> 00:33:35.000]   Dann wäre das einfach immer wieder gleich.
+[00:33:35.000 --> 00:33:39.000]   Nun ist es natürlich so, eine variablen Deklaration,
+[00:33:39.000 --> 00:33:42.000]   ohne eine Zuweisung ist nicht so praktisch,
+[00:33:42.000 --> 00:33:45.000]   und darum erlaubt das System es uns auch,
+[00:33:45.000 --> 00:33:48.000]   die Deklaration und die Definition zu kombinieren.
+[00:33:48.000 --> 00:33:51.000]   Das heißt, wir hätten dann also einen Typ,
+[00:33:51.000 --> 00:33:56.000]   es könnte eben Int sein, einen Namen wie die Länge,
+[00:33:56.000 --> 00:33:59.000]   keine Umlaute bitte,
+[00:33:59.000 --> 00:34:03.000]   und dann hätten wir irgend einen Wert, den wir den geben wollten.
+[00:34:03.000 --> 00:34:06.000]   Und da könnten wir irgend einen Wert haben vorausgesetzt,
+[00:34:06.000 --> 00:34:09.000]   es ist ein Wert des richtigen Typs.
+[00:34:09.000 --> 00:34:11.000]   Also würden wir eigentlich das viel besser so machen,
+[00:34:11.000 --> 00:34:14.000]   dass wir hier diese Variablen deklarieren,
+[00:34:14.000 --> 00:34:16.000]   und dann entsprechend das haben.
+[00:34:16.000 --> 00:34:19.000]   Also, so eine Deklaration liegt die Art
+[00:34:19.000 --> 00:34:21.000]   oder den Typ der Werte feste,
+[00:34:21.000 --> 00:34:24.000]   und dann kann ich jeden Wert dieses Typs darstellen.
+[00:34:24.000 --> 00:34:27.000]   Und der Name wird bekannt gegeben.
+[00:34:27.000 --> 00:34:29.000]   Jetzt sagt das System, hier ist ein Name,
+[00:34:29.000 --> 00:34:32.000]   eine Variable, die ich gebrauchen kann.
+[00:34:32.000 --> 00:34:34.000]   Und gute Namen sind sehr wichtig,
+[00:34:34.000 --> 00:34:37.000]   und alles andere als leicht zu finden.
+[00:34:37.000 --> 00:34:39.000]   Insbesondere dann, wenn die Variable
+[00:34:39.000 --> 00:34:42.000]   in vielen Teilen des Programms wiederholt verwendet wird,
+[00:34:42.000 --> 00:34:45.000]   ist es wirklich wichtig, dass sie einen guten Namen finden.
+[00:34:45.000 --> 00:34:48.000]   Wenn eine Variable nicht wichtig ist, genügt ein kurzer Name,
+[00:34:48.000 --> 00:34:51.000]   und in den Beispielen, die ich hier habe,
+[00:34:51.000 --> 00:34:54.000]   finden sie die oft, weil die Beispiele sind einfach und kurz.
+[00:34:54.000 --> 00:34:59.000]   So, jetzt kommt noch eine Sache, die wichtig ist.
+[00:34:59.000 --> 00:35:02.000]   Jetzt haben Sie gesehen, ich habe hier diese,
+[00:35:02.000 --> 00:35:07.000]   so habe ich diese Variable deklariert und gleich definiert.
+[00:35:07.000 --> 00:35:09.000]   Und hier sehen Sie so ein Zeichen,
+[00:35:09.000 --> 00:35:13.000]   und dieses Zeichen heißt im Deutschen Gleichheitszeichen.
+[00:35:13.000 --> 00:35:18.000]   Das ist aber ein extrem irreführender Name.
+[00:35:18.000 --> 00:35:20.000]   Es ist also wirklich irreführender Name,
+[00:35:20.000 --> 00:35:23.000]   weil es hat überhaupt nichts mit Gleichheit zu tun.
+[00:35:23.000 --> 00:35:25.000]   Das ist eine Zuweisung.
+[00:35:25.000 --> 00:35:29.000]   Hier weisen wir dieser Variable den Wert zu.
+[00:35:29.000 --> 00:35:33.000]   Wir weisen der Variable Länge den Wert 70 zu.
+[00:35:33.000 --> 00:35:36.000]   Und natürlich, wenn wir jetzt mit der Variable Länge arbeiten,
+[00:35:36.000 --> 00:35:39.000]   wird immer dieser Wert verwendet.
+[00:35:39.000 --> 00:35:42.000]   Aber das hat mit Gleichheit nichts zu tun.
+[00:35:42.000 --> 00:35:44.000]   So, jetzt können Sie natürlich fragen,
+[00:35:44.000 --> 00:35:47.000]   ist das jetzt so eine Java-Spezialität,
+[00:35:47.000 --> 00:35:52.000]   dass wir für alle, für irgendwelche Variablen,
+[00:35:52.000 --> 00:35:54.000]   die wir brauchen, den Typ angeben müssen?
+[00:35:54.000 --> 00:35:57.000]   Und die Antwort ist ja nicht richtig.
+[00:35:57.000 --> 00:35:59.000]   Also es gibt viele Programmiersprachen,
+[00:35:59.000 --> 00:36:02.000]   die verlangen, dass man den Typ angibt.
+[00:36:02.000 --> 00:36:04.000]   Es gibt auch ein paar Programmiersprachen,
+[00:36:04.000 --> 00:36:06.000]   die verlangen das nicht.
+[00:36:06.000 --> 00:36:08.000]   Und da gibt es da manchmal sehr große Überraschungen,
+[00:36:08.000 --> 00:36:11.000]   weil der eine meint, es wäre eine Gleit-innerielle Zahl,
+[00:36:11.000 --> 00:36:13.000]   und der meint, es wäre eine Integer.
+[00:36:13.000 --> 00:36:15.000]   Ja, und da ist die Sache weg.
+[00:36:15.000 --> 00:36:19.000]   Und in Java verlangen wir eigentlich eine Spezifikation des Typs.
+[00:36:19.000 --> 00:36:23.000]   Aber sozusagen als Genugtuung für die,
+[00:36:23.000 --> 00:36:26.000]   die etwas fauler im Schreiben sind,
+[00:36:26.000 --> 00:36:30.000]   Java verlangt nicht immer eine Spezifikation.
+[00:36:30.000 --> 00:36:35.000]   Manchmal in der Tat kann der Compiler herausfinden,
+[00:36:35.000 --> 00:36:39.000]   was für ein Typ gebraucht wird.
+[00:36:39.000 --> 00:36:41.000]   Und das ist ja normal.
+[00:36:41.000 --> 00:36:45.000]   Mein Ratschlag ist, dass Sie immer die Typen angeben,
+[00:36:45.000 --> 00:36:49.000]   dass Sie sich so klarmachen, was Sie da arbeiten.
+[00:36:49.000 --> 00:36:53.000]   Der Typ ist wirklich ein Teil der Dokumentation.
+[00:36:53.000 --> 00:36:55.000]   Der sagt viel aus.
+[00:36:55.000 --> 00:36:58.000]   Und wenn Sie den Compiler haben, zur Hilfe rufen wollen,
+[00:36:58.000 --> 00:37:00.000]   dann müssen Sie etwas Besonderes machen.
+[00:37:00.000 --> 00:37:03.000]   Wir empfehlen erst mal am Anfang,
+[00:37:03.000 --> 00:37:06.000]   dass Sie die Typen immer explizit angeben.
+[00:37:06.000 --> 00:37:10.000]   So, und was für Typen kann jetzt Ihr Java-Programm verwenden?
+[00:37:10.000 --> 00:37:12.000]   Da gibt es drei verschiedene.
+[00:37:12.000 --> 00:37:15.000]   Einmal die Typen, die in der Sprache definiert sind,
+[00:37:15.000 --> 00:37:19.000]   eben wie Int, Long usw., die Typen aus Bibliotheken.
+[00:37:19.000 --> 00:37:22.000]   Und dann gibt es, wie strings, haben wir auch schon gesehen,
+[00:37:22.000 --> 00:37:25.000]   und dann gibt es eben die benutzerdefinierten Typen.
+[00:37:25.000 --> 00:37:28.000]   Und darüber werden wir erst später was machen können.
+[00:37:28.000 --> 00:37:32.000]   Also, Typen beschreiben eben die Eigenschaften von Daten,
+[00:37:32.000 --> 00:37:35.000]   den Wertbereich, die Operationen usw.
+[00:37:35.000 --> 00:37:37.000]   beschreiben, wie die dargestellt werden.
+[00:37:37.000 --> 00:37:41.000]   Obwohl das für uns nicht beim Programmieren wichtig ist,
+[00:37:41.000 --> 00:37:43.000]   ist es wichtig dafür, dass wir sicher sein wollen,
+[00:37:43.000 --> 00:37:45.000]   dass das Programm auf unterschiedlichen Systemen
+[00:37:45.000 --> 00:37:47.000]   gleich ausgeabt wird.
+[00:37:47.000 --> 00:37:51.000]   Und die richtige Wahl des Typs ist wirklich entscheidend.
+[00:37:51.000 --> 00:37:54.000]   Weil je nachdem, was für ein Typ Sie wählen wird,
+[00:37:54.000 --> 00:37:56.000]   entweder die eine oder andere Operationen
+[00:37:56.000 --> 00:37:58.000]   in der Hardware oder Software ausgeführt
+[00:37:58.000 --> 00:38:01.000]   und Sonderfälle werden unterschiedlich behandelt.
+[00:38:01.000 --> 00:38:04.000]   Wenn eine Zahl zu groß ist für eine Integer,
+[00:38:04.000 --> 00:38:06.000]   dann wird irgendwas gemacht.
+[00:38:06.000 --> 00:38:08.000]   Wenn die Zahl zu groß ist für eine Reelle Zahl,
+[00:38:08.000 --> 00:38:11.000]   dann wird eben das auf unendlich gesetzt.
+[00:38:11.000 --> 00:38:13.000]   Da gibt es Unterschiede, je nachdem,
+[00:38:13.000 --> 00:38:17.000]   was für eine Art von Typs haben.
+[00:38:17.000 --> 00:38:22.000]   Weil alle unsere Programme manipulieren letztendlich Symbole.
+[00:38:22.000 --> 00:38:26.000]   Und wir hatten das schon bei eBNF als einfaches Beispiel gesehen.
+[00:38:26.000 --> 00:38:31.000]   Die Symbole, die werden irgendwie verarbeitet usw.
+[00:38:31.000 --> 00:38:34.000]   Am Endeffekt wird alles durch 0 und 1 dargestellt.
+[00:38:34.000 --> 00:38:36.000]   Und wir müssen eben sicher sein,
+[00:38:36.000 --> 00:38:39.000]   dass eben die Darstellung konsistent ist
+[00:38:39.000 --> 00:38:46.000]   und dass der genügend Platz ist, das darzustellen,
+[00:38:46.000 --> 00:38:48.000]   was wir da darstellen wollen.
+[00:38:48.000 --> 00:38:51.000]   Typen verhindern Fehler in Ihrem Programm.
+[00:38:51.000 --> 00:38:54.000]   Wenn Sie einen Typ haben, der eine AHV-Nummer ist
+[00:38:54.000 --> 00:38:57.000]   und einen anderen Typ haben, der ein Gehalt darstellt,
+[00:38:57.000 --> 00:38:59.000]   dann können Sie die beiden nicht addieren.
+[00:38:59.000 --> 00:39:03.000]   Wenn das für Sie Zahlen sind, können Sie die einfach addieren.
+[00:39:03.000 --> 00:39:06.000]   Oder Sie können nicht Volumen und Fläche addieren.
+[00:39:06.000 --> 00:39:08.000]   Würde das System verhindern.
+[00:39:08.000 --> 00:39:11.000]   Zum anderen eben erlauben auch Typen Optimierungen.
+[00:39:11.000 --> 00:39:14.000]   Sowohl der Berechnung als auch der Darstellung.
+[00:39:14.000 --> 00:39:17.000]   Weil ich sage, hier kann ich mit einer Int arbeiten.
+[00:39:17.000 --> 00:39:25.000]   Hier genügen für mich 32 von diesen 0 und 1ern.
+[00:39:25.000 --> 00:39:27.000]   Da kann ich das kompakter machen,
+[00:39:27.000 --> 00:39:29.000]   als wenn ich das weiß, wie groß machen muss.
+[00:39:29.000 --> 00:39:33.000]   Denn trotz aller Versuche, etwas Besseres zu machen,
+[00:39:33.000 --> 00:39:36.000]   alle Darstellungen sind letztlich endlich.
+[00:39:36.000 --> 00:39:41.000]   Und wenn wir eine zweckmäßige Darstellung treffen und wählen können,
+[00:39:41.000 --> 00:39:44.000]   dann helfen wir dem System effizienter zu sein
+[00:39:44.000 --> 00:39:46.000]   und helfen dem System.
+[00:39:46.000 --> 00:39:49.000]   Und daher ist die richtige Wahl des Typs nötig.
+[00:39:49.000 --> 00:39:52.000]   Und dann kann das System entsprechend Platz reservieren.
+[00:39:52.000 --> 00:39:57.000]   Und das müssen Sie machen, wenn Sie das Programm eben erstellen.
+[00:39:57.000 --> 00:40:02.000]   Also für die einfachen Primitivtyps ist es so Genügtes,
+[00:40:02.000 --> 00:40:07.000]   dass wir eben den Namen des Typs angeben, den Namen und dann den Wert.
+[00:40:07.000 --> 00:40:10.000]   Und das gibt dann, der Wert wird ausgewertet.
+[00:40:10.000 --> 00:40:13.000]   Und dann ergibt es einen Wert.
+[00:40:13.000 --> 00:40:18.000]   Und der wird dann mit dem Namen dieser Variablen assoziiert.
+[00:40:18.000 --> 00:40:20.000]   Das ist also einfach.
+[00:40:20.000 --> 00:40:22.000]   Und wenn wir so einen Ausdruck haben,
+[00:40:22.000 --> 00:40:25.000]   dann wird der Ausdruck in Teilausdrücke zerlegt,
+[00:40:25.000 --> 00:40:27.000]   bis wir eben einzelne Werte haben.
+[00:40:27.000 --> 00:40:30.000]   Und dann wird auf diese Weise der Wert berechnet.
+[00:40:30.000 --> 00:40:34.000]   Also wir könnten als einfachstes Beispiel nur die Zahl 4 haben,
+[00:40:34.000 --> 00:40:36.000]   als diesen Value.
+[00:40:36.000 --> 00:40:39.000]   Oder wir könnten den Ausdruck haben 1 plus 7.
+[00:40:39.000 --> 00:40:42.000]   Das wird zerlegt in 1 und wird zerlegt in 7.
+[00:40:42.000 --> 00:40:44.000]   Und die werden dann addiert.
+[00:40:44.000 --> 00:40:49.000]   Also die ganzen Regeln, die Sie kennen, gelten da.
+[00:40:49.000 --> 00:40:52.000]   Also einen einfachen Wert, den nennen wir einen literal,
+[00:40:52.000 --> 00:40:54.000]   also einen direkt auftretenden Wert.
+[00:40:54.000 --> 00:40:59.000]   Und komplexe Teilausdrücke, die werden dann eben entsprechend zerlegt.
+[00:40:59.000 --> 00:41:04.000]   So, jetzt was für Operatoren können Sie jetzt mit den Intwerten verwenden?
+[00:41:04.000 --> 00:41:07.000]   Na ja, da gibt es die bekannten Additionen, Subtaktion,
+[00:41:07.000 --> 00:41:09.000]   Multiplikationen, Divisionen.
+[00:41:09.000 --> 00:41:14.000]   Und dann gibt es hier dieses Zeichen, das heißt Modulus, der Rest.
+[00:41:14.000 --> 00:41:20.000]   Das ist also der Wert, den ich bekomme, wenn ich eben 2 Ints miteinander,
+[00:41:20.000 --> 00:41:25.000]   wenn ich eine Int durch eine andere addiere und ein Rest übrig bleibe.
+[00:41:25.000 --> 00:41:28.000]   Und wenn ich jetzt so einen Programm habe mit zum Ausdruck,
+[00:41:28.000 --> 00:41:33.000]   dann werden diese Ausdrücke während der Ausführung des Programms ausgewertet.
+[00:41:33.000 --> 00:41:39.000]   Das Programm geht hin und nimmt die Werte, sei es in Variablen oder sei es als Literals,
+[00:41:39.000 --> 00:41:42.000]   und produziert eben einen entsprechenden Wert.
+[00:41:42.000 --> 00:41:46.000]   Also hier habe ich 1 plus 1 wird addiert, ergibt 2.
+[00:41:46.000 --> 00:41:50.000]   Oder wenn ich hier so ein Printline Statement habe, wo ich das drucken möchte,
+[00:41:50.000 --> 00:41:55.000]   da geht das System hin und her, 3 mal 4 ist 12, also druck das 12.
+[00:41:55.000 --> 00:41:59.000]   Und wenn ich jetzt seitdessen nicht eben 12 haben wollte,
+[00:41:59.000 --> 00:42:03.000]   sondern wollte den Text haben, ja, den ich den Text haben will,
+[00:42:03.000 --> 00:42:05.000]   dann muss ich wieder diese Hochkommers verwenden.
+[00:42:05.000 --> 00:42:08.000]   Und dann würde ich auf diese Weise sagen, das ist ein String.
+[00:42:08.000 --> 00:42:14.000]   Und dann würde eben diese Printline, würde uns eben halt den entsprechenden String drucken.
+[00:42:14.000 --> 00:42:18.000]   Also es gibt eine ebnf Beschreibung für die Ausdrücke,
+[00:42:18.000 --> 00:42:22.000]   Warnung ist nicht vollständig und beschreibt nur die Sintag,
+[00:42:22.000 --> 00:42:24.000]   das werden wir ja noch sehen,
+[00:42:24.000 --> 00:42:27.000]   und haben dann eben diese arithmetischen Operatoren,
+[00:42:27.000 --> 00:42:31.000]   mit denen wir die Werte oder die Variablen verknüpfen können.
+[00:42:31.000 --> 00:42:35.000]   Und wenn wir jetzt so 2 Werte haben, dann ist das Ergebnis,
+[00:42:35.000 --> 00:42:40.000]   dieser Operation ist der Wert, der der Typ festgelegt.
+[00:42:40.000 --> 00:42:44.000]   Also wenn Sie eine Int und eine Int irgendwie kombinieren,
+[00:42:44.000 --> 00:42:47.000]   dann ergibt es eben eine Int.
+[00:42:47.000 --> 00:42:50.000]   Und wenn Sie eine Int und eine Long kombinieren,
+[00:42:50.000 --> 00:42:53.000]   ja, müssen wir später gucken, haben wir heute noch nicht gemacht.
+[00:42:53.000 --> 00:43:01.000]   Also diese Operatoren, die produzieren Werte eines festgelegten Typs,
+[00:43:01.000 --> 00:43:06.000]   und wenn eben beide Operanden den selben Typ haben,
+[00:43:06.000 --> 00:43:12.000]   dann zum Glück hat das Ergebnis auch diesen selben Typ.
+[00:43:12.000 --> 00:43:16.000]   Und das ist das, was ich jetzt heute zum Thema Typ habe.
+[00:43:16.000 --> 00:43:19.000]   Also wenn Sie zwei unterschiedliche Typen haben,
+[00:43:19.000 --> 00:43:22.000]   also wenn Sie beiden Typen gleich sind,
+[00:43:22.000 --> 00:43:26.000]   und arithmetisch ist es das Ergebnis des selben Typs,
+[00:43:26.000 --> 00:43:28.000]   und wenn es unterschiedliche Typen sind,
+[00:43:28.000 --> 00:43:31.000]   dann müssen wir halt später sehen, was da auf uns zukommt,
+[00:43:31.000 --> 00:43:34.000]   und da müssen wir sehen, was dann zu machen ist.
+[00:43:34.000 --> 00:43:37.000]   Bis dann.
+[00:43:37.000 --> 00:43:40.000]   [Applaus]
+[00:43:41.000 --> 00:43:44.000]   [Applaus]
+[00:43:44.000 --> 00:43:46.000]   *Pfeifen*
+

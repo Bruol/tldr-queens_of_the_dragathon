@@ -1,0 +1,38 @@
+Summary 1:
+In this lecture transcript excerpt, the lecturer introduces the topic of synthesizing images and discusses the difference between direct illumination and global illumination. They mention that direct illumination only considers the light that directly reaches a point, while global illumination includes inter-reflections that illuminate the scene. 
+
+The lecturer then recaps the concepts of Monte Carlo integration and sampling, explaining the goal of evaluating integrals using randomly sampled values. They mention that Monte Carlo integration provides unbiased estimators of the integral, but the convergence rate is slow. They also discuss important sampling as a method to improve convergence and briefly explain methods of sampling from a distribution.
+
+The lecturer then introduces the topic of the rendering equation, which is based on energy equilibrium. They explain that the equation calculates the outgoing radiance at a point by summing emitted and reflected radiance. They mention that solving the equation involves integrating over the BRDF, incident radiance, and cosine of the incident direction. They mention that direct illumination is a simplified version of this equation and is calculated by tracing rays from emitters to find the closest intersection point and the emitted radiance at that point.
+
+
+
+Summary 2:
+In this lecture excerpt, the speaker discusses the concept of direct and indirect illumination in the context of rendering. Direct illumination refers to light that comes directly from a light source to a point in the scene. The speaker explains that this can be computed by tracing a ray from the point in the direction of the light source and finding the closest intersection. The amount of light received at that point is the emitted radiance at the intersection. 
+
+On the other hand, indirect illumination is light that bounces off surfaces before reaching the point of interest. The speaker mentions that this can be more difficult to compute and typically involves tracing rays in multiple directions to collect the light in the hemisphere surrounding the point. The collected light is then integrated with the Bidirectional Reflectance Distribution Function (BRDF) and multiplied by the cosine term to find the indirect illumination.
+
+The speaker also discusses the concept of light paths, which are the paths taken by light from the sensor to the emitter. Different types of light tracing techniques, such as light tracing, path tracing, and bidirectional path tracing, are briefly mentioned.
+
+The lecture provides examples and visual illustrations to demonstrate the differences in direct and indirect illumination and how they combine to create the overall illumination of a scene. The speaker also mentions the concept of using synthetic lights to fake indirect illumination in situations where direct illumination is the only possibility.
+
+Towards the end of the excerpt, the speaker introduces the idea of using Monte Carlo sampling to estimate the integral involved in computing the contribution of direct illumination. The formula is modified to replace the integral with a sum, and the integration is performed by sampling directions and dividing by the probability density function (PDF).
+
+Overall, the lecture excerpt provides an overview of the concepts and techniques involved in computing direct and indirect illumination in rendering.
+
+
+
+Summary 3:
+This lecture transcript excerpt discusses the concept of sampling light sources in Monte Carlo rendering. The lecture explains that traditionally in Monte Carlo rendering, all directions in the hemisphere are uniformly sampled, but this can lead to wasting samples in directions with no light contribution. The lecture then introduces a technique that improves upon this by sampling according to the cosine of the angle, but this still wastes samples where there is no light. The lecture proposes the idea of integrating only over the solid angle where there is light, but acknowledges that this may not always be practical for all types of lights. 
+
+The lecture then introduces the surface area form for the reflection equation. This involves defining points in the scene and redefining the BRDF to take three points. The lecture explains the Jacobian determinant of the transformation from solid angle to surface area, which accounts for the distance and angle between points. 
+
+The lecture discusses how the reflection equation can be rewritten in the surface area form, with geometry and visibility terms included. It highlights that integrating over surface area is more wasteful than hemispherical integration, as most areas in the scene do not emit light. However, if the emitters in the scene are known, it is possible to limit the integration to only emissive surfaces. The lecture emphasizes the importance of visibility tests, which involve sampling a point on the light source and checking if there is a clear line of sight between the shading point and the light source.
+
+
+
+Summary 4:
+In this lecture transcript excerpt, the speaker discusses the concept of integrating over emissive surfaces in a scene. They explain that Nori keeps track of the emitters in the scene, allowing for integration over the emissive surface only. However, they note that even when integrating over emissive surfaces, a visibility test is still necessary. This visibility test involves sampling a point on the light source and connecting it with the shading point using a shadow ray. If the visibility test fails, meaning the ray is occluded, there is no contribution from that point on the light source. The speaker then poses a question about whether it is always better to integrate over emissive surfaces. They explain that in certain cases, such as when there is a large emitter covering the entire sky or when there are millions of emitters in the scene, it may be more efficient to sample on the hemisphere instead. The speaker also mentions the importance of change of variables and the Jacobian in the integration process and mentions that the Friday lecture will cover how to sample light sources. Additionally, they mention the technique of multiple importance sampling, which can reduce variance by merging multiple probability density functions. The lecture concludes with the speaker inviting questions and thanking the audience.
+
+
+

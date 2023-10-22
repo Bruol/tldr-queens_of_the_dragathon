@@ -1,0 +1,33 @@
+{
+# Summary
+
+## Topic 1: Direct and Indirect Illumination
+### Sourced from Summary 1 and 2
+- **Direct illumination** refers to light that directly reaches a point in the scene from a light source.
+- **Indirect illumination** is light that bounces off surfaces before reaching a point and can be more difficult to compute.
+- Key takeaway: Direct and indirect illumination combine to create the overall illumination of a scene.
+
+## Topic 2: Monte Carlo Integration and Sampling
+### Sourced from Summary 1
+- **Monte Carlo integration** provides unbiased estimators of integrals but has a slow convergence rate.
+- **Important sampling** is a method to improve the convergence rate in Monte Carlo integration.
+- Key takeaway: Monte Carlo integration and important sampling are used to evaluate integrals in rendering.
+
+## Topic 3: Sampling Light Sources
+### Sourced from Summary 3
+- Traditional Monte Carlo rendering uniformly samples all directions in the hemisphere, leading to wasted samples.
+- Sampling according to the cosine of the angle improves sampling but still wastes samples.
+- Integrating only over the solid angle where there is light reduces wasted samples but may not always be practical.
+- Key takeaway: Sampling techniques can optimize the sampling of light sources in rendering.
+
+# In-Depth Summaries
+
+## Topic 1: Direct and Indirect Illumination
+Direct illumination refers to the light that directly reaches a point in the scene from a light source. This can be computed by tracing a ray from the point in the direction of the light source and finding the closest intersection. The amount of light received at that point is the emitted radiance at the intersection. On the other hand, indirect illumination is light that bounces off surfaces before reaching the point of interest. This can be more challenging to compute and typically involves tracing rays in multiple directions to collect the light in the hemisphere surrounding the point. The collected light is then integrated with the Bidirectional Reflectance Distribution Function (BRDF) and multiplied by the cosine term to find the indirect illumination. Different types of light tracing techniques, such as light tracing, path tracing, and bidirectional path tracing, are mentioned as methods to compute indirect illumination. The lecture provides examples and visual illustrations to demonstrate the differences between direct and indirect illumination and how they combine to create the overall illumination of a scene. The concept of using synthetic lights to fake indirect illumination in situations where direct illumination is the only possibility is also mentioned.
+
+## Topic 2: Monte Carlo Integration and Sampling
+The lecturer introduces the concepts of Monte Carlo integration and sampling. Monte Carlo integration is a technique for evaluating integrals using randomly sampled values. It provides unbiased estimators of the integral, but the convergence rate is slow. Important sampling is a method to improve the convergence rate by sampling from a distribution that focuses on regions with higher contributions to the integral. The lecture briefly explains the methods of sampling from a distribution. The goal of Monte Carlo integration is to approximate the integral by replacing it with a sum and dividing by the probability density function (PDF). This allows for the estimation of integrals in rendering. While Monte Carlo integration provides accurate estimations, it can be computationally expensive and require a large number of samples for convergence.
+
+## Topic 3: Sampling Light Sources
+The lecture discusses the concept of sampling light sources in Monte Carlo rendering. Traditionally, all directions in the hemisphere are uniformly sampled, leading to wasted samples in directions with no light contribution. One approach to improve sampling is to sample according to the cosine of the angle, which assigns more samples to directions that have a higher contribution. However, this still wastes samples in areas without light. The lecture suggests integrating only over the solid angle where there is light to minimize wasteful samples. This approach optimizes sampling but may not always be practical for all types of lights. The lecture further introduces the surface area form for the reflection equation, which involves defining points in the scene and redefining the BRDF to take three points. Integrating over surface area is compared to hemispherical integration, highlighting that most areas in the scene do not emit light, making surface area integration more wasteful. However, if the emitters in the scene are known, it is possible to limit the integration to only emissive surfaces. The lecture emphasizes the importance of visibility tests, which involve sampling a point on the light source and checking if there is a clear line of sight between the shading point and the light source. Visibility tests help determine the contribution of a light source to a point in the scene and are crucial for accurate rendering. The lecture concludes by mentioning the technique of multiple importance sampling, which can reduce variance by merging multiple probability density functions. The upcoming Friday lecture is mentioned to cover how to sample light sources effectively.
+}

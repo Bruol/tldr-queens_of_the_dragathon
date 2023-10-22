@@ -1,1101 +1,1103 @@
- Ich hoffe, der Overflow-Raum kann mich hören und ich hoffe auch, dass es für
- Sie hier im Raum nicht so laut und nicht so leise ist. Wenn ich dann benutzen
- Sie den Coast Channel. Morgen ist das erste Treffen der Übungsgruppen und
- wirklich der Hauptsinn der Sache ist, dass Sie halt soweit kommen, dass Sie
- selber Java-Programme schreiben können. Also das erste Assignment ist wirklich
- nicht schwierig und Sie haben nicht mehr zu tun als eben Java auf einem System zu
- installieren und so weiter. Von daher und dann können wir auch schon, wenn Sie
- wollen, morgen versuchen mittels JIT, wie wir die Aufgaben später einsammeln,
- das auszuprobieren. Wenn Sie das morgen noch nicht hinbekommen, ist auch kein
- Problem. Können wir noch auf der Woche noch probieren, sollte halt in einer Woche
- funktionieren. Und zweitens die nächste Vorlesung ist natürlich, wenn nichts
- Stimmes dazwischenkommt, die nächste Vorlesung ist am Donnerstag um 14 Uhr
- 15 anstelle einer Vorlesung Algorithmen und Datenstrukturen und zwar nicht hier
- sondern drüben in dem großen Hörsaal, indem Sie Algorithmen und Datenstrukturen
- haben. Das nur so kurz zur Erinnerung. Okay, warum machen wir jetzt, ich möchte
- noch mit ebnr weiter machen, warum machen wir das? Sehen Sie, das ist auch eine Form
- des Programmierens. Stellen Sie sich vor, Sie müssen eine Menge von Symbolen
- erzeugen, z.B. alle, die ein A, ein B und dann wieder ein A oder auch zwei Bs haben,
- also die A und B untereinander gemischt haben. Wie würden Sie das machen? Da
- würden Sie eine ebnf-Regel aufstellen, die eben diese, beschreibt, wie man diese
- Symbole erzeugt. Natürlich im Allgemeinen haben Sie nicht so ein
- einfaches Muster, das Sie beschreiben müssen, aber stellen Sie sich vor, Sie
- müssen wieder Kollegen einigen, wie die Zahlen aussehen sollen, die von einem
- System ans andere übergeben werden. Da können Sie versuchen, das umgangssprachlich
- zu machen, aber besser ist es, wenn wir dafür eine formale Beschreibungsmethode
- nehmen. Oder Sie wollen beschreiben, wie sehen legales Statements aus, wann, was
- besteht, also was besteht ein Statement in einer Programmiersprache? Umgangssprachlich
- ist so was schlecht zu beschreiben und da ist dann so ein System wie ebnf von
- Vorteil. Wir hatten gesagt, dass diese ebnf-Regeln haben die rechte Seite und
- auf der rechten Seite gibt es eben diese vier Kontrollforms, mit denen wir eben
- die kombinieren können. Und da hatte ich Ihnen in der letzten Woche bereits drei
- von denen gezeigt, die Aufreihung, Auswahl, wo Sie eine Entscheidung machen
- können und dann Optionen Wiederholung. Sie werden sehen, die beiden gehören jetzt
- zusammen, wenn Sie eine Wiederholung haben, müssen Sie eben entscheiden, ob Sie
- null oder eins oder wie oft Sie das wiederholen wollen. Und uns
- interessiert eigentlich jetzt nur der Weg der Beschreibung und das zu checken, dass
- ein Symbol korrekt ist. Ein Compiler wird etwas Ähnliches verwenden. Wir wissen
- halt immer, wie viele Wiederholungen stattfinden. Das wissen wir halt,
- dass es in der für ein Computer nicht ganz so einfach ist. Und das ist
- später etwas, was Sie mehr untersuchen werden. Aber wir gehen jetzt mal davon
- aus, dass wir wissen, wie das geht. Und dann bleibt da eine weitere Möglichkeit der
- Kombination übrig. Das war die Rekursion. Das hatte ich schon erwähnt und
- jetzt wollen wir uns ein bisschen mit der beschäftigen. Also erinnern Sie sich, die
- ebnf-Regeln bestehen aus der linken Seite und der rechten Seite und auf der
- rechten Seite können eben auftreten die Namen von ebnf-Regeln und Kombinationen
- dieser vier Kontrollelemente. Und darunter natürlich auch Zeichen. Das ist der
- einfache Geteil. Und da eben heute jetzt das letzte Kontrollform, das eben
- halt vernünftig geht. So, wollen wir mal gucken.
- So, es wurde gewünscht, dass es lauter ist. Ist es jetzt lauter? Und wenn ja, also
- wenn es zu laut ist, müssen Sie auch sagen. Also wir haben es noch versucht, ja.
- Wir haben jetzt versucht, etwas lauter zu machen und gucken, ob das geht und wenn
- nicht, dann müssen wir wieder anpassen. Also, wir hatten da die Regel für
- positive Zahlen und jetzt wollen wir die Zahlen so machen, dass die gar keine
- Vorzeichen haben. Und wir hatten da schon die Regel für Digit und ich hätte
- gesagt, Digit ist eben entweder 0 oder 1 oder 2 oder 9.
- Und jetzt können wir anfangen, da eben ebnf-Regeln zu erstellen. Dann
- würden wir sagen, also wir wollen diese Regel, die nennt man positive integer und
- eine Zahl muss, soll mit einem Ziffer mindestens anfangen. Wir wollen ja das
- ganze ohne Vorzeichen haben. So, und natürlich kann da, wenn ich jetzt so
- rede, mache ich hier paar Punkte und dann wissen sie, ja, da kommt noch was.
- Und natürlich, was da noch kommen soll, sind weitere Ziffern, weitere Ziffern, die
- dahin kommen könnten. Ja, jetzt würden wir sagen, okay gut. Also,
- könnten wir ja hingehen, das war auch eine Möglichkeit, die einer von ihnen
- oder einer von ihnen in den Chat geschrieben hat, ja. Wir könnten das
- ja eben versuchen, so zu machen. Eine positive integer ist definiert als eine
- Folge von Digits in einer Wiederholung. Dann aber haben wir natürlich das
- Problem, wenn wir das so machen, dass epsilon auch eine legale positive Zahl
- ist und das wollen wir natürlich nicht. Das ist nicht gewünscht, daher machen
- wir das nicht. So, also so eine ganz einfache Wiederholung, so was hier, so
- was einfaches, das erledigt nicht das, was wir haben wollen. Wir müssen
- ein bisschen cleverer rangehen. Und zwar, die Wiederholung hat, die hilft uns
- auch, können wir auch, haben wir ja gesehen, machen können, aber das ist noch nicht
- alles. Und daher ist diese so eine Wiederholung vielleicht ein Anfang. Wir
- wissen, okay, wir brauchen Digits, wir brauchen Wiederholung, also wir können den
- Weg einschlagen, aber nur Wiederholung geht auch nichts. Jetzt, wir müssen das
- angucken, dann könnten wir sagen, wir haben hier eine Digit und vielleicht
- danach noch mal mehr, was so aussieht, wie eine Zahl. Wir können ja auf der rechten
- Seite beliebige Namen verwenden, auch den Namen der Regel, die wir jetzt gerade
- definieren. Diesen Namen können wir auch verwenden und wir werden sehen, was dann
- passiert. Also können wir sagen, wir verwenden den Namen dieser Regel auf der
- selben rechten Seite und machen das optional. Das ist hier, das ist eben nicht
- erzwungen, sondern eben halt optional. Das heißt also, nach dieser Regel könnte
- eben eine positive integer, das könnte eben irgendeine Digit sein, oder es könnte,
- das wäre eben, wenn die Option nicht genommen wird, oder es könnte sein, eine
- Digit mit eben dem, was wir positive integer nennen. Das heißt, wir müssen
- überlegen, wie wir eventuell, das allein ist ja noch kein legales Symbol, weil wir
- wollen ja oft gar keinen Fall auf der rechten Seite den Namen einer Regel
- stehen sehen, wenn wir einen Symbol angucken. Da sollen ja nur diese
- Entzeichen auftreten. Aber das wäre doch ein Weg für uns, das Problem anzugehen.
- Und wenn wir das so machten, was wären denn dann legale Symbole? Also ein
- legales Symbol wäre, wie ich Ihnen zeigte eben schon, wir haben die
- positive integer, das nehmen wir, machen wir so Tabellenartig, machen was
- Tabelle, wir wählen die rechte Seite aus und dann gehen wir hin und nehmen keine
- Option. Wir nehmen die Option nicht und dann haben wir also als Ergebnis auf
- diese Weise genau eine Digit, wie ich es eben zeigte. Oder aber wir gehen hin,
- das ist wieder unsere Tabelle der Anfang, wir nehmen die positive integer, wir
- wählen in der ersten Schritt die rechte Seite, inklusive der Option, da haben
- wir so digit, positive integer und dann im nächsten Schritt wählen wir hier wieder
- für diese positive integer, die zweite die digit und nehmen die Option nicht.
- Da hätten wir jetzt auf diese Weise eine Zahl erstellt, die aus zwei Ziffern
- besteht. Sie können sich denken, wie das weitergeht. Also wenn Sie das so
- machen, könnten Sie im Prinzip beliebig lange ganze Zahlen immer ohne
- Vorzeichen das eben entsprechend machen. So, also so kann ich das jetzt also machen.
- Also wenn wir die linke Seite auf der rechten Seite haben, dann muss es
- mindestens einen Weg geben, wie wir die linke Seite durch eine rechte Seite
- ohne diesen Namen ersetzen. Wenn ich eben halt hingehe und nur eben da etwas
- habe, was immer wieder durch die rechte Seite ersetzt werden muss, also wenn
- ich keine Option hätte, dann würde das Ganze mir nie erlauben zu dem Punkt
- zu kommen, dass ich eben halt hier drei digits oder zwei digits oder eine
- digit habe. Ich muss also immer einen Weg haben, wie ich eine rechte Seite finden
- kann, in der der Name, der auf der linken Seite auftritt, nicht auftritt. Und das
- kann eben dadurch geschehen, dass ich hier so eine Option habe, weil wenn ich
- das in der Option habe, die kann ich nehmen oder nicht nehmen, wenn ich die
- Option nicht wähle, dann habe ich nur digit auf der rechten Seite. Und
- natürlich, da gibt es x Möglichkeiten, können wir das nicht einfach ohne das
- komische Epsilon. Das Epsilon ist definieren. Das Epsilon ist nicht komisch.
- Das Epsilon erlaubt es uns genau zu sagen, was wir hier wollen. Eine andere
- Möglichkeit, wie ich jetzt zu sagen, ich gehe hierhin. Ich habe hier die positive
- integer definiert als, ich habe jetzt noch mal die Klammern gesetzt, weil ich
- dachte, vielleicht ist doch nur einer Bevorzug, dass jemand, ja. Also ich habe
- hier entweder digit und positive integer, also wieder das, oder das nicht komische,
- sondern sehr zweckmäßige, sehr geschätzte Epsilon. Das heißt, also wenn ich
- diese Seite, ich habe hier also die erste Regel, die erste rechte Seite und das
- ist die zweite Auswahlmöglichkeit. Ich muss eine von den beiden nehmen, wenn ich
- die mit Epsilon nehme, dann verschwindet das und damit ist das erreicht, was ich
- eigentlich haben wollte. Dann habe ich auf diese Weise eben dieses Symbol.
- Da habe ich hier diesen Namen verschwinden lassen. Es gibt kein
- weiteres Symbol, das so erzeugt werden kann und es bleiben nur diese Symbole
- übrig, die ich vorher bereits produziert habe. Also Sie können das dann so sehen.
- Das Beispiel, das ich Ihnen vorhin zeigte, ja, statt eben zu sagen, Option wird nicht
- genommen, würde ich einfach sagen, da wird ein Epsilon genommen und das Epsilon
- verschwindet. Ja, das ist ja nur etwas, was wir benutzen, um uns darauf hinzuweisen,
- dass hier eigentlich nichts ist. Also was wirklich übrig bleibt, sind hier zwei
- Digits oder hier bleibt eine Digit übrig. Das bleibt da einfach übrig.
- Also das ist ein anderer Weg, wie wir das machen könnten.
- Beide sind völlig, bedeutet, dass Epsilon, dass man einfach das von
- davor nimmt. Naja, wenn Sie das Epsilon haben, das verschwindet einfach.
- Das ist wie Geld, das Sie irgendwo investiert haben und weg ist.
- Einfach weg, ja. Ist einfach weg. Das heißt, dass diese, als wir das auf der
- rechten Seite stehen hatten, unserer Tabelle, haben wir uns entschieden, dieses
- Symbol durch Epsilon zu ersetzen und damit ist es weg.
- [Unverständlich]
- Okay, Sie haben eine andere Frage, die ist auch gut, aber das ist nicht das, worauf
- ich jetzt hinauswille. Wir können das auch so machen, dass da kein Null am Anfang ist.
- Das können wir auch machen, macht das Ganze ein bisschen kompliziert. Da haben wir
- Digit mit null, haben wir mit null, ohne null, ist aber nicht das, was worauf wir
- eigentlich jetzt heute hinauswollen. Ist eine gute Frage, können wir nachher
- mal weiter diskutieren. Also, uns interessiert einfach nur, wie wir solche
- Zahlenfolgen erstellen. Also, null, null, sieben ist halt für uns okay.
- Ich meine, ist sonst kein guter Film, aber hier ist es an sich okay.
- Weil wir wollen uns, also, jetzt, also es muss mindestens einen Weg geben,
- den, dieses Symbol, dieses, diesen, den Namen der Regel verschwinden zu lassen.
- Ja, und eben, ich hatte gesagt, eine Möglichkeit wäre das eben mit, mit
- diesen Epsilon, mit Optionen, die andere Möglichkeit wäre mit Epsilon. Beides
- geht und Sie sehen, es habe ich hier ohne Klammer gemacht, ja, weil wir der Auffassung
- sind, dass, wenn was wir hier haben, ist enger aneinander gekoppelt, als das, was
- hier durch diesen Strech, durch diesen Stroke, senkrechten Strich getrennt wird.
- Also, wenn Sie die Klammern machen wollen, ist das okay, ist eigentlich für uns nicht
- so so kritisch. Also, so eine Regel hier, in der der Name, der auf der linken Seite
- auftritt, auch auf der rechten Seite auftritt, so was nennen wir eine
- rekursive Regel. Und hier haben Sie zwei Beispiele von rekursiven Regeln. Und
- das Wichtige ist immer daran denken, es muss einen Weg geben, daraus zu kommen,
- ohne dass es das eben ein neuer Name eingefügt wird. War da eine Frage?
- Ja, vier.
- Wenn wir das Epsilon werden, heißt das also, dass die Reihe immer der Ende fehlt?
- Ja, natürlich, weil der Epsilon ist weg, genau. Wenn es Geld ausgegeben ist, ist es weg,
- nicht wahr? Ja, genau, richtig. Also, ist dann einfach verschwunden, ja.
- Okay.
- Ja, okay, jetzt, jemand hat zu Recht bemerkt, dass wenn wir das so machten, dann
- hätten wir ja wieder Epsilon als Zahl, das stimmt, das ist hier möglich.
- Also, wollen wir vielleicht nicht, aber mir geht es eigentlich nur darum, dass
- Sie sehen, dass es möglich ist, den Namen, den wir auf der linken Seite haben, auch
- auf der rechten Seite zu haben. Und zweitens, wenn ich das mache, muss es ein Weg
- gehen, sei es durch Option, sei es auch durch eine Wiederholung, geht ja auch mit
- nullmal, oder sei es mit einem expliziten Epsilon, eben eine rechte Seite zu finden,
- die eben nicht den Namen enthält, der bereits auf der linken Seite definiert ist,
- weil sonst eben wir nie den Punkt erreichen, dass wir alle diese Namen der Regeln
- aus unseren Symbolen entfernt haben. Also, und so eine Regel, die nennen wir
- Rekursiv, der Name wird in der Definition verwendet. Also, hier, das war das
- Beispiel, so wie ich es gerne sehen würde, eine positive Integer fängt mit einer
- Digit an und danach eben kommt nochmals gleich hinterher. Und wir sagen, eine
- Beschreibung ist Rekursiv, wenn mindestens eine Rekursive Regel in dieser
- Beschreibung vorhanden ist. Und eben eine Rekursive Beschreibung enthält dann
- eben Rekursive Regel. Jetzt, wenn Sie ein bisschen weiter verfolgen, da gibt es
- eben die Unterscheidung zwischen direkt und indirekt Rekursiv. Wir sagen
- direkt Rekursiv, wenn der Name der Regel in der Definition selber verwendet wird.
- Also, ich habe hier das R auf der linken Seite und ich habe hier das R auf der
- rechten Seite. Sie sehen, je nachdem, mit wem Sie reden, da gibt es da
- verschiedenen Stil. Also, hier kann ich, was kann ich auf diese Weise erzeugen? Ich
- kann also erzeugen ein A, ich kann zwei As erzeugen, ich kann aber auch Epsilon
- erzeugen, weil hier im Grunde genommen davor steht eigentlich nichts. Daher
- manche Leute bevorzugen, dass Epsilon hinzuschreiben. Deswegen ist das
- manchmal sinnvoll, wenn Sie sich diese Regel hier und diese Regel hier angucken,
- mit oder ohne Klammerspielkeine Rolle. Hier ist es leicht zu übersehen, dass da
- eigentlich auch eine Epsilon- rechte Seite existiert. Wenn ich das so mache, dann
- sehe ich sofort, hoffe ich mal, da könnte ja auch Epsilon gewählt werden und
- in dem Fall würde diese Regel nicht weiter ausgespielt werden.
- Und eben, Sie können es mit Klammer machen oder nicht, das ist für uns nicht so
- wichtig. Also, das ist der Grund, das ist die Sache der, das ist die einfachste Form
- einer rekursiven Beschreibung. Ja, rekursive Beschreibung besteht nur aus
- einer Regel, die Regel hat zwei rechte Seiten und auch einer Seite
- erscheint der Name noch mal, das haben wir da als rekursive Sache.
- Und jetzt fragen sich natürlich, warum machen wir das eigentlich überhaupt?
- Warum machen wir das eigentlich überhaupt? Ist das nur so gedacht, also gucken wir
- diese letzte Regel noch mal an. Also, R ist definiert als Epsilon oder A R.
- So, mit dieser Regel kann ich genauso arbeiten, wie ich vorher mit meinen
- Tabellen arbeiten könnte. Wenn ich zeigen will, dass A A A, also dreimal der Buchstabe
- A, ein legales Symbol ist, ja, dann fange ich an mit R, dann nehme ich einmal die
- rechte Seite, dann nehme ich nochmal dafür die rechte Seite, nochmal diese
- zwei, also diese rechte Seite, hier eins, zwei, ja. Also, hier habe ich die erste,
- die, hier habe ich die zweite Seite genommen, hier habe ich nochmal die zweite
- Seite genommen, hier habe ich nochmal die zweite genommen und jetzt im letzten
- Schritt gehe ich hin und benutze wähle Epsilon, ja, das war so die erste Option,
- die ich da hatte und das Epsilon verschwindet dann und übrigbleiben eben
- dieser String, von dem ich zeigen wollte, dass er da ist, ja. Also, das, was wir hier
- gesehen haben über Tabellen oder Ableiterungsbäume, wie hier genauso,
- wir können, wir haben hier R, als unser, als der Regel, der mit der wir arbeiten
- wollen, jetzt bauen wir den Baum auf, ja, auf dem Baum kommt hier ein A hin und hier
- ein R, weil wir nehmen die Regel auf der Seite 2, ja. Jetzt gehe ich hin für das
- R hier, wähle ich wieder A und R, wieder die zweite rechte Seite, ja, hier benutze
- ich nochmal diese rechte Seite und dann gehe ich hier hin und benutze die erste
- Regel und dann habe ich hier auch der gezeigt, dass der Baum dafür genauso zu
- verwenden ist. Also Baum und Tabelle, beides ist ohne weiteres möglich, ja.
- So, okay, also direkt Rekursiv eben, Rekursiv ist,
- Name wird in Edition verwendet und das hätten wir natürlich auch anders haben
- können, das habe ich Ihnen auch mal gezeigt, ja, so haben wir am Anfang die
- positiven Integers definierte und da haben wir auch genauso gut, statt der
- Option da oben, hätten wir das wählen können, ja. Und da fragen sich natürlich,
- hm, warum macht er das eigentlich? Ist das nur hier um uns, ist das jetzt nur,
- hm, warum dieser Aufwand, hätten wir nicht die Rekursion weglassen können, ja.
- Weil ich meine, das Beispiel, das ich da eben hatte, ja, hätte ich doch auch genauso
- gut hier diese, hm, EBNF Regel haben können, ja. R ist definiert als eine beliebige
- aufeinanderreihung von A, ja. Das hätte uns auch, epsilon, A, A, A und so weiter
- gegeben, ja. Also, ja, warum brauchen wir das, ja. Dann kommt dann die Frage,
- jetzt habe ich uns hier genauso, ja, ich habe hier noch ein Beispiel, ja, das hätte
- ich auch machen können. Ist die Frage, ist das nur eine Idee, die wir machen,
- um Studierenden das Leben interessant zu machen, ja. Könnten wir eigentlich jede
- Rekursion durch Wiederholungen ausdrücken, ja. Also, gibt es diese, diese Umformung,
- wie ich sie hier ist, im Kopf gemacht habe, die dazu führte, dass wir hier diese beiden
- Regeln haben, ja. Ist das immer möglich, ja. Und umgekehrt, wenn ich schon mal eine
- Wiederholung habe, es könnte ja sein, dass mir irgendein Mensch so eine Wiederholung
- gegeben hat, ja, kann ich die dann auch durch Rekursion ausdrücken. Also, sind
- Rekursionen und und Wiederholung eigentlich letztlich gleichwertig, ja. In dem
- Sinne, dass ich das eine immer benutzen kann, um das andere auszudrücken. Ja.
- Gibt es einfach, gibt es eventuelle Beispiele, in denen die Wiederholung nicht
- helfen kann? Vielleicht haben Sie ja die Frage schon mal in einer anderen
- Zusammenhang gehört, weil die Frage ist nicht ganz neu, die hat es auch schon
- gegeben. Aber überlegen Sie mal, sind die beiden Sachen, ist da wirklich ein,
- ist da, können wir jede Rekursion durch Wiederholung oder Wiederholungen
- ausdrücken oder nicht? Was ist so Ihr intuitiver Gedanke, ja. Was ist so,
- Ihr fragt mich jemand über irrektere Rekursionen, kommen wir nachher noch
- aufzusprechen. Überlegen Sie erstmal, ja. Jetzt, die Sache ist die, es wäre
- schön, wenn man jede Rekursion durch Wiederholungen ausdrücken kann. Aber die
- Antwort ist leider, kann jede Rekursion, die Antwort ist leider nein, ja. Die
- Antwort, ich kann ja, ich kann jede Wiederholung durch Rekursion ausdrücken,
- das ist der einfache Teil, ja. Aber es gibt Situationen, wo Rekursion
- zwingend nötig ist, ja, zwingend nötig, wo also wir ohne Rekursion das nicht
- ausdrücken könnten, ja. Und deswegen eben halt diese Diskussion oder diese
- Konzentration auf Rekursion, ja. Jetzt, wie, was für ein Problem könnte es
- denn geben, was wir mit Wiederholungen nicht ausdrücken können. Stellen Sie sich
- vor, Sie haben die Aufgabe, Strings zu erzeugen, in denen wir eine Menge von
- A's haben, gefolgt von einer Menge von B's und, jetzt kommt das wichtige
- unter, ja, und die Anzahl der A-Zeichen, ja, soll sein gleich die Anzahl der B-Zeichen,
- ja. Oder wenn wir das ein bisschen formaler ausdrücken sagen, also als legale
- Symbole sind A hoch N, ja, hoch N, kennen Sie ja, so neben A hoch N, B hoch N, ja.
- Mit N eine Digit können wir sagen Null oder Eins, das zwei, wo wir anfangen lassen
- wollen, spielt keine Rolle, ja. Das ist jetzt nicht so wichtig, ja. Aber eben
- die Zeichen, die wir, oder die Symbole, die wir akzeptieren wollen, sind dieser
- Form, ja. Die haben N, A's gefolgt von N, B's, ja. Oder das können ein A, ein B,
- oder zwei A, zwei B, aber eben nicht zwei A und drei B sein, ja. Also das wäre
- eine Menge von Zeichen, die wir nicht mit Wiederholung ausdrücken können, ja.
- Aber Sie könnten versuchen, das mit Wiederholung zu machen, ja. Sie könnten
- sagen, ja, ich definiere mal das D, und das wäre halt ja eine Menge von A's
- gefolgt von einer Menge von B's. Naja, das ist es auf jeden Fall nicht, das geht
- nicht, ja. Weil das würde ja auch A, B, B zulassen, ja. Sie könnten sagen, ja,
- vielleicht kann ich es definieren als A, B Wiederholung, ja. Weil dann habe ich
- zumindest immer die gleiche Anzahl A's und Alkwärke B's. Aber das geht auch
- nicht, weil das wäre ja A, B, A, B, das wäre ein legales Symbol, ja. Ist nicht
- das, was wir wollen, ja. Sie können das jetzt noch ein bisschen weiter, wenn
- Sie Zeit haben in der Pause ausprobieren, ja. Aber Sie können mir glauben, es gibt
- keinen einfachen Weg, keinen Weg das mit Wiederholung auszudrücken, ja. Also das
- ist eine Situation, wo wir Rekursion zwingend brauchen, um das eben halt
- machen zu, um eben das beschreiben zu können oder machen zu können, ja. Also
- das ist halt der Grund, warum wir uns für Rekursion interessieren, ja. Die,
- was wir hier haben, kann eben nicht durch eine Wiederholung ausgerückt werden, ja.
- Sie können das in verschiedensten Formen machen, ja. Aber hingegen eine einfache
- Regel erlaubt es uns mit einer Rekursion das auszudrücken, ja. Hier habe ich
- ein einfaches Beispiel. Ich gehe hin, ich nenne das Balance, entweder Epsilon
- oder A Balance B, Klammer für die, die es noch wollen, ja. Und wenn er kann
- ich jetzt hingehen, wenn ich also zeigen will, dass A B ein legales Symbol ist,
- dann fange ich an mit Balance, ja. Dann wollen Sie das als Baum, wenn jemand
- was als Baum, gehe ich hin, wähle, hier habe ich die Regel 1, hier habe ich
- nicht die Seite 1, die Seite 2, ich wähle die Option, der zweiten Seite, dann
- habe ich also hier A Balance B und dann wähle ich jetzt hier die aus der
- ersten, mache das Epsilon, habe ich da A B, ja. Oder wenn ich zeigen will, dass A
- A B B ein legales Symbol ist, fange ich wieder mit Balance an, ja.
- Gehe ich hin, habe ich hier A Balance, wieder die zweite Seite der Regel
- genommen, ja. Jetzt gehe ich hin, nehme nochmal A Balance B, wieder also
- zweite, zweite Auswahl da genommen und jetzt nehme ich die erste, mache
- Epsilon und Sie sehen, so kann ich also beliebige Folgen erzeugen, in denen
- die Anzahl der Aß gleich Anzahl der Bß ist, ja. Also das ist halt eben, das
- können Sie wiederholung nicht machen. Aber umgekehrt, eben jede
- Wiederholung kann durch Rekursion ausgedrückt werden und wir werden
- noch mehr über Rekursion später auf der Zeit lernen und sehen, was der
- Unterschied ist, wo das einmal besser ist als das andere. Das ist für uns
- heute noch nicht so wichtig und was Sie aber mitnehmen sollten ist, dass
- eben Rekursion ist mächtiger als die Wiederholungen. So, da fragte
- mich jemand, wie funktioniert indirekte Rekursion, das kann ich Ihnen
- auch sagen. Also indirekte Rekursion ist das, wenn wir eine Folge von
- Rekursion haben, N1, N2 und so weiter bis NK, ja. So, dass N2 erscheint
- auf der rechten Seite von N1 und N3 auf der rechten Seite von N2 und so
- weiter, bis wir dann zu dem Punkt kommen, dass N1 auf der rechten Seite von
- NK erscheint, ja. Also hier ist ein einfaches Beispiel. Ich habe hier die
- Beschreibung für N1, das ist die Beschreibung, ja. Und das ist definiert
- als der Buchstabe A, gefolgt von N2. Und N2 ist hier oben definiert, ja.
- Und N2, habe ich jetzt mit Klammern noch gemacht, ja. N2 ist definiert
- als die Auswahl entweder N1 gefolgt von B oder ein X gefolgt von B. X, A,
- X und B sind die Zeichen, die am Ende erscheinen dürfen, ja. Also so
- kann ich dann hier eben eine indirekte Rekursion, weil eben,
- das kann ich auch anders schreiben können, ja. Das ist einfach nur wie man die
- Regeln aufteilen will, ja. Wenn Sie direkte Rekursion verstanden haben,
- wie das, das hier ist nur fancy Footwork, ja. Das bringt nicht viel, das ist
- auch wichtig, weil da nicht mal übersichtlicher wird und so weiter,
- aber das konzeptionell Interessante ist eben die Rekursion, ja. So, also
- wie gesagt, die können wir mit oder ohne Klammern machen, ganz wie Sie wollen, ja.
- Also, so nochmal kurz als Zusammenfassung, ja. Wir haben also gesehen, es gibt
- für uns verschiedene Wege, so eine EBNF Beschreibung zu gebrauchen.
- Wir können die benutzen, um Ableitungsbäume zu erstellen, Tabellen zu
- erstellen, die Grafen haben wir kurz gesehen, wenn wir viel Zeit haben,
- keine noch kurz paar Mehrsachen dazu sagen, ja. Im Grunde genommen,
- alles sind das Wege, wie wir demonstrieren können, das ein Symbol,
- das wir haben, legal entsprechend dieser EBNF Beschreibung ist, ja. Und der
- EBNF Graf ist halt ein anderer Weg, das zu machen, ist aber nicht fundamental
- anders, ja. Und das geht eben mit und ohne Rekursion, ja. Ich habe Elastas hier
- drinnen, Beispiel mit einer anderen EBNF Beschreibung, mit paar anderen Regeln,
- sowohl als Tabelle als als Baum, ja. Können Sie alles machen, also wie Sie,
- wie Sie das wollen, ja. So. Und eben der Grafen erlauben uns eben halt,
- das eben ein bisschen bildlicher darzustellen, hatte ich am Freitag morgens noch
- kurz gesagt, wenn wir hier diese EBNF Beschreibung für Integer haben, ja.
- Dann könnten wir eben einen Grafen haben für die ganze Auswahl bei Digit, ja.
- Und dann könnten wir die kombinieren und sagen, okay, eine Integer besteht
- eben entweder aus diesem Block oder eben nicht, das ist der Epsilon-Fahrt, ja.
- Und dann kommt eine Digit, die muss da sein, ja. Und danach kommen entweder
- beliebig viele Digits, ja, oder gar nichts, der Epsilon-Fahrt, ja.
- Das wäre ein anderer Weg, die zu beschreiben. Und manche Leute finden das
- sinnvoll, wenn sie, oder besser, wenn sie sich jetzt diese Grafen ineinander
- einsetzen, ja. Das nennt man Substitution, da könnten sie diesen
- Digit-Graf hier einsetzen, ja. Da könnten sie also den da reinsetzen,
- dann bekämen sie sowas, ja. Also das Gleiche wie vorher, ja. Also Integer
- ist definiert als plus oder minus oder gar nichts, ja. Und danach eine von diesen
- Digits, wie damit der Null am Anfang erlaubt, ja. Und danach eben beliebig
- viele von diesen Digits oder gar nichts, ja. Und dann eben ein legales Symbol
- ist eben ein Fahrt durch diesen Grafen, ja. Also wenn sie zeigen wollten,
- dass plus 7 1 legal ist, ja, sie würden hier anfangen. Jetzt wüssten sie halt,
- dass sie hier oben durch das Plus gehen müssten, ja, kommen hier runter, ah, hier
- haben wir die, haben wir die, über die 7, dann nehmen wir hierhin, ja.
- Jetzt haben wir hier, machen wir nicht Epsilon, weil wir haben ja noch die
- Einstiehverlust, die wir verarbeit erklären müssen, kommen wir hierhin.
- Jetzt hier an dem Punkt könnten wir noch mal durchgehen, wenn wir wollten und
- längere Zahl haben, aber haben wir nicht. Also gehen wir zum Ausgang und sind
- wir dadurch fertig, ja. Also das ist so ein anderer Weg, wie man, wie man eben
- auch so eine EBNF Beschreibung machen kann, ist für manche Leute leichter
- oder einfacher, ja. So. Und dann eben können wir gucken, was haben diese,
- was für EBNF Regeln könnten wir gebrauchen, um hier diese, sollte ich mal
- diese drei Grafen zu beschreiben, dann können wir doch vom Grafen zurück zur
- Beschreibung, ja. Könnten Sie auch den Kopf gehen lassen und schon mal den
- Computer rausholen, ja. Also wenn wir so was hier haben, was ist das, ja.
- Was ist legal, ja. Also können wir uns angucken, also Epsilon ist auf jeden Fall legal, ja.
- A ist legal, B ist legal. Wenn ich einmal A hatte, kann ich noch ein A haben,
- oder wenn ich ein A habe, kann ich im nächsten Durchgang auch ein B haben, ja.
- Oder wenn ich ein B habe, kann ich danach noch mal ein A haben, oder kann ich danach
- noch mal ein B haben, oder und so weiter, ja. Also das sind so die Symbole, die ich dir
- legal durchgehen könnten, ja. Wie würde ich das eben jetzt hier als, wenn ich eine
- Regel erstellen müsste, ja. Was würde ich da sagen, okay, ich habe die Wahl zwischen A
- oder B, ja. Und davon beliebig viele, ja. Also G ist definiert als beliebig viele
- Wiederholungen von A oder B, ja. So kann ich aus dem Grafen ohne weiteres den
- gewünschten, die gewünschte Regel bekommen, ja. Und genauso wenn Sie hier dieses
- Beispiel nehmen, ja. Wenn Sie hier dieses hätten, ja. Was wäre denn da der, wäre denn
- da richtig? Ich habe hier, was habe ich hier? Ich kann eine C haben, oder ich kann A
- gefolgt von B haben, ja. Also ja, das wäre also entweder habe ich A, B gefolgt von C
- oder C, ja, nicht A, B gefolgt von C, aber entweder A, B oder ich habe C, ja.
- Oder ich sage, ich habe C oder ich habe A, B, ja. Also A gefolgt von B wäre eine Option
- oder C die andere. Ja, das hatten wir auch schon mal gesehen. So. Und um mal zu gucken,
- ob Klickern auch lebt, habe ich hier eine Dritte und die könnten Sie sich mal überlegen,
- was da denn da die richtige, die rechte, richtige, eine richtige rechte Seite wäre.
- Das ist ja nicht eindeutig, ja. Da können Sie beliebig viele, da gibt es beliebig viele
- Möglichkeiten, das zu machen. Aber Sie könnten mal gucken, ob da, oh, gucken, please start.
- Sie haben noch als positive, als positive Information für Sie, es hat sich jetzt eine
- Taskforce gebildet, die versucht rauszufinden, warum hier das Klickern nicht funktioniert,
- mit Glück schaffen, die eine Lösung zu finden. Und was mich die aber bitten zu sagen ist,
- Sie sollten, wenn Sie sich aufs Weiharles des drahtlose Netz hier einloggen,
- gucken, dass Sie nicht alle auf Public gehen, es gibt da auch ETH, ETH5 und so weiter
- und die könnten Sie auch alle versuchen. So. Also, ich läuft es, ich sehe einzelne
- Leute stimmen ab, das ist super. Also, was ist die, was ist die gewünschte Form dafür?
- Okay, ich sehe gute Antworten. Noch eine Minute. Okay. Noch die letzte Chance,
- paar Stimmen abzugeben. So, was finden wir denn hier? Also, was sind denn legale Symbolen,
- die hier erzeugt werden könnten? Also, einmal natürlich sofort, dass Epsilon,
- können hier durchgehen und sowohl hier oben als hier unten durch ist nichts Epsilon.
- Oder A, oder zweimal A, oder beliebig oft A, oder B, oder zweimal B, oder dreimal B,
- oder beliebig oft B. Also, als mögliche Antwort wäre also entweder beliebige
- Wiederholungen von A, oder beliebige Wiederholungen von B, oder beliebige Wiederholungen
- von B, oder beliebige Wiederholungen von A. Es ist kein Unterschied, ob Sie das so
- oder anders machen. Also, hier die richtige, eine richtige Antwort wäre
- Wiederholungen von A, gefolgt von Wiederholungen von B. So, ja, das also ist ein anderer Weg,
- wie wir das da, wie wir da weitermachen können. So, und jetzt noch eben zwei Sachen
- zum Thema EBNF-Geschichte. Ich hatte Ihnen gesagt, das E steht für Erweiter,
- dass eben das die erweiterte Form von BNF, wo kommt dieses Extended her?
- Weil früher gab es nur BNF, und BNF war eben Bakus Naurer oder Bakus Normalform,
- und die hatte eben nur Rekursion und Auswahl. Und als Niklas Wirt, der früher mal hier
- Professor war, eine Programmiersprache namens Pascal definierte, das ist schon lange her,
- aber da stört er ihn das, und er fand das nicht so elegant, und der hat dann eben
- halt die Option und Wiederholung hinzugefügt. Und das hat dann eben doch
- Anklang gefunden, und deswegen heißt das jetzt E die erweiterte Extended Form von BNF.
- Also, wie würde so Integer aussehen ohne Wiederholung? Sehen Sie hier mit Rekursion,
- ja? Eine Integer ist eben hier sign or digit, or digits, und digits kann dann
- dahingehen. Also so können Sie das auch machen, geht auch, ist vielleicht nicht ganz
- so einfach, aber ist auch möglich. Ja, und das war es, was ich, ich kann ja, was zum
- Thema EBNF ich Ihnen sagen wollte, ja? Und Sie hatten noch eine Frage.
- [Unverständlich]
- Ich verstehe, was meinen Sie mit Implicit?
- [Unverständlich]
- Ja, genau, auch bei BNF können Sie es auch machen. Die Aufreihung ist mit dabei.
- Die Aufreihung haben Sie immer, weil ohne Aufreihung könnten Sie hier das nicht machen.
- Aufreihung ist eine didaktische Idee, die wir benutzen, um Ihnen das Einstieg zu erleichtern.
- Das ist nicht so essentiell, essentiell und wichtig sind eben halt hier, ob Sie eben
- Rekursionen und Auswahl machen oder ob Sie auch Optionen und Wiederholung haben wollen.
- Ausaufreihung ist immer mit dabei. Ja, so. Okay, ja, das war es zum Thema EBNF.
- Und ich würde sagen, die drei Minuten bis zur Pause überskippen wir, und wir machen dann
- um zehn Minuten nach elf, schaffen wir das? Zehn nach elf, machen wir weiter, ja?
- Oder soll ich jetzt doch drei Minuten machen? Machen wir jetzt Pause.
- Um elf Uhr zehn geht es weiter, ja? Bis elf Uhr zehn Pause, ja?
- Aber wirklich elf Uhr zehn, ja? Um dann zu sehen, wie es geht, ja?
- Okay, also alle haben das gesehen, die meisten von Ihnen sind ja eingetragen und das sollte
- kein Problem sein. Also, machen wir jetzt weiter und fangen wir mit einfachen Java-Programmen an.
- Ganz einfachen, ja? Also, wenn Sie Java schon kennen oder schon programmieren können,
- Sie das langweil, dann bitte verwenden Sie mehr Zeit auf andere Vorlesungen, ja?
- Wie gesagt, es gibt einige, die das noch nicht kennen und trotzdem würde ich Sie bitten,
- deswegen würde ich Sie bitten, das zu berücksichtigen.
- Okay, also wir fangen mit den einfachsten Java-Programmen an und dann kommen wir auf Methoden zu sprechen,
- einen Weg, wie wir einem Programm etwa Struktur geben können.
- Und dann, wahrscheinlich in der nächsten Vorlesung am Donnerstag, rede ich dann über Typen und Variable.
- Also am Anfang machen wir wirklich ganz, ganz einfach, ganz, ganz einfach.
- Also, eBNF hält die Sündtagsregeln von Java-Programmen fest, ja?
- Das hält also fest, was für Namen wir verwenden können.
- Also heißt es da, Bezeichner, also Identifiers, müssen bestimmte Anforderungen erfüllen.
- Sie müssen mindestens ein Zeichen lang sein, also Epsilon geht nicht, ja?
- Sie müssen mit einem Buchstaben anfangen, ja? Das ist entweder A bis Z oder klein oder große.
- Und diejenigen von Ihnen, die sich aus Sprachen kommen, in denen solche Sachen existieren, ja?
- Das ist alles interessant, aber, ja?
- Mein Ratschlag ist keine Umlaute, keine Sonderzeichen und so weiter.
- Damit handeln Sie sich nur später Probleme ein, ja?
- Oder eben ein Name kann Buchstaben oder Ziffern enthalten.
- Das ist nicht die ganze Java-Geschichte, ja?
- In Java gibt es noch ein paar mehr Regeln und andere Sachen,
- aber das ist ja nicht unser Ziel, alle Java-Sachen Ihnen beizubringen, sondern nur das Wichtigste.
- Und die EBNF-Beschreibung für also legale Bezeichner wäre eben so etwas, ja?
- Ein Bezeichner besteht aus einem Buchstaben, gefolgt von Buchstaben oder Ziffern und so weiter, ja?
- So, und das sind ja die Regeln.
- Aber damit natürlich können Sie nicht, das ist nicht programmieren.
- Programmieren ist was anderes, hatten wir gesagt.
- Nämlich das Erstellen von Programmen.
- Und natürlich in diesen Programmen werden wir solche Bezeichner brauchen, ja?
- Das ist nicht den Grund.
- Und wenn man also von sagt Programmieren ist Erstellen von Programmen,
- da sind da zwei Aspekte.
- Einmal müssen wir die Programme erstellen und zum anderen müssen wir die Programme ausführen, ja?
- Das haben wir ja gesehen, das ist das Interessante an der Informatik,
- dass wir nicht nur ein Programm schreiben sollen,
- sondern auch das Programm auch von einem Menschen oder einer Maschine ausgeführt werden kann.
- Und da gibt es zwei prinzipielle Möglichkeiten, das zu machen.
- Und die erste Möglichkeit ist, wir nehmen das ein ganzes Programm
- und dann dieses Programm ist dann in einer Datei oder in mehreren Dateien.
- Und dann haben wir das Problem, also müssen wir eben die Datei erstellen,
- dann muss das Programm ausgeführt werden, dann muss eventuell das modifiziert werden
- und dann geht das vielleicht nochmal wieder zum Ausführen und so weiter hin.
- Aber das Entscheidende ist, wir haben das ganze Programm
- und das ist in einer oder mehreren Dateien.
- Und der andere Weg, den wir wählen können
- und beide Wege haben ihre Vorteile, ja,
- ist, dass wir einzelne Anweisungen aus Java ausführen können.
- Da könnten wir für jede dieser Anweisungen, könnten wir jetzt über das Computer hingehen,
- der würde die lesen, der würde ausführen,
- würde gucken, was bedeutet diese Anweisung überhaupt
- und gibt dann das Ergebnis aus.
- Dann gibt es die nächste Anweisung vor und macht das hintereinander.
- Und sowas nennt man den Rappel.
- Ried evaluate print loop, ja, Ried, also der liest hier eine Anweisung,
- der Computer evaluiert sie, also führt sie aus,
- dann gibt er aus, was für eine Ausgabe da immer Sinn macht
- und dann fängt er von vorne an, loop, ja.
- Also beide dieser Wege existieren, wir werden auf beide zu sprechen kommen,
- aber überwiegend werden wir uns hier in dieser Vorlesung mit dem Weg beschäftigen,
- indem wir mit ganzen Java-Programmen arbeiten, die dann in irgendwelchen Dateien sind.
- Und der Grund, warum wir das machen, ist, das ist der Weg zu größeren Programmen.
- Wenn ich einzelne Java-Anweisungen ausführen kann, ist das super,
- weil so kann ich rausfinden, was genau die denn eigentlich machen wollen, ja.
- Aber wenn ich größere Programme schreibe, dann sind das nicht nur Anweisungen,
- da sind das große Sammlungen von Anweisungen, Programme und so weiter.
- Und andere Vorlesungen eben verlangen das auch
- und deswegen benutzen wir hier in der Vorlesung diesen Ansatz,
- dass wir also halt unsere Programme in der Datei ablegen oder in Dateien ablegen
- und dann da entsprechend durcharbeiten, ja.
- Also müssen Sie sich so vorstellen, wenn Sie es schon mal gesehen haben,
- es ist wahrscheinlich trivial, aber wir haben also unser Java-Programm
- und das ist geschrieben in Text, ja.
- Das besteht aus einer Folge von Java-Anweisungen, ja.
- Und dann wollen wir irgendwelchen Output haben.
- Der Output könnte auch wieder Text sein
- oder könnte, wenn wir etwas ambitionierter sind,
- vielleicht eine Grafik sein, ja.
- Oder könnte auch irgendeine Folge von Bits oder Bytes oder irgendwas sein,
- was von irgendeinem anderen System dann später irgendwie verarbeitet wird, ja.
- So, jetzt, wie komme ich von der linken Seite auf die rechte Seite, ja.
- Na, da gibt es bei Hilfswerkzeuge, ja.
- Da gibt es ein Hilfswerkzeug, das heißt Compiler, ja.
- Der Compiler nimmt den Text des Java-Programms
- und übersetzt das in einen anderen Text.
- Und zwar in Text, der von einem, dem Java-Prozessor später verstanden werden kann.
- Das heißt, dieses Programm besteht jetzt aus Instruktionen für irgendeinen Prozessor.
- Der Prozessor weiß, was der Compiler weiß, was für ein Prozessor sie verwenden werden
- und daher wählt der entsprechende Befehle aus
- und schreibt die in diesen, in irgendeinen Programm rein, ja.
- Das übersetzt der, macht der übersetzt der das, ja.
- Wir nennen das der Compiler übersetzt oder kompiliert, ja.
- So, und dann diese Anweisungen, die werden dann von einem Prozessor genommen, ja.
- Und dieser Prozessor geht dann hin und führt die Anweisungen außen.
- Eine Anweisung könnte sein eben, drucken sie was oder zeichnen sie ein schönes Bild
- oder irgendwas anderes, ja.
- So, jetzt, das ist so die, der Workflow.
- Jetzt, manche Leute, die auch ich gehöre, schreiben nicht immer korrekte Programme.
- Ich weiß, sie sind, sie werden das besser machen, ja.
- Aber vielleicht kann auch Ihnen mal ein Fehler unterlaufen.
- Und darum eben, geht der Compiler hin und übersetzt nicht nur,
- sondern der Compiler prüft auch.
- Der Compiler guckt nach, ob das, was Sie hier haben, legal ist.
- Dass irgendwelchen Regeln entspricht oder genehmigt wird, ja.
- Und wenn das ich der Fall ist, dann beschwert sich der Compiler und sagt, das geht nicht.
- Sie wollen das und das machen, ist nicht erlaubt, ja.
- Und daher, dann beschwert sich der Compiler.
- Und dann geht der Compiler hin, produziert das Java-Programm als Prozessorinstitutionen.
- Aber der Compiler sagt sich, na ja, ich kann ja nicht alles prüfen, ja.
- Es gibt ja Sachen, die kann ich erst dann prüfen, wenn das Programm ausgeführt wird, ja.
- Darum geht dann der Compiler hin und fügt in das Programm weitere Instruktionen ein,
- die checken zur Laufzeit später, ob alles in Ordnung ist.
- Das heißt, wenn jetzt das Programm ausgeführt wird, dann checken der Prozessor
- und das Laufzeitsystem, das Laufzeitsystem ist die Software, die das Programm zur Ausführung bringt und so weiter, ja.
- Die gehen dann hin und prüfen auch, ja.
- Die prüfen teilweise aufgrund dieser Instruktionen und vielleicht auch anderer Weise, ja.
- Und wenn ich sage Prozessor, dann meine ich damit irgendein System, das diese Java-Instruktionen versteht.
- Das kann hardware sein, das kann Software sein, das kann seine Kombination von hardware und software,
- das kann ein general purpose Prozessor sein, wie er in meinem Laptop ist, das kann ein spezieller Prozessor sein,
- wie er in ihrer Java-Shift-Card ist, ja.
- Das ist alles für uns relativ uninteressant, also schon interessant, aber wichtig ist eben,
- diese beiden Prozessor- und Laufzeitsystem zusammen prüfen auch nochmal, ja.
- Und beschweren sich dann, wenn irgendetwas nicht richtig funktioniert, ja.
- Also das ist so der Blick von ganz oben über das, was da passiert.
- Das heißt, wir haben also die Aufgabe für unser Programm, wenn wir das erstellen wollen,
- wir müssen irgendein Editor benutzen, um das Programm als Text zu erstellen.
- Dann müssen wir einen Compiler benutzen, der eben das Ganze übersetzt und dann müssen wir das Ganze ausführen,
- gegebenenfalls den Output angucken oder analysieren und dann vielleicht modifizieren und so weiter und so was nochmal zu machen.
- Und da gibt es natürlich X-Möglichkeiten, das zu machen, ja.
- Und wir haben uns entschieden, ein IDE, das heißt ein Integrated Development Environment, zu verwenden,
- und zwar das Eclipse-System. Es gibt auch andere, alle haben Vor-Nachteile, ja.
- Das ist eine Umgebung, die diese ganzen Komponenten, den Editor, den Compiler, den Prozessor und einiges mehr, zusammenfasst, ja.
- Und dieses System erlaubt es uns, dann eben halt die Programme auszustellen, auszuführen, zu checken und so weiter.
- Und das ist wie Java auch ein Industrial Strengths-System.
- Das heißt, es ist für Leute, Gedacht, die wirklich jeden Tag Programme schreiben.
- Und natürlich hat das daher viele, viele Aspekte, die wir jetzt am Anfang unserer Vorlesung noch gar nicht alle brauchen.
- Das ist halt ja wie mit Java, das ist auch alles Mögliche in der Sprache enthalten.
- Wir werden nicht alles immer brauchen, genauso mit dem Eclipse-IDI brauchen wir auch nicht immer alles, aber es ist verfügbar, wenn wir später brauchen, ja.
- Und die alle sollten jetzt, oder die meisten von Ihnen, hoffe ich, haben sich schon mal diese Übungsaufgabe 0 angesehen und haben das installiert.
- Dann haben Sie, Entschuldigung, haben Sie eben die Eclipse auf Ihrem System zum Laufen bekommen, dann sieht das ungefähr so aus, ja.
- Kleine Unterschiede zwischen Windows und Mac und so weiter, ja.
- So, wir haben da alles alles da.
- Und da sind natürlich eben, wie sagte, viele Aspekte abgehandelt, die für uns gar nicht so wichtig sind, ja, oder die wir noch gar nicht angucken wollen.
- Und wir wollen ja wirklich sehen, wie wir erstmal einfache Programme erscheinen.
- Und was machen wir jetzt da? Wir können dieses Eclipse natürlich umschreiben, aber die Zeit haben wir nicht.
- Also decken wir einfach all das ab, was uns nicht interessiert, ja.
- Ich mag e-Blau sehr, ja.
- Also haben wir eine große Menge an blauer Folie, mit der decken wir alles das, was uns nicht interessiert und was uns nicht angeht, einfach ab, ja.
- Mit unser Leben um einiges einfacher.
- Und dann sieht das nämlich dann so aus, ja.
- Alle die Sachen lassen da weg und nur dieses eine Fenster interessiert uns da weiter, ja.
- So, das ist der Weg, das ist das, was uns hier interessiert.
- Und natürlich, es gibt viele, viele andere Systeme, es gibt IntelliJ und so, auch andere gute Sachen.
- Es gibt Grund, warum wir Eclipse verwenden ist, dass, erstmal, es ist nicht ganz einfach so was aufzusetzen.
- Und zu zweit haben wir da einen Weg, wie wir auch die, wie wir ihre Lösungen einsammeln können und so weiter.
- Also, also, und das ist etwas, was sie in der Prü-, was die ETH Informatikdienste bereit sind, in einer Prüfung zu unterstützen.
- Ja, es tut Ihnen keinen großen, ich tue Ihnen keinen Gefallen, wenn ich sage, machen Sie doch die Übungsaufgaben mit IntelliJ
- und dann am Prüfungstag bekommen Sie zum ersten Mal Ihrem Leben Eclipse, ja.
- Ach, wäre das schön, ja.
- Also, das wäre nicht fair, ja. Und darum machen wir das nicht, ja.
- So, darum, ja, ist halt, nichts ist perfekt, ja.
- So, und weil wir eben, weil wir eben auch nicht ganz gut sehen können, gehe ich jetzt hin und vergrößere mal den Teil, der uns das erste interessiert.
- Aber diese Idee mit der blauen Farbe können wir ja weiter verwenden, weil auch wenn ich mir das hier ansehe, ja,
- da gibt es auch noch viele Sachen, die mich eigentlich nicht interessieren, ja.
- Und das Ziel ist ja einfach, ein einfaches Programm zu schreiben, ein einfaches Programm zu verstehen und das einfache Programm dann auszuführen, ja.
- Also, das heißt, wir wollen nicht alles behandeln, denn aber eben manche Sachen können wir auch nicht ignorieren, ja.
- Wir können also nicht einfach blaue Farbe für alles nehmen, dann bleibt das, dann funktioniert das auch nicht, ja.
- Also, habe ich dieses Programm hier, wo fahren wir jetzt an, blaue Farbe los zu werden, ja, oder einzusetzen.
- Hier fangen wir also an, Public, Class, Public, oh Gott, ja.
- Was heißt das? Ah, am besten ignorieren, ja.
- Also, da kommt jetzt hier die blaue Farbe, ist erst einmal für uns nicht so wichtig, ja.
- Aber jetzt kommt was, das Class, das können wir nicht mehr ignorieren.
- Und jetzt kommt was Weiteres, was wir auch nicht ignorieren können.
- Jetzt kommt hier hinter ein Bezeichner, ein Name, ja.
- Das ist der Name für unser Programm, können wir nicht ignorieren,
- weil nämlich dieser Name muss identisch sein mit dem Namen der Datei, in dem das abgelegt ist, ja.
- Das muss identisch sein, ja.
- Wenn Sie da einen anderen Namen wählen, sagt der Compiler, Sie haben sich etwas geirrt, ja.
- Und dann müssen Sie das eine oder andere korrigieren, ja.
- Also, das ist wirklich wichtig, dass Sie, dass Sie, dass diese beiden Namen stimmen.
- Und in unserem System muss auch noch diese Dateiname eine Extension haben, die dort Java heißt, damit das System zufrieden ist, ja.
- Also, das ist halt der, das Public können wir also wirklich nicht ignorieren, ja.
- Also, das ist wirklich wichtig, dass wir das nicht vergessen, ja.
- Also, hier eben halt das muss identisch sein, ja.
- Der Name des Programms muss für das, dem Namen der Dateien sprechen.
- Und jetzt am Anfang machen wir nur eine Klasse in eine Datei, ja.
- Es gibt auch Wege, das anders zu machen, aber wir wollen unser Leben nicht unnötig komplizieren, ja.
- Darum eben halt eine Datei, eine Klasseinfallname, der für beides ist, ja.
- Also, in unserem Java-Programm angucken, ein Java-Programm besteht eben aus diesen beiden Wörtern Public Class,
- einem Bezeichner, einen sich öffnenden Klammern, ja.
- Aber diese öffnenden Klammern muss eben im Text erscheinen, das ist keine EBNF-Regel, ja.
- Hier sehen wir die öffnenden Klammern, die sind hier und hier.
- Das sind richtige Klammern, ja, die nicht eben EBNF kontrollieren, sondern in unser Programm auftauchen.
- Und dann kommt irgendwas, was noch jetzt fehlt, ja.
- Und danach eben kommt ein, wieder eine sich schließende Klammer.
- Und die sagt mir, so ist mein Java-Programm vollständig erstellt.
- Und was fehlt hier? Hier fehlt eben die Definition einer Methode, ja.
- Jetzt gucken wir es also an, aha.
- Hier habe ich also eine Methodendefinition.
- Und zum Glück erinnere ich mich jetzt an meine blaue Farbe, ja.
- Und es sind natürlich auch wie Public or God Static, ja.
- Wir sind doch alle so dynamisch, dass wir, ah, woid, was ist das schon wieder, ah, main und so weiter.
- Also hier können wir kräftig blaue Farbe einsetzen und das alles mal abdecken, ja.
- Also was übrig bleibt hier ist main, ja.
- Main ist ein Wiederbezeichner, ja.
- Und das ist der Name der Java-Methode, mit der wir hier arbeiten, ja.
- Dieser Name ist fürs erste Mal vorgeschrieben, ja.
- Da können Sie nicht irgendeinen anderen Namen nehmen.
- Das muss main sein, ist vorgeschrieben, ja.
- Und alles andere Zeugstarr, Public Static, Woid und und und, ja.
- Genauestens bitte kopieren, ja.
- So, ja.
- Und diese Methode main, die enthält jetzt die Anweisungen, die wir ausführen wollen oder können, ja.
- Hier ist eine Folge von Anweisungen, die wir hier haben.
- Da ist eine, da ist noch eine.
- Ich zeich mal genauer an, ja.
- Das ist eine Aufreihung eines Folges von Anweisungen.
- Und statt Anweisungen sagen wir oft Statements oder wenn wir kürzer schreiben wollen, dann STMT, ja.
- Das sind also die Java Anweisungen, ja.
- So, das heißt, wenn wir unser Java-Programm angucken, ja, dann sieht es eigentlich so aus.
- Also das haben wir ja eben schon gesehen, ja.
- Public Class, Bezeichner und so weiter.
- Und haben wir hier eine Messe-Definition.
- Die Messe-Definition ist eben definiert als auch wieder diese Parki-Words, Public Static, Woid, ja.
- Dann Main, dann eine sich öffnende Klammer, ja.
- Und das ist eben eine Klammer im Text, keine EBNF-Konstruktion, keine EBNF-Hilfsanweisung, ja.
- Das Wort String, zwei eckige Klammer.
- Sie sehen, die haben alle Verwendung für all die ganzen Klammern gefunden, ja.
- Aber das muss da auch erscheinen, also nicht optional, das muss da stehen.
- Irgend ein anderer Name und dann wieder eine sich schließende Klammer.
- Und dann geht es wieder los mit einer sich öffnenden und später wieder sich schließenden geschweiften Klammer, ja.
- Also das ist unser einfachstes Programm, mit dem wir erst mal arbeiten können.
- Und natürlich die Anweisungen, da werden wir später noch mehr sehen, da gibt es viele, viele Möglichkeiten.
- Zuweisungen, Schleifen und so weiter, ja.
- Da werden wir uns mal später ein bisschen mehr herum kümmern.
- Für das erste Mal gucken wir da gar nicht so gauer an, ja.
- Also es gibt da sehr, sehr viele Anweisungen.
- Eine Art von Anweisungen werden wir aber schon raten, die früh brauchen, nämlich den Aufruf einer Methode.
- Der haben dann Methoden, um einfach die aufgerufen.
- Und zwar Aufruf von Methoden, die global bekannt sind.
- Also Aufruf von global bekannten Methoden, etwas, was wir recht früh brauchen.
- Und das ist nicht nur eine Java-Sache, das gibt es auch in vielen, vielen anderen Programmiersprachen.
- Und daher müssen wir das eben relativ früh benutzen.
- Und da gibt es zwei verschiedene Formate, wie wir eine Methode aufrufen können.
- Der erste ist, dass wir einfach den Methoden Namen nehmen, jetzt noch für das erste Mal einfach nur zwei, also eine sich öffnende und eine sich schließende Runde Klammer nehmen und dahinter ein Semikohler stecken.
- Und das ist der Aufruf einer Methode, ja.
- So, das ist ein Weg, wie wir das machen können, ja.
- Diese Methodename muss global bekannt sein, ja.
- Sonst funktioniert das nicht.
- Das System muss halt wissen, was jetzt hier, was das für eine Methode ist.
- Und wenn das global bekannt ist, dann weiß das System, wie das möglich ist, ja.
- So.
- Und die andere Weg, Methoden aufzurufen, ja, ist, wenn wir jetzt eben ein Objekt verwenden wollen, das eben so einen Aufruf da ermöglicht.
- Also da haben wir ein bestimmtes Objekt, da kommt gleich ein bisschen mehr dazu.
- Und dann machen wir das so, dass wir eben halt das Objekt nehmen, diesen Punkt nicht vergessen und dann den Methoden, den Namen der Methode, den wir haben wollen.
- Und fürs erste Mal gehen wir auch davon aus, dass da gar einfach nur die sich öffnenden und schließenden Klammern da stehen werden, ja.
- Also ein einfaches Beispiel wäre eben irgendein Objekt.
- Sie sehen, die blaue Farbe hilft uns, die Details zu verhindern, nicht zu verhindern, zu verheimlichen.
- Ein Punkt und dann der Name einer Methode, ja.
- Und das hatten wir eben schon gesehen, auch wenn sie sich vielleicht nicht bemerkt haben, ja.
- Das haben wir auch in dem einfachsten Beispiel, in dem wir das eben halt haben können, ja.
- Also wir haben hier eben, das werden wir später nochmal genauer angucken, ja.
- Da kommen eventuell Details, ja.
- Aber die, die wir heute noch nicht brauchen, ja.
- So können wir auch eine Methode aufrufen, ja.
- Und das muss jetzt eben eine Methode sein, die eben irgendwie für diesem Objekt zusammenhängt.
- Die muss vielleicht gar nicht mal global bekannt sein, ja.
- Ihr fragt natürlich, was sind denn Objekte, ja.
- Jetzt muss ich doch irgendwann das blaue wegnehmen und ihnen die, ein bisschen die Wahrheit da sagen, ja.
- Also da können wir, das Thema Objekt wird uns noch das ganze Semester beschäftigen.
- Und darum am Anfang jetzt eine Vereinfachung, ja.
- Nicht alles, wenn wir behandeln können.
- Aber ist ein sehr wichtiges Konzept, das in vielen Programmiersprachen mehr oder weniger gut durchdacht auftritt, ja.
- Also, vereinfacht.
- So ein Objekt ist ein, etwas, was von einem Programm erstellt, gelesen oder verändert werden kann.
- Also eine Einheit der Programmierung, wenn sie so wollen, ja.
- Etwas, was eben im, da sollte man jetzt nicht mehr blau nehmen, so machen wir jetzt eben Grün, ja.
- Ein Objekt, das wird vom Programm erstellt, gelesen oder verändert, ja.
- Und so ein Objekt hat eben einen Zustand.
- Und der Zustand ist ein Wert, ja.
- Ein Wert aus einer Menge möglicher Werte, ja.
- Was die möglichen Werte sind, wenn wir später sehen, wenn wir konkrete Objekte sehen, aber Objekte haben einen Zustand.
- Zum Weiteren haben Objekte einen Verhalten.
- Es gibt Operationen, die man mit diesen Objekten machen kann, ja.
- Entweder mit diesem Objekt oder für dieses Objekt oder in irgendeiner anderen Form gibt es Operationen, die mit dem Objekt zusammen definiert sind.
- Und dann der dritte Aspekt ist, jedes Objekt hat eine Identität.
- Das heißt, wenn ich zwei Objekte habe, ja, ein Objekt x und ein Objekt y, dann kann ich fragen, ob x gleich y ist, ja.
- Was gleich ist, wenn wir später nochmal sehen, wir können unterscheiden zwischen Objekten, wir können die Frage stellen, sind diese beiden Objekte gleich oder nicht gleich, ja.
- Und was Gleichheit heißt, das wird, das ist ein gutes Thema, wenn wir später sehen, ja.
- Aber wichtig ist eben, dass wir zwischen Objekten unterscheiden können, weil sie eine Identität haben, ja.
- Also Objekte können sich vorstellen, sind irgendwelche Bausteine, die unser Programm erstellen kann, die es dann inspizieren kann und dann gegebenenfalls verändern kann.
- Und mit diesen Bausteinen kann es eben Operationen ausführen, weil jedes Objekt ein Verhalten hat, ja.
- So, also eben, jetzt hatten wir vorhin gesehen, ja, eben, dass es gibt im System ein Objekt, das heißt System.out, ja.
- Das ist ein Objekt, das da existiert.
- Und dieses Objekt erlaubt es uns, bestimmte Operationen auszuführen.
- Unter anderem eine Operation, die heißt Print Line, Print drucken, ja.
- Und auch, wenn das heute nicht mehr auf Papier gedruckt wird, der Name ist irgendwie stecken geblieben, ja.
- Und jetzt sehen Sie hier, wie hatte ich gesagt, so was wird, wie wird so eine Methode aufgerufen, ja.
- Wir haben hier das Objekt, ja.
- Ja, hier ist das Objekt, hier ist der fette Punkt, ja, der Dot, ja, Punkt.
- Und dann ist hier der Name der Operation, die wir ausführen wollen, fürs erste Mal einfach nur mit sich öffnen und schließen Klammern.
- Natürlich ist das nicht interessant, wir wollen auch irgendwas drucken, da kommen wir gleich darauf zu sprechen, ja.
- Also so was, diese Methode Print Line, die gibt Text aus, ja.
- Und es gibt in Java viele Methoden, die mit Text arbeiten.
- Das ist relativ gut durchdacht, ja.
- Hier habe ich also ein anderes Objekt, ja.
- Und für dieses Objekt, ja, habe ich eben halt auch wieder den Dot.
- Und hier habe ich eine Operation und die heißt To Upper Case.
- Und dieser Name sagt schon, was die Operation macht, der setzt die kleinen Buchstaben in Großbuchstaben, ja.
- Also ein E wird zu einem E gemacht und ein L wird zu einem L gemacht und so weiter, ja.
- Das ist so ein Objekt, ja.
- Das ist halt, das ist das, was ich eben erzählte, ja.
- Gleiches System, Objekt, die Methodenname, ja.
- Das hatten wir auch in dem Programm gesehen, ja.
- In Java gibt es eine ganze Menge von Operationen, die uns eben erlauben, mit Text zu arbeiten.
- Und das Schöne ist, oder Gute ist, alle diese Methoden, die wir hier haben,
- die verändern nicht das Objekt.
- Das Objekt bleibt, wie es ist, ja.
- Hier haben wir das Objekt, ja, oder mit Kavins auf Deutsch wollen, ja.
- Hier haben wir das Objekt, ja.
- Und das wird nicht verändert, wenn ich eine Operation mit ihm ausführe, ja.
- Es ist ganz einfach, das Objekt wird genommen und verarbeitet, ja.
- Hier habe ich das Objekt, das wird in diese, die Methode können sich vorstellen,
- ist so eine Magie, die schluckt das, guckt sich es einmal an, kommt das Ergebnis raus
- und das Original ist unverändert.
- Das müssen Sie immer im Hinterkopf haben, ja.
- Diese ganzen Methoden, die arbeiten mit Objekten, aber das Objekt bleibt unverändert, ja.
- So, und dann gehen wir jetzt also hingehen auf unser, unser, das Beistellprogramm,
- das ich Ihnen zeigte, ja.
- Also, jetzt sehen Sie schon, ja.
- Hier haben wir die Objekte, die wir erst mal wieder blau abdecken,
- weil wir wollen nicht genau da reingucken, wie das geht.
- Aber hier haben wir dann die Methoden, ja, diese Java-Methode,
- die eben eine Operation macht, die etwas ausgibt, ja.
- Und jetzt sehen wir schon, die hat hier Parameter, die hat hier ein Parameter,
- also, in den Klammern, zwischen den Klammern steht etwas, was eben gedruckt werden soll, ja.
- Das ist eine Operation dieses Print-Line, das einen String nimmt und den eben druckt, ja.
- Und String, jetzt werden wir uns gleich nochmal genauer angucken, ja.
- Ein String ist, lässt sich, Text zwischen diesen Anführungszeichen, ja,
- durch einen Hoch, durch einen Apostrophe, oder hochkommen, was ich auf Deutsch sage, ja.
- In Java müssen beide oben sein.
- Also, beide oben, diese beiden Hochkommers, müssen beide oben sein, ja.
- Lassen Sie sich nicht von der, es gibt eine Anweisung des Bundesrates, ja.
- Welcher Art von Anführungszeichen wir offiziell verwenden dürfen, ja.
- Gut, ist schön, aber nicht für uns, ja.
- Also, hier, das muss es sein, das und nichts anderes, ja.
- Und wenn andere Sprachen, es gibt eigentlich die Sprachen, die fangen unten an und hören oben auf,
- auch nicht bei uns, ja. Also, alles muss am Anfang und am Ende, muss das immer oben sein, ja.
- Aber wenn ich sonst String habe, dann kann meine Print-Line-Methode mir diesen Text drucken,
- in irgendeinem Fenster oder irgendeiner Datei, das können wir bei Gelegenheit dann nochmal sehen, ja.
- Also, jetzt haben wir also das hier abgedeckt, ja.
- Und jetzt können wir ein bisschen weiter gucken, um zu sehen, was, also,
- was wir jetzt dem Programm machen können, weil jetzt haben wir das Programm geschrieben
- und dann wollen wir es ausführen.
- Und natürlich, da kann ich nicht nur das Programm gucken, da muss ich mir ein bisschen mehr von dieser Eclipse-Umgebung
- ansehen und ein bisschen mehr blaue Farbe wegnehmen.
- Und wenn ich das mache, dann sehe ich hier oben einen grünen Pfeil.
- Ja, grün ist gut, ja. So, hier sehe ich einen grünen Pfeil.
- Und wenn ich jetzt auf diesen grünen Pfeil klicke, ja, dann wird mein Programm ausgeführt.
- Und je nachdem, was für ein System Sie haben, sieht das dann vorher so aus oder ein bisschen anders, ja.
- Hier haben Sie auch einen Fenster, das es Ihnen erlaubt, die Dateien zu finden und so weiter, ja.
- Aber auf jeden Fall, wenn Sie hier oben drauf klicken, dann wird das Programm automatisch übersetzt und ausgeführt.
- Weil ausführen können Sie ja nur übersetzte Programme.
- Wenn Sie es nicht übersetzen, dann kann es nicht ausgeführt werden.
- Aber in der Java-IDI, das wir haben, wird das eben automatisch gemacht.
- Und wenn das Programm ohne Fehler ist, wird es entsprechend ausgeführt.
- Und dann, was passiert, dann sehen wir hier in einem anderen Fenster, habe ich jetzt ein bisschen vergrößert.
- Dann sehen wir hier das Ergebnis. Hier sehen wir das Programm, wird ausgeführt.
- Es drückt einmal "Hello World", da sehen wir es, ja.
- Und dann drückt es das nochmal "Hello World Again", ja.
- Hier haben wir dann die nächste Zeile gedruckt, ja.
- Also, nach dem Klicken hier oben, Programm wurde übersetzt, ausgeführt.
- Die Ausführung wurde dieses Print-Line ausgeführt.
- Hier sehen wir die erste Zeile, hier sehen wir die nächste Zeile.
- Und das war die Ausführung des Programms, ja.
- Wirklich nicht sehr schwierig.
- So, jetzt, wie gesagt, ich habe hier kräftig helllaue Farbe verwendet,
- um die Sachen abzudecken, die Sie jetzt am Anfang mal nicht berücksichtigen müssen.
- Aber wir können natürlich nicht alles weglassen und ignorieren.
- Sonst kann das Programm entweder nicht übersetzt werden oder nicht ausgeführt werden
- oder es gibt andere Probleme, ja.
- Wenn Sie irgendwie Teile weglassen oder Teile vertippen,
- dann gibt es eben Probleme entweder mit dem Compiler oder mit der Ausführungsumgebung.
- Jetzt nehmen wir mal an, das Public hätten wir nicht gemocht
- und wir hätten das Public weglassen, ja.
- Ja, was passiert dann?
- Wenn wir jetzt auf den grünen Pfeil klicken, ja, dann sagt das System
- Main method not found in class hello world.
- Please, please, ja, please define the main method S, ja.
- Public static void main.
- So hat das auszusehen, ja.
- So und nicht anders, ja.
- Oder Sie können auch irgendwas anderes machen, genau.
- Wenn Sie wissen, wie das geht, ist gut.
- Dann brauchen Sie es hier heute nicht zuhören.
- Also, dass wenn das Main nicht da ist, ja, dann beschwert sich das System
- und Sie müssen so eine Main-Methode definieren, ja.
- Das ist einfach der Fall, weil wenn wir dem System sagen,
- dass es dieses Programm ausführen soll, dann geht es hin und sucht eine Methode Main,
- die so aussieht, Public static void und so weiter und führt die dann aus, ja.
- Und wenn es die nicht findet, beschwert es sich, so wie hier, ja.
- Also, machen Sie das nicht, ja.
- Genauso, wenn Sie hier das in der Mitte weglassen zwischen den runden Klammern,
- brauchen wir zwar zur Zeit noch nicht, aber das heißt noch lange nicht,
- dass Sie es weglassen können, ja.
- Das System beschwert sich.
- Dann sagt er Main method not found, please define a Main method S,
- Public static void Main, Klammer auf, string,
- komische Ecke geklammern, args, klammer zu, ja.
- So, das ist verlangt, ja.
- Und machen Sie nichts anderes.
- Und wenn Sie da etwas anderes machen wollen,
- müssen Sie sich irgendwie sehr gut auskennen oder Sie kriegen Ärger.
- Nun ist es leider so, dass das System nicht immer Antworten gibt,
- die so schön sind wie die, ja.
- Bitte, ja, please, machen Sie doch das, ja.
- Please, ja, ist es schön, ja.
- Manchmal haben wir aber auch Pech, und es gibt ganz komische Meldungen,
- und da muss man aufpassen, was man falsch gemacht hat, ja.
- Das könnte ja jemand dummerweise hier oben das U weglassen haben, ja.
- Jetzt, je nachdem, wenn Sie Eclipse verwenden und die Einstellungen richtig sind,
- dann sehen Sie hier so ein rotes Zeichenbereich.
- Das heißt, Eclipse ist nicht sehr zufrieden,
- und hätte gerne, dass Sie noch irgendwas machen, ja.
- Aber wenn Sie jetzt das gar nicht beachtet haben
- und trotzdem ausführen wollen,
- dann gibt es eben halt eine andere Fehlerfällung.
- Und die sagt eben, Errors existen, es existieren Fehler.
- Das ist eine sehr allgemeine Aussage, ja.
- Und jetzt müssen Sie wissen, wo kommt der Fehler denn her, ja.
- Machen Sie weiter, ja.
- Je nachdem können wir ja weiter machen, was passiert dann,
- dann gibt es auf einmal eine Exception, ja.
- Wenn Sie Exception sehen, das ist schon mal wie so Hochspannung.
- Vorsicht, da ist irgendwas schief gelaufen, ja.
- Da ist irgendwas nicht in Ordnung, ja.
- Also bitte beheben, ja.
- Ärgerlicher ist es, wenn Sie mal wegen die letzte Klammer vergessen, ja.
- Das kann man leicht übersehen.
- Aber auch hier Sie sehen, hier in dieser Spalte ist so ein rotes X,
- das heißt, da ist da irgendwann nicht in Ordnung, ja.
- Wenn Sie das aber nicht beachtet haben,
- bekommen Sie wieder diese schöne Fehlermeldung, es existieren Fehler, ja.
- Und da müssen Sie damit zurechtkommen.
- Also, Zusammenfassung, ja.
- Unser Programm besteht aus eben einer,
- etwas mit dem, dass die Keywords Public Class hat,
- dann kommt ein Bezeichner, dann kommen diese geschweiften Klammern,
- dann kommt eine Methode mit Namen Main, die hat diese, die sieht so aus.
- Und in dieser Methode sind dann eben verschiedene Anweisungen,
- und die sind es dann eben halt, die für uns wichtig sind, ja.
- Also hier dieses Name, hier ist eine Klasse mit Namen Main,
- und das muss in einer Datei mit genau diesem Namen abgelegt werden,
- sonst funktioniert das System nicht, ja.
- Also jedes ausführbare Programm besteht aus dieser Klasse,
- oder aus einer Klasse, die enthält diese Methode Main.
- Diese Methode Main wird automatisch ausgeführt,
- wenn wir auf den grünen Falt klicken,
- und dann geht alles in Ordnung und am besten, ja.
- Und während später mit mehreren Klassen arbeiten
- und mehreren Methoden und so weiter,
- das ist aber nicht das, was wir heute machen wollen.
- Jetzt hatte ich gesagt,
- es gibt auch noch einen anderen Weg, klar, war, Programme auszuführen,
- und die will ich kurz zeigen.
- Das ist der Weg, den ich auch in dem Vorkurs verwendet habe,
- dass wir einzelne Anweisungen ausführen können, ja.
- Können also eine Anweisung eingeben,
- und das System geht dann hin und führt diese Anweisung auf.
- Und wenn Sie das machen, dann brauchen Sie kein Eclipse,
- das ist so der Grund, warum wir es im Vorkurs gemacht haben,
- wir brauchen ein Programm, das diese Java Anweisungen liest,
- und das ist die JShell, die Java Shell, ja.
- Und das würde dann so aussehen auf Ihrem System,
- dass Sie halt die JShell auf Ihrem System aufrufen, ja.
- Und dann können Sie hier zu diesem eben Anweisungen eingeben.
- So können Sie eingeben die Anweisung,
- wir nehmen das Objekt System dort out,
- und wir haben dann den Punkt und dann den Name einer Java Methode,
- und wir drucken dann, was ist hier, Hello World, ja.
- Und wenn wir das machen, wird das Programm, liest das JShell,
- diese Anweisung sieht, ah, ich soll was drucken,
- und druckt dann hier die Ausgabe hin, ja, das kann man da sehr gut machen.
- Das ist gut und praktisch, wenn Sie eben irgendetwas mal kurz ausprobieren wollen,
- oder Ihnen nicht klar ist, wie so was genau funktioniert,
- aber eben der Nachteil ist, können auch mehrere machen,
- können die Methode definieren, können die Methode Main definieren.
- Auf der Stufe JShell, da brauche ich mir diese komischen Keywords,
- Public und Static und so weiter, die brauche ich da gar nicht erst benutzen,
- da genügt es, wenn ich das hier sage, ich habe eine Methode Main,
- das Keyword "Woid", da komme ich, da muss ich wieder Blau anwenden,
- brauche ich, aber kann ich nicht ignorieren,
- aber so könnte ich das auch machen, ja.
- Das ist eben halt der andere Weg, wie ich das mache,
- entweder tippe ich das ein oder ich lese das aus irgendeiner Datei,
- kann ich auch machen.
- Das ist gut für kleinere Programme, für einzelne Sachen,
- eben der Aufruf muss jetzt explizit sein,
- das wird nicht automatisch ausgeführt,
- ich muss hier die Methode selber aufrufen, ja.
- Also ja, das ist gut, wenn Sie keine Programme haben,
- die Sie ausprobieren wollen, aber für die Art von Programmen,
- die wir hier in dieser Vorlesung und vor allen Dingen auch in der anderen
- Vorlesung machen wollen, ist das nicht so praktisch.
- Aber was Sie da gelernt haben über das Programmieren mit Java,
- das geht natürlich in beiden Systemen, ja.
- Die Regeln für Programme, die Regeln für Anweisungen
- und so weiter sind identisch, ja.
- Der Weg über, dass wir mit Dateien arbeiten, der ist kalierbar, ja.
- Viele Dateien haben, der Weg über einzelne Anweisungen,
- der ist sehr flexibel, ich kann eine Anweisung modifizieren,
- ich kann gucken, was passiert denn, wenn ich das ändere und so weiter.
- Also beide von diesen Wegen haben ihre Bedeutung
- und je nachdem, was für ein Problem sie haben,
- ist mal der eine oder mal der andere besser.
- Aber wenn Sie eben insgesamt hier weitermachen,
- dann werden Sie sehen, dass dieser Weg in vielen Situationen
- noch eingesetzt werden muss oder begangen werden muss.
- Und darum nehmen wir diesen Weg hier in dieser Vorlesung.
- Also, hat gesagt, jedes Programm braucht einen Namen
- und die Konvention ist, dass die mit einem Großbuchstaben anfängt.
- Konvention heißt, alle Leute auf diesem Planeten,
- die Java programmieren, haben sich entschieden, das so zu machen.
- Sie können die Ausnahme sein, ja,
- und können auf Ihrem System das anders machen.
- Aber wenn Sie mit anderen Leuten zusammenarbeiten wollen,
- erleichtern Sie allen das Leben, wenn Sie sich auch in die Konvention halten.
- Und dann eben die Konvention ist,
- dass man gelegentlich weitere Großbuchstaben verwendet,
- um die Lesbarkeit zu erhöhen.
- Weil wenn dann der Name sehr lang wird,
- dann ist das hilfreich, dass man so gewisse Landmarken hat.
- Und die Regel ist, und die Regel heißt, wir können das nicht ignorieren,
- dass der Dateiname genauso ist wie der Programmname.
- Also, die Datei muss den Namen des Programms haben.
- Sonst funktioniert das nicht.
- Und nochmal, wenn ich schon sage, die Konvention des Großbuchstaben,
- dann in Java sind Klein- und Großbuchstaben unterschiedlich.
- Sie beiden sind nicht identisch, können sie nicht einfach den einen oder anderen ersetzen.
- Also, ja.
- Und dann eben halt, nachdem Sie mit einem Buchstaben angefangen haben,
- können Sie natürlich den mit anderen Buchstaben oder Ziffern weiter machen.
- Sie können auch diesen Anderschor verwenden.
- Das ist so ein Unterstrich.
- Es gibt noch mehr Konventionen und so weiter.
- Aber das sind die praktisch vor allem vereinfachen Programme reichen.
- Die alle mal.
- Ich meine, es gibt halt noch diverse andere.
- So, jetzt sage ich Bezeichner, könnten eben sein,
- den Namen für die Methode, den Namen für das Programm.
- Aber es gibt ein paar und auch später Bezeichner für Variable, die wir einführen werden.
- Es gibt paar Wörter, die können Sie nicht als Bezeichner verwenden.
- Insofern reservierte Wörter, die das Java-System für sich reserviert hat.
- Und ein paar von denen können Sie in manchen Situationen einsetzen.
- Wenn Sie es doch mal nach falschen machen, beschwert sich der Kompiler.
- Es gibt so ein teilweise reservierte Symbole.
- Dann gibt es reservierte Symbole für besondere Werte.
- Truf, Fort und Null, werden wir später kennenlernen.
- Und dann gibt es Worte, die sind reserviert, aber nicht benutzt, zum Beispiel Goto.
- Einfach, weil es andere Programmiersprachen gab,
- in denen so etwas mal später früher verwendet wurde,
- will man verhindern, dass hier einer Unsinn macht.
- Und natürlich, wenn Sie so ein Programm haben,
- dann kann man sagen, hier der Nächste, der das Programm bearbeiten muss,
- möge doch bitte das Programm lesen und verstehen, um was es geht.
- Und das ist im Prinzip möglich, wenn Sie sich die Java-Anweisungen angucken.
- Aber manchmal hilft es, wenn man im Programm sich selber noch ein Hinweis einfügt
- und sagt, hier, das meine ich damit oder das soll gemacht werden.
- Solche Hinweise nennt man Kommentare.
- Und die werden eben halt ins System in das Programm eingefügt, um einem Leser zu helfen.
- Und der Leser, denken Sie, das können auch Sie sein,
- die nach dem Ende des Semesters nochmal die Programme angucken will.
- Und da hilft es Ihnen vielleicht, dass Sie sich daran erinnern,
- erinnert werden, was Sie damals meinten.
- Diese Kommentare haben im Allgemeinen keine Auswirkungen auf die Ausführung.
- Aber sie sind sehr hilfreich.
- Und in Java gibt es zwei Varianten, die eine ist, so zwei Slashes.
- Dann ist alles von hier bis zum Ende der Zeile ein Kommentar
- oder eben Slash-Stern bis zum nächsten Stern-Sflash.
- Alles das ist auch Kommentar.
- Gute Kommentare machen das Leben der Leser einfacher.
- Hier hätten wir einfaches Beispiel.
- Hier würden wir sagen, hier oben ist ein Kommentarblock.
- Was das für ein Programm ist.
- Warum haben wir das so gemacht, aus den und den Gründen.
- Und das ist alles.
- Und jetzt noch kurz zum Schluss für heute.
- Ich sage diese Methode Printline, drückt irgendwelche Strings aus.
- Und ein String ist eben eine Folge, die zwischen diesen Zeichen steht.
- Das ist sehr zweckmäßig, aber es gibt auch ein paar Einschränkungen oder Regeln.
- So ein String darf nur eine Zeile lang sein.
- Also so was hier, wo wir versuchen von einer Zeile auf die nächste zu gehen,
- das ist kein Jar-Was-String.
- Und so ein String darf nicht so ein, solche Anführungszeichen enthalten.
- Also hier so was geht nicht, ist nicht erlaubt.
- Gibt Wege, wie wir das machen können, aber ist eben halt nicht erlaubt,
- nicht einfach erlaubt.
- Also wenn ich das Programm habe, ich kann, dass ich Ihnen eben zeigte,
- das Printline drückt eine Zeile und drückt dann die nächste.
- Und wenn ich keine Argument angebe, also keine String da angebe,
- dann sagt er sich, ach, da war ein Epsilon, das wollte der Benutzer doch nur
- eine neue Zeile gedruckt bekommen.
- Und hier habe ich Ihnen den Gefallen getan und habe hier eine neue Zeile gedruckt.
- So können Sie sich Informationen über das Programm verschaffen,
- die da eben wichtig sind.
- Und jetzt kommt natürlich, heute noch nicht, kommt die vor, was mache ich denn,
- wenn ich so ein Anführungszeichen ausgeben will?
- Oder was mache ich, wenn ich eine Ende einer Zeile ausgeben will?
- Ich kann ja im String selber kein Zeilenende angeben.
- Dafür gibt es sogenannte Ersatzdarstellungen.
- Die erlauben es mir trotzdem so was auszudrücken.
- Und die fangen alle mit so einem Backslash, einem Rückwärtsstrich an.
- Also Backslash T ist der Tab-Charakter, Backslash N heißt hier eine neue Zeile beginnen.
- Und hier Backslash Anführungszeichen heißt bitte ein Anführungszeichen ausgeben.
- Das ist nicht Teil meiner Definition des Trings, sondern das ist einfach nur ein Anführungszeichen.
- Wenn ich jetzt den Backslash selber ausgeben will, dann kann ich hier zwei Backslashes machen.
- Ich habe ein paar Beispiele davon, die können Sie ausprobieren.
- Ist wirklich nicht sehr, sehr schwierig, können Sie da in Ruhe machen.
- Also, was wir jetzt eben gesehen haben, wir haben gesehen, wie wir ein einfaches Programm schreiben.
- Ein Programm mit dem Namen Hello World.
- Und das machen wir, indem wir diese Methode Main dahin gehen.
- Und ich verrate Ihnen kein Geheimnis, wenn ich sage, dass eine Klasse natürlich mehrere Methoden enthalten kann.
- Also, was wir hier hatten, ich hatte Ihnen erst gesagt und ich will ja nichts zu viel Falsches sagen.
- Unser Programm hier besteht aus dieser Methode Main.
- Und hier ist dann eine andere Methode, die ich auch einbringen könnte.
- Also, ich habe hier die Möglichkeit, nicht nur die eine Methode Main anzugeben,
- sondern ich habe hier die Möglichkeit auch weitere Methoden anzugeben.
- Das ist eine andere Methode, die ich hier definiert habe.
- Die kann auch in diesem Programm mit diesem Namen drin sein.
- Und da kann ich mir irgendeinen Namen ausdenken.
- Da kann ich mir den Namen ausdenken, den ich selbst für am besten halte.
- Und das Gute ist, auf diese Weise kann ich meine Programme etwas besser strukturieren.
- Sonst hätte ich ja nur die Möglichkeit, in meinem Programm Main Anweisungen unterzubringen.
- Eine Anweisung nach der anderen.
- Wenn ich jetzt Methoden habe, dann kann ich diese Folge von Anweisungen strukturieren.
- Ich kann also hingehen, um diese Methoden, die fassen dann die Anweisungen zusammen.
- Und der große Vorteil ist, auf diese Weise kann ich Wiederholungen vermeiden.
- Wenn ich etwas wiederholt mache, dann kann ich halt dieselbe Methode wiederholt aufrufen
- und muss nicht nochmal dieselben Anweisungen dafür hinstellen.
- Also, Sie können so sehen, eine neue Methode stellt neue Anweisungen zur Verfügung.
- Weil ich kann diese Methode aufrufen, um das ebenso zu machen.
- So, und jetzt gleich ein Wort zum Abschuss heute.
- Ich hatte gesagt, da kommt dieses Keyword Static.
- Und das ist ein Keyword, das wir jetzt noch immer benutzen müssen.
- Das ist zur Zeit vorgeschrieben.
- Das ist hier bei uns vorgeschrieben.
- Und das sind Methoden, die haben weitere Eigenschaften.
- Und Main ist so eine Static Messer.
- Weil die das eben das Keyword Static vor dem Namen hat.
- Und Main wird automatisch aufgerufen.
- Und dass dieses Keyword Static sagt, das ist eine besondere Methode.
- Wir arbeiten zur Zeit nur mit denen.
- Versuchen Sie das nicht, das Keyword woanders einzusetzen.
- Dann hat es ganz andere Bedeutungen.
- Das war leider eine unglückliche Entscheidung der Java Entwickler,
- dass sie dieses Keyword für verschiedenste Sachen verwenden.
- Zur Zeit ist das Keyword Static nur erlaubt vor dem Namen einer Methode.
- Und das ist vor dem Namen aller Methoden, die wir hier in diesem
- einfachen Teil der Welt schreiben werden.
- Hier sehen wir das Static.
- Und da sehen wir das Static.
- Alle Methoden, die wir zur Zeit haben, haben dieses Keyword Static.
- Und auch Blau das Keyword Public davor.
- Und das Keyword Void, um unser Leben einfach zu gestalten.
- Das ist alles, was ich für heute habe.
- Am Donnerstag machen wir dann weiter.
- Wir gucken uns das ein bisschen genauer an.
- Wünsche Ihnen bis dahin eine schöne Woche.
- (Beifall)
+
+[00:00:00.000 --> 00:00:04.960]   Ich hoffe, der Overflow-Raum kann mich hören und ich hoffe auch, dass es für
+[00:00:04.960 --> 00:00:09.760]   Sie hier im Raum nicht so laut und nicht so leise ist. Wenn ich dann benutzen
+[00:00:09.760 --> 00:00:19.280]   Sie den Coast Channel. Morgen ist das erste Treffen der Übungsgruppen und
+[00:00:19.280 --> 00:00:24.360]   wirklich der Hauptsinn der Sache ist, dass Sie halt soweit kommen, dass Sie
+[00:00:24.360 --> 00:00:29.440]   selber Java-Programme schreiben können. Also das erste Assignment ist wirklich
+[00:00:29.440 --> 00:00:34.480]   nicht schwierig und Sie haben nicht mehr zu tun als eben Java auf einem System zu
+[00:00:34.480 --> 00:00:40.280]   installieren und so weiter. Von daher und dann können wir auch schon, wenn Sie
+[00:00:40.280 --> 00:00:44.920]   wollen, morgen versuchen mittels JIT, wie wir die Aufgaben später einsammeln,
+[00:00:44.920 --> 00:00:49.040]   das auszuprobieren. Wenn Sie das morgen noch nicht hinbekommen, ist auch kein
+[00:00:49.040 --> 00:00:52.720]   Problem. Können wir noch auf der Woche noch probieren, sollte halt in einer Woche
+[00:00:52.720 --> 00:00:59.000]   funktionieren. Und zweitens die nächste Vorlesung ist natürlich, wenn nichts
+[00:00:59.000 --> 00:01:05.440]   Stimmes dazwischenkommt, die nächste Vorlesung ist am Donnerstag um 14 Uhr
+[00:01:05.440 --> 00:01:11.560]   15 anstelle einer Vorlesung Algorithmen und Datenstrukturen und zwar nicht hier
+[00:01:11.560 --> 00:01:16.640]   sondern drüben in dem großen Hörsaal, indem Sie Algorithmen und Datenstrukturen
+[00:01:16.640 --> 00:01:22.240]   haben. Das nur so kurz zur Erinnerung. Okay, warum machen wir jetzt, ich möchte
+[00:01:22.240 --> 00:01:26.760]   noch mit ebnr weiter machen, warum machen wir das? Sehen Sie, das ist auch eine Form
+[00:01:26.760 --> 00:01:32.200]   des Programmierens. Stellen Sie sich vor, Sie müssen eine Menge von Symbolen
+[00:01:32.200 --> 00:01:38.000]   erzeugen, z.B. alle, die ein A, ein B und dann wieder ein A oder auch zwei Bs haben,
+[00:01:38.000 --> 00:01:42.160]   also die A und B untereinander gemischt haben. Wie würden Sie das machen? Da
+[00:01:42.160 --> 00:01:50.040]   würden Sie eine ebnf-Regel aufstellen, die eben diese, beschreibt, wie man diese
+[00:01:50.040 --> 00:01:53.960]   Symbole erzeugt. Natürlich im Allgemeinen haben Sie nicht so ein
+[00:01:53.960 --> 00:01:56.880]   einfaches Muster, das Sie beschreiben müssen, aber stellen Sie sich vor, Sie
+[00:01:56.880 --> 00:02:01.040]   müssen wieder Kollegen einigen, wie die Zahlen aussehen sollen, die von einem
+[00:02:01.040 --> 00:02:05.120]   System ans andere übergeben werden. Da können Sie versuchen, das umgangssprachlich
+[00:02:05.120 --> 00:02:11.680]   zu machen, aber besser ist es, wenn wir dafür eine formale Beschreibungsmethode
+[00:02:11.680 --> 00:02:17.400]   nehmen. Oder Sie wollen beschreiben, wie sehen legales Statements aus, wann, was
+[00:02:17.400 --> 00:02:22.240]   besteht, also was besteht ein Statement in einer Programmiersprache? Umgangssprachlich
+[00:02:22.240 --> 00:02:26.560]   ist so was schlecht zu beschreiben und da ist dann so ein System wie ebnf von
+[00:02:26.560 --> 00:02:33.040]   Vorteil. Wir hatten gesagt, dass diese ebnf-Regeln haben die rechte Seite und
+[00:02:33.040 --> 00:02:37.160]   auf der rechten Seite gibt es eben diese vier Kontrollforms, mit denen wir eben
+[00:02:37.160 --> 00:02:41.120]   die kombinieren können. Und da hatte ich Ihnen in der letzten Woche bereits drei
+[00:02:41.120 --> 00:02:46.040]   von denen gezeigt, die Aufreihung, Auswahl, wo Sie eine Entscheidung machen
+[00:02:46.040 --> 00:02:50.560]   können und dann Optionen Wiederholung. Sie werden sehen, die beiden gehören jetzt
+[00:02:50.560 --> 00:02:54.000]   zusammen, wenn Sie eine Wiederholung haben, müssen Sie eben entscheiden, ob Sie
+[00:02:54.000 --> 00:02:59.880]   null oder eins oder wie oft Sie das wiederholen wollen. Und uns
+[00:02:59.880 --> 00:03:03.480]   interessiert eigentlich jetzt nur der Weg der Beschreibung und das zu checken, dass
+[00:03:03.480 --> 00:03:10.480]   ein Symbol korrekt ist. Ein Compiler wird etwas Ähnliches verwenden. Wir wissen
+[00:03:10.480 --> 00:03:14.840]   halt immer, wie viele Wiederholungen stattfinden. Das wissen wir halt,
+[00:03:14.840 --> 00:03:22.440]   dass es in der für ein Computer nicht ganz so einfach ist. Und das ist
+[00:03:22.440 --> 00:03:26.120]   später etwas, was Sie mehr untersuchen werden. Aber wir gehen jetzt mal davon
+[00:03:26.120 --> 00:03:31.520]   aus, dass wir wissen, wie das geht. Und dann bleibt da eine weitere Möglichkeit der
+[00:03:31.520 --> 00:03:35.960]   Kombination übrig. Das war die Rekursion. Das hatte ich schon erwähnt und
+[00:03:35.960 --> 00:03:39.120]   jetzt wollen wir uns ein bisschen mit der beschäftigen. Also erinnern Sie sich, die
+[00:03:39.120 --> 00:03:44.000]   ebnf-Regeln bestehen aus der linken Seite und der rechten Seite und auf der
+[00:03:44.000 --> 00:03:50.360]   rechten Seite können eben auftreten die Namen von ebnf-Regeln und Kombinationen
+[00:03:50.360 --> 00:03:54.760]   dieser vier Kontrollelemente. Und darunter natürlich auch Zeichen. Das ist der
+[00:03:54.760 --> 00:04:02.920]   einfache Geteil. Und da eben heute jetzt das letzte Kontrollform, das eben
+[00:04:02.920 --> 00:04:07.320]   halt vernünftig geht. So, wollen wir mal gucken.
+[00:04:07.320 --> 00:04:12.880]   So, es wurde gewünscht, dass es lauter ist. Ist es jetzt lauter? Und wenn ja, also
+[00:04:12.880 --> 00:04:16.280]   wenn es zu laut ist, müssen Sie auch sagen. Also wir haben es noch versucht, ja.
+[00:04:16.280 --> 00:04:21.000]   Wir haben jetzt versucht, etwas lauter zu machen und gucken, ob das geht und wenn
+[00:04:21.000 --> 00:04:26.160]   nicht, dann müssen wir wieder anpassen. Also, wir hatten da die Regel für
+[00:04:26.160 --> 00:04:30.280]   positive Zahlen und jetzt wollen wir die Zahlen so machen, dass die gar keine
+[00:04:30.280 --> 00:04:34.040]   Vorzeichen haben. Und wir hatten da schon die Regel für Digit und ich hätte
+[00:04:34.040 --> 00:04:39.280]   gesagt, Digit ist eben entweder 0 oder 1 oder 2 oder 9.
+[00:04:39.280 --> 00:04:43.680]   Und jetzt können wir anfangen, da eben ebnf-Regeln zu erstellen. Dann
+[00:04:43.680 --> 00:04:47.840]   würden wir sagen, also wir wollen diese Regel, die nennt man positive integer und
+[00:04:47.840 --> 00:04:52.800]   eine Zahl muss, soll mit einem Ziffer mindestens anfangen. Wir wollen ja das
+[00:04:52.800 --> 00:04:58.160]   ganze ohne Vorzeichen haben. So, und natürlich kann da, wenn ich jetzt so
+[00:04:58.160 --> 00:05:01.920]   rede, mache ich hier paar Punkte und dann wissen sie, ja, da kommt noch was.
+[00:05:01.920 --> 00:05:07.200]   Und natürlich, was da noch kommen soll, sind weitere Ziffern, weitere Ziffern, die
+[00:05:07.200 --> 00:05:11.680]   dahin kommen könnten. Ja, jetzt würden wir sagen, okay gut. Also,
+[00:05:11.680 --> 00:05:15.440]   könnten wir ja hingehen, das war auch eine Möglichkeit, die einer von ihnen
+[00:05:15.440 --> 00:05:19.360]   oder einer von ihnen in den Chat geschrieben hat, ja. Wir könnten das
+[00:05:19.360 --> 00:05:23.920]   ja eben versuchen, so zu machen. Eine positive integer ist definiert als eine
+[00:05:23.920 --> 00:05:29.320]   Folge von Digits in einer Wiederholung. Dann aber haben wir natürlich das
+[00:05:29.320 --> 00:05:34.080]   Problem, wenn wir das so machen, dass epsilon auch eine legale positive Zahl
+[00:05:34.080 --> 00:05:37.520]   ist und das wollen wir natürlich nicht. Das ist nicht gewünscht, daher machen
+[00:05:37.520 --> 00:05:41.360]   wir das nicht. So, also so eine ganz einfache Wiederholung, so was hier, so
+[00:05:41.360 --> 00:05:47.680]   was einfaches, das erledigt nicht das, was wir haben wollen. Wir müssen
+[00:05:47.680 --> 00:05:53.800]   ein bisschen cleverer rangehen. Und zwar, die Wiederholung hat, die hilft uns
+[00:05:53.800 --> 00:05:56.960]   auch, können wir auch, haben wir ja gesehen, machen können, aber das ist noch nicht
+[00:05:56.960 --> 00:06:00.520]   alles. Und daher ist diese so eine Wiederholung vielleicht ein Anfang. Wir
+[00:06:00.520 --> 00:06:04.920]   wissen, okay, wir brauchen Digits, wir brauchen Wiederholung, also wir können den
+[00:06:04.920 --> 00:06:10.040]   Weg einschlagen, aber nur Wiederholung geht auch nichts. Jetzt, wir müssen das
+[00:06:10.040 --> 00:06:17.080]   angucken, dann könnten wir sagen, wir haben hier eine Digit und vielleicht
+[00:06:17.080 --> 00:06:24.120]   danach noch mal mehr, was so aussieht, wie eine Zahl. Wir können ja auf der rechten
+[00:06:24.120 --> 00:06:28.760]   Seite beliebige Namen verwenden, auch den Namen der Regel, die wir jetzt gerade
+[00:06:28.760 --> 00:06:32.920]   definieren. Diesen Namen können wir auch verwenden und wir werden sehen, was dann
+[00:06:32.920 --> 00:06:38.920]   passiert. Also können wir sagen, wir verwenden den Namen dieser Regel auf der
+[00:06:38.920 --> 00:06:45.320]   selben rechten Seite und machen das optional. Das ist hier, das ist eben nicht
+[00:06:45.320 --> 00:06:51.560]   erzwungen, sondern eben halt optional. Das heißt also, nach dieser Regel könnte
+[00:06:51.560 --> 00:06:59.080]   eben eine positive integer, das könnte eben irgendeine Digit sein, oder es könnte,
+[00:06:59.080 --> 00:07:03.160]   das wäre eben, wenn die Option nicht genommen wird, oder es könnte sein, eine
+[00:07:03.160 --> 00:07:08.960]   Digit mit eben dem, was wir positive integer nennen. Das heißt, wir müssen
+[00:07:08.960 --> 00:07:13.240]   überlegen, wie wir eventuell, das allein ist ja noch kein legales Symbol, weil wir
+[00:07:13.240 --> 00:07:18.040]   wollen ja oft gar keinen Fall auf der rechten Seite den Namen einer Regel
+[00:07:18.040 --> 00:07:20.880]   stehen sehen, wenn wir einen Symbol angucken. Da sollen ja nur diese
+[00:07:20.880 --> 00:07:26.600]   Entzeichen auftreten. Aber das wäre doch ein Weg für uns, das Problem anzugehen.
+[00:07:26.600 --> 00:07:32.360]   Und wenn wir das so machten, was wären denn dann legale Symbole? Also ein
+[00:07:32.360 --> 00:07:35.800]   legales Symbol wäre, wie ich Ihnen zeigte eben schon, wir haben die
+[00:07:35.800 --> 00:07:40.720]   positive integer, das nehmen wir, machen wir so Tabellenartig, machen was
+[00:07:40.720 --> 00:07:46.360]   Tabelle, wir wählen die rechte Seite aus und dann gehen wir hin und nehmen keine
+[00:07:46.360 --> 00:07:50.480]   Option. Wir nehmen die Option nicht und dann haben wir also als Ergebnis auf
+[00:07:50.480 --> 00:07:56.000]   diese Weise genau eine Digit, wie ich es eben zeigte. Oder aber wir gehen hin,
+[00:07:56.000 --> 00:08:00.800]   das ist wieder unsere Tabelle der Anfang, wir nehmen die positive integer, wir
+[00:08:00.800 --> 00:08:07.360]   wählen in der ersten Schritt die rechte Seite, inklusive der Option, da haben
+[00:08:07.360 --> 00:08:11.880]   wir so digit, positive integer und dann im nächsten Schritt wählen wir hier wieder
+[00:08:11.880 --> 00:08:16.680]   für diese positive integer, die zweite die digit und nehmen die Option nicht.
+[00:08:16.680 --> 00:08:21.240]   Da hätten wir jetzt auf diese Weise eine Zahl erstellt, die aus zwei Ziffern
+[00:08:21.240 --> 00:08:24.440]   besteht. Sie können sich denken, wie das weitergeht. Also wenn Sie das so
+[00:08:24.440 --> 00:08:30.360]   machen, könnten Sie im Prinzip beliebig lange ganze Zahlen immer ohne
+[00:08:30.360 --> 00:08:37.880]   Vorzeichen das eben entsprechend machen. So, also so kann ich das jetzt also machen.
+[00:08:37.880 --> 00:08:43.200]   Also wenn wir die linke Seite auf der rechten Seite haben, dann muss es
+[00:08:43.200 --> 00:08:50.960]   mindestens einen Weg geben, wie wir die linke Seite durch eine rechte Seite
+[00:08:50.960 --> 00:09:01.200]   ohne diesen Namen ersetzen. Wenn ich eben halt hingehe und nur eben da etwas
+[00:09:01.200 --> 00:09:05.840]   habe, was immer wieder durch die rechte Seite ersetzt werden muss, also wenn
+[00:09:05.840 --> 00:09:10.760]   ich keine Option hätte, dann würde das Ganze mir nie erlauben zu dem Punkt
+[00:09:10.760 --> 00:09:15.640]   zu kommen, dass ich eben halt hier drei digits oder zwei digits oder eine
+[00:09:15.640 --> 00:09:21.200]   digit habe. Ich muss also immer einen Weg haben, wie ich eine rechte Seite finden
+[00:09:21.200 --> 00:09:26.320]   kann, in der der Name, der auf der linken Seite auftritt, nicht auftritt. Und das
+[00:09:26.320 --> 00:09:30.440]   kann eben dadurch geschehen, dass ich hier so eine Option habe, weil wenn ich
+[00:09:30.440 --> 00:09:34.280]   das in der Option habe, die kann ich nehmen oder nicht nehmen, wenn ich die
+[00:09:34.280 --> 00:09:39.960]   Option nicht wähle, dann habe ich nur digit auf der rechten Seite. Und
+[00:09:39.960 --> 00:09:45.320]   natürlich, da gibt es x Möglichkeiten, können wir das nicht einfach ohne das
+[00:09:45.320 --> 00:09:50.040]   komische Epsilon. Das Epsilon ist definieren. Das Epsilon ist nicht komisch.
+[00:09:50.040 --> 00:09:54.800]   Das Epsilon erlaubt es uns genau zu sagen, was wir hier wollen. Eine andere
+[00:09:54.800 --> 00:09:58.400]   Möglichkeit, wie ich jetzt zu sagen, ich gehe hierhin. Ich habe hier die positive
+[00:09:58.400 --> 00:10:02.720]   integer definiert als, ich habe jetzt noch mal die Klammern gesetzt, weil ich
+[00:10:02.720 --> 00:10:08.120]   dachte, vielleicht ist doch nur einer Bevorzug, dass jemand, ja. Also ich habe
+[00:10:08.120 --> 00:10:14.640]   hier entweder digit und positive integer, also wieder das, oder das nicht komische,
+[00:10:14.640 --> 00:10:19.120]   sondern sehr zweckmäßige, sehr geschätzte Epsilon. Das heißt, also wenn ich
+[00:10:19.120 --> 00:10:24.120]   diese Seite, ich habe hier also die erste Regel, die erste rechte Seite und das
+[00:10:24.120 --> 00:10:28.960]   ist die zweite Auswahlmöglichkeit. Ich muss eine von den beiden nehmen, wenn ich
+[00:10:28.960 --> 00:10:33.840]   die mit Epsilon nehme, dann verschwindet das und damit ist das erreicht, was ich
+[00:10:33.840 --> 00:10:39.840]   eigentlich haben wollte. Dann habe ich auf diese Weise eben dieses Symbol.
+[00:10:39.840 --> 00:10:43.360]   Da habe ich hier diesen Namen verschwinden lassen. Es gibt kein
+[00:10:43.360 --> 00:10:47.440]   weiteres Symbol, das so erzeugt werden kann und es bleiben nur diese Symbole
+[00:10:47.440 --> 00:10:52.120]   übrig, die ich vorher bereits produziert habe. Also Sie können das dann so sehen.
+[00:10:52.120 --> 00:10:56.480]   Das Beispiel, das ich Ihnen vorhin zeigte, ja, statt eben zu sagen, Option wird nicht
+[00:10:56.480 --> 00:11:00.240]   genommen, würde ich einfach sagen, da wird ein Epsilon genommen und das Epsilon
+[00:11:00.240 --> 00:11:04.560]   verschwindet. Ja, das ist ja nur etwas, was wir benutzen, um uns darauf hinzuweisen,
+[00:11:04.560 --> 00:11:08.360]   dass hier eigentlich nichts ist. Also was wirklich übrig bleibt, sind hier zwei
+[00:11:08.360 --> 00:11:13.080]   Digits oder hier bleibt eine Digit übrig. Das bleibt da einfach übrig.
+[00:11:13.080 --> 00:11:18.880]   Also das ist ein anderer Weg, wie wir das machen könnten.
+[00:11:18.880 --> 00:11:25.280]   Beide sind völlig, bedeutet, dass Epsilon, dass man einfach das von
+[00:11:25.280 --> 00:11:29.840]   davor nimmt. Naja, wenn Sie das Epsilon haben, das verschwindet einfach.
+[00:11:29.840 --> 00:11:34.520]   Das ist wie Geld, das Sie irgendwo investiert haben und weg ist.
+[00:11:34.520 --> 00:11:41.960]   Einfach weg, ja. Ist einfach weg. Das heißt, dass diese, als wir das auf der
+[00:11:41.960 --> 00:11:47.240]   rechten Seite stehen hatten, unserer Tabelle, haben wir uns entschieden, dieses
+[00:11:47.240 --> 00:11:53.200]   Symbol durch Epsilon zu ersetzen und damit ist es weg.
+[00:11:53.200 --> 00:12:03.200]   [Unverständlich]
+[00:12:03.200 --> 00:12:07.040]   Okay, Sie haben eine andere Frage, die ist auch gut, aber das ist nicht das, worauf
+[00:12:07.040 --> 00:12:10.000]   ich jetzt hinauswille. Wir können das auch so machen, dass da kein Null am Anfang ist.
+[00:12:10.000 --> 00:12:13.320]   Das können wir auch machen, macht das Ganze ein bisschen kompliziert. Da haben wir
+[00:12:13.320 --> 00:12:17.480]   Digit mit null, haben wir mit null, ohne null, ist aber nicht das, was worauf wir
+[00:12:17.480 --> 00:12:21.120]   eigentlich jetzt heute hinauswollen. Ist eine gute Frage, können wir nachher
+[00:12:21.120 --> 00:12:27.160]   mal weiter diskutieren. Also, uns interessiert einfach nur, wie wir solche
+[00:12:27.160 --> 00:12:33.000]   Zahlenfolgen erstellen. Also, null, null, sieben ist halt für uns okay.
+[00:12:33.000 --> 00:12:37.520]   Ich meine, ist sonst kein guter Film, aber hier ist es an sich okay.
+[00:12:37.520 --> 00:12:45.880]   Weil wir wollen uns, also, jetzt, also es muss mindestens einen Weg geben,
+[00:12:45.880 --> 00:12:54.040]   den, dieses Symbol, dieses, diesen, den Namen der Regel verschwinden zu lassen.
+[00:12:54.040 --> 00:12:58.200]   Ja, und eben, ich hatte gesagt, eine Möglichkeit wäre das eben mit, mit
+[00:12:58.200 --> 00:13:03.040]   diesen Epsilon, mit Optionen, die andere Möglichkeit wäre mit Epsilon. Beides
+[00:13:03.040 --> 00:13:06.960]   geht und Sie sehen, es habe ich hier ohne Klammer gemacht, ja, weil wir der Auffassung
+[00:13:06.960 --> 00:13:12.680]   sind, dass, wenn was wir hier haben, ist enger aneinander gekoppelt, als das, was
+[00:13:12.680 --> 00:13:18.080]   hier durch diesen Strech, durch diesen Stroke, senkrechten Strich getrennt wird.
+[00:13:18.080 --> 00:13:23.240]   Also, wenn Sie die Klammern machen wollen, ist das okay, ist eigentlich für uns nicht
+[00:13:23.240 --> 00:13:30.280]   so so kritisch. Also, so eine Regel hier, in der der Name, der auf der linken Seite
+[00:13:30.280 --> 00:13:34.840]   auftritt, auch auf der rechten Seite auftritt, so was nennen wir eine
+[00:13:34.840 --> 00:13:39.840]   rekursive Regel. Und hier haben Sie zwei Beispiele von rekursiven Regeln. Und
+[00:13:39.840 --> 00:13:44.640]   das Wichtige ist immer daran denken, es muss einen Weg geben, daraus zu kommen,
+[00:13:44.640 --> 00:13:50.560]   ohne dass es das eben ein neuer Name eingefügt wird. War da eine Frage?
+[00:13:50.560 --> 00:13:52.560]   Ja, vier.
+[00:13:52.560 --> 00:13:58.160]   Wenn wir das Epsilon werden, heißt das also, dass die Reihe immer der Ende fehlt?
+[00:13:58.160 --> 00:14:02.320]   Ja, natürlich, weil der Epsilon ist weg, genau. Wenn es Geld ausgegeben ist, ist es weg,
+[00:14:02.320 --> 00:14:07.520]   nicht wahr? Ja, genau, richtig. Also, ist dann einfach verschwunden, ja.
+[00:14:07.520 --> 00:14:09.520]   Okay.
+[00:14:09.520 --> 00:14:15.680]   Ja, okay, jetzt, jemand hat zu Recht bemerkt, dass wenn wir das so machten, dann
+[00:14:15.680 --> 00:14:25.840]   hätten wir ja wieder Epsilon als Zahl, das stimmt, das ist hier möglich.
+[00:14:25.840 --> 00:14:30.160]   Also, wollen wir vielleicht nicht, aber mir geht es eigentlich nur darum, dass
+[00:14:30.160 --> 00:14:34.960]   Sie sehen, dass es möglich ist, den Namen, den wir auf der linken Seite haben, auch
+[00:14:34.960 --> 00:14:39.680]   auf der rechten Seite zu haben. Und zweitens, wenn ich das mache, muss es ein Weg
+[00:14:39.680 --> 00:14:43.600]   gehen, sei es durch Option, sei es auch durch eine Wiederholung, geht ja auch mit
+[00:14:43.600 --> 00:14:51.040]   nullmal, oder sei es mit einem expliziten Epsilon, eben eine rechte Seite zu finden,
+[00:14:51.040 --> 00:14:56.080]   die eben nicht den Namen enthält, der bereits auf der linken Seite definiert ist,
+[00:14:56.080 --> 00:15:01.680]   weil sonst eben wir nie den Punkt erreichen, dass wir alle diese Namen der Regeln
+[00:15:01.680 --> 00:15:06.560]   aus unseren Symbolen entfernt haben. Also, und so eine Regel, die nennen wir
+[00:15:06.560 --> 00:15:11.600]   Rekursiv, der Name wird in der Definition verwendet. Also, hier, das war das
+[00:15:11.600 --> 00:15:16.480]   Beispiel, so wie ich es gerne sehen würde, eine positive Integer fängt mit einer
+[00:15:16.480 --> 00:15:21.600]   Digit an und danach eben kommt nochmals gleich hinterher. Und wir sagen, eine
+[00:15:21.600 --> 00:15:27.360]   Beschreibung ist Rekursiv, wenn mindestens eine Rekursive Regel in dieser
+[00:15:27.360 --> 00:15:33.120]   Beschreibung vorhanden ist. Und eben eine Rekursive Beschreibung enthält dann
+[00:15:33.120 --> 00:15:38.160]   eben Rekursive Regel. Jetzt, wenn Sie ein bisschen weiter verfolgen, da gibt es
+[00:15:38.160 --> 00:15:42.400]   eben die Unterscheidung zwischen direkt und indirekt Rekursiv. Wir sagen
+[00:15:42.400 --> 00:15:48.560]   direkt Rekursiv, wenn der Name der Regel in der Definition selber verwendet wird.
+[00:15:48.560 --> 00:15:53.880]   Also, ich habe hier das R auf der linken Seite und ich habe hier das R auf der
+[00:15:53.880 --> 00:15:57.240]   rechten Seite. Sie sehen, je nachdem, mit wem Sie reden, da gibt es da
+[00:15:57.240 --> 00:16:00.640]   verschiedenen Stil. Also, hier kann ich, was kann ich auf diese Weise erzeugen? Ich
+[00:16:00.640 --> 00:16:07.280]   kann also erzeugen ein A, ich kann zwei As erzeugen, ich kann aber auch Epsilon
+[00:16:07.280 --> 00:16:12.480]   erzeugen, weil hier im Grunde genommen davor steht eigentlich nichts. Daher
+[00:16:12.480 --> 00:16:16.640]   manche Leute bevorzugen, dass Epsilon hinzuschreiben. Deswegen ist das
+[00:16:16.640 --> 00:16:21.880]   manchmal sinnvoll, wenn Sie sich diese Regel hier und diese Regel hier angucken,
+[00:16:21.880 --> 00:16:27.640]   mit oder ohne Klammerspielkeine Rolle. Hier ist es leicht zu übersehen, dass da
+[00:16:27.640 --> 00:16:33.320]   eigentlich auch eine Epsilon- rechte Seite existiert. Wenn ich das so mache, dann
+[00:16:33.320 --> 00:16:38.600]   sehe ich sofort, hoffe ich mal, da könnte ja auch Epsilon gewählt werden und
+[00:16:38.600 --> 00:16:45.520]   in dem Fall würde diese Regel nicht weiter ausgespielt werden.
+[00:16:45.520 --> 00:16:49.200]   Und eben, Sie können es mit Klammer machen oder nicht, das ist für uns nicht so
+[00:16:49.200 --> 00:17:00.080]   wichtig. Also, das ist der Grund, das ist die Sache der, das ist die einfachste Form
+[00:17:00.080 --> 00:17:04.920]   einer rekursiven Beschreibung. Ja, rekursive Beschreibung besteht nur aus
+[00:17:04.920 --> 00:17:11.400]   einer Regel, die Regel hat zwei rechte Seiten und auch einer Seite
+[00:17:11.400 --> 00:17:16.880]   erscheint der Name noch mal, das haben wir da als rekursive Sache.
+[00:17:16.880 --> 00:17:22.560]   Und jetzt fragen sich natürlich, warum machen wir das eigentlich überhaupt?
+[00:17:22.560 --> 00:17:27.640]   Warum machen wir das eigentlich überhaupt? Ist das nur so gedacht, also gucken wir
+[00:17:27.640 --> 00:17:35.240]   diese letzte Regel noch mal an. Also, R ist definiert als Epsilon oder A R.
+[00:17:35.240 --> 00:17:40.800]   So, mit dieser Regel kann ich genauso arbeiten, wie ich vorher mit meinen
+[00:17:40.800 --> 00:17:45.800]   Tabellen arbeiten könnte. Wenn ich zeigen will, dass A A A, also dreimal der Buchstabe
+[00:17:45.800 --> 00:17:50.800]   A, ein legales Symbol ist, ja, dann fange ich an mit R, dann nehme ich einmal die
+[00:17:50.800 --> 00:17:56.480]   rechte Seite, dann nehme ich nochmal dafür die rechte Seite, nochmal diese
+[00:17:56.480 --> 00:18:01.800]   zwei, also diese rechte Seite, hier eins, zwei, ja. Also, hier habe ich die erste,
+[00:18:01.800 --> 00:18:11.800]   die, hier habe ich die zweite Seite genommen, hier habe ich nochmal die zweite
+[00:18:11.800 --> 00:18:16.800]   Seite genommen, hier habe ich nochmal die zweite genommen und jetzt im letzten
+[00:18:16.800 --> 00:18:22.800]   Schritt gehe ich hin und benutze wähle Epsilon, ja, das war so die erste Option,
+[00:18:22.800 --> 00:18:27.800]   die ich da hatte und das Epsilon verschwindet dann und übrigbleiben eben
+[00:18:27.800 --> 00:18:32.800]   dieser String, von dem ich zeigen wollte, dass er da ist, ja. Also, das, was wir hier
+[00:18:32.800 --> 00:18:39.800]   gesehen haben über Tabellen oder Ableiterungsbäume, wie hier genauso,
+[00:18:39.800 --> 00:18:46.800]   wir können, wir haben hier R, als unser, als der Regel, der mit der wir arbeiten
+[00:18:46.800 --> 00:18:52.800]   wollen, jetzt bauen wir den Baum auf, ja, auf dem Baum kommt hier ein A hin und hier
+[00:18:52.800 --> 00:18:58.800]   ein R, weil wir nehmen die Regel auf der Seite 2, ja. Jetzt gehe ich hin für das
+[00:18:58.800 --> 00:19:05.800]   R hier, wähle ich wieder A und R, wieder die zweite rechte Seite, ja, hier benutze
+[00:19:05.800 --> 00:19:12.800]   ich nochmal diese rechte Seite und dann gehe ich hier hin und benutze die erste
+[00:19:12.800 --> 00:19:19.800]   Regel und dann habe ich hier auch der gezeigt, dass der Baum dafür genauso zu
+[00:19:19.800 --> 00:19:24.800]   verwenden ist. Also Baum und Tabelle, beides ist ohne weiteres möglich, ja.
+[00:19:24.800 --> 00:19:31.800]   So, okay, also direkt Rekursiv eben, Rekursiv ist,
+[00:19:31.800 --> 00:19:35.800]   Name wird in Edition verwendet und das hätten wir natürlich auch anders haben
+[00:19:35.800 --> 00:19:40.800]   können, das habe ich Ihnen auch mal gezeigt, ja, so haben wir am Anfang die
+[00:19:40.800 --> 00:19:49.800]   positiven Integers definierte und da haben wir auch genauso gut, statt der
+[00:19:49.800 --> 00:19:53.800]   Option da oben, hätten wir das wählen können, ja. Und da fragen sich natürlich,
+[00:19:53.800 --> 00:19:59.800]   hm, warum macht er das eigentlich? Ist das nur hier um uns, ist das jetzt nur,
+[00:19:59.800 --> 00:20:04.800]   hm, warum dieser Aufwand, hätten wir nicht die Rekursion weglassen können, ja.
+[00:20:04.800 --> 00:20:09.800]   Weil ich meine, das Beispiel, das ich da eben hatte, ja, hätte ich doch auch genauso
+[00:20:09.800 --> 00:20:17.800]   gut hier diese, hm, EBNF Regel haben können, ja. R ist definiert als eine beliebige
+[00:20:17.800 --> 00:20:24.800]   aufeinanderreihung von A, ja. Das hätte uns auch, epsilon, A, A, A und so weiter
+[00:20:24.800 --> 00:20:30.800]   gegeben, ja. Also, ja, warum brauchen wir das, ja. Dann kommt dann die Frage,
+[00:20:30.800 --> 00:20:34.800]   jetzt habe ich uns hier genauso, ja, ich habe hier noch ein Beispiel, ja, das hätte
+[00:20:34.800 --> 00:20:39.800]   ich auch machen können. Ist die Frage, ist das nur eine Idee, die wir machen,
+[00:20:39.800 --> 00:20:45.800]   um Studierenden das Leben interessant zu machen, ja. Könnten wir eigentlich jede
+[00:20:45.800 --> 00:20:51.800]   Rekursion durch Wiederholungen ausdrücken, ja. Also, gibt es diese, diese Umformung,
+[00:20:51.800 --> 00:20:55.800]   wie ich sie hier ist, im Kopf gemacht habe, die dazu führte, dass wir hier diese beiden
+[00:20:55.800 --> 00:21:01.800]   Regeln haben, ja. Ist das immer möglich, ja. Und umgekehrt, wenn ich schon mal eine
+[00:21:01.800 --> 00:21:05.800]   Wiederholung habe, es könnte ja sein, dass mir irgendein Mensch so eine Wiederholung
+[00:21:05.800 --> 00:21:10.800]   gegeben hat, ja, kann ich die dann auch durch Rekursion ausdrücken. Also, sind
+[00:21:10.800 --> 00:21:16.800]   Rekursionen und und Wiederholung eigentlich letztlich gleichwertig, ja. In dem
+[00:21:16.800 --> 00:21:20.800]   Sinne, dass ich das eine immer benutzen kann, um das andere auszudrücken. Ja.
+[00:21:20.800 --> 00:21:25.800]   Gibt es einfach, gibt es eventuelle Beispiele, in denen die Wiederholung nicht
+[00:21:25.800 --> 00:21:29.800]   helfen kann? Vielleicht haben Sie ja die Frage schon mal in einer anderen
+[00:21:29.800 --> 00:21:33.800]   Zusammenhang gehört, weil die Frage ist nicht ganz neu, die hat es auch schon
+[00:21:33.800 --> 00:21:37.800]   gegeben. Aber überlegen Sie mal, sind die beiden Sachen, ist da wirklich ein,
+[00:21:37.800 --> 00:21:42.800]   ist da, können wir jede Rekursion durch Wiederholung oder Wiederholungen
+[00:21:42.800 --> 00:21:46.800]   ausdrücken oder nicht? Was ist so Ihr intuitiver Gedanke, ja. Was ist so,
+[00:21:46.800 --> 00:21:53.800]   Ihr fragt mich jemand über irrektere Rekursionen, kommen wir nachher noch
+[00:21:53.800 --> 00:22:00.800]   aufzusprechen. Überlegen Sie erstmal, ja. Jetzt, die Sache ist die, es wäre
+[00:22:00.800 --> 00:22:06.800]   schön, wenn man jede Rekursion durch Wiederholungen ausdrücken kann. Aber die
+[00:22:06.800 --> 00:22:13.800]   Antwort ist leider, kann jede Rekursion, die Antwort ist leider nein, ja. Die
+[00:22:13.800 --> 00:22:17.800]   Antwort, ich kann ja, ich kann jede Wiederholung durch Rekursion ausdrücken,
+[00:22:17.800 --> 00:22:23.800]   das ist der einfache Teil, ja. Aber es gibt Situationen, wo Rekursion
+[00:22:23.800 --> 00:22:28.800]   zwingend nötig ist, ja, zwingend nötig, wo also wir ohne Rekursion das nicht
+[00:22:28.800 --> 00:22:34.800]   ausdrücken könnten, ja. Und deswegen eben halt diese Diskussion oder diese
+[00:22:34.800 --> 00:22:40.800]   Konzentration auf Rekursion, ja. Jetzt, wie, was für ein Problem könnte es
+[00:22:40.800 --> 00:22:45.800]   denn geben, was wir mit Wiederholungen nicht ausdrücken können. Stellen Sie sich
+[00:22:45.800 --> 00:22:50.800]   vor, Sie haben die Aufgabe, Strings zu erzeugen, in denen wir eine Menge von
+[00:22:50.800 --> 00:22:56.800]   A's haben, gefolgt von einer Menge von B's und, jetzt kommt das wichtige
+[00:22:56.800 --> 00:23:07.800]   unter, ja, und die Anzahl der A-Zeichen, ja, soll sein gleich die Anzahl der B-Zeichen,
+[00:23:07.800 --> 00:23:11.800]   ja. Oder wenn wir das ein bisschen formaler ausdrücken sagen, also als legale
+[00:23:11.800 --> 00:23:19.800]   Symbole sind A hoch N, ja, hoch N, kennen Sie ja, so neben A hoch N, B hoch N, ja.
+[00:23:19.800 --> 00:23:24.800]   Mit N eine Digit können wir sagen Null oder Eins, das zwei, wo wir anfangen lassen
+[00:23:24.800 --> 00:23:32.800]   wollen, spielt keine Rolle, ja. Das ist jetzt nicht so wichtig, ja. Aber eben
+[00:23:32.800 --> 00:23:38.800]   die Zeichen, die wir, oder die Symbole, die wir akzeptieren wollen, sind dieser
+[00:23:38.800 --> 00:23:46.800]   Form, ja. Die haben N, A's gefolgt von N, B's, ja. Oder das können ein A, ein B,
+[00:23:46.800 --> 00:23:52.800]   oder zwei A, zwei B, aber eben nicht zwei A und drei B sein, ja. Also das wäre
+[00:23:52.800 --> 00:24:00.800]   eine Menge von Zeichen, die wir nicht mit Wiederholung ausdrücken können, ja.
+[00:24:00.800 --> 00:24:05.800]   Aber Sie könnten versuchen, das mit Wiederholung zu machen, ja. Sie könnten
+[00:24:05.800 --> 00:24:12.800]   sagen, ja, ich definiere mal das D, und das wäre halt ja eine Menge von A's
+[00:24:12.800 --> 00:24:17.800]   gefolgt von einer Menge von B's. Naja, das ist es auf jeden Fall nicht, das geht
+[00:24:17.800 --> 00:24:23.800]   nicht, ja. Weil das würde ja auch A, B, B zulassen, ja. Sie könnten sagen, ja,
+[00:24:23.800 --> 00:24:30.800]   vielleicht kann ich es definieren als A, B Wiederholung, ja. Weil dann habe ich
+[00:24:30.800 --> 00:24:34.800]   zumindest immer die gleiche Anzahl A's und Alkwärke B's. Aber das geht auch
+[00:24:34.800 --> 00:24:39.800]   nicht, weil das wäre ja A, B, A, B, das wäre ein legales Symbol, ja. Ist nicht
+[00:24:39.800 --> 00:24:44.800]   das, was wir wollen, ja. Sie können das jetzt noch ein bisschen weiter, wenn
+[00:24:44.800 --> 00:24:48.800]   Sie Zeit haben in der Pause ausprobieren, ja. Aber Sie können mir glauben, es gibt
+[00:24:48.800 --> 00:24:53.800]   keinen einfachen Weg, keinen Weg das mit Wiederholung auszudrücken, ja. Also das
+[00:24:53.800 --> 00:24:58.800]   ist eine Situation, wo wir Rekursion zwingend brauchen, um das eben halt
+[00:24:58.800 --> 00:25:03.800]   machen zu, um eben das beschreiben zu können oder machen zu können, ja. Also
+[00:25:03.800 --> 00:25:12.800]   das ist halt der Grund, warum wir uns für Rekursion interessieren, ja. Die,
+[00:25:12.800 --> 00:25:19.800]   was wir hier haben, kann eben nicht durch eine Wiederholung ausgerückt werden, ja.
+[00:25:19.800 --> 00:25:25.800]   Sie können das in verschiedensten Formen machen, ja. Aber hingegen eine einfache
+[00:25:25.800 --> 00:25:31.800]   Regel erlaubt es uns mit einer Rekursion das auszudrücken, ja. Hier habe ich
+[00:25:31.800 --> 00:25:35.800]   ein einfaches Beispiel. Ich gehe hin, ich nenne das Balance, entweder Epsilon
+[00:25:35.800 --> 00:25:41.800]   oder A Balance B, Klammer für die, die es noch wollen, ja. Und wenn er kann
+[00:25:41.800 --> 00:25:48.800]   ich jetzt hingehen, wenn ich also zeigen will, dass A B ein legales Symbol ist,
+[00:25:48.800 --> 00:25:53.800]   dann fange ich an mit Balance, ja. Dann wollen Sie das als Baum, wenn jemand
+[00:25:53.800 --> 00:25:57.800]   was als Baum, gehe ich hin, wähle, hier habe ich die Regel 1, hier habe ich
+[00:25:57.800 --> 00:26:04.800]   nicht die Seite 1, die Seite 2, ich wähle die Option, der zweiten Seite, dann
+[00:26:04.800 --> 00:26:12.800]   habe ich also hier A Balance B und dann wähle ich jetzt hier die aus der
+[00:26:12.800 --> 00:26:18.800]   ersten, mache das Epsilon, habe ich da A B, ja. Oder wenn ich zeigen will, dass A
+[00:26:18.800 --> 00:26:24.800]   A B B ein legales Symbol ist, fange ich wieder mit Balance an, ja.
+[00:26:24.800 --> 00:26:35.800]   Gehe ich hin, habe ich hier A Balance, wieder die zweite Seite der Regel
+[00:26:35.800 --> 00:26:44.800]   genommen, ja. Jetzt gehe ich hin, nehme nochmal A Balance B, wieder also
+[00:26:44.800 --> 00:26:49.800]   zweite, zweite Auswahl da genommen und jetzt nehme ich die erste, mache
+[00:26:49.800 --> 00:26:59.800]   Epsilon und Sie sehen, so kann ich also beliebige Folgen erzeugen, in denen
+[00:26:59.800 --> 00:27:05.800]   die Anzahl der Aß gleich Anzahl der Bß ist, ja. Also das ist halt eben, das
+[00:27:05.800 --> 00:27:08.800]   können Sie wiederholung nicht machen. Aber umgekehrt, eben jede
+[00:27:08.800 --> 00:27:14.800]   Wiederholung kann durch Rekursion ausgedrückt werden und wir werden
+[00:27:14.800 --> 00:27:18.800]   noch mehr über Rekursion später auf der Zeit lernen und sehen, was der
+[00:27:18.800 --> 00:27:22.800]   Unterschied ist, wo das einmal besser ist als das andere. Das ist für uns
+[00:27:22.800 --> 00:27:28.800]   heute noch nicht so wichtig und was Sie aber mitnehmen sollten ist, dass
+[00:27:28.800 --> 00:27:34.800]   eben Rekursion ist mächtiger als die Wiederholungen. So, da fragte
+[00:27:34.800 --> 00:27:37.800]   mich jemand, wie funktioniert indirekte Rekursion, das kann ich Ihnen
+[00:27:37.800 --> 00:27:42.800]   auch sagen. Also indirekte Rekursion ist das, wenn wir eine Folge von
+[00:27:42.800 --> 00:27:48.800]   Rekursion haben, N1, N2 und so weiter bis NK, ja. So, dass N2 erscheint
+[00:27:48.800 --> 00:27:52.800]   auf der rechten Seite von N1 und N3 auf der rechten Seite von N2 und so
+[00:27:52.800 --> 00:27:57.800]   weiter, bis wir dann zu dem Punkt kommen, dass N1 auf der rechten Seite von
+[00:27:57.800 --> 00:28:01.800]   NK erscheint, ja. Also hier ist ein einfaches Beispiel. Ich habe hier die
+[00:28:01.800 --> 00:28:06.800]   Beschreibung für N1, das ist die Beschreibung, ja. Und das ist definiert
+[00:28:06.800 --> 00:28:14.800]   als der Buchstabe A, gefolgt von N2. Und N2 ist hier oben definiert, ja.
+[00:28:14.800 --> 00:28:19.800]   Und N2, habe ich jetzt mit Klammern noch gemacht, ja. N2 ist definiert
+[00:28:19.800 --> 00:28:27.800]   als die Auswahl entweder N1 gefolgt von B oder ein X gefolgt von B. X, A,
+[00:28:27.800 --> 00:28:33.800]   X und B sind die Zeichen, die am Ende erscheinen dürfen, ja. Also so
+[00:28:33.800 --> 00:28:38.800]   kann ich dann hier eben eine indirekte Rekursion, weil eben,
+[00:28:38.800 --> 00:28:42.800]   das kann ich auch anders schreiben können, ja. Das ist einfach nur wie man die
+[00:28:42.800 --> 00:28:46.800]   Regeln aufteilen will, ja. Wenn Sie direkte Rekursion verstanden haben,
+[00:28:46.800 --> 00:28:51.800]   wie das, das hier ist nur fancy Footwork, ja. Das bringt nicht viel, das ist
+[00:28:51.800 --> 00:28:55.800]   auch wichtig, weil da nicht mal übersichtlicher wird und so weiter,
+[00:28:55.800 --> 00:29:00.800]   aber das konzeptionell Interessante ist eben die Rekursion, ja. So, also
+[00:29:00.800 --> 00:29:05.800]   wie gesagt, die können wir mit oder ohne Klammern machen, ganz wie Sie wollen, ja.
+[00:29:05.800 --> 00:29:10.800]   Also, so nochmal kurz als Zusammenfassung, ja. Wir haben also gesehen, es gibt
+[00:29:10.800 --> 00:29:15.800]   für uns verschiedene Wege, so eine EBNF Beschreibung zu gebrauchen.
+[00:29:15.800 --> 00:29:19.800]   Wir können die benutzen, um Ableitungsbäume zu erstellen, Tabellen zu
+[00:29:19.800 --> 00:29:23.800]   erstellen, die Grafen haben wir kurz gesehen, wenn wir viel Zeit haben,
+[00:29:23.800 --> 00:29:26.800]   keine noch kurz paar Mehrsachen dazu sagen, ja. Im Grunde genommen,
+[00:29:26.800 --> 00:29:30.800]   alles sind das Wege, wie wir demonstrieren können, das ein Symbol,
+[00:29:30.800 --> 00:29:34.800]   das wir haben, legal entsprechend dieser EBNF Beschreibung ist, ja. Und der
+[00:29:34.800 --> 00:29:39.800]   EBNF Graf ist halt ein anderer Weg, das zu machen, ist aber nicht fundamental
+[00:29:39.800 --> 00:29:44.800]   anders, ja. Und das geht eben mit und ohne Rekursion, ja. Ich habe Elastas hier
+[00:29:44.800 --> 00:29:50.800]   drinnen, Beispiel mit einer anderen EBNF Beschreibung, mit paar anderen Regeln,
+[00:29:50.800 --> 00:29:54.800]   sowohl als Tabelle als als Baum, ja. Können Sie alles machen, also wie Sie,
+[00:29:54.800 --> 00:29:59.800]   wie Sie das wollen, ja. So. Und eben der Grafen erlauben uns eben halt,
+[00:29:59.800 --> 00:30:04.800]   das eben ein bisschen bildlicher darzustellen, hatte ich am Freitag morgens noch
+[00:30:04.800 --> 00:30:08.800]   kurz gesagt, wenn wir hier diese EBNF Beschreibung für Integer haben, ja.
+[00:30:08.800 --> 00:30:13.800]   Dann könnten wir eben einen Grafen haben für die ganze Auswahl bei Digit, ja.
+[00:30:13.800 --> 00:30:17.800]   Und dann könnten wir die kombinieren und sagen, okay, eine Integer besteht
+[00:30:17.800 --> 00:30:21.800]   eben entweder aus diesem Block oder eben nicht, das ist der Epsilon-Fahrt, ja.
+[00:30:21.800 --> 00:30:25.800]   Und dann kommt eine Digit, die muss da sein, ja. Und danach kommen entweder
+[00:30:25.800 --> 00:30:29.800]   beliebig viele Digits, ja, oder gar nichts, der Epsilon-Fahrt, ja.
+[00:30:29.800 --> 00:30:35.800]   Das wäre ein anderer Weg, die zu beschreiben. Und manche Leute finden das
+[00:30:35.800 --> 00:30:39.800]   sinnvoll, wenn sie, oder besser, wenn sie sich jetzt diese Grafen ineinander
+[00:30:39.800 --> 00:30:43.800]   einsetzen, ja. Das nennt man Substitution, da könnten sie diesen
+[00:30:43.800 --> 00:30:47.800]   Digit-Graf hier einsetzen, ja. Da könnten sie also den da reinsetzen,
+[00:30:47.800 --> 00:30:52.800]   dann bekämen sie sowas, ja. Also das Gleiche wie vorher, ja. Also Integer
+[00:30:52.800 --> 00:30:57.800]   ist definiert als plus oder minus oder gar nichts, ja. Und danach eine von diesen
+[00:30:57.800 --> 00:31:01.800]   Digits, wie damit der Null am Anfang erlaubt, ja. Und danach eben beliebig
+[00:31:01.800 --> 00:31:07.800]   viele von diesen Digits oder gar nichts, ja. Und dann eben ein legales Symbol
+[00:31:07.800 --> 00:31:12.800]   ist eben ein Fahrt durch diesen Grafen, ja. Also wenn sie zeigen wollten,
+[00:31:12.800 --> 00:31:18.800]   dass plus 7 1 legal ist, ja, sie würden hier anfangen. Jetzt wüssten sie halt,
+[00:31:18.800 --> 00:31:22.800]   dass sie hier oben durch das Plus gehen müssten, ja, kommen hier runter, ah, hier
+[00:31:22.800 --> 00:31:26.800]   haben wir die, haben wir die, über die 7, dann nehmen wir hierhin, ja.
+[00:31:26.800 --> 00:31:29.800]   Jetzt haben wir hier, machen wir nicht Epsilon, weil wir haben ja noch die
+[00:31:29.800 --> 00:31:33.800]   Einstiehverlust, die wir verarbeit erklären müssen, kommen wir hierhin.
+[00:31:33.800 --> 00:31:36.800]   Jetzt hier an dem Punkt könnten wir noch mal durchgehen, wenn wir wollten und
+[00:31:36.800 --> 00:31:40.800]   längere Zahl haben, aber haben wir nicht. Also gehen wir zum Ausgang und sind
+[00:31:40.800 --> 00:31:45.800]   wir dadurch fertig, ja. Also das ist so ein anderer Weg, wie man, wie man eben
+[00:31:45.800 --> 00:31:50.800]   auch so eine EBNF Beschreibung machen kann, ist für manche Leute leichter
+[00:31:50.800 --> 00:31:56.800]   oder einfacher, ja. So. Und dann eben können wir gucken, was haben diese,
+[00:31:56.800 --> 00:32:03.800]   was für EBNF Regeln könnten wir gebrauchen, um hier diese, sollte ich mal
+[00:32:03.800 --> 00:32:09.800]   diese drei Grafen zu beschreiben, dann können wir doch vom Grafen zurück zur
+[00:32:09.800 --> 00:32:13.800]   Beschreibung, ja. Könnten Sie auch den Kopf gehen lassen und schon mal den
+[00:32:13.800 --> 00:32:18.800]   Computer rausholen, ja. Also wenn wir so was hier haben, was ist das, ja.
+[00:32:18.800 --> 00:32:23.800]   Was ist legal, ja. Also können wir uns angucken, also Epsilon ist auf jeden Fall legal, ja.
+[00:32:23.800 --> 00:32:30.800]   A ist legal, B ist legal. Wenn ich einmal A hatte, kann ich noch ein A haben,
+[00:32:30.800 --> 00:32:34.800]   oder wenn ich ein A habe, kann ich im nächsten Durchgang auch ein B haben, ja.
+[00:32:34.800 --> 00:32:39.800]   Oder wenn ich ein B habe, kann ich danach noch mal ein A haben, oder kann ich danach
+[00:32:39.800 --> 00:32:43.800]   noch mal ein B haben, oder und so weiter, ja. Also das sind so die Symbole, die ich dir
+[00:32:43.800 --> 00:32:50.800]   legal durchgehen könnten, ja. Wie würde ich das eben jetzt hier als, wenn ich eine
+[00:32:50.800 --> 00:32:56.800]   Regel erstellen müsste, ja. Was würde ich da sagen, okay, ich habe die Wahl zwischen A
+[00:32:56.800 --> 00:33:04.800]   oder B, ja. Und davon beliebig viele, ja. Also G ist definiert als beliebig viele
+[00:33:04.800 --> 00:33:12.800]   Wiederholungen von A oder B, ja. So kann ich aus dem Grafen ohne weiteres den
+[00:33:12.800 --> 00:33:20.800]   gewünschten, die gewünschte Regel bekommen, ja. Und genauso wenn Sie hier dieses
+[00:33:20.800 --> 00:33:26.800]   Beispiel nehmen, ja. Wenn Sie hier dieses hätten, ja. Was wäre denn da der, wäre denn
+[00:33:26.800 --> 00:33:32.800]   da richtig? Ich habe hier, was habe ich hier? Ich kann eine C haben, oder ich kann A
+[00:33:32.800 --> 00:33:40.800]   gefolgt von B haben, ja. Also ja, das wäre also entweder habe ich A, B gefolgt von C
+[00:33:40.800 --> 00:33:49.800]   oder C, ja, nicht A, B gefolgt von C, aber entweder A, B oder ich habe C, ja.
+[00:33:49.800 --> 00:33:56.800]   Oder ich sage, ich habe C oder ich habe A, B, ja. Also A gefolgt von B wäre eine Option
+[00:33:56.800 --> 00:34:00.800]   oder C die andere. Ja, das hatten wir auch schon mal gesehen. So. Und um mal zu gucken,
+[00:34:00.800 --> 00:34:05.800]   ob Klickern auch lebt, habe ich hier eine Dritte und die könnten Sie sich mal überlegen,
+[00:34:05.800 --> 00:34:12.800]   was da denn da die richtige, die rechte, richtige, eine richtige rechte Seite wäre.
+[00:34:12.800 --> 00:34:17.800]   Das ist ja nicht eindeutig, ja. Da können Sie beliebig viele, da gibt es beliebig viele
+[00:34:17.800 --> 00:34:24.800]   Möglichkeiten, das zu machen. Aber Sie könnten mal gucken, ob da, oh, gucken, please start.
+[00:34:24.800 --> 00:34:37.800]   Sie haben noch als positive, als positive Information für Sie, es hat sich jetzt eine
+[00:34:37.800 --> 00:34:42.800]   Taskforce gebildet, die versucht rauszufinden, warum hier das Klickern nicht funktioniert,
+[00:34:42.800 --> 00:34:48.800]   mit Glück schaffen, die eine Lösung zu finden. Und was mich die aber bitten zu sagen ist,
+[00:34:48.800 --> 00:34:53.800]   Sie sollten, wenn Sie sich aufs Weiharles des drahtlose Netz hier einloggen,
+[00:34:53.800 --> 00:35:00.800]   gucken, dass Sie nicht alle auf Public gehen, es gibt da auch ETH, ETH5 und so weiter
+[00:35:00.800 --> 00:35:07.800]   und die könnten Sie auch alle versuchen. So. Also, ich läuft es, ich sehe einzelne
+[00:35:07.800 --> 00:35:17.800]   Leute stimmen ab, das ist super. Also, was ist die, was ist die gewünschte Form dafür?
+[00:35:17.800 --> 00:35:28.800]   Okay, ich sehe gute Antworten. Noch eine Minute. Okay. Noch die letzte Chance,
+[00:35:28.800 --> 00:35:35.800]   paar Stimmen abzugeben. So, was finden wir denn hier? Also, was sind denn legale Symbolen,
+[00:35:35.800 --> 00:35:39.800]   die hier erzeugt werden könnten? Also, einmal natürlich sofort, dass Epsilon,
+[00:35:39.800 --> 00:35:45.800]   können hier durchgehen und sowohl hier oben als hier unten durch ist nichts Epsilon.
+[00:35:45.800 --> 00:35:57.800]   Oder A, oder zweimal A, oder beliebig oft A, oder B, oder zweimal B, oder dreimal B,
+[00:35:57.800 --> 00:36:04.800]   oder beliebig oft B. Also, als mögliche Antwort wäre also entweder beliebige
+[00:36:04.800 --> 00:36:11.800]   Wiederholungen von A, oder beliebige Wiederholungen von B, oder beliebige Wiederholungen
+[00:36:11.800 --> 00:36:17.800]   von B, oder beliebige Wiederholungen von A. Es ist kein Unterschied, ob Sie das so
+[00:36:17.800 --> 00:36:23.800]   oder anders machen. Also, hier die richtige, eine richtige Antwort wäre
+[00:36:23.800 --> 00:36:33.800]   Wiederholungen von A, gefolgt von Wiederholungen von B. So, ja, das also ist ein anderer Weg,
+[00:36:33.800 --> 00:36:39.800]   wie wir das da, wie wir da weitermachen können. So, und jetzt noch eben zwei Sachen
+[00:36:39.800 --> 00:36:44.800]   zum Thema EBNF-Geschichte. Ich hatte Ihnen gesagt, das E steht für Erweiter,
+[00:36:44.800 --> 00:36:52.800]   dass eben das die erweiterte Form von BNF, wo kommt dieses Extended her?
+[00:36:52.800 --> 00:36:59.800]   Weil früher gab es nur BNF, und BNF war eben Bakus Naurer oder Bakus Normalform,
+[00:36:59.800 --> 00:37:05.800]   und die hatte eben nur Rekursion und Auswahl. Und als Niklas Wirt, der früher mal hier
+[00:37:05.800 --> 00:37:11.800]   Professor war, eine Programmiersprache namens Pascal definierte, das ist schon lange her,
+[00:37:11.800 --> 00:37:16.800]   aber da stört er ihn das, und er fand das nicht so elegant, und der hat dann eben
+[00:37:16.800 --> 00:37:21.800]   halt die Option und Wiederholung hinzugefügt. Und das hat dann eben doch
+[00:37:21.800 --> 00:37:28.800]   Anklang gefunden, und deswegen heißt das jetzt E die erweiterte Extended Form von BNF.
+[00:37:28.800 --> 00:37:34.800]   Also, wie würde so Integer aussehen ohne Wiederholung? Sehen Sie hier mit Rekursion,
+[00:37:34.800 --> 00:37:40.800]   ja? Eine Integer ist eben hier sign or digit, or digits, und digits kann dann
+[00:37:40.800 --> 00:37:46.800]   dahingehen. Also so können Sie das auch machen, geht auch, ist vielleicht nicht ganz
+[00:37:46.800 --> 00:37:53.800]   so einfach, aber ist auch möglich. Ja, und das war es, was ich, ich kann ja, was zum
+[00:37:53.800 --> 00:37:58.800]   Thema EBNF ich Ihnen sagen wollte, ja? Und Sie hatten noch eine Frage.
+[00:37:58.800 --> 00:38:06.800]   [Unverständlich]
+[00:38:06.800 --> 00:38:09.800]   Ich verstehe, was meinen Sie mit Implicit?
+[00:38:09.800 --> 00:38:11.800]   [Unverständlich]
+[00:38:11.800 --> 00:38:16.800]   Ja, genau, auch bei BNF können Sie es auch machen. Die Aufreihung ist mit dabei.
+[00:38:16.800 --> 00:38:21.800]   Die Aufreihung haben Sie immer, weil ohne Aufreihung könnten Sie hier das nicht machen.
+[00:38:21.800 --> 00:38:27.800]   Aufreihung ist eine didaktische Idee, die wir benutzen, um Ihnen das Einstieg zu erleichtern.
+[00:38:27.800 --> 00:38:33.800]   Das ist nicht so essentiell, essentiell und wichtig sind eben halt hier, ob Sie eben
+[00:38:33.800 --> 00:38:37.800]   Rekursionen und Auswahl machen oder ob Sie auch Optionen und Wiederholung haben wollen.
+[00:38:37.800 --> 00:38:45.800]   Ausaufreihung ist immer mit dabei. Ja, so. Okay, ja, das war es zum Thema EBNF.
+[00:38:45.800 --> 00:38:51.800]   Und ich würde sagen, die drei Minuten bis zur Pause überskippen wir, und wir machen dann
+[00:38:51.800 --> 00:38:56.800]   um zehn Minuten nach elf, schaffen wir das? Zehn nach elf, machen wir weiter, ja?
+[00:38:56.800 --> 00:38:59.800]   Oder soll ich jetzt doch drei Minuten machen? Machen wir jetzt Pause.
+[00:38:59.800 --> 00:39:06.800]   Um elf Uhr zehn geht es weiter, ja? Bis elf Uhr zehn Pause, ja?
+[00:39:06.800 --> 00:39:12.800]   Aber wirklich elf Uhr zehn, ja? Um dann zu sehen, wie es geht, ja?
+[00:39:12.800 --> 00:39:17.800]   Okay, also alle haben das gesehen, die meisten von Ihnen sind ja eingetragen und das sollte
+[00:39:17.800 --> 00:39:23.800]   kein Problem sein. Also, machen wir jetzt weiter und fangen wir mit einfachen Java-Programmen an.
+[00:39:23.800 --> 00:39:27.800]   Ganz einfachen, ja? Also, wenn Sie Java schon kennen oder schon programmieren können,
+[00:39:27.800 --> 00:39:32.800]   Sie das langweil, dann bitte verwenden Sie mehr Zeit auf andere Vorlesungen, ja?
+[00:39:32.800 --> 00:39:37.800]   Wie gesagt, es gibt einige, die das noch nicht kennen und trotzdem würde ich Sie bitten,
+[00:39:37.800 --> 00:39:40.800]   deswegen würde ich Sie bitten, das zu berücksichtigen.
+[00:39:40.800 --> 00:39:45.800]   Okay, also wir fangen mit den einfachsten Java-Programmen an und dann kommen wir auf Methoden zu sprechen,
+[00:39:45.800 --> 00:39:48.800]   einen Weg, wie wir einem Programm etwa Struktur geben können.
+[00:39:48.800 --> 00:39:54.800]   Und dann, wahrscheinlich in der nächsten Vorlesung am Donnerstag, rede ich dann über Typen und Variable.
+[00:39:54.800 --> 00:39:58.800]   Also am Anfang machen wir wirklich ganz, ganz einfach, ganz, ganz einfach.
+[00:39:58.800 --> 00:40:04.800]   Also, eBNF hält die Sündtagsregeln von Java-Programmen fest, ja?
+[00:40:04.800 --> 00:40:08.800]   Das hält also fest, was für Namen wir verwenden können.
+[00:40:08.800 --> 00:40:13.800]   Also heißt es da, Bezeichner, also Identifiers, müssen bestimmte Anforderungen erfüllen.
+[00:40:13.800 --> 00:40:17.800]   Sie müssen mindestens ein Zeichen lang sein, also Epsilon geht nicht, ja?
+[00:40:17.800 --> 00:40:24.800]   Sie müssen mit einem Buchstaben anfangen, ja? Das ist entweder A bis Z oder klein oder große.
+[00:40:24.800 --> 00:40:30.800]   Und diejenigen von Ihnen, die sich aus Sprachen kommen, in denen solche Sachen existieren, ja?
+[00:40:30.800 --> 00:40:33.800]   Das ist alles interessant, aber, ja?
+[00:40:33.800 --> 00:40:37.800]   Mein Ratschlag ist keine Umlaute, keine Sonderzeichen und so weiter.
+[00:40:37.800 --> 00:40:41.800]   Damit handeln Sie sich nur später Probleme ein, ja?
+[00:40:41.800 --> 00:40:46.800]   Oder eben ein Name kann Buchstaben oder Ziffern enthalten.
+[00:40:46.800 --> 00:40:48.800]   Das ist nicht die ganze Java-Geschichte, ja?
+[00:40:48.800 --> 00:40:51.800]   In Java gibt es noch ein paar mehr Regeln und andere Sachen,
+[00:40:51.800 --> 00:40:56.800]   aber das ist ja nicht unser Ziel, alle Java-Sachen Ihnen beizubringen, sondern nur das Wichtigste.
+[00:40:56.800 --> 00:41:02.800]   Und die EBNF-Beschreibung für also legale Bezeichner wäre eben so etwas, ja?
+[00:41:02.800 --> 00:41:07.800]   Ein Bezeichner besteht aus einem Buchstaben, gefolgt von Buchstaben oder Ziffern und so weiter, ja?
+[00:41:07.800 --> 00:41:10.800]   So, und das sind ja die Regeln.
+[00:41:10.800 --> 00:41:13.800]   Aber damit natürlich können Sie nicht, das ist nicht programmieren.
+[00:41:13.800 --> 00:41:16.800]   Programmieren ist was anderes, hatten wir gesagt.
+[00:41:16.800 --> 00:41:18.800]   Nämlich das Erstellen von Programmen.
+[00:41:18.800 --> 00:41:22.800]   Und natürlich in diesen Programmen werden wir solche Bezeichner brauchen, ja?
+[00:41:22.800 --> 00:41:24.800]   Das ist nicht den Grund.
+[00:41:24.800 --> 00:41:27.800]   Und wenn man also von sagt Programmieren ist Erstellen von Programmen,
+[00:41:27.800 --> 00:41:29.800]   da sind da zwei Aspekte.
+[00:41:29.800 --> 00:41:34.800]   Einmal müssen wir die Programme erstellen und zum anderen müssen wir die Programme ausführen, ja?
+[00:41:34.800 --> 00:41:37.800]   Das haben wir ja gesehen, das ist das Interessante an der Informatik,
+[00:41:37.800 --> 00:41:40.800]   dass wir nicht nur ein Programm schreiben sollen,
+[00:41:40.800 --> 00:41:45.800]   sondern auch das Programm auch von einem Menschen oder einer Maschine ausgeführt werden kann.
+[00:41:45.800 --> 00:41:48.800]   Und da gibt es zwei prinzipielle Möglichkeiten, das zu machen.
+[00:41:48.800 --> 00:41:52.800]   Und die erste Möglichkeit ist, wir nehmen das ein ganzes Programm
+[00:41:52.800 --> 00:41:57.800]   und dann dieses Programm ist dann in einer Datei oder in mehreren Dateien.
+[00:41:57.800 --> 00:42:00.800]   Und dann haben wir das Problem, also müssen wir eben die Datei erstellen,
+[00:42:00.800 --> 00:42:05.800]   dann muss das Programm ausgeführt werden, dann muss eventuell das modifiziert werden
+[00:42:05.800 --> 00:42:08.800]   und dann geht das vielleicht nochmal wieder zum Ausführen und so weiter hin.
+[00:42:08.800 --> 00:42:11.800]   Aber das Entscheidende ist, wir haben das ganze Programm
+[00:42:11.800 --> 00:42:14.800]   und das ist in einer oder mehreren Dateien.
+[00:42:14.800 --> 00:42:17.800]   Und der andere Weg, den wir wählen können
+[00:42:17.800 --> 00:42:20.800]   und beide Wege haben ihre Vorteile, ja,
+[00:42:20.800 --> 00:42:24.800]   ist, dass wir einzelne Anweisungen aus Java ausführen können.
+[00:42:24.800 --> 00:42:28.800]   Da könnten wir für jede dieser Anweisungen, könnten wir jetzt über das Computer hingehen,
+[00:42:28.800 --> 00:42:31.800]   der würde die lesen, der würde ausführen,
+[00:42:31.800 --> 00:42:34.800]   würde gucken, was bedeutet diese Anweisung überhaupt
+[00:42:34.800 --> 00:42:36.800]   und gibt dann das Ergebnis aus.
+[00:42:36.800 --> 00:42:40.800]   Dann gibt es die nächste Anweisung vor und macht das hintereinander.
+[00:42:40.800 --> 00:42:42.800]   Und sowas nennt man den Rappel.
+[00:42:42.800 --> 00:42:46.800]   Ried evaluate print loop, ja, Ried, also der liest hier eine Anweisung,
+[00:42:46.800 --> 00:42:49.800]   der Computer evaluiert sie, also führt sie aus,
+[00:42:49.800 --> 00:42:53.800]   dann gibt er aus, was für eine Ausgabe da immer Sinn macht
+[00:42:53.800 --> 00:42:56.800]   und dann fängt er von vorne an, loop, ja.
+[00:42:56.800 --> 00:43:00.800]   Also beide dieser Wege existieren, wir werden auf beide zu sprechen kommen,
+[00:43:00.800 --> 00:43:05.800]   aber überwiegend werden wir uns hier in dieser Vorlesung mit dem Weg beschäftigen,
+[00:43:05.800 --> 00:43:11.800]   indem wir mit ganzen Java-Programmen arbeiten, die dann in irgendwelchen Dateien sind.
+[00:43:11.800 --> 00:43:15.800]   Und der Grund, warum wir das machen, ist, das ist der Weg zu größeren Programmen.
+[00:43:15.800 --> 00:43:19.800]   Wenn ich einzelne Java-Anweisungen ausführen kann, ist das super,
+[00:43:19.800 --> 00:43:23.800]   weil so kann ich rausfinden, was genau die denn eigentlich machen wollen, ja.
+[00:43:23.800 --> 00:43:26.800]   Aber wenn ich größere Programme schreibe, dann sind das nicht nur Anweisungen,
+[00:43:26.800 --> 00:43:31.800]   da sind das große Sammlungen von Anweisungen, Programme und so weiter.
+[00:43:31.800 --> 00:43:34.800]   Und andere Vorlesungen eben verlangen das auch
+[00:43:34.800 --> 00:43:38.800]   und deswegen benutzen wir hier in der Vorlesung diesen Ansatz,
+[00:43:38.800 --> 00:43:43.800]   dass wir also halt unsere Programme in der Datei ablegen oder in Dateien ablegen
+[00:43:43.800 --> 00:43:47.800]   und dann da entsprechend durcharbeiten, ja.
+[00:43:47.800 --> 00:43:50.800]   Also müssen Sie sich so vorstellen, wenn Sie es schon mal gesehen haben,
+[00:43:50.800 --> 00:43:55.800]   es ist wahrscheinlich trivial, aber wir haben also unser Java-Programm
+[00:43:55.800 --> 00:43:57.800]   und das ist geschrieben in Text, ja.
+[00:43:57.800 --> 00:44:01.800]   Das besteht aus einer Folge von Java-Anweisungen, ja.
+[00:44:01.800 --> 00:44:03.800]   Und dann wollen wir irgendwelchen Output haben.
+[00:44:03.800 --> 00:44:05.800]   Der Output könnte auch wieder Text sein
+[00:44:05.800 --> 00:44:08.800]   oder könnte, wenn wir etwas ambitionierter sind,
+[00:44:08.800 --> 00:44:11.800]   vielleicht eine Grafik sein, ja.
+[00:44:11.800 --> 00:44:16.800]   Oder könnte auch irgendeine Folge von Bits oder Bytes oder irgendwas sein,
+[00:44:16.800 --> 00:44:20.800]   was von irgendeinem anderen System dann später irgendwie verarbeitet wird, ja.
+[00:44:20.800 --> 00:44:24.800]   So, jetzt, wie komme ich von der linken Seite auf die rechte Seite, ja.
+[00:44:24.800 --> 00:44:26.800]   Na, da gibt es bei Hilfswerkzeuge, ja.
+[00:44:26.800 --> 00:44:30.800]   Da gibt es ein Hilfswerkzeug, das heißt Compiler, ja.
+[00:44:30.800 --> 00:44:34.800]   Der Compiler nimmt den Text des Java-Programms
+[00:44:34.800 --> 00:44:37.800]   und übersetzt das in einen anderen Text.
+[00:44:37.800 --> 00:44:44.800]   Und zwar in Text, der von einem, dem Java-Prozessor später verstanden werden kann.
+[00:44:44.800 --> 00:44:49.800]   Das heißt, dieses Programm besteht jetzt aus Instruktionen für irgendeinen Prozessor.
+[00:44:49.800 --> 00:44:54.800]   Der Prozessor weiß, was der Compiler weiß, was für ein Prozessor sie verwenden werden
+[00:44:54.800 --> 00:44:58.800]   und daher wählt der entsprechende Befehle aus
+[00:44:58.800 --> 00:45:03.800]   und schreibt die in diesen, in irgendeinen Programm rein, ja.
+[00:45:03.800 --> 00:45:06.800]   Das übersetzt der, macht der übersetzt der das, ja.
+[00:45:06.800 --> 00:45:10.800]   Wir nennen das der Compiler übersetzt oder kompiliert, ja.
+[00:45:10.800 --> 00:45:16.800]   So, und dann diese Anweisungen, die werden dann von einem Prozessor genommen, ja.
+[00:45:16.800 --> 00:45:20.800]   Und dieser Prozessor geht dann hin und führt die Anweisungen außen.
+[00:45:20.800 --> 00:45:25.800]   Eine Anweisung könnte sein eben, drucken sie was oder zeichnen sie ein schönes Bild
+[00:45:25.800 --> 00:45:27.800]   oder irgendwas anderes, ja.
+[00:45:27.800 --> 00:45:32.800]   So, jetzt, das ist so die, der Workflow.
+[00:45:32.800 --> 00:45:37.800]   Jetzt, manche Leute, die auch ich gehöre, schreiben nicht immer korrekte Programme.
+[00:45:37.800 --> 00:45:40.800]   Ich weiß, sie sind, sie werden das besser machen, ja.
+[00:45:40.800 --> 00:45:44.800]   Aber vielleicht kann auch Ihnen mal ein Fehler unterlaufen.
+[00:45:44.800 --> 00:45:49.800]   Und darum eben, geht der Compiler hin und übersetzt nicht nur,
+[00:45:49.800 --> 00:45:51.800]   sondern der Compiler prüft auch.
+[00:45:51.800 --> 00:45:56.800]   Der Compiler guckt nach, ob das, was Sie hier haben, legal ist.
+[00:45:56.800 --> 00:46:00.800]   Dass irgendwelchen Regeln entspricht oder genehmigt wird, ja.
+[00:46:00.800 --> 00:46:05.800]   Und wenn das ich der Fall ist, dann beschwert sich der Compiler und sagt, das geht nicht.
+[00:46:05.800 --> 00:46:08.800]   Sie wollen das und das machen, ist nicht erlaubt, ja.
+[00:46:08.800 --> 00:46:11.800]   Und daher, dann beschwert sich der Compiler.
+[00:46:11.800 --> 00:46:17.800]   Und dann geht der Compiler hin, produziert das Java-Programm als Prozessorinstitutionen.
+[00:46:17.800 --> 00:46:22.800]   Aber der Compiler sagt sich, na ja, ich kann ja nicht alles prüfen, ja.
+[00:46:22.800 --> 00:46:27.800]   Es gibt ja Sachen, die kann ich erst dann prüfen, wenn das Programm ausgeführt wird, ja.
+[00:46:27.800 --> 00:46:34.800]   Darum geht dann der Compiler hin und fügt in das Programm weitere Instruktionen ein,
+[00:46:34.800 --> 00:46:38.800]   die checken zur Laufzeit später, ob alles in Ordnung ist.
+[00:46:38.800 --> 00:46:44.800]   Das heißt, wenn jetzt das Programm ausgeführt wird, dann checken der Prozessor
+[00:46:44.800 --> 00:46:50.800]   und das Laufzeitsystem, das Laufzeitsystem ist die Software, die das Programm zur Ausführung bringt und so weiter, ja.
+[00:46:50.800 --> 00:46:55.800]   Die gehen dann hin und prüfen auch, ja.
+[00:46:55.800 --> 00:47:01.800]   Die prüfen teilweise aufgrund dieser Instruktionen und vielleicht auch anderer Weise, ja.
+[00:47:01.800 --> 00:47:10.800]   Und wenn ich sage Prozessor, dann meine ich damit irgendein System, das diese Java-Instruktionen versteht.
+[00:47:10.800 --> 00:47:16.800]   Das kann hardware sein, das kann Software sein, das kann seine Kombination von hardware und software,
+[00:47:16.800 --> 00:47:23.800]   das kann ein general purpose Prozessor sein, wie er in meinem Laptop ist, das kann ein spezieller Prozessor sein,
+[00:47:23.800 --> 00:47:26.800]   wie er in ihrer Java-Shift-Card ist, ja.
+[00:47:26.800 --> 00:47:32.800]   Das ist alles für uns relativ uninteressant, also schon interessant, aber wichtig ist eben,
+[00:47:32.800 --> 00:47:38.800]   diese beiden Prozessor- und Laufzeitsystem zusammen prüfen auch nochmal, ja.
+[00:47:38.800 --> 00:47:43.800]   Und beschweren sich dann, wenn irgendetwas nicht richtig funktioniert, ja.
+[00:47:43.800 --> 00:47:49.800]   Also das ist so der Blick von ganz oben über das, was da passiert.
+[00:47:49.800 --> 00:47:54.800]   Das heißt, wir haben also die Aufgabe für unser Programm, wenn wir das erstellen wollen,
+[00:47:54.800 --> 00:47:59.800]   wir müssen irgendein Editor benutzen, um das Programm als Text zu erstellen.
+[00:47:59.800 --> 00:48:05.800]   Dann müssen wir einen Compiler benutzen, der eben das Ganze übersetzt und dann müssen wir das Ganze ausführen,
+[00:48:05.800 --> 00:48:12.800]   gegebenenfalls den Output angucken oder analysieren und dann vielleicht modifizieren und so weiter und so was nochmal zu machen.
+[00:48:12.800 --> 00:48:16.800]   Und da gibt es natürlich X-Möglichkeiten, das zu machen, ja.
+[00:48:16.800 --> 00:48:24.800]   Und wir haben uns entschieden, ein IDE, das heißt ein Integrated Development Environment, zu verwenden,
+[00:48:24.800 --> 00:48:30.800]   und zwar das Eclipse-System. Es gibt auch andere, alle haben Vor-Nachteile, ja.
+[00:48:30.800 --> 00:48:40.800]   Das ist eine Umgebung, die diese ganzen Komponenten, den Editor, den Compiler, den Prozessor und einiges mehr, zusammenfasst, ja.
+[00:48:40.800 --> 00:48:47.800]   Und dieses System erlaubt es uns, dann eben halt die Programme auszustellen, auszuführen, zu checken und so weiter.
+[00:48:47.800 --> 00:48:52.800]   Und das ist wie Java auch ein Industrial Strengths-System.
+[00:48:52.800 --> 00:48:58.800]   Das heißt, es ist für Leute, Gedacht, die wirklich jeden Tag Programme schreiben.
+[00:48:58.800 --> 00:49:06.800]   Und natürlich hat das daher viele, viele Aspekte, die wir jetzt am Anfang unserer Vorlesung noch gar nicht alle brauchen.
+[00:49:06.800 --> 00:49:11.800]   Das ist halt ja wie mit Java, das ist auch alles Mögliche in der Sprache enthalten.
+[00:49:11.800 --> 00:49:21.800]   Wir werden nicht alles immer brauchen, genauso mit dem Eclipse-IDI brauchen wir auch nicht immer alles, aber es ist verfügbar, wenn wir später brauchen, ja.
+[00:49:21.800 --> 00:49:29.800]   Und die alle sollten jetzt, oder die meisten von Ihnen, hoffe ich, haben sich schon mal diese Übungsaufgabe 0 angesehen und haben das installiert.
+[00:49:29.800 --> 00:49:38.800]   Dann haben Sie, Entschuldigung, haben Sie eben die Eclipse auf Ihrem System zum Laufen bekommen, dann sieht das ungefähr so aus, ja.
+[00:49:38.800 --> 00:49:41.800]   Kleine Unterschiede zwischen Windows und Mac und so weiter, ja.
+[00:49:41.800 --> 00:49:43.800]   So, wir haben da alles alles da.
+[00:49:43.800 --> 00:49:51.800]   Und da sind natürlich eben, wie sagte, viele Aspekte abgehandelt, die für uns gar nicht so wichtig sind, ja, oder die wir noch gar nicht angucken wollen.
+[00:49:51.800 --> 00:49:56.800]   Und wir wollen ja wirklich sehen, wie wir erstmal einfache Programme erscheinen.
+[00:49:56.800 --> 00:50:01.800]   Und was machen wir jetzt da? Wir können dieses Eclipse natürlich umschreiben, aber die Zeit haben wir nicht.
+[00:50:01.800 --> 00:50:05.800]   Also decken wir einfach all das ab, was uns nicht interessiert, ja.
+[00:50:05.800 --> 00:50:07.800]   Ich mag e-Blau sehr, ja.
+[00:50:07.800 --> 00:50:15.800]   Also haben wir eine große Menge an blauer Folie, mit der decken wir alles das, was uns nicht interessiert und was uns nicht angeht, einfach ab, ja.
+[00:50:15.800 --> 00:50:17.800]   Mit unser Leben um einiges einfacher.
+[00:50:17.800 --> 00:50:19.800]   Und dann sieht das nämlich dann so aus, ja.
+[00:50:19.800 --> 00:50:27.800]   Alle die Sachen lassen da weg und nur dieses eine Fenster interessiert uns da weiter, ja.
+[00:50:27.800 --> 00:50:32.800]   So, das ist der Weg, das ist das, was uns hier interessiert.
+[00:50:32.800 --> 00:50:40.800]   Und natürlich, es gibt viele, viele andere Systeme, es gibt IntelliJ und so, auch andere gute Sachen.
+[00:50:40.800 --> 00:50:46.800]   Es gibt Grund, warum wir Eclipse verwenden ist, dass, erstmal, es ist nicht ganz einfach so was aufzusetzen.
+[00:50:46.800 --> 00:50:53.800]   Und zu zweit haben wir da einen Weg, wie wir auch die, wie wir ihre Lösungen einsammeln können und so weiter.
+[00:50:53.800 --> 00:51:01.800]   Also, also, und das ist etwas, was sie in der Prü-, was die ETH Informatikdienste bereit sind, in einer Prüfung zu unterstützen.
+[00:51:01.800 --> 00:51:08.800]   Ja, es tut Ihnen keinen großen, ich tue Ihnen keinen Gefallen, wenn ich sage, machen Sie doch die Übungsaufgaben mit IntelliJ
+[00:51:08.800 --> 00:51:12.800]   und dann am Prüfungstag bekommen Sie zum ersten Mal Ihrem Leben Eclipse, ja.
+[00:51:12.800 --> 00:51:14.800]   Ach, wäre das schön, ja.
+[00:51:14.800 --> 00:51:17.800]   Also, das wäre nicht fair, ja. Und darum machen wir das nicht, ja.
+[00:51:17.800 --> 00:51:21.800]   So, darum, ja, ist halt, nichts ist perfekt, ja.
+[00:51:21.800 --> 00:51:30.800]   So, und weil wir eben, weil wir eben auch nicht ganz gut sehen können, gehe ich jetzt hin und vergrößere mal den Teil, der uns das erste interessiert.
+[00:51:30.800 --> 00:51:35.800]   Aber diese Idee mit der blauen Farbe können wir ja weiter verwenden, weil auch wenn ich mir das hier ansehe, ja,
+[00:51:35.800 --> 00:51:39.800]   da gibt es auch noch viele Sachen, die mich eigentlich nicht interessieren, ja.
+[00:51:39.800 --> 00:51:48.800]   Und das Ziel ist ja einfach, ein einfaches Programm zu schreiben, ein einfaches Programm zu verstehen und das einfache Programm dann auszuführen, ja.
+[00:51:48.800 --> 00:51:54.800]   Also, das heißt, wir wollen nicht alles behandeln, denn aber eben manche Sachen können wir auch nicht ignorieren, ja.
+[00:51:54.800 --> 00:51:59.800]   Wir können also nicht einfach blaue Farbe für alles nehmen, dann bleibt das, dann funktioniert das auch nicht, ja.
+[00:51:59.800 --> 00:52:07.800]   Also, habe ich dieses Programm hier, wo fahren wir jetzt an, blaue Farbe los zu werden, ja, oder einzusetzen.
+[00:52:07.800 --> 00:52:11.800]   Hier fangen wir also an, Public, Class, Public, oh Gott, ja.
+[00:52:11.800 --> 00:52:14.800]   Was heißt das? Ah, am besten ignorieren, ja.
+[00:52:14.800 --> 00:52:20.800]   Also, da kommt jetzt hier die blaue Farbe, ist erst einmal für uns nicht so wichtig, ja.
+[00:52:20.800 --> 00:52:26.800]   Aber jetzt kommt was, das Class, das können wir nicht mehr ignorieren.
+[00:52:26.800 --> 00:52:29.800]   Und jetzt kommt was Weiteres, was wir auch nicht ignorieren können.
+[00:52:29.800 --> 00:52:32.800]   Jetzt kommt hier hinter ein Bezeichner, ein Name, ja.
+[00:52:32.800 --> 00:52:37.800]   Das ist der Name für unser Programm, können wir nicht ignorieren,
+[00:52:37.800 --> 00:52:45.800]   weil nämlich dieser Name muss identisch sein mit dem Namen der Datei, in dem das abgelegt ist, ja.
+[00:52:45.800 --> 00:52:47.800]   Das muss identisch sein, ja.
+[00:52:47.800 --> 00:52:53.800]   Wenn Sie da einen anderen Namen wählen, sagt der Compiler, Sie haben sich etwas geirrt, ja.
+[00:52:53.800 --> 00:52:57.800]   Und dann müssen Sie das eine oder andere korrigieren, ja.
+[00:52:57.800 --> 00:53:04.800]   Also, das ist wirklich wichtig, dass Sie, dass Sie, dass diese beiden Namen stimmen.
+[00:53:04.800 --> 00:53:15.800]   Und in unserem System muss auch noch diese Dateiname eine Extension haben, die dort Java heißt, damit das System zufrieden ist, ja.
+[00:53:15.800 --> 00:53:22.800]   Also, das ist halt der, das Public können wir also wirklich nicht ignorieren, ja.
+[00:53:22.800 --> 00:53:26.800]   Also, das ist wirklich wichtig, dass wir das nicht vergessen, ja.
+[00:53:26.800 --> 00:53:33.800]   Also, hier eben halt das muss identisch sein, ja.
+[00:53:33.800 --> 00:53:37.800]   Der Name des Programms muss für das, dem Namen der Dateien sprechen.
+[00:53:37.800 --> 00:53:42.800]   Und jetzt am Anfang machen wir nur eine Klasse in eine Datei, ja.
+[00:53:42.800 --> 00:53:48.800]   Es gibt auch Wege, das anders zu machen, aber wir wollen unser Leben nicht unnötig komplizieren, ja.
+[00:53:48.800 --> 00:53:55.800]   Darum eben halt eine Datei, eine Klasseinfallname, der für beides ist, ja.
+[00:53:55.800 --> 00:54:04.800]   Also, in unserem Java-Programm angucken, ein Java-Programm besteht eben aus diesen beiden Wörtern Public Class,
+[00:54:04.800 --> 00:54:08.800]   einem Bezeichner, einen sich öffnenden Klammern, ja.
+[00:54:08.800 --> 00:54:13.800]   Aber diese öffnenden Klammern muss eben im Text erscheinen, das ist keine EBNF-Regel, ja.
+[00:54:13.800 --> 00:54:16.800]   Hier sehen wir die öffnenden Klammern, die sind hier und hier.
+[00:54:16.800 --> 00:54:22.800]   Das sind richtige Klammern, ja, die nicht eben EBNF kontrollieren, sondern in unser Programm auftauchen.
+[00:54:22.800 --> 00:54:25.800]   Und dann kommt irgendwas, was noch jetzt fehlt, ja.
+[00:54:25.800 --> 00:54:29.800]   Und danach eben kommt ein, wieder eine sich schließende Klammer.
+[00:54:29.800 --> 00:54:33.800]   Und die sagt mir, so ist mein Java-Programm vollständig erstellt.
+[00:54:33.800 --> 00:54:38.800]   Und was fehlt hier? Hier fehlt eben die Definition einer Methode, ja.
+[00:54:38.800 --> 00:54:39.800]   Jetzt gucken wir es also an, aha.
+[00:54:39.800 --> 00:54:44.800]   Hier habe ich also eine Methodendefinition.
+[00:54:44.800 --> 00:54:47.800]   Und zum Glück erinnere ich mich jetzt an meine blaue Farbe, ja.
+[00:54:47.800 --> 00:54:50.800]   Und es sind natürlich auch wie Public or God Static, ja.
+[00:54:50.800 --> 00:54:55.800]   Wir sind doch alle so dynamisch, dass wir, ah, woid, was ist das schon wieder, ah, main und so weiter.
+[00:54:55.800 --> 00:55:00.800]   Also hier können wir kräftig blaue Farbe einsetzen und das alles mal abdecken, ja.
+[00:55:00.800 --> 00:55:03.800]   Also was übrig bleibt hier ist main, ja.
+[00:55:03.800 --> 00:55:06.800]   Main ist ein Wiederbezeichner, ja.
+[00:55:06.800 --> 00:55:11.800]   Und das ist der Name der Java-Methode, mit der wir hier arbeiten, ja.
+[00:55:11.800 --> 00:55:16.800]   Dieser Name ist fürs erste Mal vorgeschrieben, ja.
+[00:55:16.800 --> 00:55:19.800]   Da können Sie nicht irgendeinen anderen Namen nehmen.
+[00:55:19.800 --> 00:55:23.800]   Das muss main sein, ist vorgeschrieben, ja.
+[00:55:23.800 --> 00:55:28.800]   Und alles andere Zeugstarr, Public Static, Woid und und und, ja.
+[00:55:28.800 --> 00:55:31.800]   Genauestens bitte kopieren, ja.
+[00:55:31.800 --> 00:55:32.800]   So, ja.
+[00:55:32.800 --> 00:55:38.800]   Und diese Methode main, die enthält jetzt die Anweisungen, die wir ausführen wollen oder können, ja.
+[00:55:38.800 --> 00:55:42.800]   Hier ist eine Folge von Anweisungen, die wir hier haben.
+[00:55:42.800 --> 00:55:44.800]   Da ist eine, da ist noch eine.
+[00:55:44.800 --> 00:55:46.800]   Ich zeich mal genauer an, ja.
+[00:55:46.800 --> 00:55:50.800]   Das ist eine Aufreihung eines Folges von Anweisungen.
+[00:55:50.800 --> 00:55:55.800]   Und statt Anweisungen sagen wir oft Statements oder wenn wir kürzer schreiben wollen, dann STMT, ja.
+[00:55:55.800 --> 00:55:58.800]   Das sind also die Java Anweisungen, ja.
+[00:55:58.800 --> 00:56:03.800]   So, das heißt, wenn wir unser Java-Programm angucken, ja, dann sieht es eigentlich so aus.
+[00:56:03.800 --> 00:56:05.800]   Also das haben wir ja eben schon gesehen, ja.
+[00:56:05.800 --> 00:56:08.800]   Public Class, Bezeichner und so weiter.
+[00:56:08.800 --> 00:56:10.800]   Und haben wir hier eine Messe-Definition.
+[00:56:10.800 --> 00:56:17.800]   Die Messe-Definition ist eben definiert als auch wieder diese Parki-Words, Public Static, Woid, ja.
+[00:56:17.800 --> 00:56:21.800]   Dann Main, dann eine sich öffnende Klammer, ja.
+[00:56:21.800 --> 00:56:28.800]   Und das ist eben eine Klammer im Text, keine EBNF-Konstruktion, keine EBNF-Hilfsanweisung, ja.
+[00:56:28.800 --> 00:56:31.800]   Das Wort String, zwei eckige Klammer.
+[00:56:31.800 --> 00:56:36.800]   Sie sehen, die haben alle Verwendung für all die ganzen Klammern gefunden, ja.
+[00:56:36.800 --> 00:56:40.800]   Aber das muss da auch erscheinen, also nicht optional, das muss da stehen.
+[00:56:40.800 --> 00:56:44.800]   Irgend ein anderer Name und dann wieder eine sich schließende Klammer.
+[00:56:44.800 --> 00:56:50.800]   Und dann geht es wieder los mit einer sich öffnenden und später wieder sich schließenden geschweiften Klammer, ja.
+[00:56:50.800 --> 00:56:56.800]   Also das ist unser einfachstes Programm, mit dem wir erst mal arbeiten können.
+[00:56:56.800 --> 00:57:02.800]   Und natürlich die Anweisungen, da werden wir später noch mehr sehen, da gibt es viele, viele Möglichkeiten.
+[00:57:02.800 --> 00:57:04.800]   Zuweisungen, Schleifen und so weiter, ja.
+[00:57:04.800 --> 00:57:08.800]   Da werden wir uns mal später ein bisschen mehr herum kümmern.
+[00:57:08.800 --> 00:57:11.800]   Für das erste Mal gucken wir da gar nicht so gauer an, ja.
+[00:57:11.800 --> 00:57:15.800]   Also es gibt da sehr, sehr viele Anweisungen.
+[00:57:15.800 --> 00:57:22.800]   Eine Art von Anweisungen werden wir aber schon raten, die früh brauchen, nämlich den Aufruf einer Methode.
+[00:57:22.800 --> 00:57:24.800]   Der haben dann Methoden, um einfach die aufgerufen.
+[00:57:24.800 --> 00:57:29.800]   Und zwar Aufruf von Methoden, die global bekannt sind.
+[00:57:29.800 --> 00:57:34.800]   Also Aufruf von global bekannten Methoden, etwas, was wir recht früh brauchen.
+[00:57:34.800 --> 00:57:39.800]   Und das ist nicht nur eine Java-Sache, das gibt es auch in vielen, vielen anderen Programmiersprachen.
+[00:57:39.800 --> 00:57:44.800]   Und daher müssen wir das eben relativ früh benutzen.
+[00:57:44.800 --> 00:57:50.800]   Und da gibt es zwei verschiedene Formate, wie wir eine Methode aufrufen können.
+[00:57:50.800 --> 00:58:02.800]   Der erste ist, dass wir einfach den Methoden Namen nehmen, jetzt noch für das erste Mal einfach nur zwei, also eine sich öffnende und eine sich schließende Runde Klammer nehmen und dahinter ein Semikohler stecken.
+[00:58:02.800 --> 00:58:05.800]   Und das ist der Aufruf einer Methode, ja.
+[00:58:05.800 --> 00:58:08.800]   So, das ist ein Weg, wie wir das machen können, ja.
+[00:58:08.800 --> 00:58:11.800]   Diese Methodename muss global bekannt sein, ja.
+[00:58:11.800 --> 00:58:13.800]   Sonst funktioniert das nicht.
+[00:58:13.800 --> 00:58:17.800]   Das System muss halt wissen, was jetzt hier, was das für eine Methode ist.
+[00:58:17.800 --> 00:58:22.800]   Und wenn das global bekannt ist, dann weiß das System, wie das möglich ist, ja.
+[00:58:22.800 --> 00:58:23.800]   So.
+[00:58:23.800 --> 00:58:37.800]   Und die andere Weg, Methoden aufzurufen, ja, ist, wenn wir jetzt eben ein Objekt verwenden wollen, das eben so einen Aufruf da ermöglicht.
+[00:58:37.800 --> 00:58:41.800]   Also da haben wir ein bestimmtes Objekt, da kommt gleich ein bisschen mehr dazu.
+[00:58:41.800 --> 00:58:52.800]   Und dann machen wir das so, dass wir eben halt das Objekt nehmen, diesen Punkt nicht vergessen und dann den Methoden, den Namen der Methode, den wir haben wollen.
+[00:58:52.800 --> 00:59:00.800]   Und fürs erste Mal gehen wir auch davon aus, dass da gar einfach nur die sich öffnenden und schließenden Klammern da stehen werden, ja.
+[00:59:00.800 --> 00:59:04.800]   Also ein einfaches Beispiel wäre eben irgendein Objekt.
+[00:59:04.800 --> 00:59:10.800]   Sie sehen, die blaue Farbe hilft uns, die Details zu verhindern, nicht zu verhindern, zu verheimlichen.
+[00:59:10.800 --> 00:59:14.800]   Ein Punkt und dann der Name einer Methode, ja.
+[00:59:14.800 --> 00:59:18.800]   Und das hatten wir eben schon gesehen, auch wenn sie sich vielleicht nicht bemerkt haben, ja.
+[00:59:18.800 --> 00:59:26.800]   Das haben wir auch in dem einfachsten Beispiel, in dem wir das eben halt haben können, ja.
+[00:59:26.800 --> 00:59:31.800]   Also wir haben hier eben, das werden wir später nochmal genauer angucken, ja.
+[00:59:31.800 --> 00:59:33.800]   Da kommen eventuell Details, ja.
+[00:59:33.800 --> 00:59:36.800]   Aber die, die wir heute noch nicht brauchen, ja.
+[00:59:36.800 --> 00:59:39.800]   So können wir auch eine Methode aufrufen, ja.
+[00:59:39.800 --> 00:59:44.800]   Und das muss jetzt eben eine Methode sein, die eben irgendwie für diesem Objekt zusammenhängt.
+[00:59:44.800 --> 00:59:47.800]   Die muss vielleicht gar nicht mal global bekannt sein, ja.
+[00:59:47.800 --> 00:59:49.800]   Ihr fragt natürlich, was sind denn Objekte, ja.
+[00:59:49.800 --> 00:59:55.800]   Jetzt muss ich doch irgendwann das blaue wegnehmen und ihnen die, ein bisschen die Wahrheit da sagen, ja.
+[00:59:55.800 --> 01:00:00.800]   Also da können wir, das Thema Objekt wird uns noch das ganze Semester beschäftigen.
+[01:00:00.800 --> 01:00:04.800]   Und darum am Anfang jetzt eine Vereinfachung, ja.
+[01:00:04.800 --> 01:00:06.800]   Nicht alles, wenn wir behandeln können.
+[01:00:06.800 --> 01:00:13.800]   Aber ist ein sehr wichtiges Konzept, das in vielen Programmiersprachen mehr oder weniger gut durchdacht auftritt, ja.
+[01:00:13.800 --> 01:00:15.800]   Also, vereinfacht.
+[01:00:15.800 --> 01:00:21.800]   So ein Objekt ist ein, etwas, was von einem Programm erstellt, gelesen oder verändert werden kann.
+[01:00:21.800 --> 01:00:25.800]   Also eine Einheit der Programmierung, wenn sie so wollen, ja.
+[01:00:25.800 --> 01:00:30.800]   Etwas, was eben im, da sollte man jetzt nicht mehr blau nehmen, so machen wir jetzt eben Grün, ja.
+[01:00:30.800 --> 01:00:36.800]   Ein Objekt, das wird vom Programm erstellt, gelesen oder verändert, ja.
+[01:00:36.800 --> 01:00:40.800]   Und so ein Objekt hat eben einen Zustand.
+[01:00:40.800 --> 01:00:42.800]   Und der Zustand ist ein Wert, ja.
+[01:00:42.800 --> 01:00:46.800]   Ein Wert aus einer Menge möglicher Werte, ja.
+[01:00:46.800 --> 01:00:53.800]   Was die möglichen Werte sind, wenn wir später sehen, wenn wir konkrete Objekte sehen, aber Objekte haben einen Zustand.
+[01:00:53.800 --> 01:01:00.800]   Zum Weiteren haben Objekte einen Verhalten.
+[01:01:00.800 --> 01:01:05.800]   Es gibt Operationen, die man mit diesen Objekten machen kann, ja.
+[01:01:05.800 --> 01:01:15.800]   Entweder mit diesem Objekt oder für dieses Objekt oder in irgendeiner anderen Form gibt es Operationen, die mit dem Objekt zusammen definiert sind.
+[01:01:15.800 --> 01:01:19.800]   Und dann der dritte Aspekt ist, jedes Objekt hat eine Identität.
+[01:01:19.800 --> 01:01:29.800]   Das heißt, wenn ich zwei Objekte habe, ja, ein Objekt x und ein Objekt y, dann kann ich fragen, ob x gleich y ist, ja.
+[01:01:29.800 --> 01:01:42.800]   Was gleich ist, wenn wir später nochmal sehen, wir können unterscheiden zwischen Objekten, wir können die Frage stellen, sind diese beiden Objekte gleich oder nicht gleich, ja.
+[01:01:42.800 --> 01:01:47.800]   Und was Gleichheit heißt, das wird, das ist ein gutes Thema, wenn wir später sehen, ja.
+[01:01:47.800 --> 01:01:54.800]   Aber wichtig ist eben, dass wir zwischen Objekten unterscheiden können, weil sie eine Identität haben, ja.
+[01:01:54.800 --> 01:02:03.800]   Also Objekte können sich vorstellen, sind irgendwelche Bausteine, die unser Programm erstellen kann, die es dann inspizieren kann und dann gegebenenfalls verändern kann.
+[01:02:03.800 --> 01:02:09.800]   Und mit diesen Bausteinen kann es eben Operationen ausführen, weil jedes Objekt ein Verhalten hat, ja.
+[01:02:09.800 --> 01:02:20.800]   So, also eben, jetzt hatten wir vorhin gesehen, ja, eben, dass es gibt im System ein Objekt, das heißt System.out, ja.
+[01:02:20.800 --> 01:02:23.800]   Das ist ein Objekt, das da existiert.
+[01:02:23.800 --> 01:02:29.800]   Und dieses Objekt erlaubt es uns, bestimmte Operationen auszuführen.
+[01:02:29.800 --> 01:02:34.800]   Unter anderem eine Operation, die heißt Print Line, Print drucken, ja.
+[01:02:34.800 --> 01:02:39.800]   Und auch, wenn das heute nicht mehr auf Papier gedruckt wird, der Name ist irgendwie stecken geblieben, ja.
+[01:02:39.800 --> 01:02:45.800]   Und jetzt sehen Sie hier, wie hatte ich gesagt, so was wird, wie wird so eine Methode aufgerufen, ja.
+[01:02:45.800 --> 01:02:48.800]   Wir haben hier das Objekt, ja.
+[01:02:48.800 --> 01:02:54.800]   Ja, hier ist das Objekt, hier ist der fette Punkt, ja, der Dot, ja, Punkt.
+[01:02:54.800 --> 01:03:03.800]   Und dann ist hier der Name der Operation, die wir ausführen wollen, fürs erste Mal einfach nur mit sich öffnen und schließen Klammern.
+[01:03:03.800 --> 01:03:08.800]   Natürlich ist das nicht interessant, wir wollen auch irgendwas drucken, da kommen wir gleich darauf zu sprechen, ja.
+[01:03:08.800 --> 01:03:13.800]   Also so was, diese Methode Print Line, die gibt Text aus, ja.
+[01:03:13.800 --> 01:03:17.800]   Und es gibt in Java viele Methoden, die mit Text arbeiten.
+[01:03:17.800 --> 01:03:19.800]   Das ist relativ gut durchdacht, ja.
+[01:03:19.800 --> 01:03:22.800]   Hier habe ich also ein anderes Objekt, ja.
+[01:03:22.800 --> 01:03:28.800]   Und für dieses Objekt, ja, habe ich eben halt auch wieder den Dot.
+[01:03:28.800 --> 01:03:32.800]   Und hier habe ich eine Operation und die heißt To Upper Case.
+[01:03:32.800 --> 01:03:39.800]   Und dieser Name sagt schon, was die Operation macht, der setzt die kleinen Buchstaben in Großbuchstaben, ja.
+[01:03:39.800 --> 01:03:45.800]   Also ein E wird zu einem E gemacht und ein L wird zu einem L gemacht und so weiter, ja.
+[01:03:45.800 --> 01:03:48.800]   Das ist so ein Objekt, ja.
+[01:03:48.800 --> 01:03:52.800]   Das ist halt, das ist das, was ich eben erzählte, ja.
+[01:03:52.800 --> 01:03:55.800]   Gleiches System, Objekt, die Methodenname, ja.
+[01:03:55.800 --> 01:03:59.800]   Das hatten wir auch in dem Programm gesehen, ja.
+[01:03:59.800 --> 01:04:06.800]   In Java gibt es eine ganze Menge von Operationen, die uns eben erlauben, mit Text zu arbeiten.
+[01:04:06.800 --> 01:04:11.800]   Und das Schöne ist, oder Gute ist, alle diese Methoden, die wir hier haben,
+[01:04:11.800 --> 01:04:13.800]   die verändern nicht das Objekt.
+[01:04:13.800 --> 01:04:15.800]   Das Objekt bleibt, wie es ist, ja.
+[01:04:15.800 --> 01:04:19.800]   Hier haben wir das Objekt, ja, oder mit Kavins auf Deutsch wollen, ja.
+[01:04:19.800 --> 01:04:21.800]   Hier haben wir das Objekt, ja.
+[01:04:21.800 --> 01:04:26.800]   Und das wird nicht verändert, wenn ich eine Operation mit ihm ausführe, ja.
+[01:04:26.800 --> 01:04:31.800]   Es ist ganz einfach, das Objekt wird genommen und verarbeitet, ja.
+[01:04:31.800 --> 01:04:35.800]   Hier habe ich das Objekt, das wird in diese, die Methode können sich vorstellen,
+[01:04:35.800 --> 01:04:40.800]   ist so eine Magie, die schluckt das, guckt sich es einmal an, kommt das Ergebnis raus
+[01:04:40.800 --> 01:04:43.800]   und das Original ist unverändert.
+[01:04:43.800 --> 01:04:45.800]   Das müssen Sie immer im Hinterkopf haben, ja.
+[01:04:45.800 --> 01:04:52.800]   Diese ganzen Methoden, die arbeiten mit Objekten, aber das Objekt bleibt unverändert, ja.
+[01:04:52.800 --> 01:04:57.800]   So, und dann gehen wir jetzt also hingehen auf unser, unser, das Beistellprogramm,
+[01:04:57.800 --> 01:04:59.800]   das ich Ihnen zeigte, ja.
+[01:04:59.800 --> 01:05:01.800]   Also, jetzt sehen Sie schon, ja.
+[01:05:01.800 --> 01:05:05.800]   Hier haben wir die Objekte, die wir erst mal wieder blau abdecken,
+[01:05:05.800 --> 01:05:08.800]   weil wir wollen nicht genau da reingucken, wie das geht.
+[01:05:08.800 --> 01:05:12.800]   Aber hier haben wir dann die Methoden, ja, diese Java-Methode,
+[01:05:12.800 --> 01:05:16.800]   die eben eine Operation macht, die etwas ausgibt, ja.
+[01:05:16.800 --> 01:05:21.800]   Und jetzt sehen wir schon, die hat hier Parameter, die hat hier ein Parameter,
+[01:05:21.800 --> 01:05:27.800]   also, in den Klammern, zwischen den Klammern steht etwas, was eben gedruckt werden soll, ja.
+[01:05:27.800 --> 01:05:34.800]   Das ist eine Operation dieses Print-Line, das einen String nimmt und den eben druckt, ja.
+[01:05:34.800 --> 01:05:37.800]   Und String, jetzt werden wir uns gleich nochmal genauer angucken, ja.
+[01:05:37.800 --> 01:05:41.800]   Ein String ist, lässt sich, Text zwischen diesen Anführungszeichen, ja,
+[01:05:41.800 --> 01:05:46.800]   durch einen Hoch, durch einen Apostrophe, oder hochkommen, was ich auf Deutsch sage, ja.
+[01:05:46.800 --> 01:05:50.800]   In Java müssen beide oben sein.
+[01:05:50.800 --> 01:05:54.800]   Also, beide oben, diese beiden Hochkommers, müssen beide oben sein, ja.
+[01:05:54.800 --> 01:05:58.800]   Lassen Sie sich nicht von der, es gibt eine Anweisung des Bundesrates, ja.
+[01:05:58.800 --> 01:06:03.800]   Welcher Art von Anführungszeichen wir offiziell verwenden dürfen, ja.
+[01:06:03.800 --> 01:06:06.800]   Gut, ist schön, aber nicht für uns, ja.
+[01:06:06.800 --> 01:06:10.800]   Also, hier, das muss es sein, das und nichts anderes, ja.
+[01:06:10.800 --> 01:06:15.800]   Und wenn andere Sprachen, es gibt eigentlich die Sprachen, die fangen unten an und hören oben auf,
+[01:06:15.800 --> 01:06:21.800]   auch nicht bei uns, ja. Also, alles muss am Anfang und am Ende, muss das immer oben sein, ja.
+[01:06:21.800 --> 01:06:27.800]   Aber wenn ich sonst String habe, dann kann meine Print-Line-Methode mir diesen Text drucken,
+[01:06:27.800 --> 01:06:34.800]   in irgendeinem Fenster oder irgendeiner Datei, das können wir bei Gelegenheit dann nochmal sehen, ja.
+[01:06:34.800 --> 01:06:38.800]   Also, jetzt haben wir also das hier abgedeckt, ja.
+[01:06:38.800 --> 01:06:43.800]   Und jetzt können wir ein bisschen weiter gucken, um zu sehen, was, also,
+[01:06:43.800 --> 01:06:47.800]   was wir jetzt dem Programm machen können, weil jetzt haben wir das Programm geschrieben
+[01:06:47.800 --> 01:06:49.800]   und dann wollen wir es ausführen.
+[01:06:49.800 --> 01:06:55.800]   Und natürlich, da kann ich nicht nur das Programm gucken, da muss ich mir ein bisschen mehr von dieser Eclipse-Umgebung
+[01:06:55.800 --> 01:06:58.800]   ansehen und ein bisschen mehr blaue Farbe wegnehmen.
+[01:06:58.800 --> 01:07:02.800]   Und wenn ich das mache, dann sehe ich hier oben einen grünen Pfeil.
+[01:07:02.800 --> 01:07:05.800]   Ja, grün ist gut, ja. So, hier sehe ich einen grünen Pfeil.
+[01:07:05.800 --> 01:07:10.800]   Und wenn ich jetzt auf diesen grünen Pfeil klicke, ja, dann wird mein Programm ausgeführt.
+[01:07:10.800 --> 01:07:15.800]   Und je nachdem, was für ein System Sie haben, sieht das dann vorher so aus oder ein bisschen anders, ja.
+[01:07:15.800 --> 01:07:21.800]   Hier haben Sie auch einen Fenster, das es Ihnen erlaubt, die Dateien zu finden und so weiter, ja.
+[01:07:21.800 --> 01:07:27.800]   Aber auf jeden Fall, wenn Sie hier oben drauf klicken, dann wird das Programm automatisch übersetzt und ausgeführt.
+[01:07:27.800 --> 01:07:30.800]   Weil ausführen können Sie ja nur übersetzte Programme.
+[01:07:30.800 --> 01:07:33.800]   Wenn Sie es nicht übersetzen, dann kann es nicht ausgeführt werden.
+[01:07:33.800 --> 01:07:39.800]   Aber in der Java-IDI, das wir haben, wird das eben automatisch gemacht.
+[01:07:39.800 --> 01:07:43.800]   Und wenn das Programm ohne Fehler ist, wird es entsprechend ausgeführt.
+[01:07:43.800 --> 01:07:48.800]   Und dann, was passiert, dann sehen wir hier in einem anderen Fenster, habe ich jetzt ein bisschen vergrößert.
+[01:07:48.800 --> 01:07:52.800]   Dann sehen wir hier das Ergebnis. Hier sehen wir das Programm, wird ausgeführt.
+[01:07:52.800 --> 01:07:56.800]   Es drückt einmal "Hello World", da sehen wir es, ja.
+[01:07:56.800 --> 01:08:00.800]   Und dann drückt es das nochmal "Hello World Again", ja.
+[01:08:00.800 --> 01:08:03.800]   Hier haben wir dann die nächste Zeile gedruckt, ja.
+[01:08:03.800 --> 01:08:07.800]   Also, nach dem Klicken hier oben, Programm wurde übersetzt, ausgeführt.
+[01:08:07.800 --> 01:08:10.800]   Die Ausführung wurde dieses Print-Line ausgeführt.
+[01:08:10.800 --> 01:08:13.800]   Hier sehen wir die erste Zeile, hier sehen wir die nächste Zeile.
+[01:08:13.800 --> 01:08:16.800]   Und das war die Ausführung des Programms, ja.
+[01:08:16.800 --> 01:08:18.800]   Wirklich nicht sehr schwierig.
+[01:08:18.800 --> 01:08:23.800]   So, jetzt, wie gesagt, ich habe hier kräftig helllaue Farbe verwendet,
+[01:08:23.800 --> 01:08:28.800]   um die Sachen abzudecken, die Sie jetzt am Anfang mal nicht berücksichtigen müssen.
+[01:08:28.800 --> 01:08:32.800]   Aber wir können natürlich nicht alles weglassen und ignorieren.
+[01:08:32.800 --> 01:08:36.800]   Sonst kann das Programm entweder nicht übersetzt werden oder nicht ausgeführt werden
+[01:08:36.800 --> 01:08:38.800]   oder es gibt andere Probleme, ja.
+[01:08:38.800 --> 01:08:42.800]   Wenn Sie irgendwie Teile weglassen oder Teile vertippen,
+[01:08:42.800 --> 01:08:47.800]   dann gibt es eben Probleme entweder mit dem Compiler oder mit der Ausführungsumgebung.
+[01:08:47.800 --> 01:08:51.800]   Jetzt nehmen wir mal an, das Public hätten wir nicht gemocht
+[01:08:51.800 --> 01:08:53.800]   und wir hätten das Public weglassen, ja.
+[01:08:53.800 --> 01:08:55.800]   Ja, was passiert dann?
+[01:08:55.800 --> 01:08:59.800]   Wenn wir jetzt auf den grünen Pfeil klicken, ja, dann sagt das System
+[01:08:59.800 --> 01:09:03.800]   Main method not found in class hello world.
+[01:09:03.800 --> 01:09:08.800]   Please, please, ja, please define the main method S, ja.
+[01:09:08.800 --> 01:09:11.800]   Public static void main.
+[01:09:11.800 --> 01:09:13.800]   So hat das auszusehen, ja.
+[01:09:13.800 --> 01:09:15.800]   So und nicht anders, ja.
+[01:09:15.800 --> 01:09:17.800]   Oder Sie können auch irgendwas anderes machen, genau.
+[01:09:17.800 --> 01:09:19.800]   Wenn Sie wissen, wie das geht, ist gut.
+[01:09:19.800 --> 01:09:21.800]   Dann brauchen Sie es hier heute nicht zuhören.
+[01:09:21.800 --> 01:09:27.800]   Also, dass wenn das Main nicht da ist, ja, dann beschwert sich das System
+[01:09:27.800 --> 01:09:31.800]   und Sie müssen so eine Main-Methode definieren, ja.
+[01:09:31.800 --> 01:09:36.800]   Das ist einfach der Fall, weil wenn wir dem System sagen,
+[01:09:36.800 --> 01:09:42.800]   dass es dieses Programm ausführen soll, dann geht es hin und sucht eine Methode Main,
+[01:09:42.800 --> 01:09:47.800]   die so aussieht, Public static void und so weiter und führt die dann aus, ja.
+[01:09:47.800 --> 01:09:50.800]   Und wenn es die nicht findet, beschwert es sich, so wie hier, ja.
+[01:09:50.800 --> 01:09:52.800]   Also, machen Sie das nicht, ja.
+[01:09:52.800 --> 01:09:57.800]   Genauso, wenn Sie hier das in der Mitte weglassen zwischen den runden Klammern,
+[01:09:57.800 --> 01:10:00.800]   brauchen wir zwar zur Zeit noch nicht, aber das heißt noch lange nicht,
+[01:10:00.800 --> 01:10:02.800]   dass Sie es weglassen können, ja.
+[01:10:02.800 --> 01:10:04.800]   Das System beschwert sich.
+[01:10:04.800 --> 01:10:08.800]   Dann sagt er Main method not found, please define a Main method S,
+[01:10:08.800 --> 01:10:12.800]   Public static void Main, Klammer auf, string,
+[01:10:12.800 --> 01:10:16.800]   komische Ecke geklammern, args, klammer zu, ja.
+[01:10:16.800 --> 01:10:18.800]   So, das ist verlangt, ja.
+[01:10:18.800 --> 01:10:20.800]   Und machen Sie nichts anderes.
+[01:10:20.800 --> 01:10:23.800]   Und wenn Sie da etwas anderes machen wollen,
+[01:10:23.800 --> 01:10:27.800]   müssen Sie sich irgendwie sehr gut auskennen oder Sie kriegen Ärger.
+[01:10:27.800 --> 01:10:32.800]   Nun ist es leider so, dass das System nicht immer Antworten gibt,
+[01:10:32.800 --> 01:10:34.800]   die so schön sind wie die, ja.
+[01:10:34.800 --> 01:10:37.800]   Bitte, ja, please, machen Sie doch das, ja.
+[01:10:37.800 --> 01:10:39.800]   Please, ja, ist es schön, ja.
+[01:10:39.800 --> 01:10:42.800]   Manchmal haben wir aber auch Pech, und es gibt ganz komische Meldungen,
+[01:10:42.800 --> 01:10:45.800]   und da muss man aufpassen, was man falsch gemacht hat, ja.
+[01:10:45.800 --> 01:10:50.800]   Das könnte ja jemand dummerweise hier oben das U weglassen haben, ja.
+[01:10:50.800 --> 01:10:55.800]   Jetzt, je nachdem, wenn Sie Eclipse verwenden und die Einstellungen richtig sind,
+[01:10:55.800 --> 01:11:00.800]   dann sehen Sie hier so ein rotes Zeichenbereich.
+[01:11:00.800 --> 01:11:03.800]   Das heißt, Eclipse ist nicht sehr zufrieden,
+[01:11:03.800 --> 01:11:06.800]   und hätte gerne, dass Sie noch irgendwas machen, ja.
+[01:11:06.800 --> 01:11:09.800]   Aber wenn Sie jetzt das gar nicht beachtet haben
+[01:11:09.800 --> 01:11:11.800]   und trotzdem ausführen wollen,
+[01:11:11.800 --> 01:11:14.800]   dann gibt es eben halt eine andere Fehlerfällung.
+[01:11:14.800 --> 01:11:18.800]   Und die sagt eben, Errors existen, es existieren Fehler.
+[01:11:18.800 --> 01:11:20.800]   Das ist eine sehr allgemeine Aussage, ja.
+[01:11:20.800 --> 01:11:23.800]   Und jetzt müssen Sie wissen, wo kommt der Fehler denn her, ja.
+[01:11:23.800 --> 01:11:25.800]   Machen Sie weiter, ja.
+[01:11:25.800 --> 01:11:28.800]   Je nachdem können wir ja weiter machen, was passiert dann,
+[01:11:28.800 --> 01:11:31.800]   dann gibt es auf einmal eine Exception, ja.
+[01:11:31.800 --> 01:11:34.800]   Wenn Sie Exception sehen, das ist schon mal wie so Hochspannung.
+[01:11:34.800 --> 01:11:36.800]   Vorsicht, da ist irgendwas schief gelaufen, ja.
+[01:11:36.800 --> 01:11:39.800]   Da ist irgendwas nicht in Ordnung, ja.
+[01:11:39.800 --> 01:11:42.800]   Also bitte beheben, ja.
+[01:11:42.800 --> 01:11:46.800]   Ärgerlicher ist es, wenn Sie mal wegen die letzte Klammer vergessen, ja.
+[01:11:46.800 --> 01:11:48.800]   Das kann man leicht übersehen.
+[01:11:48.800 --> 01:11:51.800]   Aber auch hier Sie sehen, hier in dieser Spalte ist so ein rotes X,
+[01:11:51.800 --> 01:11:54.800]   das heißt, da ist da irgendwann nicht in Ordnung, ja.
+[01:11:54.800 --> 01:11:56.800]   Wenn Sie das aber nicht beachtet haben,
+[01:11:56.800 --> 01:12:00.800]   bekommen Sie wieder diese schöne Fehlermeldung, es existieren Fehler, ja.
+[01:12:00.800 --> 01:12:03.800]   Und da müssen Sie damit zurechtkommen.
+[01:12:03.800 --> 01:12:06.800]   Also, Zusammenfassung, ja.
+[01:12:06.800 --> 01:12:10.800]   Unser Programm besteht aus eben einer,
+[01:12:10.800 --> 01:12:14.800]   etwas mit dem, dass die Keywords Public Class hat,
+[01:12:14.800 --> 01:12:17.800]   dann kommt ein Bezeichner, dann kommen diese geschweiften Klammern,
+[01:12:17.800 --> 01:12:21.800]   dann kommt eine Methode mit Namen Main, die hat diese, die sieht so aus.
+[01:12:21.800 --> 01:12:26.800]   Und in dieser Methode sind dann eben verschiedene Anweisungen,
+[01:12:26.800 --> 01:12:31.800]   und die sind es dann eben halt, die für uns wichtig sind, ja.
+[01:12:31.800 --> 01:12:36.800]   Also hier dieses Name, hier ist eine Klasse mit Namen Main,
+[01:12:36.800 --> 01:12:41.800]   und das muss in einer Datei mit genau diesem Namen abgelegt werden,
+[01:12:41.800 --> 01:12:44.800]   sonst funktioniert das System nicht, ja.
+[01:12:44.800 --> 01:12:47.800]   Also jedes ausführbare Programm besteht aus dieser Klasse,
+[01:12:47.800 --> 01:12:50.800]   oder aus einer Klasse, die enthält diese Methode Main.
+[01:12:50.800 --> 01:12:53.800]   Diese Methode Main wird automatisch ausgeführt,
+[01:12:53.800 --> 01:12:56.800]   wenn wir auf den grünen Falt klicken,
+[01:12:56.800 --> 01:12:59.800]   und dann geht alles in Ordnung und am besten, ja.
+[01:12:59.800 --> 01:13:01.800]   Und während später mit mehreren Klassen arbeiten
+[01:13:01.800 --> 01:13:03.800]   und mehreren Methoden und so weiter,
+[01:13:03.800 --> 01:13:05.800]   das ist aber nicht das, was wir heute machen wollen.
+[01:13:05.800 --> 01:13:07.800]   Jetzt hatte ich gesagt,
+[01:13:07.800 --> 01:13:10.800]   es gibt auch noch einen anderen Weg, klar, war, Programme auszuführen,
+[01:13:10.800 --> 01:13:12.800]   und die will ich kurz zeigen.
+[01:13:12.800 --> 01:13:15.800]   Das ist der Weg, den ich auch in dem Vorkurs verwendet habe,
+[01:13:15.800 --> 01:13:18.800]   dass wir einzelne Anweisungen ausführen können, ja.
+[01:13:18.800 --> 01:13:20.800]   Können also eine Anweisung eingeben,
+[01:13:20.800 --> 01:13:25.800]   und das System geht dann hin und führt diese Anweisung auf.
+[01:13:25.800 --> 01:13:28.800]   Und wenn Sie das machen, dann brauchen Sie kein Eclipse,
+[01:13:28.800 --> 01:13:31.800]   das ist so der Grund, warum wir es im Vorkurs gemacht haben,
+[01:13:31.800 --> 01:13:35.800]   wir brauchen ein Programm, das diese Java Anweisungen liest,
+[01:13:35.800 --> 01:13:38.800]   und das ist die JShell, die Java Shell, ja.
+[01:13:38.800 --> 01:13:41.800]   Und das würde dann so aussehen auf Ihrem System,
+[01:13:41.800 --> 01:13:46.800]   dass Sie halt die JShell auf Ihrem System aufrufen, ja.
+[01:13:46.800 --> 01:13:51.800]   Und dann können Sie hier zu diesem eben Anweisungen eingeben.
+[01:13:51.800 --> 01:13:54.800]   So können Sie eingeben die Anweisung,
+[01:13:54.800 --> 01:13:56.800]   wir nehmen das Objekt System dort out,
+[01:13:56.800 --> 01:14:00.800]   und wir haben dann den Punkt und dann den Name einer Java Methode,
+[01:14:00.800 --> 01:14:03.800]   und wir drucken dann, was ist hier, Hello World, ja.
+[01:14:03.800 --> 01:14:06.800]   Und wenn wir das machen, wird das Programm, liest das JShell,
+[01:14:06.800 --> 01:14:10.800]   diese Anweisung sieht, ah, ich soll was drucken,
+[01:14:10.800 --> 01:14:15.800]   und druckt dann hier die Ausgabe hin, ja, das kann man da sehr gut machen.
+[01:14:15.800 --> 01:14:20.800]   Das ist gut und praktisch, wenn Sie eben irgendetwas mal kurz ausprobieren wollen,
+[01:14:20.800 --> 01:14:23.800]   oder Ihnen nicht klar ist, wie so was genau funktioniert,
+[01:14:23.800 --> 01:14:26.800]   aber eben der Nachteil ist, können auch mehrere machen,
+[01:14:26.800 --> 01:14:31.800]   können die Methode definieren, können die Methode Main definieren.
+[01:14:31.800 --> 01:14:36.800]   Auf der Stufe JShell, da brauche ich mir diese komischen Keywords,
+[01:14:36.800 --> 01:14:40.800]   Public und Static und so weiter, die brauche ich da gar nicht erst benutzen,
+[01:14:40.800 --> 01:14:43.800]   da genügt es, wenn ich das hier sage, ich habe eine Methode Main,
+[01:14:43.800 --> 01:14:47.800]   das Keyword "Woid", da komme ich, da muss ich wieder Blau anwenden,
+[01:14:47.800 --> 01:14:50.800]   brauche ich, aber kann ich nicht ignorieren,
+[01:14:50.800 --> 01:14:53.800]   aber so könnte ich das auch machen, ja.
+[01:14:53.800 --> 01:14:57.800]   Das ist eben halt der andere Weg, wie ich das mache,
+[01:14:57.800 --> 01:15:02.800]   entweder tippe ich das ein oder ich lese das aus irgendeiner Datei,
+[01:15:02.800 --> 01:15:04.800]   kann ich auch machen.
+[01:15:04.800 --> 01:15:08.800]   Das ist gut für kleinere Programme, für einzelne Sachen,
+[01:15:08.800 --> 01:15:11.800]   eben der Aufruf muss jetzt explizit sein,
+[01:15:11.800 --> 01:15:13.800]   das wird nicht automatisch ausgeführt,
+[01:15:13.800 --> 01:15:17.800]   ich muss hier die Methode selber aufrufen, ja.
+[01:15:17.800 --> 01:15:20.800]   Also ja, das ist gut, wenn Sie keine Programme haben,
+[01:15:20.800 --> 01:15:24.800]   die Sie ausprobieren wollen, aber für die Art von Programmen,
+[01:15:24.800 --> 01:15:27.800]   die wir hier in dieser Vorlesung und vor allen Dingen auch in der anderen
+[01:15:27.800 --> 01:15:30.800]   Vorlesung machen wollen, ist das nicht so praktisch.
+[01:15:30.800 --> 01:15:33.800]   Aber was Sie da gelernt haben über das Programmieren mit Java,
+[01:15:33.800 --> 01:15:36.800]   das geht natürlich in beiden Systemen, ja.
+[01:15:36.800 --> 01:15:39.800]   Die Regeln für Programme, die Regeln für Anweisungen
+[01:15:39.800 --> 01:15:42.800]   und so weiter sind identisch, ja.
+[01:15:42.800 --> 01:15:47.800]   Der Weg über, dass wir mit Dateien arbeiten, der ist kalierbar, ja.
+[01:15:47.800 --> 01:15:51.800]   Viele Dateien haben, der Weg über einzelne Anweisungen,
+[01:15:51.800 --> 01:15:55.800]   der ist sehr flexibel, ich kann eine Anweisung modifizieren,
+[01:15:55.800 --> 01:15:58.800]   ich kann gucken, was passiert denn, wenn ich das ändere und so weiter.
+[01:15:58.800 --> 01:16:01.800]   Also beide von diesen Wegen haben ihre Bedeutung
+[01:16:01.800 --> 01:16:04.800]   und je nachdem, was für ein Problem sie haben,
+[01:16:04.800 --> 01:16:07.800]   ist mal der eine oder mal der andere besser.
+[01:16:07.800 --> 01:16:10.800]   Aber wenn Sie eben insgesamt hier weitermachen,
+[01:16:10.800 --> 01:16:13.800]   dann werden Sie sehen, dass dieser Weg in vielen Situationen
+[01:16:13.800 --> 01:16:16.800]   noch eingesetzt werden muss oder begangen werden muss.
+[01:16:16.800 --> 01:16:21.800]   Und darum nehmen wir diesen Weg hier in dieser Vorlesung.
+[01:16:21.800 --> 01:16:25.800]   Also, hat gesagt, jedes Programm braucht einen Namen
+[01:16:25.800 --> 01:16:31.800]   und die Konvention ist, dass die mit einem Großbuchstaben anfängt.
+[01:16:31.800 --> 01:16:36.800]   Konvention heißt, alle Leute auf diesem Planeten,
+[01:16:36.800 --> 01:16:40.800]   die Java programmieren, haben sich entschieden, das so zu machen.
+[01:16:40.800 --> 01:16:42.800]   Sie können die Ausnahme sein, ja,
+[01:16:42.800 --> 01:16:45.800]   und können auf Ihrem System das anders machen.
+[01:16:45.800 --> 01:16:48.800]   Aber wenn Sie mit anderen Leuten zusammenarbeiten wollen,
+[01:16:48.800 --> 01:16:54.800]   erleichtern Sie allen das Leben, wenn Sie sich auch in die Konvention halten.
+[01:16:54.800 --> 01:16:56.800]   Und dann eben die Konvention ist,
+[01:16:56.800 --> 01:17:00.800]   dass man gelegentlich weitere Großbuchstaben verwendet,
+[01:17:00.800 --> 01:17:02.800]   um die Lesbarkeit zu erhöhen.
+[01:17:02.800 --> 01:17:05.800]   Weil wenn dann der Name sehr lang wird,
+[01:17:05.800 --> 01:17:09.800]   dann ist das hilfreich, dass man so gewisse Landmarken hat.
+[01:17:09.800 --> 01:17:13.800]   Und die Regel ist, und die Regel heißt, wir können das nicht ignorieren,
+[01:17:13.800 --> 01:17:17.800]   dass der Dateiname genauso ist wie der Programmname.
+[01:17:17.800 --> 01:17:21.800]   Also, die Datei muss den Namen des Programms haben.
+[01:17:21.800 --> 01:17:24.800]   Sonst funktioniert das nicht.
+[01:17:24.800 --> 01:17:29.800]   Und nochmal, wenn ich schon sage, die Konvention des Großbuchstaben,
+[01:17:29.800 --> 01:17:33.800]   dann in Java sind Klein- und Großbuchstaben unterschiedlich.
+[01:17:33.800 --> 01:17:40.800]   Sie beiden sind nicht identisch, können sie nicht einfach den einen oder anderen ersetzen.
+[01:17:40.800 --> 01:17:42.800]   Also, ja.
+[01:17:42.800 --> 01:17:47.800]   Und dann eben halt, nachdem Sie mit einem Buchstaben angefangen haben,
+[01:17:47.800 --> 01:17:53.800]   können Sie natürlich den mit anderen Buchstaben oder Ziffern weiter machen.
+[01:17:53.800 --> 01:17:56.800]   Sie können auch diesen Anderschor verwenden.
+[01:17:56.800 --> 01:18:00.800]   Das ist so ein Unterstrich.
+[01:18:00.800 --> 01:18:03.800]   Es gibt noch mehr Konventionen und so weiter.
+[01:18:03.800 --> 01:18:09.800]   Aber das sind die praktisch vor allem vereinfachen Programme reichen.
+[01:18:09.800 --> 01:18:11.800]   Die alle mal.
+[01:18:11.800 --> 01:18:15.800]   Ich meine, es gibt halt noch diverse andere.
+[01:18:15.800 --> 01:18:19.800]   So, jetzt sage ich Bezeichner, könnten eben sein,
+[01:18:19.800 --> 01:18:23.800]   den Namen für die Methode, den Namen für das Programm.
+[01:18:23.800 --> 01:18:27.800]   Aber es gibt ein paar und auch später Bezeichner für Variable, die wir einführen werden.
+[01:18:27.800 --> 01:18:31.800]   Es gibt paar Wörter, die können Sie nicht als Bezeichner verwenden.
+[01:18:31.800 --> 01:18:36.800]   Insofern reservierte Wörter, die das Java-System für sich reserviert hat.
+[01:18:36.800 --> 01:18:41.800]   Und ein paar von denen können Sie in manchen Situationen einsetzen.
+[01:18:41.800 --> 01:18:44.800]   Wenn Sie es doch mal nach falschen machen, beschwert sich der Kompiler.
+[01:18:44.800 --> 01:18:47.800]   Es gibt so ein teilweise reservierte Symbole.
+[01:18:47.800 --> 01:18:50.800]   Dann gibt es reservierte Symbole für besondere Werte.
+[01:18:50.800 --> 01:18:53.800]   Truf, Fort und Null, werden wir später kennenlernen.
+[01:18:53.800 --> 01:18:58.800]   Und dann gibt es Worte, die sind reserviert, aber nicht benutzt, zum Beispiel Goto.
+[01:18:58.800 --> 01:19:00.800]   Einfach, weil es andere Programmiersprachen gab,
+[01:19:00.800 --> 01:19:03.800]   in denen so etwas mal später früher verwendet wurde,
+[01:19:03.800 --> 01:19:06.800]   will man verhindern, dass hier einer Unsinn macht.
+[01:19:06.800 --> 01:19:08.800]   Und natürlich, wenn Sie so ein Programm haben,
+[01:19:08.800 --> 01:19:14.800]   dann kann man sagen, hier der Nächste, der das Programm bearbeiten muss,
+[01:19:14.800 --> 01:19:18.800]   möge doch bitte das Programm lesen und verstehen, um was es geht.
+[01:19:18.800 --> 01:19:23.800]   Und das ist im Prinzip möglich, wenn Sie sich die Java-Anweisungen angucken.
+[01:19:23.800 --> 01:19:28.800]   Aber manchmal hilft es, wenn man im Programm sich selber noch ein Hinweis einfügt
+[01:19:28.800 --> 01:19:32.800]   und sagt, hier, das meine ich damit oder das soll gemacht werden.
+[01:19:32.800 --> 01:19:35.800]   Solche Hinweise nennt man Kommentare.
+[01:19:35.800 --> 01:19:41.800]   Und die werden eben halt ins System in das Programm eingefügt, um einem Leser zu helfen.
+[01:19:41.800 --> 01:19:44.800]   Und der Leser, denken Sie, das können auch Sie sein,
+[01:19:44.800 --> 01:19:49.800]   die nach dem Ende des Semesters nochmal die Programme angucken will.
+[01:19:49.800 --> 01:19:53.800]   Und da hilft es Ihnen vielleicht, dass Sie sich daran erinnern,
+[01:19:53.800 --> 01:19:56.800]   erinnert werden, was Sie damals meinten.
+[01:19:56.800 --> 01:20:01.800]   Diese Kommentare haben im Allgemeinen keine Auswirkungen auf die Ausführung.
+[01:20:01.800 --> 01:20:03.800]   Aber sie sind sehr hilfreich.
+[01:20:03.800 --> 01:20:08.800]   Und in Java gibt es zwei Varianten, die eine ist, so zwei Slashes.
+[01:20:08.800 --> 01:20:14.800]   Dann ist alles von hier bis zum Ende der Zeile ein Kommentar
+[01:20:14.800 --> 01:20:18.800]   oder eben Slash-Stern bis zum nächsten Stern-Sflash.
+[01:20:18.800 --> 01:20:21.800]   Alles das ist auch Kommentar.
+[01:20:21.800 --> 01:20:26.800]   Gute Kommentare machen das Leben der Leser einfacher.
+[01:20:26.800 --> 01:20:28.800]   Hier hätten wir einfaches Beispiel.
+[01:20:28.800 --> 01:20:31.800]   Hier würden wir sagen, hier oben ist ein Kommentarblock.
+[01:20:31.800 --> 01:20:33.800]   Was das für ein Programm ist.
+[01:20:33.800 --> 01:20:36.800]   Warum haben wir das so gemacht, aus den und den Gründen.
+[01:20:36.800 --> 01:20:39.800]   Und das ist alles.
+[01:20:39.800 --> 01:20:43.800]   Und jetzt noch kurz zum Schluss für heute.
+[01:20:43.800 --> 01:20:47.800]   Ich sage diese Methode Printline, drückt irgendwelche Strings aus.
+[01:20:47.800 --> 01:20:52.800]   Und ein String ist eben eine Folge, die zwischen diesen Zeichen steht.
+[01:20:52.800 --> 01:20:57.800]   Das ist sehr zweckmäßig, aber es gibt auch ein paar Einschränkungen oder Regeln.
+[01:20:57.800 --> 01:21:00.800]   So ein String darf nur eine Zeile lang sein.
+[01:21:00.800 --> 01:21:04.800]   Also so was hier, wo wir versuchen von einer Zeile auf die nächste zu gehen,
+[01:21:04.800 --> 01:21:06.800]   das ist kein Jar-Was-String.
+[01:21:06.800 --> 01:21:12.800]   Und so ein String darf nicht so ein, solche Anführungszeichen enthalten.
+[01:21:12.800 --> 01:21:15.800]   Also hier so was geht nicht, ist nicht erlaubt.
+[01:21:15.800 --> 01:21:21.800]   Gibt Wege, wie wir das machen können, aber ist eben halt nicht erlaubt,
+[01:21:21.800 --> 01:21:23.800]   nicht einfach erlaubt.
+[01:21:23.800 --> 01:21:27.800]   Also wenn ich das Programm habe, ich kann, dass ich Ihnen eben zeigte,
+[01:21:27.800 --> 01:21:31.800]   das Printline drückt eine Zeile und drückt dann die nächste.
+[01:21:31.800 --> 01:21:35.800]   Und wenn ich keine Argument angebe, also keine String da angebe,
+[01:21:35.800 --> 01:21:39.800]   dann sagt er sich, ach, da war ein Epsilon, das wollte der Benutzer doch nur
+[01:21:39.800 --> 01:21:42.800]   eine neue Zeile gedruckt bekommen.
+[01:21:42.800 --> 01:21:47.800]   Und hier habe ich Ihnen den Gefallen getan und habe hier eine neue Zeile gedruckt.
+[01:21:47.800 --> 01:21:51.800]   So können Sie sich Informationen über das Programm verschaffen,
+[01:21:51.800 --> 01:21:54.800]   die da eben wichtig sind.
+[01:21:54.800 --> 01:21:57.800]   Und jetzt kommt natürlich, heute noch nicht, kommt die vor, was mache ich denn,
+[01:21:57.800 --> 01:22:01.800]   wenn ich so ein Anführungszeichen ausgeben will?
+[01:22:01.800 --> 01:22:05.800]   Oder was mache ich, wenn ich eine Ende einer Zeile ausgeben will?
+[01:22:05.800 --> 01:22:09.800]   Ich kann ja im String selber kein Zeilenende angeben.
+[01:22:09.800 --> 01:22:12.800]   Dafür gibt es sogenannte Ersatzdarstellungen.
+[01:22:12.800 --> 01:22:16.800]   Die erlauben es mir trotzdem so was auszudrücken.
+[01:22:16.800 --> 01:22:22.800]   Und die fangen alle mit so einem Backslash, einem Rückwärtsstrich an.
+[01:22:22.800 --> 01:22:29.800]   Also Backslash T ist der Tab-Charakter, Backslash N heißt hier eine neue Zeile beginnen.
+[01:22:29.800 --> 01:22:35.800]   Und hier Backslash Anführungszeichen heißt bitte ein Anführungszeichen ausgeben.
+[01:22:35.800 --> 01:22:41.800]   Das ist nicht Teil meiner Definition des Trings, sondern das ist einfach nur ein Anführungszeichen.
+[01:22:41.800 --> 01:22:46.800]   Wenn ich jetzt den Backslash selber ausgeben will, dann kann ich hier zwei Backslashes machen.
+[01:22:46.800 --> 01:22:50.800]   Ich habe ein paar Beispiele davon, die können Sie ausprobieren.
+[01:22:50.800 --> 01:22:55.800]   Ist wirklich nicht sehr, sehr schwierig, können Sie da in Ruhe machen.
+[01:22:55.800 --> 01:23:04.800]   Also, was wir jetzt eben gesehen haben, wir haben gesehen, wie wir ein einfaches Programm schreiben.
+[01:23:04.800 --> 01:23:06.800]   Ein Programm mit dem Namen Hello World.
+[01:23:06.800 --> 01:23:11.800]   Und das machen wir, indem wir diese Methode Main dahin gehen.
+[01:23:11.800 --> 01:23:17.800]   Und ich verrate Ihnen kein Geheimnis, wenn ich sage, dass eine Klasse natürlich mehrere Methoden enthalten kann.
+[01:23:17.800 --> 01:23:23.800]   Also, was wir hier hatten, ich hatte Ihnen erst gesagt und ich will ja nichts zu viel Falsches sagen.
+[01:23:23.800 --> 01:23:29.800]   Unser Programm hier besteht aus dieser Methode Main.
+[01:23:29.800 --> 01:23:34.800]   Und hier ist dann eine andere Methode, die ich auch einbringen könnte.
+[01:23:34.800 --> 01:23:38.800]   Also, ich habe hier die Möglichkeit, nicht nur die eine Methode Main anzugeben,
+[01:23:38.800 --> 01:23:43.800]   sondern ich habe hier die Möglichkeit auch weitere Methoden anzugeben.
+[01:23:43.800 --> 01:23:47.800]   Das ist eine andere Methode, die ich hier definiert habe.
+[01:23:47.800 --> 01:23:50.800]   Die kann auch in diesem Programm mit diesem Namen drin sein.
+[01:23:50.800 --> 01:23:54.800]   Und da kann ich mir irgendeinen Namen ausdenken.
+[01:23:54.800 --> 01:23:59.800]   Da kann ich mir den Namen ausdenken, den ich selbst für am besten halte.
+[01:23:59.800 --> 01:24:04.800]   Und das Gute ist, auf diese Weise kann ich meine Programme etwas besser strukturieren.
+[01:24:04.800 --> 01:24:10.800]   Sonst hätte ich ja nur die Möglichkeit, in meinem Programm Main Anweisungen unterzubringen.
+[01:24:10.800 --> 01:24:13.800]   Eine Anweisung nach der anderen.
+[01:24:13.800 --> 01:24:18.800]   Wenn ich jetzt Methoden habe, dann kann ich diese Folge von Anweisungen strukturieren.
+[01:24:18.800 --> 01:24:27.800]   Ich kann also hingehen, um diese Methoden, die fassen dann die Anweisungen zusammen.
+[01:24:27.800 --> 01:24:31.800]   Und der große Vorteil ist, auf diese Weise kann ich Wiederholungen vermeiden.
+[01:24:31.800 --> 01:24:37.800]   Wenn ich etwas wiederholt mache, dann kann ich halt dieselbe Methode wiederholt aufrufen
+[01:24:37.800 --> 01:24:41.800]   und muss nicht nochmal dieselben Anweisungen dafür hinstellen.
+[01:24:41.800 --> 01:24:46.800]   Also, Sie können so sehen, eine neue Methode stellt neue Anweisungen zur Verfügung.
+[01:24:46.800 --> 01:24:51.800]   Weil ich kann diese Methode aufrufen, um das ebenso zu machen.
+[01:24:51.800 --> 01:24:56.800]   So, und jetzt gleich ein Wort zum Abschuss heute.
+[01:24:56.800 --> 01:25:00.800]   Ich hatte gesagt, da kommt dieses Keyword Static.
+[01:25:00.800 --> 01:25:05.800]   Und das ist ein Keyword, das wir jetzt noch immer benutzen müssen.
+[01:25:05.800 --> 01:25:08.800]   Das ist zur Zeit vorgeschrieben.
+[01:25:08.800 --> 01:25:11.800]   Das ist hier bei uns vorgeschrieben.
+[01:25:11.800 --> 01:25:15.800]   Und das sind Methoden, die haben weitere Eigenschaften.
+[01:25:15.800 --> 01:25:18.800]   Und Main ist so eine Static Messer.
+[01:25:18.800 --> 01:25:21.800]   Weil die das eben das Keyword Static vor dem Namen hat.
+[01:25:21.800 --> 01:25:24.800]   Und Main wird automatisch aufgerufen.
+[01:25:24.800 --> 01:25:30.800]   Und dass dieses Keyword Static sagt, das ist eine besondere Methode.
+[01:25:30.800 --> 01:25:33.800]   Wir arbeiten zur Zeit nur mit denen.
+[01:25:33.800 --> 01:25:36.800]   Versuchen Sie das nicht, das Keyword woanders einzusetzen.
+[01:25:36.800 --> 01:25:38.800]   Dann hat es ganz andere Bedeutungen.
+[01:25:38.800 --> 01:25:41.800]   Das war leider eine unglückliche Entscheidung der Java Entwickler,
+[01:25:41.800 --> 01:25:45.800]   dass sie dieses Keyword für verschiedenste Sachen verwenden.
+[01:25:45.800 --> 01:25:50.800]   Zur Zeit ist das Keyword Static nur erlaubt vor dem Namen einer Methode.
+[01:25:50.800 --> 01:25:54.800]   Und das ist vor dem Namen aller Methoden, die wir hier in diesem
+[01:25:54.800 --> 01:25:57.800]   einfachen Teil der Welt schreiben werden.
+[01:25:57.800 --> 01:25:59.800]   Hier sehen wir das Static.
+[01:25:59.800 --> 01:26:01.800]   Und da sehen wir das Static.
+[01:26:01.800 --> 01:26:05.800]   Alle Methoden, die wir zur Zeit haben, haben dieses Keyword Static.
+[01:26:05.800 --> 01:26:08.800]   Und auch Blau das Keyword Public davor.
+[01:26:08.800 --> 01:26:13.800]   Und das Keyword Void, um unser Leben einfach zu gestalten.
+[01:26:13.800 --> 01:26:16.800]   Das ist alles, was ich für heute habe.
+[01:26:16.800 --> 01:26:18.800]   Am Donnerstag machen wir dann weiter.
+[01:26:18.800 --> 01:26:20.800]   Wir gucken uns das ein bisschen genauer an.
+[01:26:20.800 --> 01:26:22.800]   Wünsche Ihnen bis dahin eine schöne Woche.
+[01:26:22.800 --> 01:26:31.800]   (Beifall)
+

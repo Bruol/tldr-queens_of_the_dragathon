@@ -1,0 +1,19 @@
+
+<form method="get">
+    <input type="text" name="query" value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+{% if results %}
+<ul>
+    {% for res in results %}
+    <div class="topic-card" , onclick="window.location='/transcripts/{{res.videoID}}/';">
+        <div class="title-frame">
+          <div class="text-wrapper">{{ res.topic.title }}</div>
+        </div>
+    </div>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No results found.</p>
+{% endif %}

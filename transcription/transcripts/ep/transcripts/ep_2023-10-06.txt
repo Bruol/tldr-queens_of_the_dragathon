@@ -1,1268 +1,1270 @@
- So, wir wollen noch weiter mit einfachen Java-Programmen beschäftigen.
- Und das nächste Thema, nachdem wir jetzt gesehen haben, wie wir einfach Instruktionen oder Anweisungen
- hintereinander rein können, ist das Thema der Schleifen.
- Und da werden wir uns am Anfang wiederholen mit Schleifen beschäftigen.
- Als ersten Einstieg gucken wir uns bestimmte einfache Schleifen an.
- Aber bevor wir das machen, wollen wir noch kurz auf ein anderes Thema für ein paar Minuten zu sprechen kommen,
- das wir eigentlich auch brauchen, um etwas interessanter Programme zu schreiben.
- Ich hatte Ihnen gestern erzählt, dass Sie mit dem Scanner Daten einlesen können.
- Das ist gut und schön, aber manchmal will man noch weniger machen.
- Manchmal hätte man einfach nur gerne irgendwelche Zahlen, mit denen man arbeiten kann.
- Und auch dafür stellt Java einen Service zur Verfügung, nämlich eine andere Bibliothek,
- mit der wir so etwas erreichen können.
- Und dieser Service ist der Random Service für Zufälliger.
- Das ist natürlich auch wieder in dieser Bibliothek Java.util definiert.
- Das heißt, wir müssen wieder ein bisschen blaue Farbe verwenden
- und müssen so ein Statement eben an den Anfang unseres Programmes schreiben,
- damit das System weiß, dass wir diesen Random Service benutzen wollen.
- Und natürlich brauchen wir da auch eben etwas, mit dem wir, also ein Objekt,
- mit dem wir solche Zufallzahlen erzeugen können.
- Und das würden wir ähnlich im Scanner gesehen haben, so machen,
- dass wir eben halt ein Exemplar dieses Objekts dieser Typen da haben
- und sagen, nehmen wir den Zufall und das ist halt ein neuer Zufallzahlengenerator.
- So einen Satz, oder eine Anweisung, müssten Sie einfach eben über kopieren.
- Das zeige ich gleich ein Beispiel.
- Also, so, wenn wir jetzt so einen Zufallzahlengenerator haben,
- dann gibt der für uns drei verschiedene Services an, gibt einige mehr,
- aber die drei sind für uns wichtig.
- Und der erste ist, dass wir mittels der Operation oder der Methode NextInt
- eine zufällig gewählte Integer bekommen können,
- also eine ganze Zahl innerhalb des Wertepereichs,
- der auf dem System zugelassen wird.
- Nun, manchmal will man ja nicht irgendeine Integer,
- sondern hätte gerne eine Integer innerhalb eines bestimmten Bereichs.
- Und darum gibt es auch die Variante NextInt mit dann in Klammern Max,
- die größte Zahl, die nicht erreicht werden soll.
- Also, wenn ich eben Max angebe, dann wird das, gibt es eine Integer
- aus dem Bereich von Null, also Null ist eine mögliche,
- bis eben unterhalb Max, also Max-1 wäre die größte mögliche ganze Zahl,
- die ich durch diesen Service bekommen kann.
- Und mit NextDouble kann ich eben eine Random-Nummer bekommen,
- die in dem Bereich von Null, Null bis 1, Null ist.
- Also, 1, Null ist gehört nicht dazu, aber eben Null, Null, Null, Null, Null,
- oder was auch immer, gehört noch mit dazu.
- Und wie würden wir das jetzt machen?
- Also, wir würden unser Programm schreiben hier oben,
- import Java.util Random, dann produzieren wir einen Random,
- einen Zuverzahlengenerator und dann hätten wir eben halt diesen
- Zuverzahlengenerator, den könnten wir jetzt benutzen,
- so wie wir es schon mal bei PrintLine gesehen haben.
- Wir nehmen den, den haben wir hier definiert,
- und den nehmen wir jetzt und wollen eine Zahl zwischen 0 bis 9.
- Also, würden wir diese Variante nehmen, wo wir sagen,
- die NextInt vom Bereich Null bis 10, aber 10 ausschließlich,
- dann hätten wir gerne eine und die würden wir dann in dieser
- ganzen Zahl, in dieser Variable für ganze Zahlen bespeichern.
- Das hätten wir auf diese Weise leicht erledigt und könnten
- auf diese Weise eben unsere Zuverzahlen produzieren.
- Also, jetzt ist es so, oftmals brauchen Sie natürlich
- Zuverzahlen nicht zwischen 0 und irgendeinem N minus 1,
- sondern zwischen 1 und N.
- Naja, und das ist nicht sehr schwierig, Sie würden einfach hingehen
- und sagen, ich gehe jetzt halt hin, ich bekomme halt Zuverzahlen
- von 0 bis N minus 1, und dieser Zufallszahl hier,
- die ich hier bekomme, der addiere ich noch eine 1 dazu,
- und so bekomme ich dann die Zufallzahl im Bereich zwischen 1 und N.
- Also, wenn ich Zuverzahlen von 1 bis 20 will, würde ich sagen,
- hier dieser Zufallzahlgenerator, mögen wir bitte eine Zahl
- in dem Bereich liefern und dann arbeitet der entsprechend.
- Also, wenn ich so praktisch wenn ich hingehe und Zahl
- in dem Bereich brauche, kann ich das gut machen.
- Und das ist sehr praktisch, weil dadurch können wir schnell
- Zahlen bekommen, die wir irgendwie gebrauchen.
- Also, wenn wir eine zufällige ganze Zahl zwischen 1 und 47 einschließlich wollen,
- dann würden wir eben sagen, Next Int, und dann 47 plus 1.
- Das wäre der Weg, wie wir das ganz einfach machen könnten.
- Oder eine zufällige ganze Zahl zwischen 23 und 30 einschließlich.
- Was ist 30 minus 23?
- Das ist 7 plus 1 ist 8.
- Also, ich hätte gerne eine Zufallzahl von 1 bis 7,
- und dazu addiere ich dann 23,
- und so bekomme ich dann Werte zwischen 23 und 30.
- So, und so können wir, wenn wir eine ganze Geradezahl haben wollen,
- ja gut, da müssen wir das, was wir bekommen, mit 2 multiplizieren.
- Also, das ist ein einfacher Weg, mit dem wir das machen können.
- Und jede Menge von Werten der Basestypen können wir letztlich
- auf ganze Zahlen abbilden.
- Es hilft auch bei anderen Typen.
- Wenn Sie ein Programm schreiben wollen,
- mit dem Sie Schere, Stein, Speich, Pi spielen können,
- dann bräuchten Sie eben Zufallszahlen zwischen 0 und 3,
- also 0, 1 und 2, und dann würden Sie entscheiden,
- was diese Zahlen eben, was das eben bedeutet,
- und würden eben dementsprechend das ausgeben.
- So, also das ist nur so kurzer Einschub,
- für die, die etwas interessanter Programme machen wollen,
- und sich die Mühe sparen wollen, das einzugeben.
- Und jetzt kommen wir also zum ersten Thema der Schleifen,
- nämlich ganz einfache Schleifen.
- Also, Schleifen sind, kennen Sie vielleicht aus anderen Programmiersprachen,
- ist ein einfaches Konzept, mit dem wir eine oder mehrere Anweisungen
- wiederholt ausführen können.
- Die gibt es natürlich in den verschiedensten Varianten,
- und die Erste, die uns angucken, ist der sogenannte Vorloop,
- Vor, weil das Keywort, in dem für diese Schleife verwendet wird,
- und der sollte angesetzt werden, um eine fixe Anzahl
- an Wiederholungen durchzuführen, wenn er richtig eingesetzt wird.
- Manchmal, na ja, kommen wir auf Probleme noch später zu sprechen,
- aber das ist der Grundgedanke.
- Also, nehmen wir mal an, Sie wollen statt die Schere Steinpapier,
- wollen Sie Rechenaufgaben für jemanden stellen, einfache Aufgaben.
- Sie nehmen zwei ganze Zahlen, Z1 und Z2,
- und dann präsentieren Sie die Aufgabe, berechnen Sie die Summe von Z1 und Z2,
- und dann lesen wir die Eingabe, und dann vergleichen wir die Eingabe,
- und wenn die Eingabe richtig ist, dann zählen, dann sind wir zufrieden,
- und falls zählen wir die Anzahl der Fehler.
- Na ja, gut, wer lernt schon üben, wer übt denn schon mit einer Aufgabe,
- keine, also, wir haben besten drei Aufgaben machen.
- Also, wie wir so ein Programmsegment aussehen, na ja,
- wir bräuchten natürlich eben halt den Scanner, um von der Konsole zu lesen,
- wir bräuchten den Zufallszahlengenerator, um die zufällige Zahlen zu haben,
- wir zählen die Anzahl der Fehler, dann haben wir ein paar zwei Integervariable,
- um eben die Operanten herzustellen, dann gehen wir hin und drucken auf der Konsole aus,
- eben diese beiden Zahlen mit dem Plus-Operator,
- und dann lesen wir von der Konsole die Antwort, na ja, dann vergleichen wir die Antwort,
- ob die das ist, was passiert, wenn wir den Plus-Operator verwenden,
- und wenn das eben nicht gleich ist, dann erhöhen wir die Anzahl,
- erhöhen wir den Zähler-Account, ja.
- So, und natürlich würden sowas vielleicht gerne nicht nur einmal, sondern dreimal machen,
- und der erste Anlass wäre natürlich einfach die Dreimal hintereinander zu kopieren,
- da sehen Sie sofort, ach, das ist ja total übersichtlich, ja,
- und eben statt, wie, unübersichtlich, und statt un, statt solcher,
- un, statt solch unübersichtlich langen Programmen,
- würden wir lieber eine kompakte Darstellung haben,
- und dafür brauchen wir eben so ein Vorloop, ja, der Vorloop geht jetzt hin,
- sagt hier, was eben hier Kontrolle erkläre ich gleich, ja,
- diesen Teil des Programms bitten wir jetzt dreimal auszuführen, ja,
- und dann wird das dreimal ausgeführt, und wir brauchen das nicht weiterzumachen.
- So, jetzt dieser Vorloop, der hat hier hinter drei Komponenten,
- die alle wichtig sind, und die entscheiden, wie diese, wie die Statements in dem Loop-Body,
- das ist also der Rumpf dieses Vorlobes, ja, wie die ausgeführt werden, ja.
- Da gibt es also einmal eben den Bereich der Initialisierung, ja,
- dann gibt es einen Bereich, der entscheidet, ob der Loop nochmal ausgeführt werden soll,
- und dann gibt es einen dritten Bereich, in dem wir etwas updaten,
- gehen wir jetzt kurz einfach durch.
- Also, normalerweise geht der Loop so, ja, wir führen erst die Initialisierung aus,
- die wird als erstes ausgeführt, ja, und die wird einmal ausgeführt, ja.
- Da können wir uns neue Variable deklarieren, wenn wir wollen,
- und die sind dann auch im ganzen Loop-Body verfügbar, ja.
- So, nachdem wir diese Initialisierung gemacht haben, wiederholen wir diese Schritte.
- Wir prüfen, ob dieser Test hier im zweiten Schritt true ergibt, ja.
- Wenn der true ergibt, ja, dann geht es hier weiter
- mit der Ausführung der Statements oder Anweisungen in diesem Loop.
- Sollte dieser Test nicht true ergeben, sondern false, geht es raus, ja,
- und wir sind fertig mit diesem Loop, und wir gehen zur nächsten Anweisung.
- So, jetzt führen wir also, nehmen wir an, das war also true, ja, das war der True-Fall, ja.
- Da gehen wir jetzt hin, führen die aus, und nachdem wir alle Anweisungen ausgeführt haben,
- und wir diesen Punkt hier erreichen, ja, das kann, ja, diesen Punkt hier erreichen, ja,
- dann wird die Aktualisierung ausgeführt, dann wird das Update gemacht,
- das ist dann der dritte, war hier der dritte Teil, war der eben der Loop ausführen,
- und jetzt kommt der vierte Schritt, der ist das Update ausführen.
- Das Update führt jetzt eben, da können wir auch wieder gewisse Anweisungen unterbringen,
- und die erlauben es uns dann eben eventuell etwas, einige der Variablen,
- die wir hier verwenden zu ändern.
- Ja, gut, müssen wir denn, können wir den eben,
- versuchen nochmal aufzuspielen, wenn ich den speichern will, dann muss das hier so richtig rein, so, okay.
- Also, das ist die allgemeine Struktur eines solchen Loops, die wir hier haben, ja,
- das ist die Capture Failure, ah, gut Grief.
- Ah, jetzt hat das, okay, na, schön.
- Also, die vier Teile gehen wir nochmal kurz durch.
- In der Initialisierung können wir eine Variable deklarieren,
- und müssen sie auch initialisieren.
- Und dieser Teil des Loops liegt die Variable fest, die im Loop verwendet wird,
- oder verwendet werden soll, ja, niemand zwingt sie das, ja.
- Sie können da irgendeine Variable deklarieren, aber in einem gut strukturierten
- und der normal kontrollierten Programm würden wir diese Variable verwenden.
- Und es wird einmal ausgeführt, und die Variable ist dann deklariert und initialisiert,
- und wir nennen die den Schleifenzähle oder Loop Counter, ja.
- Die kann natürlich jeden beliebigen Namen haben, den wir uns irgendwie ausdenken können, ja.
- So, dann wird der Test ausgeführt, ja.
- Der Test wird als erstes, also wird danach ausgeführt, ja,
- und jetzt der Test idealerweise involviert dieser Test den Loop Counter.
- Das ist nicht zwingend vorgeschrieben, sie können da irgendwas haben.
- Es ist eine gute Idee, das zu machen, weil sonst eben vielleicht Überraschungen passieren.
- So, diese Test hier vergleicht im Allgemeinen die Zellevariable mit irgendeinem Grenzwert,
- und da können wir die gleiche Art von Vergleichen verwenden, die wir auch für die IF-Stapements hatten,
- also kleiner, kleiner, oder weniger, weniger als, größer, als größer, gleich und so weiter.
- Das können wir da verwenden, ja, oder können auch auf Gleichheit oder Ungleichheit testen,
- wenn wir wollen, ist auch uns erlaubt.
- Und danach, eben wenn der Test truht, wenn die Statements ausgeführt,
- da kann jedes beliebiges Statement sein, und dann erst am Ende kommt die Aktualisierung, ja.
- Und eben idealerweise ändert sich da die Zellevariable, ja.
- Die Zellevariable müsste sich ändern, wenn sich die Zellevariable nicht ändert,
- dann findet die Schleife vielleicht kein Ende, ja,
- weil der Test immer wieder den gleichen Wert tru ergab, ja.
- Und da ist ein beliebiger Ausdruck zulässig.
- Da können Sie machen, was Sie wollen, also einen Ausdruck der gewissen Java-Regeln entsprechen muss, ja.
- Also das ist das Grundgerüst von dem, und damit können wir ganz einfach viele Arten von Wiederholungen durch bessere Loops ausdrucken.
- Wenn wir so eine Tabelle ausdrucken wollten, wo wir für die ersten sechs Quadratzahlen den Wert ausdrucken, ja,
- dann eben, die Aufgabe ist, ich will diese Tabelle ausdrucken, das heißt jede Zeile muss das ausgeben.
- Also würde ich einen Vorloop schreiben, der eben irgendein Zeller verwendet.
- Ich muss das sechs Mal machen, ja.
- In jeder, nachdem ich es für eine Zahl gemacht habe, nehme ich die nächste,
- und da druck ich in meinem Loop-Body genau das aus.
- Ich ducke aus die Zahl und die Quadratzahl und so weiter, ja.
- Natürlich, Sie können beliebig viele Anweisungen im Loop haben, ja, das ist kein Problem.
- Sie können alles machen, wie Sie wollen.
- Sie können die Schleifenkontrolle eben, da können irgendwelche Variablen auftreten und so weiter.
- Das ist alles überhaupt kein Problem, ja.
- Nur natürlich, Sie können auch, Sie müssen nicht heraufzählen, ja, sondern können auch herunterzählen.
- Nur natürlich, wenn Sie herunterzählen, also hier gehen wir hin und, gehen, hin und,
- eine Dekrimentierungsoperation, also subtrahieren eins, ja, dann müsste wir natürlich hier besser checken,
- dass das so lange das größer ist, ja,
- annahm falls könnte der Loop auch längere Zeit laufen, ja.
- Also das ist wirklich nicht sehr überraschend
- und so könnten wir eben einfach unseren Loop da kontrollieren.
- So, jetzt die Loop sind natürlich interessant,
- weil ich kann natürlich hier in dem LoopBody jedes beliebiges Statement unterbringen.
- Und unter anderem kann ich da wieder weitere Schleifen unterbringen, ja.
- Also das kann ich weitere Schleifen nochmal machen, ja.
- Aber das Gleiche, was ich vorher hatte, ja, gilt dann hier auch, ja.
- Ich kann dann da eine andere Schleife unterbringen
- und das nennen wir eine verschachtete Schleife,
- verschachtete Schleifen oder nestet Loops, ja.
- Eine Schleife in einer anderen.
- Hier habe ich so ein paar einfache Beispiele, ja.
- Was produziert denn so ein Programm, ja, wie,
- also hier haben wir den einen Vorloop, ja,
- und dann haben wir hier drinnen einen anderen
- und der eine läuft auf J
- und der andere hier läuft aus I.
- Gucken Sie das für eine Sekunde an, oder zwei
- und überlegen Sie sich so kurz, was für ein Programm würde denn die
- was für ein Output würde dieses Programm denn ergeben, ja.
- So, was würde hier passieren, also, also wir haben hier,
- wir fangen an mit der äußeren Schleife, ja.
- Sie wird initialisiert mit I
- und dann gehen wir hin und führen die innere Schleife aus
- und die innere Schleife wird zehnmal ausgeführt, ja.
- Und danach wird, das war eine Ausführung der äußeren Schleife
- und dann kommt eine nächste Ausführung der äußeren Schleife
- und die hat wieder zehn.
- Und insgesamt wird die äußere Schleife fünfmal ausgeführt, ja.
- Und die innere zehn, ja.
- Also haben wir hier 50 Sterne, die auf diese Weise gedruckt werden.
- Jede Zeile immer zehn, zehn, zehn Sterne, ja.
- Also ein einfacher Weg, wie wir unser Programm hier strukturiert haben.
- So, und was gibt dieses Programmsegment aus?
- Gucken wir das noch mal an, ja.
- Wir haben auch wieder einen äußeren Loop,
- der auf, der die Variable I initialisiert
- und wir haben einen inneren Loop, der mit der Variable J arbeitet.
- Aber diesmal haben wir eine etwas andere Form der Kontrolle des inneren Loops.
- Nämlich hier testen wir, ob diese Variable J kleiner gleich der Variable I ist.
- I ist der Loop Counter aus der, das ist das I hier, ja.
- Das ist aus dem äußeren Loop kommt, ja.
- Was wird dieser Loop jetzt produzieren?
- Was sehen wir hier?
- Wie oft werden die ausgeführt?
- Wie oft werden die diversen Statements ausgeführt?
- Also wir fangen natürlich, ist klar, der äußere Loop wird fünfmal ausgeführt.
- Das sehen wir schnell.
- Und wenn wir mit dem ersten Mal ankommen, dann hat I den Wert eins.
- Das heißt, dieser Loop wird in der ersten Interaktion einmal ausgeführt.
- Und wenn I den Wert zwei hat, wird der zweimal ausgeführt und so weiter, ja.
- Bis er in der letzten Reihe, bis er in der letzten Reihe fünfmal ausgeführt wird.
- Also wie ich das so mache, bekomme ich so einen Dreieck, ja.
- Also die erste Zeile, zweite Zeile und so weiter.
- Und mit jeder Zeile wachsen die, wächst die Anzahl der Sterne, ja.
- Und dieses Programm, wollen Sie noch mal nachdenken.
- Was passiert hier?
- Hier haben wir, äh, ähnlich wie das andere,
- nur eben statt der Sterne drucken wir jetzt hier einfach die Zahl, ja.
- Also wirklich, so, das ist also, ähm, es hat nicht ein gut konstruierter Loop, ja.
- Der benutzt eben hier den Loop Counter im Update
- und benutzt den Loop Counter auch im Test, ja.
- Natürlich kann der auch, auch der andere war gut konstruiert, ja.
- Aber hin und wieder kann auch was schiefgehen und, ähm, was für Probleme gibt's.
- Und das Problem, das Sie vielleicht als erstes, äh, kennenlernen werden,
- ist, dass aus irgendwelchen Gründen eine Schleife nicht terminiert.
- Die läuft und läuft und läuft.
- Und das ist manchmal ganz schön, aber, ähm, das hilft Ihnen nicht,
- wenn Sie irgendein, äh, Problem erlösen sollen.
- So eine endlos Schleife ist ein Problem, das Sie eben, ähm, bekämpfen müssen.
- Und so ein infinite Loop, ja, das ist der unendlich laufende Loop,
- haben Sie vielleicht schon mal gesehen, ist auch die Postadresse
- einer Firma, die Computer herstellt, die manchmal auch unendlich lange laufen,
- oder ziemlich lange laufen, ja.
- Das ist, die haben das als Adresse bekommen können,
- weil Loop ist im amerikanischen System auch ein legaler Straßenname.
- So, also, was haben wir hier als Möglichkeit,
- worauf sollten Sie gucken, wenn jetzt Ihre, Ihr Programm unendlich läuft?
- Ja, hier haben wir so ein Beispiel, ja.
- Wir haben den äußeren Loop, i, gleich eins
- und so fängt an mit, wird mit eins eingelinitialisiert, ja.
- Ähm, äh, soll, wird fünfmal ausgeführt.
- Und jetzt haben wir den inneren Loop und da checken wir, ob i,
- keiner gleich zehn ist.
- Na, die Bedingung ist bei der ersten Ausführung dieses Loops, äh, erfüllt,
- bei der zweiten und so weiter, die hört nie auf.
- Warum? Weil wir hier eben nicht die, äh, Loop Variable j,
- irgendwo, äh, in der Kontrolle, äh, verwendet haben, ja.
- Also, da aufpassen, da kann man sich schnell, ja, vertippen.
- Oder, anders Problem, ja, Sie haben jetzt zwar hier, hier kontrollieren Sie zwar korrekt,
- äh, ob eben j kleiner als zehn ist, aber das Problem steckt hier im Update.
- Äh, Sie updaten hier, äh, die Variable i.
- Das j wird niemals geändert, ja.
- Ähm, das ändert sich nicht und daher läuft der Loop weiter.
- So, was passiert hier?
- Was sollten Sie so in Situation machen?
- Vielleicht haben Sie es schon entdeckt, ja.
- Äh, sich das Eklips, äh, äh, System angucken, ja.
- Da gibt es eben verschiedene, äh, äh, äh, Buttons, die wir klicken können.
- Da war dieser grüne, ähm, war der grüne Pfeil, der unser Programm zum Laufen brachte, ja.
- Und da gibt es, wenn, gibt es auch so einen rotes, äh, Quadrat, ja.
- So, und wenn Sie auf dieses rote Quadrat klicken, dann hört das Programm auf zu laufen
- und Sie können sich dann, äh, den, den, die restliche Ausgabe im Konsolenfenster angucken.
- Das ist die erste Sache, die Sie wissen müssen, äh, um auf sowas rauszukommen, ja.
- Ähm, später werden wir sehen, dass da noch ein paar mehr Probleme sind,
- das nämlich, ähm, das eigentlich nur das Programm unterbricht
- und wir irgendwann aufpassen müssen, dass wir nicht zu viele unterbrochene Programme haben.
- Aber am besten ist natürlich, wir schreiben nicht Programme, die nicht terminieren
- und dann haben wir das Problem eigentlich überhaupt nicht.
- So, jetzt ähm, jetzt wollen wir noch, ja, weil, wie, wie können wir denn so ganz einfache
- schleifen, bisschen systematischer erzeugen, ja.
- So, also demweil wir haben hier diese Aufgabe, dass wir so etwas einfacher erstellen sollen
- und natürlich wollen wir jetzt nicht einfach diese fünf Zeilen in fünf verschiedene Print-F,
- Printline Statements reintun, sondern wir wollen eben das mit Loops erstellen.
- So, also wir haben hier die Aufgabe, so was zu erstellen.
- Und jetzt gucken wir uns an, was sehen wir da näher?
- Also wir sehen hier, dass wir hier eine innere Schleife haben müssen,
- die eine Zeile nach der anderen produziert.
- Also wir müssen eine innere Schleife machen.
- Und dann brauchen wir eine äußere Schleife, die uns sagt, wie viele von diesen Zeilen
- wir insgesamt produzieren müssen.
- So, also wir haben eine innere und äußere.
- Jetzt die Frage, was tun wir in die innere?
- Und jetzt müssen wir irgendwie einen Weg finden, die Ausgabezeile zu konstruieren.
- Und dann gucken wir uns das an, ja.
- Und dann sehen wir halt, ähm, mit der äußeren Zeile kann ich gut,
- mit der äußeren Schleife kann ich gut eine Zeile nach der anderen konstruieren.
- Ja, das ist also nicht so schwierig.
- Das heißt, ich müsste am Ende der äußeren Schleife immer wieder die,
- die, die den Zeilenabschluss drucken, damit eine neue Zeile angefangen wird.
- Aber die innere Schleife, die hat irgendeinen Muster, ja.
- Das heißt, wir müssen dieses Muster angucken,
- und müssen überlegen, wie wir dieses Muster entsprechend produzieren.
- Also fangen wir mit der äußeren Schleife an, ja.
- Also haben wir gesagt, wir brauchen davon fünf, also haben wir hier so etwas, ja.
- Wir legen das also fest, ja.
- Und jetzt gucken wir uns nochmal genauer diese Zeilen an, ja.
- Da sehen wir, aha, das Muster ist doch so, dass wir irgendeine Anzahl Punkte haben,
- und dann kommt eine Zahl.
- Und für fünf gibt es Nullpunkte in der letzten Zeile.
- Und in der Zeil davor gibt es einen Punkt.
- Und der zwei dazu gibt zwei und so weiter, bis wir hier oben vier Punkte haben, ja.
- Also, wenn ich das habe, dann eben die, hängt, also einmal ändert sich die Anzahl der Punkte, ja.
- Und die Anzahl der Punkte hängt ab von der Zeile, ja.
- In der letzten Zeile Null, in der Zeil davor vier,
- schon in der Zeil davor eins, in der Zeil davor zwei, ja.
- Das heißt also, die Anzahl der Punkte hängt von unserer Zeilnummer ab.
- Und hier ist natürlich ein bisschen, ein bisschen,
- das ist trivial, ja, einfach, ja.
- Kann ich sofort hinschreiben, Programme, da druck ich entsprechend Punkte.
- Aber nehmen wir mal an, unsere Rumpf, unsere Anwalt im Rumpf,
- würde so einen Output herausgeben, also nicht vier Punkte,
- sondern, und jetzt habe ich nicht Punkte gemacht, weil das für die Zählen ist,
- sondern sie würden gerne herausgeben, vier, sieben, zehn, 13, 16 Punkte, ja.
- Oder das als Zahlen.
- Wie würden wir das machen, ja.
- Und dann können wir so eine Zahlenfolge in eine vernünftige,
- in einen vernünftigen Loop bringen, der dann diesen Output für uns liefert, ja.
- So, also, na ja, wenn wir uns das angucken, das ist also hier,
- es ist so eine Serie, ja, das haben sie sicher auch schon mal früher machen müssen,
- was ist die nächste Zahl, ist so eine beliebte Frage, ja.
- Uns interessiert nicht die nächste Zahl,
- uns interessiert über die alle erzeugen können, ja.
- Und da sehen wir, das können wir jetzt sehen machen, indem wir halt den,
- wir können die durchzählen, ja, das wäre eins, zwei, drei und so weiter,
- dann nehmen wir also dreimal diesen gezählten Zähler plus eins,
- und dann drucken wir noch ein Lehrzeichen, um die eine Zahl von der anderen abzusetzen.
- So, jetzt, wie können wir das systematisch rausfinden, ja,
- wenn wir irgendeine Zahlenfolge haben, wie können wir systematisch rausfinden,
- wie so eine Schleifenkontrolle oder was das eben ergeben sollte, ja.
- Und um das zu machen, gehen Sie hin, Sie erstellen eine Tabelle,
- und da zählen Sie eben halt von eins an durch,
- und dann schreiben Sie sich die Zahl dahinter, die in dieser Zahlenfolge auftreten soll.
- Also, hier hätten wir die Folge zwei, sieben, zwölf, siebzehne und so weiter, ja.
- Die würden wir entsprechend runter schreiben.
- Dann wäre der erste Ansatz jetzt noch, okay,
- sehen wir, wenn wir die Zahl um eins erhöhte, dann geht das immer um plus fünf rauf, ja.
- Das heißt also, wir müssten, es wäre also gut,
- so eine eine Möglichkeit wäre, zu sagen, wir nehmen einfach den Count
- und multiplizieren den mit fünf, ja, dann haben wir eine Erhöhung um fünf erreicht, ja.
- Und dann würden wir das so machen, hätten wir hier fünf, zehn und so weiter.
- Aber das ist natürlich nicht ganz, was wir wollen, ja,
- weil hier sehen wir, ja, hier ist eine Differenz von drei, und hier ist eine Differenz von drei.
- Ja, das gibt uns dann sofort die Idee, wie wir eben halt diese Tabelle korrigieren müssten, ja.
- Wir müssten also noch von dem Wert, den wir da haben, drei subtrahieren, ja.
- Und so haben wir dann den Ausdruck gefunden, der uns einfach richtig erlaubt,
- die richtige Zahl zu erzeugen, ja.
- Also fünf mal den Count minus drei, das ist die gewünschte Zahl, ja.
- Oder nehmen wir an, wir hätten 17, 13, 9, 5, 1 entweder Punkte oder als Zahl zu produzieren, ja.
- Wird in Programmiersprachen nicht von null aus gezählt, also ich zähle immer mit eins, ja.
- Also wenn ich mit null anfinge, dann müsste ich gar nicht,
- ich müsste überall null haben.
- Also wir haben uns entschieden, hier mit eins zu zählen, ja.
- Wir können auch, Sie können auch genauso gern, wenn Sie machen das, jemand das geschrieben,
- wird in Programmiersprachen nicht von null aus gezählt.
- Sie können auch von null anfangen, ja.
- Dann gehen Sie doch hin und versuchen, die Formel zu finden, die Sie nehmen müssten,
- wenn Sie von null aus machten.
- Ist nicht sehr schwierig, also.
- Wenn sich ein, hier haben wir die Zahlen, wie ich es eben sagte, ja.
- Und wir sehen jetzt, dass hier für jede Zahl geht es eben um eine Differenz von vier.
- Minus vier, ja.
- Immer werden vier abgezogen.
- Das heißt also, ich würde als ersten Ansatz wählen, dass ich minus vier Mal den Zähler, den ich da verwendet habe.
- Aber natürlich ist das noch nicht ganz richtig.
- Sie sehen, das hier ist um 21 zu groß und das hier ist auch um 21 zu groß.
- Also in dem Fall, da gibt es ja auch wieder eine fixe Differenz, ja.
- Daher würden wir eben 21 dazu addieren, um eben halt den richtigen Zähler,
- die richtigen Ausdruck zu finden, der diese Zahl generiert, ja.
- Also, jetzt zurück zu den Beispielen mit der Vorsleife, ja.
- Hier wollten wir also hier eben vier, drei, zwei, eins, null Punkte, ja.
- Da haben Sie die null, bitte schön, ja.
- Und dann würden wir entsprechend eben hier sagen, aha, das geht hier jedes Mal um eins runter.
- Also machen wir minus eins Mal.
- Und dann haben wir die Zähler, die wir jetzt hier haben,
- die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
- Und dann haben wir die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
- Und dann haben wir die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
- Und dann haben wir die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
- Und dann haben wir die Zähler, die wir jetzt hier von denen brauchen.
- Würde ich eben halt hier checken, ob der bis vier ist.
- Und dann würde ich hier das erhöhen, um so meine Anzahl an Punkten gedruckt zu bekommen.
- Und dann habe ich das eben, wenn ich das so mache und eben in den äußeren Lube einsetze,
- dann bekomme ich das gewünschte Ergebnis.
- So, jetzt haben wir hier paar verschachtete Schleifen.
- Das ist sicher nicht sehr schwierig. Was gibt denn dieses Programm jetzt aus?
- Überlegen wir uns das kurz.
- Das ist der Lube, den wir eben geschrieben haben.
- Der hat jetzt hier, also wir gehen hin und haben fünf Zeilen.
- Und wir haben hier diese Gleichung, benutzen wir jetzt, um eben zu entscheiden,
- wie viele Punkte in dieser einen Zeile gedruckt werden sollen.
- Und erhöhen dann den Lube-Counter um eins.
- Und danach haben wir einen zweiten Lube.
- Und was gibt der für uns denn aus?
- Jetzt haben wir hier den zweiten Lube und der zählt auch hoch.
- Und der ist auch abhängig vom äußeren Lube-Counter allein.
- Und was er macht, er druckt dann einfach den Wert der aktuellen Zeilen normal.
- Da würde dann eben so ein einfaches Tableau daraus kommen.
- Und dann können Sie jetzt gerne noch ändern, um stattdessen mal wegen der Punkte zu drucken und so weiter.
- Das ist alles nicht schwierig.
- Und wenn Sie das noch nicht vorher gesehen haben, dann empfehle ich Ihnen sehr,
- sich damit gut zu beschäftigen, weil Schleifen werden Sie immer wieder haben und so weiter und so weiter.
- So, jetzt, wenn wir uns also Schleifen angucken, da gibt es verschiedene Wege,
- wie wir die etwas einteilen können.
- Und eine erste wichtige Unterscheidung ist, ob eigentlich die Anzahl der Ausführung des Rumpfs vor Beginn der Ausführung bekannte ist.
- Und sowas nennen wir eine bestimmte Schleife.
- In dem Moment, wo die Schleife als nächste Instruktion herankommt,
- wissen wir oder können wir berechnen, wie viele Ausführungen des Rumpfes nötig sind.
- Und diese Vorschleifen sind eben dafür konstruiert, dass wir solche bestimmte Schleifen eben halt gut ausführen.
- Irgendwas, eine bestimmte Anzahl mal drucken wollen oder ausführen wollen und so weiter.
- Können wir das gut und gerne machen.
- Aber eben, es gibt auch Schleifen, in denen wir zu Beginn nicht wissen oder nicht schnell wissen, wie viele Ausführungen nötig sind.
- Und das nennen wir eine unbestimmte Schleife.
- Wenn man das auch bestimmt, dann ist diese Anzahl, wenn die Anzahl der Interaktion nicht vorher bekanntet.
- Und dafür brauchen wir auch einen Konstrukt, um das auszudrücken.
- Und diese Art von Schleifen, die kommt sehr, sehr häufig vor.
- Zum Beispiel, wenn Sie den Input von der Konsole lesen wollen und die Benutzerin macht einen Fehler,
- dann müssen wir vielleicht nochmal das machen.
- Wir wollen so lange lesen, bis eine nicht negative Zahl eingegeben wurde oder bis ein Q eingegeben wurde.
- Oder wir lesen eine Datei bis in dieser Datei drei aufeinanderfolgende Sätze mit irgendeinem Zeichenenden und so weiter.
- In all diese Situationen wissen wir von Anfang nicht, wie viele Ausführungen des Loops nötig sind.
- Und darum ist der Vorloop dafür nicht richtig geeignet.
- Und dafür gibt es dann eben die Weilschleife. Die Weilschleife ist ähnliche.
- Sie hat eben das Keyword "Weil" klar und hat dann danach nur einen Test, einen Test, der evaluiert wird.
- Und wenn dieser Test den Wert "Wahr" ergibt, dann wird dieses, wenn das hier in der Test den Wert "Wahr" oder "True" ergibt,
- dann wird diese Folge von Statements hier ausgeführt.
- Und sollte dieser Test "False" ergeben und danach wird eben der Test wieder ausgeführt.
- Und wenn das "False" ergibt, dann hört die Ausführung dieses Weilloops auf.
- Und es geht mit dem nächsten Statement, das hier hinterfolgt weiter.
- Und wir bleiben so lange in diesem Loop, bis eben halt dieser Test irgendwann einmal den Wert "False" ergibt.
- Also hier habe ich ein einfachstes Beispiel.
- Wir haben eine integer-variable Namen, die wir mit 1 initialisieren.
- Und wir lassen diesen Loop laufen, solange das Quadrat kleiner als 2000 ist.
- Und dann drucken wir das aus.
- Und danach, ja, jetzt haben wir das, jetzt ist die Verantwortung dafür,
- dass dieser Test irgendwann mal auf 0, der Test irgendwann false ergibt, die liegt bei uns.
- Das heißt, wir müssen dafür sorgen, dass eines der Statements hier vielleicht,
- die Variablen, die hier in dem Test verwendet werden, in irgendeiner Form modifiziert.
- Wenn wir das nicht machen, wird der Loop entweder 0 mal ausgeführt,
- wenn der Test am Anfang bereits false ist, oder er wird unendlich oft, also ohne Ende ausgeführt,
- wenn der Test sich nicht ändert und es immer false, immer true ergibt.
- Darum brauchen wir hier eine Anweisung, mit der wir diese Variable, die hier im Test verwendet wird, verändern.
- Also das Update ist hier unser Expecit, also Expecit von uns zu machen.
- Das Update muss in den Anweisungen sein, die im Loop sind.
- Also der Loop ist so gekommen an, wir checken, ob der Test wahr ist.
- Wenn ja, dann wird die Anweisungen ausgeführt und danach wird wiedergecheckt,
- solange bis das hier irgendwann mal eben der Test nicht mehr wahr ist,
- und dann werden die Anweisungen nach dem Loop ausgeführt.
- Und aber die ganze Verantwortung dafür, dass sich die Variable, die in dem Test verwendet werden,
- eher ändern, die liegt einfach für uns.
- Also, jetzt wieder, es gibt viele Möglichkeiten, wie Sie solche Loops schreiben können.
- Ich möchte bewusst möglichst einfach zeigen, so dass auch die, die das noch nicht so häufig gesehen haben,
- damit auch ohne Schwierigkeiten zurechtkommen.
- Also nehmen wir an, Sie wollen den ersten Faktor finden von der Zahl 91 Faktor heißt.
- Das ist eine Zahl, die eben ganz, die diese Zahl selber teilt ohne Rest.
- Und das machen wir, wie machen wir das?
- Ja, wir fangen also an.
- Wir, natürlich, eins ist immer ein Faktor, aber ist nicht sehr interessant.
- Also fangen wir an mit zwei.
- Und jetzt haben wir hier, gucken wir den Rest, was ist die Rest der Division von N durch diesen Faktor.
- Wenn das 0 ist, dann haben wir einen Faktor gefunden, weil dann hat es keinen Rest gegeben.
- Wenn das nicht, dann sind wir fertig.
- Wenn wir nicht, wenn wir ungleich 0 ist, dann haben wir noch keinen gefunden.
- Und dann erhöhen wir hier, das habe ich leider, das müsste eigentlich besser heißen, Faktor ist gesetzt für Faktor plus 1.
- Erhöhen wir das um 1 und dann ist die Sache, wird der Loop wiederholend ausgeführt.
- Und wir hoffen, dass wir natürlich irgendwann wissen, wir, dass dieser Loop enden wird,
- weil im besten und schlimmsten Fall wird der Faktor, hat irgendwann wird er zu 91 genetzt, wird er aber nicht.
- Gibt eine andere Zahl davor.
- Aber wir wissen, wenn wir immer wieder kontinuierlich den Faktor erhöhen, gibt es irgendwann eine Anweisung, die Faktor zu 91 setzt.
- Und wir wissen, dass jede Zahl sich selbst ohne Rest teilt.
- Und dann wissen wir, dass daher dieser Loop terminieren wird.
- Und hier ist schon ein Weile besser.
- Sie könnten sowas auch mit dem Vorloop in irgendeiner Form machen.
- Und das wäre nicht, das wäre auch möglich.
- Aber hier beim Weile sieht man sofort, aha, ist ein Loop, der eben halt eben, von dem wir eben nicht wissen, wie oft er ausgeführt werden wird.
- Also das sind, mit Vor- und Weilloop kommen Sie eigentlich durch die ganze Vorlesung.
- Also da, wenn Sie die beiden richtig im Griff haben und auch mit allen anderen Sachen später richtig machen können, dann haben Sie damit kein Problem.
- Wir werden aber später ein bisschen mehr über Loops reden, ist noch nicht alles.
- Aber bevor wir das machen, wollen wir das ein bisschen weiter machen und uns ein bisschen mehr mit Methoden beschäftigen.
- Weil was wir bisher gesehen hatten, war ja einfach wirklich viel zu einfach und bringt uns nicht so viel weiter.
- Also, ihr hattet gesagt, diese Vorloops erlauben Wiederholungen, hatte Ihnen da dieses Beispiel gezeigt.
- Aber das Beispiel hat natürlich viele Nachteile und ein großer Nachteil ist natürlich, dass wir würden natürlich niemals sowas direkt so schreiben wollen.
- Also wenn wir irgendwelche Programme oder Programsegmenten wieder verwenden wollen, dann müssen wir die in Methoden organisieren.
- Anderfalls haben wir bald ein langes Programm, in dem wir schnell die Übersicht verlieren.
- Wenn wir also sowas wiederholen wollen, dann würden wir eigentlich erstmal hingehen und das in irgendeine Methode reinstecken.
- Aber würden wir also eine Methode definieren, nennen wir die mal "Test".
- Ich war eine jetzt bereits davor, dass das Beispiel nicht vollständig ist.
- Also, dann hätten wir eine Methode und dann würden wir diesen Vorloop, wenn wir das jetzt immer dreimal machen wollten, würden wir hier eben halt in diese Methode reinstecken.
- Und dann haben wir gesehen, wie wir so eine Methode definieren.
- Die müsste immer noch "Public Static" und "Woid" diese drei Begriffe davor haben, aber zumindest einen von denen werden wir heute vielleicht sehen, dass wir den nicht mehr brauchen.
- So, und jetzt warum ist so eine Methode besser?
- Also einmal natürlich, wenn wir das wiederholen verwenden, sparen wir damit Zeilen.
- Das heißt, das Programm wird kürzer und ein kurzes Programm ließt sich einfacher als ein langes.
- Zumindest für die meisten Leute von uns.
- Aber wichtiger ist oder genauso wichtig ist, das sollte es mal nötig sein, irgendwelche Änderungen zu machen.
- Dann bräuchten wir die nur an einer Stelle zu machen.
- Wenn ich jetzt also dieses Programm ändern wollte und statt immer nur zwei Operanten ausgeben, möchte ich für eine beliebige Anzhafenoperanten ausgeben,
- oder eine Anzhafenoperanten innerhalb eines bestimmten Bereichs.
- Dann muss ich all diese Änderungen nur an der einen Stelle machen.
- Und daher, wenn ich also Wiederverwendung habe, will ich da stecklich Sachen in Methoden.
- Aber wenn ich jetzt wieder verwenden will, dann brauche ich auch eine gewisse Flexibilität.
- Denn die Wahrscheinlichkeit, dass ich genau drei Wiederholungen brauche, ist eigentlich eher unwahrscheinlich.
- Also diese Lösung, die ich zeigte, die liefert immer drei Aufgaben.
- Aber was ist, wenn Sie jetzt mal vier oder mal eine Aufgabe wollen?
- Natürlich könnten Sie jetzt hingehen und neu, könnten Sie weitere Methoden definieren.
- Aber wer will das denn machen? Das will ja keiner.
- Wir brauchen einen besseren Weg, zum Beispiel die Anzahl der Wiederholungen in einer Situation anzupassen.
- Und das nennen wir Parametrisierung.
- Wir fügen einen Parameter ein.
- Das ist eine besondere Art von Variablen oder sowas, die wir verwenden werden, um die Anpassung vorzunehmen.
- Und mit dieser Parametrisierung können wir dann die gleiche Folge von Anweisungen in unterschiedlichen Situationen verwenden.
- Also Parameter ist ein Wert, den die aufgerufene Methode von der aufrufenden Methode enthält.
- Also wenn ich hier mein Ad-Test habe, dann muss die irgendeinen Weg haben,
- dass ich zum Beispiel den Loop Count, dass ich den irgendwie von außen hier mit einbauen kann,
- dass ich den mit einfügen kann.
- Dann habe ich eine Parametrisierung erreicht in Bezug auf den Loop Count,
- nicht in Bezug auf die Anzahl der Operanten, aber in Bezug auf den Loop Count.
- Und mit dem kann ich das dann entsprechend machen.
- Das heißt, wenn wir so eine Methode deklarieren, dann geben wir an, dass wir einen Parameter brauchen.
- Und wenn wir die Methode aufrufen, dann muss natürlich ein Wert für den Parameter angegeben werden, sonst funktioniert das nicht.
- Und das geschieht sehr einfach.
- Wenn wir die Methode deklarieren, dann kommt jetzt in die zwischen diese Klammern,
- kommt eben der Name des Parameters und der Typ des Parameters.
- Und wenn wir die Methode aufrufen, dann geben wir irgendeinen Wert oder einen Ausdruck, der einen Wert liefert, für diesen Parameter an.
- Damit wird die Methode vielseitiger einsetzbar, aber die Entwicklung wird jetzt doch um einiges komplizierter.
- Also wir hätten hier, so würden wir das jetzt machen, wir hätten hier unsere Methode deklaration.
- Und da wäre eben hier Typ und Name, der Name wäre der Name der Parametervariable und Typ wäre halt der Typ dieser Parametervariable.
- Und fürs erste Mal hier bei uns werden wir, bis wir mehr lernen, immer nur ein Basestyp verwenden, wenn später andere kennenlernen.
- Also hier, wenn ich eine ganz einfache Methode haben will, die den Parameter einfach nur wiedergibt, würde ich eben hier eine Variable,
- einen Parameter-Code deklarieren, den ich dann hier im Programm einfach ausgebe.
- Und wenn ich das Programm aufrufe, dann muss natürlich ein Code angegeben werden, nicht ganz funktioniert das nicht.
- Wenn ich keinen Code angeben würde, dann würde sich das System da beschweren.
- So, und wie der Parameter übergeben wird, das machen wir nach der Pause.
- Aber ich hatte ja gestern so viel über die schwächste Vorbedingung geredet.
- Und jetzt wollen wir mal gucken, oder möchte ich Ihnen die Chance geben, zu sehen, was Sie davon noch eben mitbehalten haben.
- Und darum gebe ich Ihnen jetzt hier ein Clicker-Beispiel.
- Ich hoffe, der Clicker funktioniert heute.
- Haben wir also drei Beispiele.
- Und da sollen Sie mir die schwächsten Vorbedingungen in das System als Clicker-Antwort geben.
- So, gucken wir mal hier.
- So, jetzt gucken wir mal.
- Ich habe es gestartet. Sieht jemand?
- Ist der Clicker für irgendjemand erkennbar?
- Ja, ja, ja, danke.
- Okay, ich lasse das mal damit da kein Stress ist.
- Lass ich das die ganze Pause laufen.
- Und da können Sie einfach eben als Text in die als Antwort geben.
- Danach gucken wir uns das an.
- Und danach sehen wir, wie die Parameter einer Methode übergeben werden.
- Hallo.
- Aber Sie können auch gerne die Pause anders nutzen.
- Aber die, die wollen, können das auch mit Ihrem Nachbarn oder Ihrer Nachbarin diskutieren.
- Die geht hier weniger darum.
- Das ist ja nicht dazu da, um Sie abzufragen, sondern soll Ihnen nochmal die Gelegenheit geben, das, was Sie gestern gesehen haben, zu wiederholen.
- Und die Slides von gestern sind auf dem Netz.
- Und wenn Sie vergessen haben sollten, was genau die schlechteste Vorbedingung ist, sollten Sie jetzt in der Lage sein, die auf dem Netz zu finden.
- Also letzte Chance, noch eine Abstimmung hier, ein Ergebnis einzureichen.
- Also, wenn Sie das, das ist halt ein Weg für uns genau zu verstehen, was ein Programm macht.
- Und das ist etwas, was Sie in vielen Situationen wiederfinden werden.
- Immer Sie programmieren, müssten Sie eigentlich genau wissen wollen, was macht das Programm, was für Folgen hat das.
- Oder was für eine Bedingung muss erfüllt sein, damit diese und jene Bedingung da ist.
- Und wie Sie wahrscheinlich wissen, am Ende dieses Semesters muss es ja doch eine Prüfung geben.
- Und in der Prüfung werden Sie zum Teil programmieren, aber zum Teil werden Sie auch eben Fragen beantworten.
- Und ein paar Fragen, die wir in der Vergangenheit gestellt haben, waren eben von der Art, was ist die schwächste Vorbedingung.
- Also, was sind, ich sehe hier, okay, es sind viele Richtige, aber nicht alle ganz Richtige.
- Okay, also, gucken wir, da, wo ich Ihnen das schon gegeben habe, gehen wir kurz durch die Beispiele durch.
- Also, was ist die schwächste Vorbedingung hier für dieses Statement?
- Na ja, da haben wir ja gesagt, wir setzen die rechte Seite in die Prostkondition ein und dann transformieren wir das
- und dann bekommen wir raus, dass x muss größer als minus 1 sein.
- Jetzt sagt jemand, ja, aber ich hätte auch das Programm laufen lassen können.
- Ja, klar, Sie hätten das Vereinwärt von x laufen lassen können und sehen können, ob das stimmt oder mehrfach mehrere Werte.
- Aber so wissen wir, dass wenn x größer als minus 1 ist, dann gilt das, egal, wie wir dahin gekommen sind.
- Jetzt die zweite Sache, zweites Thema ist auch nicht sehr schwer.
- Auch hier setzen wir das ein, ja, wir setzen erst das ein, dann haben wir hier einen Ausdruck, in dem 2 mal k vorkommt
- und dann setzen wir das für das k ein und dann können wir sehen, j muss dann mal 2, muss größer sein als 0,
- aber muss kleiner sein als das und so weiter und dann sehen wir, dass die richtige Antwort, da gibt es nur einen Wert für j, der das erfüllt.
- So, dann haben wir hier ein if Statement.
- Ist da irgendetwas nicht in Ordnung?
- War zuvor aber m kleiner 2.
- Oh, habe ich da irgendwas gemogelt?
- Ja, das ist aber, hier war j kleiner 2, was haben wir hier?
- Ach, nein, das ist aber selbe, sehen Sie, klein sind ja ins, ja.
- Welche Zahl gibt es denn als ins?
- Also als ins gibt es 1 oder 0, wenn Sie wollen, 1, 2, 3, 4, ja, und mehr, ja.
- Und wenn es größer als 2 sein muss, dann muss es 3 oder mehr sein.
- Also, nein, da habe ich jetzt nicht gemogelt, da habe ich also, ja, oder doch?
- 1, ach ja, da oben, ja, gut, okay, das müssen wir, ja.
- Gut, dass Sie das sagen, sehen Sie, wenn ich das noch, habe ich was falsch getippt.
- Okay, gut, okay, aber so, aber interessant, sehen Sie,
- der interessante Fall ist ja der Fall 3, ich meine,
- und das ist der Fall, wo wir eben halt ein if Statement haben, ja.
- Und hier haben wir als Aussage am Ende, dass Max größer gleich x sein soll
- und Max soll größer gleich y sein, ja.
- So, und hier habe ich eben diese Aussage, die möchte ich eben machen.
- Und hier haben wir gesagt, die Weakest Precondition ist B, also B ist hier mein Test, ja, den ich hier habe,
- und die Weakest Precondition für diesen Block, ja, und nicht B,
- und die Weakest Precondition hier für diesen Block, also für den Block, für den zweiten Block, ja.
- Also hier diese, für das, und das andere schwarz für den anderen.
- So, da gehe ich also jetzt hin, ja, kann ich das da also einsetzen, ja.
- Was ist die Weakest Precondition für S1 und Q, ja.
- Da setze ich das also jetzt ein, ja.
- Also hier habe ich mein B, und jetzt frauche ich die Weakest Precondition für diese Anweisung hier, ja.
- Das hier ist die Anweisung, und mein Q ist das hier, ja.
- Das ist, dass Max soll größer gleich x sein,
- und dann habe ich das gleiche noch für eben nicht B, aus nicht B,
- Max größer gleich y und so weiter, ja.
- So, und dann habe ich das, ja, und das kann ich jetzt vereinfachen, ja,
- indem ich jetzt eben halt x größer als y, meine Condition B, ja,
- und eben x, y größer gleich x, und y größer gleich y, das kann man auch gleich y, ja,
- kann ich weiter vereinfachen, ja, das kann ich weiter vereinfachen zu x größer,
- y größer als x, ja.
- Und genauso kann ich den anderen Teil hier, also das, was hinter dem, das Ohr ist, ja,
- für den anderen Teil des Predigtivstetments,
- und wenn ich habe x, y größer gleich x, und y kleiner gleich x, ja,
- ja, da gibt es nur einen Weg, wie man das, das muss immer, das muss immer true sein, ja.
- Entweder es y größer als x, oder nicht, ja.
- Er kann das vereinfachen, und in der Tat, in diesem Fall habe ich eine Situation,
- egal was für Vorbedingungen ich habe, ich, nachher gilt diese Post Condition, ja.
- Also, also, das wollte ich nur mit einem Fehler berichtigen,
- ich noch, bevor ich es aufs Webtour tut mir leid, ja, die Idee haben Sie hoffentlich bekommen,
- und das ist, okay, so, jetzt wollen wir mal gucken,
- dass wir das richtige Window wiederfinden, und dann weitermachen mit den Schleifen, so.
- Ja, so, okay, so, also, also, das haben wir gesehen,
- dass eben halt diese, wenn wir jetzt so eine Methode mit Parameter haben,
- dass dann der, muss ein Wert übergeben werden,
- und dieser Wert wird an die aufgerufenen Methode übergeben, ja.
- Das ist also ein Weg, wie der Aufrufer zur aufgerufenen Methode
- einen Wert übermitteln kann, ja.
- Und wenn die Methode aufgerufen wird, dann wird eben dieser Wert genommen,
- und wird in der Parametervariable gespeichert.
- Also, der Wert, den der Aufrufer übergibt,
- ist der Wert, mit dem die Parametervariable initialisiert wird, ja.
- Und dann erst werden die Anweisungen der Methode ausgeführt,
- mit dem Wert, ursprünglich, mit dem Anfangswert für diesen Parameter,
- für diese Variable, den der Aufrufer übergeben hat, ja.
- Also, hier in dem Beispiel haben wir dann eben jetzt hier
- den Parameter-Emeranzahl, und den benutzen wir hier,
- hier im, benutzen wir hier in diesem Loop,
- um zu kontrollieren, wie oft dieser Loop ausgeführt werden soll
- und wie oft da das gedruckt werden soll, ja.
- So, und um das Programm natürlich komplett zu machen, ja,
- müssen wir natürlich dafür sorgen,
- dass da ein Zufallzahlengenerator verfügbar ist,
- und dass wir den einen Scanner haben und so weiter.
- Und um das zu machen, müssen wir natürlich da oben
- diese Importstatements haben, dass das System weiß,
- dass das eben letztlich gebraucht werden.
- Und dann brauchen wir natürlich auch noch eine andere Methode,
- die diese Methode aufruft.
- Und dafür nehmen wir in diesem einfachen Beispiel die Methode Main,
- die dann eben hier den Aufruf machen würde,
- indem sie diese Methode aufruft.
- Und dann haben wir jetzt das Beispiel komplett,
- und so können Sie das benutzen, ja.
- Also, ein Parameter, der in der Deklaration
- einer Methode auftaucht, also hier dieses Anzahl, ja,
- den nennen wir den formalen Parameter, ja.
- Und das ist ein Weg für uns, eine Variable
- für diese Methode zu definieren, ja.
- Das deklariert hier diese Variable, ja.
- So, und jetzt beim Aufruf der Methode
- muss der ja ein Wert übergeben werden, ja.
- Irgendwann ein Ausdruck wird da übergeben.
- Und dieser übergebende Wert, der heißt eben,
- ja, tatsächliche Argumentwert oder Actual Argument value, ja.
- Oder wenn wir eben zum Ausdruck bringen wollen,
- dass wir da einen Ausdruck haben,
- spricht man manchmal von dem Actual,
- von dem tatsächlichen Argument Ausdruck, ja.
- Jetzt in den meisten Fällen verwenden wir das Wort Argument,
- wenn es da kein Missverständnis gibt, ja.
- Also die Unterscheidung zwischen dem Wert, ja,
- der eben übergeben wird, und dem Ausdruck,
- der benutzt wird, um den Wert zu generieren,
- im Allgemeinen brauchen wir die nicht zu machen, ja.
- Und daher, wenn eben keine Gefahr eines Missverständnisses ist,
- dann würden wir einfach auf den Argument sprechen.
- Der Argument ist der Wert, der vom Aufruf her
- an die aufgerufene Methode übergeben wird.
- Ja, das ist der ganz einfache Weg, den wir da haben.
- So, also, und diese Parametervariable,
- die kann jetzt in der Methode, wie jede andere Variable,
- jede andere Variable verwendet werden.
- Die können wir für alles Möche benutzen, ja.
- Und so haben wir ja gesehen, ja.
- Das ist alles kein Problem, wenn wir hier eine Methode haben,
- die zweimal aufgerufen wird, einmal wird sie aufgerufen mit 3,
- dann druckt sie das, und wenn sie mit 7 aufgerufen wird, druckt sie das.
- Das ist also jedes Mal dasselbe.
- Jetzt, was kann da schiefgehen, wo wir aufpassen?
- Also wenn eine Methode ein Argument erwartet,
- dann muss es auch übergeben werden.
- Andere Programmiersprachen sind da etwas laxer,
- aber wenn sie eben diese Methode haben,
- und sie geben dann kein Argument an,
- dann beschwert sich das System
- und führt das Programm auch gar nicht erst auf.
- Und der Wert oder der Ausdruck muss den richtigen Typ ergeben.
- Wenn Sie jetzt versuchen würden, die eben deklarierte Methode,
- die einen Int-Parameter verlangt, mit einer reellen Zahl aufzurufen,
- dann beschwert sich das System auch.
- Wobei natürlich erfreulicherweise die Regeln für Umwandlungen,
- also die Implizitenumwandlungen hier auch gelten.
- Also wenn da ein Double erwartet wird,
- und sie geben ein Int an, dann würde das eben konvertiert
- und würde auch erlaubt werden.
- Und natürlich können Sie mehr als einen Parameter angeben,
- können mehrere Parameter angeben,
- die würden wir dann durch Komma trennen.
- Also so eine Methode, die eben mehrere Parameter hätte,
- hätte eben hier diese Folge.
- Natürlich, die Typen können unterschiedlich sein,
- die Namen müssen unterschiedlich sein.
- Also die Typen, die beiden könnten gleich sein,
- aber die Namen müssen immer ungleich sein.
- Wenn die Namen gleich sind, beschwert sich das System,
- weil das ist so, als ob Sie zwei Variable
- mit demselben Namen deklarieren würden.
- Und dann würden Sie die eben aufrufen,
- dass für jeden Parameter, den Sie deklariert haben,
- natürlich auch ein Wert übergeben werden muss.
- Also hier hätten wir zwei Aufrufe einer Methode mit zwei Parametern,
- dann müssten Sie halt immer wieder da entsprechend die Werte übergeben.
- Also, wenn eine Methode aufgerufen wird,
- wird der Wert für den Parameter vom Aufrufer berechnet und übergeben.
- Entweder direkt als direkter Wert oder als Variable oder als Ausdruck.
- Und dieser Wert wird in der aufgerufenen Methode
- in der Parametervariable gespeichert.
- Und dann werden die Anweisungen durchgeführt,
- und zwar eben anfangs mit dem Wert für die Parametervariable.
- Aber die Parametervariable ist sonst eine ganz normale Variable
- und die kann daher auch verändert werden.
- Die kann, wenn man das will,
- kann man die beliebigste Weise verändern.
- Und der Wert, den der Aufrufer übergibt,
- der kann durch einen Ausdruck bestimmt sein
- oder durch eine einfache Variable,
- das wäre auch nur ein Ausdruck.
- In allen Fällen wird der Wert berechnet und dann übergeben.
- Aber die aufgerufene Methode, die hat keine Ahnung,
- wie dieser Wert zustande kam.
- Die hat keine Ahnung, was für Variable er evolviert war.
- Die hat überhaupt keine Ahnung, woher der Wert kommt.
- Die kriegt einen Wert und mit dem wird das initialisiert.
- Also, wenn Sie eine Variable übergeben,
- dann wird halt der Wert der Variable genommen
- und wird dieser Wert an die aufgerufene Methode übergeben.
- Und eben diese Art von Übermitteln, also Aufrufen,
- die nennen wir Value Semantics.
- Das heißt, wenn der Parameter eines der Basestypen ist,
- und bisher haben wir ja nur die zugelassen,
- dann wird der Wert direkt kopiert
- und das nennen wir Value Semantics.
- Der Wert wird übergeben.
- Wenn der Ausdruck durch einen Parameter übergeben,
- dann wird der Wert direkt kopiert.
- Und das nennen wir Value Semantics.
- Und das wird dann übergeben.
- Wenn der Ausdruck durch einen Parameter,
- wenn wir einen Ausdruck haben,
- dann wird der Ausdruck evaluiert
- und dann wird der Wert des Ausdrucks übergeben.
- Und dieser Wert, der jetzt da kopiert wird,
- der initialisiert dann die Parametervariable,
- so wie ich das eben gezeigt habe.
- Also, ich hatte hier eben diese Methode
- einmal mit einer Variable aufgerufen
- oder mit einem Ausdruck.
- Das macht alles keinen Unterschied aus.
- Das wird alles so ausgeführt, wie wir das erwarten.
- Wir berechnen den Ausdruck
- und dann entsprechend wird das gemacht.
- So, und weil diese Parametervariable
- eben auch eine normale Variable in der Methode ist,
- kann diese Methode mit dem Parameter arbeiten, wie sie will
- und insbesondere Veränderungen, die in der Methode passieren,
- haben keine Auswirkungen auf die aufrufende Methode.
- Warum?
- Weil es wurde hier nur der Wert übergeben.
- Mehr wurde gar nicht übergeben.
- Es wurde nur ein Wert übergeben.
- Also, ich habe hier eine Methode strange,
- die hat einen Int-Parameter.
- Und dieser Int-Parameter heißt x.
- Und jetzt geht diese Methode hin
- und nimmt x und erhöht den Wert um 1.
- Und speichert dann das Ergebnis in dieser Variable x.
- Und dann drucken wir diesen Wert x aus.
- So, und jetzt rufen wir diese Methode auf
- von einem, mit unserem Main-Programm.
- Da rufen wir das auf mit eben einer,
- auch einer Variable auch, die x genannt wird.
- Die wurde mit 23 initialisiert.
- Und die rufen wir damit aus.
- Und was passiert, der Wert wird übergeben.
- Der Wert wird diese 23 wird übergeben.
- Und wird hier um 1 erhöht.
- Und wir drucken dann aus,
- dass der Wert dieser Variable in diesem Programm
- an dieser Stelle gerade 24 ist.
- Aber dann ist diese Methode zu Ende.
- Wir sind mit der Methode fertig.
- Wir erreichen das Ende.
- Und jetzt geht die Ausführung weiter hier an dieser Stelle.
- Und was machen wir hier?
- Hier gehen wir jetzt hin.
- Und wir drucken nochmal den Wert x.
- Das ist diese Variable hier.
- Und die hat den Wert, den diese Variable da bekommen hat.
- Was immer in dieser Methode passierte, interessiert niemand.
- Das heißt, wenn ich jetzt hier drucke,
- bekomme ich hier als Ausgabe,
- dass x noch weiterhin den Wert 23 hat.
- Warum?
- Weil Änderungen in der Methode,
- Änderungen dieses Parameters,
- haben gar keine Auswirkungen auf das,
- was außerhalb passiert.
- Das ist einfach der Weg, wie wir das machen.
- Also, wie die Variablen heißen.
- Und das spielt alles keine Rolle.
- Entscheidend ist, dass die Werte übergeben werden.
- So, jetzt habe ich hier ein Programm.
- Und da wollen wir mal gucken, was dieses Programm eigentlich ausgibt.
- Das hat hier eine Methode mystery.
- Und mystery hat drei Parameter.
- Nämlich ein Parameter x, ein Parameter z
- und ein Parameter y.
- So, und diese Methode wird aufgerufen an zwei Stellen hier.
- Das war ja eine zweite Farbe.
- Er hat zwei Aufrufe hier und hier.
- Und es gibt in dem Programm drei Variable,
- x, y und z.
- Und die sind hier auch, und wir wollen wissen,
- was produziert dieses Programm denn jetzt.
- Jetzt mal angucken.
- Hier kann man schnell die Übersicht verlieren.
- Also, gucken wir mal an.
- Also, x hat den Wert 9, y hat den Wert 2
- und z hat den Wert 5.
- Und jetzt rufe ich diese Methode mystery,
- z, y und x.
- Die rufe ich jetzt aus.
- Und mit drei Argumenten.
- Z, was ist z?
- Z ist 5, y ist 2 und x ist 9.
- So, das rufe ich jetzt auf.
- Was passiert?
- Diese Werte werden kopiert.
- Und dann hat eben, der Wert x ist das,
- was hier als erstes,
- der Parameter x, also die lokale Variable x,
- dieser Mystery Methode,
- bekommt den Wert, der da als erster übergeben wurde.
- Die Methode, die Variable z,
- bekommt hier den zweiten Wert, das war eine 2.
- Und der Parameter y, das ist der letzte,
- bekommt den Wert, der hier als letzter übergeben wurde.
- So, und damit habe ich also hier diese Werte
- für die Integer-Parameters x, z und y in der Methode.
- Und jetzt druck ich aus, ich druckere aus, eben z,
- das ist 2, dann druckere ich den Text end.
- Und dann habe ich hier die Differenz von y minus x.
- Und das, also jetzt hoffe ich immer richtig zu rechnen,
- 9 minus 5 ist 4.
- Und dann bekomme ich das als Ausgabe.
- So, und das nächste Beispiel können Sie jetzt selber überlegen,
- wie das geht.
- Also hier habe ich, wenn ich das nächste Beispiel nehme,
- dann habe ich jetzt hier diese, wieder diese Reihenfolge,
- y, x und z, y ist 2, x war 9 und z ist 5.
- Das wird dann kopiert auf diese, dann ist eben hier,
- mein lokales x ist 2, mein lokales z ist 9,
- mein lokales y ist 5, dann habe ich also,
- druck ich jetzt hier aus, z, z hat den Wert 9,
- 9 und, richtig sehe, y ist 5, minus x, 2 ist 3.
- Also sollte 9 und 3 als richtige Ausgabe kommen.
- Und das tut es dann auch.
- Also wie gesagt, nicht, dass ich das als Beispiel
- für gute Variabelnamen vorstellen möchte,
- Sie müssen so ein Beispiel, so genau Schritt für Schritt
- durchgehen können und sehen können,
- so sehen können, dass das eben,
- als Sie verstehen, wie das geht.
- So, jetzt haben wir also den Weg gefunden,
- wie wir Werte in eine Methode hereingeben können,
- indem wir eben diese Parameter entsprechend setzen.
- Und natürlich die nächste, um das bisschen weiterzuentwickeln,
- müssen wir auch einen Weg haben,
- Ergebnisse aus einer Methode zurückzugeben.
- Und dafür gibt es auch eine Möglichkeit.
- Zum Beispiel habe ich hier ein Programm,
- in dem ich für alle Zahlen bis zu einem Limit,
- möchte ich sehen, ob diese Zahl eine Primzahl ist.
- Und das würde ich, wenn die Primzahl ist,
- dann werde ich sie ausdrucken.
- Und daher würde ich an sich idealerweise hier in meinem If-Statement
- einen Test haben, ob eine Zahl eine Primzahl ist.
- Und na ja, da gibt es leider keine ganz einfache geschlossene Form,
- die ich hier eingeben könnte.
- Also hier kann ich jetzt nicht einfach irgendwie
- einen Test hinschreiben von der Art,
- wenn das und das erfüllt ist.
- Das heißt, ich muss also irgendein etwas besseren Weg finden,
- mein Programm zu strukturieren.
- Und da bietet sich natürlich wieder an,
- dass wir dafür eine Methode definieren.
- Der Parameter erlaubt die Kommunikation zur aufgerufene Methode hin.
- Und jetzt kann ich eine Methode definieren, die einen Wert zurückliefert.
- Und dieser Rückgabewert erlaubt es mir dann,
- in der aufgerufene Methode weiterzumachen.
- Damit kann ich meine Programme viel besser zusammenstellen,
- als wenn ich eben nur Werte an die Methode übergeben könnte.
- Also müssen wir das so vorstellen, wir haben hier diese Methode,
- nennen wir die Name, die ist hier eben deklariert,
- die hat zwei Parameter, wenn ich die aufrufe,
- dann werden diese Werte genommen, die werden dahin kopiert,
- und die sind dann in dieser Methode verfügbar, dann arbeite ich da.
- Und am Ende habe ich ein Resultat.
- Und das will ich jetzt eben zurückgeben.
- Das will ich in irgendeiner Weise zurückgeben.
- Und dafür gibt es eben ein besonderes Statement,
- dass diesen Rückgabewert von der aufgerufenen Methode an die Methode,
- die eben auf, die das Aufruf zurückgibt.
- Und dieser Wert muss natürlich deklariert sein,
- sonst weiß das System, wenn ich jetzt hier diesen Wert zurückgeben will.
- Was soll das denn sein?
- Ist das ein Int oder Double oder irgendwas anderes?
- Und darum muss der eben deklariert sein.
- Das heißt, wenn wir eine Methode deklarieren,
- dann geben wir an, was für ein Rückgabetyp wir da erwarten.
- Dieser Rückgabewert muss dann von diesem Typ sein.
- Und dann hatten wir ganz am Anfang ja gesehen,
- manchmal haben wir dieses Keywort "Void" gehabt,
- und "Void" heißt, es gibt keinen Rückgabewert.
- Das ist eben die Kurzform, um zu sagen, hier ist nichts.
- Das ist einfach auszudrücken, dass diese Methode nicht zurückgibt.
- Und da haben wir das bisher gemacht,
- weil ich eben noch nicht Überrückgabewerte reden konnte.
- Aber eine Methode, die eben einen Wert zurückgeben will,
- die deklariert hier den Typ,
- und dann hat sie in der Methode ein Return Statement,
- dass eben diesen Wert liefert.
- Also irgendein Ausdruck hat, kann ein Erd sein,
- kann der Variable sein und so weiter,
- der wird evaluiert und dann zurückgegeben.
- Und die gleichen Regeln, die wir für die Typen hatten,
- die für die Variable galten und für Parameter galten,
- die gelten hier auch.
- Also zurzeit können wir nur mit Basestypen arbeiten,
- aber das kann auch später erweitert werden.
- Also dieses Return Statement,
- wertet eben den Ausdruck aus
- und gibt dann den Wert an den Aufrufer zurück.
- Aber die aufgerufene Methode hat keine Ahnung,
- was der Aufrufer damit machen will.
- Das liefert den Wert und es ist dann
- Sache der aufgerufene Methode, mit dem Wert weiterzumachen.
- Und wenn einmal dieses Return Statement ausgeführt wurde,
- also wenn der Wert zurückgegeben wurde,
- dann ist die aufgerufene Methode zu Ende.
- Das beendet die Aufführung dieser Methode.
- Dann ist das das Ende dieser Aufführung
- und damit ist es so,
- als ob wir die letzte Anweisung erreicht hätten.
- Also die Return liefert den Wert ab
- und sendet das Ergebnis zum Aufrufer.
- Also die Parameter sind der Weg,
- wie wir Werte vom Aufrufer zur aufgerufene Methode bekommen.
- Der Return schickt Werte von der aufgerufenen Methode
- zum Aufrufer zurück.
- Also hier, wenn wir diese einfache Methode haben,
- dann hätten wir hier einen Return Statement,
- kann man das sehen.
- Und da wollen wir eben einen Int Wert zurückgeben.
- Darum haben wir dekoriert, dass diese Methode einen Int Wert gibt.
- Resalt ist in der Tat ein Int Wert.
- Also das ist okay, der Wert kann zurückkommen.
- Und hier weiß das System,
- diese Methode liefert einen Int Wert zurück.
- Daher kann ich den benutzen,
- um diese Int variabel hier zu initialisieren
- oder irgendwie einen Wert da zu haben.
- Also so kann ich da den Wert vernünftig zurückgehen.
- Jetzt also zurück zu meinem Beispiel,
- wo ich da eben mit den rausfinden möchte,
- ob die Zahlen primzahlen sind.
- Da ich das einem If Statement verwenden will,
- brauche ich einen Rückgabetyp Boolean,
- entweder true oder false.
- Und habe ich jetzt hier den Code, der checkt,
- wie viele Faktoren eine gegebene Zahl hat.
- Und wir wissen, dass wenn eben die Anzahl,
- machen wir so lange, bis wir den Faktor gefunden haben.
- Und wenn wir wissen, dass das richtig ist,
- dann werden wir dementsprechend als Rückgabewert das geben.
- Also wir checken, dass da eben die Anzahl,
- dass eben halt, wenn es eine Primzahl ist,
- dann gibt es keinen Faktor.
- Dann ist der erste Faktor, den wir finden, der Wert selber,
- der Wert, den wir hier als Argument übergeben bekommen haben.
- Wenn das also der letzte Wert ist, den wir haben,
- dann wissen wir, die Zahl ist eine Primzahl.
- Und wenn wir schon früher diesen Loop beendet haben,
- dann wissen wir, dass es keine Primzahl ist.
- Und daher ist dann die Antwort false.
- Okay, also.
- Und das können wir mit allen Basitypen machen, wie wir wollen.
- Können da eben halt die Steigung liefern oder irgendwas anderes machen.
- Und wenn eben halt der Wert dann berechnet wurde,
- geht er an den Aufrufer zurück.
- So, und eben wenn sie keinen Wert schicken,
- dann können wir das mit Wold sagen,
- dann ist das nicht so.
- Ich möchte unser Return Statement auch keinen Ausdruck,
- weil es wird ja nichts zurückgeliefert.
- Aber in meiner Empfehlung wäre,
- lassen Sie das Return Statement weg.
- Also ein Return ohne Ausdruck ist okay,
- wenn es keinen Rückgabewert gibt,
- ist aber letztlich eher verwirrend als sonst irgendwas.
- Also und das können Sie in allen möglichen Situationen gebrauchen,
- wenn Sie eine Konvertierung machen wollen,
- irgendwas berechnen wollen und so weiter.
- Also, können Sie arithmetische Ausdruck, alles können Sie machen.
- So, jetzt was für mögliche Fehler sehen wir in diversen Programmen,
- bevor sie uns eingereicht werden.
- Also ein leichter Fehler machen kann,
- ist, dass das Return Statement zwar den Wert zurückschickt,
- aber die aufgerufene Methode mit dem Wert nichts anfängt.
- Und die Namen, die im Programm verwendet werden,
- spielen einfach keine Rolle.
- Ich habe hier nochmal diese Methode,
- die eben die Steigung durch zwei Punkte berechnet.
- Jetzt gehe ich hin und rufe die hier auf, das ist ja okay.
- Aber jetzt geht das Programm hin.
- Diese Methode liefert einen Rückgabewert,
- einen Rückgabewert vom Typ Double
- und der wird dann entgegengenommen.
- Jetzt fragt mich eben jemand im Chat,
- müsste nicht hier ein Bullion zurückgegeben werden.
- Und die Antwort ist ja, das wird es auch,
- weil hier ist ein Ausdruck, ein Ausdruck,
- der vergleicht, ob der letzte gefunden Faktor gleich dem Argument ist.
- Das ist ein Ausdruck, der kann sein entweder true oder false.
- Und das ist genau das, was für Bullion gilt.
- Das System checkt, ob in der Tat der Ausdruck, der hier steht,
- entweder von dem Typ ist oder implizit in diesen Typ verwandelt werden kann.
- Und da es für Bullion keine implizite Verwandlungen gibt,
- checkt er, dass der Ausdruck hier in der Tat ein logischer Ausdruck ist,
- der einen Bullionwert ergibt.
- Das haben Sie richtig gesehen, da mussten Bullion zurück
- und in der Tat, da ist ein Bullion zurückgegeben worden.
- Also, hier hatten wir das Problem, dass der Wert zurückgegeben wird,
- aber nicht irgendwie verwendet wird.
- Natürlich kann man jetzt hingehen und sagen, okay,
- dann können wir doch hier den Wert nochmal ausgeben,
- weil das hieß ja gesalt hier.
- Das geht nicht.
- Was immer an Namen hier verwendet wird,
- ist völlig irrelevant für die Methode von der aus der Aufruferfolge.
- Der einzig legale Weg, das zu machen,
- ist, dass wir diesen Wert explizit speichern.
- Und leider gibt das System uns da keine Hilfe.
- Wenn Sie den Wert entgegennehmen und auf den Fußboden fallen lassen,
- ist der Compiler zufrieden und optimiert vielleicht noch den Aufruf weg,
- weil die brauchen das Ergebnis ja nicht,
- aber eine Warnung gibt es nicht.
- Also, da müssen Sie hier selber durch ein explizites Statement diese Anweisung,
- müssen Sie selber hingehen und das von Hand machen und selber speichern.
- So, jetzt habe ich gesagt, die Return Anweisung gibt einen Wert zurück.
- Aber wir können natürlich in einem Programm mehrere Return Anweisungen haben.
- In einer Methode kann es mehrere Return Anweisungen geben
- und das ist sinnvoll, wenn Sie irgendwelche Fallunterscheidungen machen wollen.
- Wenn wir jetzt diesen Punkt erreicht haben,
- dass das Ergebnis feststeht, können wir den Wert da zurückgeben.
- Die einzige Regel ist, dass eine Methode, die einen Rückgabewert deklariert hat,
- die muss eine Return, die muss mindestens eine Return Anweisung haben.
- Aber sie kann beliebig viele haben.
- Und das ist sinnvoll, strukturiert unser Programm,
- aber kann manchmal zu Überraschungen führen.
- Also, hier haben wir ein Programm, wo wir eben sehen wollen,
- welche Zahl ist die größere.
- Und wenn sie gleich sind, dann spielt es keine Rolle.
- Also, hier checken wir erst, ob A größer B ist.
- Und wenn A größer B ist, dann geben wir A zurück.
- Und anderenfalls, da ja in dem Fall ist B größer gleich A,
- können wir einfach B zurückgeben.
- Dadurch brauchen wir hier keine lokalen Variablen weiter zu deklarieren.
- Also, wir haben hier einen Return im If-Statement, das ist fein.
- Aber eben, egal wie wir durch dieses Programm durchgehen,
- entweder hier der Test ist wahr, dann haben wir das ausgeführt
- und da ein Return gehabt, oder der Test war false,
- dann haben wir das ausgeführt und das auch geführt.
- Und andere Fahre durch das Programm gibt es nicht.
- Und daher ist am Ende jedes Fahres immer ein Return-Statement
- und das System ist zufrieden.
- Die Ausflugung des Return-Statements hat dann eben die Methode beendet.
- Also, der Fahrd ist dann abgeschlossen worden.
- Und eben, wie ich zeigte, alle Fahre in diesem Beispiel
- enthielten ein Return-Statement.
- Aber wie ist es bei diesem Programm?
- Hier haben wir auch einen Test
- und hier haben wir, wenn A größer B ist, dann haben wir einen Return von A.
- Und in der Tat, wenn A, hier haben wir die Parameter A und B,
- wenn A größer B sein sollte, ist alles Bestens.
- Aber wenn B größer gleich A sein sollte, wenn der Test false ergibt,
- dann eben geht das System hin und führt die nächste Anweisung aus.
- Und da ist jetzt keine.
- Und daher beschwert sich das System.
- Also, wenn Sie so ein Programm haben, geht der Compiler hin und sagt,
- das ist kein akzeptables Programm,
- weil nicht alle Fahre haben einen Return-Werk.
- So, manchmal ist der Compiler ein bisschen naiv.
- Jetzt nehmen wir mal an, jemand hätte dieses Programm geschrieben.
- Wenn A größer als B ist, haben wir wieder, geben wir A zurück.
- Und andersfalls, um sicher zu sein, checken wir doch nochmal.
- Wenn B größer gleich A ist, dann geben wir B zurück.
- Und wenn wir das so machen, dann beschwert sich der Compiler auch
- und sagt, dieses Programm kann nicht übersetzt werden,
- weil der Compiler meint, dass es hier einen Fahrt gibt,
- an dem es keinen Return gibt.
- Deswegen empfiehlt sich dann nochmal anzugucken,
- der Compiler sich so ein Programm anguckt.
- Der Compiler sieht das Programm doch folgendermaßen sich an.
- Hier oben ist der erste Test, das ist dieser hier.
- Und der kann wahre oder falsch sein.
- Wenn der Wahre ist, dann wird das dieses Return-Stapel ausgeführt
- und alles ist okay.
- Wenn der nicht Wahre ist, dann wird dieser Teil ausgeführt
- und hier wird der Test A kleiner gleich null ausgeführt.
- Wir wissen, das muss ja Wahre sein und daher wird das ausgeführt.
- Aber der Compiler sagt, es wäre ja auch möglich,
- dass dieser Test Nein ergibt, also der Test False ergibt.
- Und daher sagt der Compiler, es gibt auch einen Fahrt durch das Programm,
- es gibt hier keine Weitere Anweisungen,
- in dem es keinen Return-Stapel mit gibt.
- Und daher beschwert sich der Compiler und sagt,
- das geht nicht, das wollen wir nicht, das ist nicht korrekt.
- Und daher in einem solchen Fall müssen Sie entweder das Programm restrukturieren,
- indem Sie entweder diesen Test wegwerfen, der nicht nötig ist,
- oder dass Sie noch ein weiteres Return einfügen.
- Sie könnten auch ein Return hier unten einfügen,
- wäre das System auch zufrieden.
- Aber muss irgendein Entwert sein, kann nicht irgendein,
- nur einfach Return sein, dann ist das System auch zufrieden.
- Und weil das so ein gutes Beispiel,
- weil das mit diesem if und return so schön ist,
- habe ich hier ein Beispiel für Sie,
- das Sie sich jetzt auch überlegen sollen.
- Und zwar haben wir hier die Aufgabe, und die müssen wir jetzt genau gucken,
- wir haben hier einen, wir haben zwei reale Zahlen,
- die geben an Punkte in dieser Fläche.
- Und wir wollen ein Programm, das den Quadranten liefert.
- Also Quadrant ist entweder eins oder zwei oder drei oder vier,
- in der Reihenfolie.
- Also wenn ich eben zum Beispiel hier diesen Punkt minus 4,2,
- minus 4,2, 17,3 habe, der ist hier irgendwo,
- da ist dieser Punkt, dann wäre die Antwort 2.
- So ein Programm, sollen Sie, also eine Methode,
- mit dem Vorgegebenen Namen Quadrant, sollen Sie schreiben.
- Und das sollen Sie mir in den, als Antwort,
- für den Klicker, den ich jetzt starte, geben.
- Es ist nicht schwierig, ein paar Zeilen sind es aber doch,
- können Sie machen, wie Sie wollen.
- Am besten schreiben Sie es da rein.
- Sie können es auch auf dem Blatt Papier schreiben,
- und das Blatt Papier mir runterreichen.
- Sie können es mir auch per E-Mail checken.
- Sie können natürlich jetzt auch Ihre Eclipse starten,
- und das dann da lösen, aber das ist eigentlich nicht der Sinn der Übung.
- Sondern Sie mir überlegen, was muss ich machen,
- wenn ich diese Aufgabe lösen soll.
- Also schreiben Sie jetzt nicht in die Kurz-Channel.
- Diesmal versuche, hoffe ich, dass der Klicker funktioniert,
- und dass Sie daher das als Antwort in den Klicker reinschreiben können.
- Also ich nehme auch gerne von denen,
- die keinen Smartphone dabei haben, Papier entgegen.
- Normales Papier, irgendwelches Papier.
- Lesbar sollte es sein, das macht es dann leichter,
- das später zu diskutieren.
- Und eben der Feinprint ist auch noch mitzulesen hier unten.
- Fällt der Punkt auf eine der Achsen des Koordinatensystems,
- sollen Sie den Wert 0 liefern.
- Okay, gut.
- Die Auflösung, also ich mache noch eine Minute,
- und dann, wenn wir das schicken,
- ich mir mehr Beispiele.
- An einem späteren Tag zeige ich Ihnen dann eine Auswahl derer,
- die ich da gesehen habe, ist ja alles anonym.
- Es gibt da sehr viele Möglichkeiten, das zu machen.
- Ja, also wie machen wir das?
- Also hier, erste Sache ist,
- wie sieht unsere Methode aus, die wir da schreiben wollen.
- Also Public Static, das sollte auch sein, der Name war vorgegeben.
- Und natürlich, wir wollen den Quadranten zurück.
- Also als Return Type muss da im Stehen.
- Das muss ein Intwert zurückkommen.
- Und was haben wir hier?
- Wir haben unsere Methode, die hat zwei Parameter vom Typ Double.
- Name spielt keine Rolle.
- Ein Weg, das zu machen, ist, zu sehen,
- dass wir erst sehen, ist es im ersten Quadranten,
- im zweiten, dritten, vierten, vierten.
- Und wenn es da nicht ist,
- dann muss es ja auf einer der Achsen liegen und das so machen.
- Und können das auch anders strukturieren.
- Sie können es also mit Doubles,
- mit Double Werten machen und so weiter.
- Also, da können Sie auch verschiedenste Weise das machen.
- Und wir werden mal sehen, was für Möglichkeiten von Ihnen jetzt gekommen sind.
- So, das haben wir für heute.
- Ich wünsche Ihnen schönes Wochenende
- und bis zum Dienstag dann.
- (Beifall)
+
+[00:00:00.000 --> 00:00:05.880]   So, wir wollen noch weiter mit einfachen Java-Programmen beschäftigen.
+[00:00:05.880 --> 00:00:12.800]   Und das nächste Thema, nachdem wir jetzt gesehen haben, wie wir einfach Instruktionen oder Anweisungen
+[00:00:12.800 --> 00:00:16.560]   hintereinander rein können, ist das Thema der Schleifen.
+[00:00:16.560 --> 00:00:20.640]   Und da werden wir uns am Anfang wiederholen mit Schleifen beschäftigen.
+[00:00:20.640 --> 00:00:24.480]   Als ersten Einstieg gucken wir uns bestimmte einfache Schleifen an.
+[00:00:24.480 --> 00:00:31.480]   Aber bevor wir das machen, wollen wir noch kurz auf ein anderes Thema für ein paar Minuten zu sprechen kommen,
+[00:00:31.480 --> 00:00:35.680]   das wir eigentlich auch brauchen, um etwas interessanter Programme zu schreiben.
+[00:00:35.680 --> 00:00:40.640]   Ich hatte Ihnen gestern erzählt, dass Sie mit dem Scanner Daten einlesen können.
+[00:00:40.640 --> 00:00:43.720]   Das ist gut und schön, aber manchmal will man noch weniger machen.
+[00:00:43.720 --> 00:00:48.960]   Manchmal hätte man einfach nur gerne irgendwelche Zahlen, mit denen man arbeiten kann.
+[00:00:48.960 --> 00:00:53.760]   Und auch dafür stellt Java einen Service zur Verfügung, nämlich eine andere Bibliothek,
+[00:00:53.760 --> 00:00:56.680]   mit der wir so etwas erreichen können.
+[00:00:56.680 --> 00:01:01.280]   Und dieser Service ist der Random Service für Zufälliger.
+[00:01:01.280 --> 00:01:06.720]   Das ist natürlich auch wieder in dieser Bibliothek Java.util definiert.
+[00:01:06.720 --> 00:01:10.080]   Das heißt, wir müssen wieder ein bisschen blaue Farbe verwenden
+[00:01:10.080 --> 00:01:14.960]   und müssen so ein Statement eben an den Anfang unseres Programmes schreiben,
+[00:01:14.960 --> 00:01:19.400]   damit das System weiß, dass wir diesen Random Service benutzen wollen.
+[00:01:19.400 --> 00:01:24.120]   Und natürlich brauchen wir da auch eben etwas, mit dem wir, also ein Objekt,
+[00:01:24.120 --> 00:01:26.680]   mit dem wir solche Zufallzahlen erzeugen können.
+[00:01:26.680 --> 00:01:30.520]   Und das würden wir ähnlich im Scanner gesehen haben, so machen,
+[00:01:30.520 --> 00:01:36.960]   dass wir eben halt ein Exemplar dieses Objekts dieser Typen da haben
+[00:01:36.960 --> 00:01:41.240]   und sagen, nehmen wir den Zufall und das ist halt ein neuer Zufallzahlengenerator.
+[00:01:41.240 --> 00:01:48.040]   So einen Satz, oder eine Anweisung, müssten Sie einfach eben über kopieren.
+[00:01:48.040 --> 00:01:50.040]   Das zeige ich gleich ein Beispiel.
+[00:01:50.040 --> 00:01:54.240]   Also, so, wenn wir jetzt so einen Zufallzahlengenerator haben,
+[00:01:54.240 --> 00:01:59.040]   dann gibt der für uns drei verschiedene Services an, gibt einige mehr,
+[00:01:59.040 --> 00:02:01.040]   aber die drei sind für uns wichtig.
+[00:02:01.040 --> 00:02:07.440]   Und der erste ist, dass wir mittels der Operation oder der Methode NextInt
+[00:02:07.440 --> 00:02:10.440]   eine zufällig gewählte Integer bekommen können,
+[00:02:10.440 --> 00:02:13.640]   also eine ganze Zahl innerhalb des Wertepereichs,
+[00:02:13.640 --> 00:02:15.640]   der auf dem System zugelassen wird.
+[00:02:15.640 --> 00:02:18.640]   Nun, manchmal will man ja nicht irgendeine Integer,
+[00:02:18.640 --> 00:02:22.640]   sondern hätte gerne eine Integer innerhalb eines bestimmten Bereichs.
+[00:02:22.640 --> 00:02:28.240]   Und darum gibt es auch die Variante NextInt mit dann in Klammern Max,
+[00:02:28.240 --> 00:02:32.040]   die größte Zahl, die nicht erreicht werden soll.
+[00:02:32.040 --> 00:02:37.640]   Also, wenn ich eben Max angebe, dann wird das, gibt es eine Integer
+[00:02:37.640 --> 00:02:40.640]   aus dem Bereich von Null, also Null ist eine mögliche,
+[00:02:40.640 --> 00:02:46.640]   bis eben unterhalb Max, also Max-1 wäre die größte mögliche ganze Zahl,
+[00:02:46.640 --> 00:02:49.640]   die ich durch diesen Service bekommen kann.
+[00:02:49.640 --> 00:02:53.640]   Und mit NextDouble kann ich eben eine Random-Nummer bekommen,
+[00:02:53.640 --> 00:02:57.640]   die in dem Bereich von Null, Null bis 1, Null ist.
+[00:02:57.640 --> 00:03:01.640]   Also, 1, Null ist gehört nicht dazu, aber eben Null, Null, Null, Null, Null,
+[00:03:01.640 --> 00:03:03.640]   oder was auch immer, gehört noch mit dazu.
+[00:03:03.640 --> 00:03:04.640]   Und wie würden wir das jetzt machen?
+[00:03:04.640 --> 00:03:06.640]   Also, wir würden unser Programm schreiben hier oben,
+[00:03:06.640 --> 00:03:10.640]   import Java.util Random, dann produzieren wir einen Random,
+[00:03:10.640 --> 00:03:15.640]   einen Zuverzahlengenerator und dann hätten wir eben halt diesen
+[00:03:15.640 --> 00:03:18.640]   Zuverzahlengenerator, den könnten wir jetzt benutzen,
+[00:03:18.640 --> 00:03:21.640]   so wie wir es schon mal bei PrintLine gesehen haben.
+[00:03:21.640 --> 00:03:23.640]   Wir nehmen den, den haben wir hier definiert,
+[00:03:23.640 --> 00:03:28.640]   und den nehmen wir jetzt und wollen eine Zahl zwischen 0 bis 9.
+[00:03:28.640 --> 00:03:30.640]   Also, würden wir diese Variante nehmen, wo wir sagen,
+[00:03:30.640 --> 00:03:35.640]   die NextInt vom Bereich Null bis 10, aber 10 ausschließlich,
+[00:03:35.640 --> 00:03:38.640]   dann hätten wir gerne eine und die würden wir dann in dieser
+[00:03:38.640 --> 00:03:43.640]   ganzen Zahl, in dieser Variable für ganze Zahlen bespeichern.
+[00:03:43.640 --> 00:03:46.640]   Das hätten wir auf diese Weise leicht erledigt und könnten
+[00:03:46.640 --> 00:03:51.640]   auf diese Weise eben unsere Zuverzahlen produzieren.
+[00:03:51.640 --> 00:03:55.640]   Also, jetzt ist es so, oftmals brauchen Sie natürlich
+[00:03:55.640 --> 00:03:59.640]   Zuverzahlen nicht zwischen 0 und irgendeinem N minus 1,
+[00:03:59.640 --> 00:04:01.640]   sondern zwischen 1 und N.
+[00:04:01.640 --> 00:04:04.640]   Naja, und das ist nicht sehr schwierig, Sie würden einfach hingehen
+[00:04:04.640 --> 00:04:08.640]   und sagen, ich gehe jetzt halt hin, ich bekomme halt Zuverzahlen
+[00:04:08.640 --> 00:04:13.640]   von 0 bis N minus 1, und dieser Zufallszahl hier,
+[00:04:13.640 --> 00:04:18.640]   die ich hier bekomme, der addiere ich noch eine 1 dazu,
+[00:04:18.640 --> 00:04:24.640]   und so bekomme ich dann die Zufallzahl im Bereich zwischen 1 und N.
+[00:04:24.640 --> 00:04:27.640]   Also, wenn ich Zuverzahlen von 1 bis 20 will, würde ich sagen,
+[00:04:27.640 --> 00:04:30.640]   hier dieser Zufallzahlgenerator, mögen wir bitte eine Zahl
+[00:04:30.640 --> 00:04:34.640]   in dem Bereich liefern und dann arbeitet der entsprechend.
+[00:04:34.640 --> 00:04:39.640]   Also, wenn ich so praktisch wenn ich hingehe und Zahl
+[00:04:39.640 --> 00:04:41.640]   in dem Bereich brauche, kann ich das gut machen.
+[00:04:41.640 --> 00:04:46.640]   Und das ist sehr praktisch, weil dadurch können wir schnell
+[00:04:46.640 --> 00:04:49.640]   Zahlen bekommen, die wir irgendwie gebrauchen.
+[00:04:49.640 --> 00:04:54.640]   Also, wenn wir eine zufällige ganze Zahl zwischen 1 und 47 einschließlich wollen,
+[00:04:54.640 --> 00:05:01.640]   dann würden wir eben sagen, Next Int, und dann 47 plus 1.
+[00:05:01.640 --> 00:05:05.640]   Das wäre der Weg, wie wir das ganz einfach machen könnten.
+[00:05:05.640 --> 00:05:10.640]   Oder eine zufällige ganze Zahl zwischen 23 und 30 einschließlich.
+[00:05:10.640 --> 00:05:12.640]   Was ist 30 minus 23?
+[00:05:12.640 --> 00:05:14.640]   Das ist 7 plus 1 ist 8.
+[00:05:14.640 --> 00:05:18.640]   Also, ich hätte gerne eine Zufallzahl von 1 bis 7,
+[00:05:18.640 --> 00:05:20.640]   und dazu addiere ich dann 23,
+[00:05:20.640 --> 00:05:24.640]   und so bekomme ich dann Werte zwischen 23 und 30.
+[00:05:24.640 --> 00:05:28.640]   So, und so können wir, wenn wir eine ganze Geradezahl haben wollen,
+[00:05:28.640 --> 00:05:33.640]   ja gut, da müssen wir das, was wir bekommen, mit 2 multiplizieren.
+[00:05:33.640 --> 00:05:39.640]   Also, das ist ein einfacher Weg, mit dem wir das machen können.
+[00:05:39.640 --> 00:05:43.640]   Und jede Menge von Werten der Basestypen können wir letztlich
+[00:05:43.640 --> 00:05:45.640]   auf ganze Zahlen abbilden.
+[00:05:45.640 --> 00:05:47.640]   Es hilft auch bei anderen Typen.
+[00:05:47.640 --> 00:05:49.640]   Wenn Sie ein Programm schreiben wollen,
+[00:05:49.640 --> 00:05:53.640]   mit dem Sie Schere, Stein, Speich, Pi spielen können,
+[00:05:53.640 --> 00:05:57.640]   dann bräuchten Sie eben Zufallszahlen zwischen 0 und 3,
+[00:05:57.640 --> 00:06:00.640]   also 0, 1 und 2, und dann würden Sie entscheiden,
+[00:06:00.640 --> 00:06:04.640]   was diese Zahlen eben, was das eben bedeutet,
+[00:06:04.640 --> 00:06:07.640]   und würden eben dementsprechend das ausgeben.
+[00:06:07.640 --> 00:06:09.640]   So, also das ist nur so kurzer Einschub,
+[00:06:09.640 --> 00:06:12.640]   für die, die etwas interessanter Programme machen wollen,
+[00:06:12.640 --> 00:06:15.640]   und sich die Mühe sparen wollen, das einzugeben.
+[00:06:15.640 --> 00:06:18.640]   Und jetzt kommen wir also zum ersten Thema der Schleifen,
+[00:06:18.640 --> 00:06:20.640]   nämlich ganz einfache Schleifen.
+[00:06:20.640 --> 00:06:23.640]   Also, Schleifen sind, kennen Sie vielleicht aus anderen Programmiersprachen,
+[00:06:23.640 --> 00:06:27.640]   ist ein einfaches Konzept, mit dem wir eine oder mehrere Anweisungen
+[00:06:27.640 --> 00:06:29.640]   wiederholt ausführen können.
+[00:06:29.640 --> 00:06:32.640]   Die gibt es natürlich in den verschiedensten Varianten,
+[00:06:32.640 --> 00:06:35.640]   und die Erste, die uns angucken, ist der sogenannte Vorloop,
+[00:06:35.640 --> 00:06:39.640]   Vor, weil das Keywort, in dem für diese Schleife verwendet wird,
+[00:06:39.640 --> 00:06:43.640]   und der sollte angesetzt werden, um eine fixe Anzahl
+[00:06:43.640 --> 00:06:46.640]   an Wiederholungen durchzuführen, wenn er richtig eingesetzt wird.
+[00:06:46.640 --> 00:06:50.640]   Manchmal, na ja, kommen wir auf Probleme noch später zu sprechen,
+[00:06:50.640 --> 00:06:53.640]   aber das ist der Grundgedanke.
+[00:06:53.640 --> 00:06:57.640]   Also, nehmen wir mal an, Sie wollen statt die Schere Steinpapier,
+[00:06:57.640 --> 00:07:00.640]   wollen Sie Rechenaufgaben für jemanden stellen, einfache Aufgaben.
+[00:07:00.640 --> 00:07:04.640]   Sie nehmen zwei ganze Zahlen, Z1 und Z2,
+[00:07:04.640 --> 00:07:09.640]   und dann präsentieren Sie die Aufgabe, berechnen Sie die Summe von Z1 und Z2,
+[00:07:09.640 --> 00:07:12.640]   und dann lesen wir die Eingabe, und dann vergleichen wir die Eingabe,
+[00:07:12.640 --> 00:07:16.640]   und wenn die Eingabe richtig ist, dann zählen, dann sind wir zufrieden,
+[00:07:16.640 --> 00:07:19.640]   und falls zählen wir die Anzahl der Fehler.
+[00:07:19.640 --> 00:07:23.640]   Na ja, gut, wer lernt schon üben, wer übt denn schon mit einer Aufgabe,
+[00:07:23.640 --> 00:07:26.640]   keine, also, wir haben besten drei Aufgaben machen.
+[00:07:26.640 --> 00:07:30.640]   Also, wie wir so ein Programmsegment aussehen, na ja,
+[00:07:30.640 --> 00:07:35.640]   wir bräuchten natürlich eben halt den Scanner, um von der Konsole zu lesen,
+[00:07:35.640 --> 00:07:41.640]   wir bräuchten den Zufallszahlengenerator, um die zufällige Zahlen zu haben,
+[00:07:41.640 --> 00:07:47.640]   wir zählen die Anzahl der Fehler, dann haben wir ein paar zwei Integervariable,
+[00:07:47.640 --> 00:07:53.640]   um eben die Operanten herzustellen, dann gehen wir hin und drucken auf der Konsole aus,
+[00:07:53.640 --> 00:07:58.640]   eben diese beiden Zahlen mit dem Plus-Operator,
+[00:07:58.640 --> 00:08:03.640]   und dann lesen wir von der Konsole die Antwort, na ja, dann vergleichen wir die Antwort,
+[00:08:03.640 --> 00:08:06.640]   ob die das ist, was passiert, wenn wir den Plus-Operator verwenden,
+[00:08:06.640 --> 00:08:10.640]   und wenn das eben nicht gleich ist, dann erhöhen wir die Anzahl,
+[00:08:10.640 --> 00:08:12.640]   erhöhen wir den Zähler-Account, ja.
+[00:08:12.640 --> 00:08:16.640]   So, und natürlich würden sowas vielleicht gerne nicht nur einmal, sondern dreimal machen,
+[00:08:16.640 --> 00:08:19.640]   und der erste Anlass wäre natürlich einfach die Dreimal hintereinander zu kopieren,
+[00:08:19.640 --> 00:08:23.640]   da sehen Sie sofort, ach, das ist ja total übersichtlich, ja,
+[00:08:23.640 --> 00:08:27.640]   und eben statt, wie, unübersichtlich, und statt un, statt solcher,
+[00:08:27.640 --> 00:08:30.640]   un, statt solch unübersichtlich langen Programmen,
+[00:08:30.640 --> 00:08:32.640]   würden wir lieber eine kompakte Darstellung haben,
+[00:08:32.640 --> 00:08:36.640]   und dafür brauchen wir eben so ein Vorloop, ja, der Vorloop geht jetzt hin,
+[00:08:36.640 --> 00:08:39.640]   sagt hier, was eben hier Kontrolle erkläre ich gleich, ja,
+[00:08:39.640 --> 00:08:45.640]   diesen Teil des Programms bitten wir jetzt dreimal auszuführen, ja,
+[00:08:45.640 --> 00:08:49.640]   und dann wird das dreimal ausgeführt, und wir brauchen das nicht weiterzumachen.
+[00:08:49.640 --> 00:08:54.640]   So, jetzt dieser Vorloop, der hat hier hinter drei Komponenten,
+[00:08:54.640 --> 00:09:01.640]   die alle wichtig sind, und die entscheiden, wie diese, wie die Statements in dem Loop-Body,
+[00:09:01.640 --> 00:09:06.640]   das ist also der Rumpf dieses Vorlobes, ja, wie die ausgeführt werden, ja.
+[00:09:06.640 --> 00:09:10.640]   Da gibt es also einmal eben den Bereich der Initialisierung, ja,
+[00:09:10.640 --> 00:09:15.640]   dann gibt es einen Bereich, der entscheidet, ob der Loop nochmal ausgeführt werden soll,
+[00:09:15.640 --> 00:09:19.640]   und dann gibt es einen dritten Bereich, in dem wir etwas updaten,
+[00:09:19.640 --> 00:09:21.640]   gehen wir jetzt kurz einfach durch.
+[00:09:21.640 --> 00:09:27.640]   Also, normalerweise geht der Loop so, ja, wir führen erst die Initialisierung aus,
+[00:09:27.640 --> 00:09:32.640]   die wird als erstes ausgeführt, ja, und die wird einmal ausgeführt, ja.
+[00:09:32.640 --> 00:09:36.640]   Da können wir uns neue Variable deklarieren, wenn wir wollen,
+[00:09:36.640 --> 00:09:40.640]   und die sind dann auch im ganzen Loop-Body verfügbar, ja.
+[00:09:40.640 --> 00:09:44.640]   So, nachdem wir diese Initialisierung gemacht haben, wiederholen wir diese Schritte.
+[00:09:44.640 --> 00:09:49.640]   Wir prüfen, ob dieser Test hier im zweiten Schritt true ergibt, ja.
+[00:09:49.640 --> 00:09:53.640]   Wenn der true ergibt, ja, dann geht es hier weiter
+[00:09:53.640 --> 00:09:58.640]   mit der Ausführung der Statements oder Anweisungen in diesem Loop.
+[00:09:58.640 --> 00:10:03.640]   Sollte dieser Test nicht true ergeben, sondern false, geht es raus, ja,
+[00:10:03.640 --> 00:10:08.640]   und wir sind fertig mit diesem Loop, und wir gehen zur nächsten Anweisung.
+[00:10:08.640 --> 00:10:12.640]   So, jetzt führen wir also, nehmen wir an, das war also true, ja, das war der True-Fall, ja.
+[00:10:12.640 --> 00:10:18.640]   Da gehen wir jetzt hin, führen die aus, und nachdem wir alle Anweisungen ausgeführt haben,
+[00:10:18.640 --> 00:10:24.640]   und wir diesen Punkt hier erreichen, ja, das kann, ja, diesen Punkt hier erreichen, ja,
+[00:10:24.640 --> 00:10:29.640]   dann wird die Aktualisierung ausgeführt, dann wird das Update gemacht,
+[00:10:29.640 --> 00:10:34.640]   das ist dann der dritte, war hier der dritte Teil, war der eben der Loop ausführen,
+[00:10:34.640 --> 00:10:38.640]   und jetzt kommt der vierte Schritt, der ist das Update ausführen.
+[00:10:38.640 --> 00:10:43.640]   Das Update führt jetzt eben, da können wir auch wieder gewisse Anweisungen unterbringen,
+[00:10:43.640 --> 00:10:48.640]   und die erlauben es uns dann eben eventuell etwas, einige der Variablen,
+[00:10:48.640 --> 00:10:51.640]   die wir hier verwenden zu ändern.
+[00:10:51.640 --> 00:11:01.640]   Ja, gut, müssen wir denn, können wir den eben,
+[00:11:01.640 --> 00:11:07.640]   versuchen nochmal aufzuspielen, wenn ich den speichern will, dann muss das hier so richtig rein, so, okay.
+[00:11:07.640 --> 00:11:16.640]   Also, das ist die allgemeine Struktur eines solchen Loops, die wir hier haben, ja,
+[00:11:16.640 --> 00:11:21.640]   das ist die Capture Failure, ah, gut Grief.
+[00:11:21.640 --> 00:11:24.640]   Ah, jetzt hat das, okay, na, schön.
+[00:11:24.640 --> 00:11:29.640]   Also, die vier Teile gehen wir nochmal kurz durch.
+[00:11:29.640 --> 00:11:35.640]   In der Initialisierung können wir eine Variable deklarieren,
+[00:11:35.640 --> 00:11:37.640]   und müssen sie auch initialisieren.
+[00:11:37.640 --> 00:11:43.640]   Und dieser Teil des Loops liegt die Variable fest, die im Loop verwendet wird,
+[00:11:43.640 --> 00:11:48.640]   oder verwendet werden soll, ja, niemand zwingt sie das, ja.
+[00:11:48.640 --> 00:11:53.640]   Sie können da irgendeine Variable deklarieren, aber in einem gut strukturierten
+[00:11:53.640 --> 00:12:05.640]   und der normal kontrollierten Programm würden wir diese Variable verwenden.
+[00:12:05.640 --> 00:12:09.640]   Und es wird einmal ausgeführt, und die Variable ist dann deklariert und initialisiert,
+[00:12:09.640 --> 00:12:12.640]   und wir nennen die den Schleifenzähle oder Loop Counter, ja.
+[00:12:12.640 --> 00:12:17.640]   Die kann natürlich jeden beliebigen Namen haben, den wir uns irgendwie ausdenken können, ja.
+[00:12:17.640 --> 00:12:20.640]   So, dann wird der Test ausgeführt, ja.
+[00:12:20.640 --> 00:12:23.640]   Der Test wird als erstes, also wird danach ausgeführt, ja,
+[00:12:23.640 --> 00:12:30.640]   und jetzt der Test idealerweise involviert dieser Test den Loop Counter.
+[00:12:30.640 --> 00:12:33.640]   Das ist nicht zwingend vorgeschrieben, sie können da irgendwas haben.
+[00:12:33.640 --> 00:12:38.640]   Es ist eine gute Idee, das zu machen, weil sonst eben vielleicht Überraschungen passieren.
+[00:12:38.640 --> 00:12:45.640]   So, diese Test hier vergleicht im Allgemeinen die Zellevariable mit irgendeinem Grenzwert,
+[00:12:45.640 --> 00:12:51.640]   und da können wir die gleiche Art von Vergleichen verwenden, die wir auch für die IF-Stapements hatten,
+[00:12:51.640 --> 00:12:59.640]   also kleiner, kleiner, oder weniger, weniger als, größer, als größer, gleich und so weiter.
+[00:12:59.640 --> 00:13:04.640]   Das können wir da verwenden, ja, oder können auch auf Gleichheit oder Ungleichheit testen,
+[00:13:04.640 --> 00:13:07.640]   wenn wir wollen, ist auch uns erlaubt.
+[00:13:07.640 --> 00:13:11.640]   Und danach, eben wenn der Test truht, wenn die Statements ausgeführt,
+[00:13:11.640 --> 00:13:17.640]   da kann jedes beliebiges Statement sein, und dann erst am Ende kommt die Aktualisierung, ja.
+[00:13:17.640 --> 00:13:22.640]   Und eben idealerweise ändert sich da die Zellevariable, ja.
+[00:13:22.640 --> 00:13:27.640]   Die Zellevariable müsste sich ändern, wenn sich die Zellevariable nicht ändert,
+[00:13:27.640 --> 00:13:31.640]   dann findet die Schleife vielleicht kein Ende, ja,
+[00:13:31.640 --> 00:13:34.640]   weil der Test immer wieder den gleichen Wert tru ergab, ja.
+[00:13:34.640 --> 00:13:37.640]   Und da ist ein beliebiger Ausdruck zulässig.
+[00:13:37.640 --> 00:13:43.640]   Da können Sie machen, was Sie wollen, also einen Ausdruck der gewissen Java-Regeln entsprechen muss, ja.
+[00:13:43.640 --> 00:13:51.640]   Also das ist das Grundgerüst von dem, und damit können wir ganz einfach viele Arten von Wiederholungen durch bessere Loops ausdrucken.
+[00:13:51.640 --> 00:13:57.640]   Wenn wir so eine Tabelle ausdrucken wollten, wo wir für die ersten sechs Quadratzahlen den Wert ausdrucken, ja,
+[00:13:57.640 --> 00:14:04.640]   dann eben, die Aufgabe ist, ich will diese Tabelle ausdrucken, das heißt jede Zeile muss das ausgeben.
+[00:14:04.640 --> 00:14:08.640]   Also würde ich einen Vorloop schreiben, der eben irgendein Zeller verwendet.
+[00:14:08.640 --> 00:14:11.640]   Ich muss das sechs Mal machen, ja.
+[00:14:11.640 --> 00:14:15.640]   In jeder, nachdem ich es für eine Zahl gemacht habe, nehme ich die nächste,
+[00:14:15.640 --> 00:14:18.640]   und da druck ich in meinem Loop-Body genau das aus.
+[00:14:18.640 --> 00:14:22.640]   Ich ducke aus die Zahl und die Quadratzahl und so weiter, ja.
+[00:14:22.640 --> 00:14:28.640]   Natürlich, Sie können beliebig viele Anweisungen im Loop haben, ja, das ist kein Problem.
+[00:14:28.640 --> 00:14:30.640]   Sie können alles machen, wie Sie wollen.
+[00:14:30.640 --> 00:14:36.640]   Sie können die Schleifenkontrolle eben, da können irgendwelche Variablen auftreten und so weiter.
+[00:14:36.640 --> 00:14:40.640]   Das ist alles überhaupt kein Problem, ja.
+[00:14:40.640 --> 00:14:46.640]   Nur natürlich, Sie können auch, Sie müssen nicht heraufzählen, ja, sondern können auch herunterzählen.
+[00:14:46.640 --> 00:14:53.640]   Nur natürlich, wenn Sie herunterzählen, also hier gehen wir hin und, gehen, hin und,
+[00:14:53.640 --> 00:15:01.640]   eine Dekrimentierungsoperation, also subtrahieren eins, ja, dann müsste wir natürlich hier besser checken,
+[00:15:01.640 --> 00:15:03.640]   dass das so lange das größer ist, ja,
+[00:15:03.640 --> 00:15:08.640]   annahm falls könnte der Loop auch längere Zeit laufen, ja.
+[00:15:08.640 --> 00:15:13.640]   Also das ist wirklich nicht sehr überraschend
+[00:15:13.640 --> 00:15:17.640]   und so könnten wir eben einfach unseren Loop da kontrollieren.
+[00:15:17.640 --> 00:15:19.640]   So, jetzt die Loop sind natürlich interessant,
+[00:15:19.640 --> 00:15:26.640]   weil ich kann natürlich hier in dem LoopBody jedes beliebiges Statement unterbringen.
+[00:15:26.640 --> 00:15:31.640]   Und unter anderem kann ich da wieder weitere Schleifen unterbringen, ja.
+[00:15:31.640 --> 00:15:34.640]   Also das kann ich weitere Schleifen nochmal machen, ja.
+[00:15:34.640 --> 00:15:37.640]   Aber das Gleiche, was ich vorher hatte, ja, gilt dann hier auch, ja.
+[00:15:37.640 --> 00:15:40.640]   Ich kann dann da eine andere Schleife unterbringen
+[00:15:40.640 --> 00:15:42.640]   und das nennen wir eine verschachtete Schleife,
+[00:15:42.640 --> 00:15:45.640]   verschachtete Schleifen oder nestet Loops, ja.
+[00:15:45.640 --> 00:15:47.640]   Eine Schleife in einer anderen.
+[00:15:47.640 --> 00:15:50.640]   Hier habe ich so ein paar einfache Beispiele, ja.
+[00:15:50.640 --> 00:15:53.640]   Was produziert denn so ein Programm, ja, wie,
+[00:15:53.640 --> 00:15:56.640]   also hier haben wir den einen Vorloop, ja,
+[00:15:56.640 --> 00:15:58.640]   und dann haben wir hier drinnen einen anderen
+[00:15:58.640 --> 00:16:00.640]   und der eine läuft auf J
+[00:16:00.640 --> 00:16:02.640]   und der andere hier läuft aus I.
+[00:16:02.640 --> 00:16:04.640]   Gucken Sie das für eine Sekunde an, oder zwei
+[00:16:04.640 --> 00:16:09.640]   und überlegen Sie sich so kurz, was für ein Programm würde denn die
+[00:16:09.640 --> 00:16:14.640]   was für ein Output würde dieses Programm denn ergeben, ja.
+[00:16:14.640 --> 00:16:18.640]   So, was würde hier passieren, also, also wir haben hier,
+[00:16:18.640 --> 00:16:21.640]   wir fangen an mit der äußeren Schleife, ja.
+[00:16:21.640 --> 00:16:23.640]   Sie wird initialisiert mit I
+[00:16:23.640 --> 00:16:26.640]   und dann gehen wir hin und führen die innere Schleife aus
+[00:16:26.640 --> 00:16:29.640]   und die innere Schleife wird zehnmal ausgeführt, ja.
+[00:16:29.640 --> 00:16:33.640]   Und danach wird, das war eine Ausführung der äußeren Schleife
+[00:16:33.640 --> 00:16:36.640]   und dann kommt eine nächste Ausführung der äußeren Schleife
+[00:16:36.640 --> 00:16:38.640]   und die hat wieder zehn.
+[00:16:38.640 --> 00:16:42.640]   Und insgesamt wird die äußere Schleife fünfmal ausgeführt, ja.
+[00:16:42.640 --> 00:16:44.640]   Und die innere zehn, ja.
+[00:16:44.640 --> 00:16:48.640]   Also haben wir hier 50 Sterne, die auf diese Weise gedruckt werden.
+[00:16:48.640 --> 00:16:54.640]   Jede Zeile immer zehn, zehn, zehn Sterne, ja.
+[00:16:54.640 --> 00:16:59.640]   Also ein einfacher Weg, wie wir unser Programm hier strukturiert haben.
+[00:16:59.640 --> 00:17:02.640]   So, und was gibt dieses Programmsegment aus?
+[00:17:02.640 --> 00:17:04.640]   Gucken wir das noch mal an, ja.
+[00:17:04.640 --> 00:17:07.640]   Wir haben auch wieder einen äußeren Loop,
+[00:17:07.640 --> 00:17:10.640]   der auf, der die Variable I initialisiert
+[00:17:10.640 --> 00:17:15.640]   und wir haben einen inneren Loop, der mit der Variable J arbeitet.
+[00:17:15.640 --> 00:17:21.640]   Aber diesmal haben wir eine etwas andere Form der Kontrolle des inneren Loops.
+[00:17:21.640 --> 00:17:27.640]   Nämlich hier testen wir, ob diese Variable J kleiner gleich der Variable I ist.
+[00:17:27.640 --> 00:17:32.640]   I ist der Loop Counter aus der, das ist das I hier, ja.
+[00:17:32.640 --> 00:17:36.640]   Das ist aus dem äußeren Loop kommt, ja.
+[00:17:36.640 --> 00:17:38.640]   Was wird dieser Loop jetzt produzieren?
+[00:17:38.640 --> 00:17:40.640]   Was sehen wir hier?
+[00:17:40.640 --> 00:17:42.640]   Wie oft werden die ausgeführt?
+[00:17:42.640 --> 00:17:45.640]   Wie oft werden die diversen Statements ausgeführt?
+[00:17:45.640 --> 00:17:49.640]   Also wir fangen natürlich, ist klar, der äußere Loop wird fünfmal ausgeführt.
+[00:17:49.640 --> 00:17:51.640]   Das sehen wir schnell.
+[00:17:51.640 --> 00:17:54.640]   Und wenn wir mit dem ersten Mal ankommen, dann hat I den Wert eins.
+[00:17:54.640 --> 00:17:59.640]   Das heißt, dieser Loop wird in der ersten Interaktion einmal ausgeführt.
+[00:17:59.640 --> 00:18:03.640]   Und wenn I den Wert zwei hat, wird der zweimal ausgeführt und so weiter, ja.
+[00:18:03.640 --> 00:18:08.640]   Bis er in der letzten Reihe, bis er in der letzten Reihe fünfmal ausgeführt wird.
+[00:18:08.640 --> 00:18:11.640]   Also wie ich das so mache, bekomme ich so einen Dreieck, ja.
+[00:18:11.640 --> 00:18:14.640]   Also die erste Zeile, zweite Zeile und so weiter.
+[00:18:14.640 --> 00:18:19.640]   Und mit jeder Zeile wachsen die, wächst die Anzahl der Sterne, ja.
+[00:18:19.640 --> 00:18:23.640]   Und dieses Programm, wollen Sie noch mal nachdenken.
+[00:18:23.640 --> 00:18:26.640]   Was passiert hier?
+[00:18:26.640 --> 00:18:31.640]   Hier haben wir, äh, ähnlich wie das andere,
+[00:18:31.640 --> 00:18:36.640]   nur eben statt der Sterne drucken wir jetzt hier einfach die Zahl, ja.
+[00:18:36.640 --> 00:18:42.640]   Also wirklich, so, das ist also, ähm, es hat nicht ein gut konstruierter Loop, ja.
+[00:18:42.640 --> 00:18:46.640]   Der benutzt eben hier den Loop Counter im Update
+[00:18:46.640 --> 00:18:49.640]   und benutzt den Loop Counter auch im Test, ja.
+[00:18:49.640 --> 00:18:53.640]   Natürlich kann der auch, auch der andere war gut konstruiert, ja.
+[00:18:53.640 --> 00:18:58.640]   Aber hin und wieder kann auch was schiefgehen und, ähm, was für Probleme gibt's.
+[00:18:58.640 --> 00:19:02.640]   Und das Problem, das Sie vielleicht als erstes, äh, kennenlernen werden,
+[00:19:02.640 --> 00:19:06.640]   ist, dass aus irgendwelchen Gründen eine Schleife nicht terminiert.
+[00:19:06.640 --> 00:19:08.640]   Die läuft und läuft und läuft.
+[00:19:08.640 --> 00:19:11.640]   Und das ist manchmal ganz schön, aber, ähm, das hilft Ihnen nicht,
+[00:19:11.640 --> 00:19:14.640]   wenn Sie irgendein, äh, Problem erlösen sollen.
+[00:19:14.640 --> 00:19:19.640]   So eine endlos Schleife ist ein Problem, das Sie eben, ähm, bekämpfen müssen.
+[00:19:19.640 --> 00:19:22.640]   Und so ein infinite Loop, ja, das ist der unendlich laufende Loop,
+[00:19:22.640 --> 00:19:25.640]   haben Sie vielleicht schon mal gesehen, ist auch die Postadresse
+[00:19:25.640 --> 00:19:29.640]   einer Firma, die Computer herstellt, die manchmal auch unendlich lange laufen,
+[00:19:29.640 --> 00:19:31.640]   oder ziemlich lange laufen, ja.
+[00:19:31.640 --> 00:19:34.640]   Das ist, die haben das als Adresse bekommen können,
+[00:19:34.640 --> 00:19:38.640]   weil Loop ist im amerikanischen System auch ein legaler Straßenname.
+[00:19:38.640 --> 00:19:41.640]   So, also, was haben wir hier als Möglichkeit,
+[00:19:41.640 --> 00:19:46.640]   worauf sollten Sie gucken, wenn jetzt Ihre, Ihr Programm unendlich läuft?
+[00:19:46.640 --> 00:19:48.640]   Ja, hier haben wir so ein Beispiel, ja.
+[00:19:48.640 --> 00:19:51.640]   Wir haben den äußeren Loop, i, gleich eins
+[00:19:51.640 --> 00:19:54.640]   und so fängt an mit, wird mit eins eingelinitialisiert, ja.
+[00:19:54.640 --> 00:19:57.640]   Ähm, äh, soll, wird fünfmal ausgeführt.
+[00:19:57.640 --> 00:20:00.640]   Und jetzt haben wir den inneren Loop und da checken wir, ob i,
+[00:20:00.640 --> 00:20:02.640]   keiner gleich zehn ist.
+[00:20:02.640 --> 00:20:06.640]   Na, die Bedingung ist bei der ersten Ausführung dieses Loops, äh, erfüllt,
+[00:20:06.640 --> 00:20:08.640]   bei der zweiten und so weiter, die hört nie auf.
+[00:20:08.640 --> 00:20:12.640]   Warum? Weil wir hier eben nicht die, äh, Loop Variable j,
+[00:20:12.640 --> 00:20:16.640]   irgendwo, äh, in der Kontrolle, äh, verwendet haben, ja.
+[00:20:16.640 --> 00:20:19.640]   Also, da aufpassen, da kann man sich schnell, ja, vertippen.
+[00:20:19.640 --> 00:20:23.640]   Oder, anders Problem, ja, Sie haben jetzt zwar hier, hier kontrollieren Sie zwar korrekt,
+[00:20:23.640 --> 00:20:28.640]   äh, ob eben j kleiner als zehn ist, aber das Problem steckt hier im Update.
+[00:20:28.640 --> 00:20:31.640]   Äh, Sie updaten hier, äh, die Variable i.
+[00:20:31.640 --> 00:20:34.640]   Das j wird niemals geändert, ja.
+[00:20:34.640 --> 00:20:37.640]   Ähm, das ändert sich nicht und daher läuft der Loop weiter.
+[00:20:37.640 --> 00:20:39.640]   So, was passiert hier?
+[00:20:39.640 --> 00:20:41.640]   Was sollten Sie so in Situation machen?
+[00:20:41.640 --> 00:20:43.640]   Vielleicht haben Sie es schon entdeckt, ja.
+[00:20:43.640 --> 00:20:46.640]   Äh, sich das Eklips, äh, äh, System angucken, ja.
+[00:20:46.640 --> 00:20:51.640]   Da gibt es eben verschiedene, äh, äh, äh, Buttons, die wir klicken können.
+[00:20:51.640 --> 00:20:58.640]   Da war dieser grüne, ähm, war der grüne Pfeil, der unser Programm zum Laufen brachte, ja.
+[00:20:58.640 --> 00:21:02.640]   Und da gibt es, wenn, gibt es auch so einen rotes, äh, Quadrat, ja.
+[00:21:02.640 --> 00:21:07.640]   So, und wenn Sie auf dieses rote Quadrat klicken, dann hört das Programm auf zu laufen
+[00:21:07.640 --> 00:21:13.640]   und Sie können sich dann, äh, den, den, die restliche Ausgabe im Konsolenfenster angucken.
+[00:21:13.640 --> 00:21:18.640]   Das ist die erste Sache, die Sie wissen müssen, äh, um auf sowas rauszukommen, ja.
+[00:21:18.640 --> 00:21:21.640]   Ähm, später werden wir sehen, dass da noch ein paar mehr Probleme sind,
+[00:21:21.640 --> 00:21:25.640]   das nämlich, ähm, das eigentlich nur das Programm unterbricht
+[00:21:25.640 --> 00:21:29.640]   und wir irgendwann aufpassen müssen, dass wir nicht zu viele unterbrochene Programme haben.
+[00:21:29.640 --> 00:21:33.640]   Aber am besten ist natürlich, wir schreiben nicht Programme, die nicht terminieren
+[00:21:33.640 --> 00:21:36.640]   und dann haben wir das Problem eigentlich überhaupt nicht.
+[00:21:36.640 --> 00:21:41.640]   So, jetzt ähm, jetzt wollen wir noch, ja, weil, wie, wie können wir denn so ganz einfache
+[00:21:41.640 --> 00:21:45.640]   schleifen, bisschen systematischer erzeugen, ja.
+[00:21:45.640 --> 00:21:49.640]   So, also demweil wir haben hier diese Aufgabe, dass wir so etwas einfacher erstellen sollen
+[00:21:49.640 --> 00:21:54.640]   und natürlich wollen wir jetzt nicht einfach diese fünf Zeilen in fünf verschiedene Print-F,
+[00:21:54.640 --> 00:21:58.640]   Printline Statements reintun, sondern wir wollen eben das mit Loops erstellen.
+[00:21:58.640 --> 00:22:02.640]   So, also wir haben hier die Aufgabe, so was zu erstellen.
+[00:22:02.640 --> 00:22:05.640]   Und jetzt gucken wir uns an, was sehen wir da näher?
+[00:22:05.640 --> 00:22:09.640]   Also wir sehen hier, dass wir hier eine innere Schleife haben müssen,
+[00:22:09.640 --> 00:22:12.640]   die eine Zeile nach der anderen produziert.
+[00:22:12.640 --> 00:22:14.640]   Also wir müssen eine innere Schleife machen.
+[00:22:14.640 --> 00:22:19.640]   Und dann brauchen wir eine äußere Schleife, die uns sagt, wie viele von diesen Zeilen
+[00:22:19.640 --> 00:22:22.640]   wir insgesamt produzieren müssen.
+[00:22:22.640 --> 00:22:24.640]   So, also wir haben eine innere und äußere.
+[00:22:24.640 --> 00:22:26.640]   Jetzt die Frage, was tun wir in die innere?
+[00:22:26.640 --> 00:22:31.640]   Und jetzt müssen wir irgendwie einen Weg finden, die Ausgabezeile zu konstruieren.
+[00:22:31.640 --> 00:22:33.640]   Und dann gucken wir uns das an, ja.
+[00:22:33.640 --> 00:22:37.640]   Und dann sehen wir halt, ähm, mit der äußeren Zeile kann ich gut,
+[00:22:37.640 --> 00:22:42.640]   mit der äußeren Schleife kann ich gut eine Zeile nach der anderen konstruieren.
+[00:22:42.640 --> 00:22:45.640]   Ja, das ist also nicht so schwierig.
+[00:22:45.640 --> 00:22:49.640]   Das heißt, ich müsste am Ende der äußeren Schleife immer wieder die,
+[00:22:49.640 --> 00:22:53.640]   die, die den Zeilenabschluss drucken, damit eine neue Zeile angefangen wird.
+[00:22:53.640 --> 00:22:56.640]   Aber die innere Schleife, die hat irgendeinen Muster, ja.
+[00:22:56.640 --> 00:22:58.640]   Das heißt, wir müssen dieses Muster angucken,
+[00:22:58.640 --> 00:23:03.640]   und müssen überlegen, wie wir dieses Muster entsprechend produzieren.
+[00:23:03.640 --> 00:23:06.640]   Also fangen wir mit der äußeren Schleife an, ja.
+[00:23:06.640 --> 00:23:11.640]   Also haben wir gesagt, wir brauchen davon fünf, also haben wir hier so etwas, ja.
+[00:23:11.640 --> 00:23:13.640]   Wir legen das also fest, ja.
+[00:23:13.640 --> 00:23:16.640]   Und jetzt gucken wir uns nochmal genauer diese Zeilen an, ja.
+[00:23:16.640 --> 00:23:21.640]   Da sehen wir, aha, das Muster ist doch so, dass wir irgendeine Anzahl Punkte haben,
+[00:23:21.640 --> 00:23:23.640]   und dann kommt eine Zahl.
+[00:23:23.640 --> 00:23:26.640]   Und für fünf gibt es Nullpunkte in der letzten Zeile.
+[00:23:26.640 --> 00:23:29.640]   Und in der Zeil davor gibt es einen Punkt.
+[00:23:29.640 --> 00:23:34.640]   Und der zwei dazu gibt zwei und so weiter, bis wir hier oben vier Punkte haben, ja.
+[00:23:34.640 --> 00:23:41.640]   Also, wenn ich das habe, dann eben die, hängt, also einmal ändert sich die Anzahl der Punkte, ja.
+[00:23:41.640 --> 00:23:45.640]   Und die Anzahl der Punkte hängt ab von der Zeile, ja.
+[00:23:45.640 --> 00:23:49.640]   In der letzten Zeile Null, in der Zeil davor vier,
+[00:23:49.640 --> 00:23:52.640]   schon in der Zeil davor eins, in der Zeil davor zwei, ja.
+[00:23:52.640 --> 00:23:57.640]   Das heißt also, die Anzahl der Punkte hängt von unserer Zeilnummer ab.
+[00:23:57.640 --> 00:24:00.640]   Und hier ist natürlich ein bisschen, ein bisschen,
+[00:24:00.640 --> 00:24:02.640]   das ist trivial, ja, einfach, ja.
+[00:24:02.640 --> 00:24:07.640]   Kann ich sofort hinschreiben, Programme, da druck ich entsprechend Punkte.
+[00:24:07.640 --> 00:24:12.640]   Aber nehmen wir mal an, unsere Rumpf, unsere Anwalt im Rumpf,
+[00:24:12.640 --> 00:24:15.640]   würde so einen Output herausgeben, also nicht vier Punkte,
+[00:24:15.640 --> 00:24:18.640]   sondern, und jetzt habe ich nicht Punkte gemacht, weil das für die Zählen ist,
+[00:24:18.640 --> 00:24:22.640]   sondern sie würden gerne herausgeben, vier, sieben, zehn, 13, 16 Punkte, ja.
+[00:24:22.640 --> 00:24:24.640]   Oder das als Zahlen.
+[00:24:24.640 --> 00:24:26.640]   Wie würden wir das machen, ja.
+[00:24:26.640 --> 00:24:31.640]   Und dann können wir so eine Zahlenfolge in eine vernünftige,
+[00:24:31.640 --> 00:24:36.640]   in einen vernünftigen Loop bringen, der dann diesen Output für uns liefert, ja.
+[00:24:36.640 --> 00:24:41.640]   So, also, na ja, wenn wir uns das angucken, das ist also hier,
+[00:24:41.640 --> 00:24:46.640]   es ist so eine Serie, ja, das haben sie sicher auch schon mal früher machen müssen,
+[00:24:46.640 --> 00:24:50.640]   was ist die nächste Zahl, ist so eine beliebte Frage, ja.
+[00:24:50.640 --> 00:24:52.640]   Uns interessiert nicht die nächste Zahl,
+[00:24:52.640 --> 00:24:54.640]   uns interessiert über die alle erzeugen können, ja.
+[00:24:54.640 --> 00:24:57.640]   Und da sehen wir, das können wir jetzt sehen machen, indem wir halt den,
+[00:24:57.640 --> 00:25:02.640]   wir können die durchzählen, ja, das wäre eins, zwei, drei und so weiter,
+[00:25:02.640 --> 00:25:06.640]   dann nehmen wir also dreimal diesen gezählten Zähler plus eins,
+[00:25:06.640 --> 00:25:11.640]   und dann drucken wir noch ein Lehrzeichen, um die eine Zahl von der anderen abzusetzen.
+[00:25:11.640 --> 00:25:15.640]   So, jetzt, wie können wir das systematisch rausfinden, ja,
+[00:25:15.640 --> 00:25:19.640]   wenn wir irgendeine Zahlenfolge haben, wie können wir systematisch rausfinden,
+[00:25:19.640 --> 00:25:24.640]   wie so eine Schleifenkontrolle oder was das eben ergeben sollte, ja.
+[00:25:24.640 --> 00:25:27.640]   Und um das zu machen, gehen Sie hin, Sie erstellen eine Tabelle,
+[00:25:27.640 --> 00:25:31.640]   und da zählen Sie eben halt von eins an durch,
+[00:25:31.640 --> 00:25:37.640]   und dann schreiben Sie sich die Zahl dahinter, die in dieser Zahlenfolge auftreten soll.
+[00:25:37.640 --> 00:25:42.640]   Also, hier hätten wir die Folge zwei, sieben, zwölf, siebzehne und so weiter, ja.
+[00:25:42.640 --> 00:25:44.640]   Die würden wir entsprechend runter schreiben.
+[00:25:44.640 --> 00:25:46.640]   Dann wäre der erste Ansatz jetzt noch, okay,
+[00:25:46.640 --> 00:25:53.640]   sehen wir, wenn wir die Zahl um eins erhöhte, dann geht das immer um plus fünf rauf, ja.
+[00:25:53.640 --> 00:25:56.640]   Das heißt also, wir müssten, es wäre also gut,
+[00:25:56.640 --> 00:26:01.640]   so eine eine Möglichkeit wäre, zu sagen, wir nehmen einfach den Count
+[00:26:01.640 --> 00:26:07.640]   und multiplizieren den mit fünf, ja, dann haben wir eine Erhöhung um fünf erreicht, ja.
+[00:26:07.640 --> 00:26:11.640]   Und dann würden wir das so machen, hätten wir hier fünf, zehn und so weiter.
+[00:26:11.640 --> 00:26:13.640]   Aber das ist natürlich nicht ganz, was wir wollen, ja,
+[00:26:13.640 --> 00:26:18.640]   weil hier sehen wir, ja, hier ist eine Differenz von drei, und hier ist eine Differenz von drei.
+[00:26:18.640 --> 00:26:26.640]   Ja, das gibt uns dann sofort die Idee, wie wir eben halt diese Tabelle korrigieren müssten, ja.
+[00:26:26.640 --> 00:26:30.640]   Wir müssten also noch von dem Wert, den wir da haben, drei subtrahieren, ja.
+[00:26:30.640 --> 00:26:36.640]   Und so haben wir dann den Ausdruck gefunden, der uns einfach richtig erlaubt,
+[00:26:36.640 --> 00:26:39.640]   die richtige Zahl zu erzeugen, ja.
+[00:26:39.640 --> 00:26:44.640]   Also fünf mal den Count minus drei, das ist die gewünschte Zahl, ja.
+[00:26:44.640 --> 00:26:52.640]   Oder nehmen wir an, wir hätten 17, 13, 9, 5, 1 entweder Punkte oder als Zahl zu produzieren, ja.
+[00:26:52.640 --> 00:26:57.640]   Wird in Programmiersprachen nicht von null aus gezählt, also ich zähle immer mit eins, ja.
+[00:26:57.640 --> 00:27:01.640]   Also wenn ich mit null anfinge, dann müsste ich gar nicht,
+[00:27:01.640 --> 00:27:02.640]   ich müsste überall null haben.
+[00:27:02.640 --> 00:27:05.640]   Also wir haben uns entschieden, hier mit eins zu zählen, ja.
+[00:27:05.640 --> 00:27:09.640]   Wir können auch, Sie können auch genauso gern, wenn Sie machen das, jemand das geschrieben,
+[00:27:09.640 --> 00:27:12.640]   wird in Programmiersprachen nicht von null aus gezählt.
+[00:27:12.640 --> 00:27:14.640]   Sie können auch von null anfangen, ja.
+[00:27:14.640 --> 00:27:19.640]   Dann gehen Sie doch hin und versuchen, die Formel zu finden, die Sie nehmen müssten,
+[00:27:19.640 --> 00:27:20.640]   wenn Sie von null aus machten.
+[00:27:20.640 --> 00:27:22.640]   Ist nicht sehr schwierig, also.
+[00:27:22.640 --> 00:27:27.640]   Wenn sich ein, hier haben wir die Zahlen, wie ich es eben sagte, ja.
+[00:27:27.640 --> 00:27:34.640]   Und wir sehen jetzt, dass hier für jede Zahl geht es eben um eine Differenz von vier.
+[00:27:34.640 --> 00:27:36.640]   Minus vier, ja.
+[00:27:36.640 --> 00:27:38.640]   Immer werden vier abgezogen.
+[00:27:38.640 --> 00:27:47.640]   Das heißt also, ich würde als ersten Ansatz wählen, dass ich minus vier Mal den Zähler, den ich da verwendet habe.
+[00:27:47.640 --> 00:27:49.640]   Aber natürlich ist das noch nicht ganz richtig.
+[00:27:49.640 --> 00:27:57.640]   Sie sehen, das hier ist um 21 zu groß und das hier ist auch um 21 zu groß.
+[00:27:57.640 --> 00:28:02.640]   Also in dem Fall, da gibt es ja auch wieder eine fixe Differenz, ja.
+[00:28:02.640 --> 00:28:09.640]   Daher würden wir eben 21 dazu addieren, um eben halt den richtigen Zähler,
+[00:28:09.640 --> 00:28:13.640]   die richtigen Ausdruck zu finden, der diese Zahl generiert, ja.
+[00:28:13.640 --> 00:28:16.640]   Also, jetzt zurück zu den Beispielen mit der Vorsleife, ja.
+[00:28:16.640 --> 00:28:20.640]   Hier wollten wir also hier eben vier, drei, zwei, eins, null Punkte, ja.
+[00:28:20.640 --> 00:28:22.640]   Da haben Sie die null, bitte schön, ja.
+[00:28:22.640 --> 00:28:27.640]   Und dann würden wir entsprechend eben hier sagen, aha, das geht hier jedes Mal um eins runter.
+[00:28:27.640 --> 00:28:30.640]   Also machen wir minus eins Mal.
+[00:28:30.640 --> 00:28:34.640]   Und dann haben wir die Zähler, die wir jetzt hier haben,
+[00:28:34.640 --> 00:28:38.640]   die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
+[00:28:38.640 --> 00:28:43.640]   Und dann haben wir die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
+[00:28:43.640 --> 00:28:48.640]   Und dann haben wir die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
+[00:28:48.640 --> 00:28:54.640]   Und dann haben wir die Zähler, die wir jetzt hier haben, die Zähler, die wir jetzt hier haben.
+[00:28:54.640 --> 00:28:59.640]   Und dann haben wir die Zähler, die wir jetzt hier von denen brauchen.
+[00:28:59.640 --> 00:29:02.640]   Würde ich eben halt hier checken, ob der bis vier ist.
+[00:29:02.640 --> 00:29:08.640]   Und dann würde ich hier das erhöhen, um so meine Anzahl an Punkten gedruckt zu bekommen.
+[00:29:08.640 --> 00:29:13.640]   Und dann habe ich das eben, wenn ich das so mache und eben in den äußeren Lube einsetze,
+[00:29:13.640 --> 00:29:15.640]   dann bekomme ich das gewünschte Ergebnis.
+[00:29:15.640 --> 00:29:19.640]   So, jetzt haben wir hier paar verschachtete Schleifen.
+[00:29:19.640 --> 00:29:24.640]   Das ist sicher nicht sehr schwierig. Was gibt denn dieses Programm jetzt aus?
+[00:29:24.640 --> 00:29:26.640]   Überlegen wir uns das kurz.
+[00:29:26.640 --> 00:29:30.640]   Das ist der Lube, den wir eben geschrieben haben.
+[00:29:30.640 --> 00:29:36.640]   Der hat jetzt hier, also wir gehen hin und haben fünf Zeilen.
+[00:29:36.640 --> 00:29:42.640]   Und wir haben hier diese Gleichung, benutzen wir jetzt, um eben zu entscheiden,
+[00:29:42.640 --> 00:29:45.640]   wie viele Punkte in dieser einen Zeile gedruckt werden sollen.
+[00:29:45.640 --> 00:29:48.640]   Und erhöhen dann den Lube-Counter um eins.
+[00:29:48.640 --> 00:29:50.640]   Und danach haben wir einen zweiten Lube.
+[00:29:50.640 --> 00:29:53.640]   Und was gibt der für uns denn aus?
+[00:29:53.640 --> 00:29:59.640]   Jetzt haben wir hier den zweiten Lube und der zählt auch hoch.
+[00:29:59.640 --> 00:30:04.640]   Und der ist auch abhängig vom äußeren Lube-Counter allein.
+[00:30:04.640 --> 00:30:10.640]   Und was er macht, er druckt dann einfach den Wert der aktuellen Zeilen normal.
+[00:30:10.640 --> 00:30:14.640]   Da würde dann eben so ein einfaches Tableau daraus kommen.
+[00:30:14.640 --> 00:30:20.640]   Und dann können Sie jetzt gerne noch ändern, um stattdessen mal wegen der Punkte zu drucken und so weiter.
+[00:30:20.640 --> 00:30:23.640]   Das ist alles nicht schwierig.
+[00:30:23.640 --> 00:30:27.640]   Und wenn Sie das noch nicht vorher gesehen haben, dann empfehle ich Ihnen sehr,
+[00:30:27.640 --> 00:30:33.640]   sich damit gut zu beschäftigen, weil Schleifen werden Sie immer wieder haben und so weiter und so weiter.
+[00:30:33.640 --> 00:30:38.640]   So, jetzt, wenn wir uns also Schleifen angucken, da gibt es verschiedene Wege,
+[00:30:38.640 --> 00:30:40.640]   wie wir die etwas einteilen können.
+[00:30:40.640 --> 00:30:51.640]   Und eine erste wichtige Unterscheidung ist, ob eigentlich die Anzahl der Ausführung des Rumpfs vor Beginn der Ausführung bekannte ist.
+[00:30:51.640 --> 00:30:54.640]   Und sowas nennen wir eine bestimmte Schleife.
+[00:30:54.640 --> 00:31:00.640]   In dem Moment, wo die Schleife als nächste Instruktion herankommt,
+[00:31:00.640 --> 00:31:06.640]   wissen wir oder können wir berechnen, wie viele Ausführungen des Rumpfes nötig sind.
+[00:31:06.640 --> 00:31:14.640]   Und diese Vorschleifen sind eben dafür konstruiert, dass wir solche bestimmte Schleifen eben halt gut ausführen.
+[00:31:14.640 --> 00:31:19.640]   Irgendwas, eine bestimmte Anzahl mal drucken wollen oder ausführen wollen und so weiter.
+[00:31:19.640 --> 00:31:22.640]   Können wir das gut und gerne machen.
+[00:31:22.640 --> 00:31:32.640]   Aber eben, es gibt auch Schleifen, in denen wir zu Beginn nicht wissen oder nicht schnell wissen, wie viele Ausführungen nötig sind.
+[00:31:32.640 --> 00:31:35.640]   Und das nennen wir eine unbestimmte Schleife.
+[00:31:35.640 --> 00:31:45.640]   Wenn man das auch bestimmt, dann ist diese Anzahl, wenn die Anzahl der Interaktion nicht vorher bekanntet.
+[00:31:45.640 --> 00:31:50.640]   Und dafür brauchen wir auch einen Konstrukt, um das auszudrücken.
+[00:31:50.640 --> 00:31:53.640]   Und diese Art von Schleifen, die kommt sehr, sehr häufig vor.
+[00:31:53.640 --> 00:32:00.640]   Zum Beispiel, wenn Sie den Input von der Konsole lesen wollen und die Benutzerin macht einen Fehler,
+[00:32:00.640 --> 00:32:04.640]   dann müssen wir vielleicht nochmal das machen.
+[00:32:04.640 --> 00:32:11.640]   Wir wollen so lange lesen, bis eine nicht negative Zahl eingegeben wurde oder bis ein Q eingegeben wurde.
+[00:32:11.640 --> 00:32:19.640]   Oder wir lesen eine Datei bis in dieser Datei drei aufeinanderfolgende Sätze mit irgendeinem Zeichenenden und so weiter.
+[00:32:19.640 --> 00:32:26.640]   In all diese Situationen wissen wir von Anfang nicht, wie viele Ausführungen des Loops nötig sind.
+[00:32:26.640 --> 00:32:30.640]   Und darum ist der Vorloop dafür nicht richtig geeignet.
+[00:32:30.640 --> 00:32:35.640]   Und dafür gibt es dann eben die Weilschleife. Die Weilschleife ist ähnliche.
+[00:32:35.640 --> 00:32:45.640]   Sie hat eben das Keyword "Weil" klar und hat dann danach nur einen Test, einen Test, der evaluiert wird.
+[00:32:45.640 --> 00:32:55.640]   Und wenn dieser Test den Wert "Wahr" ergibt, dann wird dieses, wenn das hier in der Test den Wert "Wahr" oder "True" ergibt,
+[00:32:55.640 --> 00:33:00.640]   dann wird diese Folge von Statements hier ausgeführt.
+[00:33:00.640 --> 00:33:05.640]   Und sollte dieser Test "False" ergeben und danach wird eben der Test wieder ausgeführt.
+[00:33:05.640 --> 00:33:12.640]   Und wenn das "False" ergibt, dann hört die Ausführung dieses Weilloops auf.
+[00:33:12.640 --> 00:33:16.640]   Und es geht mit dem nächsten Statement, das hier hinterfolgt weiter.
+[00:33:16.640 --> 00:33:24.640]   Und wir bleiben so lange in diesem Loop, bis eben halt dieser Test irgendwann einmal den Wert "False" ergibt.
+[00:33:24.640 --> 00:33:27.640]   Also hier habe ich ein einfachstes Beispiel.
+[00:33:27.640 --> 00:33:31.640]   Wir haben eine integer-variable Namen, die wir mit 1 initialisieren.
+[00:33:31.640 --> 00:33:37.640]   Und wir lassen diesen Loop laufen, solange das Quadrat kleiner als 2000 ist.
+[00:33:37.640 --> 00:33:39.640]   Und dann drucken wir das aus.
+[00:33:39.640 --> 00:33:44.640]   Und danach, ja, jetzt haben wir das, jetzt ist die Verantwortung dafür,
+[00:33:44.640 --> 00:33:52.640]   dass dieser Test irgendwann mal auf 0, der Test irgendwann false ergibt, die liegt bei uns.
+[00:33:52.640 --> 00:33:57.640]   Das heißt, wir müssen dafür sorgen, dass eines der Statements hier vielleicht,
+[00:33:57.640 --> 00:34:03.640]   die Variablen, die hier in dem Test verwendet werden, in irgendeiner Form modifiziert.
+[00:34:03.640 --> 00:34:07.640]   Wenn wir das nicht machen, wird der Loop entweder 0 mal ausgeführt,
+[00:34:07.640 --> 00:34:14.640]   wenn der Test am Anfang bereits false ist, oder er wird unendlich oft, also ohne Ende ausgeführt,
+[00:34:14.640 --> 00:34:20.640]   wenn der Test sich nicht ändert und es immer false, immer true ergibt.
+[00:34:20.640 --> 00:34:27.640]   Darum brauchen wir hier eine Anweisung, mit der wir diese Variable, die hier im Test verwendet wird, verändern.
+[00:34:27.640 --> 00:34:33.640]   Also das Update ist hier unser Expecit, also Expecit von uns zu machen.
+[00:34:33.640 --> 00:34:37.640]   Das Update muss in den Anweisungen sein, die im Loop sind.
+[00:34:37.640 --> 00:34:41.640]   Also der Loop ist so gekommen an, wir checken, ob der Test wahr ist.
+[00:34:41.640 --> 00:34:46.640]   Wenn ja, dann wird die Anweisungen ausgeführt und danach wird wiedergecheckt,
+[00:34:46.640 --> 00:34:51.640]   solange bis das hier irgendwann mal eben der Test nicht mehr wahr ist,
+[00:34:51.640 --> 00:34:54.640]   und dann werden die Anweisungen nach dem Loop ausgeführt.
+[00:34:54.640 --> 00:35:03.640]   Und aber die ganze Verantwortung dafür, dass sich die Variable, die in dem Test verwendet werden,
+[00:35:03.640 --> 00:35:09.640]   eher ändern, die liegt einfach für uns.
+[00:35:09.640 --> 00:35:14.640]   Also, jetzt wieder, es gibt viele Möglichkeiten, wie Sie solche Loops schreiben können.
+[00:35:14.640 --> 00:35:19.640]   Ich möchte bewusst möglichst einfach zeigen, so dass auch die, die das noch nicht so häufig gesehen haben,
+[00:35:19.640 --> 00:35:22.640]   damit auch ohne Schwierigkeiten zurechtkommen.
+[00:35:22.640 --> 00:35:27.640]   Also nehmen wir an, Sie wollen den ersten Faktor finden von der Zahl 91 Faktor heißt.
+[00:35:27.640 --> 00:35:34.640]   Das ist eine Zahl, die eben ganz, die diese Zahl selber teilt ohne Rest.
+[00:35:34.640 --> 00:35:36.640]   Und das machen wir, wie machen wir das?
+[00:35:36.640 --> 00:35:37.640]   Ja, wir fangen also an.
+[00:35:37.640 --> 00:35:41.640]   Wir, natürlich, eins ist immer ein Faktor, aber ist nicht sehr interessant.
+[00:35:41.640 --> 00:35:43.640]   Also fangen wir an mit zwei.
+[00:35:43.640 --> 00:35:51.640]   Und jetzt haben wir hier, gucken wir den Rest, was ist die Rest der Division von N durch diesen Faktor.
+[00:35:51.640 --> 00:35:56.640]   Wenn das 0 ist, dann haben wir einen Faktor gefunden, weil dann hat es keinen Rest gegeben.
+[00:35:56.640 --> 00:35:58.640]   Wenn das nicht, dann sind wir fertig.
+[00:35:58.640 --> 00:36:03.640]   Wenn wir nicht, wenn wir ungleich 0 ist, dann haben wir noch keinen gefunden.
+[00:36:03.640 --> 00:36:12.640]   Und dann erhöhen wir hier, das habe ich leider, das müsste eigentlich besser heißen, Faktor ist gesetzt für Faktor plus 1.
+[00:36:12.640 --> 00:36:18.640]   Erhöhen wir das um 1 und dann ist die Sache, wird der Loop wiederholend ausgeführt.
+[00:36:18.640 --> 00:36:23.640]   Und wir hoffen, dass wir natürlich irgendwann wissen, wir, dass dieser Loop enden wird,
+[00:36:23.640 --> 00:36:30.640]   weil im besten und schlimmsten Fall wird der Faktor, hat irgendwann wird er zu 91 genetzt, wird er aber nicht.
+[00:36:30.640 --> 00:36:32.640]   Gibt eine andere Zahl davor.
+[00:36:32.640 --> 00:36:40.640]   Aber wir wissen, wenn wir immer wieder kontinuierlich den Faktor erhöhen, gibt es irgendwann eine Anweisung, die Faktor zu 91 setzt.
+[00:36:40.640 --> 00:36:44.640]   Und wir wissen, dass jede Zahl sich selbst ohne Rest teilt.
+[00:36:44.640 --> 00:36:48.640]   Und dann wissen wir, dass daher dieser Loop terminieren wird.
+[00:36:48.640 --> 00:36:50.640]   Und hier ist schon ein Weile besser.
+[00:36:50.640 --> 00:36:55.640]   Sie könnten sowas auch mit dem Vorloop in irgendeiner Form machen.
+[00:36:55.640 --> 00:36:59.640]   Und das wäre nicht, das wäre auch möglich.
+[00:36:59.640 --> 00:37:11.640]   Aber hier beim Weile sieht man sofort, aha, ist ein Loop, der eben halt eben, von dem wir eben nicht wissen, wie oft er ausgeführt werden wird.
+[00:37:11.640 --> 00:37:17.640]   Also das sind, mit Vor- und Weilloop kommen Sie eigentlich durch die ganze Vorlesung.
+[00:37:17.640 --> 00:37:25.640]   Also da, wenn Sie die beiden richtig im Griff haben und auch mit allen anderen Sachen später richtig machen können, dann haben Sie damit kein Problem.
+[00:37:25.640 --> 00:37:28.640]   Wir werden aber später ein bisschen mehr über Loops reden, ist noch nicht alles.
+[00:37:28.640 --> 00:37:35.640]   Aber bevor wir das machen, wollen wir das ein bisschen weiter machen und uns ein bisschen mehr mit Methoden beschäftigen.
+[00:37:35.640 --> 00:37:42.640]   Weil was wir bisher gesehen hatten, war ja einfach wirklich viel zu einfach und bringt uns nicht so viel weiter.
+[00:37:42.640 --> 00:37:50.640]   Also, ihr hattet gesagt, diese Vorloops erlauben Wiederholungen, hatte Ihnen da dieses Beispiel gezeigt.
+[00:37:50.640 --> 00:38:01.640]   Aber das Beispiel hat natürlich viele Nachteile und ein großer Nachteil ist natürlich, dass wir würden natürlich niemals sowas direkt so schreiben wollen.
+[00:38:01.640 --> 00:38:09.640]   Also wenn wir irgendwelche Programme oder Programsegmenten wieder verwenden wollen, dann müssen wir die in Methoden organisieren.
+[00:38:09.640 --> 00:38:15.640]   Anderfalls haben wir bald ein langes Programm, in dem wir schnell die Übersicht verlieren.
+[00:38:15.640 --> 00:38:21.640]   Wenn wir also sowas wiederholen wollen, dann würden wir eigentlich erstmal hingehen und das in irgendeine Methode reinstecken.
+[00:38:21.640 --> 00:38:25.640]   Aber würden wir also eine Methode definieren, nennen wir die mal "Test".
+[00:38:25.640 --> 00:38:29.640]   Ich war eine jetzt bereits davor, dass das Beispiel nicht vollständig ist.
+[00:38:29.640 --> 00:38:42.640]   Also, dann hätten wir eine Methode und dann würden wir diesen Vorloop, wenn wir das jetzt immer dreimal machen wollten, würden wir hier eben halt in diese Methode reinstecken.
+[00:38:42.640 --> 00:38:46.640]   Und dann haben wir gesehen, wie wir so eine Methode definieren.
+[00:38:46.640 --> 00:38:56.640]   Die müsste immer noch "Public Static" und "Woid" diese drei Begriffe davor haben, aber zumindest einen von denen werden wir heute vielleicht sehen, dass wir den nicht mehr brauchen.
+[00:38:56.640 --> 00:39:00.640]   So, und jetzt warum ist so eine Methode besser?
+[00:39:00.640 --> 00:39:05.640]   Also einmal natürlich, wenn wir das wiederholen verwenden, sparen wir damit Zeilen.
+[00:39:05.640 --> 00:39:11.640]   Das heißt, das Programm wird kürzer und ein kurzes Programm ließt sich einfacher als ein langes.
+[00:39:11.640 --> 00:39:13.640]   Zumindest für die meisten Leute von uns.
+[00:39:13.640 --> 00:39:20.640]   Aber wichtiger ist oder genauso wichtig ist, das sollte es mal nötig sein, irgendwelche Änderungen zu machen.
+[00:39:20.640 --> 00:39:24.640]   Dann bräuchten wir die nur an einer Stelle zu machen.
+[00:39:24.640 --> 00:39:33.640]   Wenn ich jetzt also dieses Programm ändern wollte und statt immer nur zwei Operanten ausgeben, möchte ich für eine beliebige Anzhafenoperanten ausgeben,
+[00:39:33.640 --> 00:39:38.640]   oder eine Anzhafenoperanten innerhalb eines bestimmten Bereichs.
+[00:39:38.640 --> 00:39:42.640]   Dann muss ich all diese Änderungen nur an der einen Stelle machen.
+[00:39:42.640 --> 00:39:47.640]   Und daher, wenn ich also Wiederverwendung habe, will ich da stecklich Sachen in Methoden.
+[00:39:47.640 --> 00:39:51.640]   Aber wenn ich jetzt wieder verwenden will, dann brauche ich auch eine gewisse Flexibilität.
+[00:39:51.640 --> 00:39:57.640]   Denn die Wahrscheinlichkeit, dass ich genau drei Wiederholungen brauche, ist eigentlich eher unwahrscheinlich.
+[00:39:57.640 --> 00:40:01.640]   Also diese Lösung, die ich zeigte, die liefert immer drei Aufgaben.
+[00:40:01.640 --> 00:40:05.640]   Aber was ist, wenn Sie jetzt mal vier oder mal eine Aufgabe wollen?
+[00:40:05.640 --> 00:40:10.640]   Natürlich könnten Sie jetzt hingehen und neu, könnten Sie weitere Methoden definieren.
+[00:40:10.640 --> 00:40:13.640]   Aber wer will das denn machen? Das will ja keiner.
+[00:40:13.640 --> 00:40:18.640]   Wir brauchen einen besseren Weg, zum Beispiel die Anzahl der Wiederholungen in einer Situation anzupassen.
+[00:40:18.640 --> 00:40:21.640]   Und das nennen wir Parametrisierung.
+[00:40:21.640 --> 00:40:24.640]   Wir fügen einen Parameter ein.
+[00:40:24.640 --> 00:40:33.640]   Das ist eine besondere Art von Variablen oder sowas, die wir verwenden werden, um die Anpassung vorzunehmen.
+[00:40:33.640 --> 00:40:45.640]   Und mit dieser Parametrisierung können wir dann die gleiche Folge von Anweisungen in unterschiedlichen Situationen verwenden.
+[00:40:45.640 --> 00:40:52.640]   Also Parameter ist ein Wert, den die aufgerufene Methode von der aufrufenden Methode enthält.
+[00:40:52.640 --> 00:40:58.640]   Also wenn ich hier mein Ad-Test habe, dann muss die irgendeinen Weg haben,
+[00:40:58.640 --> 00:41:08.640]   dass ich zum Beispiel den Loop Count, dass ich den irgendwie von außen hier mit einbauen kann,
+[00:41:08.640 --> 00:41:11.640]   dass ich den mit einfügen kann.
+[00:41:11.640 --> 00:41:17.640]   Dann habe ich eine Parametrisierung erreicht in Bezug auf den Loop Count,
+[00:41:17.640 --> 00:41:21.640]   nicht in Bezug auf die Anzahl der Operanten, aber in Bezug auf den Loop Count.
+[00:41:21.640 --> 00:41:24.640]   Und mit dem kann ich das dann entsprechend machen.
+[00:41:24.640 --> 00:41:30.640]   Das heißt, wenn wir so eine Methode deklarieren, dann geben wir an, dass wir einen Parameter brauchen.
+[00:41:30.640 --> 00:41:37.640]   Und wenn wir die Methode aufrufen, dann muss natürlich ein Wert für den Parameter angegeben werden, sonst funktioniert das nicht.
+[00:41:37.640 --> 00:41:39.640]   Und das geschieht sehr einfach.
+[00:41:39.640 --> 00:41:44.640]   Wenn wir die Methode deklarieren, dann kommt jetzt in die zwischen diese Klammern,
+[00:41:44.640 --> 00:41:49.640]   kommt eben der Name des Parameters und der Typ des Parameters.
+[00:41:49.640 --> 00:41:57.640]   Und wenn wir die Methode aufrufen, dann geben wir irgendeinen Wert oder einen Ausdruck, der einen Wert liefert, für diesen Parameter an.
+[00:41:57.640 --> 00:42:04.640]   Damit wird die Methode vielseitiger einsetzbar, aber die Entwicklung wird jetzt doch um einiges komplizierter.
+[00:42:04.640 --> 00:42:09.640]   Also wir hätten hier, so würden wir das jetzt machen, wir hätten hier unsere Methode deklaration.
+[00:42:09.640 --> 00:42:19.640]   Und da wäre eben hier Typ und Name, der Name wäre der Name der Parametervariable und Typ wäre halt der Typ dieser Parametervariable.
+[00:42:19.640 --> 00:42:29.640]   Und fürs erste Mal hier bei uns werden wir, bis wir mehr lernen, immer nur ein Basestyp verwenden, wenn später andere kennenlernen.
+[00:42:29.640 --> 00:42:41.640]   Also hier, wenn ich eine ganz einfache Methode haben will, die den Parameter einfach nur wiedergibt, würde ich eben hier eine Variable,
+[00:42:41.640 --> 00:42:47.640]   einen Parameter-Code deklarieren, den ich dann hier im Programm einfach ausgebe.
+[00:42:47.640 --> 00:42:53.640]   Und wenn ich das Programm aufrufe, dann muss natürlich ein Code angegeben werden, nicht ganz funktioniert das nicht.
+[00:42:53.640 --> 00:42:58.640]   Wenn ich keinen Code angeben würde, dann würde sich das System da beschweren.
+[00:42:58.640 --> 00:43:03.640]   So, und wie der Parameter übergeben wird, das machen wir nach der Pause.
+[00:43:03.640 --> 00:43:10.640]   Aber ich hatte ja gestern so viel über die schwächste Vorbedingung geredet.
+[00:43:10.640 --> 00:43:20.640]   Und jetzt wollen wir mal gucken, oder möchte ich Ihnen die Chance geben, zu sehen, was Sie davon noch eben mitbehalten haben.
+[00:43:20.640 --> 00:43:25.640]   Und darum gebe ich Ihnen jetzt hier ein Clicker-Beispiel.
+[00:43:25.640 --> 00:43:27.640]   Ich hoffe, der Clicker funktioniert heute.
+[00:43:27.640 --> 00:43:29.640]   Haben wir also drei Beispiele.
+[00:43:29.640 --> 00:43:43.640]   Und da sollen Sie mir die schwächsten Vorbedingungen in das System als Clicker-Antwort geben.
+[00:43:43.640 --> 00:43:46.640]   So, gucken wir mal hier.
+[00:43:46.640 --> 00:43:51.640]   So, jetzt gucken wir mal.
+[00:43:51.640 --> 00:43:53.640]   Ich habe es gestartet. Sieht jemand?
+[00:43:53.640 --> 00:43:57.640]   Ist der Clicker für irgendjemand erkennbar?
+[00:43:57.640 --> 00:44:00.640]   Ja, ja, ja, danke.
+[00:44:00.640 --> 00:44:02.640]   Okay, ich lasse das mal damit da kein Stress ist.
+[00:44:02.640 --> 00:44:05.640]   Lass ich das die ganze Pause laufen.
+[00:44:05.640 --> 00:44:12.640]   Und da können Sie einfach eben als Text in die als Antwort geben.
+[00:44:12.640 --> 00:44:14.640]   Danach gucken wir uns das an.
+[00:44:14.640 --> 00:44:19.640]   Und danach sehen wir, wie die Parameter einer Methode übergeben werden.
+[00:44:19.640 --> 00:44:21.640]   Hallo.
+[00:44:21.640 --> 00:44:24.640]   Aber Sie können auch gerne die Pause anders nutzen.
+[00:44:24.640 --> 00:44:29.640]   Aber die, die wollen, können das auch mit Ihrem Nachbarn oder Ihrer Nachbarin diskutieren.
+[00:44:29.640 --> 00:44:31.640]   Die geht hier weniger darum.
+[00:44:31.640 --> 00:44:38.640]   Das ist ja nicht dazu da, um Sie abzufragen, sondern soll Ihnen nochmal die Gelegenheit geben, das, was Sie gestern gesehen haben, zu wiederholen.
+[00:44:38.640 --> 00:44:41.640]   Und die Slides von gestern sind auf dem Netz.
+[00:44:41.640 --> 00:44:54.640]   Und wenn Sie vergessen haben sollten, was genau die schlechteste Vorbedingung ist, sollten Sie jetzt in der Lage sein, die auf dem Netz zu finden.
+[00:44:54.640 --> 00:45:04.640]   Also letzte Chance, noch eine Abstimmung hier, ein Ergebnis einzureichen.
+[00:45:04.640 --> 00:45:12.640]   Also, wenn Sie das, das ist halt ein Weg für uns genau zu verstehen, was ein Programm macht.
+[00:45:12.640 --> 00:45:18.640]   Und das ist etwas, was Sie in vielen Situationen wiederfinden werden.
+[00:45:18.640 --> 00:45:24.640]   Immer Sie programmieren, müssten Sie eigentlich genau wissen wollen, was macht das Programm, was für Folgen hat das.
+[00:45:24.640 --> 00:45:29.640]   Oder was für eine Bedingung muss erfüllt sein, damit diese und jene Bedingung da ist.
+[00:45:29.640 --> 00:45:34.640]   Und wie Sie wahrscheinlich wissen, am Ende dieses Semesters muss es ja doch eine Prüfung geben.
+[00:45:34.640 --> 00:45:40.640]   Und in der Prüfung werden Sie zum Teil programmieren, aber zum Teil werden Sie auch eben Fragen beantworten.
+[00:45:40.640 --> 00:45:47.640]   Und ein paar Fragen, die wir in der Vergangenheit gestellt haben, waren eben von der Art, was ist die schwächste Vorbedingung.
+[00:45:47.640 --> 00:45:54.640]   Also, was sind, ich sehe hier, okay, es sind viele Richtige, aber nicht alle ganz Richtige.
+[00:45:54.640 --> 00:46:00.640]   Okay, also, gucken wir, da, wo ich Ihnen das schon gegeben habe, gehen wir kurz durch die Beispiele durch.
+[00:46:00.640 --> 00:46:04.640]   Also, was ist die schwächste Vorbedingung hier für dieses Statement?
+[00:46:04.640 --> 00:46:13.640]   Na ja, da haben wir ja gesagt, wir setzen die rechte Seite in die Prostkondition ein und dann transformieren wir das
+[00:46:13.640 --> 00:46:16.640]   und dann bekommen wir raus, dass x muss größer als minus 1 sein.
+[00:46:16.640 --> 00:46:19.640]   Jetzt sagt jemand, ja, aber ich hätte auch das Programm laufen lassen können.
+[00:46:19.640 --> 00:46:26.640]   Ja, klar, Sie hätten das Vereinwärt von x laufen lassen können und sehen können, ob das stimmt oder mehrfach mehrere Werte.
+[00:46:26.640 --> 00:46:33.640]   Aber so wissen wir, dass wenn x größer als minus 1 ist, dann gilt das, egal, wie wir dahin gekommen sind.
+[00:46:33.640 --> 00:46:37.640]   Jetzt die zweite Sache, zweites Thema ist auch nicht sehr schwer.
+[00:46:37.640 --> 00:46:44.640]   Auch hier setzen wir das ein, ja, wir setzen erst das ein, dann haben wir hier einen Ausdruck, in dem 2 mal k vorkommt
+[00:46:44.640 --> 00:46:53.640]   und dann setzen wir das für das k ein und dann können wir sehen, j muss dann mal 2, muss größer sein als 0,
+[00:46:53.640 --> 00:47:02.640]   aber muss kleiner sein als das und so weiter und dann sehen wir, dass die richtige Antwort, da gibt es nur einen Wert für j, der das erfüllt.
+[00:47:02.640 --> 00:47:04.640]   So, dann haben wir hier ein if Statement.
+[00:47:04.640 --> 00:47:11.640]   Ist da irgendetwas nicht in Ordnung?
+[00:47:11.640 --> 00:47:14.640]   War zuvor aber m kleiner 2.
+[00:47:14.640 --> 00:47:16.640]   Oh, habe ich da irgendwas gemogelt?
+[00:47:16.640 --> 00:47:23.640]   Ja, das ist aber, hier war j kleiner 2, was haben wir hier?
+[00:47:23.640 --> 00:47:27.640]   Ach, nein, das ist aber selbe, sehen Sie, klein sind ja ins, ja.
+[00:47:27.640 --> 00:47:30.640]   Welche Zahl gibt es denn als ins?
+[00:47:30.640 --> 00:47:37.640]   Also als ins gibt es 1 oder 0, wenn Sie wollen, 1, 2, 3, 4, ja, und mehr, ja.
+[00:47:37.640 --> 00:47:42.640]   Und wenn es größer als 2 sein muss, dann muss es 3 oder mehr sein.
+[00:47:42.640 --> 00:47:47.640]   Also, nein, da habe ich jetzt nicht gemogelt, da habe ich also, ja, oder doch?
+[00:47:47.640 --> 00:47:53.640]   1, ach ja, da oben, ja, gut, okay, das müssen wir, ja.
+[00:47:53.640 --> 00:47:59.640]   Gut, dass Sie das sagen, sehen Sie, wenn ich das noch, habe ich was falsch getippt.
+[00:47:59.640 --> 00:48:04.640]   Okay, gut, okay, aber so, aber interessant, sehen Sie,
+[00:48:04.640 --> 00:48:07.640]   der interessante Fall ist ja der Fall 3, ich meine,
+[00:48:07.640 --> 00:48:11.640]   und das ist der Fall, wo wir eben halt ein if Statement haben, ja.
+[00:48:11.640 --> 00:48:15.640]   Und hier haben wir als Aussage am Ende, dass Max größer gleich x sein soll
+[00:48:15.640 --> 00:48:18.640]   und Max soll größer gleich y sein, ja.
+[00:48:18.640 --> 00:48:24.640]   So, und hier habe ich eben diese Aussage, die möchte ich eben machen.
+[00:48:24.640 --> 00:48:33.640]   Und hier haben wir gesagt, die Weakest Precondition ist B, also B ist hier mein Test, ja, den ich hier habe,
+[00:48:33.640 --> 00:48:38.640]   und die Weakest Precondition für diesen Block, ja, und nicht B,
+[00:48:38.640 --> 00:48:45.640]   und die Weakest Precondition hier für diesen Block, also für den Block, für den zweiten Block, ja.
+[00:48:45.640 --> 00:48:49.640]   Also hier diese, für das, und das andere schwarz für den anderen.
+[00:48:49.640 --> 00:48:52.640]   So, da gehe ich also jetzt hin, ja, kann ich das da also einsetzen, ja.
+[00:48:52.640 --> 00:48:56.640]   Was ist die Weakest Precondition für S1 und Q, ja.
+[00:48:56.640 --> 00:48:58.640]   Da setze ich das also jetzt ein, ja.
+[00:48:58.640 --> 00:49:05.640]   Also hier habe ich mein B, und jetzt frauche ich die Weakest Precondition für diese Anweisung hier, ja.
+[00:49:05.640 --> 00:49:10.640]   Das hier ist die Anweisung, und mein Q ist das hier, ja.
+[00:49:10.640 --> 00:49:13.640]   Das ist, dass Max soll größer gleich x sein,
+[00:49:13.640 --> 00:49:19.640]   und dann habe ich das gleiche noch für eben nicht B, aus nicht B,
+[00:49:19.640 --> 00:49:23.640]   Max größer gleich y und so weiter, ja.
+[00:49:23.640 --> 00:49:28.640]   So, und dann habe ich das, ja, und das kann ich jetzt vereinfachen, ja,
+[00:49:28.640 --> 00:49:34.640]   indem ich jetzt eben halt x größer als y, meine Condition B, ja,
+[00:49:34.640 --> 00:49:40.640]   und eben x, y größer gleich x, und y größer gleich y, das kann man auch gleich y, ja,
+[00:49:40.640 --> 00:49:46.640]   kann ich weiter vereinfachen, ja, das kann ich weiter vereinfachen zu x größer,
+[00:49:46.640 --> 00:49:48.640]   y größer als x, ja.
+[00:49:48.640 --> 00:49:53.640]   Und genauso kann ich den anderen Teil hier, also das, was hinter dem, das Ohr ist, ja,
+[00:49:53.640 --> 00:49:57.640]   für den anderen Teil des Predigtivstetments,
+[00:49:57.640 --> 00:50:03.640]   und wenn ich habe x, y größer gleich x, und y kleiner gleich x, ja,
+[00:50:03.640 --> 00:50:09.640]   ja, da gibt es nur einen Weg, wie man das, das muss immer, das muss immer true sein, ja.
+[00:50:09.640 --> 00:50:13.640]   Entweder es y größer als x, oder nicht, ja.
+[00:50:13.640 --> 00:50:18.640]   Er kann das vereinfachen, und in der Tat, in diesem Fall habe ich eine Situation,
+[00:50:18.640 --> 00:50:25.640]   egal was für Vorbedingungen ich habe, ich, nachher gilt diese Post Condition, ja.
+[00:50:25.640 --> 00:50:29.640]   Also, also, das wollte ich nur mit einem Fehler berichtigen,
+[00:50:29.640 --> 00:50:35.640]   ich noch, bevor ich es aufs Webtour tut mir leid, ja, die Idee haben Sie hoffentlich bekommen,
+[00:50:35.640 --> 00:50:38.640]   und das ist, okay, so, jetzt wollen wir mal gucken,
+[00:50:38.640 --> 00:50:45.640]   dass wir das richtige Window wiederfinden, und dann weitermachen mit den Schleifen, so.
+[00:50:45.640 --> 00:50:50.640]   Ja, so, okay, so, also, also, das haben wir gesehen,
+[00:50:50.640 --> 00:50:54.640]   dass eben halt diese, wenn wir jetzt so eine Methode mit Parameter haben,
+[00:50:54.640 --> 00:50:57.640]   dass dann der, muss ein Wert übergeben werden,
+[00:50:57.640 --> 00:51:02.640]   und dieser Wert wird an die aufgerufenen Methode übergeben, ja.
+[00:51:02.640 --> 00:51:06.640]   Das ist also ein Weg, wie der Aufrufer zur aufgerufenen Methode
+[00:51:06.640 --> 00:51:10.640]   einen Wert übermitteln kann, ja.
+[00:51:10.640 --> 00:51:14.640]   Und wenn die Methode aufgerufen wird, dann wird eben dieser Wert genommen,
+[00:51:14.640 --> 00:51:17.640]   und wird in der Parametervariable gespeichert.
+[00:51:17.640 --> 00:51:20.640]   Also, der Wert, den der Aufrufer übergibt,
+[00:51:20.640 --> 00:51:25.640]   ist der Wert, mit dem die Parametervariable initialisiert wird, ja.
+[00:51:25.640 --> 00:51:29.640]   Und dann erst werden die Anweisungen der Methode ausgeführt,
+[00:51:29.640 --> 00:51:33.640]   mit dem Wert, ursprünglich, mit dem Anfangswert für diesen Parameter,
+[00:51:33.640 --> 00:51:37.640]   für diese Variable, den der Aufrufer übergeben hat, ja.
+[00:51:37.640 --> 00:51:40.640]   Also, hier in dem Beispiel haben wir dann eben jetzt hier
+[00:51:40.640 --> 00:51:44.640]   den Parameter-Emeranzahl, und den benutzen wir hier,
+[00:51:44.640 --> 00:51:48.640]   hier im, benutzen wir hier in diesem Loop,
+[00:51:48.640 --> 00:51:52.640]   um zu kontrollieren, wie oft dieser Loop ausgeführt werden soll
+[00:51:52.640 --> 00:51:55.640]   und wie oft da das gedruckt werden soll, ja.
+[00:51:55.640 --> 00:51:58.640]   So, und um das Programm natürlich komplett zu machen, ja,
+[00:51:58.640 --> 00:52:00.640]   müssen wir natürlich dafür sorgen,
+[00:52:00.640 --> 00:52:04.640]   dass da ein Zufallzahlengenerator verfügbar ist,
+[00:52:04.640 --> 00:52:09.640]   und dass wir den einen Scanner haben und so weiter.
+[00:52:09.640 --> 00:52:12.640]   Und um das zu machen, müssen wir natürlich da oben
+[00:52:12.640 --> 00:52:15.640]   diese Importstatements haben, dass das System weiß,
+[00:52:15.640 --> 00:52:18.640]   dass das eben letztlich gebraucht werden.
+[00:52:18.640 --> 00:52:22.640]   Und dann brauchen wir natürlich auch noch eine andere Methode,
+[00:52:22.640 --> 00:52:24.640]   die diese Methode aufruft.
+[00:52:24.640 --> 00:52:28.640]   Und dafür nehmen wir in diesem einfachen Beispiel die Methode Main,
+[00:52:28.640 --> 00:52:31.640]   die dann eben hier den Aufruf machen würde,
+[00:52:31.640 --> 00:52:33.640]   indem sie diese Methode aufruft.
+[00:52:33.640 --> 00:52:35.640]   Und dann haben wir jetzt das Beispiel komplett,
+[00:52:35.640 --> 00:52:38.640]   und so können Sie das benutzen, ja.
+[00:52:38.640 --> 00:52:43.640]   Also, ein Parameter, der in der Deklaration
+[00:52:43.640 --> 00:52:47.640]   einer Methode auftaucht, also hier dieses Anzahl, ja,
+[00:52:47.640 --> 00:52:50.640]   den nennen wir den formalen Parameter, ja.
+[00:52:50.640 --> 00:52:54.640]   Und das ist ein Weg für uns, eine Variable
+[00:52:54.640 --> 00:52:57.640]   für diese Methode zu definieren, ja.
+[00:52:57.640 --> 00:53:01.640]   Das deklariert hier diese Variable, ja.
+[00:53:01.640 --> 00:53:04.640]   So, und jetzt beim Aufruf der Methode
+[00:53:04.640 --> 00:53:06.640]   muss der ja ein Wert übergeben werden, ja.
+[00:53:06.640 --> 00:53:08.640]   Irgendwann ein Ausdruck wird da übergeben.
+[00:53:08.640 --> 00:53:11.640]   Und dieser übergebende Wert, der heißt eben,
+[00:53:11.640 --> 00:53:16.640]   ja, tatsächliche Argumentwert oder Actual Argument value, ja.
+[00:53:16.640 --> 00:53:18.640]   Oder wenn wir eben zum Ausdruck bringen wollen,
+[00:53:18.640 --> 00:53:20.640]   dass wir da einen Ausdruck haben,
+[00:53:20.640 --> 00:53:22.640]   spricht man manchmal von dem Actual,
+[00:53:22.640 --> 00:53:26.640]   von dem tatsächlichen Argument Ausdruck, ja.
+[00:53:26.640 --> 00:53:30.640]   Jetzt in den meisten Fällen verwenden wir das Wort Argument,
+[00:53:30.640 --> 00:53:32.640]   wenn es da kein Missverständnis gibt, ja.
+[00:53:32.640 --> 00:53:36.640]   Also die Unterscheidung zwischen dem Wert, ja,
+[00:53:36.640 --> 00:53:39.640]   der eben übergeben wird, und dem Ausdruck,
+[00:53:39.640 --> 00:53:42.640]   der benutzt wird, um den Wert zu generieren,
+[00:53:42.640 --> 00:53:45.640]   im Allgemeinen brauchen wir die nicht zu machen, ja.
+[00:53:45.640 --> 00:53:51.640]   Und daher, wenn eben keine Gefahr eines Missverständnisses ist,
+[00:53:51.640 --> 00:53:54.640]   dann würden wir einfach auf den Argument sprechen.
+[00:53:54.640 --> 00:53:57.640]   Der Argument ist der Wert, der vom Aufruf her
+[00:53:57.640 --> 00:54:00.640]   an die aufgerufene Methode übergeben wird.
+[00:54:00.640 --> 00:54:03.640]   Ja, das ist der ganz einfache Weg, den wir da haben.
+[00:54:03.640 --> 00:54:07.640]   So, also, und diese Parametervariable,
+[00:54:07.640 --> 00:54:11.640]   die kann jetzt in der Methode, wie jede andere Variable,
+[00:54:11.640 --> 00:54:14.640]   jede andere Variable verwendet werden.
+[00:54:14.640 --> 00:54:16.640]   Die können wir für alles Möche benutzen, ja.
+[00:54:16.640 --> 00:54:18.640]   Und so haben wir ja gesehen, ja.
+[00:54:18.640 --> 00:54:22.640]   Das ist alles kein Problem, wenn wir hier eine Methode haben,
+[00:54:22.640 --> 00:54:26.640]   die zweimal aufgerufen wird, einmal wird sie aufgerufen mit 3,
+[00:54:26.640 --> 00:54:30.640]   dann druckt sie das, und wenn sie mit 7 aufgerufen wird, druckt sie das.
+[00:54:30.640 --> 00:54:32.640]   Das ist also jedes Mal dasselbe.
+[00:54:32.640 --> 00:54:35.640]   Jetzt, was kann da schiefgehen, wo wir aufpassen?
+[00:54:35.640 --> 00:54:38.640]   Also wenn eine Methode ein Argument erwartet,
+[00:54:38.640 --> 00:54:40.640]   dann muss es auch übergeben werden.
+[00:54:40.640 --> 00:54:43.640]   Andere Programmiersprachen sind da etwas laxer,
+[00:54:43.640 --> 00:54:45.640]   aber wenn sie eben diese Methode haben,
+[00:54:45.640 --> 00:54:47.640]   und sie geben dann kein Argument an,
+[00:54:47.640 --> 00:54:49.640]   dann beschwert sich das System
+[00:54:49.640 --> 00:54:52.640]   und führt das Programm auch gar nicht erst auf.
+[00:54:52.640 --> 00:54:56.640]   Und der Wert oder der Ausdruck muss den richtigen Typ ergeben.
+[00:54:56.640 --> 00:54:59.640]   Wenn Sie jetzt versuchen würden, die eben deklarierte Methode,
+[00:54:59.640 --> 00:55:05.640]   die einen Int-Parameter verlangt, mit einer reellen Zahl aufzurufen,
+[00:55:05.640 --> 00:55:07.640]   dann beschwert sich das System auch.
+[00:55:07.640 --> 00:55:11.640]   Wobei natürlich erfreulicherweise die Regeln für Umwandlungen,
+[00:55:11.640 --> 00:55:14.640]   also die Implizitenumwandlungen hier auch gelten.
+[00:55:14.640 --> 00:55:16.640]   Also wenn da ein Double erwartet wird,
+[00:55:16.640 --> 00:55:20.640]   und sie geben ein Int an, dann würde das eben konvertiert
+[00:55:20.640 --> 00:55:22.640]   und würde auch erlaubt werden.
+[00:55:22.640 --> 00:55:25.640]   Und natürlich können Sie mehr als einen Parameter angeben,
+[00:55:25.640 --> 00:55:27.640]   können mehrere Parameter angeben,
+[00:55:27.640 --> 00:55:30.640]   die würden wir dann durch Komma trennen.
+[00:55:30.640 --> 00:55:34.640]   Also so eine Methode, die eben mehrere Parameter hätte,
+[00:55:34.640 --> 00:55:36.640]   hätte eben hier diese Folge.
+[00:55:36.640 --> 00:55:40.640]   Natürlich, die Typen können unterschiedlich sein,
+[00:55:40.640 --> 00:55:42.640]   die Namen müssen unterschiedlich sein.
+[00:55:42.640 --> 00:55:45.640]   Also die Typen, die beiden könnten gleich sein,
+[00:55:45.640 --> 00:55:48.640]   aber die Namen müssen immer ungleich sein.
+[00:55:48.640 --> 00:55:51.640]   Wenn die Namen gleich sind, beschwert sich das System,
+[00:55:51.640 --> 00:55:53.640]   weil das ist so, als ob Sie zwei Variable
+[00:55:53.640 --> 00:55:55.640]   mit demselben Namen deklarieren würden.
+[00:55:55.640 --> 00:55:58.640]   Und dann würden Sie die eben aufrufen,
+[00:55:58.640 --> 00:56:01.640]   dass für jeden Parameter, den Sie deklariert haben,
+[00:56:01.640 --> 00:56:05.640]   natürlich auch ein Wert übergeben werden muss.
+[00:56:05.640 --> 00:56:12.640]   Also hier hätten wir zwei Aufrufe einer Methode mit zwei Parametern,
+[00:56:12.640 --> 00:56:16.640]   dann müssten Sie halt immer wieder da entsprechend die Werte übergeben.
+[00:56:16.640 --> 00:56:20.640]   Also, wenn eine Methode aufgerufen wird,
+[00:56:20.640 --> 00:56:25.640]   wird der Wert für den Parameter vom Aufrufer berechnet und übergeben.
+[00:56:25.640 --> 00:56:30.640]   Entweder direkt als direkter Wert oder als Variable oder als Ausdruck.
+[00:56:30.640 --> 00:56:34.640]   Und dieser Wert wird in der aufgerufenen Methode
+[00:56:34.640 --> 00:56:37.640]   in der Parametervariable gespeichert.
+[00:56:37.640 --> 00:56:39.640]   Und dann werden die Anweisungen durchgeführt,
+[00:56:39.640 --> 00:56:43.640]   und zwar eben anfangs mit dem Wert für die Parametervariable.
+[00:56:43.640 --> 00:56:47.640]   Aber die Parametervariable ist sonst eine ganz normale Variable
+[00:56:47.640 --> 00:56:50.640]   und die kann daher auch verändert werden.
+[00:56:50.640 --> 00:56:52.640]   Die kann, wenn man das will,
+[00:56:52.640 --> 00:56:55.640]   kann man die beliebigste Weise verändern.
+[00:56:55.640 --> 00:56:58.640]   Und der Wert, den der Aufrufer übergibt,
+[00:56:58.640 --> 00:57:00.640]   der kann durch einen Ausdruck bestimmt sein
+[00:57:00.640 --> 00:57:04.640]   oder durch eine einfache Variable,
+[00:57:04.640 --> 00:57:06.640]   das wäre auch nur ein Ausdruck.
+[00:57:06.640 --> 00:57:10.640]   In allen Fällen wird der Wert berechnet und dann übergeben.
+[00:57:10.640 --> 00:57:14.640]   Aber die aufgerufene Methode, die hat keine Ahnung,
+[00:57:14.640 --> 00:57:16.640]   wie dieser Wert zustande kam.
+[00:57:16.640 --> 00:57:20.640]   Die hat keine Ahnung, was für Variable er evolviert war.
+[00:57:20.640 --> 00:57:23.640]   Die hat überhaupt keine Ahnung, woher der Wert kommt.
+[00:57:23.640 --> 00:57:26.640]   Die kriegt einen Wert und mit dem wird das initialisiert.
+[00:57:26.640 --> 00:57:28.640]   Also, wenn Sie eine Variable übergeben,
+[00:57:28.640 --> 00:57:30.640]   dann wird halt der Wert der Variable genommen
+[00:57:30.640 --> 00:57:35.640]   und wird dieser Wert an die aufgerufene Methode übergeben.
+[00:57:35.640 --> 00:57:40.640]   Und eben diese Art von Übermitteln, also Aufrufen,
+[00:57:40.640 --> 00:57:42.640]   die nennen wir Value Semantics.
+[00:57:42.640 --> 00:57:46.640]   Das heißt, wenn der Parameter eines der Basestypen ist,
+[00:57:46.640 --> 00:57:48.640]   und bisher haben wir ja nur die zugelassen,
+[00:57:48.640 --> 00:57:51.640]   dann wird der Wert direkt kopiert
+[00:57:51.640 --> 00:57:53.640]   und das nennen wir Value Semantics.
+[00:57:53.640 --> 00:57:55.640]   Der Wert wird übergeben.
+[00:57:55.640 --> 00:57:58.640]   Wenn der Ausdruck durch einen Parameter übergeben,
+[00:57:58.640 --> 00:58:00.640]   dann wird der Wert direkt kopiert.
+[00:58:00.640 --> 00:58:02.640]   Und das nennen wir Value Semantics.
+[00:58:02.640 --> 00:58:04.640]   Und das wird dann übergeben.
+[00:58:04.640 --> 00:58:06.640]   Wenn der Ausdruck durch einen Parameter,
+[00:58:06.640 --> 00:58:09.640]   wenn wir einen Ausdruck haben,
+[00:58:09.640 --> 00:58:11.640]   dann wird der Ausdruck evaluiert
+[00:58:11.640 --> 00:58:14.640]   und dann wird der Wert des Ausdrucks übergeben.
+[00:58:14.640 --> 00:58:17.640]   Und dieser Wert, der jetzt da kopiert wird,
+[00:58:17.640 --> 00:58:21.640]   der initialisiert dann die Parametervariable,
+[00:58:21.640 --> 00:58:23.640]   so wie ich das eben gezeigt habe.
+[00:58:23.640 --> 00:58:27.640]   Also, ich hatte hier eben diese Methode
+[00:58:27.640 --> 00:58:32.640]   einmal mit einer Variable aufgerufen
+[00:58:32.640 --> 00:58:34.640]   oder mit einem Ausdruck.
+[00:58:34.640 --> 00:58:36.640]   Das macht alles keinen Unterschied aus.
+[00:58:36.640 --> 00:58:39.640]   Das wird alles so ausgeführt, wie wir das erwarten.
+[00:58:39.640 --> 00:58:41.640]   Wir berechnen den Ausdruck
+[00:58:41.640 --> 00:58:43.640]   und dann entsprechend wird das gemacht.
+[00:58:43.640 --> 00:58:46.640]   So, und weil diese Parametervariable
+[00:58:46.640 --> 00:58:51.640]   eben auch eine normale Variable in der Methode ist,
+[00:58:51.640 --> 00:58:56.640]   kann diese Methode mit dem Parameter arbeiten, wie sie will
+[00:58:56.640 --> 00:59:00.640]   und insbesondere Veränderungen, die in der Methode passieren,
+[00:59:00.640 --> 00:59:04.640]   haben keine Auswirkungen auf die aufrufende Methode.
+[00:59:04.640 --> 00:59:05.640]   Warum?
+[00:59:05.640 --> 00:59:07.640]   Weil es wurde hier nur der Wert übergeben.
+[00:59:07.640 --> 00:59:09.640]   Mehr wurde gar nicht übergeben.
+[00:59:09.640 --> 00:59:12.640]   Es wurde nur ein Wert übergeben.
+[00:59:12.640 --> 00:59:15.640]   Also, ich habe hier eine Methode strange,
+[00:59:15.640 --> 00:59:17.640]   die hat einen Int-Parameter.
+[00:59:17.640 --> 00:59:19.640]   Und dieser Int-Parameter heißt x.
+[00:59:19.640 --> 00:59:21.640]   Und jetzt geht diese Methode hin
+[00:59:21.640 --> 00:59:25.640]   und nimmt x und erhöht den Wert um 1.
+[00:59:25.640 --> 00:59:29.640]   Und speichert dann das Ergebnis in dieser Variable x.
+[00:59:29.640 --> 00:59:32.640]   Und dann drucken wir diesen Wert x aus.
+[00:59:32.640 --> 00:59:36.640]   So, und jetzt rufen wir diese Methode auf
+[00:59:36.640 --> 00:59:39.640]   von einem, mit unserem Main-Programm.
+[00:59:39.640 --> 00:59:43.640]   Da rufen wir das auf mit eben einer,
+[00:59:43.640 --> 00:59:46.640]   auch einer Variable auch, die x genannt wird.
+[00:59:46.640 --> 00:59:48.640]   Die wurde mit 23 initialisiert.
+[00:59:48.640 --> 00:59:50.640]   Und die rufen wir damit aus.
+[00:59:50.640 --> 00:59:54.640]   Und was passiert, der Wert wird übergeben.
+[00:59:54.640 --> 00:59:57.640]   Der Wert wird diese 23 wird übergeben.
+[00:59:57.640 --> 00:59:59.640]   Und wird hier um 1 erhöht.
+[00:59:59.640 --> 01:00:01.640]   Und wir drucken dann aus,
+[01:00:01.640 --> 01:00:04.640]   dass der Wert dieser Variable in diesem Programm
+[01:00:04.640 --> 01:00:07.640]   an dieser Stelle gerade 24 ist.
+[01:00:07.640 --> 01:00:09.640]   Aber dann ist diese Methode zu Ende.
+[01:00:09.640 --> 01:00:11.640]   Wir sind mit der Methode fertig.
+[01:00:11.640 --> 01:00:13.640]   Wir erreichen das Ende.
+[01:00:13.640 --> 01:00:17.640]   Und jetzt geht die Ausführung weiter hier an dieser Stelle.
+[01:00:17.640 --> 01:00:19.640]   Und was machen wir hier?
+[01:00:19.640 --> 01:00:20.640]   Hier gehen wir jetzt hin.
+[01:00:20.640 --> 01:00:22.640]   Und wir drucken nochmal den Wert x.
+[01:00:22.640 --> 01:00:25.640]   Das ist diese Variable hier.
+[01:00:25.640 --> 01:00:29.640]   Und die hat den Wert, den diese Variable da bekommen hat.
+[01:00:29.640 --> 01:00:33.640]   Was immer in dieser Methode passierte, interessiert niemand.
+[01:00:33.640 --> 01:00:35.640]   Das heißt, wenn ich jetzt hier drucke,
+[01:00:35.640 --> 01:00:37.640]   bekomme ich hier als Ausgabe,
+[01:00:37.640 --> 01:00:40.640]   dass x noch weiterhin den Wert 23 hat.
+[01:00:40.640 --> 01:00:41.640]   Warum?
+[01:00:41.640 --> 01:00:43.640]   Weil Änderungen in der Methode,
+[01:00:43.640 --> 01:00:45.640]   Änderungen dieses Parameters,
+[01:00:45.640 --> 01:00:48.640]   haben gar keine Auswirkungen auf das,
+[01:00:48.640 --> 01:00:50.640]   was außerhalb passiert.
+[01:00:50.640 --> 01:00:53.640]   Das ist einfach der Weg, wie wir das machen.
+[01:00:53.640 --> 01:00:57.640]   Also, wie die Variablen heißen.
+[01:00:57.640 --> 01:01:00.640]   Und das spielt alles keine Rolle.
+[01:01:00.640 --> 01:01:04.640]   Entscheidend ist, dass die Werte übergeben werden.
+[01:01:04.640 --> 01:01:07.640]   So, jetzt habe ich hier ein Programm.
+[01:01:07.640 --> 01:01:11.640]   Und da wollen wir mal gucken, was dieses Programm eigentlich ausgibt.
+[01:01:11.640 --> 01:01:14.640]   Das hat hier eine Methode mystery.
+[01:01:14.640 --> 01:01:17.640]   Und mystery hat drei Parameter.
+[01:01:17.640 --> 01:01:21.640]   Nämlich ein Parameter x, ein Parameter z
+[01:01:21.640 --> 01:01:24.640]   und ein Parameter y.
+[01:01:24.640 --> 01:01:31.640]   So, und diese Methode wird aufgerufen an zwei Stellen hier.
+[01:01:31.640 --> 01:01:33.640]   Das war ja eine zweite Farbe.
+[01:01:33.640 --> 01:01:39.640]   Er hat zwei Aufrufe hier und hier.
+[01:01:39.640 --> 01:01:44.640]   Und es gibt in dem Programm drei Variable,
+[01:01:44.640 --> 01:01:46.640]   x, y und z.
+[01:01:46.640 --> 01:01:49.640]   Und die sind hier auch, und wir wollen wissen,
+[01:01:49.640 --> 01:01:52.640]   was produziert dieses Programm denn jetzt.
+[01:01:52.640 --> 01:01:54.640]   Jetzt mal angucken.
+[01:01:54.640 --> 01:01:57.640]   Hier kann man schnell die Übersicht verlieren.
+[01:01:57.640 --> 01:01:58.640]   Also, gucken wir mal an.
+[01:01:58.640 --> 01:02:03.640]   Also, x hat den Wert 9, y hat den Wert 2
+[01:02:03.640 --> 01:02:06.640]   und z hat den Wert 5.
+[01:02:06.640 --> 01:02:09.640]   Und jetzt rufe ich diese Methode mystery,
+[01:02:09.640 --> 01:02:11.640]   z, y und x.
+[01:02:11.640 --> 01:02:13.640]   Die rufe ich jetzt aus.
+[01:02:13.640 --> 01:02:17.640]   Und mit drei Argumenten.
+[01:02:17.640 --> 01:02:19.640]   Z, was ist z?
+[01:02:19.640 --> 01:02:23.640]   Z ist 5, y ist 2 und x ist 9.
+[01:02:23.640 --> 01:02:25.640]   So, das rufe ich jetzt auf.
+[01:02:25.640 --> 01:02:26.640]   Was passiert?
+[01:02:26.640 --> 01:02:28.640]   Diese Werte werden kopiert.
+[01:02:28.640 --> 01:02:31.640]   Und dann hat eben, der Wert x ist das,
+[01:02:31.640 --> 01:02:33.640]   was hier als erstes,
+[01:02:33.640 --> 01:02:37.640]   der Parameter x, also die lokale Variable x,
+[01:02:37.640 --> 01:02:38.640]   dieser Mystery Methode,
+[01:02:38.640 --> 01:02:41.640]   bekommt den Wert, der da als erster übergeben wurde.
+[01:02:41.640 --> 01:02:45.640]   Die Methode, die Variable z,
+[01:02:45.640 --> 01:02:48.640]   bekommt hier den zweiten Wert, das war eine 2.
+[01:02:48.640 --> 01:02:53.640]   Und der Parameter y, das ist der letzte,
+[01:02:53.640 --> 01:02:57.640]   bekommt den Wert, der hier als letzter übergeben wurde.
+[01:02:57.640 --> 01:03:00.640]   So, und damit habe ich also hier diese Werte
+[01:03:00.640 --> 01:03:05.640]   für die Integer-Parameters x, z und y in der Methode.
+[01:03:05.640 --> 01:03:09.640]   Und jetzt druck ich aus, ich druckere aus, eben z,
+[01:03:09.640 --> 01:03:12.640]   das ist 2, dann druckere ich den Text end.
+[01:03:12.640 --> 01:03:16.640]   Und dann habe ich hier die Differenz von y minus x.
+[01:03:16.640 --> 01:03:18.640]   Und das, also jetzt hoffe ich immer richtig zu rechnen,
+[01:03:18.640 --> 01:03:21.640]   9 minus 5 ist 4.
+[01:03:21.640 --> 01:03:24.640]   Und dann bekomme ich das als Ausgabe.
+[01:03:24.640 --> 01:03:27.640]   So, und das nächste Beispiel können Sie jetzt selber überlegen,
+[01:03:27.640 --> 01:03:28.640]   wie das geht.
+[01:03:28.640 --> 01:03:31.640]   Also hier habe ich, wenn ich das nächste Beispiel nehme,
+[01:03:31.640 --> 01:03:36.640]   dann habe ich jetzt hier diese, wieder diese Reihenfolge,
+[01:03:36.640 --> 01:03:43.640]   y, x und z, y ist 2, x war 9 und z ist 5.
+[01:03:43.640 --> 01:03:46.640]   Das wird dann kopiert auf diese, dann ist eben hier,
+[01:03:46.640 --> 01:03:50.640]   mein lokales x ist 2, mein lokales z ist 9,
+[01:03:50.640 --> 01:03:56.640]   mein lokales y ist 5, dann habe ich also,
+[01:03:56.640 --> 01:04:00.640]   druck ich jetzt hier aus, z, z hat den Wert 9,
+[01:04:00.640 --> 01:04:10.640]   9 und, richtig sehe, y ist 5, minus x, 2 ist 3.
+[01:04:10.640 --> 01:04:14.640]   Also sollte 9 und 3 als richtige Ausgabe kommen.
+[01:04:14.640 --> 01:04:15.640]   Und das tut es dann auch.
+[01:04:15.640 --> 01:04:21.640]   Also wie gesagt, nicht, dass ich das als Beispiel
+[01:04:21.640 --> 01:04:24.640]   für gute Variabelnamen vorstellen möchte,
+[01:04:24.640 --> 01:04:28.640]   Sie müssen so ein Beispiel, so genau Schritt für Schritt
+[01:04:28.640 --> 01:04:33.640]   durchgehen können und sehen können,
+[01:04:33.640 --> 01:04:36.640]   so sehen können, dass das eben,
+[01:04:36.640 --> 01:04:38.640]   als Sie verstehen, wie das geht.
+[01:04:38.640 --> 01:04:40.640]   So, jetzt haben wir also den Weg gefunden,
+[01:04:40.640 --> 01:04:45.640]   wie wir Werte in eine Methode hereingeben können,
+[01:04:45.640 --> 01:04:48.640]   indem wir eben diese Parameter entsprechend setzen.
+[01:04:48.640 --> 01:04:52.640]   Und natürlich die nächste, um das bisschen weiterzuentwickeln,
+[01:04:52.640 --> 01:04:54.640]   müssen wir auch einen Weg haben,
+[01:04:54.640 --> 01:04:57.640]   Ergebnisse aus einer Methode zurückzugeben.
+[01:04:57.640 --> 01:05:00.640]   Und dafür gibt es auch eine Möglichkeit.
+[01:05:00.640 --> 01:05:02.640]   Zum Beispiel habe ich hier ein Programm,
+[01:05:02.640 --> 01:05:08.640]   in dem ich für alle Zahlen bis zu einem Limit,
+[01:05:08.640 --> 01:05:12.640]   möchte ich sehen, ob diese Zahl eine Primzahl ist.
+[01:05:12.640 --> 01:05:14.640]   Und das würde ich, wenn die Primzahl ist,
+[01:05:14.640 --> 01:05:15.640]   dann werde ich sie ausdrucken.
+[01:05:15.640 --> 01:05:19.640]   Und daher würde ich an sich idealerweise hier in meinem If-Statement
+[01:05:19.640 --> 01:05:23.640]   einen Test haben, ob eine Zahl eine Primzahl ist.
+[01:05:23.640 --> 01:05:29.640]   Und na ja, da gibt es leider keine ganz einfache geschlossene Form,
+[01:05:29.640 --> 01:05:31.640]   die ich hier eingeben könnte.
+[01:05:31.640 --> 01:05:33.640]   Also hier kann ich jetzt nicht einfach irgendwie
+[01:05:33.640 --> 01:05:36.640]   einen Test hinschreiben von der Art,
+[01:05:36.640 --> 01:05:38.640]   wenn das und das erfüllt ist.
+[01:05:38.640 --> 01:05:41.640]   Das heißt, ich muss also irgendein etwas besseren Weg finden,
+[01:05:41.640 --> 01:05:44.640]   mein Programm zu strukturieren.
+[01:05:44.640 --> 01:05:46.640]   Und da bietet sich natürlich wieder an,
+[01:05:46.640 --> 01:05:50.640]   dass wir dafür eine Methode definieren.
+[01:05:50.640 --> 01:05:55.640]   Der Parameter erlaubt die Kommunikation zur aufgerufene Methode hin.
+[01:05:55.640 --> 01:06:00.640]   Und jetzt kann ich eine Methode definieren, die einen Wert zurückliefert.
+[01:06:00.640 --> 01:06:02.640]   Und dieser Rückgabewert erlaubt es mir dann,
+[01:06:02.640 --> 01:06:06.640]   in der aufgerufene Methode weiterzumachen.
+[01:06:06.640 --> 01:06:09.640]   Damit kann ich meine Programme viel besser zusammenstellen,
+[01:06:09.640 --> 01:06:15.640]   als wenn ich eben nur Werte an die Methode übergeben könnte.
+[01:06:15.640 --> 01:06:18.640]   Also müssen wir das so vorstellen, wir haben hier diese Methode,
+[01:06:18.640 --> 01:06:22.640]   nennen wir die Name, die ist hier eben deklariert,
+[01:06:22.640 --> 01:06:27.640]   die hat zwei Parameter, wenn ich die aufrufe,
+[01:06:27.640 --> 01:06:31.640]   dann werden diese Werte genommen, die werden dahin kopiert,
+[01:06:31.640 --> 01:06:36.640]   und die sind dann in dieser Methode verfügbar, dann arbeite ich da.
+[01:06:36.640 --> 01:06:38.640]   Und am Ende habe ich ein Resultat.
+[01:06:38.640 --> 01:06:41.640]   Und das will ich jetzt eben zurückgeben.
+[01:06:41.640 --> 01:06:43.640]   Das will ich in irgendeiner Weise zurückgeben.
+[01:06:43.640 --> 01:06:46.640]   Und dafür gibt es eben ein besonderes Statement,
+[01:06:46.640 --> 01:06:51.640]   dass diesen Rückgabewert von der aufgerufenen Methode an die Methode,
+[01:06:51.640 --> 01:06:55.640]   die eben auf, die das Aufruf zurückgibt.
+[01:06:55.640 --> 01:06:57.640]   Und dieser Wert muss natürlich deklariert sein,
+[01:06:57.640 --> 01:07:01.640]   sonst weiß das System, wenn ich jetzt hier diesen Wert zurückgeben will.
+[01:07:01.640 --> 01:07:03.640]   Was soll das denn sein?
+[01:07:03.640 --> 01:07:06.640]   Ist das ein Int oder Double oder irgendwas anderes?
+[01:07:06.640 --> 01:07:09.640]   Und darum muss der eben deklariert sein.
+[01:07:09.640 --> 01:07:13.640]   Das heißt, wenn wir eine Methode deklarieren,
+[01:07:13.640 --> 01:07:19.640]   dann geben wir an, was für ein Rückgabetyp wir da erwarten.
+[01:07:19.640 --> 01:07:23.640]   Dieser Rückgabewert muss dann von diesem Typ sein.
+[01:07:23.640 --> 01:07:26.640]   Und dann hatten wir ganz am Anfang ja gesehen,
+[01:07:26.640 --> 01:07:29.640]   manchmal haben wir dieses Keywort "Void" gehabt,
+[01:07:29.640 --> 01:07:32.640]   und "Void" heißt, es gibt keinen Rückgabewert.
+[01:07:32.640 --> 01:07:36.640]   Das ist eben die Kurzform, um zu sagen, hier ist nichts.
+[01:07:36.640 --> 01:07:41.640]   Das ist einfach auszudrücken, dass diese Methode nicht zurückgibt.
+[01:07:41.640 --> 01:07:43.640]   Und da haben wir das bisher gemacht,
+[01:07:43.640 --> 01:07:46.640]   weil ich eben noch nicht Überrückgabewerte reden konnte.
+[01:07:46.640 --> 01:07:49.640]   Aber eine Methode, die eben einen Wert zurückgeben will,
+[01:07:49.640 --> 01:07:51.640]   die deklariert hier den Typ,
+[01:07:51.640 --> 01:07:56.640]   und dann hat sie in der Methode ein Return Statement,
+[01:07:56.640 --> 01:07:59.640]   dass eben diesen Wert liefert.
+[01:07:59.640 --> 01:08:02.640]   Also irgendein Ausdruck hat, kann ein Erd sein,
+[01:08:02.640 --> 01:08:04.640]   kann der Variable sein und so weiter,
+[01:08:04.640 --> 01:08:07.640]   der wird evaluiert und dann zurückgegeben.
+[01:08:07.640 --> 01:08:10.640]   Und die gleichen Regeln, die wir für die Typen hatten,
+[01:08:10.640 --> 01:08:17.640]   die für die Variable galten und für Parameter galten,
+[01:08:17.640 --> 01:08:19.640]   die gelten hier auch.
+[01:08:19.640 --> 01:08:22.640]   Also zurzeit können wir nur mit Basestypen arbeiten,
+[01:08:22.640 --> 01:08:26.640]   aber das kann auch später erweitert werden.
+[01:08:26.640 --> 01:08:29.640]   Also dieses Return Statement,
+[01:08:29.640 --> 01:08:32.640]   wertet eben den Ausdruck aus
+[01:08:32.640 --> 01:08:36.640]   und gibt dann den Wert an den Aufrufer zurück.
+[01:08:36.640 --> 01:08:39.640]   Aber die aufgerufene Methode hat keine Ahnung,
+[01:08:39.640 --> 01:08:41.640]   was der Aufrufer damit machen will.
+[01:08:41.640 --> 01:08:47.640]   Das liefert den Wert und es ist dann
+[01:08:47.640 --> 01:08:51.640]   Sache der aufgerufene Methode, mit dem Wert weiterzumachen.
+[01:08:51.640 --> 01:08:54.640]   Und wenn einmal dieses Return Statement ausgeführt wurde,
+[01:08:54.640 --> 01:08:57.640]   also wenn der Wert zurückgegeben wurde,
+[01:08:57.640 --> 01:09:00.640]   dann ist die aufgerufene Methode zu Ende.
+[01:09:00.640 --> 01:09:03.640]   Das beendet die Aufführung dieser Methode.
+[01:09:03.640 --> 01:09:07.640]   Dann ist das das Ende dieser Aufführung
+[01:09:07.640 --> 01:09:10.640]   und damit ist es so,
+[01:09:10.640 --> 01:09:13.640]   als ob wir die letzte Anweisung erreicht hätten.
+[01:09:13.640 --> 01:09:17.640]   Also die Return liefert den Wert ab
+[01:09:17.640 --> 01:09:20.640]   und sendet das Ergebnis zum Aufrufer.
+[01:09:20.640 --> 01:09:23.640]   Also die Parameter sind der Weg,
+[01:09:23.640 --> 01:09:28.640]   wie wir Werte vom Aufrufer zur aufgerufene Methode bekommen.
+[01:09:28.640 --> 01:09:32.640]   Der Return schickt Werte von der aufgerufenen Methode
+[01:09:32.640 --> 01:09:34.640]   zum Aufrufer zurück.
+[01:09:34.640 --> 01:09:37.640]   Also hier, wenn wir diese einfache Methode haben,
+[01:09:37.640 --> 01:09:40.640]   dann hätten wir hier einen Return Statement,
+[01:09:40.640 --> 01:09:42.640]   kann man das sehen.
+[01:09:42.640 --> 01:09:45.640]   Und da wollen wir eben einen Int Wert zurückgeben.
+[01:09:45.640 --> 01:09:50.640]   Darum haben wir dekoriert, dass diese Methode einen Int Wert gibt.
+[01:09:50.640 --> 01:09:53.640]   Resalt ist in der Tat ein Int Wert.
+[01:09:53.640 --> 01:09:56.640]   Also das ist okay, der Wert kann zurückkommen.
+[01:09:56.640 --> 01:09:58.640]   Und hier weiß das System,
+[01:09:58.640 --> 01:10:01.640]   diese Methode liefert einen Int Wert zurück.
+[01:10:01.640 --> 01:10:03.640]   Daher kann ich den benutzen,
+[01:10:03.640 --> 01:10:06.640]   um diese Int variabel hier zu initialisieren
+[01:10:06.640 --> 01:10:09.640]   oder irgendwie einen Wert da zu haben.
+[01:10:09.640 --> 01:10:13.640]   Also so kann ich da den Wert vernünftig zurückgehen.
+[01:10:13.640 --> 01:10:16.640]   Jetzt also zurück zu meinem Beispiel,
+[01:10:16.640 --> 01:10:20.640]   wo ich da eben mit den rausfinden möchte,
+[01:10:20.640 --> 01:10:23.640]   ob die Zahlen primzahlen sind.
+[01:10:23.640 --> 01:10:26.640]   Da ich das einem If Statement verwenden will,
+[01:10:26.640 --> 01:10:29.640]   brauche ich einen Rückgabetyp Boolean,
+[01:10:29.640 --> 01:10:31.640]   entweder true oder false.
+[01:10:31.640 --> 01:10:34.640]   Und habe ich jetzt hier den Code, der checkt,
+[01:10:34.640 --> 01:10:40.640]   wie viele Faktoren eine gegebene Zahl hat.
+[01:10:40.640 --> 01:10:43.640]   Und wir wissen, dass wenn eben die Anzahl,
+[01:10:43.640 --> 01:10:47.640]   machen wir so lange, bis wir den Faktor gefunden haben.
+[01:10:47.640 --> 01:10:50.640]   Und wenn wir wissen, dass das richtig ist,
+[01:10:50.640 --> 01:10:54.640]   dann werden wir dementsprechend als Rückgabewert das geben.
+[01:10:54.640 --> 01:10:59.640]   Also wir checken, dass da eben die Anzahl,
+[01:10:59.640 --> 01:11:02.640]   dass eben halt, wenn es eine Primzahl ist,
+[01:11:02.640 --> 01:11:04.640]   dann gibt es keinen Faktor.
+[01:11:04.640 --> 01:11:07.640]   Dann ist der erste Faktor, den wir finden, der Wert selber,
+[01:11:07.640 --> 01:11:11.640]   der Wert, den wir hier als Argument übergeben bekommen haben.
+[01:11:11.640 --> 01:11:14.640]   Wenn das also der letzte Wert ist, den wir haben,
+[01:11:14.640 --> 01:11:17.640]   dann wissen wir, die Zahl ist eine Primzahl.
+[01:11:17.640 --> 01:11:20.640]   Und wenn wir schon früher diesen Loop beendet haben,
+[01:11:20.640 --> 01:11:22.640]   dann wissen wir, dass es keine Primzahl ist.
+[01:11:22.640 --> 01:11:25.640]   Und daher ist dann die Antwort false.
+[01:11:25.640 --> 01:11:27.640]   Okay, also.
+[01:11:27.640 --> 01:11:31.640]   Und das können wir mit allen Basitypen machen, wie wir wollen.
+[01:11:31.640 --> 01:11:36.640]   Können da eben halt die Steigung liefern oder irgendwas anderes machen.
+[01:11:36.640 --> 01:11:41.640]   Und wenn eben halt der Wert dann berechnet wurde,
+[01:11:41.640 --> 01:11:43.640]   geht er an den Aufrufer zurück.
+[01:11:43.640 --> 01:11:46.640]   So, und eben wenn sie keinen Wert schicken,
+[01:11:46.640 --> 01:11:49.640]   dann können wir das mit Wold sagen,
+[01:11:49.640 --> 01:11:51.640]   dann ist das nicht so.
+[01:11:51.640 --> 01:11:54.640]   Ich möchte unser Return Statement auch keinen Ausdruck,
+[01:11:54.640 --> 01:11:56.640]   weil es wird ja nichts zurückgeliefert.
+[01:11:56.640 --> 01:11:59.640]   Aber in meiner Empfehlung wäre,
+[01:11:59.640 --> 01:12:01.640]   lassen Sie das Return Statement weg.
+[01:12:01.640 --> 01:12:04.640]   Also ein Return ohne Ausdruck ist okay,
+[01:12:04.640 --> 01:12:07.640]   wenn es keinen Rückgabewert gibt,
+[01:12:07.640 --> 01:12:12.640]   ist aber letztlich eher verwirrend als sonst irgendwas.
+[01:12:12.640 --> 01:12:16.640]   Also und das können Sie in allen möglichen Situationen gebrauchen,
+[01:12:16.640 --> 01:12:18.640]   wenn Sie eine Konvertierung machen wollen,
+[01:12:18.640 --> 01:12:20.640]   irgendwas berechnen wollen und so weiter.
+[01:12:20.640 --> 01:12:24.640]   Also, können Sie arithmetische Ausdruck, alles können Sie machen.
+[01:12:24.640 --> 01:12:29.640]   So, jetzt was für mögliche Fehler sehen wir in diversen Programmen,
+[01:12:29.640 --> 01:12:31.640]   bevor sie uns eingereicht werden.
+[01:12:31.640 --> 01:12:35.640]   Also ein leichter Fehler machen kann,
+[01:12:35.640 --> 01:12:39.640]   ist, dass das Return Statement zwar den Wert zurückschickt,
+[01:12:39.640 --> 01:12:44.640]   aber die aufgerufene Methode mit dem Wert nichts anfängt.
+[01:12:44.640 --> 01:12:48.640]   Und die Namen, die im Programm verwendet werden,
+[01:12:48.640 --> 01:12:50.640]   spielen einfach keine Rolle.
+[01:12:50.640 --> 01:12:54.640]   Ich habe hier nochmal diese Methode,
+[01:12:54.640 --> 01:12:58.640]   die eben die Steigung durch zwei Punkte berechnet.
+[01:12:58.640 --> 01:13:02.640]   Jetzt gehe ich hin und rufe die hier auf, das ist ja okay.
+[01:13:02.640 --> 01:13:04.640]   Aber jetzt geht das Programm hin.
+[01:13:04.640 --> 01:13:08.640]   Diese Methode liefert einen Rückgabewert,
+[01:13:08.640 --> 01:13:11.640]   einen Rückgabewert vom Typ Double
+[01:13:11.640 --> 01:13:18.640]   und der wird dann entgegengenommen.
+[01:13:18.640 --> 01:13:20.640]   Jetzt fragt mich eben jemand im Chat,
+[01:13:20.640 --> 01:13:23.640]   müsste nicht hier ein Bullion zurückgegeben werden.
+[01:13:23.640 --> 01:13:26.640]   Und die Antwort ist ja, das wird es auch,
+[01:13:26.640 --> 01:13:30.640]   weil hier ist ein Ausdruck, ein Ausdruck,
+[01:13:30.640 --> 01:13:36.640]   der vergleicht, ob der letzte gefunden Faktor gleich dem Argument ist.
+[01:13:36.640 --> 01:13:40.640]   Das ist ein Ausdruck, der kann sein entweder true oder false.
+[01:13:40.640 --> 01:13:42.640]   Und das ist genau das, was für Bullion gilt.
+[01:13:42.640 --> 01:13:47.640]   Das System checkt, ob in der Tat der Ausdruck, der hier steht,
+[01:13:47.640 --> 01:13:53.640]   entweder von dem Typ ist oder implizit in diesen Typ verwandelt werden kann.
+[01:13:53.640 --> 01:13:56.640]   Und da es für Bullion keine implizite Verwandlungen gibt,
+[01:13:56.640 --> 01:14:00.640]   checkt er, dass der Ausdruck hier in der Tat ein logischer Ausdruck ist,
+[01:14:00.640 --> 01:14:03.640]   der einen Bullionwert ergibt.
+[01:14:03.640 --> 01:14:06.640]   Das haben Sie richtig gesehen, da mussten Bullion zurück
+[01:14:06.640 --> 01:14:09.640]   und in der Tat, da ist ein Bullion zurückgegeben worden.
+[01:14:09.640 --> 01:14:13.640]   Also, hier hatten wir das Problem, dass der Wert zurückgegeben wird,
+[01:14:13.640 --> 01:14:16.640]   aber nicht irgendwie verwendet wird.
+[01:14:16.640 --> 01:14:18.640]   Natürlich kann man jetzt hingehen und sagen, okay,
+[01:14:18.640 --> 01:14:22.640]   dann können wir doch hier den Wert nochmal ausgeben,
+[01:14:22.640 --> 01:14:24.640]   weil das hieß ja gesalt hier.
+[01:14:24.640 --> 01:14:25.640]   Das geht nicht.
+[01:14:25.640 --> 01:14:27.640]   Was immer an Namen hier verwendet wird,
+[01:14:27.640 --> 01:14:33.640]   ist völlig irrelevant für die Methode von der aus der Aufruferfolge.
+[01:14:33.640 --> 01:14:35.640]   Der einzig legale Weg, das zu machen,
+[01:14:35.640 --> 01:14:39.640]   ist, dass wir diesen Wert explizit speichern.
+[01:14:39.640 --> 01:14:42.640]   Und leider gibt das System uns da keine Hilfe.
+[01:14:42.640 --> 01:14:46.640]   Wenn Sie den Wert entgegennehmen und auf den Fußboden fallen lassen,
+[01:14:46.640 --> 01:14:50.640]   ist der Compiler zufrieden und optimiert vielleicht noch den Aufruf weg,
+[01:14:50.640 --> 01:14:52.640]   weil die brauchen das Ergebnis ja nicht,
+[01:14:52.640 --> 01:14:55.640]   aber eine Warnung gibt es nicht.
+[01:14:55.640 --> 01:15:01.640]   Also, da müssen Sie hier selber durch ein explizites Statement diese Anweisung,
+[01:15:01.640 --> 01:15:06.640]   müssen Sie selber hingehen und das von Hand machen und selber speichern.
+[01:15:06.640 --> 01:15:11.640]   So, jetzt habe ich gesagt, die Return Anweisung gibt einen Wert zurück.
+[01:15:11.640 --> 01:15:17.640]   Aber wir können natürlich in einem Programm mehrere Return Anweisungen haben.
+[01:15:17.640 --> 01:15:21.640]   In einer Methode kann es mehrere Return Anweisungen geben
+[01:15:21.640 --> 01:15:25.640]   und das ist sinnvoll, wenn Sie irgendwelche Fallunterscheidungen machen wollen.
+[01:15:25.640 --> 01:15:27.640]   Wenn wir jetzt diesen Punkt erreicht haben,
+[01:15:27.640 --> 01:15:34.640]   dass das Ergebnis feststeht, können wir den Wert da zurückgeben.
+[01:15:34.640 --> 01:15:40.640]   Die einzige Regel ist, dass eine Methode, die einen Rückgabewert deklariert hat,
+[01:15:40.640 --> 01:15:46.640]   die muss eine Return, die muss mindestens eine Return Anweisung haben.
+[01:15:46.640 --> 01:15:48.640]   Aber sie kann beliebig viele haben.
+[01:15:48.640 --> 01:15:51.640]   Und das ist sinnvoll, strukturiert unser Programm,
+[01:15:51.640 --> 01:15:54.640]   aber kann manchmal zu Überraschungen führen.
+[01:15:54.640 --> 01:15:58.640]   Also, hier haben wir ein Programm, wo wir eben sehen wollen,
+[01:15:58.640 --> 01:16:00.640]   welche Zahl ist die größere.
+[01:16:00.640 --> 01:16:04.640]   Und wenn sie gleich sind, dann spielt es keine Rolle.
+[01:16:04.640 --> 01:16:08.640]   Also, hier checken wir erst, ob A größer B ist.
+[01:16:08.640 --> 01:16:11.640]   Und wenn A größer B ist, dann geben wir A zurück.
+[01:16:11.640 --> 01:16:17.640]   Und anderenfalls, da ja in dem Fall ist B größer gleich A,
+[01:16:17.640 --> 01:16:20.640]   können wir einfach B zurückgeben.
+[01:16:20.640 --> 01:16:27.640]   Dadurch brauchen wir hier keine lokalen Variablen weiter zu deklarieren.
+[01:16:27.640 --> 01:16:32.640]   Also, wir haben hier einen Return im If-Statement, das ist fein.
+[01:16:32.640 --> 01:16:36.640]   Aber eben, egal wie wir durch dieses Programm durchgehen,
+[01:16:36.640 --> 01:16:41.640]   entweder hier der Test ist wahr, dann haben wir das ausgeführt
+[01:16:41.640 --> 01:16:44.640]   und da ein Return gehabt, oder der Test war false,
+[01:16:44.640 --> 01:16:47.640]   dann haben wir das ausgeführt und das auch geführt.
+[01:16:47.640 --> 01:16:50.640]   Und andere Fahre durch das Programm gibt es nicht.
+[01:16:50.640 --> 01:16:54.640]   Und daher ist am Ende jedes Fahres immer ein Return-Statement
+[01:16:54.640 --> 01:16:57.640]   und das System ist zufrieden.
+[01:16:57.640 --> 01:17:05.640]   Die Ausflugung des Return-Statements hat dann eben die Methode beendet.
+[01:17:05.640 --> 01:17:08.640]   Also, der Fahrd ist dann abgeschlossen worden.
+[01:17:08.640 --> 01:17:11.640]   Und eben, wie ich zeigte, alle Fahre in diesem Beispiel
+[01:17:11.640 --> 01:17:13.640]   enthielten ein Return-Statement.
+[01:17:13.640 --> 01:17:16.640]   Aber wie ist es bei diesem Programm?
+[01:17:16.640 --> 01:17:18.640]   Hier haben wir auch einen Test
+[01:17:18.640 --> 01:17:24.640]   und hier haben wir, wenn A größer B ist, dann haben wir einen Return von A.
+[01:17:24.640 --> 01:17:28.640]   Und in der Tat, wenn A, hier haben wir die Parameter A und B,
+[01:17:28.640 --> 01:17:31.640]   wenn A größer B sein sollte, ist alles Bestens.
+[01:17:31.640 --> 01:17:37.640]   Aber wenn B größer gleich A sein sollte, wenn der Test false ergibt,
+[01:17:37.640 --> 01:17:42.640]   dann eben geht das System hin und führt die nächste Anweisung aus.
+[01:17:42.640 --> 01:17:44.640]   Und da ist jetzt keine.
+[01:17:44.640 --> 01:17:46.640]   Und daher beschwert sich das System.
+[01:17:46.640 --> 01:17:50.640]   Also, wenn Sie so ein Programm haben, geht der Compiler hin und sagt,
+[01:17:50.640 --> 01:17:53.640]   das ist kein akzeptables Programm,
+[01:17:53.640 --> 01:17:57.640]   weil nicht alle Fahre haben einen Return-Werk.
+[01:17:57.640 --> 01:18:01.640]   So, manchmal ist der Compiler ein bisschen naiv.
+[01:18:01.640 --> 01:18:04.640]   Jetzt nehmen wir mal an, jemand hätte dieses Programm geschrieben.
+[01:18:04.640 --> 01:18:09.640]   Wenn A größer als B ist, haben wir wieder, geben wir A zurück.
+[01:18:09.640 --> 01:18:14.640]   Und andersfalls, um sicher zu sein, checken wir doch nochmal.
+[01:18:14.640 --> 01:18:18.640]   Wenn B größer gleich A ist, dann geben wir B zurück.
+[01:18:18.640 --> 01:18:24.640]   Und wenn wir das so machen, dann beschwert sich der Compiler auch
+[01:18:24.640 --> 01:18:29.640]   und sagt, dieses Programm kann nicht übersetzt werden,
+[01:18:29.640 --> 01:18:32.640]   weil der Compiler meint, dass es hier einen Fahrt gibt,
+[01:18:32.640 --> 01:18:34.640]   an dem es keinen Return gibt.
+[01:18:34.640 --> 01:18:37.640]   Deswegen empfiehlt sich dann nochmal anzugucken,
+[01:18:37.640 --> 01:18:40.640]   der Compiler sich so ein Programm anguckt.
+[01:18:40.640 --> 01:18:44.640]   Der Compiler sieht das Programm doch folgendermaßen sich an.
+[01:18:44.640 --> 01:18:49.640]   Hier oben ist der erste Test, das ist dieser hier.
+[01:18:49.640 --> 01:18:51.640]   Und der kann wahre oder falsch sein.
+[01:18:51.640 --> 01:18:56.640]   Wenn der Wahre ist, dann wird das dieses Return-Stapel ausgeführt
+[01:18:56.640 --> 01:18:58.640]   und alles ist okay.
+[01:18:58.640 --> 01:19:02.640]   Wenn der nicht Wahre ist, dann wird dieser Teil ausgeführt
+[01:19:02.640 --> 01:19:06.640]   und hier wird der Test A kleiner gleich null ausgeführt.
+[01:19:06.640 --> 01:19:11.640]   Wir wissen, das muss ja Wahre sein und daher wird das ausgeführt.
+[01:19:11.640 --> 01:19:14.640]   Aber der Compiler sagt, es wäre ja auch möglich,
+[01:19:14.640 --> 01:19:18.640]   dass dieser Test Nein ergibt, also der Test False ergibt.
+[01:19:18.640 --> 01:19:23.640]   Und daher sagt der Compiler, es gibt auch einen Fahrt durch das Programm,
+[01:19:23.640 --> 01:19:25.640]   es gibt hier keine Weitere Anweisungen,
+[01:19:25.640 --> 01:19:27.640]   in dem es keinen Return-Stapel mit gibt.
+[01:19:27.640 --> 01:19:31.640]   Und daher beschwert sich der Compiler und sagt,
+[01:19:31.640 --> 01:19:37.640]   das geht nicht, das wollen wir nicht, das ist nicht korrekt.
+[01:19:37.640 --> 01:19:43.640]   Und daher in einem solchen Fall müssen Sie entweder das Programm restrukturieren,
+[01:19:43.640 --> 01:19:47.640]   indem Sie entweder diesen Test wegwerfen, der nicht nötig ist,
+[01:19:47.640 --> 01:19:50.640]   oder dass Sie noch ein weiteres Return einfügen.
+[01:19:50.640 --> 01:19:53.640]   Sie könnten auch ein Return hier unten einfügen,
+[01:19:53.640 --> 01:19:55.640]   wäre das System auch zufrieden.
+[01:19:55.640 --> 01:19:58.640]   Aber muss irgendein Entwert sein, kann nicht irgendein,
+[01:19:58.640 --> 01:20:02.640]   nur einfach Return sein, dann ist das System auch zufrieden.
+[01:20:02.640 --> 01:20:04.640]   Und weil das so ein gutes Beispiel,
+[01:20:04.640 --> 01:20:07.640]   weil das mit diesem if und return so schön ist,
+[01:20:07.640 --> 01:20:09.640]   habe ich hier ein Beispiel für Sie,
+[01:20:09.640 --> 01:20:12.640]   das Sie sich jetzt auch überlegen sollen.
+[01:20:12.640 --> 01:20:17.640]   Und zwar haben wir hier die Aufgabe, und die müssen wir jetzt genau gucken,
+[01:20:17.640 --> 01:20:23.640]   wir haben hier einen, wir haben zwei reale Zahlen,
+[01:20:23.640 --> 01:20:29.640]   die geben an Punkte in dieser Fläche.
+[01:20:29.640 --> 01:20:33.640]   Und wir wollen ein Programm, das den Quadranten liefert.
+[01:20:33.640 --> 01:20:38.640]   Also Quadrant ist entweder eins oder zwei oder drei oder vier,
+[01:20:38.640 --> 01:20:40.640]   in der Reihenfolie.
+[01:20:40.640 --> 01:20:45.640]   Also wenn ich eben zum Beispiel hier diesen Punkt minus 4,2,
+[01:20:45.640 --> 01:20:51.640]   minus 4,2, 17,3 habe, der ist hier irgendwo,
+[01:20:51.640 --> 01:20:56.640]   da ist dieser Punkt, dann wäre die Antwort 2.
+[01:20:56.640 --> 01:21:01.640]   So ein Programm, sollen Sie, also eine Methode,
+[01:21:01.640 --> 01:21:05.640]   mit dem Vorgegebenen Namen Quadrant, sollen Sie schreiben.
+[01:21:05.640 --> 01:21:09.640]   Und das sollen Sie mir in den, als Antwort,
+[01:21:09.640 --> 01:21:13.640]   für den Klicker, den ich jetzt starte, geben.
+[01:21:13.640 --> 01:21:16.640]   Es ist nicht schwierig, ein paar Zeilen sind es aber doch,
+[01:21:16.640 --> 01:21:18.640]   können Sie machen, wie Sie wollen.
+[01:21:18.640 --> 01:21:20.640]   Am besten schreiben Sie es da rein.
+[01:21:20.640 --> 01:21:22.640]   Sie können es auch auf dem Blatt Papier schreiben,
+[01:21:22.640 --> 01:21:25.640]   und das Blatt Papier mir runterreichen.
+[01:21:25.640 --> 01:21:27.640]   Sie können es mir auch per E-Mail checken.
+[01:21:27.640 --> 01:21:30.640]   Sie können natürlich jetzt auch Ihre Eclipse starten,
+[01:21:30.640 --> 01:21:34.640]   und das dann da lösen, aber das ist eigentlich nicht der Sinn der Übung.
+[01:21:34.640 --> 01:21:37.640]   Sondern Sie mir überlegen, was muss ich machen,
+[01:21:37.640 --> 01:21:40.640]   wenn ich diese Aufgabe lösen soll.
+[01:21:40.640 --> 01:21:43.640]   Also schreiben Sie jetzt nicht in die Kurz-Channel.
+[01:21:43.640 --> 01:21:47.640]   Diesmal versuche, hoffe ich, dass der Klicker funktioniert,
+[01:21:47.640 --> 01:21:53.640]   und dass Sie daher das als Antwort in den Klicker reinschreiben können.
+[01:21:53.640 --> 01:21:59.640]   Also ich nehme auch gerne von denen,
+[01:21:59.640 --> 01:22:02.640]   die keinen Smartphone dabei haben, Papier entgegen.
+[01:22:02.640 --> 01:22:07.640]   Normales Papier, irgendwelches Papier.
+[01:22:07.640 --> 01:22:13.640]   Lesbar sollte es sein, das macht es dann leichter,
+[01:22:13.640 --> 01:22:15.640]   das später zu diskutieren.
+[01:22:16.640 --> 01:22:20.640]   Und eben der Feinprint ist auch noch mitzulesen hier unten.
+[01:22:20.640 --> 01:22:24.640]   Fällt der Punkt auf eine der Achsen des Koordinatensystems,
+[01:22:24.640 --> 01:22:27.640]   sollen Sie den Wert 0 liefern.
+[01:22:27.640 --> 01:22:30.640]   Okay, gut.
+[01:22:30.640 --> 01:22:34.640]   Die Auflösung, also ich mache noch eine Minute,
+[01:22:34.640 --> 01:22:37.640]   und dann, wenn wir das schicken,
+[01:22:37.640 --> 01:22:39.640]   ich mir mehr Beispiele.
+[01:22:39.640 --> 01:22:44.640]   An einem späteren Tag zeige ich Ihnen dann eine Auswahl derer,
+[01:22:44.640 --> 01:22:48.640]   die ich da gesehen habe, ist ja alles anonym.
+[01:22:48.640 --> 01:22:54.640]   Es gibt da sehr viele Möglichkeiten, das zu machen.
+[01:22:54.640 --> 01:22:59.640]   Ja, also wie machen wir das?
+[01:22:59.640 --> 01:23:01.640]   Also hier, erste Sache ist,
+[01:23:01.640 --> 01:23:06.640]   wie sieht unsere Methode aus, die wir da schreiben wollen.
+[01:23:06.640 --> 01:23:10.640]   Also Public Static, das sollte auch sein, der Name war vorgegeben.
+[01:23:10.640 --> 01:23:13.640]   Und natürlich, wir wollen den Quadranten zurück.
+[01:23:13.640 --> 01:23:17.640]   Also als Return Type muss da im Stehen.
+[01:23:17.640 --> 01:23:21.640]   Das muss ein Intwert zurückkommen.
+[01:23:21.640 --> 01:23:24.640]   Und was haben wir hier?
+[01:23:24.640 --> 01:23:29.640]   Wir haben unsere Methode, die hat zwei Parameter vom Typ Double.
+[01:23:29.640 --> 01:23:31.640]   Name spielt keine Rolle.
+[01:23:31.640 --> 01:23:33.640]   Ein Weg, das zu machen, ist, zu sehen,
+[01:23:33.640 --> 01:23:36.640]   dass wir erst sehen, ist es im ersten Quadranten,
+[01:23:36.640 --> 01:23:38.640]   im zweiten, dritten, vierten, vierten.
+[01:23:38.640 --> 01:23:40.640]   Und wenn es da nicht ist,
+[01:23:40.640 --> 01:23:44.640]   dann muss es ja auf einer der Achsen liegen und das so machen.
+[01:23:44.640 --> 01:23:47.640]   Und können das auch anders strukturieren.
+[01:23:47.640 --> 01:23:49.640]   Sie können es also mit Doubles,
+[01:23:49.640 --> 01:23:51.640]   mit Double Werten machen und so weiter.
+[01:23:51.640 --> 01:23:55.640]   Also, da können Sie auch verschiedenste Weise das machen.
+[01:23:55.640 --> 01:24:00.640]   Und wir werden mal sehen, was für Möglichkeiten von Ihnen jetzt gekommen sind.
+[01:24:00.640 --> 01:24:03.640]   So, das haben wir für heute.
+[01:24:03.640 --> 01:24:05.640]   Ich wünsche Ihnen schönes Wochenende
+[01:24:05.640 --> 01:24:08.640]   und bis zum Dienstag dann.
+[01:24:08.640 --> 01:24:10.420]   (Beifall)
+

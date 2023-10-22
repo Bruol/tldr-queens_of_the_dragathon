@@ -1,0 +1,379 @@
+
+[00:00:00.000 --> 00:00:07.000]   Okay, so good afternoon everybody. My name is Marcus Grosz. I'm a professor of computer science, obviously at ATH.
+[00:00:07.000 --> 00:00:13.000]   And for those who don't know me, I'm also chief scientist of the Walt Disney Studios.
+[00:00:13.000 --> 00:00:25.000]   So I have a dual role in our basic research. We develop, you know, new technologies for computer graphics and for computer animation using a lot of AI.
+[00:00:25.000 --> 00:00:32.000]   In my role at Disney, we develop special effects for film, primarily, technologies for filmmaking.
+[00:00:32.000 --> 00:00:41.000]   And I'm going to show you a couple of examples. Last lecture, when we get the feedback from the students, some students wrote one or two sets,
+[00:00:41.000 --> 00:00:48.000]   "Hey, this is like an advertisement lecture for Disney," because I show so much Disney content.
+[00:00:48.000 --> 00:00:55.000]   They don't want to do that. Actually, only the first time I promised no more Disney content unless you explicitly back for it, right?
+[00:00:55.000 --> 00:01:02.000]   So I don't want to make this an advertisement lecture, but it's just a couple of nice examples that illustrate our work.
+[00:01:02.000 --> 00:01:07.000]   Who has attended visual computing? So it's a majority in a way.
+[00:01:07.000 --> 00:01:12.000]   So some of what I show now, I picked three examples you have seen, others you have not seen.
+[00:01:12.000 --> 00:01:20.000]   So a wonderful way to explain the symbiosis between basic research and PhD students.
+[00:01:20.000 --> 00:01:27.000]   And, you know, some of the work we do at Disney for film is this, which I would start in a moment.
+[00:01:27.000 --> 00:01:33.000]   Does anybody know which film this is? It's a very famous one. It's called "Frozen."
+[00:01:33.000 --> 00:01:43.000]   You know, and when "Frozen" was conceived, we were approached actually by our animation studios and wanted to make a better looking digital snow.
+[00:01:43.000 --> 00:01:49.000]   Now, digital snow you obviously cannot buy, so we had to develop it.
+[00:01:49.000 --> 00:01:53.000]   And as a matter of fact, throughout the film, you see this realistically looking snow,
+[00:01:53.000 --> 00:02:01.000]   and we will learn a lot about the physics of light and matter and the interaction of light and matters on this linear transport theory
+[00:02:01.000 --> 00:02:07.000]   that will come up in subsequent lectures. And you will remember the snow, which is a granular medium.
+[00:02:07.000 --> 00:02:13.000]   If you want to retrace it and retracing topic today and on Friday, it is prohibitively expensive
+[00:02:13.000 --> 00:02:18.000]   because there's so many rays you cannot capture the energy distribution.
+[00:02:18.000 --> 00:02:25.000]   So you have to be smart and think about creative solutions. And Marius, who courtes the lecture, he once was a PhD student.
+[00:02:25.000 --> 00:02:33.000]   You see him here on the left-hand side. And part of his PhD thesis was about digital snow, literally.
+[00:02:33.000 --> 00:02:40.000]   It's about granular media, and he will give you a wonderful lecture about the experiments they did on digital snow and frozen.
+[00:02:40.000 --> 00:02:44.000]   So basically, we built this device and then we checked light into the snow.
+[00:02:44.000 --> 00:02:49.000]   We look at the diffusion patterns of how light distributes within the snow.
+[00:02:49.000 --> 00:02:54.000]   We captured with a camera, you know, an RGB or a different spectral pattern.
+[00:02:54.000 --> 00:03:03.000]   And then this gives us sort of a diffusion model, which, so to speak, can be used and was used and delivered to production teams.
+[00:03:03.000 --> 00:03:11.000]   They use it throughout the film. And this is why I'm saying the snow, of course, was recorded in the Swiss mountains.
+[00:03:11.000 --> 00:03:16.000]   So it's real Swiss snow and frozen. It's not American snow just for the record.
+[00:03:16.000 --> 00:03:23.000]   That's one example. Another one, let's see, unfortunately, you have to do this.
+[00:03:23.000 --> 00:03:32.000]   You might not know as much or part of it. You know, in special effects for film and animation life action, we work a lot with physically based simulations.
+[00:03:32.000 --> 00:03:41.000]   And here on the left, you see the result of a turbulent flow simulation, which is governed by the so-called Navier-Stokes equations.
+[00:03:41.000 --> 00:03:46.000]   So, a partial differential and nonlinear partial differential equations.
+[00:03:46.000 --> 00:03:56.000]   And oftentimes for the artist, the sort of the patterns, the look, the visuals of the results of physics are too boring.
+[00:03:56.000 --> 00:04:03.000]   And they want to sort of beef it up or make it more fancy. And the way artists work is visual.
+[00:04:03.000 --> 00:04:11.000]   So they want to provide a pattern or a piece of an image and say, "Hey, we want to just make the flow look like this pattern, this image."
+[00:04:11.000 --> 00:04:16.000]   And this is what we built. It was part of another PhD thesis at ETH.
+[00:04:16.000 --> 00:04:23.000]   We started as basic research. We called it stylization of fluids. And we did it.
+[00:04:23.000 --> 00:04:29.000]   And even though the image is only two-dimensional, the art is to make it three-dimensionally consistent.
+[00:04:29.000 --> 00:04:34.000]   So as you print the camera around the flow, it's not shown here, but it will be consistent.
+[00:04:34.000 --> 00:04:42.000]   Pixar artists discovered it. They said, "Look, wow, this is awesome. Let's make a film out of it."
+[00:04:42.000 --> 00:04:49.000]   And I don't know if you've all seen this one. It's elemental. It's one of the latest Disney films or Pixar films.
+[00:04:49.000 --> 00:04:56.000]   And it has these characters which are elements like fire and water. And the fire character, Emma.
+[00:04:56.000 --> 00:05:06.000]   So to visualize her, we run a basically flow simulation, combustion.
+[00:05:06.000 --> 00:05:13.000]   But in order to portray her emotions, you stylize the combustion in different ways.
+[00:05:13.000 --> 00:05:18.000]   So the way she looks is always stylized, non-physical.
+[00:05:18.000 --> 00:05:23.000]   So look at it. It still looks like a flame, but it's stylized. It's accentuated.
+[00:05:23.000 --> 00:05:28.000]   And depending on her emotions, you know, if she is angry, then of course it's more edgy.
+[00:05:28.000 --> 00:05:33.000]   And it was all done with this technology developed here in Zurich.
+[00:05:33.000 --> 00:05:40.000]   So the entire film literally, which is of course very nice. We are very proud of it, by the way.
+[00:05:40.000 --> 00:05:47.000]   And what I want to show you as last examples is a little bit about digital humans.
+[00:05:47.000 --> 00:05:53.000]   You might have seen some of it in the visual computing lecture. That's basically one of our signature projects.
+[00:05:53.000 --> 00:06:00.000]   We want to create digital, double-toed digital humans that are indistinguishable from real ones that overcome the young cannibali.
+[00:06:00.000 --> 00:06:12.000]   And in order to do so historically, we have built various types of capture devices, very high quality ones that capture the facial performance of an actor from different camera angles.
+[00:06:12.000 --> 00:06:25.000]   And then use basically what you learn, computer vision, sort of multi-baseline stereo with a lot of other tricks to reconstruct a high quality three-dimensional model of the human face.
+[00:06:25.000 --> 00:06:31.000]   So it goes down to the poor level if you look at it. So it's really very precise. And it's called motion capture.
+[00:06:31.000 --> 00:06:37.000]   And you use this data as input to create these digital characters, right?
+[00:06:37.000 --> 00:06:54.000]   Because all HULK is driven by Ruffalo, who is the performing artist, as often times, where you have to capture all the subtleties of facial motion to portray emotional death, to build digital believable characters that look like real humans,
+[00:06:54.000 --> 00:07:00.000]   which can take out a film, bring them to life. And this is exactly what happened here.
+[00:07:00.000 --> 00:07:07.000]   So that's a conventional technology. But over the last couple of years, a revolution has literally happened.
+[00:07:07.000 --> 00:07:13.000]   And we went more and more into what's called, you would say, deep fakes. That's the best way to compare it.
+[00:07:13.000 --> 00:07:19.000]   Because you can train neural networks to replace faces one by another.
+[00:07:19.000 --> 00:07:26.000]   So just by training a little bit of source video and then take the target video and let the network replace the face.
+[00:07:26.000 --> 00:07:40.000]   There's a lot of public domain software for doing it. It's very simple, except that if you want to do it at a quality of film special effect with 2K or 4K resolution, with all the lighting and shading and no artifact,
+[00:07:40.000 --> 00:07:55.000]   that's the difficult part. And what we did is because Disney will soon have a hundredth anniversary in October, we brought the founder of the Walt Disney Company back to life with this technology.
+[00:07:55.000 --> 00:08:02.000]   And when we go into that new project, we have confidence in our ability to do it right.
+[00:08:02.000 --> 00:08:11.000]   It's very nice saying, so this is Walt. We took a stand in actor that looks like Walt. We trained the network on old footage of Walt's face, right?
+[00:08:11.000 --> 00:08:22.000]   And then the network on the right hand side, you see what we call the ice cube. So that's the receptive field area of the network where it replaces the face with proper performance.
+[00:08:22.000 --> 00:08:35.000]   The wording is all original voice of Walt. It was not cloned using the autotools to clone voices like re-speecher, but we patched each and every word together with a new script.
+[00:08:35.000 --> 00:08:45.000]   So what he says is new. It's on the occasion of a hundredth, obviously, but word by word was cut out of original voice and then sort of remastered and so forth and so on.
+[00:08:45.000 --> 00:09:07.000]   So that's all Walt giving the introduction. So in case you see it, that's a typical technology that's coming for special effects already being used here in Star Wars, for instance, young Luke on the right hand side, standing actor left hand side, you see sort of the just receptive field and then in the middle of the final composite.
+[00:09:07.000 --> 00:09:26.000]   You can imagine that with these technologies, instead of taking, going through a very complicated three dimensional modeling, texturing, compositing, editing process, there's this beauty and simplicity of just training a network to do the task and replace pixel by pixel.
+[00:09:26.000 --> 00:09:36.000]   Except that it doesn't work in all cases. You know, they are lighting issues. There are also issues with facial, you know, if you have profile views of the face, it works very well for frontal.
+[00:09:36.000 --> 00:09:45.000]   So it doesn't work in all places, but for many shots, it's a coming technology and it goes further. You can make people old and young.
+[00:09:45.000 --> 00:09:54.000]   As in this example, that's just on the left, that's one of our researchers in the middle of this young on the right hand side is old.
+[00:09:54.000 --> 00:10:03.000]   And we used it actually on a recent film, which unfortunately I cannot show you the special effects very nice. It's on Indiana Jones, right?
+[00:10:03.000 --> 00:10:12.000]   Harrison Ford old was young there. So this is a kind of technology you're going to use. You don't build a young three dimensional model of the actor.
+[00:10:12.000 --> 00:10:29.000]   You just train the network to do the job. And here this is based on it's actually trained with another, the training data for this network we created with StyleGAN, which is neural network that can synthesize human faces.
+[00:10:29.000 --> 00:10:40.000]   And this is actually what we're going to do. We also use generative, the eye lot to explore designs. For instance, here you can put in one image of a person and say, hey, create me doppelganger.
+[00:10:40.000 --> 00:10:47.000]   People that do not exist, but look alike. And it's very funny. It's a lot of fun. I myself as doppelganger as well.
+[00:10:47.000 --> 00:10:56.000]   And but in oftentimes in special effects on faces, you still need the model because as I said, so this new technology works in some shots, but not in all of them,
+[00:10:56.000 --> 00:11:10.000]   which means you instead of training AI with sort of a lot of images of faces, you could also build a database of high quality three dimensional models and textures of faces,
+[00:11:10.000 --> 00:11:17.000]   train the network. And then in a generative fashion, sort of if it's for those of you who are familiar with auto encoder,
+[00:11:17.000 --> 00:11:26.000]   you could sample the latent space of the representation and then creates humans create human models of faces that do not exist in reality.
+[00:11:26.000 --> 00:11:32.000]   And these are some of these models. They're absolutely with a little bit of special effect, absolutely realistic and believable.
+[00:11:32.000 --> 00:11:46.000]   But none of it exists in reality. We can basically synthesize digital humans that are absolutely realistic and believable and create, for instance, your own avatar.
+[00:11:46.000 --> 00:11:58.000]   And that's just snippet and piece of all the work we are doing. And as said, there is always in our work, the symbiosis between the basic research we are doing with the master students,
+[00:11:58.000 --> 00:12:11.000]   with PhD students and the application in sort of the Disney Empire type films, including all of Marvel and Lucasfilm and Avatar and so forth and so on.
+[00:12:11.000 --> 00:12:28.000]   And today we're going to talk about a topic which is really fundamentally important in computer graphics. And some of which there is a little bit in this lecture also an overlap with the visual computing because not all of you attended visual computing.
+[00:12:28.000 --> 00:12:37.000]   The texture mapping chapter is for completeness to make you remember about, you know, this very important and fundamental technology in computer graphics.
+[00:12:37.000 --> 00:12:46.000]   The mathematical foundations of texture mapping, which relate a lot to what's called parametrization, which I will explain in a minute.
+[00:12:46.000 --> 00:12:56.000]   So that is subject to another lecture from Olga Sorkin-Hornung, which is the digital geometry processing one.
+[00:12:56.000 --> 00:13:04.000]   Just to remind you, the flow of the lecture, sort of we have, we start with the introduction to shapes and shape modeling.
+[00:13:04.000 --> 00:13:12.000]   We continue a little bit down the graphics pipeline, if you will, with texture mapping and then ray tracing on Friday.
+[00:13:12.000 --> 00:13:20.000]   Then we move to acceleration structures for ray tracing. It's a bit of a repetition, I admit, from the visual computing lecture.
+[00:13:20.000 --> 00:13:37.000]   Then go into lights and material and then deeper and deeper into surface, you know, the modeling of appearance and the modeling of the interaction of light and surfaces and light and volumes, light and matter,
+[00:13:37.000 --> 00:13:49.000]   which includes sort of the reflection equation and sampling methods, environment maps, you know, the rendering equation, which is very fundamental and governs all of rendering,
+[00:13:49.000 --> 00:13:56.000]   physically based rendering. Then we go into global illumination, photon mapping, participate in media.
+[00:13:56.000 --> 00:14:12.000]   So there you will hear about snow and then anti-aliasing, denoising. We do special lecture on camera models because, as you will see, for the most part in a simplistic fashion, we use the pinhole model,
+[00:14:12.000 --> 00:14:24.000]   but there are all sorts of other different camera models as well, not only lens models, but in general the description of the external and internal parameters of the camera.
+[00:14:24.000 --> 00:14:39.000]   Then this will be followed by inverse rendering and 3D reconstruction, so that's the inverse process, how to get literally from image to geometry as comparable to computer vision.
+[00:14:39.000 --> 00:14:57.000]   I will give a special lecture on point-based representations and then we will conclude the whole series of lectures with a research outlook and our famous rendering competition, and I'm really looking forward to see the latest and greatest from you.
+[00:14:57.000 --> 00:15:12.000]   Please use generative AI. I don't know who knows mid-journey. Some of you, it's this wonderful tool I should actually, maybe next time we do spend five minutes on mid-journey, you can create the most stunning and beautiful images.
+[00:15:12.000 --> 00:15:21.000]   It's my favorite tool. Use it to do your concept art, but not the final images. We will see. We will notice it.
+[00:15:21.000 --> 00:15:38.000]   Anyways, so this is the course overview. In a way, we go first of all forward down the graphics pipeline, but in a much deeper way than we did in visual computing through image, we call it image synthesis.
+[00:15:38.000 --> 00:15:52.000]   And then in the second part, a shorter part of lecture is sort of this inverse rendering way, and there is geometry, materials, lights and capture.
+[00:15:52.000 --> 00:16:09.000]   So in texture mapping, as we all know, in the early days of computer graphics, we started trying to find ways to mathematically describe three-dimensional geometry, and then finally through the laws of projective geometry,
+[00:16:09.000 --> 00:16:25.000]   we brought them back onto a screen and displayed it. And it was very clear that since the standard primitives in computer graphics is a triangle, if you really want to have a lot of detail, also appearance detail, color detail,
+[00:16:25.000 --> 00:16:36.000]   instead of geometric details, you need a lot of triangles because you define the color per vertex or per triangle surface. So that doesn't fly in a way.
+[00:16:36.000 --> 00:16:53.000]   And early on, researchers have invented what's called texture mapping, which means why not having a geometry representation and on top of that, in an image-a-pixel style representation that gives you the appearance detail,
+[00:16:53.000 --> 00:17:04.000]   basically the color at each point on the surface. And then so that would basically be two fundamental paths. One is the geometry one, which you have to bring on screen,
+[00:17:04.000 --> 00:17:14.000]   and then the other one is basically the texture path. And there is a certain stage in the entire graphics pipeline where I have to combine both.
+[00:17:14.000 --> 00:17:29.000]   And obviously that's when raster scan conversion happens, because when I start pixelating the triangles, I have to look up the texture value to color the final pixel on the screen in proper ways.
+[00:17:29.000 --> 00:17:43.000]   And this is what texture mapping is all about. And so it's fundamental idea. And it's all about pasting images onto surfaces.
+[00:17:43.000 --> 00:17:53.000]   Of course, texture mapping, as we know, is very fundamental and much broader. It doesn't relate only to mapping RGB values onto surfaces,
+[00:17:53.000 --> 00:18:05.000]   but it also can include all sorts of material parameters, BRDFs, you know, all sorts of things that are important to render per pixel.
+[00:18:05.000 --> 00:18:16.000]   And as such, texture mapping is very much related to pixel shading in the end, because it gives you the ability to control the lighting model and everything per pixel.
+[00:18:16.000 --> 00:18:26.000]   Once you have a texture mapping pipeline, in a ray tracing setting, which we get back to in a moment for those who don't know,
+[00:18:26.000 --> 00:18:37.000]   which is the inverse of the classics scan conversion, classic graphics pipeline, still when you hit the surface with a ray at this point,
+[00:18:37.000 --> 00:18:47.000]   at the point of intersection, you would have to look up the texture value because you basically shoot a ray through each and every pixel on the screen.
+[00:18:47.000 --> 00:19:01.000]   And that's also where naturally the texture mapping process has to happen. So as such, it is really worth to think a little bit about texture mapping more fundamentally.
+[00:19:01.000 --> 00:19:12.000]   So it is texture mapping by definition defines a mapping between the surface, each point on the surface, and the image,
+[00:19:12.000 --> 00:19:25.000]   meaning that once you have located the point on the surface, you basically have to find where there needs to be a function that tells you where to look up your color value in the image.
+[00:19:25.000 --> 00:19:38.000]   That's the forward path. And technically we can describe it as a map that maps basically the unit interval to the unit interval and for each point,
+[00:19:38.000 --> 00:19:48.000]   which is basically has XYZ coordinates, it defines a pair of so-called texture coordinates called UV coordinates.
+[00:19:48.000 --> 00:19:59.000]   Oftentimes in computer animation or in professional animation, people talk about the UV maps, which means it's basically this mapping that defines how the shader,
+[00:19:59.000 --> 00:20:10.000]   which is defined as an image sits on the geometry. And of course, you can imagine as simple as it sounds, as complicated,
+[00:20:10.000 --> 00:20:21.000]   it becomes in practice for complex objects with rich surface detail because, you know, obviously the surface of the object can be very intricate,
+[00:20:21.000 --> 00:20:34.000]   and then you have only a unit squared to define the texture map. So how do you properly sort of divide up the individual maps and pack them into,
+[00:20:34.000 --> 00:20:44.000]   and this is shown on the right, what's called a texture atlas. So basically, first of all, it's this UV coordinates, which you mean,
+[00:20:44.000 --> 00:20:57.000]   and the texture itself is considered a function. And this is a function that maps for each UV pair, gives returns, literally an RGB value,
+[00:20:57.000 --> 00:21:05.000]   and it can return you something else, but in the most simple case of texture mapping, it would be a color value, right?
+[00:21:05.000 --> 00:21:20.000]   So which means essentially that if you concatenate these two functions, you basically get the color of the point as T of P of XYZ.
+[00:21:20.000 --> 00:21:33.000]   So that's what it is. That's the mathematical description. Super simple. Now, what's not so simple is how do we find these UV coordinates, as I said,
+[00:21:33.000 --> 00:21:47.000]   and here's an example. So what we need is a unique, ideally, for each point on the surface, this is a model of David,
+[00:21:47.000 --> 00:21:57.000]   you need a unique pair of UV values, and this is indicated on the right hand side. So you need to find some way to map each and every word,
+[00:21:57.000 --> 00:22:05.000]   if you do it per vertex, for instance, and then that's a pixel shader interpolated, if you do it per vertex, you need to map each vertex,
+[00:22:05.000 --> 00:22:12.000]   each triangle, onto this flat domain in this particular case, including the boundary.
+[00:22:12.000 --> 00:22:24.000]   By the way, so we had in some of the lectures, we talked about simple topology, so the topology of the object on the left and the object on the right are the same,
+[00:22:24.000 --> 00:22:34.000]   right, because you can find ways to bend and squeeze all the triangles without cutting the surface from A to B.
+[00:22:34.000 --> 00:22:50.000]   And this is, in a way, the heart of parametrization, so it's a mathematical parametrization, it's basically a map function that maps each point from the surface into this flat domain.
+[00:22:50.000 --> 00:22:59.000]   And there is a lot of mathematics and a lot of research that goes into different parametrizations. I only scratch the surface.
+[00:22:59.000 --> 00:23:08.000]   In August lectures, we will have much more, we go into the mathematics of how to compute it.
+[00:23:08.000 --> 00:23:19.000]   So, and then, what you typically do in practical graphics applications is you store these UV coordinates for each mesh vertex,
+[00:23:19.000 --> 00:23:31.000]   and insert each triangle, so then you have it basically per vertex, and as you might remember, at the raster scan conversion stage of the graphics pipeline,
+[00:23:31.000 --> 00:23:38.000]   where we take the triangle and divide it, basically digitize it into individual pixels.
+[00:23:38.000 --> 00:23:43.000]   For each pixel, we have to interpolate a bunch of parameters.
+[00:23:43.000 --> 00:23:50.000]   For instance, if you have evaluated a shading model per vertex, then we would have to interpolate the intensity.
+[00:23:50.000 --> 00:24:06.000]   So there is this bilinear interpolation built into the rasterization engine, if you will, and you can use the same bilinear interpolation to bilinear interpolate the texture coordinates,
+[00:24:06.000 --> 00:24:12.000]   because you have to pay us per vertex, and if you want to have it per pixel, you just interpolate it,
+[00:24:12.000 --> 00:24:18.000]   and this gives you, and then there needs to be additional hardware that does a fast lookup into the texture map,
+[00:24:18.000 --> 00:24:24.000]   and also another interpolation with our filter within the texture map to avoid earlier things.
+[00:24:24.000 --> 00:24:27.000]   So this is how it works.
+[00:24:27.000 --> 00:24:36.000]   Now, on very quickly on texture mapping, you can see that if you, so without going into the mathematical details,
+[00:24:36.000 --> 00:24:47.000]   that depending on how you map the vertices into the domain of texture map, which is here circular domain for simplicity,
+[00:24:47.000 --> 00:24:55.000]   what happens is great distortions, and there are different kinds of distortions, as you can imagine.
+[00:24:55.000 --> 00:25:02.000]   There are probably surface area distortions that are surface areas that have the exact same size,
+[00:25:02.000 --> 00:25:08.000]   do not match some are larger, some are smaller because of the distortion of parameterization.
+[00:25:08.000 --> 00:25:13.000]   Others are angular distortions and so forth and so on.
+[00:25:13.000 --> 00:25:25.000]   What you sort of, probably what you can easily, intuitively figure out is that the goal of a parameterization is to minimize the distortions.
+[00:25:25.000 --> 00:25:32.000]   So any, pretty much any parameterization, which is the result of a mathematical optimization,
+[00:25:32.000 --> 00:25:39.000]   has as a function to optimize, if you look into it, there will always be ways to measure the distortion,
+[00:25:39.000 --> 00:25:43.000]   and then you minimize the entire expression, right?
+[00:25:43.000 --> 00:25:52.000]   So for instance, you could measure certain distortions as the way, so how rapidly the parameterization function changes,
+[00:25:52.000 --> 00:25:56.000]   the curvature of the parameterization, second derivative stuff.
+[00:25:56.000 --> 00:26:03.000]   So these are typical measures that go into those distortion equations, and then you said,
+[00:26:03.000 --> 00:26:08.000]   "So if I can measure the distortion, then I will also find a way to minimize it."
+[00:26:08.000 --> 00:26:11.000]   And then this gives me the resulting texture map.
+[00:26:11.000 --> 00:26:17.000]   An interesting parameterization, this is a little bit of an interactive model.
+[00:26:17.000 --> 00:26:20.000]   An interesting application was this one.
+[00:26:20.000 --> 00:26:24.000]   It is the recovery of historical documents.
+[00:26:24.000 --> 00:26:32.000]   So sometimes, archaeologists, they find documents that have been totally geometrically distorted over time,
+[00:26:32.000 --> 00:26:36.000]   because of certain processes, rotting, drying, whatever.
+[00:26:36.000 --> 00:26:41.000]   But in order to read it, you want to virtually flatten it.
+[00:26:41.000 --> 00:26:46.000]   And this is a very good example for a parameterization problem.
+[00:26:46.000 --> 00:26:55.000]   And here you see, this is from older paper, so they give you certain guidelines here as well that can be done manually.
+[00:26:55.000 --> 00:27:05.000]   And here you see how those are being all stretched out, and then you finally undistort the paper so that it becomes readable again.
+[00:27:05.000 --> 00:27:10.000]   It's pretty cool, actually, I feel.
+[00:27:10.000 --> 00:27:18.000]   One important aspect of parameterization is bijectivity.
+[00:27:18.000 --> 00:27:26.000]   And this means that they're intuitively, you could say, that there is no fold-over of triangles.
+[00:27:26.000 --> 00:27:34.000]   So if I map all the triangles from the source domain into the texture domain through the parameterization,
+[00:27:34.000 --> 00:27:40.000]   that no two triangles would overlap, assuming that I have a watertight mesh,
+[00:27:40.000 --> 00:27:45.000]   and assuming that there are no fold-overs in the initial source mesh.
+[00:27:45.000 --> 00:27:49.000]   That source mesh is basically sort of too many-fold, right?
+[00:27:49.000 --> 00:28:00.000]   And that it's actually sort of a, how shall I say, that's a graph.
+[00:28:00.000 --> 00:28:03.000]   So basically each, the triangles are well defined.
+[00:28:03.000 --> 00:28:06.000]   There are no dangling nodes. There are no fold-overs.
+[00:28:06.000 --> 00:28:16.000]   Then you would want to achieve, you want to assume that this triangle mesh is being distorted so that it fits into the square, into the circle,
+[00:28:16.000 --> 00:28:19.000]   but that at no point there is a fold-over.
+[00:28:19.000 --> 00:28:26.000]   Bijectivity is one of these criteria, which are, by the way, not so easy to enforce.
+[00:28:26.000 --> 00:28:33.000]   I mean, you can add penalty terms into your optimization to avoid it,
+[00:28:33.000 --> 00:28:44.000]   but you can also imagine that these penalty terms not always guarantee mathematically that there is bijectivity.
+[00:28:44.000 --> 00:28:48.000]   And then the other one is minimize distortions just very quickly.
+[00:28:48.000 --> 00:28:53.000]   You want to preserve two-dimensional angles, for instance.
+[00:28:53.000 --> 00:28:57.000]   You want to preserve 2D distances, right?
+[00:28:57.000 --> 00:29:03.000]   And you want to preserve 2D areas, and there's a trade-off between those,
+[00:29:03.000 --> 00:29:08.000]   and then also minimize the so-called stretch.
+[00:29:08.000 --> 00:29:10.000]   Here you see different texture.
+[00:29:10.000 --> 00:29:20.000]   These are actually different methods in the lower row, different parameterization methods with all their shortcomings.
+[00:29:20.000 --> 00:29:27.000]   Back in the day, 20 years ago, there was paper from Sanda, which we also built some of our technologies upon,
+[00:29:27.000 --> 00:29:34.000]   which is a minimum distortion parameterization, a quite elegant formulation,
+[00:29:34.000 --> 00:29:42.000]   which essentially boils down to solve a very large linear system to compute the parameterization,
+[00:29:42.000 --> 00:29:50.000]   and it basically tries to avoid -- it tries to preserve the major qualities of the parameterization,
+[00:29:50.000 --> 00:29:55.000]   in particular, avoids all sorts of distortions.
+[00:29:55.000 --> 00:30:05.000]   And some of the previous methods you could see had certain shortcomings, did not work all in all circumstances.
+[00:30:05.000 --> 00:30:08.000]   Now, there is also what's called -- you will hear these expressions.
+[00:30:08.000 --> 00:30:10.000]   This is why I bring it up.
+[00:30:10.000 --> 00:30:17.000]   Conformal parameterization -- conformal parameterization simply means you preserve the angles,
+[00:30:17.000 --> 00:30:25.000]   and when you preserve angles, it simply implies that circles in the source domain are mapped to circles.
+[00:30:25.000 --> 00:30:28.000]   They are not stretched as ellipses.
+[00:30:28.000 --> 00:30:35.000]   And then another important term is the texture mapping atlas in lots of practical applications,
+[00:30:35.000 --> 00:30:40.000]   computer games, definition of animated characters.
+[00:30:40.000 --> 00:30:47.000]   You will always have these texture atlases, because eventually, as you can imagine,
+[00:30:47.000 --> 00:30:56.000]   the graphics system -- think of a game, real-time game -- any graphics system supports texture memory,
+[00:30:56.000 --> 00:31:07.000]   and the texture memory assumes that typically everything is mapped onto a single rectangular or quadratic domain with unit length.
+[00:31:07.000 --> 00:31:11.000]   But as said, models are typically very complex.
+[00:31:11.000 --> 00:31:18.000]   They are made up by lots of different small textures, so you have to find a way to pack all of these textures,
+[00:31:18.000 --> 00:31:25.000]   these little textures, into this UV map to get a unique mapping, if that makes sense.
+[00:31:25.000 --> 00:31:27.000]   So that's called a texture atlas.
+[00:31:27.000 --> 00:31:33.000]   And texture atlases, they can actually be built by hand by the artist.
+[00:31:33.000 --> 00:31:35.000]   That's how it happens.
+[00:31:35.000 --> 00:31:44.000]   It's a packing problem, if you think about it, because some of the boundaries of these textures, they are very complex.
+[00:31:44.000 --> 00:31:45.000]   They are concave.
+[00:31:45.000 --> 00:31:47.000]   You have all these concave structures.
+[00:31:47.000 --> 00:31:55.000]   Now you have to pack them in some way to fit them into a square, which is another optimization problem.
+[00:31:55.000 --> 00:32:06.000]   And there are also some technologies or some algorithms that try to map these -- build these texture atlases automatically.
+[00:32:06.000 --> 00:32:11.000]   Then there is also non-disk domains, domains of higher topology.
+[00:32:11.000 --> 00:32:23.000]   So if you want to texture a donut or this double donut or other structures, then obviously, conceptually,
+[00:32:23.000 --> 00:32:31.000]   you have to cut them off into a disk or square and flatten it out.
+[00:32:31.000 --> 00:32:42.000]   Now the most classical problem, and we know it from cartography, is to map the earth onto the plane.
+[00:32:42.000 --> 00:32:48.000]   So to build an atlas, to build a map, literally, because there's always, as you know,
+[00:32:48.000 --> 00:32:54.000]   in all of the classical mappings in cartography, there's always some distortion.
+[00:32:54.000 --> 00:32:58.000]   Either there is a conformity, there's an angular distortion, there's a surface distortion.
+[00:32:58.000 --> 00:32:59.000]   You cannot avoid it.
+[00:32:59.000 --> 00:33:11.000]   You know, it's not possible to map it in a way you can always cut objects off and flatten them out into this sphere.
+[00:33:11.000 --> 00:33:20.000]   And you can -- conceptually, it's also such that if you cut an object like this one, the more you cut it,
+[00:33:20.000 --> 00:33:29.000]   probably the smaller the individual pieces that you have to squeeze and flatten out, and squeezing and flattening out means distortion.
+[00:33:29.000 --> 00:33:30.000]   Right?
+[00:33:30.000 --> 00:33:36.000]   So if you cut lots of, lots of times, you have lots of snippets and pieces, and then distortion is very little,
+[00:33:36.000 --> 00:33:37.000]   but you have a lot of cuts.
+[00:33:37.000 --> 00:33:41.000]   If you have less cuts, then you have more distortion, right?
+[00:33:41.000 --> 00:33:42.000]   So that makes sense.
+[00:33:42.000 --> 00:33:46.000]   And this is also in cartography, you oftentimes see these.
+[00:33:46.000 --> 00:33:50.000]   And of course, if you have less cuts, the left-hand side is more distorted.
+[00:33:50.000 --> 00:33:57.000]   And the right-hand side, of course, is a little easier to flatten it out and creates less distortion.
+[00:33:57.000 --> 00:34:02.000]   So that's the difficult balance to strike.
+[00:34:02.000 --> 00:34:08.000]   And this actually already ends my short foray into texture mapping.
+[00:34:08.000 --> 00:34:10.000]   So it's just to refresh your memory.
+[00:34:10.000 --> 00:34:14.000]   So just hands up, did you all know everything of this?
+[00:34:14.000 --> 00:34:17.000]   Who knew it all?
+[00:34:17.000 --> 00:34:18.000]   Some of you, yeah.
+[00:34:18.000 --> 00:34:20.000]   You've probably heard some of it before.
+[00:34:20.000 --> 00:34:28.000]   I'm sorry for the repetition, but we just want to make sure everybody is on the same page here.
+[00:34:28.000 --> 00:34:33.000]   And I will jump ahead because we still have 10 minutes time.
+[00:34:33.000 --> 00:34:41.000]   This is one of my favorite topics, and this is ray tracing.
+[00:34:41.000 --> 00:34:46.000]   For ray tracing, I don't know where we should start.
+[00:34:46.000 --> 00:34:49.000]   There is a little bit in the slide deck.
+[00:34:49.000 --> 00:34:53.000]   There is a little bit about vectors and transformations.
+[00:34:53.000 --> 00:34:57.000]   I really don't want to repeat it just in fast forward.
+[00:34:57.000 --> 00:34:59.000]   You all know what a vector is.
+[00:34:59.000 --> 00:35:01.000]   You know what a dot product is.
+[00:35:01.000 --> 00:35:03.000]   You know what a cross product is.
+[00:35:03.000 --> 00:35:04.000]   Perfect.
+[00:35:04.000 --> 00:35:07.000]   Next one, you know what a transformation matrix is.
+[00:35:07.000 --> 00:35:16.000]   Interestingly, even though we live in three dimensions, our matrices are four-dimensional because we work with homogeneous coordinates.
+[00:35:16.000 --> 00:35:20.000]   And the beauty of homogeneous coordinates, among many other things,
+[00:35:20.000 --> 00:35:25.000]   it linearizes certain transformations which are not linear.
+[00:35:25.000 --> 00:35:33.000]   So all the class of fine transformations which include rotations, scaling, stretch, and also translation.
+[00:35:33.000 --> 00:35:35.000]   Translation is not a linear transformation.
+[00:35:35.000 --> 00:35:39.000]   It belongs to the extensive linear to the class of fine transformation.
+[00:35:39.000 --> 00:35:44.000]   But in a higher dimension, one dimension up, all of a sudden becomes linear.
+[00:35:44.000 --> 00:35:45.000]   That's beautiful.
+[00:35:45.000 --> 00:35:48.000]   The second one is projections.
+[00:35:48.000 --> 00:35:55.000]   The projection is also a nonlinear transform, but in homogeneous coordinates, you can linearize it.
+[00:35:55.000 --> 00:36:13.000]   So the beauty of these four by four matrices is that we can pack all the important transformations of computer graphics, including all the rotations, you know, the scales, linear ones, the affine ones, translations, and projections into one singular mathematical representation.
+[00:36:13.000 --> 00:36:18.000]   And the second beauty of it is you can accelerate it in hardware extremely well, right?
+[00:36:18.000 --> 00:36:25.000]   Because a matrix vector multiplication is easy to accelerate in hardware.
+[00:36:25.000 --> 00:36:31.000]   And of course, this translation matrix, this scale matrix, I don't need to go through all of this.
+[00:36:31.000 --> 00:36:36.000]   And homogeneous, there's a little bit more about homogeneous coordinates.
+[00:36:36.000 --> 00:36:38.000]   I don't want to go into the details.
+[00:36:38.000 --> 00:36:54.000]   In general, very important to keep in mind sort of the concatenation of two linear transforms or homogeneous transforms in a homogeneous coordinates is non-commutative.
+[00:36:54.000 --> 00:36:58.000]   So the multiplication, it really matters which one goes first.
+[00:36:58.000 --> 00:37:09.000]   And if you combine a translation and a rotation, you can easily think about what's the difference between, you know, just doing rotation first and then translation and vice versa.
+[00:37:09.000 --> 00:37:23.000]   In computer graphics, I would say in general, we first of all rotate the object into the right position and then we translate it to the place where it belongs, right?
+[00:37:23.000 --> 00:37:34.000]   And then there is also, maybe to recall for everybody, oftentimes in computer graphics, we have to transform between different coordinate systems.
+[00:37:34.000 --> 00:37:42.000]   One example would be the world coordinate system and the camera coordinate system or the world coordinate system and object coordinate system.
+[00:37:42.000 --> 00:37:48.000]   And these transformations, they go from one frame into another.
+[00:37:48.000 --> 00:37:54.000]   And the way to fill the matrices, interestingly, I mean, you can also think about it.
+[00:37:54.000 --> 00:37:58.000]   What would it take, how you had to rotate and translate and so forth.
+[00:37:58.000 --> 00:38:05.000]   But it's there's a much, much easier way since the vector, the frame is also normal.
+[00:38:05.000 --> 00:38:18.000]   It gives you the coordinates basically of the main axis of the new coordinate system, give you the columns of the upper right linear transform matrix.
+[00:38:18.000 --> 00:38:23.000]   So basically the rotation matrix, the rotation components in three dimensions are given by those vectors.
+[00:38:23.000 --> 00:38:25.000]   You just put them into the matrix.
+[00:38:25.000 --> 00:38:26.000]   That's it.
+[00:38:26.000 --> 00:38:37.000]   And then on the fourth column, D, that would be the translation vector that translates the origin from one coordinate system into the next one.
+[00:38:37.000 --> 00:38:44.000]   So in other words, if you want to transform from one into another one, you have all the parameters you need.
+[00:38:44.000 --> 00:38:46.000]   You can just fill them into the matrix.
+[00:38:46.000 --> 00:38:48.000]   You don't need to think about very much.
+[00:38:48.000 --> 00:38:55.000]   The only thing you need to think about is whether you really make a forward transform or you make a backward transform.
+[00:38:55.000 --> 00:39:02.000]   You want to have the world to be represented with respect to the new coordinate system or do you want to transform it forward.
+[00:39:02.000 --> 00:39:05.000]   And that's oftentimes a confusion a little bit.
+[00:39:05.000 --> 00:39:13.000]   And some graphic systems, especially when it comes to camera system, to the definition of a camera coordinate systems,
+[00:39:13.000 --> 00:39:16.000]   system they go from a right hand and left handed.
+[00:39:16.000 --> 00:39:22.000]   That's why I'm not a right hand, but most systems are right handed, but sometimes they switch from left hand to right hand.
+[00:39:22.000 --> 00:39:26.000]   And the left hand coordinate system has one great advantage.
+[00:39:26.000 --> 00:39:33.000]   So because in a camera coordinate system, typically the third axis, the C axis is the distance from the camera, right?
+[00:39:33.000 --> 00:39:36.000]   You transform the whole world with respect to the camera.
+[00:39:36.000 --> 00:39:40.000]   So everything, the C coordinates gives the distance from the plane.
+[00:39:40.000 --> 00:39:48.000]   And then the upright vector is basically the Y vector and the sum literally is the X axis.
+[00:39:48.000 --> 00:39:56.000]   So you get a positive coordinate system with your left hand and positive C and with negative, you know, with right hand.
+[00:39:56.000 --> 00:39:58.000]   It would be negative.
+[00:39:58.000 --> 00:40:02.000]   So that's typically where we are.
+[00:40:02.000 --> 00:40:09.000]   And in order to create, there is also a way to create local frames.
+[00:40:09.000 --> 00:40:15.000]   If you want to create a local coordinate frame, given a normal, a surface,
+[00:40:15.000 --> 00:40:23.000]   that oftentimes happens, for instance, in say, assume you have a triangle mesh.
+[00:40:23.000 --> 00:40:34.000]   And let's assume we have a surface normal for each vertex, which we typically need to do any, to evaluate any lighting model, right?
+[00:40:34.000 --> 00:40:36.000]   Because you need surface normal.
+[00:40:36.000 --> 00:40:43.000]   Oftentimes you want to have a local frame, meaning local frame means you have surface normal on the surface
+[00:40:43.000 --> 00:40:50.000]   and two tangent vectors, you know, that define the tangent plane to the surface.
+[00:40:50.000 --> 00:41:00.000]   And the way to compute it is actually quite, so you need it typically for differential operations on the surface.
+[00:41:00.000 --> 00:41:06.000]   If you want to evaluate the first directional derivative on a surface, you need the tangent plane.
+[00:41:06.000 --> 00:41:13.000]   You know, if you want to evaluate other things, you know, other differential operators,
+[00:41:13.000 --> 00:41:18.000]   local frames oftentimes extremely irrelevant.
+[00:41:18.000 --> 00:41:24.000]   So if you have the normal, then the way to compute the tangent, and you can think about it,
+[00:41:24.000 --> 00:41:34.000]   what it means to zero one component of N, just zero out, you swap the other two and negate one of them.
+[00:41:34.000 --> 00:41:38.000]   Why does this work? Very simple.
+[00:41:38.000 --> 00:41:44.000]   The tangent is defined as a vector which is orthogonal to the normal.
+[00:41:44.000 --> 00:41:50.000]   So if you have the normal N, you need to construct a vector whose dot product was a normal zero.
+[00:41:50.000 --> 00:41:51.000]   And how do you do this?
+[00:41:51.000 --> 00:41:55.000]   Dot product is, you know, multiplication and addition of the pairs.
+[00:41:55.000 --> 00:42:00.000]   So just zero out one so that this doesn't go away and doesn't bother you.
+[00:42:00.000 --> 00:42:06.000]   And then you swap the others so you multiply the same values with each other two times,
+[00:42:06.000 --> 00:42:13.000]   but you take a negative for one, which means you multiply the same numbers twice,
+[00:42:13.000 --> 00:42:18.000]   but once you get a negative sign and once a positive sign, you mean zero.
+[00:42:18.000 --> 00:42:19.000]   Very simple.
+[00:42:19.000 --> 00:42:25.000]   And then the other one is for the bi-tension, the second, the third vector orthogonal,
+[00:42:25.000 --> 00:42:29.000]   you simply take an outer product or what's called a cross product of it.
+[00:42:29.000 --> 00:42:32.000]   So that gives you the whole thing.
+[00:42:32.000 --> 00:42:40.000]   This is a little bit of a fundamental vector algebra, but as said,
+[00:42:40.000 --> 00:42:45.000]   you get much more information for those of you who didn't attend the visual computing lecture
+[00:42:45.000 --> 00:42:47.000]   in the visual computing slides.
+[00:42:47.000 --> 00:42:50.000]   They should be available on the web.
+[00:42:50.000 --> 00:42:55.000]   And if for those of you, by the way, I interested other teachers for computing as well,
+[00:42:55.000 --> 00:43:01.000]   it's the graphics part starts in the second half of the semester and it's twice per week,
+[00:43:01.000 --> 00:43:04.000]   two days and Thursdays.
+[00:43:04.000 --> 00:43:05.000]   Yep.
+[00:43:05.000 --> 00:43:09.000]   So, yeah, that's a special effect.
+[00:43:09.000 --> 00:43:11.000]   History of ray tracing.
+[00:43:11.000 --> 00:43:14.000]   We are almost done.
+[00:43:14.000 --> 00:43:21.000]   Ray tracing is actually one of the most powerful tools in computer graphics.
+[00:43:21.000 --> 00:43:25.000]   And for those of you who are a little bit closer to graphics hardware,
+[00:43:25.000 --> 00:43:35.000]   you might know that companies like NVIDIA have in recent years literally built very complex GPUs,
+[00:43:35.000 --> 00:43:37.000]   graphics processing units.
+[00:43:37.000 --> 00:43:45.000]   And those GPUs, they typically historically, they were built in ways to mimic the forward projection,
+[00:43:45.000 --> 00:43:54.000]   the scan conversion pipeline, a classical graphics pipeline with Rastas scan conversation in a highly parallel super fast fashion.
+[00:43:54.000 --> 00:44:02.000]   Nowadays, the basic components on those chips are still a rasterization engine,
+[00:44:02.000 --> 00:44:05.000]   but there's also a ray tracing engine.
+[00:44:05.000 --> 00:44:11.000]   So they start accelerating ray tracing in hardware because of its features.
+[00:44:11.000 --> 00:44:13.000]   And they are different ones.
+[00:44:13.000 --> 00:44:22.000]   Then there's typically also a so-called tensor product engine to do fast inference on neural networks
+[00:44:22.000 --> 00:44:27.000]   and all sorts of other floating point components for fast channel purpose computation.
+[00:44:27.000 --> 00:44:33.000]   These chips are extremely powerful, but some of the most powerful part besides the AI
+[00:44:33.000 --> 00:44:41.000]   is probably the combination of classical Rastas scan conversion with ray tracing acceleration structures.
+[00:44:41.000 --> 00:44:46.000]   And ray tracing, as simple as it is, conceptually simple,
+[00:44:46.000 --> 00:44:53.000]   shoot a ray into the scene and just see where it hits the surface and then compute the intersection.
+[00:44:53.000 --> 00:44:55.000]   That's it.
+[00:44:55.000 --> 00:45:01.000]   It is all about acceleration structures because if you do it in a naive way,
+[00:45:01.000 --> 00:45:04.000]   of course, it's prohibitively expensive.
+[00:45:04.000 --> 00:45:10.000]   If I have 100 million triangles for each ray, I have to do a test with 100 million, this doesn't work.
+[00:45:10.000 --> 00:45:18.000]   So you need to have very powerful acceleration structures, spatial acceleration structures to make the ray tracing process fast.
+[00:45:18.000 --> 00:45:24.000]   And one of the challenges is to get, these are mostly either your oak trees,
+[00:45:24.000 --> 00:45:34.000]   but more importantly, actually so-called BSPA trees and others, or KD trees, which are all familiar line.
+[00:45:34.000 --> 00:45:38.000]   We will go through these acceleration structures once again,
+[00:45:38.000 --> 00:45:47.000]   but you can imagine that it's not so easy to put those onto graphics hardware so that ray tracing really scales.
+[00:45:47.000 --> 00:45:52.000]   Anyways, next on Friday we continue with ray tracing.
+[00:45:52.000 --> 00:45:53.000]   Thanks a lot.
+[00:45:53.000 --> 00:45:56.160]   (audience applauding)
+

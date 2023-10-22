@@ -1,1093 +1,1095 @@
- So, einen schönen guten Morgen.
- Eigentlich will ich jetzt die Vorlesung halten, aber das Gerät, das ich hier habe, funktioniert nicht ganz.
- Das blinkt für mich, das heißt, ich sehe immer nur zeitweilig, was ich, was Sie sehen.
- Es wird jetzt jemand kommen, wir versuchen das mal mit einem Ventilator zu beheben.
- Wenn das nicht geht, muss ich auf das andere Gerät umsteigen.
- Und mal gucken, wie das geht.
- Also, wir hatten noch immer das Problem, einfach Java, oder immer ein Thema, einfach Java-Programme zu schreiben.
- Und da bin ich noch übrig zum Thema Methoden, das Thema der Namensräume.
- Und der Idee der Namensräume ist, dass wir den Bereich, in dem ein Name sichtbar ist, irgendwie angeben wollen, bezeichnen wollen und irgendwie mit dem arbeiten wollen.
- Und da eben der Inselm Namensraum kann die Variable gelesen und modifiziert werden.
- Und eine Methode kann auch aufgerufen werden, wenn sie irgendwo definiert ist.
- Und das ist hier unser erster Versuch, das Innenleben von Methoden etwas genauer anzugucken.
- Also, der Scope, so heißt das, ist der Sichtbarkeitsbereich.
- Manche Programmiersprachen unterscheiden noch zwischen Sichtbarkeit und haben dann noch genauere Unterscheidungen für uns eigentlich in Java,
- wenn Java benutzt und genügt ist, zu wissen, wann eine Variable sichtbar ist.
- Und natürlich, Variable müssen deklariert sein, bevor sie sichtbar sind.
- Und die Deklarationen müssen eindeutig sein, oder dürfen nicht wiederholt deklarieren.
- Und wenn eine Variable einmal deklariert wurde, dann ist sie sichtbar bis zum Ende des Blocks, für den die Variable deklariert ist.
- Naja, und Blöcke, das haben Sie jetzt vielleicht mitbekommen, werden durch diese geschweiften Klammern begrenzt.
- Also, hier einfachstes Beispiel, ich habe hier eine Methode, die einen Intparameter j hat.
- Und dieser Intparameter j ist im ganzen Body der Methode sichtbar.
- Dann wird eine Variable i deklariert, die ist ab der Deklaration sichtbar bis zum Ende der Methode.
- Und eine Variable k ist auch sichtbar bis zum Ende.
- Und wenn Sie eben eine Variable innerhalb eines if-Blocks deklarieren,
- dann ist sie auch, oder eines elfs-Blocks, sichtbar bis zum Ende genau dieses Block.
- Und natürlich ist sichtbar in allen eingeschlossenen Blöcken.
- Also, wenn Sie jetzt eben so wie ich das vorgestellt hatte, bravo, jetzt wollen wir mal gucken, ob das funktioniert.
- Die Lautstärke im Oberfloraum sollte erhöht werden.
- Könnten Sie das machen?
- Lautstärke im Oberfloraum erhöhen.
- Also, wir hoffen mal, dass das jetzt gut geht.
- Und wenn nicht, habe ich mein altes iPad als Reserveboot aufgerichtet.
- So, okay, versuchen wir es mal.
- Also tut mir leid, jetzt hoffen wir, dass hier die Kühlung das System so weit bringt, dass wir weitermachen können.
- Also, wenn Sie hier einen Loop haben und einen Vorloop benutzen, so wie wir das gesagt haben,
- dann ist der Schleifenzähler, der hier oben definiert wird, auch im Loop sichtbar.
- Und wenn Sie eben einen weiteren Loop haben, in dem Sie ein anderes eben noch mal i verwenden, dann ist das eben da sichtbar.
- Also, der Scrope ist eben der Teil, in dem die Variable sichtbar ist.
- Und eine Variable, die der Vorschleif deklariert wurde, kann halt nur im Rumpf verwendet werden.
- Und das ist eigentlich gut, weil wenn Sie verseht nicht auf die Autohattesrumpfes zugreifen, wird das System sich bei Ihnen beschweren.
- So, und natürlich das Ganze ist interessant, weil Blöcke können geschachtelt sein.
- Und dann eine Variable, die in einem Block sichtbar ist, auch allen eingeschlossenen Loop sichtbar.
- Und genauso geht das mit Loops und so weiter.
- Glücklicherweise können wir in Java Methoden nicht innerhalb Methoden schachteln, dadurch ist das Problem für uns gelöst.
- Also, hier haben wir eine einfache Methode, die eben halt eben eine Variable x hat.
- Das ist die, die wird da deklariert und deren Scrope geht eben vom Beginn nach der Deklaration bis zum Ende des Loops.
- Dann haben wir hier den Loop und da gibt es eine Variable i und die ist halt nur innerhalb dieses Loop-Bodies sichtbar.
- Ja, da sind beide sichtbar.
- So, und natürlich, wenn wir mehrere Variables haben, geht das so, wie Sie sich das entsprechend denken.
- Also, was sind die Folgen dessen?
- Die erste Sache ist, dass wenn die Tür auch mal repariert wäre, dann wäre die Klimaanlage glücklicher und vielleicht wird es dann nicht ganz so warm.
- Also, wenn Sie eben eine Variable deklarieren und die Sichtbarkeitsbereiche überlappen nicht, dann können die Variables in denselben Namen haben, so wie wir das da gesehen haben.
- Aber wenn eben die Sichtbarkeitsbereiche überlappen, dann geht das eben nicht.
- Das können Sie also nicht machen.
- Die Variable i nochmal im Loop, nochmal neu deklarieren, wenn schon der Loop-Counter i ist, das geht nicht.
- Und Sie können auch nicht auf die Variable i außerhalb des Sichtbarkeitsbereichs zugreifen.
- Das würde dann eben auch entsprechend nicht gehen.
- So, und natürlich, Sie können keine Mehrfach-Deklarationen haben, das sage ich immer wieder.
- Und diese ganzen Regeln gelten genauso für die Parametervariable, die Sie in Ihrem Programm, in Ihrer Führer-Regel-Methode deklariert haben.
- Hier habe ich eine Methode mit einer Parameter k, ist im ganzen Methode sichtbar und eben das y ist erst sichtbar, nachdem es eben deklariert wurde.
- Und wenn wir eben eine andere Funktion haben, die hat da wieder andere Variable, die sind auch nicht überlappend.
- Wir können auch denselben Parameternamen verwenden, das sind aber verschiedene Cars mit unterschiedlichen Sichtbarkeitsbereichs, natürlich in Scopes.
- Also, weil das so eine, das sollte eigentlich einfach sein und dafür hätte ich eigentlich eine Poll, aber die Technologie, die wir jetzt benutzen,
- da glaube ich nicht mehr, dass Sie diese Poll vernünftig beantworten können.
- Und darum lasse ich die einfach für Sie, für Selbststudium.
- Und Sie können das bei Gelegenheit machen und ich lege dann die Antwort mit aufs Web.
- So, jetzt war rum all diese Regeln.
- Es ist nicht dazu da, um Ihnen das Leben schwierig zu machen, sondern im Gegenteil soll Ihnen und dem System das Leben leichter machen.
- Wir wollen also die Lesbarkeit der Programme erhöhen.
- Wenn eben Variable überall sichtbar wären, dann hieß es auch, dass wir als Leser uns immer diese Variablen da merken müssen.
- Und der zweite Effekt ist, dass auf diese Weise die Verwaltung des Speichers vereinfacht wird.
- Also Platz für eine Variable muss nur in dem Block gefunden werden, indem sie deklariert wird.
- Und Werte, die dann da gespeichert werden, die verschwinden am Ende des Blockes.
- Also, brauchen uns nicht, um das ganze Management der Daten zu kümmern, das ist alles nicht nötig.
- Und der scheitern wir zwischen Shadowing und Hiding.
- Hat jemand das Wort Shadowing hier gehört?
- Also, ja, wo haben Sie das gehört?
- Sie müssen Ihre Ohren rein.
- Also, ich habe das Wort hier nicht verwendet.
- Im Vorkurs.
- Ja, aber es ist hier.
- Wir setzen in dem Kurs nicht voraus, dass Sie den Vorkurs gemacht haben.
- Also bitte, speichern Sie das schön ab, was Sie da gelernt haben, setzen Sie es ein.
- Aber ja, wir werden darüber noch zu...
- Die Antwort ist darauf, kommen wir noch zu reden.
- Darüber reden wir später.
- Einen Schritt nach dem anderen.
- So, bevor wir das machen, wollen wir ein bisschen mehr über Strings erfahren.
- Auch für die Leute im Vorkurs ist das wahrscheinlich eine Wiederholung.
- Aber trotzdem möchte ich es noch kurz machen,
- weil mit Strings lassen sich viele interessante Beispiele rechnen.
- Also, wir hatten gesagt, ein String ist eine Folge von Buchstaben oder Zeichen.
- Und dieser Typ ist in der Standardbibliothek definiert.
- Und die können wir deklarieren.
- Und die können wir initialisieren, so was gesehen haben.
- Wir nehmen einen Namen und setzen dann den String, den wir zur Initialisierung wollen,
- auf die rechte Seite einer Zuweisung.
- Oder aber für die, die das eben...
- Aber eben dann darf eben da kein...
- Dann darf in dem String kein Zeilenumschub sein.
- Für die Leute, die das eben...
- die trotzdem so was machen wollen, gibt es irgendeiner Revision die Möglichkeit,
- mit 3... 3-mal diesem Zeichen, das ist 3-mal dieses doppelte Anführungszeichen,
- wenn wir das haben, dann beginnt ein Textblock.
- Und in diesem Textblock ignoriert Java alle Leerzeichen.
- Können Sie sich merken oder auch nicht, ist nämlich relativ unwichtig.
- Für das, wenn Sie viel Textverarbeitung machen, ist das gut.
- Aber wir eben brauchen das eigentlich kaum so.
- Jetzt hatte ich schon mal darauf hingewiesen,
- dass dieser Plus-Operator kann auch für String verwendet werden,
- weil der konkateniert dann String.
- Also wenn ich hier eine variable x habe, dann wird hier der Wert von x eingesetzt
- und dann wird ein String erzeugt, der eben 3...
- der oben kann man auf 3, dann kommt hier 5
- und dann kommt hier eine schließende Klammer
- und dann kommt wieder ein Ende des Anführungszeichen.
- So ein String wird auf diese Weise konstruiert.
- Und das geht, weil eben für alle Typen gibt es eine Standarddarstellung,
- die gefunden werden kann und dann ist das eben halt der Fall.
- Wenn Sie jetzt irgendein Typ in String umwandeln wollen,
- z.B. für diese variable x, die Sie hier oben haben,
- wollen Sie jetzt eben den String haben.
- Ein einfacher Weg, das zu machen ist, wir nehmen epsilon, den leeren String,
- konkatenieren das mit dem Wert.
- Der Wert 3 wird umgewandelt in einen String 3
- und dann wird eben der leere String mit dem dreier String,
- zu eben dem genau dreier String, konkateniert.
- Das ist ein sinnvolles Idiom,
- das Sie in vielen Situationen gut gebrauchen können.
- Okay, jetzt, weil String so besonders wichtig sind,
- weil viele Programme ja doch irgendwo mit Text arbeiten,
- werden Sie vom Compiler und dem Laufzeitssystem besonders behandelt.
- Und es ist halt leider so, dass wir, wir können halt nicht alles rein,
- so machen, wie es vielleicht elegant ist, am elegantesten wäre,
- praktische Überlegungen, nämlich die Geschwindigkeit,
- die was ausführen können und die, die, die,
- der Komfort im Programmieren sind halt wichtig.
- Und die müssen dann von der Programmiersprache irgendwie unter einen Hut gebracht werden.
- So, was ich einmal schon erwähnte, aber ich noch immer wieder aufs Neue erwähnen kann,
- alle Methoden lassen Strings unverändert.
- Strings können nicht geändert werden.
- Wenn ein String einmal erstellt ist,
- dann bleibt er so bis das System als zur Ende ist.
- Also, und Strings sind, das ist der erste Blick auf Objekte, die wir werfen.
- Strings sind Objekte und daher brauchen wir diese Dot-Notation,
- um eben Operationen auszuführen.
- Das hatten wir ja schon mal in der vorhergesehen, ja.
- Ich kann eben den String nehmen und dann mit Dot und dann die,
- die Methode dahinter erwähnen, aufschreiben,
- dann wird die Operation ausgeführt.
- Und viele, viele von diesen Operationen,
- und ich kann die auch nicht alle auswändeckern,
- wichtig ist, dass Sie wissen, wo Sie dann gegebenenfalls nachgucken
- und so ein paar wichtige sollten Sie vielleicht kennen.
- Und eine wichtige Operation ist, mit der wir für jeden String die Länge rausfinden können.
- Dafür gibt es eben diese Längs-Methode, die liefert für einen String die aktuelle Länge.
- Und Länge ist die Anzahl der Zeichen, also fünf Zeichen sind hier drin, ja.
- Und darum ist dann die Antwort fünf, ja.
- So, das ist die erste Sache.
- Zweite ist, wir können natürlich auf das Innenleben des Trings zugreifen, ja.
- Wir können die Teile des, die Buchstaben, die den String ausmachen,
- auf die können wir zugreifen.
- Und zwar können wir auf die zugreifen mittels eines Indexes.
- Das Index, der fängt an mit der Basis Null, also der erst,
- das erste Zeichen hat den Index Null, und dann geht das so weiter.
- Wenn ich hier diesen String hätte, ja, die Länge davon wäre acht, ja.
- Daher gibt es dann eben Stringpositionen von Null bis Sieben, ja.
- Und daher kann ich dann auf jeden dieser Buchstaben kann ich zugreifen.
- Wie kann ich daher, oder auf Teile des Strings kann ich zugreifen.
- Ich kann auf den String Rest zugreifen, der von hier nach da geht.
- Jetzt für die, die schon mal woanders einen Kurs oder Java gehört haben
- oder programmieren gehört haben.
- Strings sind in Java keine Errays.
- Wenn Sie nicht wissen, was Errays sind, fast noch besser,
- dann sind Sie nämlich da nicht verwirrt.
- Aber falls Sie wissen sollten, was Errays sind, ja, Strings sind es nicht.
- Strings sind keine Errays.
- Auf Errays kommen wir später noch genügend zu sprechen,
- aber Strings sind eben keine Errays.
- So, jetzt wie greife ich auf die Teile des Strings zu?
- Naja, da eben auch wieder mit vor definierten Methoden,
- die eben halt uns erlauben, ein wieder einzelne Teile des Strings rauszuholen
- oder ein einziges Zeichen rauszuholen.
- Wenn wir sagen, wir haben so eine Methode,
- sagen wir manchmal, wir führen die Methode, den wir so was haben,
- wir haben hier einen String S und dann den Punkt und dann eben den Name einer Operation.
- Dann sagen wir, wir führen die Methode für den String aus
- oder wir wenden diese Methode auf den String an
- oder wir rufen die Methode für S auf.
- Das ist alles, bedeutet ein, dasselbe, es heißt halt nur,
- dass wir diese Operation jetzt durchführen.
- Und diese Operationen können natürlich dann verschiedenste Arten von Rückgabewerten liefern.
- Also eine Reihe von Strings liefern eben wieder Strings zurück.
- Und da sind ganz wichtig die Substring Methode, die gibt es in zwei Varianten.
- Die nimmt die erste, nimmt zwei Positionen und die zweite Variante nimmt eine Position.
- Und die erste, die zwei Positionen hat, die gibt mir den Teil des Strings,
- ich habe gleich ein Beispiel, der durch diese Positionen beschrieben wird.
- Und wenn ich den zweiten Teil habe, dann nimmt er alles ab dieser Position.
- Also hier in der zweiten Variante wäre alles von hier bis zum Ende des Strings
- und das wäre eben ein Teil des Strings, der durch diese Positionen bestimmt ist.
- Und dann gibt es diese Operationen wie Tolor Case, to Upper Case und so weiter,
- die wir schon mal gesehen haben.
- Also hier hätte ich jetzt noch mal einen String.
- Und ich möchte jetzt zum Beispiel den Substring, der an der Position 8 anfängt.
- Die Position 8 ist diese.
- Also wenn ich sage Substring ab Position 8, ist das alles von hierhin.
- Oder wenn ich hingehe und sage, ich hätte gerne den Substring von 0 bis 1.
- 0 bis 1, das heißt, ich fange an bei der Position, der ersten Position, das ist die 0,
- aber nicht bis zur 1. Also 1 gehört nicht mit dazu.
- In diesem Fall ist das eben halt nur dieses Zeichen hier.
- Das 1 ist die Obergrenze, die nicht erreicht wird.
- Der zweite ist ausgeschlossen.
- Oder wenn ich eben hier Index, die als Position 3 und 7 angebe,
- ich fange hier in der Position 3 an und es geht bis hierhin,
- weil die Position 7 gehört ja nicht mit dazu.
- Und ich kann natürlich ein einziges Zeichen bekommen,
- das ist genau so, in dem ich eben zwei Indexwerte habe.
- Der eine ist gerade, ist eins größer als der andere.
- Wenn ich das mache, dann bekomme ich hier genau diesen Punkt.
- Ich fange an mit 1 und erreiche 2 nicht.
- So, dann gibt es eben Methoden, die die eben ins liefern.
- Die Längtsoperation, die habe ich Ihnen schon mal gesagt.
- Dann gibt es die Möglichkeit, nach einem bestimmten String zu suchen.
- Ich kann gucken, an welcher Position fängt in diesem String,
- auf den ich die Methode anwende, der dieser Parameterwert,
- den ich einen zweiten String angebe, wo fängt der an.
- Natürlich kann ich das auch noch verallgemeinern
- und sagen, ich fange nicht von Anfang an, das wäre angefangen von 0.
- Ich könnte auch stattdessen sagen, ich möchte erst an dieser Position
- anfangen, nach diesem String zu suchen.
- Also, wenn ich hier gucken möchte, wo fängt dieser String B, E, C, K an,
- der fängt hier an, da ist die Antwort da 3.
- Und was ist die Position des Strings E?
- Na ja, die erste Position ist 4.
- Und wenn ich jetzt anfangen möchte, das war von 0 ausgerechnet,
- und wenn ich stattdessen von 5 aus erst anfange,
- na ja, dann gibt es hier nochmal ein E und das ist 7.
- Das ist nicht überraschend und so weiter.
- Ich habe noch ein paar mehr Beispiele, aber ich weiß nicht,
- ob alle da durchgehen wollen.
- So, wenn Sie hier dieses Wort extrahieren wollten,
- gucken Sie nach, weder finden Sie die Position oder Sie zählen,
- wo finden wir den A, Position 15.
- Also, wie lange ist der String?
- Drei Buchstaben, also können wir auch stattdessen genauso hingehen
- und sagen, wir holen uns diese Position
- und dann wollen wir die nächsten drei Zeichen haben.
- Und das funktioniert dann wirklich bestens.
- So, jetzt gibt es auch weitere Möglichkeiten,
- ein Bullion zurückzubekommen.
- Wenn ich herausfinden möchte, ob zwei Strings
- dieselben Buchstaben enthalten, dann benutze ich die E-Quilts-Methode.
- Ich habe also hier, wenn ich, also hier habe ich das Beispiel,
- ich habe den String S und dann habe ich hier einen anderen String T,
- den habe ich hier dadurch bekommen,
- dass ich das S in Großbuchstaben umgewandelt habe.
- Und wenn ich hier hingehe, dann kann ich jetzt hier sehen,
- ob dieses S gleich dem T ist.
- Das kann ich nur so machen.
- Gibt keinen anderen Weg, der zuverlässig funktioniert,
- der für Strings funktioniert.
- Der, und in dem Fall würde das System eben nicht equal ausdrucken,
- weil eben der eine S-to-upper-Case gibt uns den String Hello.
- So, und in Java unterscheiden wir zwischen kleinen und großen Buchstaben,
- und daher sind diese beiden eben nicht gleich.
- Und natürlich, wir können auch statt einer variable Konstante nehmen,
- das haben wir auch schon mal gemacht,
- das haben wir auch gemacht, also hier gehen wir hin,
- wir nehmen die Konstante und wir checken jetzt,
- ob dieser String gleich dem String ist, den ich mit S erreiche,
- und da ist die Antwort ja, der ist gleich, das ist equal.
- So, und jetzt, wie kommen Sie jetzt auf die wirklichen Grundelemente
- des Strings zugreifen wollen, weil hier sehen Sie,
- wenn ich so etwas mache, wo ich hingehe und einen String heraushole,
- einen String, sorry, hier, wo ich hier hingehe,
- da bekomme ich einen String, die Antwort hier ist,
- vom Substring ist ein String, ein String, der einen Punkt hat.
- Wenn ich jetzt mit den Buchstaben, die den Zeichen,
- die den String ausmachen wollen, dann auf die zugreifen will,
- dann gibt es eine Möglichkeit, die einzelnen Buchstaben da zu erreichen,
- mit der Methode CharacterAdd, die ist nicht überraschend,
- die gibt uns des Zeichen, dass an der Position 1 ist,
- also hier wäre das eben ein Punkt.
- Und seht ihr, der fein Punkt ist hier, die Buchstaben,
- einzelne Buchstaben werden durch eine einzelne Hochkommar angezeigt.
- Das zeigt, also das hier ist der Buchstabepunkt,
- und das ist was ganz anderes, als der String, mit dem,
- mit dem, der einen Punkt hat.
- Die beiden können Sie nicht vergleichen,
- genau so, ob Sie eben einen an das auf dem Tisch haben
- oder einen an das in der Dose, völlig unvergleichbar,
- der eine ist so verpackt, der andere anders.
- Also wenn Sie so, wenn Sie mit diesem Basis,
- das ist ja ein Basistyp, wenn Sie mit einem Basistyp arbeiten,
- dann können Sie dieses Gleichheitszeichen,
- dieses doppelte Gleichheitszeichen verwenden.
- Aber das geht nur für Basistypen.
- Versuchen Sie das nicht mit Strings,
- wir werden später sehen, wann wir dieses Gleichheitsvergleich
- zu einer anderen Zeit mit anderen Arten von,
- von Objekten verwenden können.
- So, also zur Erinnerung,
- Zuweisungen an den String verändern nicht den,
- verändern nicht den String selber.
- Es ist einfach, es wird ein neuer String erzeugt.
- Das müssen Sie immer wieder im Kopf haben.
- Hier wird der String erzeugt, er wird initialisiert irgendwann
- oder bekommt einen Wert zugewiesen.
- Und danach eben halt wird ein anderer Wert zugewiesen.
- Und dann wird dieses Referenz, verweist ihr auch daran.
- Und dieses, dieses String hier, der bleibt.
- Das ist nicht unser Problem.
- Das ist das Schöne der Programmiersprache Java
- im Gegensatz zu anderen Programmiersprachen,
- wo Sie als Programmiererin sich den Kopf zerbrechen können,
- wo Sie denn jetzt diese anderen Strings gelassen haben
- und was mit denen passiert.
- In Java kommt irgendwann die Müllabfuhr
- und holt den, wimmt den weg.
- Und Sie brauchen sich da nicht rumzukümmern.
- Das ist eine so, eine große Erleichterung.
- Ich meine, aber so kleinen Programmen, wie wir sie jetzt hier haben,
- ist es ja nicht wichtig.
- Aber schreiben Sie mal ein Programm,
- das eben wesentlich größer ist,
- indem viele Leute mitarbeiten
- und überlegen Sie sich dann,
- wie da die Daten gemanagt werden müssen.
- Das kann echt schwierig werden.
- Nur, das muss ich immer wieder aufs Neue,
- darauf hinweisen.
- Zuweisungen zu Strings ändern nicht den String.
- Ein Neuer wird erstellt
- und der Name bezieht Sie auf den neuen String.
- Und jede Methode liefert eben einen neuen String.
- Und den kann ich dann eben weiterverarbeiten.
- Also hier habe ich den String S.
- Ich mache, ich wende die Methode
- "to uppercase of S" an,
- das produzierte neuen String,
- ich werde es weiter kümmerer.
- Und wenn ich auf S mir ansehe,
- ist das immer noch unverändert.
- Das hat keine Veränderung.
- Wenn ich mit dem Wab arbeiten will,
- dann muss ich das in irgendeiner anderen Stringvariabel speichern.
- Oder ich kann es auch in derselben Variabel speichern.
- Das ist okay.
- Ich kann es in der Variable S speichern
- und kann das da haben.
- Und was passiert jetzt,
- wenn wir Strings als Parameter haben?
- Ja, nichts anderes.
- Hier habe ich eine ganz einfache Methode.
- Die hat, ihr seht, da oben, das ist auch noch was,
- was wir noch nicht besprochen haben.
- Das ist aus einem guten Grund blau.
- Hier habe ich die Methode "say hello",
- statt blau nämlich das so.
- Und die nimmt als Parameter einen String.
- Und hier habe ich eine Stringvariable
- und die benutze ich, um diese Methode
- "to say hello" aufzurufen.
- Und was passt, und danach benutze ich,
- statt der Variable, benutze ich einen String.
- Und was passiert in dem Programm?
- Na ja, was, wie wir erwarten,
- erst sagt dieses Methode "say hello"
- macht nicht viel, die druckt halt nur.
- Erst wird eben der Wert dieses Variable genommen,
- wird "welcome mark" gedruckt
- und danach "welcome peter".
- So, das ist überhaupt kein Unterschied.
- Läuft best.
- Und was ist, wenn wir jetzt eben hier in der Methode
- diesen Parameter einen neuen String zuweisen?
- Was passiert denn dann?
- Also hier habe ich hier oben erst, wie bisher,
- rufe ich auf die Methode "say hello"
- mit der Variable "frend" dem String.
- Also am sicher Druck der Anfang mark aus.
- Und was so druckt das zweite Mal aus?
- Sie erinnern sich, Sie können variablen
- innerhalb eines, einer Methode beliebig irgendwas zuweisen.
- Außerhalb der Methode haben wir letzte Woche bei INT gesehen.
- Außerhalb der Methode tut sich nichts, hat sich nichts geändert.
- Daher in diesem Fall drucken wir zweimal "welcome mark".
- Weil hier hat "frend" bezieht sich hier auf den String mark
- und natürlich hier auch noch.
- Und die Tatsache, dass das hier geändert wurde,
- hat überhaupt keinen Einfluss auf den Rest des Programms.
- Weil eben halt, was immer da in der Methode passiert,
- betrifft nur die Parametervariable "name", die wir hier haben
- und nicht sonst irgendetwas.
- So, okay.
- Jetzt haben wir eben vorher schon mal gehört,
- wenn wir so eine Aufgabe haben,
- dann sollten wir die in Teilaufgaben zerlegen.
- Und unser idealer Weise können wir das so machen,
- dass wir die Teilaufgaben vielleicht wieder verwenden können.
- Und da hatten wir dann eben gesagt,
- ein Weg, dass die Wiederverwendung einer Teilaufgabe zu erreichen,
- ist diese mit eine Methode zu entwickeln.
- Dann haben wir also hier unsere Aufgabe zerlegt in Teilaufgabe.
- Sie sehen hier, die Teilaufgabe wird zweimal verwendet.
- Und in beiden Fällen wird zum Beispiel diese Methode M2 aufgehoben.
- Allgemein gibt es noch Hilfsmethoden und so weiter.
- Und das ist eigentlich gut und schön.
- Und wir hatten jetzt vorher, also gestern, logisch gestern,
- also am Freitag hatten wir gesehen,
- dass wir auch Schleifen verwenden können.
- Also können in unseren Aufgaben Schleifen haben
- oder können in einer Schleife eine Methode aufrufen.
- Und das ist alles gut und schön.
- Und da habe ich eine einfache Aufgabe für Sie,
- so eine Art, wie irgendwo mal kommen könnte.
- Sie sollen eine Methode OneCount schreiben,
- die einen als Parameter einen String entgegen nimmt
- und die berichtet, also die zurückgibt,
- wie oft das Zeichen 1 im Eingabestring auftritt.
- Und die, die wollen, die können sich vorstellen,
- dass diese Eingabestringszahlen in Binärdarstellungen sind.
- Aber das ist nicht wichtig, es sind ja einfach nur Zeichen 0 und 1.
- So, und eben Beispiel wäre, wenn ich hier 0, 0, 1 hätte,
- wäre die Anzahl 1.
- Und 1, 0, 1, 0 wäre die Anzahl 2.
- So, und das sollten Sie jetzt als Programm schreiben.
- Wird ich jetzt keinen Poll starten, aber so.
- Was sind jetzt, gucken, was sind so die erste Frage,
- die jetzt in Ihren, vielleicht will mir jemand die erste Frage auch auf den Chat,
- haben wir so eine der ersten Fragen, die Sie sich dann sofort stellen oder überlegen.
- Die erste Frage sollte sein, oder eine der ersten Fragen sollte sein,
- was für einen Rückgabetyp muss diese Methode haben.
- Also hier haben wir 1, die Anzahl, also können wir int nehmen,
- wir könnten noch long nehmen, aber int oder long bietet sich an.
- Und dann eben, was sagt die Beschreibung, die Aufgabenstellung,
- über Probleme, über Sonderfälle.
- Also eben, was ist denn, wenn mein String ABC ist,
- weil Sie können sich vorstellen, dass die Eingabestringszahlen
- in Binärdarstellungen sind, aber das ist nicht vorgeschrieben.
- So, wenn ABC kommt, dann ist die Antwort 0,
- weil das tritt die 1, 0 mal auf.
- Wenn wir den Lehrenstring hätten, auch immer so eine gute Frage,
- was wäre denn da die Antwort?
- Na ja, im Lehrenstring, wie oft tritt da die 1 auf?
- Null mal, also ist die Antwort auch 0.
- Damit haben wir eigentlich schon die beiden wichtigsten Grenzfragen behandelt.
- Und jetzt fangen wir also an, das Programm dazu zu entwickeln.
- Da brauchen wir Parameter.
- Wie sagt die Aufgabenstellung, sagt, es muss ein String sein,
- also nennen wir den S, aber können Sie irgendwie nennen.
- Und jetzt, wie kann diese Methode jedes Zeichen analysieren?
- Nennen Sie jedes Zeichen analysiert, müssen wir uns das irgendwie angucken.
- Also die erste Idee wäre vielleicht einen Loop, eine Schleife.
- So, und wie kommen wir jetzt ans Zeichen ran?
- Hab ich Ihnen eben gezeigt, aber das ging vielleicht zu schnell.
- Gibt es die Substring Methode
- und die Substring Methode mit zwei Parametern, Index und Index plus 1,
- gibt mir einen String, der genau aus einem Zeichen besteht.
- Und jetzt kann ich dann gucken, ob dieses Zeichen eben eine 1 ist.
- Das müsst ihr alle gucken, ob 1 equals,
- ob dieser String mit dem Zeichen 1, genau gleich ist dem Substring,
- den ich da irgendwie aus dem String herausgeholt habe.
- So, und wie wird jetzt mein Ergebnis berechnet?
- Naja, also wenn wir so eine 1 da finden,
- dann müssen wir einfach den Zähler, irgendeinen Zähler um 1 erhöhen.
- Wenn da eine 1 ist, da ist keine große Berechnung.
- So, ja, so.
- Alle dabei ist es, ja, wir finden das zu einfach.
- Wir hatten eine andere Idee, die wir das Problem lösen könnten.
- Okay, okay, guck mal, vielleicht habe ich auch noch ein paar Ideen.
- Also einfache Lösung wäre halt diese hier.
- Wir haben hier die Methode, die haben hier den Vorloop,
- der eben benutzt i als Zählervariable,
- geht über alle Elemente des Strings darüber,
- also bis zu eben kleiner hat die Länge,
- wird jedes Mal in jeder Iteration,
- gucken wir uns das nächste, nächsten String an,
- wenn der Substring, den ich hier an der Position i, i plus 1, finde,
- wenn der equals der einer 1 ist,
- dann erhöhe ich mein Resultat Wert um 1, ja,
- und am Ende gebe ich das Resultat zurück.
- Also das sollte nicht zu schwierig sein.
- Jetzt, um das genau angucken, was war denn hier so die erste Überlegung,
- die wir gemacht haben?
- Wir haben überlegt, wie kann diese Methode jedes Zeichen analysieren
- und dann sind wir auf die Idee gekommen,
- ja, wir können einen Loop verwenden.
- Und als wir entschieden haben, einen Loop zu machen,
- war eigentlich alles mehr oder minder automatisch,
- ja, Sie können jetzt noch ein bisschen ändern,
- aber im Endeffekt läuft das auf sowas hinaus, ja.
- Aber ein anderer Anders wäre doch folgende.
- Wir erinnern uns, was für Anweisungen können eigentlich
- im Rumpf einer Methode auftreten?
- Also eigentlich können da alle auftreten,
- können grundsätzlich immer alles verwenden,
- auch wenn wir es Ihnen noch nicht erzählt haben,
- Sie können jede Anweisung verwenden, ja,
- unter anderem könnten Sie auch, haben wir aber schon erzählt,
- auch Aufrufe von Methoden verwenden.
- Und Sie können sogar auch, wenn Sie wollen,
- Sie können auch die Methode, die Sie gerade definieren, ja.
- Wenn ich hier eine Methode definiere,
- kann ich in dieser Methode die Methode selber auch aufrufen, ja.
- Heißt, Rekursion haben wir schon mal mit EBNF kennengelernt
- und gesehen, dass das gar nicht mal so schwierig ist, ja.
- Also stattdessen können wir überlegen,
- wie wird das Ergebnis berechnet?
- Gart ich mal fragen, wie gucke ich mir die Zeichen an,
- sondern wie wird das Ergebnis berechnet?
- Und ein Weg wäre doch zu sagen, hm, ich habe hier einen,
- das hier ist mein String S, ja.
- Den kann ich ja zerlegen, hier in den Anfang
- und den ganzen Rest, ja.
- Und der Anfang ist eben ein Zeichen, ja.
- Das ist ein Zeichen, ja.
- So, da könnte ich doch hingehen, dass ich halt gucke,
- ob eben am Anfang ein Zeichen ist,
- ob da eine Eins ist,
- und wie viele Zeichen es im Rest gibt, ja.
- Der Rest den bekomme ich ja, indem ich eben alles ab Eins,
- alles ab Position Eins,
- gerne als, dass ich mir das als Ergebnis raushole, ja.
- Also ich weiß, für den Einzeichen am Anfang,
- das ist entweder Null oder Eins, ja.
- Mir gibt es da nicht, ja.
- Und danach eben benutze ich diese Methode One Count,
- die ich hier eben jetzt selber jetzt eben entwickle.
- Die benutze ich eben halt hier,
- um den Rest des Trinks zu bearbeiten, ja.
- Also es ist eine etwas andere Art,
- wir haben uns also nicht überlegt,
- welche Struktur haben wir im Programm,
- sondern wie wird mein Ergebnis berechnet?
- Das ist im Grunde genommen die,
- nicht die Kontrollstruktur des Programms,
- sondern wie ich das Ergebnis berechne, ja.
- Und das ist ein allgemeiner Ansatz, ja.
- Wir versuchen, wenn wir so eine Aufgabe haben,
- das so zu machen, dass wir eben,
- wenn es geht, eine Teilaufgabe T1 finden,
- für einen Input, der sofort lösbar ist.
- Wenn der Input sofort lösbar ist,
- dann kann das sofort einfach gemacht werden.
- Und in diesem Beispiel, Strings der Länge Eins,
- dafür können wir schnell und einfach feststellen,
- ob da eine Eins drinnen ist oder nicht.
- Wenn der String aus einer Eins besteht,
- dann ist der, ist diese,
- ist die Teilaufgabe Eins mit, gibt als Wert Eins zurück.
- Und wenn der String nicht einer Eins ist, dann gibt es halt eine Null, ja.
- Und dann habe ich eine zweite Teilaufgabe, T2,
- und die mache ich so, indem ich den Input in zwei Teile zerlege,
- X1 und X2, wobei X1 so ist,
- dass ich den Ergebnis leicht aus für berechnen kann, ja.
- Also entweder kann ich es direkt berechnen
- oder eben meine Methode, die ich eben erstelle,
- die kann mir diesen Teil die Antwort sofort liefern.
- Er wird ja gleich sofort das oder,
- und dann den zweiten Teil, der muss eben halt nochmal
- von der Methode berechnet werden, das könnte länger dauern,
- aber das ist ja kein Problem.
- Irgendwann wird die den Input kleiner und kleiner, kleiner machen, ja.
- Also wenn eben unser X länger als ein Zeichen ist,
- dann berechn ich das so, dass ich eben halt hier diese Methode
- One Count für das erste Zeichen verwende
- und dann diese Methode One Count für den Rest, ja.
- So habe ich das dann ganz einfach gemacht, ja.
- Also wenn wir hier dieses Beispiel uns angucken, ja,
- wir fangen an mit unserem S, das ist dieses hier, ja.
- Wir gehen hin, wir gucken uns den ersten, das erste Zeichen an, ja.
- Das erste Zeichen ist eben eine Eins, ja.
- Daher ergibt das eben die Ziffer, den Wert Eins, ja.
- Und dann gucke ich mir den Rest an,
- der Abstring ab Position Eins, das ist halt dieser Teil des Strings,
- der übrig geblieben ist.
- Und diese Methode natürlich, dieses genauso wie vorher,
- die guckt sich an das erste Zeichen, ja.
- Das erste Zeichen ist hier halt immer die Position Null,
- ist hier zuvergeweite eine Null, daher ergibt das den Wert Null, ja.
- Und dann habe ich hier den Rest des Strings,
- der eben halt auch wieder bearbeitet wird.
- So, und der Rest des Strings, gehe ich jetzt hin,
- das ist eben halt wieder eine Eins, ja.
- Also ergibt das eine Eins, ja.
- Und hier habe ich jetzt einen Lernstring,
- gucke mal, wer vielleicht ganz gut,
- wenn unsere Methode auch den Lernstring behandelt,
- und das vielleicht sogar erkennt, dass da keine Zeichen drin sind.
- So, und dann addiere ich die auf, ja, addiere ich das auf,
- und die Summe ist dann eben zwei.
- Und das ist genau das, was ich ja eigentlich gerne haben wollte, ja.
- So, und das ist also ein anderer Ansatz,
- den ich eben halt verwenden kann, ja.
- Lassen Sie mich das speichern, auch wenn es Minute jetzt überziehe.
- So, also können Sie jetzt also so, also,
- eine Möcher auszudrücken wäre ja so,
- wenn der String der Lehrestring ist, dann ist die Länge Null,
- gibt es Null, und sonst, wenn der Substring,
- der erste String eben eine Eins ist,
- dann mache ich als Resultat Eins,
- und sonst eben lasse ich es bei Null,
- und dann habe ich hier eben, das ist der Wert für den ersten Substring, ja,
- und dann eben plus den Rest.
- Oder ich könnte das auch noch, wenn Sie wollen,
- ausführlicher machen und sagen, hier,
- wenn eben die Länge Eins ist,
- und der erste ist eben genau eine Eins, dann gibt es Eins,
- und wenn die Länge Eins ist,
- und der erste ist eben nicht eine Eins,
- sehen Sie hier das nicht, dann gibt es eine Null, ja,
- und dann eben ist das der Rückgabewert,
- und so gehe ich hin, hier ist der Wert für die erste,
- für den ersten Teil, und hier ist der Wert für den Rest, ja,
- so könnten Sie das machen, ja,
- und die, die schon ein bisschen mehr,
- das sieht natürlich nicht sehr elegant aus,
- und da das Problem nicht so selten ist,
- gibt es halt in Java einen besonderen Operator,
- der Fragezeichen-Operator,
- und was der macht ist, das wird hier evaluiert,
- das ist entweder true oder false, ja, so,
- und wenn der Wert true ist, dann gibt es als Ergebnis diesen zurück,
- und wenn der Wert false ist, gibt es den zweiten Punkt,
- hier ist ein Doppelpunkt, ja, der ist wichtig, so, ja,
- also so kann ich ganz einfach, ganz schnell rausfinden,
- ob der String, den ich am Anfang habe,
- ob der eben halt Wesen will,
- ob der eben eine Eins enthält oder nicht, so,
- also wenn Sie das jetzt vergleichen, ja,
- das ist nicht so viel schwieriger,
- als was Sie vorher in der Lösung Eins gesehen haben,
- und wie Frage eben, machen wir das nur,
- machen wir das nur, weil wir das für so gut haben,
- könnte diese Lösung nicht einen anderen Vorteil haben,
- und damit entlasse ich Sie gleich in die Pause,
- und das ist ja, wenn Sie sich vor,
- das ist die Aufgabe im ersten Semester,
- was, die meisten von Ihnen,
- wenn ja hoffen, wir auch ins zweite Semester kommen,
- und bei uns bleiben, was für eine Vorlesung haben Sie im zweiten Semester,
- da kriegen Sie parallele Programmierung, so,
- und wenn Sie jetzt so was hier haben, ja,
- hier, wenn Sie den Loop sich angucken, ja,
- der geht langsam sequenziell, Schritt für Schritt für Schritt,
- durch den ganzen String durch, ja,
- dieser hier, dieser Ansatz, der geht halt hin
- und ich hier zwei Teile zerlegt den String in zwei Teile,
- und ich habe das halt so gewählt,
- dass ich, der erste Teil ist halt der erste Buchstabe,
- oder das erste Zeichen, und der zweite Teil ist der Rest,
- aber ich könnte auch genauso gut hingehen
- und den String irgendwo in der Mitte halbieren,
- und dann hier einmal die Methode,
- die einmal die Methode auf der ersten Hälfte anwenden,
- und hier auf der zweiten,
- und so habe ich jetzt zwei Teile,
- die im Prinzip parallel laufen könnten,
- die könnten auf verschiedenen Chors ausführen, ja,
- also Sie sehen solche Anweise,
- natürlich bei den kleinen Strings, die wir haben,
- ist der Zeitgewinn wahrscheinlich begrenzt,
- aber es ist ja hier nur die Einführung, ja,
- also Sie sehen solche Ansätze haben durchaus eine Berechtigung,
- und damit sind wir eigentlich mit der Diskussion von Schleifen
- erst mal fertig, fast fertig, ja, so,
- und schon, damit sind wir ja mit der Diskussion von Methoden fast fertig,
- und jetzt kommen wir doch nochmal auf Schleifen zu treffen,
- zu sprechen,
- also, indem Sie gesehen haben, dass man Schleifen nicht immer braucht,
- können wir jetzt uns nochmal Schleifen genauer angucken,
- aber jetzt machen wir erst mal Pause bis 11 Uhr, 15, okay?
- Also, Schleifen sind wichtig, aber auch nicht alles, ja,
- und darum, wie ich nochmal kurz,
- auf Schleifen eingehen, und zwar eben haben wir,
- gibt es gewisse Kurzformen, die waren leider auf einer Slide
- schon mal verseht, nicht darauf,
- und dann haben wir das Problem,
- dass die Schleifen eben manchmal doch nicht so terminieren,
- wie wir wollen, insbesondere dann,
- wenn wir Input-Werte zur Schleifenkontrolle verwenden,
- und dann zum Schluss eben wollen wir,
- ist der Witz wirklich gut?
- Ist der Witz gut?
- Ist kein Witz, oh schade, das ist eine gute Frage.
- Wenn Sie die Frage haben, melden Sie sich,
- schreiben Sie ein Chat, ja, okay,
- und dann zum Schluss haben wir auch Aussagen über Schleifen machen wollen,
- während wir das Thema Invarianten behandeln,
- aber das werden wir wahrscheinlich erst am nächsten Freitag behandeln.
- So, also, um was geht's?
- Sie haben gesehen, wir haben diese Loops,
- die Vorloops konkret,
- und da erhöhen wir immer den Loop-Counter um 1,
- oder wir dekrimentieren um 1 und so weiter, ja.
- Andere enden uns natürlich möglich,
- aber diese hier treten sehr häufig auf.
- Und naja, es gab mal eine Zeit,
- da kostete der Platz auf der Speicherplatz noch was,
- und darum gibt es so eine Kurzform,
- mit der ich ausdrücken kann,
- dass eben eine Variable um 1 erhöht werden soll,
- oder um 1 runtergezählt werden soll.
- Und früher, in der grauen Vorzeit,
- da, wenn man sowas hatte,
- dann war das eben für den Compiler etwas leichter,
- war etwas leichter, das zu erkennen,
- und etwas leichter zu optimieren,
- und daher gab es sogar Computer,
- die dafür besondere Instruktionen hatten.
- Aber heute ist das überhaupt kein Thema mehr.
- Heute ist viel wichtiger, dass man die Programme versteht.
- Und darum gibt es eben eben,
- einige Programmiersparen, so ein Operator,
- mit dem man eben um 1 rauf oder runterzählen kann.
- Und dieser Operator besteht aus 2 plus oder 2 minus,
- direkt hintereinander, kein Zwischenraum.
- Und das, wenn ich so ein Plus habe,
- das ist das selbe, als wenn ich schreiben würde,
- die Variable wird um 1 erhöht oder um 1 gesenkt.
- Also, wenn ich hier die Variable x habe,
- und ich habe hier x plus plus,
- dann ist es so, als ob ich x plus x auf x plus 1 gesetzt machte,
- und danach speichert diese Variable den Wert 3.
- Das geht auch für reelle Zahlen,
- wenn man das wirklich machen will.
- Also, die Grundregel dabei ist,
- dass eben halt durch diese Aktualisierung,
- man eben, wie man das für Loopcourt verwendet,
- das relativ einfach Ausdrück,
- dass eben das, das ist das,
- das wird relativ einfach ausdrücken,
- und so sieht man sofort, was da läuft.
- Aber in diesem Operator kann man überall verwenden.
- Wenn Sie nur im Loopcourt verwenden, kein Problem.
- Aber ihr könnt sie überall verwenden.
- Und darum müssen Sie immer im Hinterkopf haben,
- das System ist folgendes, die Variable wird verwendet,
- und dann verändert.
- Erst verwenden, dann verändern.
- Und das kann zu interessanten Schritten führen.
- Also, hier habe ich die Variable x, die setze ich hier zu 2,
- und jetzt druckke ich hier x plus plus.
- Und was druckt das?
- Das druckt 2.
- Warum?
- Weil wir verwenden die Variable, die hat den Wert 2,
- der wird ausgedruckt,
- und irgendwann wird es um Drucker gegeben,
- und danach wird ausgeführt diese Erhöhung des Zählers
- um 1, und dann ist dann der Speicher Wert 3.
- Und wenn ich jetzt hier hingehe, was passiert hier, gleiche,
- was ist der aktuelle Wert 3, den will ich verwenden,
- und jetzt verändere ich, und darum hat das den Wert 4.
- Das ist die Regel, die wir immer wieder im Hinterkopf benutzen müssen.
- Erst verwenden, und dann verändern.
- Und das gilt immer und überall, und auch in Ausdrücken und Zuweisungen.
- Also, hier, was würde denn für ein Wert in der Variable y gespeichert werden?
- Denkt man mal nach, das ist, ja, wir gehen hin, wir verwenden den Wert,
- der Wert aktuell ist 2, und danach verändern wir, ja,
- wir gehen hin, können Sie sich vorstellen,
- es gibt eine temporäre Variable Temp, die bekommt den Wert von x,
- danach erhöhe ich x um 1, und danach verwende ich diese temporäre Variable.
- So ist das gemacht, und daher bekäme ich hier als Ergebnis,
- x würde hier y den Wert 2 haben, und x hat danach den Wert 3.
- So, das ist also, wie wir das im Prinzip immer wieder haben wollen.
- Und das gilt auch dann, wenn dieser Ausdruck irgendwo auf der rechten Seite
- eines, eines, einer Zuweisung auftritt.
- Also, hier habe ich die Variable i und die Variable j, die sind mit 3 und 7, initialisiert.
- Und wenn jetzt meine rechte Seite die Konstante 9 ist,
- dann ist einfach klar, Ergebnis der rechten Seite ist 9, ja.
- Rechte Seite wird berechnet, und dann, wenn es eine Zuweisung ist,
- wird später der Wert in der, an der linken, er wird dann, der Wert in der,
- wird der Wert gespeichert, ja, und eventuell werden danach die,
- die Wersenwerte noch verändert, wenn nötig, ja.
- Also, wenn ich hier 3 plus 5 habe, ja, die rechte Seite wird berechnet,
- er gibt 8, ja, ist nicht überraschend.
- Also, i plus 2 ist auch nicht schwer, ja.
- Neben i hat den Wert 3, er gibt 5.
- Jetzt, was ist der Wert dieses Ausdrucks, ja?
- i plus plus, ja.
- Naja, der Wert von i ist 3, also ist das 3, ja.
- Und danach hat i den Wert 4, ja.
- Danach hat i den Wert 4.
- Und was ergibt das hier, j minus, minus plus j, prozent,
- zeichnen 4, na ja, wir gehen hin, was ist der Wert von j?
- Der Wert von j ist 7, ja, 7.
- So, und jetzt wird das um 1 dekumentiert, also hat danach j den Wert 6.
- Und da die, deswegen ist wichtig, dass sie verstehen,
- welche Reihenfolge die Ausdrücke und Operatoren angewendet werden.
- J rest 4, also 6 rest 4 ist 2, ja.
- 7 plus 2 ergibt 9, ja.
- Ist also keine, ist keine, ist keine Sache, ja.
- So, jetzt sagt ihr mal, kann man 1 plus plus schreiben
- und die Antwort ist, äh, äh, das geht nur mit Variablen, ja.
- Sie können da keine Konstanten verwenden, macht ja Sinn.
- Wo soll denn das Ergebnis hinkommen, ja.
- So, also, also, also, jetzt haben wir hier, gehen wir ein bisschen weiter,
- also haben wir gesehen, wie die rechte Seite ausgewertet wird.
- Jetzt haben wir wirklich, ja, haben wir ja Zuweisungen, ja.
- Linke Seite wird gesetzt, zu rechte Seite, ja.
- Also, gleiche Prinzip, rechte Seite berechnen,
- Resultat speichern und als Teil der Berechnung eventuell Updates ausführen, ja.
- Also hier, was haben wir hier, i wird auf 3 gesetzt, klar, einfach, ja.
- Und jetzt setzen wir j zu i, äh, ähm, zu i plus plus.
- Vorsicht, ja. Hier werden jetzt 2 Variablen verändert.
- Die Variable j wird verändert und die Variable i wird verändert, ja.
- Und was passiert, wie geht das vor sich, ja.
- Also, wir fangen hier an, ähm, wir berechnen, wir nehmen den Wert von, äh, der rechten Seite.
- Das ist der aktuelle Wert von i, äh, das ist 3, ja.
- So, und danach machen wir das Update von i, also erhöhen das i um 1, ja.
- Hat also jetzt den Wert 4, äh, und das hat dann, ist dann gespeichert.
- Und jetzt gehen wir hin und speichern diesen Wert aus der temporären, äh, Variable,
- oder wo immer wir den haben wollten, ja, den speichern wir in j und j bekommt daher die, äh, Wert 3.
- Und weil das so eine schöne Sache ist, habe ich hier ein Puzzle für Sie, ähm,
- dass Sie gerne, äh, versuchen können, äh, zu lösen, ja.
- Äh, gucken wir mal nach, ob heute der Clicker funktioniert.
- Und wenn er funktioniert, Sie können auch mal Ihren Computer rausholen
- und sehen, wie es dem geht, äh, und äh, gucken wir mal nach.
- So, und Sie sollen ja dieses Programm, äh, ausrechnen, äh, angucken.
- Und dann die Antworten für die Variablen, äh, x, y und z geben.
- Da habe ich verschiedene Antwortmöglichkeiten, äh, für Sie da.
- Also überlegen Sie das mal.
- [Gelächter]
- Okay, also, ich habe äh, letzte Chance, zehn Sekunden.
- Ach, gucken wir mal nach. Was haben wir denn da als Antwort?
- Ja, die kann ich jetzt nicht alle.
- Okay, sieben und zwanzig, was sind die richtigen Antworten?
- Was für einen Wert hat denn äh, x?
- Also, x hat den Wert vier.
- Äh, das haben die meisten von Ihnen richtig, aber ein Drittel eben auch nicht.
- Äh, y hat den, was für einen Wert?
- Y hat den Wert ein, also, das haben 66 Prozent richtig.
- Also, es ist falsch, haben äh, nicht so schlimm, andere sind in der gleichen Boot wie Sie.
- Äh, y hat den Wert eins und das haben 73 Prozent richtig, äh, und äh, z hat den Wert, äh, fünf.
- Und das haben äh, 54 Prozent von Ihnen richtig.
- Äh, also, ja, das Ganze ist schon äh, äh, äh, ja, so.
- Ähm, jetzt gucken wir mal nach, warum ist das denn der Fall?
- Ja, sehen wir uns hier doch an.
- Die, die richtig haben, können sich freuen, aber sollten trotzdem den Mund halten,
- damit die anderen das mitbekommen, ja.
- Also, welchen Wert hat x nach dem Statement s1?
- Ihr habt ja durchgenommen, durchnummeriert, ja.
- Nach s1 hat x den Wert eins, nach s2 hat y den Wert null
- und nach s3 hat z den Wert null, ja, und keine anderen Veränderungen treten.
- Das habe ich hier, Statement s4.
- Das Statement s4 hat zur Folge, dass der Wert von x um eins erhöht wird,
- aber der alte Wert wird benutzt, um y zu ähm, um y zu setzen, ja,
- weil erst verwenden, dann Update, ja, und daher ist das eben eins, ja, so.
- Und danach hat x natürlich den Wert drei.
- So, jetzt haben wir hier erst verwenden, also das ist drei, ja, danach Update,
- hier haben wir die Ausdrücke e1 zu 2, ja, danach eben halt,
- nicht so schnell, nicht so schnell, ähm, ähm, so, ähm, das war falsch.
- Also, erst verwenden, der Wert ist ja zwei, ja, hier, x hat den Wert zwei,
- weil das wurde hier abgedäht.
- So, erst verwenden, dann Update, damit hat x nach e1, hat x den Wert drei, ja,
- plus erst verwenden, ja, das ist drei, ja, danach Update vier, ja,
- darum hat x den Wert vier, y den Wert eins, und z die Summe von zwei und drei,
- und das ist fünf, so, ja, und weil das so gut ging, machen wir das nochmal, ja,
- ähm, gucken wir jetzt jetzt aussieht, äh, ähm, ähm, ähm,
- haben wir wieder andere Beispiele, so, gucken wir mal nach, ob das starten,
- ob ich das starten kann, äh, wenn ich das starten kann, dann sollten sie, äh,
- genau, ein anderes Beispiel, oh oh, ich sehe nichts mehr, sehen Sie was?
- Okay, ah, ja, okay, also ich sehe jetzt hier nichts mehr, aber Sie können das ja noch sehen,
- und der Zwischenzeit kann ich versuchen, rauszufinden, warum zum, äh, warum das hier nicht funktioniert,
- ähm, vielleicht habe ich es versehenlich probiert, also, bitte, äh, läuft, ja, hier,
- äh, was für Werte, ähm, für A, I und J, ja, was in, was für Werte hat das am Ende der,
- ähm, äh, der, äh, Ausführung, äh, dieser Gruppe von Statements?
- Okay, ich mache das jetzt zu.
- So, äh, äh, so, was ist der Wert von A?
- Die Antwort ist 1, äh, ja, warum?
- Wir nehmen den Wert, speichern ihn in A und danach machen wir das Update irgendwo,
- erst verwenden, ja, dann Update, ja, sehen Sie das Beispiel, hatte ich hier vorne für Sie, da, äh,
- hier, da, hatten wir Erschörenden, äh, hatten wir das Beispiel für X, hatten wir das hier, oder am nächsten Schleit, ja,
- äh, auf jeden Fall, hier, da, sehen Sie, eben, erst verwenden, ja, äh, danach eben halt, äh, wir gehen hin, ja,
- wir machen hier das Update, das Update ist das hier, ja, und danach speichern wir, ob da jetzt X oder Y steht, macht ja keine Rolle, ja,
- ob hier ist ja nur, ja, was da steht, mit keine Rolle, das wird da gespeichert, ja, daher eben halt, äh, ist in diesem Fall,
- das Ergebnis 1, ja, und 27% von Ihnen haben das richtig bekommen, okay, ähm, dann, äh, äh, äh, ja, so, jetzt, was für einen Wert hat denn I?
- Das haben Sie alle richtig schön bekommen, I hat den Wert 8 und das haben 97% richtig bekommen, also Sie mögen also,
- äh, äh, äh, die Dekrement-Operation mehr als die Inkrement, okay, gut, äh, und was hat denn Wert J, äh, was für einen Wert haben wir denn J?
- Ah, das haben Sie auch, hat den Wert 1, ja, und das haben in der Tat 95% richtig bekommen, also, ja, äh, äh, bitte, gucken Sie sich das genau an, ja,
- ich habe hier das nochmal Schritt für Schritt erhrauchen, so, jetzt, solche Puzzles sind natürlich schön, wenn man Prüfungsaufgaben erstellen muss, nicht wahr,
- äh, aber bisher haben wir noch nie das in den Prüfungen gefragt, vielleicht ändert sich das mal, ja, äh, meine Meinung ist, unser Job ist es,
- um das Verständliche Programm zu schreiben, keine Puzzles, ja, äh, Sie müssen natürlich diese Zeichen kennen, ja, oder erkennen, ja, weil Sie werden immer wieder mal Programme erfinden, in die, die verwenden,
- Sie können die auch gerne verwenden, ja, ist Ihre Entscheidung, ob Sie so etwas verwenden oder nicht, aber wenn Sie es machen, ja, wenn dann richtig, ja,
- äh, wenn Sie sich da selbst ins Bein schießen, dann tut mir das fürchterlich leid, aber, äh, kann ich nicht machen, ja, diese Operatoren sind nicht so effizient, das ist heute, machen die überhaupt nicht mehr ein Thema, ja, das ist früher mein Thema gewesen, heute nicht mehr, also dafür sollten Sie nicht die Klarheit eines Programmes opfern, ja,
- und wenn Sie meinen, das war alles, nein, es gibt noch viel mehr Kurzformen, ja, Sie können auch eben plus Equal oder minus Equal machen, das wäre dann so, als ob Sie irgendeinen Wert, nicht nur den Wert eins, sondern irgendein beliebigen Wert für das Update verwenden, das geht nicht nur für plus und minus, sondern geht auch für alle anderen Operatoren, ja, es geht für, also nicht alle anderen Operatoren, für alle anderen arithmetischen Operatoren, ja,
- wie gesagt, also ist nicht, äh, äh, wir, ich halte es für wichtig, das zu lesen, aber wir werden nicht Ihre Programme danach bewerten, wie oft Sie diese Operatoren haben, ja, so, also diese Kurzformen sind manchmal nützlich, aber auch manchmal unnötig, ja, so,
- und diese Operatoren heißen, äh, in der Fachsprache, die, äh, sind die Post-Increment oder Post-Decrement-Operatoren, die Betonung liegt auf Post, ja, und jetzt haben manche von Ihnen schon mal Programme angeguckt, und da haben Sie gesehen, dass es auch möglich ist, diesen, äh, Operatoren, die Operatoren vor die Variable zu schreiben, da gibt es nämlich die Prie-Increment und Pridecrement-Operatoren,
- und die erscheinen dann vor den, äh, Variablen, und da ist dann die Regel, die, dass wir das eben halt etwas anders machen, ja, so, kommen wir gleich drauf, so, also die, ähm, wie gesagt, ob das wirklich so eine gute Idee ist, weiß ich nicht, ja, also wenn Sie hier, äh, eben so was haben, ja, was passiert jetzt, ja, jetzt gehen wir halt hin und, äh, machen erst das Update und verwenden dann den Wert, ja, also hier wäre zwei,
- wäre zwei, wäre der Eingangswert, um eins erhöht ist drei und der wird dann an das
- Printlein geschickt, ja, und hier wird die drei erst erhöht und dann als vier an das
- Printlein geschickt, ja, das sind diese Pre-Increment oder Pridecrement-Operatoren. Also wie gesagt,
- wenn Sie die verwenden wollen, ist Ihre Sache, wird ... ist aber nicht das, wenn ich jetzt
- Printlein A schreibe, wo muss, jemand fragt mich, dann müssen wir eins oder zwei heraus,
- das müsste mir jemand, müssen uns sagen, welchen Beispiel, ja, in dem Beispiel davor, A ist,
- wenn Sie dann Printlein A machten, würden Sie dann den aktuellen Wert bekommen. So,
- warum sind diese Kurzformen jetzt manchmal noch etwas eben unnötig über Kopf zerbrechen?
- Wir erinnern uns, dass für diese logischen Operatoren und/oder nicht immer beide Operanten
- ausgewertet werden, um das Ergebnis zu ermitteln, ja. Java beendet die Ausführung, also bald
- das Ergebnis feststeht, ja, so, und eben diese beiden sind alle beide links associativ, das
- heißt, die Ausdrücke werden von links nach rechts, ja, und dann gemäß Präzedenz und
- Associativität ausgewertet. Und dieses und, also logisch und, stoppt sobald ein Ausdruck
- voll ist und der andere stoppt sobald ein Ausdruck tru ist, ja. Und das kann jetzt gefährlich
- werden, kann, muss nicht, ja, wenn Sie in diesen Ausdrücken Pri oder Post-Increment-Operatoren
- verwenden, ja. Hier haben wir also so ein Programmsegment, wo jemand einen Loop hat, wo er eben
- eine Zahl sich anguckt, eingibt, ja, und dann, wenn der Wert ungleich null ist, wird ein
- Counter um, wird erhöht und wenn der Counter kleiner als neun ist, dann, also vorher, dann
- hört der Loop, dann wird das eben ausgedruckt und so weiter, ja. So, und das läuft eben
- für eine bestimmte Anzahl von Fällen, ja. Und jetzt denkt man, dass dieser, der Count
- sollte das eben liefern, ja. Eben, der liefert eben halt die Anzahl der Werte ungleich null,
- weil das will ich halt so machen, weil das wird nur ausgeführt, ja. Wenn das schon false
- ist, ja, dann ist das eben halt, wird der zweite Teil gar nicht ausgeführt. Und jetzt
- hier in dem Vorloop ist das kein Problem, aber wenn Sie Count benutzen sollten, um, um eben
- halt die, um den Loop zu kontrollieren, dann kann das eine Überraschung sein, die eben
- Ihnen nicht gefällt, ja. Also passen Sie auf, wenn Sie in solchen Ausdrücken Post oder Prie
- Increment Operatoren verwendet werden, ja. In der Mathematik sind diese, ist A und B
- derselbe wie B und A, aber nicht, wenn es bei einem Programm, wenn es eben Operatoren
- mit Nebenwirkungen gibt. Und diese Side Effects, sagen wir, diese Operatoren, Prie und Poster,
- das sind Operatoren mit einem Nebeneffekt. Die haben einen Effekt auf die Variable X
- und Y und dann eben macht es einen Unterschied aus, ob der Ausdruck ausgewertet wurde oder
- nicht, weil die, ob das Update findet, nur statt, wenn eben eine Auswertung stattfand,
- ja. Und das müssen Sie aufpassen, weil da können Sie sich im Programm Bös wehtun.
- Also unser Ziel ist es, verständliche Programme zu schreiben, ja. Vorsicht bei diesen Kurzformen.
- Und sie sind dann sinnvoll, wenn Sie eben in der Loop Kontrolle das verwenden, um den
- Loop Counter zu erzählen, aber Vorsicht in allen anderen Situationen, ja. So für die,
- die das Ganze noch nicht genug haben, ja. Die können ja mal gucken, was denn hier die
- Ausgabe dieses Trinks ist, können Sie in den Chat reinschreiben. Wenn ich paar Antworten
- habe, dann sehe ich, dass Sie das mitbekommen haben. Was ergibt dieser Printlinanweisung,
- ja. Ich gucke nur nach was andere Fragen, also überlegen Sie kurz, was für ein Output
- daraus kommen sollte. Okay, eins, zwei, jetzt kommen die Richtchen antworten, okay. Also
- ja, ja, ja. Eigentlich sehe ich Sie einig, also Sie gibt es einige Antworten, okay. Okay,
- was ist die richtige Antwort? Sechs, mit einem Zwischenraum und dann vier, fünf, fünf,
- wobei die Länge des Zwischenraums, für uns keine Rolle, warum, ja. Der geht halt hin,
- hier wird ein Wert gefunden, ja. Ich kann es auf der nächsten Slide habe ich es für Sie
- vorbereitet, ja. Der Wert geht pri, erhöhe, dann verwenden, ja. Also wird das zwei auf
- drei erhöht, ja. Post ist, verwende, dann erhöhen, also ist das, wird der alte Wert
- von drei nochmal genommen und danach hat x den Wert vier und das gibt die sechs, ja.
- Hier ist der Zwischenraum und jetzt wird gedruckt was, jetzt ist das ja string, ja. Jetzt wird
- jeder einzeln als string produziert und als an den string angehängt, ja. So, ist das nicht
- schön, ja. Also hier haben wir die vier, ergibt den string vier, also ergibt das erst mal
- Zwischenraum string vier, ja. Jetzt haben wir hier prä, erhöhe, dann verwenden, erhöhen
- ist fünf, also kommt hier eine fünf, wird das konkateniert und dann hier haben wir nochmal
- den Wert selber, nehmen wir den Wert so einfach, haben wir also vier, fünf, fünf, ja. Also
- wenn Sie, wie gesagt, wenn Sie mal je Langeweile haben sollten, können Sie sich mit solchen
- Prüseln entsprechend vergnügen. So, jetzt könnte ich noch ein bisschen mehr über die Terminierung
- von Slides, von Schleifen sagen, aber da das System heute zu funktionieren scheint, dachte
- ich zeige Ihnen noch kurz, was Sie denn so für die if statements mir geschickt haben.
- Da habe ich viele, nein, okay, also was könnte, was für Überraschungen könnte es denn da
- geben. Also ich hatte Ihnen bereits die eine richtige Lösung gezeigt, das war diese oder
- wenn Sie auch in der Stadt Integer Konstanten Rehle Zahlen verwenden wollen, ist auch okay,
- ja. Aber das war das Programm, ja. Wir sagten hier Methode Quadrant, die das liefert. So,
- und im verschiedenste Version habe ich, lauf der Jahre bekommen, aber jedes Jahr, und da
- gibt es immer wieder Überraschungen, auch dieses Jahr, muss ich sagen, habe ich wieder Beispiele
- gefunden, wo ich sage, hm, okay, interessant. Also solche Versionen habe ich einige gesehen,
- ja, auch aus der Zeit aus der Papier noch verwendet wurde. Gibt es auch Beispiele, die so waren,
- ja, alle keine großen Überraschungen, ja. Auch das manche ziehen dann den, ziehen den,
- sagt man den, ziehen den Test für Null nach oben, leider hat er das nicht geschafft,
- dass auf den richtigen, so, also, so, also das hier, dieses Programm zieht den Test für Null
- nach oben, das ist auch gut, ja. Manche verwenden eine lokale Variable, um erst das Ergebnis
- aufzuschreiben, ist auch gut. Das Int ist auch, auch im Prinzip gut. Ich persönlich denke, es gibt
- mehr Möglichkeiten, Variabelnamen zu finden, aber wenn sie den gleichen Namen nehmen wollen,
- wie die Methode, bitte schön, aber eben inzfang, ist ein kleinen Buchstaben, ja. So,
- hat ihr Programm alle Fälle erkannt, ja, ich habe einige Lösungen gesehen, ja, es ist aus diesem
- Jahr eine, ja, die eben halt übersieht, dass auch irgendwann mal der Rückgabewert Null sein kann,
- ja, oder aus dem letzten Jahr in etwas anderer Anordnung, genau so, ja, so. Dann eben andere
- haben dann vergessen, so Klammern zu schätzen. Hier würde es eben eine Warnung geben, weil hier
- fehlt das Return, ja, da gibt es dann vom Kompiler eine Warnung, dass ein Return fehlt, da hilft der
- Kompiler, ja. Dann haben wir hier so was, das ist auch okay, bloß eben die Quadranten sind nicht
- richtig, ja. Also wenn sie schon das machen, dann, wenn es geht, bitte die richtigen Quadranten, ja.
- Auch hier haben wir eine andere Lösung, die auch eine andere Reihenfolge der Quadranten hat, also
- wie gesagt, jeder oder jeder kann programmieren lernen, aber wichtig sind Aufmerksamkeit,
- Fantasie und Übung, aber Aufmerksamkeit, ja. Und wir haben gesagt, dieses Programm nimmt zwei
- Reellezahlen entgegen, ja, nicht ins, das sind, die können sie nicht in Reellezahlen,
- können sie nicht in ins umwenden. Das ist eine Lösung aus diesem Jahr, ja. Ich habe dieses
- Jahr 78 Antworten bekommen und 28 davon haben Intparameter verwendet, ja. Also sie mögen
- wirklich die Ints, ja. Also aber eben das System würde das nicht mögen, ja. Zudem if wird bei uns
- lowercase geschrieben, else auch, ja. Und sys out, kenne ich nicht, ja. Machen sie sich ihr Leben
- nicht komplizierter, als es eh schon ist, ja. Ist nicht nötig, ja. Oder hier Printlines, ja. Wir
- haben nicht gesagt, dass sie irgendwas drucken sollen. Sie sollen etwas, ja gesagt, sie sollen
- eine Int zurück, also einen Wert zurückgeben, ein Int, ja. Nicht irgendeinen String, ja. Alle
- möglichen Antworten habe ich da am Lauf der Zeit gesehen, ja. Auf Papier genauso wie Leute, die
- das eben eintippen, ja. Die geben mir gut, das ist zwar korrekt, ja. Aber wir wollten nicht
- ins String schon gar nicht so einlangen, ja. Sondern wir wollten eben 1, 2, 3, 4 oder 0, ja. Und das
- ist es. Und auch noch falsch, ja. Weil 0, 0, es könnte ja auch danach gar nicht gefragt, ja. Und
- ja, es gibt verschiedenste Varianten. In anderen Jahren haben wir ihre Kollegen eben das per
- e-mail zugeschickt. Danach sahen die eben ein bisschen farbiger aus, wenn ich die anders gemacht
- habe. Ich habe gesagt, die Parameter sind doubles, ja. Sie können die nicht einfach
- weglassen. Das System akzeptiert das nicht, ja. Und eben das größere Gleich ist auch nicht richtig,
- ja. Es muss echt größer sein. Und von minus 1 hatten wir gar nicht vorgesehen als Quadranten,
- aber okay, ja. Also, da gibt es verschiedenste Versionen, ja. Ganz ohne Namen geht es auch nicht,
- ja. Es muss schon wirklich ein Name kommen und bitte keine Print S. Auch das können wir in Java
- nicht machen, ja. So zwei logische Ausdrücke. Da weiß der Compiler nicht, meint die Programmierer
- oder der Programmierer jetzt ein und oder ein oder. Darum verlangt das System, ja, dass wir das
- genau angeben. So ist es richtig, ja, mit dem Unzeichen, ja. Aber alles andere wird eben da
- nicht akzeptiert, ja. So. Und natürlich machen sie die Logik richtig, ja. Nicht hier unten,
- das ist zwar nicht ganz, nicht ganz falsch, aber eben, es trinkts wollen wir eh nicht zurück haben,
- ja. Oder eine Lösung aus dem letzten Jahr, ja. Da hat dann jemand eben ein Indparameter, aber hat
- eben Parameter verwendet, nur dann dummerweise im Programm die nicht. Zum Glück hilft uns da
- der Compiler, ja. Aber die Tatsache, dass die null vergessen ging, da hilft der Compiler eben
- nicht, ja. Der Compiler hilft nur, wenn eben die Typen nicht ganz richtig sind oder die Namen
- nicht stimmen, ja. Auch hier wieder jemand der Printlinen mochte und return, bitte lowercase, ja.
- So. All dies Jahr habe ich auch eine Reihe von Lösungen gefunden, in denen die Studenten oder sie
- große Kreativität in der Wahl des Variab- des Methodennamen an den Tag legten, ja. Test,
- Quad und so weiter. Ist alles gut und schön. Aber wenn wir sagen, wir wollen eine Methode mit dem Namen
- Quadrant, dann wollen wir eine Methode mit dem Namen Quadrant. Warum? Weil mein Testsystem wird
- testen, ob ihre Methode mit dem Namen Quadrant das und das ergibt, zurückgibt. Wenn da die Methode
- gar nicht existiert, gibt es nichts zurück, ja. Null Punkte, ja. Also bitte, ja. So. Und dann hier
- elseif, ich weiß, es gibt Programmiersprachen, die versuchen die Lehrzeichen zu minimieren,
- weil die kosten ja so viel, ja. Und darum gibt es eben elseif da als Konstrukt, aber nicht in Java,
- ja. Und bitte, hier ist es okay, ja. Also Java ist tolerant. Sie können dieses Lehrzeichen
- weglassen. Sie können auch dieses Lehrzeichen weglassen. Sie könnten sogar auch diese beiden
- weglassen, ja. Wer auch immer noch korrekt ist, Java. Mein Ratschlag wäre, Lehrzeichen kosten nicht
- viel. Daher sollte man sie einsetzen, ja. Wieder eine andere Variabelname oder da. Jemand hat da
- Errace an den Tag gelegt, die wir noch gar nicht kennengelernt hatten, aber ist okay. Aber auch hier
- haben wir noch einen anderen Variabelnamen. Also, dann gibt es Lösungen, die gleich, also wir hatten
- nix von Package gesagt, machen sie sowas nicht, ja. Die Chance, dass ihr Programm auf diese Weise
- richtig evaluiert wird, ist null, ja. Und mit sowas machen sich das Leben noch schwieriger. Das hier
- ist okay, ja. Unsere Methode muss diese Public Static Vault sein fürs erste, ja. Aber von Variable
- mit Static haben wir nix gesagt. Wollen wir auch gar nicht erst sehen, bis das wir ihnen erklärt
- haben, um was es geht. Ganz ohne Methodenamen geht es auch nicht, ja. Wüsste keiner, was er da machen
- soll, ja. Und eben, ja, also so kann man es auch machen, aber eben eher umständlich, ja. Wieder
- eine andere Variabelname, ja. Manche Leute bevorzugen das, können sie machen, dass sie die
- öffnende Klammer dahin setzen, wenn sie wollen, können sie es machen. Ich mache das nicht, weil
- ich brauche den Platz auf meinen Slides, aber das ist okay, ja. Immer noch ein korrektes Programm.
- Aber der Name muss stimmen. Und Float, ich weiß nicht, wer Float heutzutage noch verwendet, ja. Also,
- wenn sie sicher sind, dass ihr Ergebnis so wenig Bits hat, dass es in diesem Variabeltyp
- gespeichert werden kann oder das Ergebnis eh keine Rolle spielt, dann können sie da Float benutzen,
- ja. Aber in allen anderen Sachen, in anderen Situationen empfehlen wir Double, weil sonst können
- sie wirklich das Pechhaben, das nicht mal mehr das Vorzeichen ihrer Berechnung stimmt, ja. So,
- also Float, warum? Das ist auch eine Lösung, ja. Die Lösung war jetzt letztes Jahr, die kriegt
- einen Preis für die größte Anzahl Zeilen, ja, die man für dieses Beispiel finden kann, ja. Aber
- dazu funktioniert es auch noch nicht ganz, aber das ist ein anderes Thema. So, also, ja, dann haben wir
- hier Lösungen eben, die an sich okay sind, nur dass eben halt die Klammern da nicht sind, das ist
- auch okay, ja. Also solche Klammern kosten wirklich nicht viel, ja. Benutzen sie die, ja. Weil,
- Sie haben dann ein Programm, schreiben Sie das hin und dann wollen Sie noch irgendwas ändern, ja.
- Und wenn Sie Glück haben, ist die Variable nicht definiert und dann beschwert sich der Compiler
- und sagt, es ist ein Reh Beispiel, ja, sagt, oh, die Variable ist bekannt. Aber wenn die Variable
- nicht bekannt ist, ja, dann geht der Compiler hin und wenn der ist bekannt, es geht der Compiler
- hin, produziert Code und dann eben halt können Sie den Fehler suchen, wenn Sie wollen, ja. Also,
- wenn das eben so ist, dass das erlaubt ist, dann geht das in der Compiler hin, produziert Code und
- Sie haben das Problem irgendwie später zu lösen, ja. Also, solche, die Klammern kosten wirklich
- heute nicht mehr viel, ja. So, dann gibt es kreative Lösungen, ja. Kreative Lösungen, hier wird
- die Multiplikation verwendet, um zu sehen, ob einer der beiden operanten Nulles. Das geht jetzt gerade
- bei Doubles, aber Vorsicht, das muss nicht immer eine gute Idee sein, ja. Das, oder auch hier wieder
- das muss nicht unbedingt richtig sein, weil vergessen wurde immer noch der Return Typ Null, ja.
- Der Return Wert Null, ja. Und also der Vorsicht, wenn Sie da mit denen rechnen, ist nicht gesagt,
- also, wenn Sie zwei Zahlen miteinander multiplizieren und beide sind positiv, ist nicht gesagt, dass das
- Ergebnis immer noch positiv ist, bei Integers, ja, darum Vorsicht. Also, machen Sie sowas lieber nicht,
- ja. Verwendung von Variablen sind schon okay. Dieses Programm definiert eine neue Variable für
- jeden Block, ja, bloß da unten nicht. Da ist keiner definierter. Da beschwert sich das System zum
- Glück, ja. Ist erlaubt, aber vielleicht nicht gerade übersichtlich, ja. Also, so. Den Fragen,
- diesen Fragezeichen-Operator hatte ich Ihnen schon mal erklärt, könnte man hier auch praktisch
- einsetzen, ja. Gehen Sie halt hin. Wenn das x größer Null ist, dann gucken Sie nach, ob y größer
- Null ist. Und wenn ja, ist es entweder eins oder vier. Und anderfalls, wenn das kleiner ist,
- gucken Sie nach, ob es zwei oder drei ist. Und dann gibt es Lösungen, die sind sehr kreativ, ja.
- Die benutzen hier diesen Operator, den wir Ihnen gar nicht vorstellen, normalerweise, ja. Das ist ein
- Boolean-Logical-Operator, der nicht mit Short-Socket-Evaluation ab die Auswertung abricht, ja.
- Also, da müssen Sie aufpassen, ob das ist, was Sie wollen, ja. Weil dieser eben evaluiert alle
- beiden Operanten, unabhängig davon, ob das ist. Also, das wird dann, wo der ausgiebig auf Stack
- Overflow diskutiert, können Sie machen. Aber vorsichtig, stellen Sie sicher, dass die nächste
- Leserin Ihres Programms die gleiche Meinung hat, wie Sie und das auch eben kennt, ja. So. Ein paar
- andere Beispiele eben, dass aus diesem Jahr wieder mal eins, ja. Das ist eine Zuweisung, ja. Das ist
- keine Vergleich. Also, Sie müssen immer zwei Gleichheitszeichen verwenden, ja, wenn Sie das
- machen wollen, ja. Oder eine andere Lösung. Aus diesem Jahr, ja, ganz ohne Typen geht es auch nicht,
- ja. Das ist sonst einfach. Und diese Lösung kam sogar so, dass diese in der Originallösung,
- diese schließenden Klammern fehlten. Und ich habe da irgendwie erst mal rausfinden müssen,
- dass ich es überhaupt so schön Präti-printen konnte. Wenn Sie mich das nicht machen, dann meint
- eben der Präti-Printer, also das ursprünglich aus, ja, dann meint der Präti-Printer, dass Sie so
- eine Konstruktion da angeliefert haben und meint es fehlten noch zwei sich schließende geschweifte
- Klammern, die Sie aber gar nicht brauchen, weil das Problem sind nicht geschweifte Klammern, das
- Problem sind diese Klammern. Also passen Sie auf, Sie können da viel Zeit vergeuden, jetzt rauszufinden,
- wo die schließenden Klammern hin müssen. Wenn Sie passen Sie auf, es geht nicht darum, schnell
- zu machen, ja. Geht darum, das langsam und richtig zu machen, ja. Eine andere Lösung aus diesem Jahr,
- die hat dann auch vieles weggelassen, sowohl die Klammern für die Methode, als auch die
- Semicolons, ja, und das hat man auch in der Vergangenheit schon mal gehabt, also das geht natürlich auch nicht.
- Auch solche Lösungen haben wir oft gesehen, ja, sind kompakt, ja, aber eben das geht natürlich
- auch nicht für reelle Zahlen, dass sie da nicht machen, da müssten Sie, wenn Sie das richtig machen
- wollen, eben einen Vergleich machen, ja, dann ist das Ganze in Ordnung, ja. So, auch fehlende Returns
- sind interessant, also viele von den Lösungen haben kleine Fehler und zum Glück findet der
- Compiler einige von denen, ja, wie falscher Typ und so weiter und deswegen verwenden wir einen
- Compiler in der Prüfung, damit Sie eben das haben, aber trotzdem fangen Sie mit einem möglichst,
- fangen Sie mit einem möglichst korrekten Programm an, aber die logischen Fehler, die müssen Sie
- finden, ja, und genauso falsche Methodennahmen. Falsche Methodennahmen haben zur Folge, dass
- für uns kein Test funktioniert, ja, bitte, wenn Sie die Punkte wollen, sorgen Sie dafür,
- dass Sie solche Sachen richtig hinbekommen, ja, ist nicht schwer, die Aufgaben, ja, die Beschreibungen
- sind manchmal lang, warum, weil wir an alle versuchen, an alle Sonderfälle zu denken,
- aber Sie müssen die Aufgaben genau lesen, ja, sonst haben Sie es schwer, eine korrekte
- Lösung zu erstellen. So, das habe ich zum Thema If Statement, einfaches Beispiel,
- trotzdem zehn Minuten, wünsche Ihnen einen schönen Rest der Woche und wir sehen uns dann am Freitag.
- [Applaus]
- (Beifall bei der CDU und dem BÜNDNIS 90/DIE GRÜNEN)
+
+[00:00:00.000 --> 00:00:02.000]   So, einen schönen guten Morgen.
+[00:00:02.000 --> 00:00:16.000]   Eigentlich will ich jetzt die Vorlesung halten, aber das Gerät, das ich hier habe, funktioniert nicht ganz.
+[00:00:16.000 --> 00:00:20.000]   Das blinkt für mich, das heißt, ich sehe immer nur zeitweilig, was ich, was Sie sehen.
+[00:00:20.000 --> 00:00:24.000]   Es wird jetzt jemand kommen, wir versuchen das mal mit einem Ventilator zu beheben.
+[00:00:24.000 --> 00:00:28.000]   Wenn das nicht geht, muss ich auf das andere Gerät umsteigen.
+[00:00:28.000 --> 00:00:30.000]   Und mal gucken, wie das geht.
+[00:00:30.000 --> 00:00:38.000]   Also, wir hatten noch immer das Problem, einfach Java, oder immer ein Thema, einfach Java-Programme zu schreiben.
+[00:00:38.000 --> 00:00:44.000]   Und da bin ich noch übrig zum Thema Methoden, das Thema der Namensräume.
+[00:00:44.000 --> 00:00:55.000]   Und der Idee der Namensräume ist, dass wir den Bereich, in dem ein Name sichtbar ist, irgendwie angeben wollen, bezeichnen wollen und irgendwie mit dem arbeiten wollen.
+[00:00:55.000 --> 00:01:01.000]   Und da eben der Inselm Namensraum kann die Variable gelesen und modifiziert werden.
+[00:01:01.000 --> 00:01:05.000]   Und eine Methode kann auch aufgerufen werden, wenn sie irgendwo definiert ist.
+[00:01:05.000 --> 00:01:11.000]   Und das ist hier unser erster Versuch, das Innenleben von Methoden etwas genauer anzugucken.
+[00:01:11.000 --> 00:01:14.000]   Also, der Scope, so heißt das, ist der Sichtbarkeitsbereich.
+[00:01:14.000 --> 00:01:21.000]   Manche Programmiersprachen unterscheiden noch zwischen Sichtbarkeit und haben dann noch genauere Unterscheidungen für uns eigentlich in Java,
+[00:01:21.000 --> 00:01:25.000]   wenn Java benutzt und genügt ist, zu wissen, wann eine Variable sichtbar ist.
+[00:01:25.000 --> 00:01:29.000]   Und natürlich, Variable müssen deklariert sein, bevor sie sichtbar sind.
+[00:01:29.000 --> 00:01:34.000]   Und die Deklarationen müssen eindeutig sein, oder dürfen nicht wiederholt deklarieren.
+[00:01:34.000 --> 00:01:42.000]   Und wenn eine Variable einmal deklariert wurde, dann ist sie sichtbar bis zum Ende des Blocks, für den die Variable deklariert ist.
+[00:01:42.000 --> 00:01:48.000]   Naja, und Blöcke, das haben Sie jetzt vielleicht mitbekommen, werden durch diese geschweiften Klammern begrenzt.
+[00:01:48.000 --> 00:01:55.000]   Also, hier einfachstes Beispiel, ich habe hier eine Methode, die einen Intparameter j hat.
+[00:01:55.000 --> 00:02:00.000]   Und dieser Intparameter j ist im ganzen Body der Methode sichtbar.
+[00:02:00.000 --> 00:02:05.000]   Dann wird eine Variable i deklariert, die ist ab der Deklaration sichtbar bis zum Ende der Methode.
+[00:02:05.000 --> 00:02:08.000]   Und eine Variable k ist auch sichtbar bis zum Ende.
+[00:02:08.000 --> 00:02:15.000]   Und wenn Sie eben eine Variable innerhalb eines if-Blocks deklarieren,
+[00:02:15.000 --> 00:02:21.000]   dann ist sie auch, oder eines elfs-Blocks, sichtbar bis zum Ende genau dieses Block.
+[00:02:21.000 --> 00:02:24.000]   Und natürlich ist sichtbar in allen eingeschlossenen Blöcken.
+[00:02:24.000 --> 00:02:31.000]   Also, wenn Sie jetzt eben so wie ich das vorgestellt hatte, bravo, jetzt wollen wir mal gucken, ob das funktioniert.
+[00:02:31.000 --> 00:02:37.000]   Die Lautstärke im Oberfloraum sollte erhöht werden.
+[00:02:37.000 --> 00:02:38.000]   Könnten Sie das machen?
+[00:02:38.000 --> 00:02:42.000]   Lautstärke im Oberfloraum erhöhen.
+[00:02:42.000 --> 00:02:45.000]   Also, wir hoffen mal, dass das jetzt gut geht.
+[00:02:45.000 --> 00:02:51.000]   Und wenn nicht, habe ich mein altes iPad als Reserveboot aufgerichtet.
+[00:02:51.000 --> 00:02:54.000]   So, okay, versuchen wir es mal.
+[00:02:54.000 --> 00:03:01.000]   Also tut mir leid, jetzt hoffen wir, dass hier die Kühlung das System so weit bringt, dass wir weitermachen können.
+[00:03:01.000 --> 00:03:05.000]   Also, wenn Sie hier einen Loop haben und einen Vorloop benutzen, so wie wir das gesagt haben,
+[00:03:05.000 --> 00:03:13.000]   dann ist der Schleifenzähler, der hier oben definiert wird, auch im Loop sichtbar.
+[00:03:13.000 --> 00:03:20.000]   Und wenn Sie eben einen weiteren Loop haben, in dem Sie ein anderes eben noch mal i verwenden, dann ist das eben da sichtbar.
+[00:03:20.000 --> 00:03:26.000]   Also, der Scrope ist eben der Teil, in dem die Variable sichtbar ist.
+[00:03:26.000 --> 00:03:31.000]   Und eine Variable, die der Vorschleif deklariert wurde, kann halt nur im Rumpf verwendet werden.
+[00:03:31.000 --> 00:03:40.000]   Und das ist eigentlich gut, weil wenn Sie verseht nicht auf die Autohattesrumpfes zugreifen, wird das System sich bei Ihnen beschweren.
+[00:03:40.000 --> 00:03:45.000]   So, und natürlich das Ganze ist interessant, weil Blöcke können geschachtelt sein.
+[00:03:45.000 --> 00:03:50.000]   Und dann eine Variable, die in einem Block sichtbar ist, auch allen eingeschlossenen Loop sichtbar.
+[00:03:50.000 --> 00:03:54.000]   Und genauso geht das mit Loops und so weiter.
+[00:03:54.000 --> 00:04:01.000]   Glücklicherweise können wir in Java Methoden nicht innerhalb Methoden schachteln, dadurch ist das Problem für uns gelöst.
+[00:04:01.000 --> 00:04:10.000]   Also, hier haben wir eine einfache Methode, die eben halt eben eine Variable x hat.
+[00:04:10.000 --> 00:04:17.000]   Das ist die, die wird da deklariert und deren Scrope geht eben vom Beginn nach der Deklaration bis zum Ende des Loops.
+[00:04:17.000 --> 00:04:22.000]   Dann haben wir hier den Loop und da gibt es eine Variable i und die ist halt nur innerhalb dieses Loop-Bodies sichtbar.
+[00:04:22.000 --> 00:04:24.000]   Ja, da sind beide sichtbar.
+[00:04:24.000 --> 00:04:30.000]   So, und natürlich, wenn wir mehrere Variables haben, geht das so, wie Sie sich das entsprechend denken.
+[00:04:30.000 --> 00:04:32.000]   Also, was sind die Folgen dessen?
+[00:04:32.000 --> 00:04:44.000]   Die erste Sache ist, dass wenn die Tür auch mal repariert wäre, dann wäre die Klimaanlage glücklicher und vielleicht wird es dann nicht ganz so warm.
+[00:04:44.000 --> 00:04:56.000]   Also, wenn Sie eben eine Variable deklarieren und die Sichtbarkeitsbereiche überlappen nicht, dann können die Variables in denselben Namen haben, so wie wir das da gesehen haben.
+[00:04:56.000 --> 00:05:01.000]   Aber wenn eben die Sichtbarkeitsbereiche überlappen, dann geht das eben nicht.
+[00:05:01.000 --> 00:05:03.000]   Das können Sie also nicht machen.
+[00:05:03.000 --> 00:05:09.000]   Die Variable i nochmal im Loop, nochmal neu deklarieren, wenn schon der Loop-Counter i ist, das geht nicht.
+[00:05:09.000 --> 00:05:15.000]   Und Sie können auch nicht auf die Variable i außerhalb des Sichtbarkeitsbereichs zugreifen.
+[00:05:15.000 --> 00:05:18.000]   Das würde dann eben auch entsprechend nicht gehen.
+[00:05:18.000 --> 00:05:22.000]   So, und natürlich, Sie können keine Mehrfach-Deklarationen haben, das sage ich immer wieder.
+[00:05:22.000 --> 00:05:31.000]   Und diese ganzen Regeln gelten genauso für die Parametervariable, die Sie in Ihrem Programm, in Ihrer Führer-Regel-Methode deklariert haben.
+[00:05:31.000 --> 00:05:45.000]   Hier habe ich eine Methode mit einer Parameter k, ist im ganzen Methode sichtbar und eben das y ist erst sichtbar, nachdem es eben deklariert wurde.
+[00:05:45.000 --> 00:05:53.000]   Und wenn wir eben eine andere Funktion haben, die hat da wieder andere Variable, die sind auch nicht überlappend.
+[00:05:53.000 --> 00:06:02.000]   Wir können auch denselben Parameternamen verwenden, das sind aber verschiedene Cars mit unterschiedlichen Sichtbarkeitsbereichs, natürlich in Scopes.
+[00:06:02.000 --> 00:06:11.000]   Also, weil das so eine, das sollte eigentlich einfach sein und dafür hätte ich eigentlich eine Poll, aber die Technologie, die wir jetzt benutzen,
+[00:06:11.000 --> 00:06:14.000]   da glaube ich nicht mehr, dass Sie diese Poll vernünftig beantworten können.
+[00:06:14.000 --> 00:06:18.000]   Und darum lasse ich die einfach für Sie, für Selbststudium.
+[00:06:18.000 --> 00:06:25.000]   Und Sie können das bei Gelegenheit machen und ich lege dann die Antwort mit aufs Web.
+[00:06:25.000 --> 00:06:27.000]   So, jetzt war rum all diese Regeln.
+[00:06:27.000 --> 00:06:36.000]   Es ist nicht dazu da, um Ihnen das Leben schwierig zu machen, sondern im Gegenteil soll Ihnen und dem System das Leben leichter machen.
+[00:06:36.000 --> 00:06:39.000]   Wir wollen also die Lesbarkeit der Programme erhöhen.
+[00:06:39.000 --> 00:06:47.000]   Wenn eben Variable überall sichtbar wären, dann hieß es auch, dass wir als Leser uns immer diese Variablen da merken müssen.
+[00:06:47.000 --> 00:06:53.000]   Und der zweite Effekt ist, dass auf diese Weise die Verwaltung des Speichers vereinfacht wird.
+[00:06:53.000 --> 00:06:59.000]   Also Platz für eine Variable muss nur in dem Block gefunden werden, indem sie deklariert wird.
+[00:06:59.000 --> 00:07:03.000]   Und Werte, die dann da gespeichert werden, die verschwinden am Ende des Blockes.
+[00:07:03.000 --> 00:07:11.000]   Also, brauchen uns nicht, um das ganze Management der Daten zu kümmern, das ist alles nicht nötig.
+[00:07:11.000 --> 00:07:13.000]   Und der scheitern wir zwischen Shadowing und Hiding.
+[00:07:13.000 --> 00:07:16.000]   Hat jemand das Wort Shadowing hier gehört?
+[00:07:16.000 --> 00:07:18.000]   Also, ja, wo haben Sie das gehört?
+[00:07:18.000 --> 00:07:20.000]   Sie müssen Ihre Ohren rein.
+[00:07:20.000 --> 00:07:22.000]   Also, ich habe das Wort hier nicht verwendet.
+[00:07:22.000 --> 00:07:24.000]   Im Vorkurs.
+[00:07:24.000 --> 00:07:26.000]   Ja, aber es ist hier.
+[00:07:26.000 --> 00:07:30.000]   Wir setzen in dem Kurs nicht voraus, dass Sie den Vorkurs gemacht haben.
+[00:07:30.000 --> 00:07:35.000]   Also bitte, speichern Sie das schön ab, was Sie da gelernt haben, setzen Sie es ein.
+[00:07:35.000 --> 00:07:38.000]   Aber ja, wir werden darüber noch zu...
+[00:07:38.000 --> 00:07:40.000]   Die Antwort ist darauf, kommen wir noch zu reden.
+[00:07:40.000 --> 00:07:42.000]   Darüber reden wir später.
+[00:07:42.000 --> 00:07:44.000]   Einen Schritt nach dem anderen.
+[00:07:44.000 --> 00:07:48.000]   So, bevor wir das machen, wollen wir ein bisschen mehr über Strings erfahren.
+[00:07:48.000 --> 00:07:52.000]   Auch für die Leute im Vorkurs ist das wahrscheinlich eine Wiederholung.
+[00:07:52.000 --> 00:07:55.000]   Aber trotzdem möchte ich es noch kurz machen,
+[00:07:55.000 --> 00:07:59.000]   weil mit Strings lassen sich viele interessante Beispiele rechnen.
+[00:07:59.000 --> 00:08:05.000]   Also, wir hatten gesagt, ein String ist eine Folge von Buchstaben oder Zeichen.
+[00:08:05.000 --> 00:08:09.000]   Und dieser Typ ist in der Standardbibliothek definiert.
+[00:08:09.000 --> 00:08:11.000]   Und die können wir deklarieren.
+[00:08:11.000 --> 00:08:14.000]   Und die können wir initialisieren, so was gesehen haben.
+[00:08:14.000 --> 00:08:20.000]   Wir nehmen einen Namen und setzen dann den String, den wir zur Initialisierung wollen,
+[00:08:20.000 --> 00:08:23.000]   auf die rechte Seite einer Zuweisung.
+[00:08:23.000 --> 00:08:25.000]   Oder aber für die, die das eben...
+[00:08:25.000 --> 00:08:27.000]   Aber eben dann darf eben da kein...
+[00:08:27.000 --> 00:08:31.000]   Dann darf in dem String kein Zeilenumschub sein.
+[00:08:31.000 --> 00:08:33.000]   Für die Leute, die das eben...
+[00:08:33.000 --> 00:08:37.000]   die trotzdem so was machen wollen, gibt es irgendeiner Revision die Möglichkeit,
+[00:08:37.000 --> 00:08:42.000]   mit 3... 3-mal diesem Zeichen, das ist 3-mal dieses doppelte Anführungszeichen,
+[00:08:42.000 --> 00:08:45.000]   wenn wir das haben, dann beginnt ein Textblock.
+[00:08:45.000 --> 00:08:50.000]   Und in diesem Textblock ignoriert Java alle Leerzeichen.
+[00:08:50.000 --> 00:08:55.000]   Können Sie sich merken oder auch nicht, ist nämlich relativ unwichtig.
+[00:08:55.000 --> 00:08:58.000]   Für das, wenn Sie viel Textverarbeitung machen, ist das gut.
+[00:08:58.000 --> 00:09:03.000]   Aber wir eben brauchen das eigentlich kaum so.
+[00:09:03.000 --> 00:09:06.000]   Jetzt hatte ich schon mal darauf hingewiesen,
+[00:09:06.000 --> 00:09:10.000]   dass dieser Plus-Operator kann auch für String verwendet werden,
+[00:09:10.000 --> 00:09:12.000]   weil der konkateniert dann String.
+[00:09:12.000 --> 00:09:17.000]   Also wenn ich hier eine variable x habe, dann wird hier der Wert von x eingesetzt
+[00:09:17.000 --> 00:09:22.000]   und dann wird ein String erzeugt, der eben 3...
+[00:09:22.000 --> 00:09:28.000]   der oben kann man auf 3, dann kommt hier 5
+[00:09:28.000 --> 00:09:31.000]   und dann kommt hier eine schließende Klammer
+[00:09:31.000 --> 00:09:36.000]   und dann kommt wieder ein Ende des Anführungszeichen.
+[00:09:36.000 --> 00:09:40.000]   So ein String wird auf diese Weise konstruiert.
+[00:09:40.000 --> 00:09:45.000]   Und das geht, weil eben für alle Typen gibt es eine Standarddarstellung,
+[00:09:45.000 --> 00:09:52.000]   die gefunden werden kann und dann ist das eben halt der Fall.
+[00:09:52.000 --> 00:09:56.000]   Wenn Sie jetzt irgendein Typ in String umwandeln wollen,
+[00:09:56.000 --> 00:09:59.000]   z.B. für diese variable x, die Sie hier oben haben,
+[00:09:59.000 --> 00:10:01.000]   wollen Sie jetzt eben den String haben.
+[00:10:01.000 --> 00:10:05.000]   Ein einfacher Weg, das zu machen ist, wir nehmen epsilon, den leeren String,
+[00:10:05.000 --> 00:10:08.000]   konkatenieren das mit dem Wert.
+[00:10:08.000 --> 00:10:12.000]   Der Wert 3 wird umgewandelt in einen String 3
+[00:10:12.000 --> 00:10:16.000]   und dann wird eben der leere String mit dem dreier String,
+[00:10:16.000 --> 00:10:20.000]   zu eben dem genau dreier String, konkateniert.
+[00:10:20.000 --> 00:10:22.000]   Das ist ein sinnvolles Idiom,
+[00:10:22.000 --> 00:10:26.000]   das Sie in vielen Situationen gut gebrauchen können.
+[00:10:26.000 --> 00:10:32.000]   Okay, jetzt, weil String so besonders wichtig sind,
+[00:10:32.000 --> 00:10:35.000]   weil viele Programme ja doch irgendwo mit Text arbeiten,
+[00:10:35.000 --> 00:10:40.000]   werden Sie vom Compiler und dem Laufzeitssystem besonders behandelt.
+[00:10:40.000 --> 00:10:44.000]   Und es ist halt leider so, dass wir, wir können halt nicht alles rein,
+[00:10:44.000 --> 00:10:48.000]   so machen, wie es vielleicht elegant ist, am elegantesten wäre,
+[00:10:48.000 --> 00:10:51.000]   praktische Überlegungen, nämlich die Geschwindigkeit,
+[00:10:51.000 --> 00:10:55.000]   die was ausführen können und die, die, die,
+[00:10:55.000 --> 00:10:58.000]   der Komfort im Programmieren sind halt wichtig.
+[00:10:58.000 --> 00:11:02.000]   Und die müssen dann von der Programmiersprache irgendwie unter einen Hut gebracht werden.
+[00:11:02.000 --> 00:11:07.000]   So, was ich einmal schon erwähnte, aber ich noch immer wieder aufs Neue erwähnen kann,
+[00:11:07.000 --> 00:11:11.000]   alle Methoden lassen Strings unverändert.
+[00:11:11.000 --> 00:11:13.000]   Strings können nicht geändert werden.
+[00:11:13.000 --> 00:11:15.000]   Wenn ein String einmal erstellt ist,
+[00:11:15.000 --> 00:11:19.000]   dann bleibt er so bis das System als zur Ende ist.
+[00:11:19.000 --> 00:11:25.000]   Also, und Strings sind, das ist der erste Blick auf Objekte, die wir werfen.
+[00:11:25.000 --> 00:11:29.000]   Strings sind Objekte und daher brauchen wir diese Dot-Notation,
+[00:11:29.000 --> 00:11:32.000]   um eben Operationen auszuführen.
+[00:11:32.000 --> 00:11:35.000]   Das hatten wir ja schon mal in der vorhergesehen, ja.
+[00:11:35.000 --> 00:11:39.000]   Ich kann eben den String nehmen und dann mit Dot und dann die,
+[00:11:39.000 --> 00:11:42.000]   die Methode dahinter erwähnen, aufschreiben,
+[00:11:42.000 --> 00:11:45.000]   dann wird die Operation ausgeführt.
+[00:11:45.000 --> 00:11:47.000]   Und viele, viele von diesen Operationen,
+[00:11:47.000 --> 00:11:49.000]   und ich kann die auch nicht alle auswändeckern,
+[00:11:49.000 --> 00:11:52.000]   wichtig ist, dass Sie wissen, wo Sie dann gegebenenfalls nachgucken
+[00:11:52.000 --> 00:11:55.000]   und so ein paar wichtige sollten Sie vielleicht kennen.
+[00:11:55.000 --> 00:12:01.000]   Und eine wichtige Operation ist, mit der wir für jeden String die Länge rausfinden können.
+[00:12:01.000 --> 00:12:07.000]   Dafür gibt es eben diese Längs-Methode, die liefert für einen String die aktuelle Länge.
+[00:12:07.000 --> 00:12:13.000]   Und Länge ist die Anzahl der Zeichen, also fünf Zeichen sind hier drin, ja.
+[00:12:13.000 --> 00:12:16.000]   Und darum ist dann die Antwort fünf, ja.
+[00:12:16.000 --> 00:12:18.000]   So, das ist die erste Sache.
+[00:12:18.000 --> 00:12:23.000]   Zweite ist, wir können natürlich auf das Innenleben des Trings zugreifen, ja.
+[00:12:23.000 --> 00:12:28.000]   Wir können die Teile des, die Buchstaben, die den String ausmachen,
+[00:12:28.000 --> 00:12:30.000]   auf die können wir zugreifen.
+[00:12:30.000 --> 00:12:34.000]   Und zwar können wir auf die zugreifen mittels eines Indexes.
+[00:12:34.000 --> 00:12:37.000]   Das Index, der fängt an mit der Basis Null, also der erst,
+[00:12:37.000 --> 00:12:42.000]   das erste Zeichen hat den Index Null, und dann geht das so weiter.
+[00:12:42.000 --> 00:12:47.000]   Wenn ich hier diesen String hätte, ja, die Länge davon wäre acht, ja.
+[00:12:47.000 --> 00:12:51.000]   Daher gibt es dann eben Stringpositionen von Null bis Sieben, ja.
+[00:12:51.000 --> 00:12:56.000]   Und daher kann ich dann auf jeden dieser Buchstaben kann ich zugreifen.
+[00:12:56.000 --> 00:13:00.000]   Wie kann ich daher, oder auf Teile des Strings kann ich zugreifen.
+[00:13:00.000 --> 00:13:05.000]   Ich kann auf den String Rest zugreifen, der von hier nach da geht.
+[00:13:05.000 --> 00:13:10.000]   Jetzt für die, die schon mal woanders einen Kurs oder Java gehört haben
+[00:13:10.000 --> 00:13:12.000]   oder programmieren gehört haben.
+[00:13:12.000 --> 00:13:15.000]   Strings sind in Java keine Errays.
+[00:13:15.000 --> 00:13:17.000]   Wenn Sie nicht wissen, was Errays sind, fast noch besser,
+[00:13:17.000 --> 00:13:19.000]   dann sind Sie nämlich da nicht verwirrt.
+[00:13:19.000 --> 00:13:23.000]   Aber falls Sie wissen sollten, was Errays sind, ja, Strings sind es nicht.
+[00:13:23.000 --> 00:13:25.000]   Strings sind keine Errays.
+[00:13:25.000 --> 00:13:28.000]   Auf Errays kommen wir später noch genügend zu sprechen,
+[00:13:28.000 --> 00:13:30.000]   aber Strings sind eben keine Errays.
+[00:13:30.000 --> 00:13:37.000]   So, jetzt wie greife ich auf die Teile des Strings zu?
+[00:13:37.000 --> 00:13:41.000]   Naja, da eben auch wieder mit vor definierten Methoden,
+[00:13:41.000 --> 00:13:47.000]   die eben halt uns erlauben, ein wieder einzelne Teile des Strings rauszuholen
+[00:13:47.000 --> 00:13:50.000]   oder ein einziges Zeichen rauszuholen.
+[00:13:50.000 --> 00:13:53.000]   Wenn wir sagen, wir haben so eine Methode,
+[00:13:53.000 --> 00:13:57.000]   sagen wir manchmal, wir führen die Methode, den wir so was haben,
+[00:13:57.000 --> 00:14:02.000]   wir haben hier einen String S und dann den Punkt und dann eben den Name einer Operation.
+[00:14:02.000 --> 00:14:05.000]   Dann sagen wir, wir führen die Methode für den String aus
+[00:14:05.000 --> 00:14:08.000]   oder wir wenden diese Methode auf den String an
+[00:14:08.000 --> 00:14:11.000]   oder wir rufen die Methode für S auf.
+[00:14:11.000 --> 00:14:15.000]   Das ist alles, bedeutet ein, dasselbe, es heißt halt nur,
+[00:14:15.000 --> 00:14:17.000]   dass wir diese Operation jetzt durchführen.
+[00:14:17.000 --> 00:14:22.000]   Und diese Operationen können natürlich dann verschiedenste Arten von Rückgabewerten liefern.
+[00:14:22.000 --> 00:14:25.000]   Also eine Reihe von Strings liefern eben wieder Strings zurück.
+[00:14:25.000 --> 00:14:30.000]   Und da sind ganz wichtig die Substring Methode, die gibt es in zwei Varianten.
+[00:14:30.000 --> 00:14:36.000]   Die nimmt die erste, nimmt zwei Positionen und die zweite Variante nimmt eine Position.
+[00:14:36.000 --> 00:14:40.000]   Und die erste, die zwei Positionen hat, die gibt mir den Teil des Strings,
+[00:14:40.000 --> 00:14:45.000]   ich habe gleich ein Beispiel, der durch diese Positionen beschrieben wird.
+[00:14:45.000 --> 00:14:50.000]   Und wenn ich den zweiten Teil habe, dann nimmt er alles ab dieser Position.
+[00:14:50.000 --> 00:14:55.000]   Also hier in der zweiten Variante wäre alles von hier bis zum Ende des Strings
+[00:14:55.000 --> 00:14:59.000]   und das wäre eben ein Teil des Strings, der durch diese Positionen bestimmt ist.
+[00:14:59.000 --> 00:15:03.000]   Und dann gibt es diese Operationen wie Tolor Case, to Upper Case und so weiter,
+[00:15:03.000 --> 00:15:05.000]   die wir schon mal gesehen haben.
+[00:15:05.000 --> 00:15:09.000]   Also hier hätte ich jetzt noch mal einen String.
+[00:15:09.000 --> 00:15:16.000]   Und ich möchte jetzt zum Beispiel den Substring, der an der Position 8 anfängt.
+[00:15:16.000 --> 00:15:18.000]   Die Position 8 ist diese.
+[00:15:18.000 --> 00:15:23.000]   Also wenn ich sage Substring ab Position 8, ist das alles von hierhin.
+[00:15:23.000 --> 00:15:28.000]   Oder wenn ich hingehe und sage, ich hätte gerne den Substring von 0 bis 1.
+[00:15:28.000 --> 00:15:35.000]   0 bis 1, das heißt, ich fange an bei der Position, der ersten Position, das ist die 0,
+[00:15:35.000 --> 00:15:39.000]   aber nicht bis zur 1. Also 1 gehört nicht mit dazu.
+[00:15:39.000 --> 00:15:43.000]   In diesem Fall ist das eben halt nur dieses Zeichen hier.
+[00:15:43.000 --> 00:15:48.000]   Das 1 ist die Obergrenze, die nicht erreicht wird.
+[00:15:48.000 --> 00:15:53.000]   Der zweite ist ausgeschlossen.
+[00:15:53.000 --> 00:15:59.000]   Oder wenn ich eben hier Index, die als Position 3 und 7 angebe,
+[00:15:59.000 --> 00:16:04.000]   ich fange hier in der Position 3 an und es geht bis hierhin,
+[00:16:04.000 --> 00:16:08.000]   weil die Position 7 gehört ja nicht mit dazu.
+[00:16:08.000 --> 00:16:14.000]   Und ich kann natürlich ein einziges Zeichen bekommen,
+[00:16:14.000 --> 00:16:18.000]   das ist genau so, in dem ich eben zwei Indexwerte habe.
+[00:16:18.000 --> 00:16:21.000]   Der eine ist gerade, ist eins größer als der andere.
+[00:16:21.000 --> 00:16:24.000]   Wenn ich das mache, dann bekomme ich hier genau diesen Punkt.
+[00:16:24.000 --> 00:16:27.000]   Ich fange an mit 1 und erreiche 2 nicht.
+[00:16:27.000 --> 00:16:35.000]   So, dann gibt es eben Methoden, die die eben ins liefern.
+[00:16:35.000 --> 00:16:39.000]   Die Längtsoperation, die habe ich Ihnen schon mal gesagt.
+[00:16:39.000 --> 00:16:44.000]   Dann gibt es die Möglichkeit, nach einem bestimmten String zu suchen.
+[00:16:44.000 --> 00:16:48.000]   Ich kann gucken, an welcher Position fängt in diesem String,
+[00:16:48.000 --> 00:16:53.000]   auf den ich die Methode anwende, der dieser Parameterwert,
+[00:16:53.000 --> 00:16:57.000]   den ich einen zweiten String angebe, wo fängt der an.
+[00:16:57.000 --> 00:17:00.000]   Natürlich kann ich das auch noch verallgemeinern
+[00:17:00.000 --> 00:17:04.000]   und sagen, ich fange nicht von Anfang an, das wäre angefangen von 0.
+[00:17:04.000 --> 00:17:08.000]   Ich könnte auch stattdessen sagen, ich möchte erst an dieser Position
+[00:17:08.000 --> 00:17:11.000]   anfangen, nach diesem String zu suchen.
+[00:17:11.000 --> 00:17:16.000]   Also, wenn ich hier gucken möchte, wo fängt dieser String B, E, C, K an,
+[00:17:16.000 --> 00:17:20.000]   der fängt hier an, da ist die Antwort da 3.
+[00:17:20.000 --> 00:17:24.000]   Und was ist die Position des Strings E?
+[00:17:24.000 --> 00:17:26.000]   Na ja, die erste Position ist 4.
+[00:17:26.000 --> 00:17:29.000]   Und wenn ich jetzt anfangen möchte, das war von 0 ausgerechnet,
+[00:17:29.000 --> 00:17:32.000]   und wenn ich stattdessen von 5 aus erst anfange,
+[00:17:32.000 --> 00:17:35.000]   na ja, dann gibt es hier nochmal ein E und das ist 7.
+[00:17:35.000 --> 00:17:38.000]   Das ist nicht überraschend und so weiter.
+[00:17:38.000 --> 00:17:41.000]   Ich habe noch ein paar mehr Beispiele, aber ich weiß nicht,
+[00:17:41.000 --> 00:17:43.000]   ob alle da durchgehen wollen.
+[00:17:43.000 --> 00:17:47.000]   So, wenn Sie hier dieses Wort extrahieren wollten,
+[00:17:47.000 --> 00:17:51.000]   gucken Sie nach, weder finden Sie die Position oder Sie zählen,
+[00:17:51.000 --> 00:17:54.000]   wo finden wir den A, Position 15.
+[00:17:54.000 --> 00:17:57.000]   Also, wie lange ist der String?
+[00:17:57.000 --> 00:18:00.000]   Drei Buchstaben, also können wir auch stattdessen genauso hingehen
+[00:18:00.000 --> 00:18:03.000]   und sagen, wir holen uns diese Position
+[00:18:03.000 --> 00:18:05.000]   und dann wollen wir die nächsten drei Zeichen haben.
+[00:18:05.000 --> 00:18:08.000]   Und das funktioniert dann wirklich bestens.
+[00:18:08.000 --> 00:18:12.000]   So, jetzt gibt es auch weitere Möglichkeiten,
+[00:18:12.000 --> 00:18:15.000]   ein Bullion zurückzubekommen.
+[00:18:15.000 --> 00:18:18.000]   Wenn ich herausfinden möchte, ob zwei Strings
+[00:18:18.000 --> 00:18:23.000]   dieselben Buchstaben enthalten, dann benutze ich die E-Quilts-Methode.
+[00:18:23.000 --> 00:18:26.000]   Ich habe also hier, wenn ich, also hier habe ich das Beispiel,
+[00:18:26.000 --> 00:18:31.000]   ich habe den String S und dann habe ich hier einen anderen String T,
+[00:18:31.000 --> 00:18:33.000]   den habe ich hier dadurch bekommen,
+[00:18:33.000 --> 00:18:36.000]   dass ich das S in Großbuchstaben umgewandelt habe.
+[00:18:36.000 --> 00:18:40.000]   Und wenn ich hier hingehe, dann kann ich jetzt hier sehen,
+[00:18:40.000 --> 00:18:43.000]   ob dieses S gleich dem T ist.
+[00:18:43.000 --> 00:18:45.000]   Das kann ich nur so machen.
+[00:18:45.000 --> 00:18:48.000]   Gibt keinen anderen Weg, der zuverlässig funktioniert,
+[00:18:48.000 --> 00:18:51.000]   der für Strings funktioniert.
+[00:18:51.000 --> 00:18:57.000]   Der, und in dem Fall würde das System eben nicht equal ausdrucken,
+[00:18:57.000 --> 00:19:02.000]   weil eben der eine S-to-upper-Case gibt uns den String Hello.
+[00:19:02.000 --> 00:19:07.000]   So, und in Java unterscheiden wir zwischen kleinen und großen Buchstaben,
+[00:19:07.000 --> 00:19:11.000]   und daher sind diese beiden eben nicht gleich.
+[00:19:11.000 --> 00:19:15.000]   Und natürlich, wir können auch statt einer variable Konstante nehmen,
+[00:19:15.000 --> 00:19:18.000]   das haben wir auch schon mal gemacht,
+[00:19:18.000 --> 00:19:22.000]   das haben wir auch gemacht, also hier gehen wir hin,
+[00:19:22.000 --> 00:19:25.000]   wir nehmen die Konstante und wir checken jetzt,
+[00:19:25.000 --> 00:19:29.000]   ob dieser String gleich dem String ist, den ich mit S erreiche,
+[00:19:29.000 --> 00:19:33.000]   und da ist die Antwort ja, der ist gleich, das ist equal.
+[00:19:33.000 --> 00:19:39.000]   So, und jetzt, wie kommen Sie jetzt auf die wirklichen Grundelemente
+[00:19:39.000 --> 00:19:42.000]   des Strings zugreifen wollen, weil hier sehen Sie,
+[00:19:42.000 --> 00:19:46.000]   wenn ich so etwas mache, wo ich hingehe und einen String heraushole,
+[00:19:46.000 --> 00:19:50.000]   einen String, sorry, hier, wo ich hier hingehe,
+[00:19:50.000 --> 00:19:53.000]   da bekomme ich einen String, die Antwort hier ist,
+[00:19:53.000 --> 00:19:57.000]   vom Substring ist ein String, ein String, der einen Punkt hat.
+[00:19:57.000 --> 00:20:00.000]   Wenn ich jetzt mit den Buchstaben, die den Zeichen,
+[00:20:00.000 --> 00:20:06.000]   die den String ausmachen wollen, dann auf die zugreifen will,
+[00:20:06.000 --> 00:20:11.000]   dann gibt es eine Möglichkeit, die einzelnen Buchstaben da zu erreichen,
+[00:20:11.000 --> 00:20:16.000]   mit der Methode CharacterAdd, die ist nicht überraschend,
+[00:20:16.000 --> 00:20:20.000]   die gibt uns des Zeichen, dass an der Position 1 ist,
+[00:20:20.000 --> 00:20:22.000]   also hier wäre das eben ein Punkt.
+[00:20:22.000 --> 00:20:26.000]   Und seht ihr, der fein Punkt ist hier, die Buchstaben,
+[00:20:26.000 --> 00:20:32.000]   einzelne Buchstaben werden durch eine einzelne Hochkommar angezeigt.
+[00:20:32.000 --> 00:20:35.000]   Das zeigt, also das hier ist der Buchstabepunkt,
+[00:20:35.000 --> 00:20:40.000]   und das ist was ganz anderes, als der String, mit dem,
+[00:20:40.000 --> 00:20:41.000]   mit dem, der einen Punkt hat.
+[00:20:41.000 --> 00:20:43.000]   Die beiden können Sie nicht vergleichen,
+[00:20:43.000 --> 00:20:46.000]   genau so, ob Sie eben einen an das auf dem Tisch haben
+[00:20:46.000 --> 00:20:50.000]   oder einen an das in der Dose, völlig unvergleichbar,
+[00:20:50.000 --> 00:20:53.000]   der eine ist so verpackt, der andere anders.
+[00:20:53.000 --> 00:20:56.000]   Also wenn Sie so, wenn Sie mit diesem Basis,
+[00:20:56.000 --> 00:20:59.000]   das ist ja ein Basistyp, wenn Sie mit einem Basistyp arbeiten,
+[00:20:59.000 --> 00:21:02.000]   dann können Sie dieses Gleichheitszeichen,
+[00:21:02.000 --> 00:21:04.000]   dieses doppelte Gleichheitszeichen verwenden.
+[00:21:04.000 --> 00:21:07.000]   Aber das geht nur für Basistypen.
+[00:21:07.000 --> 00:21:09.000]   Versuchen Sie das nicht mit Strings,
+[00:21:09.000 --> 00:21:14.000]   wir werden später sehen, wann wir dieses Gleichheitsvergleich
+[00:21:14.000 --> 00:21:18.000]   zu einer anderen Zeit mit anderen Arten von,
+[00:21:18.000 --> 00:21:22.000]   von Objekten verwenden können.
+[00:21:22.000 --> 00:21:25.000]   So, also zur Erinnerung,
+[00:21:25.000 --> 00:21:29.000]   Zuweisungen an den String verändern nicht den,
+[00:21:29.000 --> 00:21:32.000]   verändern nicht den String selber.
+[00:21:32.000 --> 00:21:35.000]   Es ist einfach, es wird ein neuer String erzeugt.
+[00:21:35.000 --> 00:21:38.000]   Das müssen Sie immer wieder im Kopf haben.
+[00:21:38.000 --> 00:21:41.000]   Hier wird der String erzeugt, er wird initialisiert irgendwann
+[00:21:41.000 --> 00:21:44.000]   oder bekommt einen Wert zugewiesen.
+[00:21:44.000 --> 00:21:49.000]   Und danach eben halt wird ein anderer Wert zugewiesen.
+[00:21:49.000 --> 00:21:52.000]   Und dann wird dieses Referenz, verweist ihr auch daran.
+[00:21:52.000 --> 00:21:59.000]   Und dieses, dieses String hier, der bleibt.
+[00:21:59.000 --> 00:22:01.000]   Das ist nicht unser Problem.
+[00:22:01.000 --> 00:22:04.000]   Das ist das Schöne der Programmiersprache Java
+[00:22:04.000 --> 00:22:07.000]   im Gegensatz zu anderen Programmiersprachen,
+[00:22:07.000 --> 00:22:10.000]   wo Sie als Programmiererin sich den Kopf zerbrechen können,
+[00:22:10.000 --> 00:22:13.000]   wo Sie denn jetzt diese anderen Strings gelassen haben
+[00:22:13.000 --> 00:22:15.000]   und was mit denen passiert.
+[00:22:15.000 --> 00:22:18.000]   In Java kommt irgendwann die Müllabfuhr
+[00:22:18.000 --> 00:22:20.000]   und holt den, wimmt den weg.
+[00:22:20.000 --> 00:22:22.000]   Und Sie brauchen sich da nicht rumzukümmern.
+[00:22:22.000 --> 00:22:24.000]   Das ist eine so, eine große Erleichterung.
+[00:22:24.000 --> 00:22:26.000]   Ich meine, aber so kleinen Programmen, wie wir sie jetzt hier haben,
+[00:22:26.000 --> 00:22:28.000]   ist es ja nicht wichtig.
+[00:22:28.000 --> 00:22:30.000]   Aber schreiben Sie mal ein Programm,
+[00:22:30.000 --> 00:22:32.000]   das eben wesentlich größer ist,
+[00:22:32.000 --> 00:22:34.000]   indem viele Leute mitarbeiten
+[00:22:34.000 --> 00:22:36.000]   und überlegen Sie sich dann,
+[00:22:36.000 --> 00:22:39.000]   wie da die Daten gemanagt werden müssen.
+[00:22:39.000 --> 00:22:41.000]   Das kann echt schwierig werden.
+[00:22:41.000 --> 00:22:45.000]   Nur, das muss ich immer wieder aufs Neue,
+[00:22:45.000 --> 00:22:47.000]   darauf hinweisen.
+[00:22:47.000 --> 00:22:50.000]   Zuweisungen zu Strings ändern nicht den String.
+[00:22:50.000 --> 00:22:52.000]   Ein Neuer wird erstellt
+[00:22:52.000 --> 00:22:54.000]   und der Name bezieht Sie auf den neuen String.
+[00:22:54.000 --> 00:22:57.000]   Und jede Methode liefert eben einen neuen String.
+[00:22:57.000 --> 00:23:00.000]   Und den kann ich dann eben weiterverarbeiten.
+[00:23:00.000 --> 00:23:02.000]   Also hier habe ich den String S.
+[00:23:02.000 --> 00:23:05.000]   Ich mache, ich wende die Methode
+[00:23:05.000 --> 00:23:07.000]   "to uppercase of S" an,
+[00:23:07.000 --> 00:23:09.000]   das produzierte neuen String,
+[00:23:09.000 --> 00:23:11.000]   ich werde es weiter kümmerer.
+[00:23:11.000 --> 00:23:13.000]   Und wenn ich auf S mir ansehe,
+[00:23:13.000 --> 00:23:15.000]   ist das immer noch unverändert.
+[00:23:15.000 --> 00:23:17.000]   Das hat keine Veränderung.
+[00:23:17.000 --> 00:23:19.000]   Wenn ich mit dem Wab arbeiten will,
+[00:23:19.000 --> 00:23:22.000]   dann muss ich das in irgendeiner anderen Stringvariabel speichern.
+[00:23:22.000 --> 00:23:24.000]   Oder ich kann es auch in derselben Variabel speichern.
+[00:23:24.000 --> 00:23:26.000]   Das ist okay.
+[00:23:26.000 --> 00:23:28.000]   Ich kann es in der Variable S speichern
+[00:23:28.000 --> 00:23:30.000]   und kann das da haben.
+[00:23:30.000 --> 00:23:32.000]   Und was passiert jetzt,
+[00:23:32.000 --> 00:23:35.000]   wenn wir Strings als Parameter haben?
+[00:23:35.000 --> 00:23:37.000]   Ja, nichts anderes.
+[00:23:37.000 --> 00:23:40.000]   Hier habe ich eine ganz einfache Methode.
+[00:23:40.000 --> 00:23:43.000]   Die hat, ihr seht, da oben, das ist auch noch was,
+[00:23:43.000 --> 00:23:45.000]   was wir noch nicht besprochen haben.
+[00:23:45.000 --> 00:23:47.000]   Das ist aus einem guten Grund blau.
+[00:23:47.000 --> 00:23:49.000]   Hier habe ich die Methode "say hello",
+[00:23:49.000 --> 00:23:51.000]   statt blau nämlich das so.
+[00:23:51.000 --> 00:23:54.000]   Und die nimmt als Parameter einen String.
+[00:23:54.000 --> 00:23:57.000]   Und hier habe ich eine Stringvariable
+[00:23:57.000 --> 00:23:59.000]   und die benutze ich, um diese Methode
+[00:23:59.000 --> 00:24:01.000]   "to say hello" aufzurufen.
+[00:24:01.000 --> 00:24:03.000]   Und was passt, und danach benutze ich,
+[00:24:03.000 --> 00:24:06.000]   statt der Variable, benutze ich einen String.
+[00:24:06.000 --> 00:24:08.000]   Und was passiert in dem Programm?
+[00:24:08.000 --> 00:24:10.000]   Na ja, was, wie wir erwarten,
+[00:24:10.000 --> 00:24:13.000]   erst sagt dieses Methode "say hello"
+[00:24:13.000 --> 00:24:15.000]   macht nicht viel, die druckt halt nur.
+[00:24:15.000 --> 00:24:19.000]   Erst wird eben der Wert dieses Variable genommen,
+[00:24:19.000 --> 00:24:21.000]   wird "welcome mark" gedruckt
+[00:24:21.000 --> 00:24:23.000]   und danach "welcome peter".
+[00:24:23.000 --> 00:24:26.000]   So, das ist überhaupt kein Unterschied.
+[00:24:26.000 --> 00:24:28.000]   Läuft best.
+[00:24:28.000 --> 00:24:32.000]   Und was ist, wenn wir jetzt eben hier in der Methode
+[00:24:32.000 --> 00:24:38.000]   diesen Parameter einen neuen String zuweisen?
+[00:24:38.000 --> 00:24:40.000]   Was passiert denn dann?
+[00:24:40.000 --> 00:24:44.000]   Also hier habe ich hier oben erst, wie bisher,
+[00:24:44.000 --> 00:24:48.000]   rufe ich auf die Methode "say hello"
+[00:24:48.000 --> 00:24:52.000]   mit der Variable "frend" dem String.
+[00:24:52.000 --> 00:24:56.000]   Also am sicher Druck der Anfang mark aus.
+[00:24:56.000 --> 00:24:58.000]   Und was so druckt das zweite Mal aus?
+[00:24:58.000 --> 00:25:01.000]   Sie erinnern sich, Sie können variablen
+[00:25:01.000 --> 00:25:07.000]   innerhalb eines, einer Methode beliebig irgendwas zuweisen.
+[00:25:07.000 --> 00:25:11.000]   Außerhalb der Methode haben wir letzte Woche bei INT gesehen.
+[00:25:11.000 --> 00:25:15.000]   Außerhalb der Methode tut sich nichts, hat sich nichts geändert.
+[00:25:15.000 --> 00:25:20.000]   Daher in diesem Fall drucken wir zweimal "welcome mark".
+[00:25:20.000 --> 00:25:23.000]   Weil hier hat "frend" bezieht sich hier auf den String mark
+[00:25:23.000 --> 00:25:25.000]   und natürlich hier auch noch.
+[00:25:25.000 --> 00:25:27.000]   Und die Tatsache, dass das hier geändert wurde,
+[00:25:27.000 --> 00:25:31.000]   hat überhaupt keinen Einfluss auf den Rest des Programms.
+[00:25:31.000 --> 00:25:34.000]   Weil eben halt, was immer da in der Methode passiert,
+[00:25:34.000 --> 00:25:39.000]   betrifft nur die Parametervariable "name", die wir hier haben
+[00:25:39.000 --> 00:25:41.000]   und nicht sonst irgendetwas.
+[00:25:41.000 --> 00:25:43.000]   So, okay.
+[00:25:43.000 --> 00:25:46.000]   Jetzt haben wir eben vorher schon mal gehört,
+[00:25:46.000 --> 00:25:48.000]   wenn wir so eine Aufgabe haben,
+[00:25:48.000 --> 00:25:50.000]   dann sollten wir die in Teilaufgaben zerlegen.
+[00:25:50.000 --> 00:25:53.000]   Und unser idealer Weise können wir das so machen,
+[00:25:53.000 --> 00:25:56.000]   dass wir die Teilaufgaben vielleicht wieder verwenden können.
+[00:25:56.000 --> 00:25:58.000]   Und da hatten wir dann eben gesagt,
+[00:25:58.000 --> 00:26:02.000]   ein Weg, dass die Wiederverwendung einer Teilaufgabe zu erreichen,
+[00:26:02.000 --> 00:26:05.000]   ist diese mit eine Methode zu entwickeln.
+[00:26:05.000 --> 00:26:08.000]   Dann haben wir also hier unsere Aufgabe zerlegt in Teilaufgabe.
+[00:26:08.000 --> 00:26:11.000]   Sie sehen hier, die Teilaufgabe wird zweimal verwendet.
+[00:26:11.000 --> 00:26:16.000]   Und in beiden Fällen wird zum Beispiel diese Methode M2 aufgehoben.
+[00:26:16.000 --> 00:26:18.000]   Allgemein gibt es noch Hilfsmethoden und so weiter.
+[00:26:18.000 --> 00:26:21.000]   Und das ist eigentlich gut und schön.
+[00:26:21.000 --> 00:26:24.000]   Und wir hatten jetzt vorher, also gestern, logisch gestern,
+[00:26:24.000 --> 00:26:26.000]   also am Freitag hatten wir gesehen,
+[00:26:26.000 --> 00:26:28.000]   dass wir auch Schleifen verwenden können.
+[00:26:28.000 --> 00:26:31.000]   Also können in unseren Aufgaben Schleifen haben
+[00:26:31.000 --> 00:26:36.000]   oder können in einer Schleife eine Methode aufrufen.
+[00:26:36.000 --> 00:26:38.000]   Und das ist alles gut und schön.
+[00:26:38.000 --> 00:26:41.000]   Und da habe ich eine einfache Aufgabe für Sie,
+[00:26:41.000 --> 00:26:45.000]   so eine Art, wie irgendwo mal kommen könnte.
+[00:26:45.000 --> 00:26:51.000]   Sie sollen eine Methode OneCount schreiben,
+[00:26:51.000 --> 00:26:55.000]   die einen als Parameter einen String entgegen nimmt
+[00:26:55.000 --> 00:26:58.000]   und die berichtet, also die zurückgibt,
+[00:26:58.000 --> 00:27:02.000]   wie oft das Zeichen 1 im Eingabestring auftritt.
+[00:27:02.000 --> 00:27:04.000]   Und die, die wollen, die können sich vorstellen,
+[00:27:04.000 --> 00:27:07.000]   dass diese Eingabestringszahlen in Binärdarstellungen sind.
+[00:27:07.000 --> 00:27:10.000]   Aber das ist nicht wichtig, es sind ja einfach nur Zeichen 0 und 1.
+[00:27:10.000 --> 00:27:13.000]   So, und eben Beispiel wäre, wenn ich hier 0, 0, 1 hätte,
+[00:27:13.000 --> 00:27:15.000]   wäre die Anzahl 1.
+[00:27:15.000 --> 00:27:18.000]   Und 1, 0, 1, 0 wäre die Anzahl 2.
+[00:27:18.000 --> 00:27:20.000]   So, und das sollten Sie jetzt als Programm schreiben.
+[00:27:20.000 --> 00:27:23.000]   Wird ich jetzt keinen Poll starten, aber so.
+[00:27:23.000 --> 00:27:26.000]   Was sind jetzt, gucken, was sind so die erste Frage,
+[00:27:26.000 --> 00:27:31.000]   die jetzt in Ihren, vielleicht will mir jemand die erste Frage auch auf den Chat,
+[00:27:31.000 --> 00:27:35.000]   haben wir so eine der ersten Fragen, die Sie sich dann sofort stellen oder überlegen.
+[00:27:35.000 --> 00:27:39.000]   Die erste Frage sollte sein, oder eine der ersten Fragen sollte sein,
+[00:27:39.000 --> 00:27:44.000]   was für einen Rückgabetyp muss diese Methode haben.
+[00:27:44.000 --> 00:27:48.000]   Also hier haben wir 1, die Anzahl, also können wir int nehmen,
+[00:27:48.000 --> 00:27:52.000]   wir könnten noch long nehmen, aber int oder long bietet sich an.
+[00:27:52.000 --> 00:27:57.000]   Und dann eben, was sagt die Beschreibung, die Aufgabenstellung,
+[00:27:57.000 --> 00:28:01.000]   über Probleme, über Sonderfälle.
+[00:28:01.000 --> 00:28:04.000]   Also eben, was ist denn, wenn mein String ABC ist,
+[00:28:04.000 --> 00:28:07.000]   weil Sie können sich vorstellen, dass die Eingabestringszahlen
+[00:28:07.000 --> 00:28:10.000]   in Binärdarstellungen sind, aber das ist nicht vorgeschrieben.
+[00:28:10.000 --> 00:28:13.000]   So, wenn ABC kommt, dann ist die Antwort 0,
+[00:28:13.000 --> 00:28:16.000]   weil das tritt die 1, 0 mal auf.
+[00:28:16.000 --> 00:28:19.000]   Wenn wir den Lehrenstring hätten, auch immer so eine gute Frage,
+[00:28:19.000 --> 00:28:21.000]   was wäre denn da die Antwort?
+[00:28:21.000 --> 00:28:23.000]   Na ja, im Lehrenstring, wie oft tritt da die 1 auf?
+[00:28:23.000 --> 00:28:26.000]   Null mal, also ist die Antwort auch 0.
+[00:28:26.000 --> 00:28:31.000]   Damit haben wir eigentlich schon die beiden wichtigsten Grenzfragen behandelt.
+[00:28:31.000 --> 00:28:34.000]   Und jetzt fangen wir also an, das Programm dazu zu entwickeln.
+[00:28:34.000 --> 00:28:36.000]   Da brauchen wir Parameter.
+[00:28:36.000 --> 00:28:40.000]   Wie sagt die Aufgabenstellung, sagt, es muss ein String sein,
+[00:28:40.000 --> 00:28:43.000]   also nennen wir den S, aber können Sie irgendwie nennen.
+[00:28:43.000 --> 00:28:47.000]   Und jetzt, wie kann diese Methode jedes Zeichen analysieren?
+[00:28:47.000 --> 00:28:51.000]   Nennen Sie jedes Zeichen analysiert, müssen wir uns das irgendwie angucken.
+[00:28:51.000 --> 00:28:55.000]   Also die erste Idee wäre vielleicht einen Loop, eine Schleife.
+[00:28:55.000 --> 00:28:58.000]   So, und wie kommen wir jetzt ans Zeichen ran?
+[00:28:58.000 --> 00:29:01.000]   Hab ich Ihnen eben gezeigt, aber das ging vielleicht zu schnell.
+[00:29:01.000 --> 00:29:03.000]   Gibt es die Substring Methode
+[00:29:03.000 --> 00:29:07.000]   und die Substring Methode mit zwei Parametern, Index und Index plus 1,
+[00:29:07.000 --> 00:29:11.000]   gibt mir einen String, der genau aus einem Zeichen besteht.
+[00:29:11.000 --> 00:29:16.000]   Und jetzt kann ich dann gucken, ob dieses Zeichen eben eine 1 ist.
+[00:29:16.000 --> 00:29:20.000]   Das müsst ihr alle gucken, ob 1 equals,
+[00:29:20.000 --> 00:29:26.000]   ob dieser String mit dem Zeichen 1, genau gleich ist dem Substring,
+[00:29:26.000 --> 00:29:31.000]   den ich da irgendwie aus dem String herausgeholt habe.
+[00:29:31.000 --> 00:29:34.000]   So, und wie wird jetzt mein Ergebnis berechnet?
+[00:29:34.000 --> 00:29:38.000]   Naja, also wenn wir so eine 1 da finden,
+[00:29:38.000 --> 00:29:43.000]   dann müssen wir einfach den Zähler, irgendeinen Zähler um 1 erhöhen.
+[00:29:43.000 --> 00:29:47.000]   Wenn da eine 1 ist, da ist keine große Berechnung.
+[00:29:47.000 --> 00:29:49.000]   So, ja, so.
+[00:29:49.000 --> 00:29:54.000]   Alle dabei ist es, ja, wir finden das zu einfach.
+[00:29:54.000 --> 00:29:58.000]   Wir hatten eine andere Idee, die wir das Problem lösen könnten.
+[00:29:58.000 --> 00:30:01.000]   Okay, okay, guck mal, vielleicht habe ich auch noch ein paar Ideen.
+[00:30:01.000 --> 00:30:05.000]   Also einfache Lösung wäre halt diese hier.
+[00:30:05.000 --> 00:30:10.000]   Wir haben hier die Methode, die haben hier den Vorloop,
+[00:30:10.000 --> 00:30:14.000]   der eben benutzt i als Zählervariable,
+[00:30:14.000 --> 00:30:18.000]   geht über alle Elemente des Strings darüber,
+[00:30:18.000 --> 00:30:21.000]   also bis zu eben kleiner hat die Länge,
+[00:30:21.000 --> 00:30:23.000]   wird jedes Mal in jeder Iteration,
+[00:30:23.000 --> 00:30:26.000]   gucken wir uns das nächste, nächsten String an,
+[00:30:26.000 --> 00:30:32.000]   wenn der Substring, den ich hier an der Position i, i plus 1, finde,
+[00:30:32.000 --> 00:30:35.000]   wenn der equals der einer 1 ist,
+[00:30:35.000 --> 00:30:39.000]   dann erhöhe ich mein Resultat Wert um 1, ja,
+[00:30:39.000 --> 00:30:42.000]   und am Ende gebe ich das Resultat zurück.
+[00:30:42.000 --> 00:30:46.000]   Also das sollte nicht zu schwierig sein.
+[00:30:46.000 --> 00:30:51.000]   Jetzt, um das genau angucken, was war denn hier so die erste Überlegung,
+[00:30:51.000 --> 00:30:52.000]   die wir gemacht haben?
+[00:30:52.000 --> 00:30:56.000]   Wir haben überlegt, wie kann diese Methode jedes Zeichen analysieren
+[00:30:56.000 --> 00:30:58.000]   und dann sind wir auf die Idee gekommen,
+[00:30:58.000 --> 00:31:00.000]   ja, wir können einen Loop verwenden.
+[00:31:00.000 --> 00:31:03.000]   Und als wir entschieden haben, einen Loop zu machen,
+[00:31:03.000 --> 00:31:05.000]   war eigentlich alles mehr oder minder automatisch,
+[00:31:05.000 --> 00:31:07.000]   ja, Sie können jetzt noch ein bisschen ändern,
+[00:31:07.000 --> 00:31:10.000]   aber im Endeffekt läuft das auf sowas hinaus, ja.
+[00:31:10.000 --> 00:31:13.000]   Aber ein anderer Anders wäre doch folgende.
+[00:31:13.000 --> 00:31:16.000]   Wir erinnern uns, was für Anweisungen können eigentlich
+[00:31:16.000 --> 00:31:18.000]   im Rumpf einer Methode auftreten?
+[00:31:18.000 --> 00:31:20.000]   Also eigentlich können da alle auftreten,
+[00:31:20.000 --> 00:31:23.000]   können grundsätzlich immer alles verwenden,
+[00:31:23.000 --> 00:31:25.000]   auch wenn wir es Ihnen noch nicht erzählt haben,
+[00:31:25.000 --> 00:31:27.000]   Sie können jede Anweisung verwenden, ja,
+[00:31:27.000 --> 00:31:30.000]   unter anderem könnten Sie auch, haben wir aber schon erzählt,
+[00:31:30.000 --> 00:31:32.000]   auch Aufrufe von Methoden verwenden.
+[00:31:32.000 --> 00:31:34.000]   Und Sie können sogar auch, wenn Sie wollen,
+[00:31:34.000 --> 00:31:38.000]   Sie können auch die Methode, die Sie gerade definieren, ja.
+[00:31:38.000 --> 00:31:40.000]   Wenn ich hier eine Methode definiere,
+[00:31:40.000 --> 00:31:44.000]   kann ich in dieser Methode die Methode selber auch aufrufen, ja.
+[00:31:44.000 --> 00:31:47.000]   Heißt, Rekursion haben wir schon mal mit EBNF kennengelernt
+[00:31:47.000 --> 00:31:50.000]   und gesehen, dass das gar nicht mal so schwierig ist, ja.
+[00:31:50.000 --> 00:31:53.000]   Also stattdessen können wir überlegen,
+[00:31:53.000 --> 00:31:55.000]   wie wird das Ergebnis berechnet?
+[00:31:55.000 --> 00:31:57.000]   Gart ich mal fragen, wie gucke ich mir die Zeichen an,
+[00:31:57.000 --> 00:31:59.000]   sondern wie wird das Ergebnis berechnet?
+[00:31:59.000 --> 00:32:02.000]   Und ein Weg wäre doch zu sagen, hm, ich habe hier einen,
+[00:32:02.000 --> 00:32:04.000]   das hier ist mein String S, ja.
+[00:32:04.000 --> 00:32:07.000]   Den kann ich ja zerlegen, hier in den Anfang
+[00:32:07.000 --> 00:32:09.000]   und den ganzen Rest, ja.
+[00:32:09.000 --> 00:32:13.000]   Und der Anfang ist eben ein Zeichen, ja.
+[00:32:13.000 --> 00:32:15.000]   Das ist ein Zeichen, ja.
+[00:32:15.000 --> 00:32:19.000]   So, da könnte ich doch hingehen, dass ich halt gucke,
+[00:32:19.000 --> 00:32:23.000]   ob eben am Anfang ein Zeichen ist,
+[00:32:23.000 --> 00:32:25.000]   ob da eine Eins ist,
+[00:32:25.000 --> 00:32:28.000]   und wie viele Zeichen es im Rest gibt, ja.
+[00:32:28.000 --> 00:32:32.000]   Der Rest den bekomme ich ja, indem ich eben alles ab Eins,
+[00:32:32.000 --> 00:32:34.000]   alles ab Position Eins,
+[00:32:34.000 --> 00:32:39.000]   gerne als, dass ich mir das als Ergebnis raushole, ja.
+[00:32:39.000 --> 00:32:42.000]   Also ich weiß, für den Einzeichen am Anfang,
+[00:32:42.000 --> 00:32:44.000]   das ist entweder Null oder Eins, ja.
+[00:32:44.000 --> 00:32:46.000]   Mir gibt es da nicht, ja.
+[00:32:46.000 --> 00:32:50.000]   Und danach eben benutze ich diese Methode One Count,
+[00:32:50.000 --> 00:32:54.000]   die ich hier eben jetzt selber jetzt eben entwickle.
+[00:32:54.000 --> 00:32:56.000]   Die benutze ich eben halt hier,
+[00:32:56.000 --> 00:32:59.000]   um den Rest des Trinks zu bearbeiten, ja.
+[00:32:59.000 --> 00:33:01.000]   Also es ist eine etwas andere Art,
+[00:33:01.000 --> 00:33:03.000]   wir haben uns also nicht überlegt,
+[00:33:03.000 --> 00:33:05.000]   welche Struktur haben wir im Programm,
+[00:33:05.000 --> 00:33:08.000]   sondern wie wird mein Ergebnis berechnet?
+[00:33:08.000 --> 00:33:10.000]   Das ist im Grunde genommen die,
+[00:33:10.000 --> 00:33:12.000]   nicht die Kontrollstruktur des Programms,
+[00:33:12.000 --> 00:33:15.000]   sondern wie ich das Ergebnis berechne, ja.
+[00:33:15.000 --> 00:33:17.000]   Und das ist ein allgemeiner Ansatz, ja.
+[00:33:17.000 --> 00:33:19.000]   Wir versuchen, wenn wir so eine Aufgabe haben,
+[00:33:19.000 --> 00:33:21.000]   das so zu machen, dass wir eben,
+[00:33:21.000 --> 00:33:24.000]   wenn es geht, eine Teilaufgabe T1 finden,
+[00:33:24.000 --> 00:33:27.000]   für einen Input, der sofort lösbar ist.
+[00:33:27.000 --> 00:33:29.000]   Wenn der Input sofort lösbar ist,
+[00:33:29.000 --> 00:33:32.000]   dann kann das sofort einfach gemacht werden.
+[00:33:32.000 --> 00:33:35.000]   Und in diesem Beispiel, Strings der Länge Eins,
+[00:33:35.000 --> 00:33:38.000]   dafür können wir schnell und einfach feststellen,
+[00:33:38.000 --> 00:33:41.000]   ob da eine Eins drinnen ist oder nicht.
+[00:33:41.000 --> 00:33:44.000]   Wenn der String aus einer Eins besteht,
+[00:33:44.000 --> 00:33:46.000]   dann ist der, ist diese,
+[00:33:46.000 --> 00:33:50.000]   ist die Teilaufgabe Eins mit, gibt als Wert Eins zurück.
+[00:33:50.000 --> 00:33:54.000]   Und wenn der String nicht einer Eins ist, dann gibt es halt eine Null, ja.
+[00:33:54.000 --> 00:33:58.000]   Und dann habe ich eine zweite Teilaufgabe, T2,
+[00:33:58.000 --> 00:34:02.000]   und die mache ich so, indem ich den Input in zwei Teile zerlege,
+[00:34:02.000 --> 00:34:06.000]   X1 und X2, wobei X1 so ist,
+[00:34:06.000 --> 00:34:12.000]   dass ich den Ergebnis leicht aus für berechnen kann, ja.
+[00:34:12.000 --> 00:34:14.000]   Also entweder kann ich es direkt berechnen
+[00:34:14.000 --> 00:34:18.000]   oder eben meine Methode, die ich eben erstelle,
+[00:34:18.000 --> 00:34:21.000]   die kann mir diesen Teil die Antwort sofort liefern.
+[00:34:21.000 --> 00:34:24.000]   Er wird ja gleich sofort das oder,
+[00:34:24.000 --> 00:34:28.000]   und dann den zweiten Teil, der muss eben halt nochmal
+[00:34:28.000 --> 00:34:31.000]   von der Methode berechnet werden, das könnte länger dauern,
+[00:34:31.000 --> 00:34:33.000]   aber das ist ja kein Problem.
+[00:34:33.000 --> 00:34:36.000]   Irgendwann wird die den Input kleiner und kleiner, kleiner machen, ja.
+[00:34:36.000 --> 00:34:39.000]   Also wenn eben unser X länger als ein Zeichen ist,
+[00:34:39.000 --> 00:34:42.000]   dann berechn ich das so, dass ich eben halt hier diese Methode
+[00:34:42.000 --> 00:34:45.000]   One Count für das erste Zeichen verwende
+[00:34:45.000 --> 00:34:48.000]   und dann diese Methode One Count für den Rest, ja.
+[00:34:48.000 --> 00:34:51.000]   So habe ich das dann ganz einfach gemacht, ja.
+[00:34:51.000 --> 00:34:54.000]   Also wenn wir hier dieses Beispiel uns angucken, ja,
+[00:34:54.000 --> 00:34:57.000]   wir fangen an mit unserem S, das ist dieses hier, ja.
+[00:34:57.000 --> 00:35:01.000]   Wir gehen hin, wir gucken uns den ersten, das erste Zeichen an, ja.
+[00:35:01.000 --> 00:35:04.000]   Das erste Zeichen ist eben eine Eins, ja.
+[00:35:04.000 --> 00:35:08.000]   Daher ergibt das eben die Ziffer, den Wert Eins, ja.
+[00:35:08.000 --> 00:35:10.000]   Und dann gucke ich mir den Rest an,
+[00:35:10.000 --> 00:35:14.000]   der Abstring ab Position Eins, das ist halt dieser Teil des Strings,
+[00:35:14.000 --> 00:35:16.000]   der übrig geblieben ist.
+[00:35:16.000 --> 00:35:19.000]   Und diese Methode natürlich, dieses genauso wie vorher,
+[00:35:19.000 --> 00:35:21.000]   die guckt sich an das erste Zeichen, ja.
+[00:35:21.000 --> 00:35:25.000]   Das erste Zeichen ist hier halt immer die Position Null,
+[00:35:25.000 --> 00:35:29.000]   ist hier zuvergeweite eine Null, daher ergibt das den Wert Null, ja.
+[00:35:29.000 --> 00:35:33.000]   Und dann habe ich hier den Rest des Strings,
+[00:35:33.000 --> 00:35:36.000]   der eben halt auch wieder bearbeitet wird.
+[00:35:36.000 --> 00:35:38.000]   So, und der Rest des Strings, gehe ich jetzt hin,
+[00:35:38.000 --> 00:35:43.000]   das ist eben halt wieder eine Eins, ja.
+[00:35:43.000 --> 00:35:45.000]   Also ergibt das eine Eins, ja.
+[00:35:45.000 --> 00:35:47.000]   Und hier habe ich jetzt einen Lernstring,
+[00:35:47.000 --> 00:35:49.000]   gucke mal, wer vielleicht ganz gut,
+[00:35:49.000 --> 00:35:53.000]   wenn unsere Methode auch den Lernstring behandelt,
+[00:35:53.000 --> 00:35:57.000]   und das vielleicht sogar erkennt, dass da keine Zeichen drin sind.
+[00:35:57.000 --> 00:36:01.000]   So, und dann addiere ich die auf, ja, addiere ich das auf,
+[00:36:01.000 --> 00:36:03.000]   und die Summe ist dann eben zwei.
+[00:36:03.000 --> 00:36:07.000]   Und das ist genau das, was ich ja eigentlich gerne haben wollte, ja.
+[00:36:07.000 --> 00:36:10.000]   So, und das ist also ein anderer Ansatz,
+[00:36:10.000 --> 00:36:14.000]   den ich eben halt verwenden kann, ja.
+[00:36:14.000 --> 00:36:21.000]   Lassen Sie mich das speichern, auch wenn es Minute jetzt überziehe.
+[00:36:21.000 --> 00:36:25.000]   So, also können Sie jetzt also so, also,
+[00:36:25.000 --> 00:36:27.000]   eine Möcher auszudrücken wäre ja so,
+[00:36:27.000 --> 00:36:30.000]   wenn der String der Lehrestring ist, dann ist die Länge Null,
+[00:36:30.000 --> 00:36:33.000]   gibt es Null, und sonst, wenn der Substring,
+[00:36:33.000 --> 00:36:35.000]   der erste String eben eine Eins ist,
+[00:36:35.000 --> 00:36:37.000]   dann mache ich als Resultat Eins,
+[00:36:37.000 --> 00:36:39.000]   und sonst eben lasse ich es bei Null,
+[00:36:39.000 --> 00:36:45.000]   und dann habe ich hier eben, das ist der Wert für den ersten Substring, ja,
+[00:36:45.000 --> 00:36:47.000]   und dann eben plus den Rest.
+[00:36:47.000 --> 00:36:50.000]   Oder ich könnte das auch noch, wenn Sie wollen,
+[00:36:50.000 --> 00:36:53.000]   ausführlicher machen und sagen, hier,
+[00:36:53.000 --> 00:36:56.000]   wenn eben die Länge Eins ist,
+[00:36:56.000 --> 00:36:59.000]   und der erste ist eben genau eine Eins, dann gibt es Eins,
+[00:36:59.000 --> 00:37:02.000]   und wenn die Länge Eins ist,
+[00:37:02.000 --> 00:37:06.000]   und der erste ist eben nicht eine Eins,
+[00:37:06.000 --> 00:37:08.000]   sehen Sie hier das nicht, dann gibt es eine Null, ja,
+[00:37:08.000 --> 00:37:10.000]   und dann eben ist das der Rückgabewert,
+[00:37:10.000 --> 00:37:14.000]   und so gehe ich hin, hier ist der Wert für die erste,
+[00:37:14.000 --> 00:37:18.000]   für den ersten Teil, und hier ist der Wert für den Rest, ja,
+[00:37:18.000 --> 00:37:20.000]   so könnten Sie das machen, ja,
+[00:37:20.000 --> 00:37:22.000]   und die, die schon ein bisschen mehr,
+[00:37:22.000 --> 00:37:25.000]   das sieht natürlich nicht sehr elegant aus,
+[00:37:25.000 --> 00:37:27.000]   und da das Problem nicht so selten ist,
+[00:37:27.000 --> 00:37:30.000]   gibt es halt in Java einen besonderen Operator,
+[00:37:30.000 --> 00:37:32.000]   der Fragezeichen-Operator,
+[00:37:32.000 --> 00:37:34.000]   und was der macht ist, das wird hier evaluiert,
+[00:37:34.000 --> 00:37:38.000]   das ist entweder true oder false, ja, so,
+[00:37:38.000 --> 00:37:42.000]   und wenn der Wert true ist, dann gibt es als Ergebnis diesen zurück,
+[00:37:42.000 --> 00:37:45.000]   und wenn der Wert false ist, gibt es den zweiten Punkt,
+[00:37:45.000 --> 00:37:48.000]   hier ist ein Doppelpunkt, ja, der ist wichtig, so, ja,
+[00:37:48.000 --> 00:37:51.000]   also so kann ich ganz einfach, ganz schnell rausfinden,
+[00:37:51.000 --> 00:37:54.000]   ob der String, den ich am Anfang habe,
+[00:37:54.000 --> 00:37:58.000]   ob der eben halt Wesen will,
+[00:37:58.000 --> 00:38:01.000]   ob der eben eine Eins enthält oder nicht, so,
+[00:38:01.000 --> 00:38:03.000]   also wenn Sie das jetzt vergleichen, ja,
+[00:38:03.000 --> 00:38:08.000]   das ist nicht so viel schwieriger,
+[00:38:08.000 --> 00:38:12.000]   als was Sie vorher in der Lösung Eins gesehen haben,
+[00:38:12.000 --> 00:38:15.000]   und wie Frage eben, machen wir das nur,
+[00:38:15.000 --> 00:38:18.000]   machen wir das nur, weil wir das für so gut haben,
+[00:38:18.000 --> 00:38:21.000]   könnte diese Lösung nicht einen anderen Vorteil haben,
+[00:38:21.000 --> 00:38:25.000]   und damit entlasse ich Sie gleich in die Pause,
+[00:38:25.000 --> 00:38:27.000]   und das ist ja, wenn Sie sich vor,
+[00:38:27.000 --> 00:38:29.000]   das ist die Aufgabe im ersten Semester,
+[00:38:29.000 --> 00:38:31.000]   was, die meisten von Ihnen,
+[00:38:31.000 --> 00:38:33.000]   wenn ja hoffen, wir auch ins zweite Semester kommen,
+[00:38:33.000 --> 00:38:36.000]   und bei uns bleiben, was für eine Vorlesung haben Sie im zweiten Semester,
+[00:38:36.000 --> 00:38:38.000]   da kriegen Sie parallele Programmierung, so,
+[00:38:38.000 --> 00:38:40.000]   und wenn Sie jetzt so was hier haben, ja,
+[00:38:40.000 --> 00:38:42.000]   hier, wenn Sie den Loop sich angucken, ja,
+[00:38:42.000 --> 00:38:47.000]   der geht langsam sequenziell, Schritt für Schritt für Schritt,
+[00:38:47.000 --> 00:38:50.000]   durch den ganzen String durch, ja,
+[00:38:50.000 --> 00:38:53.000]   dieser hier, dieser Ansatz, der geht halt hin
+[00:38:53.000 --> 00:38:56.000]   und ich hier zwei Teile zerlegt den String in zwei Teile,
+[00:38:56.000 --> 00:38:58.000]   und ich habe das halt so gewählt,
+[00:38:58.000 --> 00:39:02.000]   dass ich, der erste Teil ist halt der erste Buchstabe,
+[00:39:02.000 --> 00:39:05.000]   oder das erste Zeichen, und der zweite Teil ist der Rest,
+[00:39:05.000 --> 00:39:07.000]   aber ich könnte auch genauso gut hingehen
+[00:39:07.000 --> 00:39:09.000]   und den String irgendwo in der Mitte halbieren,
+[00:39:09.000 --> 00:39:13.000]   und dann hier einmal die Methode,
+[00:39:13.000 --> 00:39:17.000]   die einmal die Methode auf der ersten Hälfte anwenden,
+[00:39:17.000 --> 00:39:19.000]   und hier auf der zweiten,
+[00:39:19.000 --> 00:39:21.000]   und so habe ich jetzt zwei Teile,
+[00:39:21.000 --> 00:39:24.000]   die im Prinzip parallel laufen könnten,
+[00:39:24.000 --> 00:39:26.000]   die könnten auf verschiedenen Chors ausführen, ja,
+[00:39:26.000 --> 00:39:28.000]   also Sie sehen solche Anweise,
+[00:39:28.000 --> 00:39:30.000]   natürlich bei den kleinen Strings, die wir haben,
+[00:39:30.000 --> 00:39:32.000]   ist der Zeitgewinn wahrscheinlich begrenzt,
+[00:39:32.000 --> 00:39:34.000]   aber es ist ja hier nur die Einführung, ja,
+[00:39:34.000 --> 00:39:38.000]   also Sie sehen solche Ansätze haben durchaus eine Berechtigung,
+[00:39:38.000 --> 00:39:41.000]   und damit sind wir eigentlich mit der Diskussion von Schleifen
+[00:39:41.000 --> 00:39:45.000]   erst mal fertig, fast fertig, ja, so,
+[00:39:45.000 --> 00:39:49.000]   und schon, damit sind wir ja mit der Diskussion von Methoden fast fertig,
+[00:39:49.000 --> 00:39:52.000]   und jetzt kommen wir doch nochmal auf Schleifen zu treffen,
+[00:39:52.000 --> 00:39:53.000]   zu sprechen,
+[00:39:53.000 --> 00:39:56.000]   also, indem Sie gesehen haben, dass man Schleifen nicht immer braucht,
+[00:39:56.000 --> 00:39:59.000]   können wir jetzt uns nochmal Schleifen genauer angucken,
+[00:39:59.000 --> 00:40:04.000]   aber jetzt machen wir erst mal Pause bis 11 Uhr, 15, okay?
+[00:40:04.000 --> 00:40:11.000]   Also, Schleifen sind wichtig, aber auch nicht alles, ja,
+[00:40:11.000 --> 00:40:14.000]   und darum, wie ich nochmal kurz,
+[00:40:18.000 --> 00:40:22.000]   auf Schleifen eingehen, und zwar eben haben wir,
+[00:40:22.000 --> 00:40:25.000]   gibt es gewisse Kurzformen, die waren leider auf einer Slide
+[00:40:25.000 --> 00:40:27.000]   schon mal verseht, nicht darauf,
+[00:40:27.000 --> 00:40:29.000]   und dann haben wir das Problem,
+[00:40:29.000 --> 00:40:31.000]   dass die Schleifen eben manchmal doch nicht so terminieren,
+[00:40:31.000 --> 00:40:33.000]   wie wir wollen, insbesondere dann,
+[00:40:33.000 --> 00:40:36.000]   wenn wir Input-Werte zur Schleifenkontrolle verwenden,
+[00:40:36.000 --> 00:40:39.000]   und dann zum Schluss eben wollen wir,
+[00:40:39.000 --> 00:40:45.000]   ist der Witz wirklich gut?
+[00:40:46.000 --> 00:40:48.000]   Ist der Witz gut?
+[00:40:48.000 --> 00:40:51.000]   Ist kein Witz, oh schade, das ist eine gute Frage.
+[00:40:51.000 --> 00:40:53.000]   Wenn Sie die Frage haben, melden Sie sich,
+[00:40:53.000 --> 00:40:56.000]   schreiben Sie ein Chat, ja, okay,
+[00:40:56.000 --> 00:40:59.000]   und dann zum Schluss haben wir auch Aussagen über Schleifen machen wollen,
+[00:40:59.000 --> 00:41:02.000]   während wir das Thema Invarianten behandeln,
+[00:41:02.000 --> 00:41:05.000]   aber das werden wir wahrscheinlich erst am nächsten Freitag behandeln.
+[00:41:05.000 --> 00:41:07.000]   So, also, um was geht's?
+[00:41:07.000 --> 00:41:10.000]   Sie haben gesehen, wir haben diese Loops,
+[00:41:10.000 --> 00:41:12.000]   die Vorloops konkret,
+[00:41:12.000 --> 00:41:15.000]   und da erhöhen wir immer den Loop-Counter um 1,
+[00:41:15.000 --> 00:41:18.000]   oder wir dekrimentieren um 1 und so weiter, ja.
+[00:41:18.000 --> 00:41:20.000]   Andere enden uns natürlich möglich,
+[00:41:20.000 --> 00:41:23.000]   aber diese hier treten sehr häufig auf.
+[00:41:23.000 --> 00:41:25.000]   Und naja, es gab mal eine Zeit,
+[00:41:25.000 --> 00:41:28.000]   da kostete der Platz auf der Speicherplatz noch was,
+[00:41:28.000 --> 00:41:30.000]   und darum gibt es so eine Kurzform,
+[00:41:30.000 --> 00:41:32.000]   mit der ich ausdrücken kann,
+[00:41:32.000 --> 00:41:35.000]   dass eben eine Variable um 1 erhöht werden soll,
+[00:41:35.000 --> 00:41:38.000]   oder um 1 runtergezählt werden soll.
+[00:41:38.000 --> 00:41:41.000]   Und früher, in der grauen Vorzeit,
+[00:41:41.000 --> 00:41:43.000]   da, wenn man sowas hatte,
+[00:41:43.000 --> 00:41:47.000]   dann war das eben für den Compiler etwas leichter,
+[00:41:47.000 --> 00:41:54.000]   war etwas leichter, das zu erkennen,
+[00:41:54.000 --> 00:41:56.000]   und etwas leichter zu optimieren,
+[00:41:56.000 --> 00:41:58.000]   und daher gab es sogar Computer,
+[00:41:58.000 --> 00:42:01.000]   die dafür besondere Instruktionen hatten.
+[00:42:01.000 --> 00:42:04.000]   Aber heute ist das überhaupt kein Thema mehr.
+[00:42:04.000 --> 00:42:07.000]   Heute ist viel wichtiger, dass man die Programme versteht.
+[00:42:07.000 --> 00:42:09.000]   Und darum gibt es eben eben,
+[00:42:09.000 --> 00:42:12.000]   einige Programmiersparen, so ein Operator,
+[00:42:12.000 --> 00:42:15.000]   mit dem man eben um 1 rauf oder runterzählen kann.
+[00:42:15.000 --> 00:42:20.000]   Und dieser Operator besteht aus 2 plus oder 2 minus,
+[00:42:20.000 --> 00:42:23.000]   direkt hintereinander, kein Zwischenraum.
+[00:42:23.000 --> 00:42:25.000]   Und das, wenn ich so ein Plus habe,
+[00:42:25.000 --> 00:42:28.000]   das ist das selbe, als wenn ich schreiben würde,
+[00:42:28.000 --> 00:42:32.000]   die Variable wird um 1 erhöht oder um 1 gesenkt.
+[00:42:32.000 --> 00:42:35.000]   Also, wenn ich hier die Variable x habe,
+[00:42:35.000 --> 00:42:37.000]   und ich habe hier x plus plus,
+[00:42:37.000 --> 00:42:42.000]   dann ist es so, als ob ich x plus x auf x plus 1 gesetzt machte,
+[00:42:42.000 --> 00:42:47.000]   und danach speichert diese Variable den Wert 3.
+[00:42:47.000 --> 00:42:49.000]   Das geht auch für reelle Zahlen,
+[00:42:49.000 --> 00:42:51.000]   wenn man das wirklich machen will.
+[00:42:51.000 --> 00:42:53.000]   Also, die Grundregel dabei ist,
+[00:42:53.000 --> 00:42:56.000]   dass eben halt durch diese Aktualisierung,
+[00:42:56.000 --> 00:42:59.000]   man eben, wie man das für Loopcourt verwendet,
+[00:42:59.000 --> 00:43:01.000]   das relativ einfach Ausdrück,
+[00:43:01.000 --> 00:43:05.000]   dass eben das, das ist das,
+[00:43:05.000 --> 00:43:09.000]   das wird relativ einfach ausdrücken,
+[00:43:09.000 --> 00:43:13.000]   und so sieht man sofort, was da läuft.
+[00:43:13.000 --> 00:43:17.000]   Aber in diesem Operator kann man überall verwenden.
+[00:43:17.000 --> 00:43:20.000]   Wenn Sie nur im Loopcourt verwenden, kein Problem.
+[00:43:20.000 --> 00:43:22.000]   Aber ihr könnt sie überall verwenden.
+[00:43:22.000 --> 00:43:25.000]   Und darum müssen Sie immer im Hinterkopf haben,
+[00:43:25.000 --> 00:43:28.000]   das System ist folgendes, die Variable wird verwendet,
+[00:43:28.000 --> 00:43:32.000]   und dann verändert.
+[00:43:32.000 --> 00:43:34.000]   Erst verwenden, dann verändern.
+[00:43:34.000 --> 00:43:38.000]   Und das kann zu interessanten Schritten führen.
+[00:43:38.000 --> 00:43:42.000]   Also, hier habe ich die Variable x, die setze ich hier zu 2,
+[00:43:42.000 --> 00:43:45.000]   und jetzt druckke ich hier x plus plus.
+[00:43:45.000 --> 00:43:47.000]   Und was druckt das?
+[00:43:47.000 --> 00:43:48.000]   Das druckt 2.
+[00:43:48.000 --> 00:43:49.000]   Warum?
+[00:43:49.000 --> 00:43:53.000]   Weil wir verwenden die Variable, die hat den Wert 2,
+[00:43:53.000 --> 00:43:55.000]   der wird ausgedruckt,
+[00:43:55.000 --> 00:43:59.000]   und irgendwann wird es um Drucker gegeben,
+[00:43:59.000 --> 00:44:03.000]   und danach wird ausgeführt diese Erhöhung des Zählers
+[00:44:03.000 --> 00:44:07.000]   um 1, und dann ist dann der Speicher Wert 3.
+[00:44:07.000 --> 00:44:10.000]   Und wenn ich jetzt hier hingehe, was passiert hier, gleiche,
+[00:44:10.000 --> 00:44:14.000]   was ist der aktuelle Wert 3, den will ich verwenden,
+[00:44:14.000 --> 00:44:18.000]   und jetzt verändere ich, und darum hat das den Wert 4.
+[00:44:18.000 --> 00:44:24.000]   Das ist die Regel, die wir immer wieder im Hinterkopf benutzen müssen.
+[00:44:24.000 --> 00:44:29.000]   Erst verwenden, und dann verändern.
+[00:44:29.000 --> 00:44:34.000]   Und das gilt immer und überall, und auch in Ausdrücken und Zuweisungen.
+[00:44:34.000 --> 00:44:40.000]   Also, hier, was würde denn für ein Wert in der Variable y gespeichert werden?
+[00:44:40.000 --> 00:44:48.000]   Denkt man mal nach, das ist, ja, wir gehen hin, wir verwenden den Wert,
+[00:44:48.000 --> 00:44:52.000]   der Wert aktuell ist 2, und danach verändern wir, ja,
+[00:44:52.000 --> 00:44:54.000]   wir gehen hin, können Sie sich vorstellen,
+[00:44:54.000 --> 00:44:58.000]   es gibt eine temporäre Variable Temp, die bekommt den Wert von x,
+[00:44:58.000 --> 00:45:05.000]   danach erhöhe ich x um 1, und danach verwende ich diese temporäre Variable.
+[00:45:05.000 --> 00:45:10.000]   So ist das gemacht, und daher bekäme ich hier als Ergebnis,
+[00:45:10.000 --> 00:45:18.000]   x würde hier y den Wert 2 haben, und x hat danach den Wert 3.
+[00:45:18.000 --> 00:45:25.000]   So, das ist also, wie wir das im Prinzip immer wieder haben wollen.
+[00:45:25.000 --> 00:45:31.000]   Und das gilt auch dann, wenn dieser Ausdruck irgendwo auf der rechten Seite
+[00:45:31.000 --> 00:45:36.000]   eines, eines, einer Zuweisung auftritt.
+[00:45:36.000 --> 00:45:42.000]   Also, hier habe ich die Variable i und die Variable j, die sind mit 3 und 7, initialisiert.
+[00:45:42.000 --> 00:45:46.000]   Und wenn jetzt meine rechte Seite die Konstante 9 ist,
+[00:45:46.000 --> 00:45:50.000]   dann ist einfach klar, Ergebnis der rechten Seite ist 9, ja.
+[00:45:50.000 --> 00:45:54.000]   Rechte Seite wird berechnet, und dann, wenn es eine Zuweisung ist,
+[00:45:54.000 --> 00:45:59.000]   wird später der Wert in der, an der linken, er wird dann, der Wert in der,
+[00:45:59.000 --> 00:46:04.000]   wird der Wert gespeichert, ja, und eventuell werden danach die,
+[00:46:04.000 --> 00:46:08.000]   die Wersenwerte noch verändert, wenn nötig, ja.
+[00:46:08.000 --> 00:46:13.000]   Also, wenn ich hier 3 plus 5 habe, ja, die rechte Seite wird berechnet,
+[00:46:13.000 --> 00:46:16.000]   er gibt 8, ja, ist nicht überraschend.
+[00:46:16.000 --> 00:46:19.000]   Also, i plus 2 ist auch nicht schwer, ja.
+[00:46:19.000 --> 00:46:22.000]   Neben i hat den Wert 3, er gibt 5.
+[00:46:22.000 --> 00:46:25.000]   Jetzt, was ist der Wert dieses Ausdrucks, ja?
+[00:46:25.000 --> 00:46:27.000]   i plus plus, ja.
+[00:46:27.000 --> 00:46:30.000]   Naja, der Wert von i ist 3, also ist das 3, ja.
+[00:46:30.000 --> 00:46:35.000]   Und danach hat i den Wert 4, ja.
+[00:46:35.000 --> 00:46:37.000]   Danach hat i den Wert 4.
+[00:46:37.000 --> 00:46:40.000]   Und was ergibt das hier, j minus, minus plus j, prozent,
+[00:46:40.000 --> 00:46:44.000]   zeichnen 4, na ja, wir gehen hin, was ist der Wert von j?
+[00:46:44.000 --> 00:46:47.000]   Der Wert von j ist 7, ja, 7.
+[00:46:47.000 --> 00:46:52.000]   So, und jetzt wird das um 1 dekumentiert, also hat danach j den Wert 6.
+[00:46:52.000 --> 00:46:55.000]   Und da die, deswegen ist wichtig, dass sie verstehen,
+[00:46:55.000 --> 00:46:59.000]   welche Reihenfolge die Ausdrücke und Operatoren angewendet werden.
+[00:46:59.000 --> 00:47:04.000]   J rest 4, also 6 rest 4 ist 2, ja.
+[00:47:04.000 --> 00:47:07.000]   7 plus 2 ergibt 9, ja.
+[00:47:07.000 --> 00:47:12.000]   Ist also keine, ist keine, ist keine Sache, ja.
+[00:47:12.000 --> 00:47:16.000]   So, jetzt sagt ihr mal, kann man 1 plus plus schreiben
+[00:47:16.000 --> 00:47:19.000]   und die Antwort ist, äh, äh, das geht nur mit Variablen, ja.
+[00:47:19.000 --> 00:47:21.000]   Sie können da keine Konstanten verwenden, macht ja Sinn.
+[00:47:21.000 --> 00:47:23.000]   Wo soll denn das Ergebnis hinkommen, ja.
+[00:47:23.000 --> 00:47:28.000]   So, also, also, also, jetzt haben wir hier, gehen wir ein bisschen weiter,
+[00:47:28.000 --> 00:47:31.000]   also haben wir gesehen, wie die rechte Seite ausgewertet wird.
+[00:47:31.000 --> 00:47:34.000]   Jetzt haben wir wirklich, ja, haben wir ja Zuweisungen, ja.
+[00:47:34.000 --> 00:47:37.000]   Linke Seite wird gesetzt, zu rechte Seite, ja.
+[00:47:37.000 --> 00:47:40.000]   Also, gleiche Prinzip, rechte Seite berechnen,
+[00:47:40.000 --> 00:47:45.000]   Resultat speichern und als Teil der Berechnung eventuell Updates ausführen, ja.
+[00:47:45.000 --> 00:47:49.000]   Also hier, was haben wir hier, i wird auf 3 gesetzt, klar, einfach, ja.
+[00:47:49.000 --> 00:47:54.000]   Und jetzt setzen wir j zu i, äh, ähm, zu i plus plus.
+[00:47:54.000 --> 00:47:57.000]   Vorsicht, ja. Hier werden jetzt 2 Variablen verändert.
+[00:47:57.000 --> 00:48:01.000]   Die Variable j wird verändert und die Variable i wird verändert, ja.
+[00:48:01.000 --> 00:48:04.000]   Und was passiert, wie geht das vor sich, ja.
+[00:48:04.000 --> 00:48:09.000]   Also, wir fangen hier an, ähm, wir berechnen, wir nehmen den Wert von, äh, der rechten Seite.
+[00:48:09.000 --> 00:48:13.000]   Das ist der aktuelle Wert von i, äh, das ist 3, ja.
+[00:48:13.000 --> 00:48:18.000]   So, und danach machen wir das Update von i, also erhöhen das i um 1, ja.
+[00:48:18.000 --> 00:48:22.000]   Hat also jetzt den Wert 4, äh, und das hat dann, ist dann gespeichert.
+[00:48:22.000 --> 00:48:27.000]   Und jetzt gehen wir hin und speichern diesen Wert aus der temporären, äh, Variable,
+[00:48:27.000 --> 00:48:33.000]   oder wo immer wir den haben wollten, ja, den speichern wir in j und j bekommt daher die, äh, Wert 3.
+[00:48:33.000 --> 00:48:37.000]   Und weil das so eine schöne Sache ist, habe ich hier ein Puzzle für Sie, ähm,
+[00:48:37.000 --> 00:48:41.000]   dass Sie gerne, äh, versuchen können, äh, zu lösen, ja.
+[00:48:41.000 --> 00:48:44.000]   Äh, gucken wir mal nach, ob heute der Clicker funktioniert.
+[00:48:44.000 --> 00:48:48.000]   Und wenn er funktioniert, Sie können auch mal Ihren Computer rausholen
+[00:48:48.000 --> 00:48:53.000]   und sehen, wie es dem geht, äh, und äh, gucken wir mal nach.
+[00:48:53.000 --> 00:49:07.000]   So, und Sie sollen ja dieses Programm, äh, ausrechnen, äh, angucken.
+[00:49:07.000 --> 00:49:11.000]   Und dann die Antworten für die Variablen, äh, x, y und z geben.
+[00:49:11.000 --> 00:49:15.000]   Da habe ich verschiedene Antwortmöglichkeiten, äh, für Sie da.
+[00:49:15.000 --> 00:49:17.000]   Also überlegen Sie das mal.
+[00:49:17.000 --> 00:49:19.000]   [Gelächter]
+[00:49:19.000 --> 00:49:24.000]   Okay, also, ich habe äh, letzte Chance, zehn Sekunden.
+[00:49:24.000 --> 00:49:31.000]   Ach, gucken wir mal nach. Was haben wir denn da als Antwort?
+[00:49:31.000 --> 00:49:33.000]   Ja, die kann ich jetzt nicht alle.
+[00:49:33.000 --> 00:49:35.000]   Okay, sieben und zwanzig, was sind die richtigen Antworten?
+[00:49:35.000 --> 00:49:38.000]   Was für einen Wert hat denn äh, x?
+[00:49:38.000 --> 00:49:41.000]   Also, x hat den Wert vier.
+[00:49:41.000 --> 00:49:47.000]   Äh, das haben die meisten von Ihnen richtig, aber ein Drittel eben auch nicht.
+[00:49:47.000 --> 00:49:50.000]   Äh, y hat den, was für einen Wert?
+[00:49:50.000 --> 00:49:53.000]   Y hat den Wert ein, also, das haben 66 Prozent richtig.
+[00:49:53.000 --> 00:49:58.000]   Also, es ist falsch, haben äh, nicht so schlimm, andere sind in der gleichen Boot wie Sie.
+[00:49:58.000 --> 00:50:08.000]   Äh, y hat den Wert eins und das haben 73 Prozent richtig, äh, und äh, z hat den Wert, äh, fünf.
+[00:50:08.000 --> 00:50:12.000]   Und das haben äh, 54 Prozent von Ihnen richtig.
+[00:50:12.000 --> 00:50:17.000]   Äh, also, ja, das Ganze ist schon äh, äh, äh, ja, so.
+[00:50:17.000 --> 00:50:19.000]   Ähm, jetzt gucken wir mal nach, warum ist das denn der Fall?
+[00:50:19.000 --> 00:50:22.000]   Ja, sehen wir uns hier doch an.
+[00:50:22.000 --> 00:50:26.000]   Die, die richtig haben, können sich freuen, aber sollten trotzdem den Mund halten,
+[00:50:26.000 --> 00:50:29.000]   damit die anderen das mitbekommen, ja.
+[00:50:29.000 --> 00:50:34.000]   Also, welchen Wert hat x nach dem Statement s1?
+[00:50:34.000 --> 00:50:36.000]   Ihr habt ja durchgenommen, durchnummeriert, ja.
+[00:50:36.000 --> 00:50:41.000]   Nach s1 hat x den Wert eins, nach s2 hat y den Wert null
+[00:50:41.000 --> 00:50:45.000]   und nach s3 hat z den Wert null, ja, und keine anderen Veränderungen treten.
+[00:50:45.000 --> 00:50:48.000]   Das habe ich hier, Statement s4.
+[00:50:48.000 --> 00:50:54.000]   Das Statement s4 hat zur Folge, dass der Wert von x um eins erhöht wird,
+[00:50:54.000 --> 00:51:00.000]   aber der alte Wert wird benutzt, um y zu ähm, um y zu setzen, ja,
+[00:51:00.000 --> 00:51:06.000]   weil erst verwenden, dann Update, ja, und daher ist das eben eins, ja, so.
+[00:51:06.000 --> 00:51:09.000]   Und danach hat x natürlich den Wert drei.
+[00:51:09.000 --> 00:51:15.000]   So, jetzt haben wir hier erst verwenden, also das ist drei, ja, danach Update,
+[00:51:15.000 --> 00:51:21.000]   hier haben wir die Ausdrücke e1 zu 2, ja, danach eben halt,
+[00:51:21.000 --> 00:51:30.000]   nicht so schnell, nicht so schnell, ähm, ähm, so, ähm, das war falsch.
+[00:51:30.000 --> 00:51:36.000]   Also, erst verwenden, der Wert ist ja zwei, ja, hier, x hat den Wert zwei,
+[00:51:36.000 --> 00:51:38.000]   weil das wurde hier abgedäht.
+[00:51:38.000 --> 00:51:45.000]   So, erst verwenden, dann Update, damit hat x nach e1, hat x den Wert drei, ja,
+[00:51:45.000 --> 00:51:51.000]   plus erst verwenden, ja, das ist drei, ja, danach Update vier, ja,
+[00:51:51.000 --> 00:51:57.000]   darum hat x den Wert vier, y den Wert eins, und z die Summe von zwei und drei,
+[00:51:57.000 --> 00:52:02.000]   und das ist fünf, so, ja, und weil das so gut ging, machen wir das nochmal, ja,
+[00:52:02.000 --> 00:52:06.000]   ähm, gucken wir jetzt jetzt aussieht, äh, ähm, ähm, ähm,
+[00:52:06.000 --> 00:52:10.000]   haben wir wieder andere Beispiele, so, gucken wir mal nach, ob das starten,
+[00:52:10.000 --> 00:52:16.000]   ob ich das starten kann, äh, wenn ich das starten kann, dann sollten sie, äh,
+[00:52:16.000 --> 00:52:20.000]   genau, ein anderes Beispiel, oh oh, ich sehe nichts mehr, sehen Sie was?
+[00:52:20.000 --> 00:52:27.000]   Okay, ah, ja, okay, also ich sehe jetzt hier nichts mehr, aber Sie können das ja noch sehen,
+[00:52:27.000 --> 00:52:33.000]   und der Zwischenzeit kann ich versuchen, rauszufinden, warum zum, äh, warum das hier nicht funktioniert,
+[00:52:33.000 --> 00:52:38.000]   ähm, vielleicht habe ich es versehenlich probiert, also, bitte, äh, läuft, ja, hier,
+[00:52:38.000 --> 00:52:45.000]   äh, was für Werte, ähm, für A, I und J, ja, was in, was für Werte hat das am Ende der,
+[00:52:45.000 --> 00:52:50.000]   ähm, äh, der, äh, Ausführung, äh, dieser Gruppe von Statements?
+[00:52:50.000 --> 00:52:55.000]   Okay, ich mache das jetzt zu.
+[00:52:55.000 --> 00:53:08.000]   So, äh, äh, so, was ist der Wert von A?
+[00:53:08.000 --> 00:53:15.000]   Die Antwort ist 1, äh, ja, warum?
+[00:53:15.000 --> 00:53:22.000]   Wir nehmen den Wert, speichern ihn in A und danach machen wir das Update irgendwo,
+[00:53:22.000 --> 00:53:30.000]   erst verwenden, ja, dann Update, ja, sehen Sie das Beispiel, hatte ich hier vorne für Sie, da, äh,
+[00:53:30.000 --> 00:53:37.000]   hier, da, hatten wir Erschörenden, äh, hatten wir das Beispiel für X, hatten wir das hier, oder am nächsten Schleit, ja,
+[00:53:37.000 --> 00:53:46.000]   äh, auf jeden Fall, hier, da, sehen Sie, eben, erst verwenden, ja, äh, danach eben halt, äh, wir gehen hin, ja,
+[00:53:46.000 --> 00:53:54.000]   wir machen hier das Update, das Update ist das hier, ja, und danach speichern wir, ob da jetzt X oder Y steht, macht ja keine Rolle, ja,
+[00:53:54.000 --> 00:54:02.000]   ob hier ist ja nur, ja, was da steht, mit keine Rolle, das wird da gespeichert, ja, daher eben halt, äh, ist in diesem Fall,
+[00:54:02.000 --> 00:54:20.000]   das Ergebnis 1, ja, und 27% von Ihnen haben das richtig bekommen, okay, ähm, dann, äh, äh, äh, ja, so, jetzt, was für einen Wert hat denn I?
+[00:54:20.000 --> 00:54:28.000]   Das haben Sie alle richtig schön bekommen, I hat den Wert 8 und das haben 97% richtig bekommen, also Sie mögen also,
+[00:54:28.000 --> 00:54:37.000]   äh, äh, äh, die Dekrement-Operation mehr als die Inkrement, okay, gut, äh, und was hat denn Wert J, äh, was für einen Wert haben wir denn J?
+[00:54:37.000 --> 00:54:47.000]   Ah, das haben Sie auch, hat den Wert 1, ja, und das haben in der Tat 95% richtig bekommen, also, ja, äh, äh, bitte, gucken Sie sich das genau an, ja,
+[00:54:47.000 --> 00:55:00.000]   ich habe hier das nochmal Schritt für Schritt erhrauchen, so, jetzt, solche Puzzles sind natürlich schön, wenn man Prüfungsaufgaben erstellen muss, nicht wahr,
+[00:55:00.000 --> 00:55:08.000]   äh, aber bisher haben wir noch nie das in den Prüfungen gefragt, vielleicht ändert sich das mal, ja, äh, meine Meinung ist, unser Job ist es,
+[00:55:08.000 --> 00:55:20.000]   um das Verständliche Programm zu schreiben, keine Puzzles, ja, äh, Sie müssen natürlich diese Zeichen kennen, ja, oder erkennen, ja, weil Sie werden immer wieder mal Programme erfinden, in die, die verwenden,
+[00:55:20.000 --> 00:55:31.000]   Sie können die auch gerne verwenden, ja, ist Ihre Entscheidung, ob Sie so etwas verwenden oder nicht, aber wenn Sie es machen, ja, wenn dann richtig, ja,
+[00:55:31.000 --> 00:55:50.000]   äh, wenn Sie sich da selbst ins Bein schießen, dann tut mir das fürchterlich leid, aber, äh, kann ich nicht machen, ja, diese Operatoren sind nicht so effizient, das ist heute, machen die überhaupt nicht mehr ein Thema, ja, das ist früher mein Thema gewesen, heute nicht mehr, also dafür sollten Sie nicht die Klarheit eines Programmes opfern, ja,
+[00:55:50.000 --> 00:56:16.000]   und wenn Sie meinen, das war alles, nein, es gibt noch viel mehr Kurzformen, ja, Sie können auch eben plus Equal oder minus Equal machen, das wäre dann so, als ob Sie irgendeinen Wert, nicht nur den Wert eins, sondern irgendein beliebigen Wert für das Update verwenden, das geht nicht nur für plus und minus, sondern geht auch für alle anderen Operatoren, ja, es geht für, also nicht alle anderen Operatoren, für alle anderen arithmetischen Operatoren, ja,
+[00:56:16.000 --> 00:56:37.000]   wie gesagt, also ist nicht, äh, äh, wir, ich halte es für wichtig, das zu lesen, aber wir werden nicht Ihre Programme danach bewerten, wie oft Sie diese Operatoren haben, ja, so, also diese Kurzformen sind manchmal nützlich, aber auch manchmal unnötig, ja, so,
+[00:56:37.000 --> 00:57:04.000]   und diese Operatoren heißen, äh, in der Fachsprache, die, äh, sind die Post-Increment oder Post-Decrement-Operatoren, die Betonung liegt auf Post, ja, und jetzt haben manche von Ihnen schon mal Programme angeguckt, und da haben Sie gesehen, dass es auch möglich ist, diesen, äh, Operatoren, die Operatoren vor die Variable zu schreiben, da gibt es nämlich die Prie-Increment und Pridecrement-Operatoren,
+[00:57:04.000 --> 00:57:33.000]   und die erscheinen dann vor den, äh, Variablen, und da ist dann die Regel, die, dass wir das eben halt etwas anders machen, ja, so, kommen wir gleich drauf, so, also die, ähm, wie gesagt, ob das wirklich so eine gute Idee ist, weiß ich nicht, ja, also wenn Sie hier, äh, eben so was haben, ja, was passiert jetzt, ja, jetzt gehen wir halt hin und, äh, machen erst das Update und verwenden dann den Wert, ja, also hier wäre zwei,
+[00:57:33.000 --> 00:57:39.300]   wäre zwei, wäre der Eingangswert, um eins erhöht ist drei und der wird dann an das
+[00:57:39.300 --> 00:57:44.820]   Printlein geschickt, ja, und hier wird die drei erst erhöht und dann als vier an das
+[00:57:44.820 --> 00:57:51.840]   Printlein geschickt, ja, das sind diese Pre-Increment oder Pridecrement-Operatoren. Also wie gesagt,
+[00:57:51.840 --> 00:57:59.660]   wenn Sie die verwenden wollen, ist Ihre Sache, wird ... ist aber nicht das, wenn ich jetzt
+[00:57:59.660 --> 00:58:04.820]   Printlein A schreibe, wo muss, jemand fragt mich, dann müssen wir eins oder zwei heraus,
+[00:58:04.820 --> 00:58:10.840]   das müsste mir jemand, müssen uns sagen, welchen Beispiel, ja, in dem Beispiel davor, A ist,
+[00:58:10.840 --> 00:58:14.700]   wenn Sie dann Printlein A machten, würden Sie dann den aktuellen Wert bekommen. So,
+[00:58:14.700 --> 00:58:19.880]   warum sind diese Kurzformen jetzt manchmal noch etwas eben unnötig über Kopf zerbrechen?
+[00:58:19.880 --> 00:58:27.340]   Wir erinnern uns, dass für diese logischen Operatoren und/oder nicht immer beide Operanten
+[00:58:27.340 --> 00:58:35.160]   ausgewertet werden, um das Ergebnis zu ermitteln, ja. Java beendet die Ausführung, also bald
+[00:58:35.160 --> 00:58:41.940]   das Ergebnis feststeht, ja, so, und eben diese beiden sind alle beide links associativ, das
+[00:58:41.940 --> 00:58:47.260]   heißt, die Ausdrücke werden von links nach rechts, ja, und dann gemäß Präzedenz und
+[00:58:47.260 --> 00:58:53.260]   Associativität ausgewertet. Und dieses und, also logisch und, stoppt sobald ein Ausdruck
+[00:58:53.260 --> 00:58:59.060]   voll ist und der andere stoppt sobald ein Ausdruck tru ist, ja. Und das kann jetzt gefährlich
+[00:58:59.060 --> 00:59:07.300]   werden, kann, muss nicht, ja, wenn Sie in diesen Ausdrücken Pri oder Post-Increment-Operatoren
+[00:59:07.300 --> 00:59:13.380]   verwenden, ja. Hier haben wir also so ein Programmsegment, wo jemand einen Loop hat, wo er eben
+[00:59:13.380 --> 00:59:19.740]   eine Zahl sich anguckt, eingibt, ja, und dann, wenn der Wert ungleich null ist, wird ein
+[00:59:19.740 --> 00:59:28.980]   Counter um, wird erhöht und wenn der Counter kleiner als neun ist, dann, also vorher, dann
+[00:59:28.980 --> 00:59:35.380]   hört der Loop, dann wird das eben ausgedruckt und so weiter, ja. So, und das läuft eben
+[00:59:35.380 --> 00:59:42.620]   für eine bestimmte Anzahl von Fällen, ja. Und jetzt denkt man, dass dieser, der Count
+[00:59:42.620 --> 00:59:49.620]   sollte das eben liefern, ja. Eben, der liefert eben halt die Anzahl der Werte ungleich null,
+[00:59:49.620 --> 00:59:54.420]   weil das will ich halt so machen, weil das wird nur ausgeführt, ja. Wenn das schon false
+[00:59:54.420 --> 01:00:00.260]   ist, ja, dann ist das eben halt, wird der zweite Teil gar nicht ausgeführt. Und jetzt
+[01:00:00.260 --> 01:00:09.140]   hier in dem Vorloop ist das kein Problem, aber wenn Sie Count benutzen sollten, um, um eben
+[01:00:09.140 --> 01:00:15.140]   halt die, um den Loop zu kontrollieren, dann kann das eine Überraschung sein, die eben
+[01:00:15.140 --> 01:00:21.140]   Ihnen nicht gefällt, ja. Also passen Sie auf, wenn Sie in solchen Ausdrücken Post oder Prie
+[01:00:21.140 --> 01:00:27.500]   Increment Operatoren verwendet werden, ja. In der Mathematik sind diese, ist A und B
+[01:00:27.500 --> 01:00:32.980]   derselbe wie B und A, aber nicht, wenn es bei einem Programm, wenn es eben Operatoren
+[01:00:32.980 --> 01:00:39.820]   mit Nebenwirkungen gibt. Und diese Side Effects, sagen wir, diese Operatoren, Prie und Poster,
+[01:00:39.820 --> 01:00:45.140]   das sind Operatoren mit einem Nebeneffekt. Die haben einen Effekt auf die Variable X
+[01:00:45.140 --> 01:00:50.060]   und Y und dann eben macht es einen Unterschied aus, ob der Ausdruck ausgewertet wurde oder
+[01:00:50.060 --> 01:00:55.460]   nicht, weil die, ob das Update findet, nur statt, wenn eben eine Auswertung stattfand,
+[01:00:55.460 --> 01:01:00.460]   ja. Und das müssen Sie aufpassen, weil da können Sie sich im Programm Bös wehtun.
+[01:01:00.460 --> 01:01:07.180]   Also unser Ziel ist es, verständliche Programme zu schreiben, ja. Vorsicht bei diesen Kurzformen.
+[01:01:07.180 --> 01:01:14.700]   Und sie sind dann sinnvoll, wenn Sie eben in der Loop Kontrolle das verwenden, um den
+[01:01:14.700 --> 01:01:20.460]   Loop Counter zu erzählen, aber Vorsicht in allen anderen Situationen, ja. So für die,
+[01:01:20.460 --> 01:01:25.780]   die das Ganze noch nicht genug haben, ja. Die können ja mal gucken, was denn hier die
+[01:01:25.780 --> 01:01:30.340]   Ausgabe dieses Trinks ist, können Sie in den Chat reinschreiben. Wenn ich paar Antworten
+[01:01:30.340 --> 01:01:36.260]   habe, dann sehe ich, dass Sie das mitbekommen haben. Was ergibt dieser Printlinanweisung,
+[01:01:36.260 --> 01:01:42.500]   ja. Ich gucke nur nach was andere Fragen, also überlegen Sie kurz, was für ein Output
+[01:01:42.500 --> 01:01:53.100]   daraus kommen sollte. Okay, eins, zwei, jetzt kommen die Richtchen antworten, okay. Also
+[01:01:53.100 --> 01:02:03.900]   ja, ja, ja. Eigentlich sehe ich Sie einig, also Sie gibt es einige Antworten, okay. Okay,
+[01:02:03.900 --> 01:02:09.660]   was ist die richtige Antwort? Sechs, mit einem Zwischenraum und dann vier, fünf, fünf,
+[01:02:09.660 --> 01:02:15.060]   wobei die Länge des Zwischenraums, für uns keine Rolle, warum, ja. Der geht halt hin,
+[01:02:15.060 --> 01:02:21.020]   hier wird ein Wert gefunden, ja. Ich kann es auf der nächsten Slide habe ich es für Sie
+[01:02:21.020 --> 01:02:27.340]   vorbereitet, ja. Der Wert geht pri, erhöhe, dann verwenden, ja. Also wird das zwei auf
+[01:02:27.340 --> 01:02:32.380]   drei erhöht, ja. Post ist, verwende, dann erhöhen, also ist das, wird der alte Wert
+[01:02:32.380 --> 01:02:37.380]   von drei nochmal genommen und danach hat x den Wert vier und das gibt die sechs, ja.
+[01:02:37.380 --> 01:02:43.340]   Hier ist der Zwischenraum und jetzt wird gedruckt was, jetzt ist das ja string, ja. Jetzt wird
+[01:02:43.340 --> 01:02:49.180]   jeder einzeln als string produziert und als an den string angehängt, ja. So, ist das nicht
+[01:02:49.180 --> 01:02:55.100]   schön, ja. Also hier haben wir die vier, ergibt den string vier, also ergibt das erst mal
+[01:02:55.100 --> 01:03:01.180]   Zwischenraum string vier, ja. Jetzt haben wir hier prä, erhöhe, dann verwenden, erhöhen
+[01:03:01.180 --> 01:03:05.780]   ist fünf, also kommt hier eine fünf, wird das konkateniert und dann hier haben wir nochmal
+[01:03:05.780 --> 01:03:09.980]   den Wert selber, nehmen wir den Wert so einfach, haben wir also vier, fünf, fünf, ja. Also
+[01:03:09.980 --> 01:03:15.180]   wenn Sie, wie gesagt, wenn Sie mal je Langeweile haben sollten, können Sie sich mit solchen
+[01:03:15.180 --> 01:03:21.380]   Prüseln entsprechend vergnügen. So, jetzt könnte ich noch ein bisschen mehr über die Terminierung
+[01:03:21.380 --> 01:03:26.460]   von Slides, von Schleifen sagen, aber da das System heute zu funktionieren scheint, dachte
+[01:03:26.460 --> 01:03:31.420]   ich zeige Ihnen noch kurz, was Sie denn so für die if statements mir geschickt haben.
+[01:03:31.420 --> 01:03:42.860]   Da habe ich viele, nein, okay, also was könnte, was für Überraschungen könnte es denn da
+[01:03:42.860 --> 01:03:48.260]   geben. Also ich hatte Ihnen bereits die eine richtige Lösung gezeigt, das war diese oder
+[01:03:48.260 --> 01:03:55.020]   wenn Sie auch in der Stadt Integer Konstanten Rehle Zahlen verwenden wollen, ist auch okay,
+[01:03:55.020 --> 01:04:00.660]   ja. Aber das war das Programm, ja. Wir sagten hier Methode Quadrant, die das liefert. So,
+[01:04:00.660 --> 01:04:08.380]   und im verschiedenste Version habe ich, lauf der Jahre bekommen, aber jedes Jahr, und da
+[01:04:08.380 --> 01:04:13.060]   gibt es immer wieder Überraschungen, auch dieses Jahr, muss ich sagen, habe ich wieder Beispiele
+[01:04:13.060 --> 01:04:19.860]   gefunden, wo ich sage, hm, okay, interessant. Also solche Versionen habe ich einige gesehen,
+[01:04:19.860 --> 01:04:26.500]   ja, auch aus der Zeit aus der Papier noch verwendet wurde. Gibt es auch Beispiele, die so waren,
+[01:04:26.500 --> 01:04:32.980]   ja, alle keine großen Überraschungen, ja. Auch das manche ziehen dann den, ziehen den,
+[01:04:32.980 --> 01:04:43.860]   sagt man den, ziehen den Test für Null nach oben, leider hat er das nicht geschafft,
+[01:04:43.860 --> 01:05:12.020]   dass auf den richtigen, so, also, so, also das hier, dieses Programm zieht den Test für Null
+[01:05:12.020 --> 01:05:19.460]   nach oben, das ist auch gut, ja. Manche verwenden eine lokale Variable, um erst das Ergebnis
+[01:05:19.460 --> 01:05:26.060]   aufzuschreiben, ist auch gut. Das Int ist auch, auch im Prinzip gut. Ich persönlich denke, es gibt
+[01:05:26.060 --> 01:05:31.500]   mehr Möglichkeiten, Variabelnamen zu finden, aber wenn sie den gleichen Namen nehmen wollen,
+[01:05:31.500 --> 01:05:36.140]   wie die Methode, bitte schön, aber eben inzfang, ist ein kleinen Buchstaben, ja. So,
+[01:05:36.140 --> 01:05:43.180]   hat ihr Programm alle Fälle erkannt, ja, ich habe einige Lösungen gesehen, ja, es ist aus diesem
+[01:05:43.180 --> 01:05:48.780]   Jahr eine, ja, die eben halt übersieht, dass auch irgendwann mal der Rückgabewert Null sein kann,
+[01:05:48.780 --> 01:05:56.540]   ja, oder aus dem letzten Jahr in etwas anderer Anordnung, genau so, ja, so. Dann eben andere
+[01:05:56.540 --> 01:06:03.260]   haben dann vergessen, so Klammern zu schätzen. Hier würde es eben eine Warnung geben, weil hier
+[01:06:03.260 --> 01:06:09.980]   fehlt das Return, ja, da gibt es dann vom Kompiler eine Warnung, dass ein Return fehlt, da hilft der
+[01:06:09.980 --> 01:06:15.820]   Kompiler, ja. Dann haben wir hier so was, das ist auch okay, bloß eben die Quadranten sind nicht
+[01:06:15.820 --> 01:06:20.300]   richtig, ja. Also wenn sie schon das machen, dann, wenn es geht, bitte die richtigen Quadranten, ja.
+[01:06:20.300 --> 01:06:25.260]   Auch hier haben wir eine andere Lösung, die auch eine andere Reihenfolge der Quadranten hat, also
+[01:06:25.260 --> 01:06:30.740]   wie gesagt, jeder oder jeder kann programmieren lernen, aber wichtig sind Aufmerksamkeit,
+[01:06:30.740 --> 01:06:38.260]   Fantasie und Übung, aber Aufmerksamkeit, ja. Und wir haben gesagt, dieses Programm nimmt zwei
+[01:06:38.260 --> 01:06:45.100]   Reellezahlen entgegen, ja, nicht ins, das sind, die können sie nicht in Reellezahlen,
+[01:06:45.100 --> 01:06:49.820]   können sie nicht in ins umwenden. Das ist eine Lösung aus diesem Jahr, ja. Ich habe dieses
+[01:06:49.820 --> 01:06:56.900]   Jahr 78 Antworten bekommen und 28 davon haben Intparameter verwendet, ja. Also sie mögen
+[01:06:56.900 --> 01:07:04.220]   wirklich die Ints, ja. Also aber eben das System würde das nicht mögen, ja. Zudem if wird bei uns
+[01:07:04.220 --> 01:07:12.900]   lowercase geschrieben, else auch, ja. Und sys out, kenne ich nicht, ja. Machen sie sich ihr Leben
+[01:07:12.900 --> 01:07:19.780]   nicht komplizierter, als es eh schon ist, ja. Ist nicht nötig, ja. Oder hier Printlines, ja. Wir
+[01:07:19.780 --> 01:07:24.420]   haben nicht gesagt, dass sie irgendwas drucken sollen. Sie sollen etwas, ja gesagt, sie sollen
+[01:07:24.420 --> 01:07:30.580]   eine Int zurück, also einen Wert zurückgeben, ein Int, ja. Nicht irgendeinen String, ja. Alle
+[01:07:30.580 --> 01:07:37.140]   möglichen Antworten habe ich da am Lauf der Zeit gesehen, ja. Auf Papier genauso wie Leute, die
+[01:07:37.140 --> 01:07:42.060]   das eben eintippen, ja. Die geben mir gut, das ist zwar korrekt, ja. Aber wir wollten nicht
+[01:07:42.060 --> 01:07:48.980]   ins String schon gar nicht so einlangen, ja. Sondern wir wollten eben 1, 2, 3, 4 oder 0, ja. Und das
+[01:07:48.980 --> 01:07:55.420]   ist es. Und auch noch falsch, ja. Weil 0, 0, es könnte ja auch danach gar nicht gefragt, ja. Und
+[01:07:55.420 --> 01:08:01.060]   ja, es gibt verschiedenste Varianten. In anderen Jahren haben wir ihre Kollegen eben das per
+[01:08:01.060 --> 01:08:05.380]   e-mail zugeschickt. Danach sahen die eben ein bisschen farbiger aus, wenn ich die anders gemacht
+[01:08:05.380 --> 01:08:09.980]   habe. Ich habe gesagt, die Parameter sind doubles, ja. Sie können die nicht einfach
+[01:08:09.980 --> 01:08:17.460]   weglassen. Das System akzeptiert das nicht, ja. Und eben das größere Gleich ist auch nicht richtig,
+[01:08:17.460 --> 01:08:23.180]   ja. Es muss echt größer sein. Und von minus 1 hatten wir gar nicht vorgesehen als Quadranten,
+[01:08:23.180 --> 01:08:31.100]   aber okay, ja. Also, da gibt es verschiedenste Versionen, ja. Ganz ohne Namen geht es auch nicht,
+[01:08:31.100 --> 01:08:36.260]   ja. Es muss schon wirklich ein Name kommen und bitte keine Print S. Auch das können wir in Java
+[01:08:36.260 --> 01:08:41.980]   nicht machen, ja. So zwei logische Ausdrücke. Da weiß der Compiler nicht, meint die Programmierer
+[01:08:41.980 --> 01:08:47.500]   oder der Programmierer jetzt ein und oder ein oder. Darum verlangt das System, ja, dass wir das
+[01:08:47.500 --> 01:08:53.980]   genau angeben. So ist es richtig, ja, mit dem Unzeichen, ja. Aber alles andere wird eben da
+[01:08:53.980 --> 01:09:02.420]   nicht akzeptiert, ja. So. Und natürlich machen sie die Logik richtig, ja. Nicht hier unten,
+[01:09:02.420 --> 01:09:08.300]   das ist zwar nicht ganz, nicht ganz falsch, aber eben, es trinkts wollen wir eh nicht zurück haben,
+[01:09:08.300 --> 01:09:15.620]   ja. Oder eine Lösung aus dem letzten Jahr, ja. Da hat dann jemand eben ein Indparameter, aber hat
+[01:09:15.620 --> 01:09:21.220]   eben Parameter verwendet, nur dann dummerweise im Programm die nicht. Zum Glück hilft uns da
+[01:09:21.220 --> 01:09:26.140]   der Compiler, ja. Aber die Tatsache, dass die null vergessen ging, da hilft der Compiler eben
+[01:09:26.140 --> 01:09:32.100]   nicht, ja. Der Compiler hilft nur, wenn eben die Typen nicht ganz richtig sind oder die Namen
+[01:09:32.100 --> 01:09:38.260]   nicht stimmen, ja. Auch hier wieder jemand der Printlinen mochte und return, bitte lowercase, ja.
+[01:09:38.260 --> 01:09:44.820]   So. All dies Jahr habe ich auch eine Reihe von Lösungen gefunden, in denen die Studenten oder sie
+[01:09:44.820 --> 01:09:52.620]   große Kreativität in der Wahl des Variab- des Methodennamen an den Tag legten, ja. Test,
+[01:09:52.620 --> 01:09:58.780]   Quad und so weiter. Ist alles gut und schön. Aber wenn wir sagen, wir wollen eine Methode mit dem Namen
+[01:09:58.780 --> 01:10:04.100]   Quadrant, dann wollen wir eine Methode mit dem Namen Quadrant. Warum? Weil mein Testsystem wird
+[01:10:04.100 --> 01:10:09.420]   testen, ob ihre Methode mit dem Namen Quadrant das und das ergibt, zurückgibt. Wenn da die Methode
+[01:10:09.420 --> 01:10:15.020]   gar nicht existiert, gibt es nichts zurück, ja. Null Punkte, ja. Also bitte, ja. So. Und dann hier
+[01:10:15.020 --> 01:10:20.300]   elseif, ich weiß, es gibt Programmiersprachen, die versuchen die Lehrzeichen zu minimieren,
+[01:10:20.300 --> 01:10:26.700]   weil die kosten ja so viel, ja. Und darum gibt es eben elseif da als Konstrukt, aber nicht in Java,
+[01:10:26.700 --> 01:10:32.060]   ja. Und bitte, hier ist es okay, ja. Also Java ist tolerant. Sie können dieses Lehrzeichen
+[01:10:32.060 --> 01:10:36.860]   weglassen. Sie können auch dieses Lehrzeichen weglassen. Sie könnten sogar auch diese beiden
+[01:10:36.860 --> 01:10:42.620]   weglassen, ja. Wer auch immer noch korrekt ist, Java. Mein Ratschlag wäre, Lehrzeichen kosten nicht
+[01:10:42.620 --> 01:10:49.900]   viel. Daher sollte man sie einsetzen, ja. Wieder eine andere Variabelname oder da. Jemand hat da
+[01:10:49.900 --> 01:10:56.060]   Errace an den Tag gelegt, die wir noch gar nicht kennengelernt hatten, aber ist okay. Aber auch hier
+[01:10:56.060 --> 01:11:02.220]   haben wir noch einen anderen Variabelnamen. Also, dann gibt es Lösungen, die gleich, also wir hatten
+[01:11:02.220 --> 01:11:08.620]   nix von Package gesagt, machen sie sowas nicht, ja. Die Chance, dass ihr Programm auf diese Weise
+[01:11:08.620 --> 01:11:15.500]   richtig evaluiert wird, ist null, ja. Und mit sowas machen sich das Leben noch schwieriger. Das hier
+[01:11:15.500 --> 01:11:24.220]   ist okay, ja. Unsere Methode muss diese Public Static Vault sein fürs erste, ja. Aber von Variable
+[01:11:24.220 --> 01:11:29.260]   mit Static haben wir nix gesagt. Wollen wir auch gar nicht erst sehen, bis das wir ihnen erklärt
+[01:11:29.260 --> 01:11:35.740]   haben, um was es geht. Ganz ohne Methodenamen geht es auch nicht, ja. Wüsste keiner, was er da machen
+[01:11:35.740 --> 01:11:44.060]   soll, ja. Und eben, ja, also so kann man es auch machen, aber eben eher umständlich, ja. Wieder
+[01:11:44.060 --> 01:11:50.060]   eine andere Variabelname, ja. Manche Leute bevorzugen das, können sie machen, dass sie die
+[01:11:50.060 --> 01:11:54.860]   öffnende Klammer dahin setzen, wenn sie wollen, können sie es machen. Ich mache das nicht, weil
+[01:11:54.860 --> 01:11:59.820]   ich brauche den Platz auf meinen Slides, aber das ist okay, ja. Immer noch ein korrektes Programm.
+[01:11:59.820 --> 01:12:05.780]   Aber der Name muss stimmen. Und Float, ich weiß nicht, wer Float heutzutage noch verwendet, ja. Also,
+[01:12:05.780 --> 01:12:12.420]   wenn sie sicher sind, dass ihr Ergebnis so wenig Bits hat, dass es in diesem Variabeltyp
+[01:12:12.420 --> 01:12:17.300]   gespeichert werden kann oder das Ergebnis eh keine Rolle spielt, dann können sie da Float benutzen,
+[01:12:17.300 --> 01:12:22.180]   ja. Aber in allen anderen Sachen, in anderen Situationen empfehlen wir Double, weil sonst können
+[01:12:22.180 --> 01:12:27.620]   sie wirklich das Pechhaben, das nicht mal mehr das Vorzeichen ihrer Berechnung stimmt, ja. So,
+[01:12:27.620 --> 01:12:34.820]   also Float, warum? Das ist auch eine Lösung, ja. Die Lösung war jetzt letztes Jahr, die kriegt
+[01:12:34.820 --> 01:12:41.820]   einen Preis für die größte Anzahl Zeilen, ja, die man für dieses Beispiel finden kann, ja. Aber
+[01:12:41.820 --> 01:12:47.980]   dazu funktioniert es auch noch nicht ganz, aber das ist ein anderes Thema. So, also, ja, dann haben wir
+[01:12:47.980 --> 01:12:54.060]   hier Lösungen eben, die an sich okay sind, nur dass eben halt die Klammern da nicht sind, das ist
+[01:12:54.060 --> 01:12:59.220]   auch okay, ja. Also solche Klammern kosten wirklich nicht viel, ja. Benutzen sie die, ja. Weil,
+[01:12:59.220 --> 01:13:04.220]   Sie haben dann ein Programm, schreiben Sie das hin und dann wollen Sie noch irgendwas ändern, ja.
+[01:13:04.220 --> 01:13:09.220]   Und wenn Sie Glück haben, ist die Variable nicht definiert und dann beschwert sich der Compiler
+[01:13:09.220 --> 01:13:15.060]   und sagt, es ist ein Reh Beispiel, ja, sagt, oh, die Variable ist bekannt. Aber wenn die Variable
+[01:13:15.060 --> 01:13:20.980]   nicht bekannt ist, ja, dann geht der Compiler hin und wenn der ist bekannt, es geht der Compiler
+[01:13:20.980 --> 01:13:27.180]   hin, produziert Code und dann eben halt können Sie den Fehler suchen, wenn Sie wollen, ja. Also,
+[01:13:27.180 --> 01:13:33.620]   wenn das eben so ist, dass das erlaubt ist, dann geht das in der Compiler hin, produziert Code und
+[01:13:33.620 --> 01:13:40.540]   Sie haben das Problem irgendwie später zu lösen, ja. Also, solche, die Klammern kosten wirklich
+[01:13:40.540 --> 01:13:47.180]   heute nicht mehr viel, ja. So, dann gibt es kreative Lösungen, ja. Kreative Lösungen, hier wird
+[01:13:47.180 --> 01:13:56.060]   die Multiplikation verwendet, um zu sehen, ob einer der beiden operanten Nulles. Das geht jetzt gerade
+[01:13:56.060 --> 01:14:03.380]   bei Doubles, aber Vorsicht, das muss nicht immer eine gute Idee sein, ja. Das, oder auch hier wieder
+[01:14:03.380 --> 01:14:09.780]   das muss nicht unbedingt richtig sein, weil vergessen wurde immer noch der Return Typ Null, ja.
+[01:14:09.780 --> 01:14:18.060]   Der Return Wert Null, ja. Und also der Vorsicht, wenn Sie da mit denen rechnen, ist nicht gesagt,
+[01:14:18.060 --> 01:14:24.300]   also, wenn Sie zwei Zahlen miteinander multiplizieren und beide sind positiv, ist nicht gesagt, dass das
+[01:14:24.300 --> 01:14:30.020]   Ergebnis immer noch positiv ist, bei Integers, ja, darum Vorsicht. Also, machen Sie sowas lieber nicht,
+[01:14:30.020 --> 01:14:39.060]   ja. Verwendung von Variablen sind schon okay. Dieses Programm definiert eine neue Variable für
+[01:14:39.060 --> 01:14:47.300]   jeden Block, ja, bloß da unten nicht. Da ist keiner definierter. Da beschwert sich das System zum
+[01:14:47.300 --> 01:14:54.020]   Glück, ja. Ist erlaubt, aber vielleicht nicht gerade übersichtlich, ja. Also, so. Den Fragen,
+[01:14:54.020 --> 01:14:57.820]   diesen Fragezeichen-Operator hatte ich Ihnen schon mal erklärt, könnte man hier auch praktisch
+[01:14:57.820 --> 01:15:05.180]   einsetzen, ja. Gehen Sie halt hin. Wenn das x größer Null ist, dann gucken Sie nach, ob y größer
+[01:15:05.180 --> 01:15:09.940]   Null ist. Und wenn ja, ist es entweder eins oder vier. Und anderfalls, wenn das kleiner ist,
+[01:15:09.940 --> 01:15:15.780]   gucken Sie nach, ob es zwei oder drei ist. Und dann gibt es Lösungen, die sind sehr kreativ, ja.
+[01:15:15.780 --> 01:15:22.420]   Die benutzen hier diesen Operator, den wir Ihnen gar nicht vorstellen, normalerweise, ja. Das ist ein
+[01:15:22.420 --> 01:15:32.740]   Boolean-Logical-Operator, der nicht mit Short-Socket-Evaluation ab die Auswertung abricht, ja.
+[01:15:32.740 --> 01:15:39.820]   Also, da müssen Sie aufpassen, ob das ist, was Sie wollen, ja. Weil dieser eben evaluiert alle
+[01:15:39.820 --> 01:15:45.340]   beiden Operanten, unabhängig davon, ob das ist. Also, das wird dann, wo der ausgiebig auf Stack
+[01:15:45.340 --> 01:15:49.940]   Overflow diskutiert, können Sie machen. Aber vorsichtig, stellen Sie sicher, dass die nächste
+[01:15:49.940 --> 01:15:56.060]   Leserin Ihres Programms die gleiche Meinung hat, wie Sie und das auch eben kennt, ja. So. Ein paar
+[01:15:56.060 --> 01:16:03.380]   andere Beispiele eben, dass aus diesem Jahr wieder mal eins, ja. Das ist eine Zuweisung, ja. Das ist
+[01:16:03.380 --> 01:16:10.100]   keine Vergleich. Also, Sie müssen immer zwei Gleichheitszeichen verwenden, ja, wenn Sie das
+[01:16:10.100 --> 01:16:16.500]   machen wollen, ja. Oder eine andere Lösung. Aus diesem Jahr, ja, ganz ohne Typen geht es auch nicht,
+[01:16:16.500 --> 01:16:23.620]   ja. Das ist sonst einfach. Und diese Lösung kam sogar so, dass diese in der Originallösung,
+[01:16:23.620 --> 01:16:28.260]   diese schließenden Klammern fehlten. Und ich habe da irgendwie erst mal rausfinden müssen,
+[01:16:28.260 --> 01:16:33.020]   dass ich es überhaupt so schön Präti-printen konnte. Wenn Sie mich das nicht machen, dann meint
+[01:16:33.020 --> 01:16:38.580]   eben der Präti-Printer, also das ursprünglich aus, ja, dann meint der Präti-Printer, dass Sie so
+[01:16:38.580 --> 01:16:44.940]   eine Konstruktion da angeliefert haben und meint es fehlten noch zwei sich schließende geschweifte
+[01:16:44.940 --> 01:16:49.820]   Klammern, die Sie aber gar nicht brauchen, weil das Problem sind nicht geschweifte Klammern, das
+[01:16:49.820 --> 01:16:55.860]   Problem sind diese Klammern. Also passen Sie auf, Sie können da viel Zeit vergeuden, jetzt rauszufinden,
+[01:16:55.860 --> 01:17:00.740]   wo die schließenden Klammern hin müssen. Wenn Sie passen Sie auf, es geht nicht darum, schnell
+[01:17:00.740 --> 01:17:07.060]   zu machen, ja. Geht darum, das langsam und richtig zu machen, ja. Eine andere Lösung aus diesem Jahr,
+[01:17:07.060 --> 01:17:14.900]   die hat dann auch vieles weggelassen, sowohl die Klammern für die Methode, als auch die
+[01:17:14.900 --> 01:17:21.500]   Semicolons, ja, und das hat man auch in der Vergangenheit schon mal gehabt, also das geht natürlich auch nicht.
+[01:17:21.500 --> 01:17:28.780]   Auch solche Lösungen haben wir oft gesehen, ja, sind kompakt, ja, aber eben das geht natürlich
+[01:17:28.780 --> 01:17:33.780]   auch nicht für reelle Zahlen, dass sie da nicht machen, da müssten Sie, wenn Sie das richtig machen
+[01:17:33.780 --> 01:17:40.780]   wollen, eben einen Vergleich machen, ja, dann ist das Ganze in Ordnung, ja. So, auch fehlende Returns
+[01:17:40.780 --> 01:17:47.020]   sind interessant, also viele von den Lösungen haben kleine Fehler und zum Glück findet der
+[01:17:47.020 --> 01:17:53.460]   Compiler einige von denen, ja, wie falscher Typ und so weiter und deswegen verwenden wir einen
+[01:17:53.460 --> 01:17:58.700]   Compiler in der Prüfung, damit Sie eben das haben, aber trotzdem fangen Sie mit einem möglichst,
+[01:17:58.700 --> 01:18:10.220]   fangen Sie mit einem möglichst korrekten Programm an, aber die logischen Fehler, die müssen Sie
+[01:18:10.220 --> 01:18:17.660]   finden, ja, und genauso falsche Methodennahmen. Falsche Methodennahmen haben zur Folge, dass
+[01:18:17.660 --> 01:18:23.380]   für uns kein Test funktioniert, ja, bitte, wenn Sie die Punkte wollen, sorgen Sie dafür,
+[01:18:23.380 --> 01:18:29.060]   dass Sie solche Sachen richtig hinbekommen, ja, ist nicht schwer, die Aufgaben, ja, die Beschreibungen
+[01:18:29.060 --> 01:18:33.860]   sind manchmal lang, warum, weil wir an alle versuchen, an alle Sonderfälle zu denken,
+[01:18:33.860 --> 01:18:39.500]   aber Sie müssen die Aufgaben genau lesen, ja, sonst haben Sie es schwer, eine korrekte
+[01:18:39.500 --> 01:18:43.660]   Lösung zu erstellen. So, das habe ich zum Thema If Statement, einfaches Beispiel,
+[01:18:43.660 --> 01:18:48.420]   trotzdem zehn Minuten, wünsche Ihnen einen schönen Rest der Woche und wir sehen uns dann am Freitag.
+[01:18:48.740 --> 01:18:50.740]   [Applaus]
+[01:18:50.740 --> 01:18:54.340]   (Beifall bei der CDU und dem BÜNDNIS 90/DIE GRÜNEN)
+

@@ -1,49 +1,61 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TLDR; Lecture</title>
-    {# TODO: Add Favicon #}
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
-    </head>
-  <body>
-    <header class="header">
-      <div class="page-title">TLDR; <sub>Lectures</sub></div>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>TLDR; Lecture</title>
+  {# TODO: Add Favicon #}
+  <link rel="stylesheet" href="{% static 'main.css' %}" />
+  <link rel="stylesheet" href="{% static 'index.css' %}" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="first-row">
+        <div class="page-title">
+          <a href="#">TLDR; <sub>Lectures</sub>
+          </a></div>
       <div class="account-login-wrapper">
-        <div class="welcome-text">Welcome, PATRICIA!</div>
+        <div class="welcome-text">Welcome, Patricia ✨</div>
         <img class="log-out-icon" src="img/log-out-icon.svg" />
       </div>
-    </header>
-    <main class="main">
-      <div class="content">
-        <div class="cards">
-          {% if lectures %}
-            {# Create Course Cards #}
-            {% for lecture in lectures %}
-              <div class="course-card">
-                <div class="title-frame">
-                  <div class="text-wrapper">{{ lecture.lecture_name }}</div>
-                </div>
-                <div class="lectures-frame">
-                  <div class="div">Lectures:</div>
-                  <div class="text-wrapper-2">{{ lecture.video_set.count }}</div>
-                </div>
-              </div>
-            {% endfor %}
-          {% endif %}
+    </div>
+    <nav class="breadcrumbs">
+      <div class="breadcrumbs-text">Home</div>
+    </nav>
+  </header>
+  <main class="main">
+    <div class="content">
+      <div class="cards">
+        {% if lectures %}
+        {# Create Course Cards #}
+        {% for lecture in lectures %}
+        <div class="course-card" , onclick="window.location='/classes/{{lecture.id}}/';">
+          <div class="title-frame">
+            <div class="text-wrapper">{{ lecture.lecture_name }}</div>
+          </div>
+          <div class="lectures-frame">
+            <div class="div">Lectures:</div>
+            <div class="text-wrapper-2">{{ lecture.video_set.count }}</div>
+          </div>
         </div>
+        {% endfor %}
+        {% endif %}
       </div>
-    </main>
-    <footer class="footer">
-      <div class="div-wrapper">
-        <div class="text-wrapper"><a href="#">About</a></div>
-      </div>
-      <div class="div-wrapper">
-        <div class="text-wrapper"><a href="#">Impressum</a></div>
-      </div>
-      <div class="div-wrapper">
-        <div class="text-wrapper"><a href="#">Video Portal</a></div>
-      </div>
-    </footer>
-  </body>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="div-wrapper">
+      <div class="text-wrapper"><a href="#">About</a></div>
+    </div>
+    <div class="div-wrapper">
+      <div class="text-wrapper"><a href="#">Impressum</a></div>
+    </div>
+    <div class="div-wrapper">
+      <div class="text-wrapper"><a href="https://video.ethz.ch/lectures/d-infk.html">Video Portal</a></div>
+    </div>
+  </footer>
+</body>
+
 </html>
