@@ -1,19 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
 
-<form method="get">
-    <input type="text" name="query" value="{{ query }}">
-    <button type="submit">Search</button>
-</form>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>TLDR; Lecture</title>
+  {# TODO: Add Favicon #}
+  <link rel="stylesheet" href="{% static 'main.css' %}" />
+  <link rel="stylesheet" href="{% static 'search.css' %}" />
+</head>
 
-{% if results %}
-<ul>
-    {% for res in results %}
-    <div class="topic-card" , onclick="window.location='/transcripts/{{res.videoID}}/';">
-        <div class="title-frame">
-          <div class="text-wrapper">{{ res.topic.title }}</div>
-        </div>
+<body>
+  <header class="header">
+    <div class="first-row">
+        <div class="page-title">
+          <a href="#">TLDR; <sub>Lectures</sub>
+          </a></div>
+      <div class="account-login-wrapper">
+        <div class="welcome-text">Welcome, Patricia ✨</div>
+        <!--<img class="log-out-icon" src="img/log-out-icon.svg" />--> <!-- TODO: Add image -->
+      </div>
     </div>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No results found.</p>
-{% endif %}
+    <nav class="breadcrumbs">
+      <div class="breadcrumbs-text">
+          <a href="/" class="breadcrumb-link">Home</a> » Search
+      </div>
+    </nav>
+  </header>
+  <main class="main">
+    <div class="content">
+        <form method="get" class="search-form">
+            <input type="text" name="query" value="{{ query }}" class="search-input">
+            <button type="submit">Search</button>
+        </form>
+        <div class="cards">
+
+        {% if results %}
+            {% for res in results %}
+            <div class="course-card" , onclick="window.location='/transcripts/{{res.videoID}}/';">
+                  <div class="text-wrapper-2">{{ res.topic.title }}</div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <p>No results found.</p>
+        {% endif %}
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="div-wrapper">
+      <div class="text-wrapper"><a href="#">About</a></div>
+    </div>
+    <div class="div-wrapper">
+      <div class="text-wrapper"><a href="#">Impressum</a></div>
+    </div>
+    <div class="div-wrapper">
+      <div class="text-wrapper"><a href="https://video.ethz.ch/lectures/d-infk.html">Video Portal</a></div>
+    </div>
+  </footer>
+</body>
+
+</html>

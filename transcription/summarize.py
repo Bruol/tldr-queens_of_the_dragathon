@@ -159,6 +159,32 @@ def generate_title(lecture_summary, outfile, prompt):
 
         return lecture_title
 
+def generate_tags(video_dict, prompt):
+        print("use topic summary to create a tags the topics")
+        
+        
+        for i in video_dict["topics"]:
+            prompt_request = prompt + i[2]
+
+            response = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "user", "content": prompt_request}
+                    ]
+                )
+            # Create a new tuple with the updated values
+            updated_i = i + (response["choices"][0]["message"]["content"].strip().split(","),)
+
+            # Find the index of the old tuple in the list and replace it
+            index = video_dict["topics"].index(i)
+            video_dict["topics"][index] = updated_i
+            print()
+            print(video_dict["topics"][index])
+            print()
+            
+
+        return video_dict
+
 def remove_first_and_empty_lines(input_string):
     lines = input_string.split('\n')
     
@@ -204,10 +230,6 @@ def strings_to_dict(lecture_title, chunks, summary):
         #try:
         # Add the topic to the topics list
         #except Exception as e:
-        print()
-        print(i)
-        print()
-        print(temp_topics)
         topics.append((temp_topics[i][0], temp_topics[i][1], long_topic, temp_topics[i][2]))
         i += 1
 
@@ -229,6 +251,9 @@ if __name__ == "__main__":
     
     with open("../Prompts/Title_prompt.txt", "r") as f:
         title_prompt = f.read()
+    
+    with open("../Prompts/Tags_prompt.txt", "r") as f:
+        tags_prompt = f.read()
 
     transcript_files = []
         
@@ -266,6 +291,9 @@ if __name__ == "__main__":
 
         lecture_title = generate_title(lecture_summary, outfile_title, title_prompt)
         video_dict = strings_to_dict(lecture_title, chunk_summaries, lecture_summary)
+
+        video_dict = generate_tags(video_dict, tags_prompt)
+
         # write dict to json
         with open("jsons/" + filename, 'w') as json_file:
             json.dump(video_dict, json_file)

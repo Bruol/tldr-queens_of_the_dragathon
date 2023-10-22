@@ -1,13 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
 :root {
+    /* Colors */
     --variable-collection-bright: rgba(244, 242, 243, 1);
     --variable-collection-accent-green: rgba(110, 152, 135, 1);
     --variable-collection-accent-blue: rgba(123, 140, 222, 1);
     --variable-collection-accent-yellow: rgba(236, 164, 0, 1);
     --variable-collection-dark: rgba(39, 39, 39, 1);
+
+    /* Font Sizes */
     --variable-collection-font-size-small: 12px;
     --variable-collection-font-size-medium: 16px;
     --variable-collection-font-size-large: 20px;
     --variable-collection-font-size-xlarge: 24px;
+
+    /* Font Families */
+    --variable-collection-font-family-sans-serif: 'Open Sans', Helvetica, sans-serif;
+    --variable-collection-font-family-serif: 'Merriweather', serif;
 }
 
 body {
@@ -40,19 +49,36 @@ body {
     display: block;
     padding: 0 50px;
     font-size: var(--variable-collection-font-size-small);
-    font-family: sans-serif;
+    font-family: var(--variable-collection-font-family-sans-serif);
 }
 
+.header .breadcrumb-link {
+    color: var(--variable-collection-accent-green);
+    text-decoration: none;
+}
+.header .breadcrumb-link:hover {
+    text-decoration: underline;
+}
+
+.header a {
+    color: var(--variable-collection-accent-green);
+    text-decoration: none;
+}
 
 .header .page-title {
     position: relative;
     width: fit-content;
 }
 
+.header .page-title sub {
+    font-family: var(--variable-collection-font-family-serif);
+    font-style: italic;
+}
+
 .header .page-title a {
     text-decoration: none;
     display: block;
-    font-family: "Open Sans-Regular", Helvetica;
+    font-family: var(--variable-collection-font-family-sans-serif);
     font-weight: 400;
     color: #000000;
     font-size: var(--variable-collection-font-size-xlarge);
@@ -67,7 +93,7 @@ body {
 }
 
 .header .welcome-text {
-    font-family: "Open Sans-Regular", Helvetica;
+    font-family: var(--variable-collection-font-family-sans-serif);
     font-weight: 400;
     color: #000000;
     font-weight: bold;
@@ -84,14 +110,6 @@ body {
     position: relative;
     align-self: stretch;
     flex: 0 0 auto;
-}
-
-.log-out-icon {
-    position: absolute;
-    width: 34px;
-    height: 33px;
-    top: 38px;
-    left: 1312px;
 }
 
 .main {
@@ -111,13 +129,14 @@ body {
     width: 80%;
     max-width: 1000px;
     min-width: 500px;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     gap: 10px;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 75px;
     position: relative;
     flex: 0 0 auto;
+    font-family: var(--variable-collection-font-family-sans-serif);
 }
 
 
@@ -142,7 +161,7 @@ body {
     position: relative;
     width: fit-content;
     margin-top: -1px;
-    font-family: "Open Sans-Regular", Helvetica;
+    font-family: var(--variable-collection-font-family-sans-serif);
     font-weight: 400;
     color: var(--variable-collection-accent-green);
     font-size: var(--variable-collection-font-size-medium);
@@ -168,5 +187,39 @@ body {
 }
 
 .footer a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0;
+    box-shadow: 0 4px 0 0 var(--variable-collection-accent-green);
+}
+
+
+.button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 0 0 var(--variable-collection-accent-green);
+}
+
+.button.disabled {
+    background-color: white;
+    box-shadow: 0 4px 0 0 var(--variable-collection-bright);
+}
+
+
+.button.disabled:active {
+    transform: translateY(0px);
+    box-shadow: 0 4px 0 0 var(--variable-collection-bright);
+}
+
+.link {
+    color: var(--variable-collection-accent-green);
+    text-decoration: none;
+}
+
+.link:hover {
     text-decoration: underline;
 }

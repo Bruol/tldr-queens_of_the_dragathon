@@ -2,24 +2,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TLDR; Lecture</title>
+    <title>TLDR;Lecture</title>
     {# TODO: Add Favicon #}
     <link rel="stylesheet" href="{% static 'main.css' %}" />
     <link rel="stylesheet" href="{% static 'video.css' %}" />
-    </head>
+  </head>
   <body>
     <header class="header">
       <div class="first-row">
-        <div class="page-title"><a href="/">
-          TLDR; <sub>Lectures</sub>
-        </a></div>
+        <div class="page-title">
+          <a href="/">TLDR;<sub>Lectures</sub></a>
+        </div>
         <div class="account-login-wrapper">
           <div class="welcome-text">Welcome, Patricia ✨</div>
-          <img class="log-out-icon" src="img/log-out-icon.svg" />
+          <!-- <img class="log-out-icon" src="img/log-out-icon.svg" /> --> <!-- TODO: Add image -->
         </div>
       </div>
       <nav class="breadcrumbs">
-        <div class="breadcrumbs-text"><a href="/">Home</a> » {{ lecture.lecture_name }}</div>
+        <div class="breadcrumbs-text">
+          <a href="/" class="breadcrumb-link">Home</a> » {{ lecture.lecture_name }}
+        </div>
       </nav>
     </header>
     <main class="main">
@@ -28,19 +30,19 @@
           {% if names %}
             {# Create Course Cards #}
             {% for video in names %}
-            <div class="course-card" onclick="window.location='/transcripts/{{ video.0.id }}/';">
+              <div class="course-card" onclick="window.location='/transcripts/{{ video.0.id }}/';">
                 <div class="title-frame">
                   <div class="text-wrapper">{{ video.0.infered_titel }}</div>
                 </div>
                 <div class="lectures-frame">
-                  <div class="text-wrapper-2">{{ video.0.presentation_date }}</div>
+                  <div class="text-wrapper-2">{{ video.0.presentation_date|date:"D. d M" }}</div>
                   <div class="text-wrapper-2">
                     {% for presenter in video.1 %}
-                    <div >{{presenter}}</div>
+                      <div>{{ presenter }}</div>
                     {% endfor %}
                   </div>
                   <div class="text-wrapper-2">
-                      <a href="{{ video.0.source_url }}">ETH Videoportal</a>
+                    <a href="{{ video.0.source_url }}">ETH Videoportal</a>
                   </div>
                 </div>
               </div>
@@ -54,10 +56,14 @@
         <div class="text-wrapper"><a href="/about">About</a></div>
       </div>
       <div class="div-wrapper">
-        <div class="text-wrapper"><a href="#">Impressum</a></div>
+        <div class="text-wrapper">
+          <a href="#">Impressum</a>
+        </div>
       </div>
       <div class="div-wrapper">
-        <div class="text-wrapper"><a href="#">Video Portal</a></div>
+        <div class="text-wrapper">
+          <a href="#">Video Portal</a>
+        </div>
       </div>
     </footer>
   </body>
