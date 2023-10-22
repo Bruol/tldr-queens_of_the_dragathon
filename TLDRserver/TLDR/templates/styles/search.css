@@ -87,3 +87,18 @@
     letter-spacing: 0;
     line-height: normal;
 }
+.course-card .text-wrapper-3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    margin-top: -1px;
+    max-width: 100%;
+    font-family: "Source Sans Pro-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: var(--variable-collection-font-size-small);
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}

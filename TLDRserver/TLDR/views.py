@@ -21,15 +21,18 @@ def search(request):
     else:
         topics = Topic.objects.all()
 
+
     result = []
     for topic in topics:
         video = topic.discussed_in.all()[0]
         print(video.id)
+
         topic.title = re.sub(r'^Topic \d+: ', '', topic.title)
         result.append(
             {
                 "topic": topic,
                 "videoID": video.id,
+                "lecture": video.lecture_id.lecture_name,
             }
         )
     
