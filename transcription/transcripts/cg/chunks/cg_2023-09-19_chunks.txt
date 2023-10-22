@@ -1,0 +1,39 @@
+Summary 1:
+This excerpt is from the introduction to an Advanced Computer Graphics class. The lecturer, Marius Papas, introduces himself and mentions that he has been teaching the class with Professor Marcos Gross. He begins the lecture with a quiz, displaying images and asking the students if they think they are photographs or computer-generated images. He explains each image, revealing that some are photographs while others are renderings. He then provides an overview of the course structure, including the main lectures and the team of assistants. He also mentions the Computer Graphics Lab, founded by Professor Markus Gross, and the research themes being explored there. Finally, he discusses Walt Disney Company and its history of innovation and patents in the field of animation and graphics.
+
+
+
+Summary 2:
+The transcript excerpt discusses the history and innovation of Disney, as well as the structure and goals of a research lab in collaboration with ETH. It mentions specific patents and technologies developed by Disney, such as synchronizing sound and animation, and the multi-plane technology used in Snow White. The transcript also provides an overview of the research themes and groups within the lab, including rendering and simulation, digital humans, animation, imaging and video, and machine learning. It then introduces the course structure, evaluation methods, and details about the homework assignments and final project.
+
+
+
+Summary 3:
+In this excerpt, the lecturer discusses a project that will be assigned in the middle of the lectures. Students are encouraged to extend their renderer with advanced functionality to render images as accurately and creatively as possible. The lecturer mentions that judges will evaluate the submissions based on technical contributions, aesthetics, and alignment with the theme, and the best images will win prizes. The lecturer then shows some examples of previous competition winners.
+
+The lecturer also provides an overview of the topics that will be covered in the course. They mention that the course will focus on scene representation, image synthesis algorithms, and inverse rendering. They explain that geometry will be covered, with the goal of efficiently representing and editing geometric shapes in digital form. They mention various methods for representing geometry, such as parametric models, implicit surfaces, and discrete representations. The lecturer also mentions that geometry can be acquired through inverse rendering processes, such as 3D scanning or image-based reconstruction.
+
+Overall, the excerpt introduces the project assignment, discusses previous competition winners, and provides an overview of the topics that will be covered in the course.
+
+
+
+Summary 4:
+The excerpt discusses different types of scene representations and elements involved in rendering a scene. It mentions that scene geometry can be represented using continuous functions or discrete representations such as triangular meshes or point clouds. The lecture also discusses different techniques for acquiring scene geometry, such as 3D scanning or depth cameras. The challenges of capturing geometry due to view-dependent effects are also mentioned.
+
+The transcript further discusses the importance of representing lights and materials in scene representations. It mentions that lighting in the scene is crucial for accurately computing light quantities and that light sources need to be represented to produce light and illuminate scenes. The concept of environmental lighting, where 360 HDR photos are used as lighting for scenes, is also mentioned.
+
+The lecture briefly touches on the topic of the appearance of materials and how different materials can have different appearances. The use of equations, such as the BRDF function, to represent the appearance of materials is discussed. The lecture also mentions the effect of micro surface roughness on material appearance.
+
+The transcript briefly discusses the role of cameras in scene representations and mentions that advanced camera models can simulate effects such as depth of field and motion blur.
+
+The lecture mentions that the goal of the rendering process is to convert scene descriptions into images. It mentions physically based rendering as well as non-photorealistic rendering, which aims to show interpretations rather than accurate representations of scenes. The applications of rendering in movies, games, industrial design, architecture, cultural heritage, and virtual reality are mentioned.
+
+Overall, the excerpt provides an overview of different scene representations and elements involved in the rendering process.
+
+
+
+Summary 5:
+The excerpt introduces the concept of physically based rendering, which aims to accurately simulate the behavior of light to generate realistic images. It acknowledges the difficulty of accurately rendering humans but suggests that interiors may be more forgiving due to human perception. The course will start with simple examples, such as intersecting rays with spheres and rendering shadows and environment light. As the course progresses, students will learn about more advanced algorithms for simulating light transport, including tracing light from sources, interacting with objects and materials, and depositing radiance into the image plane. The lecture also mentions path tracing as a commonly used algorithm in production renderers and showcases some images generated with a path tracer.
+
+
+

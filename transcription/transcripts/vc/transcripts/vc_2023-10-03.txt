@@ -1,1337 +1,1339 @@
- (audience murmuring)
- Excuse me.
- Let's start the class.
- Okay, well I'm covering from Professor Mark Poliface
- because he is on a conference.
- And well, we are going to do today convolutions
- and filtering.
- So basically a small recap of what you did last week
- as far as he told me.
- You did segmentation, so you basically learned
- to do foreground and background segmentation
- and based to evaluate it with Rock Curve.
- Basically if you don't remember something of this,
- please look it up since you will have the practice classes.
- So I would recommend to look that
- because it's really important.
- Okay, so let's start.
- What is image filtering?
- So basically the definition of image filtering
- could be the modification of pixels in an image
- based on some functions of a local neighborhood of the pixels.
- So basically as you can see here,
- this is a local image data.
- So basically this is a random image.
- We are applying something on it
- which basically gives us a modified output with a seven.
- What is this something?
- So basically those are image filters.
- Okay, so basically one of the simplest types
- of image filters are line shift invariant filtering.
- What is line shift invariant filtering?
- Basically they are modified pixels
- based on the neighborhood.
- So if you have worked before with pixels,
- they are the ones that you have probably seen.
- They are as said the simplest ones.
- They are linear means, linear combination of neighbors,
- linear methods.
- Again, it's the simplest ones and how to apply.
- And basically, yeah, so they are shift invariant.
- Sorry, I had to run to get the adapter.
- So I'm kind of out of breath,
- but yeah, we'll get better.
- Okay, so basically they are shift invariant
- means doing the same for each pixel
- and basically for what they are used for.
- Basically you have applied them on images,
- so low level image processing,
- smoothing and noise reduction,
- sharpening and detecting or enhancing features.
- Okay, so basically how do we know it's a linear filter?
- Basically this equation has to be every time true.
- So basically a linear filter is every time
- for a constant alpha and beta for each of them,
- we need to basically be able to prove this equation.
- So if we separate them, this needs to be true.
- Okay, so basically you can see here,
- basically as an example of a linear operation
- is a weighted summation.
- So basically the output is the image filter
- on a linear image operation is the weighted sum
- of a constant alpha multiplied by the image
- on coordinates i and g.
- Okay, so basically you have here the equation,
- so basically k is the kernel,
- which is what we're going to multiply.
- It has normally a size on coordinate x and y
- and then we have the image on the coordinates i and j.
- Okay, so basically what's the important part out of this,
- it's basically they are shift invariant.
- So this basically means k does not depend on x and y,
- so it's always the same on the entire image.
- This is kind of the most important part,
- you need to kind of keep in mind for this.
- So let's start with basically image filters.
- We have first of all correlations.
- So an example template matching.
- So what is the correlation?
- Basically you can see here, we have our image
- with our coordinates j minus y, j and j plus one,
- which is the section we have decided to apply the filter.
- And then we have the coordinates on the horizontal,
- which is i minus one, i and i plus one.
- And this basically our correlation mask,
- which we are going to apply on that image.
- Does anyone know what, how this is going to look like,
- the correlation equation?
- Anyone?
- Nobody has any idea?
- Okay, that's great.
- So basically the first coordinate is going to be
- the correlation in position one one.
- And we're basically having the image in the position
- one minus one, j minus one.
- Does anyone can tell me what's the next term?
- Anyone?
- It's going to be a long class if you don't participate.
- I'm just letting you know.
- Well, so as it is obvious, the coordinate one two
- and the correlation, we have the image
- and basically the coordinate is j and i minus one.
- Next one.
- Exactly.
- Okay, so you got the gist out of it.
- So basically it's the summation of each of the positions
- here as you can see.
- So basically this is how we move over the image.
- There.
- So this is how basically the correlation on an applied
- three by three filter on an image is going to look.
- Okay, so this is kind of like logic until here.
- Everyone, everything's clear, right?
- Okay.
- Let's move to the next part.
- Basically, how do we say that in a mathematical formula?
- So basically the mathematical formula of a correlation is
- the linear operation is equal to a kernel,
- which is always the same on the entire image,
- correlation of an image.
- So basically what is the correlation?
- It's a summation of k and coordinates a and g
- and multiplied by the image in the coordinate x plus one,
- i plus j.
- And yeah, basically k is the weight
- and it's always constant.
- So okay, let's move to one of the examples.
- So basically, not the examples,
- we are doing now the opposite.
- So this is a convolution.
- Has anyone of you maybe worked with deep learning?
- Yes?
- You know convolutions?
- You have noticed that it is the correlations in this case.
- So do you know how a convolution works?
- The classic standard convolution?
- Okay, it's an explanation.
- But it's good that you know the difference.
- So okay, basically what your colleague said,
- but in a bit more detail is basically,
- we're having here the kernel with the coordinates,
- which is basically what you had beforehand.
- And we're having our image,
- but in this case we're not having a size of three by three.
- We just want to basically do what we can see here.
- We're having that point and we are actually spreading it.
- So basically you can see what's going to happen.
- In this case we start from the other end.
- So basically the first term is our kernel position one by one
- on the image x minus y i minus one.
- So basically who knows the next one?
- Anyone?
- Wow, okay.
- So basically that will be the first one,
- which brings us to the next one.
- So as basically you correctly said,
- in this case the filter is actually not static
- on the position, it's pivoting over it.
- So we're actually moving over the image.
- As you can see in the next,
- we're literally every time the kernel is moving
- and basically aiming for that one pixel.
- And basically this is how it's going to look.
- As you can see, okay.
- So basically this is the main difference
- between a correlation and a convolution.
- Okay, so basically this is the mathematical function
- of a convolution, which is basically a convolution
- is a kernel convoluted on an image,
- which is basically the outcome of the summation
- of a basically constant kernel on coordinates ij
- on an image x minus one i minus one minus j.
- Here you can see actually showcased
- basically the difference on the math,
- like what is the difference between one and another.
- You can see it's a change of symbols.
- Okay.
- So basically these are the two things
- you need to keep in mind because basically
- for image filters, we are going to use this.
- So yes, basically these are the two most important ones.
- So now I need you to participate
- because literally this is not going to work if you don't.
- We're having this image.
- Some of you maybe have seen it.
- This is the image of Albert Einstein.
- We're having that filter.
- What happens?
- (audience member speaking off mic)
- Exactly.
- Just remains the same.
- Can you tell us why?
- (audience member speaking off mic)
- Exactly.
- Okay, so have the next one for you.
- Original image.
- This is the convolution.
- What will happen?
- There are a lot of these.
- So the earlier you start participating,
- the funnier it gets.
- Yes?
- (audience member speaking off mic)
- Are you sure it's to the right?
- (audience member speaking off mic)
- No, so basically it's, you were sure close,
- but yeah, it's literally in the other way,
- in the other direction.
- It's just a one pixel shift.
- What happens here?
- Yes?
- (audience member speaking off mic)
- What?
- (audience member speaking off mic)
- The opposite.
- (audience member speaking off mic)
- This is like, okay, this is really a mean one.
- So it's basically, we are assuming each three by three
- neighborhood which ends up saturating the image.
- So that's why a wide image is coming out of here.
- Okay, next one.
- (audience member speaking off mic)
- Exactly, really good.
- Okay, now we have different convolutions
- that we're applying all on the same.
- Any guesses?
- Yes?
- (audience member speaking off mic)
- Nope, we are sharpening actually.
- So basically with this filter,
- what we're doing is basically,
- as you already said before,
- we have the averaging but basically we're giving
- actually more importance to the filters,
- which is this one.
- So that's why you're literally,
- it looks sharpener but just because you're enhancing
- the pixels that have actually a variation,
- like a higher number.
- Okay, so this is how a sharpened image looks.
- As you can see, so it's kind of relative
- what sharpening means.
- It's basically you're having the before image,
- you're having the after image.
- You can see we have of course sharpened details
- on the scene but we're also having more noise
- because we are enhancing also smaller details
- that we maybe don't want.
- Okay, so now that you're experts on convolutions
- and correlations, we basically have here
- just a quick reminder what we had basically.
- Yes?
- I'm sorry, these are not my slides.
- Okay, so basically as you just remind this
- because now we're going to see some outputs of MATLAB
- actually applying this kind of correlations
- and convolutions to images.
- Yes.
- So basically you can see here,
- this is how you would do this in MATLAB.
- So you're having a kernel of nine by nine
- and you're basically applying convolution
- on the image and on the kernel.
- And as you can see, we're having this image of the fishes
- and basically by applying that kernel,
- we're seeing that we are blurring it
- and basically you can also see this kind of
- interesting phenomenon which is basically
- because of the application of the kernel,
- we're getting this black border around the image
- which you will see in a bit.
- We will talk about that there's,
- this can't really get to extreme results basically.
- Okay, so here's another filter
- which is basically as you can see,
- we're having basically a vertical filter.
- So it's basically going to enhance actually
- vertical information in the image.
- So as you can see, it's quite hard to see sadly
- with the projector.
- But so we are having of course some horizontal lines,
- but they are less sharpener than actually here,
- the lines of the fishes which are basically the details.
- So basically what this filter is literally doing
- is enhancing actually the vertical information in the image.
- And basically also since it is this type of filter,
- what we're doing is we are changing,
- that's why the image is actually black.
- So basically it's actually like saturating the part
- that is stark in the other part, not.
- Okay, so basically this brings us to this kind of details,
- what happens with the edges?
- Of course we have been already having always
- this kind of nice kernel which we were applying
- in the middle of the image,
- but what do we do with the borders?
- So basically here we have different options
- to what to do.
- So basically we can do a clip filter
- which is basically this.
- We can add a black filter,
- but so basically if we apply convolution,
- we're having this which is a blurred image.
- And as you can see,
- like literally if we're cutting this out,
- we're having this black border
- which we literally don't want
- if we're applying this on images, right?
- I mean, we're basically putting artifacts
- in the image that we don't want.
- So we have a second option
- which is basically rub the image around.
- So basically as you can see,
- this is just copies of the same image,
- but does anyone can guess what the issue with this is?
- Okay, so basically as you can see in the upper part,
- so probably in an image
- that does not have that much changes,
- kind of like this would work,
- but in the upper part you can actually see
- that basically the red part
- which is the copy of this.
- If we apply convolution or a filter on it,
- we have the blur of the red.
- So you can see actually the red pixels
- are really present up there.
- So if we basically cut it out,
- we're having red artifacts in the upper part.
- So that's again, not interesting for us.
- So other options we have,
- we can copy the edges
- which basically gives you this kind of fun looking image
- which basically has,
- this is all kind of extended.
- So basically this one is actually one of the best ones
- because literally we're convoluting
- and you can already see
- that the borders are staying in the same kind
- of color patterns.
- So basically if we cut this out,
- we're actually having a blurred image.
- We don't have any random artifacts in the scene
- and it's all kind of like looking good.
- Okay, which moves us to the next one.
- We are having the reflect across,
- basically as you can see here.
- So what we're doing is we're reflecting a part of the image.
- We're actually reflecting it.
- Any guesses what will happen here?
- Yes.
- (man speaking off mic)
- (man speaking off mic)
- Exactly.
- Exactly.
- Just in this case,
- it will be much smaller than in the other case
- where we literally were duplicating the image.
- So in this case,
- if we apply the convolution,
- we won't just not see what you were mentioning
- because basically we could see this here in this line,
- but basically since it is convoluted,
- we can't really see any difference.
- And then basically this is kind of what happens cut out.
- Or the other option we have is basically
- we can vary the filter in the borders.
- So basically on the borders,
- we just change the kernel size
- to basically do the kind of adaptations.
- Okay.
- Which brings us to the next thing.
- Since we were talking about the kernel,
- lastly, basically let's talk about separable kernels.
- So basically a separate kernel
- as a part of two dependent filters
- along rows and columns respectively.
- So basically you can see F is rows, G is columns.
- So as you can see,
- this is the output of a separable kernel.
- So that's kind of the function that you're going to have
- and this can be split in these two.
- So basically what we're doing first
- is we're doing a convolution on the columns or on the rows.
- And then we're doing the second one,
- basically on both of them.
- Which basically, okay.
- Question time, I know you don't like it, but yeah.
- Which basically are the computational advantages
- of doing this?
- Any guess?
- Yes.
- (man speaking off mic)
- Exactly, that's one of the reasons.
- From a mathematical point of view,
- we're also changing, basically you can see,
- we're having complexity two M plus one multiplied two N plus one
- which basically we can actually change
- from quadratic to linear because by doing it like this,
- we transform this in a summation actually.
- So it would be two M plus one plus two N plus one.
- So basically that's why we are really using separable kernels
- because they are really interesting for us.
- Mostly, okay.
- So now you basically have talked about like blurring kernels.
- We have talked about some sharpening kernels.
- Okay, let's move to smoothing kernels.
- We have basically the low pass filters,
- which basically you have the mean filter
- which you have seen before.
- So basically this is going to blur the image
- since it is basically the top filter gives the same way
- to all the pixels.
- Basically the bottom left filter, which is that one,
- is basically giving more importance to the central pixel
- while the bottom right one also gives more importance
- to the closer pixels to the center.
- So basically you can see the difference between them.
- Why to the pixels to the center basically
- because the distance between this one is actually considered one
- while between the other ones is literally considered
- basically distance of the square root.
- So it's over one.
- So basically that's why there's bigger distance
- in the diagonals than actually on the lines.
- Okay.
- So basically yes, these are the smoothing kernels.
- You have seen them before,
- which brings us to Gaussian kernels.
- Okay, I mean I assume you mostly have seen Gaussian kernels.
- I think you're third semester, right?
- So you have started to see already these things.
- So basically a Gaussian kernel is mostly known.
- It's actually used mostly for your scores.
- That's why maybe a lot of people know it.
- Basically a Gaussian kernel,
- this is a representation of a 2D Gaussian kernel in 3D.
- As you can see here,
- basically you're having the representation.
- So what does this mean?
- Basically this is the mathematical equation.
- So we're basically giving more importance
- to the center kernel and the neighborhood
- while we are not giving importance to the other ones.
- So basically one of the interesting things about this
- is that the constant factor at front
- makes volume summation of one.
- Okay.
- So basically this is how a Gaussian kernel
- actually looks like.
- So as you can see what we're doing literally smoothing.
- So we are having this original image,
- which is already quite blurry.
- Not sure if it is because of this resize of it
- or what it is exactly.
- But yeah, basically is the blurry outcome
- that you can see not a great outcome.
- Okay.
- And basically to kind of show you a difference
- because in this case like a Gaussian,
- it has the Gaussian form, so it's kind of circular.
- That's why you're having that image.
- We can also have box filters.
- So basically box filters,
- if some of you have worked with neural networks,
- you can actually often see in convolutions
- when you can sadly not see it.
- Technically you would be able to see in this image
- that there is actually like a grid appearing.
- And basically this grid is often happening
- from the convolutions that we're doing in deep learning.
- So it basically often means that the network is not trained
- but it's not related in this case.
- But basically you're doing box kernels
- which is kind of, it's giving a pattern on the image.
- So basically this is kind of that you know
- you have two different types.
- You have the gaussians and you have the box filters
- which are basically giving importance
- to the entire filter.
- Okay.
- So basically the Gaussian smoothing kernel,
- basically this is the mathematical equation.
- It's basically depending on the standard deviation.
- And as you can see again,
- maybe if you remember from some slides five minutes ago,
- this is actually separable.
- So that's why we like Gaussian kernels
- because basically we can work with them
- and we can do them quicker
- and basically they are much more cost efficient
- and memory efficient.
- Okay.
- So to show you basically because I'm showing you a lot of like
- how this is kind of applied on a mathematical term.
- But let's see.
- So basically here you can actually see the Gaussian smoothing kernel,
- how it looks when we apply this actually.
- So basically this depends on the standard deviation
- of the window size.
- So basically to keep in mind one of the,
- basically one of the conclusions you need to kind of keep out of this
- is basically that the result reminds roughly the same
- for filter sizes greater than three standard deviation.
- So basically that's kind of the important one.
- So basically this is the original image.
- We have a kernel seven by seven
- with a standard deviation of one.
- Applying this on a standard deviation of nine,
- you can already see we're blurring the image.
- And since in this one we were already having a black border,
- you can see, not great, but you can see
- the border is already getting thicker.
- This is basically depending on the application of the kernel.
- Doing the same thing with the kernel size of 19 by 19
- with a standard deviation,
- you can see that the border from here to actually here,
- duplicated already.
- While if we apply standard deviation of nine,
- you can see that actually,
- first of all the image is much blurrier
- than before with the bigger kernel size.
- And second, we're having a much thicker black border.
- Also keep in mind that here the images are cut out.
- So there's some part missing.
- So just keep that in mind.
- This is kind of to give you an idea
- of what basically you are looking into.
- I'm going quite quick.
- So basically, do you have any questions so far?
- Is there anything?
- Okay.
- Um, that's good.
- I mean, you will probably be able then to leave earlier.
- Okay.
- Or do you want to do the break now?
- Any comments?
- What, yeah?
- Okay, then go for the break.
- Okay.
- Some of you basically came to ask me some questions.
- Would I'm kind of assume that basically,
- if some of you asked,
- then basically all the others have no clue about it.
- Which is a strong assumption, I know.
- But it's just, I want to really clarify
- because in the end you are starting the semester right now
- and especially convolutions and correlations
- are actually really important.
- And they are really something that kind of like,
- you should have kind of clear and understood.
- So, I mean, I think correlations,
- you kind of all understood them correctly.
- There was, I think, no question in that.
- You basically understood that we're having
- a fixed correlation mass that is applied on the image.
- So basically it's moving,
- but basically it's always this three by three
- by three by three on an image.
- And we're basically doing the summation
- of all the operations.
- Is that clear?
- (student speaking faintly)
- Okay.
- Basically now comes the part where basically
- it's a bit more abstract to understand
- with the convolution.
- So in this case, I can just tell you
- how it was for me the easiest to understand this,
- but basically it's a bit of an abstract term to understand.
- So first of all, as you can see,
- it is already starting different.
- Why?
- Because basically what we're doing is we're having our point
- and what the kernel is doing,
- it's actually moving over the neighborhood of that point.
- So that's why the first kernel point is not the one
- as we had in the correlation, which was the upper one.
- It's the other diagonal.
- That's why K11 is the first one.
- And basically in the next image,
- you can see that the kernel, what it is doing,
- it's basically moving over the neighborhood of the blue pixel.
- In every of the operations,
- you can see that what we are doing is moving
- of the neighboring pixel.
- So we're basically pivoting over the neighborhood.
- And this is what comes out.
- That's also why basic, sorry, I was told
- I should not use basically.
- It's just a filling word.
- But what, the main difference is as you can see
- on a mathematical point of view is the difference of sign.
- Yes?
- - I have a question.
- In the image, it seems like every time you use K00
- for each neighboring pixel,
- that's your K because you have the center of the kernel
- and then you always took the center
- for each one of the neighboring.
- - Wait, what?
- - In the image control.
- - Yes.
- - It seems like you're always using the center
- of the kernel because you are currently in the kernel
- and always to take the center.
- So every time you take K00
- (audience member laughs)
- No, I'm not taking that.
- As you can see in the Mathematic Formula,
- it's a bit difficult to draw.
- It's the pixel of the kernel that is over that point.
- So the one that is in blue,
- but the center of the kernel is the one
- that is basically shown to you.
- So you're having the arrow that is pointing to it,
- but it's because the convolution is
- the entire kernel position one, one
- on the image in position X minus one,
- I minus Y minus one.
- So even if the image is made confusing
- you see that we're actually not using
- always kernel size in the center.
- We are not using kernel 00.
- We're actually moving.
- The image is, I apologize for the image
- but I didn't make the slides.
- I also don't know how to better draw it
- because if I put you just a point
- and I make it move over them
- you then would be probably more confused.
- But is the difference like on a mathematical point of view,
- you have the two compared?
- Like is that clear now?
- Yes.
- - [Man] Notice the bottom,
- do you always represent a correlation
- whatever that effect on the image
- could you achieve the same effect with the convolution
- because there always a corresponding correlation
- for every convolution?
- - Yeah.
- - [Man] It's just a different way of achieving the same.
- I guess why would you use one or the other?
- - Because one is the opposite of the other.
- It's basically, you have the kernel of ij
- which is the correlation and the convolution is the opposite
- which brings me to the next point
- which there were some questioning
- which was with this image.
- It says use convolution
- but if you actually use the correlation it's the inverse
- and when you're using a correlation
- basically what you're doing is on the right side
- you're taking the white pixels
- so you're shifting everything
- that's why it shifted to the left.
- So this convolution turned is a correlation
- with the one on the other side.
- I'm trying to just come up with other ways
- of explaining you things
- and basically you can then make your own mental path
- on how this makes sense or not
- and now is your chance to ask
- if you have some questions.
- - Yes.
- - Before going over this again,
- I expected the shift to be in the other direction.
- Would it be possible to explain it yet again
- maybe as an equation?
- - As an equation, not really.
- I can't really like help you on that.
- I just really like can explain to you on a theoretical level
- but yet.
- - Maybe am I allowed to ask
- if someone understands why the direction is to the left?
- Why is it the left?
- - So I had the exact same confusion.
- I think your current thing is that we apply the one
- to the pixels to the left of the center, right?
- So the new pixel is just a pixel
- that is originally to the left.
- Is that what you're currently thinking?
- That's why it shifts to the right.
- If you look at the convolution,
- you see that you actually apply the left factor
- of the filter to the pixel
- that is to the right of the center.
- It's kind of reflected along the middle point
- along the center.
- We look at the slides afterwards
- with the equation of the convolution.
- So if this was a kind of a mask for a correlation,
- you would have exactly what you think.
- So it would shift to the right.
- - But if I take the right pixel,
- the original image,
- then I get the shift to the right.
- - You know, so you have this pixel
- and then you pixel in this position
- is just the position to the pixel to the right.
- So you just kind of do everything to the left.
- - I don't know.
- Can I have any order of word here, explain it?
- - Yes.
- - I stated it before,
- also that you shift it to the right,
- but the convolution, I think this filter,
- I misunderstood in the way that I thought
- for each pixel we would take the left,
- the one to its left,
- because the left, the center left cell in the filter is one,
- but it's actually the other pixel
- but it's actually the other way around for each pixel.
- We apply the filter and spread its value according to this.
- So for each, in this case for each pixel,
- the thing in this position is shifted one to the left
- because that's the only cell in the filter that's the one.
- If I understood this correctly.
- - Does that make sense? - Thank you.
- - Yes.
- - Does correlation and convolution the same
- just mirror across the diagonal?
- - I mean, you can.
- - Not across the diagonal, not across the center.
- - Yeah.
- - Yeah.
- - Just to see if I have it right,
- if the pixel, like the only entry in the filter
- that was one with the top left corner,
- would every pixel be shifted off into the left?
- - Yeah.
- - Yes.
- I think so.
- Yeah?
- - I think what it does is it tells you
- when you have to filter on a pixel,
- and the pixel is what is in the middle of the filter,
- it tells you how much it goes to the left.
- So the one on the left side, the middle pixel,
- will get once the middle pixel,
- and all the other ones will get zero from this middle pixel.
- And then you move to filter.
- So every pixel will get some add-on from different pixels.
- But the best is to see the picture where you see the splinter,
- then it spreads it out.
- - The point where it spreads it out?
- - Yes. - Yeah.
- Imagine the pixel on the edge of the black point,
- and now you put the filter on it.
- That means part of the filter is on the point,
- and part of the filter is out of the point.
- And now the center pixel of your filter
- will be spread out around with the numbers in this integrated.
- And then you move to filter.
- So every pixel also gets added up from different central pixels.
- - More comments?
- Yeah.
- - I'm not confused why you would use the convolution over a correlation.
- It feels like a more convoluted representation.
- So I can tell you what you will use mostly if you decide,
- as an example, to move into research where we're using deep learning,
- which is the confusing part often when you have not teach,
- which is in my case.
- So basically a correlation is in deep learning actually convolution.
- Yes, it is totally contradictory.
- But literally what we are using in a convolution with pie torch,
- and the flow and everything is literally this.
- So the other thing, nobody is really using it of us.
- But you need to learn the basic knowledge of these things
- because right now you're really focusing on image filters,
- so you're really focusing on blurring,
- you're really focusing on sharpening,
- or all these things because you're third semester.
- But you need to learn the basics
- and then move to the more fun stuff.
- Yes.
- - I'm still a bit confused about the sequence of the...
- - Yeah?
- - ...if we go back to the...
- - Which slide?
- - The slide where the kernel is moving.
- - But isn't it this one?
- Or do you want another one?
- - I think it's the other one where you have to...
- - But wait, I think it's the same image,
- but just with the correlation next to it.
- - Okay, yeah.
- - So, like, if you go on...
- ...through each step, what is the x, y,
- and like in this image,
- each step, if you go to one step where there is a kernel,
- in display?
- - Wait, I'm...
- - Yeah, yeah.
- - Okay.
- - So, in this image, where is our x, y?
- That's the blue square, right?
- - Yeah.
- - And which...
- Where is the...
- ...the position of the kernel
- with that key multiplied?
- I mean...
- ...basically, I'm just trying to figure out where k0 -1 times ix, y + 1 is.
- But, okay.
- Let's start from the beginning,
- just because that's easier.
- So, you're having kernel 1, 1.
- Why is it that one?
- That, yes, right?
- - So, that is...
- - That one, yes.
- You understood that one.
- - Yeah.
- - Okay.
- K1, 1, you can see in the red, it's the lower pixel.
- And then, x - 1, i - 1,
- is because the center, so,
- x, y would be 0, and x - 1, i - 1.
- And then you're moving over it.
- So, the red square is giving you x, i - 1.
- [pause]
- You can see in k0 - 0, which is the blue is on top of the red, it's i, x, y.
- Now?
- - Yeah.
- - Okay.
- Makes sense?
- Okay.
- Is there anything more that you want to kind of go over that something is unclear
- that I went too fast?
- I know I went too fast.
- Yes?
- - How do you get to the computation of the rampage when you separate?
- - I had that question as well.
- Okay.
- Give me a second.
- I can show you the slide.
- [pause]
- Okay.
- You - I have heard from your colleagues that you already had, like, complexities and, like,
- basically, that you kind of know when a operation is linear or quadratic, so you have learned that before.
- You have seen that.
- So, basically, what you're having here, so, normally, a kernel, you can do two things.
- You would have this function, which is basically, you're having the columns and you're applying
- the - basically, the convolution on it, on the columns, and then you do the horizontals.
- Okay?
- So, basically, that's how it would work.
- You would do first diagonal, second horizontal, and that would be your operation.
- This, you can, of course, separate in two operations, two separate ones.
- One is just a convolution over the vertical, and the other one is a convolution of this.
- So, we are convoluting this, but over the horizontal.
- Okay.
- So, this is the mathematical equation.
- Why is it computational advantage?
- Of course, it's quicker, but why?
- And speaking in complexity, if we are doing all this in one step, we are having that complexity.
- So, it's actually a quadratic, which is basically two m, two columns plus one, multiplied by
- two horizontals plus one.
- While if we are basically separating this, we are having just the summation of two operations.
- So, it's linear.
- So, it's quicker.
- Doesn't make sense.
- It's not one inside of the other.
- It's one summed with the other.
- Does that...
- So, that's the filter size.
- Yeah.
- So, it's the filter size.
- Yeah.
- Yeah.
- Yeah.
- Yes.
- You've clarified some of the speed m and n terms.
- Is that the filter?
- Yeah.
- Yeah.
- Yeah.
- Yeah.
- Okay.
- If there...
- Until here, it's everything clear.
- Then I will continue with the normal slides.
- I think we came until here, right?
- Yes.
- Does anyone remember?
- Okay.
- So, yeah.
- Basically, the scale space, which is basically what you have seen after seeing the Gaussian
- smoothing kernel, this brings us to the scale space.
- So, basically, a convolution of a Gaussian with standard deviation, which is going to
- be represented.
- Sigma with itself is a Gaussian standard deviation, which is the deviation of the square of two.
- So, basically, this sentence, which is repeated convolutions by a Gaussian filter, produces
- the scale space of an image.
- So, you're going to see this here.
- We're having the first image, which is the fishes you have seen before.
- Probably when Philip, who is the head TA of this, is going to upload the slides to you,
- you will have much sharper image.
- It technically should look quite good.
- But, basically, we're applying a convolution size 11 by 11 with the standard deviation of
- three.
- So, as you can see, every time I apply the convolution over the image, first, as you can see, this
- one is cut out, but the border should be actually much thicker.
- It was just cut out.
- But you can see that the image is getting blurr and blurr.
- Here, still, we are having some small details like on the fishes.
- We're having kind of like, we're still seeing some, like, also lighter details.
- There, already, most of the fish patterns are gone.
- Here, nothing's left besides the fishes.
- And the light fishes are also, like, gone already.
- So, this is kind of how, basically, the scale space.
- Yeah.
- [ Inaudible ]
- Wait, what are you pointing?
- [ Inaudible ]
- So, it is a bit tricky to say in this kind of case, because at this point, this is just
- the blurr.
- So, if you had this in MATLAB, you would be able to actually see the pixel, like, what
- is basically happening on the image.
- You could kind of check the coordinate.
- And, yeah, it's not growing inward.
- You're right on that.
- Is that what you said?
- [ Inaudible ]
- It's actually, sorry, it's growing inward.
- Yes.
- It is growing inward.
- But the problem is at this point, I can't even tell you on my high quality slide.
- If --
- [ Inaudible ]
- Yeah.
- The pictures are actually -- maybe I can show you, but, yeah, there is -- these pictures
- are from someone, from a photographer.
- So, they are just taken for the slideshow.
- It's not really that Mark made this.
- Yeah.
- Not only that.
- I mean, you can see in this image that just already the image size is different.
- And it's just because he cropped it.
- Okay.
- So, which basically brings up to the top five reasons to choose the Gaussian kernel, which
- is first, they are rotationally symmetric.
- Second, they have a single lobe.
- So, neighbors influence decreases monotonically.
- Still, one open frequency domain.
- Simple relationship between the standard deviation and easy to implement efficiently.
- Those are kind of the top reasons if you want to choose a Gaussian filter for your images
- from now on.
- So, now you have seen Gaussian filters.
- You have seen basically the ones that we are using for blurring and the one that we are
- using for sharpening.
- This brings us to differential filters.
- So, we are having proits and several operators.
- They look like this.
- So, you can see that they are mostly focusing on the vertical information on how the filters
- are made.
- These are the standard filters that you normally find when you Google image filters.
- Like, they are the general ones that you will find information about.
- Has anyone used them before or heard of them before?
- One person?
- Okay.
- You are not -- as far as I know, you are actually going to see these ones in more detail in
- the practical part.
- So, you are actually going to work with these.
- So, you are going to get more information about these.
- That is why we are currently moving to the high pass filters.
- Which maybe if they remind you a bit, at least to me, they remind me of a Gaussian filter.
- So, we are having the importance on the center pixel and we are having the surroundings.
- That one is basically enhancing the neighbors of the center.
- And this one is the high pass filter.
- Which in this case is of course not like Gaussian.
- But, yeah, basically we are putting the strength on the center pixel and, yeah, moving over
- the neighborhood.
- This is how this looks.
- So, in both cases, they are really similar.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- So, basically, I am going to show you how this looks.
- [ Inaudible ]
- Yes, it is minus.
- No, it is not. Sorry.
- [ Inaudible ]
- Okay.
- Any questions?
- No. Okay.
- So, we have seen now blurring filters.
- We have seen sharpening filters.
- These are face detection filters.
- So, does anyone notice something on these filters?
- What could those filters be showing?
- Maybe.
- Yeah.
- One of them looks like nose.
- Exactly.
- So, in this one, you --
- the part of the eye in the really pixeled image
- is going to be darker of the eye section because of --
- in most cases,
- data sets are also, like,
- made on the most general part of society.
- So, mostly, you have darker persons.
- So, pixels are going to be darker in that area.
- So, that is the eye part and the lower part below is white.
- And in this one, you are having the nose part
- and you are having the eyes.
- And that is how face detection filter works.
- I mean, you have seen -- yeah.
- Isn't it?
- This is the nose.
- Like, the white part is the nose.
- Yeah.
- Yeah.
- Yeah.
- Yeah.
- It's this part.
- It's also this example is really to make --
- to show you that you have vertical and horizontal filters.
- Most of these, you have seen them probably in cameras,
- your own phone, which does face detection.
- It actually is capable of detecting your faces.
- And if you are using even image filters,
- that is how they -- in an easy way,
- detect your face right now.
- They are using other algorithms,
- but this is an easy way to do this.
- And it is from 2001.
- So, before any of the social media existed,
- you have seen it in vertical and horizontal.
- And yes, we can also do it diagonal.
- So, this is how it would look.
- Which means, when you are moving your head,
- that is why the camera still detects you,
- even if you are not straightforward looking at the camera.
- And, yeah.
- This brings us to the last slide,
- which basically on Thursday you are going to learn image features.
- Any questions before --
- here is some crazy animation that Marc has put in?
- I know.
- (Applause)
- (Applause)
- (audience applauding)
+
+[00:00:00.000 --> 00:00:02.080]   (audience murmuring)
+[00:00:02.080 --> 00:00:03.040]   Excuse me.
+[00:00:03.040 --> 00:00:05.600]   Let's start the class.
+[00:00:05.600 --> 00:00:09.360]   Okay, well I'm covering from Professor Mark Poliface
+[00:00:09.360 --> 00:00:11.320]   because he is on a conference.
+[00:00:11.320 --> 00:00:14.040]   And well, we are going to do today convolutions
+[00:00:14.040 --> 00:00:15.480]   and filtering.
+[00:00:15.480 --> 00:00:20.120]   So basically a small recap of what you did last week
+[00:00:20.120 --> 00:00:21.560]   as far as he told me.
+[00:00:21.560 --> 00:00:24.440]   You did segmentation, so you basically learned
+[00:00:24.440 --> 00:00:27.200]   to do foreground and background segmentation
+[00:00:27.200 --> 00:00:30.320]   and based to evaluate it with Rock Curve.
+[00:00:30.320 --> 00:00:34.120]   Basically if you don't remember something of this,
+[00:00:34.120 --> 00:00:38.360]   please look it up since you will have the practice classes.
+[00:00:38.360 --> 00:00:41.000]   So I would recommend to look that
+[00:00:41.000 --> 00:00:42.400]   because it's really important.
+[00:00:42.400 --> 00:00:46.440]   Okay, so let's start.
+[00:00:46.440 --> 00:00:49.240]   What is image filtering?
+[00:00:49.240 --> 00:00:51.520]   So basically the definition of image filtering
+[00:00:51.520 --> 00:00:53.960]   could be the modification of pixels in an image
+[00:00:53.960 --> 00:00:57.520]   based on some functions of a local neighborhood of the pixels.
+[00:00:57.520 --> 00:00:59.640]   So basically as you can see here,
+[00:00:59.640 --> 00:01:01.200]   this is a local image data.
+[00:01:01.200 --> 00:01:03.760]   So basically this is a random image.
+[00:01:03.760 --> 00:01:06.200]   We are applying something on it
+[00:01:06.200 --> 00:01:10.040]   which basically gives us a modified output with a seven.
+[00:01:10.040 --> 00:01:11.560]   What is this something?
+[00:01:11.560 --> 00:01:14.400]   So basically those are image filters.
+[00:01:14.400 --> 00:01:17.160]   Okay, so basically one of the simplest types
+[00:01:17.160 --> 00:01:20.960]   of image filters are line shift invariant filtering.
+[00:01:20.960 --> 00:01:23.240]   What is line shift invariant filtering?
+[00:01:23.240 --> 00:01:26.440]   Basically they are modified pixels
+[00:01:26.440 --> 00:01:27.560]   based on the neighborhood.
+[00:01:27.560 --> 00:01:29.880]   So if you have worked before with pixels,
+[00:01:29.880 --> 00:01:32.880]   they are the ones that you have probably seen.
+[00:01:32.880 --> 00:01:35.480]   They are as said the simplest ones.
+[00:01:35.480 --> 00:01:38.560]   They are linear means, linear combination of neighbors,
+[00:01:38.560 --> 00:01:39.640]   linear methods.
+[00:01:39.640 --> 00:01:43.120]   Again, it's the simplest ones and how to apply.
+[00:01:43.120 --> 00:01:46.000]   And basically, yeah, so they are shift invariant.
+[00:01:46.000 --> 00:01:50.040]   Sorry, I had to run to get the adapter.
+[00:01:50.040 --> 00:01:51.640]   So I'm kind of out of breath,
+[00:01:51.640 --> 00:01:53.840]   but yeah, we'll get better.
+[00:01:53.840 --> 00:01:56.200]   Okay, so basically they are shift invariant
+[00:01:56.200 --> 00:01:58.240]   means doing the same for each pixel
+[00:01:58.240 --> 00:02:00.560]   and basically for what they are used for.
+[00:02:00.560 --> 00:02:02.400]   Basically you have applied them on images,
+[00:02:02.400 --> 00:02:04.720]   so low level image processing,
+[00:02:04.720 --> 00:02:07.040]   smoothing and noise reduction,
+[00:02:07.040 --> 00:02:11.040]   sharpening and detecting or enhancing features.
+[00:02:11.040 --> 00:02:14.560]   Okay, so basically how do we know it's a linear filter?
+[00:02:14.560 --> 00:02:18.600]   Basically this equation has to be every time true.
+[00:02:18.600 --> 00:02:21.440]   So basically a linear filter is every time
+[00:02:21.440 --> 00:02:25.360]   for a constant alpha and beta for each of them,
+[00:02:25.360 --> 00:02:29.120]   we need to basically be able to prove this equation.
+[00:02:29.120 --> 00:02:32.260]   So if we separate them, this needs to be true.
+[00:02:32.260 --> 00:02:36.720]   Okay, so basically you can see here,
+[00:02:36.720 --> 00:02:38.720]   basically as an example of a linear operation
+[00:02:38.720 --> 00:02:40.440]   is a weighted summation.
+[00:02:40.440 --> 00:02:43.560]   So basically the output is the image filter
+[00:02:43.560 --> 00:02:46.280]   on a linear image operation is the weighted sum
+[00:02:46.280 --> 00:02:49.320]   of a constant alpha multiplied by the image
+[00:02:49.320 --> 00:02:51.120]   on coordinates i and g.
+[00:02:52.120 --> 00:02:57.120]   Okay, so basically you have here the equation,
+[00:02:57.120 --> 00:02:59.880]   so basically k is the kernel,
+[00:02:59.880 --> 00:03:01.520]   which is what we're going to multiply.
+[00:03:01.520 --> 00:03:05.440]   It has normally a size on coordinate x and y
+[00:03:05.440 --> 00:03:09.360]   and then we have the image on the coordinates i and j.
+[00:03:09.360 --> 00:03:14.360]   Okay, so basically what's the important part out of this,
+[00:03:14.360 --> 00:03:16.520]   it's basically they are shift invariant.
+[00:03:16.520 --> 00:03:20.120]   So this basically means k does not depend on x and y,
+[00:03:20.120 --> 00:03:23.800]   so it's always the same on the entire image.
+[00:03:23.800 --> 00:03:25.320]   This is kind of the most important part,
+[00:03:25.320 --> 00:03:28.440]   you need to kind of keep in mind for this.
+[00:03:28.440 --> 00:03:30.880]   So let's start with basically image filters.
+[00:03:30.880 --> 00:03:35.320]   We have first of all correlations.
+[00:03:35.320 --> 00:03:37.400]   So an example template matching.
+[00:03:37.400 --> 00:03:38.880]   So what is the correlation?
+[00:03:38.880 --> 00:03:41.960]   Basically you can see here, we have our image
+[00:03:41.960 --> 00:03:44.960]   with our coordinates j minus y, j and j plus one,
+[00:03:44.960 --> 00:03:48.160]   which is the section we have decided to apply the filter.
+[00:03:48.160 --> 00:03:50.720]   And then we have the coordinates on the horizontal,
+[00:03:50.720 --> 00:03:53.720]   which is i minus one, i and i plus one.
+[00:03:53.720 --> 00:03:55.880]   And this basically our correlation mask,
+[00:03:55.880 --> 00:03:59.000]   which we are going to apply on that image.
+[00:03:59.000 --> 00:04:03.800]   Does anyone know what, how this is going to look like,
+[00:04:03.800 --> 00:04:05.200]   the correlation equation?
+[00:04:05.200 --> 00:04:06.960]   Anyone?
+[00:04:06.960 --> 00:04:10.680]   Nobody has any idea?
+[00:04:10.680 --> 00:04:11.880]   Okay, that's great.
+[00:04:11.880 --> 00:04:16.120]   So basically the first coordinate is going to be
+[00:04:16.120 --> 00:04:18.880]   the correlation in position one one.
+[00:04:18.880 --> 00:04:22.600]   And we're basically having the image in the position
+[00:04:22.600 --> 00:04:25.120]   one minus one, j minus one.
+[00:04:25.120 --> 00:04:27.640]   Does anyone can tell me what's the next term?
+[00:04:27.640 --> 00:04:30.320]   Anyone?
+[00:04:30.320 --> 00:04:35.120]   It's going to be a long class if you don't participate.
+[00:04:35.120 --> 00:04:37.000]   I'm just letting you know.
+[00:04:37.000 --> 00:04:41.160]   Well, so as it is obvious, the coordinate one two
+[00:04:41.160 --> 00:04:43.360]   and the correlation, we have the image
+[00:04:43.360 --> 00:04:47.680]   and basically the coordinate is j and i minus one.
+[00:04:47.680 --> 00:04:48.520]   Next one.
+[00:04:48.520 --> 00:04:56.880]   Exactly.
+[00:04:56.880 --> 00:04:59.560]   Okay, so you got the gist out of it.
+[00:04:59.560 --> 00:05:03.120]   So basically it's the summation of each of the positions
+[00:05:03.120 --> 00:05:04.480]   here as you can see.
+[00:05:04.480 --> 00:05:07.040]   So basically this is how we move over the image.
+[00:05:07.040 --> 00:05:09.640]   There.
+[00:05:09.640 --> 00:05:12.920]   So this is how basically the correlation on an applied
+[00:05:12.920 --> 00:05:17.120]   three by three filter on an image is going to look.
+[00:05:17.120 --> 00:05:19.840]   Okay, so this is kind of like logic until here.
+[00:05:19.840 --> 00:05:21.800]   Everyone, everything's clear, right?
+[00:05:21.800 --> 00:05:24.080]   Okay.
+[00:05:24.080 --> 00:05:27.880]   Let's move to the next part.
+[00:05:27.880 --> 00:05:31.720]   Basically, how do we say that in a mathematical formula?
+[00:05:31.720 --> 00:05:35.160]   So basically the mathematical formula of a correlation is
+[00:05:35.160 --> 00:05:38.160]   the linear operation is equal to a kernel,
+[00:05:38.160 --> 00:05:40.840]   which is always the same on the entire image,
+[00:05:40.840 --> 00:05:42.440]   correlation of an image.
+[00:05:42.440 --> 00:05:44.760]   So basically what is the correlation?
+[00:05:44.760 --> 00:05:48.680]   It's a summation of k and coordinates a and g
+[00:05:48.680 --> 00:05:52.520]   and multiplied by the image in the coordinate x plus one,
+[00:05:52.520 --> 00:05:53.600]   i plus j.
+[00:05:53.600 --> 00:05:56.480]   And yeah, basically k is the weight
+[00:05:56.480 --> 00:05:58.960]   and it's always constant.
+[00:05:58.960 --> 00:06:01.040]   So okay, let's move to one of the examples.
+[00:06:01.040 --> 00:06:03.360]   So basically, not the examples,
+[00:06:03.360 --> 00:06:04.720]   we are doing now the opposite.
+[00:06:04.720 --> 00:06:06.640]   So this is a convolution.
+[00:06:06.640 --> 00:06:09.120]   Has anyone of you maybe worked with deep learning?
+[00:06:11.920 --> 00:06:13.040]   Yes?
+[00:06:13.040 --> 00:06:14.280]   You know convolutions?
+[00:06:14.280 --> 00:06:19.480]   You have noticed that it is the correlations in this case.
+[00:06:19.480 --> 00:06:24.080]   So do you know how a convolution works?
+[00:06:24.080 --> 00:06:26.040]   The classic standard convolution?
+[00:06:26.040 --> 00:06:40.640]   Okay, it's an explanation.
+[00:06:41.640 --> 00:06:43.600]   But it's good that you know the difference.
+[00:06:43.600 --> 00:06:46.160]   So okay, basically what your colleague said,
+[00:06:46.160 --> 00:06:48.280]   but in a bit more detail is basically,
+[00:06:48.280 --> 00:06:50.160]   we're having here the kernel with the coordinates,
+[00:06:50.160 --> 00:06:52.480]   which is basically what you had beforehand.
+[00:06:52.480 --> 00:06:53.600]   And we're having our image,
+[00:06:53.600 --> 00:06:56.680]   but in this case we're not having a size of three by three.
+[00:06:56.680 --> 00:06:59.240]   We just want to basically do what we can see here.
+[00:06:59.240 --> 00:07:02.600]   We're having that point and we are actually spreading it.
+[00:07:02.600 --> 00:07:05.880]   So basically you can see what's going to happen.
+[00:07:05.880 --> 00:07:08.880]   In this case we start from the other end.
+[00:07:08.880 --> 00:07:12.960]   So basically the first term is our kernel position one by one
+[00:07:12.960 --> 00:07:15.600]   on the image x minus y i minus one.
+[00:07:15.600 --> 00:07:18.640]   So basically who knows the next one?
+[00:07:18.640 --> 00:07:20.600]   Anyone?
+[00:07:20.600 --> 00:07:24.520]   Wow, okay.
+[00:07:24.520 --> 00:07:28.600]   So basically that will be the first one,
+[00:07:28.600 --> 00:07:30.360]   which brings us to the next one.
+[00:07:30.360 --> 00:07:33.520]   So as basically you correctly said,
+[00:07:33.520 --> 00:07:36.120]   in this case the filter is actually not static
+[00:07:36.120 --> 00:07:38.600]   on the position, it's pivoting over it.
+[00:07:38.600 --> 00:07:40.680]   So we're actually moving over the image.
+[00:07:40.680 --> 00:07:42.680]   As you can see in the next,
+[00:07:42.680 --> 00:07:46.280]   we're literally every time the kernel is moving
+[00:07:46.280 --> 00:07:49.440]   and basically aiming for that one pixel.
+[00:07:49.440 --> 00:07:52.560]   And basically this is how it's going to look.
+[00:07:52.560 --> 00:07:55.840]   As you can see, okay.
+[00:07:55.840 --> 00:07:58.480]   So basically this is the main difference
+[00:07:58.480 --> 00:08:00.760]   between a correlation and a convolution.
+[00:08:00.760 --> 00:08:05.320]   Okay, so basically this is the mathematical function
+[00:08:05.320 --> 00:08:07.920]   of a convolution, which is basically a convolution
+[00:08:07.920 --> 00:08:10.520]   is a kernel convoluted on an image,
+[00:08:10.520 --> 00:08:13.440]   which is basically the outcome of the summation
+[00:08:13.440 --> 00:08:17.920]   of a basically constant kernel on coordinates ij
+[00:08:17.920 --> 00:08:21.880]   on an image x minus one i minus one minus j.
+[00:08:21.880 --> 00:08:25.600]   Here you can see actually showcased
+[00:08:25.600 --> 00:08:27.600]   basically the difference on the math,
+[00:08:27.600 --> 00:08:30.320]   like what is the difference between one and another.
+[00:08:30.320 --> 00:08:33.280]   You can see it's a change of symbols.
+[00:08:33.280 --> 00:08:34.120]   Okay.
+[00:08:34.120 --> 00:08:36.880]   So basically these are the two things
+[00:08:36.880 --> 00:08:38.880]   you need to keep in mind because basically
+[00:08:38.880 --> 00:08:41.160]   for image filters, we are going to use this.
+[00:08:41.160 --> 00:08:45.760]   So yes, basically these are the two most important ones.
+[00:08:45.760 --> 00:08:48.280]   So now I need you to participate
+[00:08:48.280 --> 00:08:51.080]   because literally this is not going to work if you don't.
+[00:08:51.080 --> 00:08:54.240]   We're having this image.
+[00:08:54.240 --> 00:08:55.480]   Some of you maybe have seen it.
+[00:08:55.480 --> 00:08:57.360]   This is the image of Albert Einstein.
+[00:08:57.360 --> 00:08:59.000]   We're having that filter.
+[00:08:59.000 --> 00:08:59.840]   What happens?
+[00:08:59.840 --> 00:09:04.840]   (audience member speaking off mic)
+[00:09:04.840 --> 00:09:09.720]   Exactly.
+[00:09:09.720 --> 00:09:10.960]   Just remains the same.
+[00:09:10.960 --> 00:09:11.960]   Can you tell us why?
+[00:09:11.960 --> 00:09:18.640]   (audience member speaking off mic)
+[00:09:18.640 --> 00:09:24.400]   Exactly.
+[00:09:24.400 --> 00:09:28.400]   Okay, so have the next one for you.
+[00:09:28.400 --> 00:09:30.000]   Original image.
+[00:09:30.000 --> 00:09:30.920]   This is the convolution.
+[00:09:30.920 --> 00:09:31.800]   What will happen?
+[00:09:31.800 --> 00:09:33.840]   There are a lot of these.
+[00:09:33.840 --> 00:09:36.160]   So the earlier you start participating,
+[00:09:36.160 --> 00:09:37.360]   the funnier it gets.
+[00:09:37.360 --> 00:09:39.760]   Yes?
+[00:09:39.760 --> 00:09:44.760]   (audience member speaking off mic)
+[00:09:44.760 --> 00:09:49.520]   Are you sure it's to the right?
+[00:09:49.520 --> 00:09:56.200]   (audience member speaking off mic)
+[00:09:56.880 --> 00:10:01.880]   No, so basically it's, you were sure close,
+[00:10:01.880 --> 00:10:05.080]   but yeah, it's literally in the other way,
+[00:10:05.080 --> 00:10:06.760]   in the other direction.
+[00:10:06.760 --> 00:10:08.720]   It's just a one pixel shift.
+[00:10:08.720 --> 00:10:12.240]   What happens here?
+[00:10:12.240 --> 00:10:21.080]   Yes?
+[00:10:21.080 --> 00:10:22.400]   (audience member speaking off mic)
+[00:10:22.400 --> 00:10:23.240]   What?
+[00:10:23.240 --> 00:10:24.920]   (audience member speaking off mic)
+[00:10:24.920 --> 00:10:25.760]   The opposite.
+[00:10:26.760 --> 00:10:30.760]   (audience member speaking off mic)
+[00:10:30.760 --> 00:10:34.400]   This is like, okay, this is really a mean one.
+[00:10:34.400 --> 00:10:37.480]   So it's basically, we are assuming each three by three
+[00:10:37.480 --> 00:10:39.720]   neighborhood which ends up saturating the image.
+[00:10:39.720 --> 00:10:42.920]   So that's why a wide image is coming out of here.
+[00:10:42.920 --> 00:10:45.080]   Okay, next one.
+[00:10:45.080 --> 00:10:55.080]   (audience member speaking off mic)
+[00:10:55.080 --> 00:10:57.960]   Exactly, really good.
+[00:10:57.960 --> 00:11:02.960]   Okay, now we have different convolutions
+[00:11:02.960 --> 00:11:05.680]   that we're applying all on the same.
+[00:11:05.680 --> 00:11:09.080]   Any guesses?
+[00:11:09.080 --> 00:11:13.440]   Yes?
+[00:11:13.440 --> 00:11:15.680]   (audience member speaking off mic)
+[00:11:15.680 --> 00:11:19.400]   Nope, we are sharpening actually.
+[00:11:19.400 --> 00:11:20.680]   So basically with this filter,
+[00:11:20.680 --> 00:11:22.000]   what we're doing is basically,
+[00:11:22.000 --> 00:11:23.320]   as you already said before,
+[00:11:23.320 --> 00:11:25.720]   we have the averaging but basically we're giving
+[00:11:25.720 --> 00:11:27.800]   actually more importance to the filters,
+[00:11:27.800 --> 00:11:28.960]   which is this one.
+[00:11:28.960 --> 00:11:30.320]   So that's why you're literally,
+[00:11:30.320 --> 00:11:33.160]   it looks sharpener but just because you're enhancing
+[00:11:33.160 --> 00:11:35.520]   the pixels that have actually a variation,
+[00:11:35.520 --> 00:11:36.760]   like a higher number.
+[00:11:36.760 --> 00:11:42.520]   Okay, so this is how a sharpened image looks.
+[00:11:42.520 --> 00:11:44.960]   As you can see, so it's kind of relative
+[00:11:44.960 --> 00:11:46.080]   what sharpening means.
+[00:11:46.080 --> 00:11:47.960]   It's basically you're having the before image,
+[00:11:47.960 --> 00:11:49.480]   you're having the after image.
+[00:11:49.480 --> 00:11:52.640]   You can see we have of course sharpened details
+[00:11:52.640 --> 00:11:54.680]   on the scene but we're also having more noise
+[00:11:54.680 --> 00:11:56.880]   because we are enhancing also smaller details
+[00:11:56.880 --> 00:11:58.800]   that we maybe don't want.
+[00:11:58.800 --> 00:12:01.600]   Okay, so now that you're experts on convolutions
+[00:12:01.600 --> 00:12:05.840]   and correlations, we basically have here
+[00:12:05.840 --> 00:12:09.760]   just a quick reminder what we had basically.
+[00:12:09.760 --> 00:12:11.960]   Yes?
+[00:12:11.960 --> 00:12:16.240]   I'm sorry, these are not my slides.
+[00:12:16.240 --> 00:12:21.200]   Okay, so basically as you just remind this
+[00:12:21.200 --> 00:12:23.720]   because now we're going to see some outputs of MATLAB
+[00:12:23.720 --> 00:12:26.320]   actually applying this kind of correlations
+[00:12:26.320 --> 00:12:28.040]   and convolutions to images.
+[00:12:28.040 --> 00:12:30.400]   Yes.
+[00:12:30.400 --> 00:12:32.120]   So basically you can see here,
+[00:12:32.120 --> 00:12:33.800]   this is how you would do this in MATLAB.
+[00:12:33.800 --> 00:12:36.160]   So you're having a kernel of nine by nine
+[00:12:36.160 --> 00:12:38.200]   and you're basically applying convolution
+[00:12:38.200 --> 00:12:40.480]   on the image and on the kernel.
+[00:12:40.480 --> 00:12:44.000]   And as you can see, we're having this image of the fishes
+[00:12:44.000 --> 00:12:46.280]   and basically by applying that kernel,
+[00:12:46.280 --> 00:12:48.440]   we're seeing that we are blurring it
+[00:12:48.440 --> 00:12:50.400]   and basically you can also see this kind of
+[00:12:50.400 --> 00:12:52.040]   interesting phenomenon which is basically
+[00:12:52.040 --> 00:12:53.560]   because of the application of the kernel,
+[00:12:53.560 --> 00:12:56.280]   we're getting this black border around the image
+[00:12:56.280 --> 00:12:58.160]   which you will see in a bit.
+[00:12:58.160 --> 00:13:00.240]   We will talk about that there's,
+[00:13:00.240 --> 00:13:05.240]   this can't really get to extreme results basically.
+[00:13:05.240 --> 00:13:07.960]   Okay, so here's another filter
+[00:13:07.960 --> 00:13:09.880]   which is basically as you can see,
+[00:13:09.880 --> 00:13:13.320]   we're having basically a vertical filter.
+[00:13:13.320 --> 00:13:15.200]   So it's basically going to enhance actually
+[00:13:15.200 --> 00:13:17.480]   vertical information in the image.
+[00:13:17.480 --> 00:13:20.000]   So as you can see, it's quite hard to see sadly
+[00:13:20.000 --> 00:13:21.840]   with the projector.
+[00:13:21.840 --> 00:13:26.840]   But so we are having of course some horizontal lines,
+[00:13:26.840 --> 00:13:29.920]   but they are less sharpener than actually here,
+[00:13:29.920 --> 00:13:33.440]   the lines of the fishes which are basically the details.
+[00:13:33.440 --> 00:13:36.400]   So basically what this filter is literally doing
+[00:13:36.400 --> 00:13:40.960]   is enhancing actually the vertical information in the image.
+[00:13:40.960 --> 00:13:44.120]   And basically also since it is this type of filter,
+[00:13:44.120 --> 00:13:45.560]   what we're doing is we are changing,
+[00:13:45.560 --> 00:13:47.760]   that's why the image is actually black.
+[00:13:47.760 --> 00:13:50.960]   So basically it's actually like saturating the part
+[00:13:50.960 --> 00:13:53.680]   that is stark in the other part, not.
+[00:13:53.680 --> 00:13:58.680]   Okay, so basically this brings us to this kind of details,
+[00:13:58.680 --> 00:14:01.560]   what happens with the edges?
+[00:14:01.560 --> 00:14:03.760]   Of course we have been already having always
+[00:14:03.760 --> 00:14:05.880]   this kind of nice kernel which we were applying
+[00:14:05.880 --> 00:14:07.200]   in the middle of the image,
+[00:14:07.200 --> 00:14:09.080]   but what do we do with the borders?
+[00:14:09.080 --> 00:14:11.760]   So basically here we have different options
+[00:14:11.760 --> 00:14:13.680]   to what to do.
+[00:14:13.680 --> 00:14:15.680]   So basically we can do a clip filter
+[00:14:15.680 --> 00:14:17.960]   which is basically this.
+[00:14:17.960 --> 00:14:19.240]   We can add a black filter,
+[00:14:19.240 --> 00:14:23.000]   but so basically if we apply convolution,
+[00:14:23.000 --> 00:14:26.200]   we're having this which is a blurred image.
+[00:14:26.200 --> 00:14:28.080]   And as you can see,
+[00:14:28.080 --> 00:14:30.800]   like literally if we're cutting this out,
+[00:14:30.800 --> 00:14:33.280]   we're having this black border
+[00:14:33.280 --> 00:14:35.360]   which we literally don't want
+[00:14:35.360 --> 00:14:37.800]   if we're applying this on images, right?
+[00:14:37.800 --> 00:14:41.480]   I mean, we're basically putting artifacts
+[00:14:41.480 --> 00:14:43.520]   in the image that we don't want.
+[00:14:43.520 --> 00:14:44.800]   So we have a second option
+[00:14:44.800 --> 00:14:47.440]   which is basically rub the image around.
+[00:14:47.440 --> 00:14:48.640]   So basically as you can see,
+[00:14:48.640 --> 00:14:51.840]   this is just copies of the same image,
+[00:14:51.840 --> 00:14:55.160]   but does anyone can guess what the issue with this is?
+[00:14:55.160 --> 00:15:03.760]   Okay, so basically as you can see in the upper part,
+[00:15:03.760 --> 00:15:04.880]   so probably in an image
+[00:15:04.880 --> 00:15:07.040]   that does not have that much changes,
+[00:15:07.040 --> 00:15:08.400]   kind of like this would work,
+[00:15:08.400 --> 00:15:10.480]   but in the upper part you can actually see
+[00:15:10.480 --> 00:15:12.800]   that basically the red part
+[00:15:12.800 --> 00:15:15.040]   which is the copy of this.
+[00:15:15.040 --> 00:15:17.480]   If we apply convolution or a filter on it,
+[00:15:17.480 --> 00:15:19.640]   we have the blur of the red.
+[00:15:19.640 --> 00:15:21.720]   So you can see actually the red pixels
+[00:15:21.720 --> 00:15:24.480]   are really present up there.
+[00:15:24.480 --> 00:15:27.160]   So if we basically cut it out,
+[00:15:27.160 --> 00:15:29.280]   we're having red artifacts in the upper part.
+[00:15:29.280 --> 00:15:31.920]   So that's again, not interesting for us.
+[00:15:31.920 --> 00:15:34.200]   So other options we have,
+[00:15:34.200 --> 00:15:35.880]   we can copy the edges
+[00:15:35.880 --> 00:15:39.440]   which basically gives you this kind of fun looking image
+[00:15:39.440 --> 00:15:41.440]   which basically has,
+[00:15:41.440 --> 00:15:43.320]   this is all kind of extended.
+[00:15:43.320 --> 00:15:46.680]   So basically this one is actually one of the best ones
+[00:15:46.680 --> 00:15:48.160]   because literally we're convoluting
+[00:15:48.160 --> 00:15:49.400]   and you can already see
+[00:15:49.400 --> 00:15:51.400]   that the borders are staying in the same kind
+[00:15:51.400 --> 00:15:53.080]   of color patterns.
+[00:15:53.080 --> 00:15:57.880]   So basically if we cut this out,
+[00:15:57.880 --> 00:15:59.720]   we're actually having a blurred image.
+[00:15:59.720 --> 00:16:03.840]   We don't have any random artifacts in the scene
+[00:16:03.840 --> 00:16:06.280]   and it's all kind of like looking good.
+[00:16:06.280 --> 00:16:09.960]   Okay, which moves us to the next one.
+[00:16:10.880 --> 00:16:13.160]   We are having the reflect across,
+[00:16:13.160 --> 00:16:16.160]   basically as you can see here.
+[00:16:16.160 --> 00:16:19.320]   So what we're doing is we're reflecting a part of the image.
+[00:16:19.320 --> 00:16:20.880]   We're actually reflecting it.
+[00:16:20.880 --> 00:16:23.960]   Any guesses what will happen here?
+[00:16:23.960 --> 00:16:29.240]   Yes.
+[00:16:29.240 --> 00:16:32.580]   (man speaking off mic)
+[00:16:32.580 --> 00:16:35.740]   (man speaking off mic)
+[00:16:35.740 --> 00:16:41.860]   Exactly.
+[00:16:41.860 --> 00:16:43.900]   Exactly.
+[00:16:43.900 --> 00:16:44.980]   Just in this case,
+[00:16:44.980 --> 00:16:47.220]   it will be much smaller than in the other case
+[00:16:47.220 --> 00:16:49.300]   where we literally were duplicating the image.
+[00:16:49.300 --> 00:16:50.900]   So in this case,
+[00:16:50.900 --> 00:16:53.380]   if we apply the convolution,
+[00:16:53.380 --> 00:16:55.620]   we won't just not see what you were mentioning
+[00:16:55.620 --> 00:16:59.620]   because basically we could see this here in this line,
+[00:16:59.620 --> 00:17:02.340]   but basically since it is convoluted,
+[00:17:02.340 --> 00:17:04.620]   we can't really see any difference.
+[00:17:04.620 --> 00:17:09.900]   And then basically this is kind of what happens cut out.
+[00:17:09.900 --> 00:17:11.940]   Or the other option we have is basically
+[00:17:11.940 --> 00:17:14.300]   we can vary the filter in the borders.
+[00:17:14.300 --> 00:17:16.100]   So basically on the borders,
+[00:17:16.100 --> 00:17:17.700]   we just change the kernel size
+[00:17:17.700 --> 00:17:21.060]   to basically do the kind of adaptations.
+[00:17:21.060 --> 00:17:21.900]   Okay.
+[00:17:21.900 --> 00:17:24.980]   Which brings us to the next thing.
+[00:17:24.980 --> 00:17:26.860]   Since we were talking about the kernel,
+[00:17:26.860 --> 00:17:30.780]   lastly, basically let's talk about separable kernels.
+[00:17:30.780 --> 00:17:33.340]   So basically a separate kernel
+[00:17:33.340 --> 00:17:35.100]   as a part of two dependent filters
+[00:17:35.100 --> 00:17:37.420]   along rows and columns respectively.
+[00:17:37.420 --> 00:17:41.340]   So basically you can see F is rows, G is columns.
+[00:17:41.340 --> 00:17:42.500]   So as you can see,
+[00:17:42.500 --> 00:17:45.700]   this is the output of a separable kernel.
+[00:17:45.700 --> 00:17:48.220]   So that's kind of the function that you're going to have
+[00:17:48.220 --> 00:17:50.820]   and this can be split in these two.
+[00:17:50.820 --> 00:17:52.540]   So basically what we're doing first
+[00:17:52.540 --> 00:17:56.260]   is we're doing a convolution on the columns or on the rows.
+[00:17:56.260 --> 00:17:58.500]   And then we're doing the second one,
+[00:17:58.500 --> 00:18:00.420]   basically on both of them.
+[00:18:01.380 --> 00:18:04.020]   Which basically, okay.
+[00:18:04.020 --> 00:18:08.220]   Question time, I know you don't like it, but yeah.
+[00:18:08.220 --> 00:18:10.580]   Which basically are the computational advantages
+[00:18:10.580 --> 00:18:11.420]   of doing this?
+[00:18:11.420 --> 00:18:13.980]   Any guess?
+[00:18:13.980 --> 00:18:20.340]   Yes.
+[00:18:20.340 --> 00:18:23.580]   (man speaking off mic)
+[00:18:23.580 --> 00:18:29.300]   Exactly, that's one of the reasons.
+[00:18:29.300 --> 00:18:31.220]   From a mathematical point of view,
+[00:18:31.220 --> 00:18:33.540]   we're also changing, basically you can see,
+[00:18:33.540 --> 00:18:37.860]   we're having complexity two M plus one multiplied two N plus one
+[00:18:37.860 --> 00:18:39.740]   which basically we can actually change
+[00:18:39.740 --> 00:18:44.540]   from quadratic to linear because by doing it like this,
+[00:18:44.540 --> 00:18:46.740]   we transform this in a summation actually.
+[00:18:46.740 --> 00:18:51.060]   So it would be two M plus one plus two N plus one.
+[00:18:51.060 --> 00:18:55.100]   So basically that's why we are really using separable kernels
+[00:18:55.100 --> 00:18:58.140]   because they are really interesting for us.
+[00:18:58.140 --> 00:18:59.980]   Mostly, okay.
+[00:18:59.980 --> 00:19:04.980]   So now you basically have talked about like blurring kernels.
+[00:19:04.980 --> 00:19:08.780]   We have talked about some sharpening kernels.
+[00:19:08.780 --> 00:19:11.820]   Okay, let's move to smoothing kernels.
+[00:19:11.820 --> 00:19:16.220]   We have basically the low pass filters,
+[00:19:16.220 --> 00:19:18.460]   which basically you have the mean filter
+[00:19:18.460 --> 00:19:19.620]   which you have seen before.
+[00:19:19.620 --> 00:19:22.060]   So basically this is going to blur the image
+[00:19:22.060 --> 00:19:24.940]   since it is basically the top filter gives the same way
+[00:19:24.940 --> 00:19:26.100]   to all the pixels.
+[00:19:27.220 --> 00:19:30.860]   Basically the bottom left filter, which is that one,
+[00:19:30.860 --> 00:19:34.460]   is basically giving more importance to the central pixel
+[00:19:34.460 --> 00:19:36.780]   while the bottom right one also gives more importance
+[00:19:36.780 --> 00:19:39.660]   to the closer pixels to the center.
+[00:19:39.660 --> 00:19:42.820]   So basically you can see the difference between them.
+[00:19:42.820 --> 00:19:45.620]   Why to the pixels to the center basically
+[00:19:45.620 --> 00:19:50.620]   because the distance between this one is actually considered one
+[00:19:50.620 --> 00:19:53.860]   while between the other ones is literally considered
+[00:19:53.860 --> 00:19:55.860]   basically distance of the square root.
+[00:19:55.860 --> 00:19:57.940]   So it's over one.
+[00:19:57.940 --> 00:20:00.260]   So basically that's why there's bigger distance
+[00:20:00.260 --> 00:20:03.940]   in the diagonals than actually on the lines.
+[00:20:03.940 --> 00:20:05.980]   Okay.
+[00:20:05.980 --> 00:20:10.540]   So basically yes, these are the smoothing kernels.
+[00:20:10.540 --> 00:20:11.980]   You have seen them before,
+[00:20:11.980 --> 00:20:15.220]   which brings us to Gaussian kernels.
+[00:20:15.220 --> 00:20:18.980]   Okay, I mean I assume you mostly have seen Gaussian kernels.
+[00:20:18.980 --> 00:20:21.460]   I think you're third semester, right?
+[00:20:21.460 --> 00:20:25.940]   So you have started to see already these things.
+[00:20:25.940 --> 00:20:29.220]   So basically a Gaussian kernel is mostly known.
+[00:20:29.220 --> 00:20:31.460]   It's actually used mostly for your scores.
+[00:20:31.460 --> 00:20:34.340]   That's why maybe a lot of people know it.
+[00:20:34.340 --> 00:20:36.500]   Basically a Gaussian kernel,
+[00:20:36.500 --> 00:20:39.860]   this is a representation of a 2D Gaussian kernel in 3D.
+[00:20:39.860 --> 00:20:41.260]   As you can see here,
+[00:20:41.260 --> 00:20:44.380]   basically you're having the representation.
+[00:20:44.380 --> 00:20:46.380]   So what does this mean?
+[00:20:46.380 --> 00:20:48.460]   Basically this is the mathematical equation.
+[00:20:48.460 --> 00:20:50.340]   So we're basically giving more importance
+[00:20:50.340 --> 00:20:53.100]   to the center kernel and the neighborhood
+[00:20:53.100 --> 00:20:56.500]   while we are not giving importance to the other ones.
+[00:20:56.500 --> 00:20:59.140]   So basically one of the interesting things about this
+[00:20:59.140 --> 00:21:00.900]   is that the constant factor at front
+[00:21:00.900 --> 00:21:03.580]   makes volume summation of one.
+[00:21:03.580 --> 00:21:05.540]   Okay.
+[00:21:05.540 --> 00:21:09.180]   So basically this is how a Gaussian kernel
+[00:21:09.180 --> 00:21:10.900]   actually looks like.
+[00:21:10.900 --> 00:21:14.220]   So as you can see what we're doing literally smoothing.
+[00:21:14.220 --> 00:21:16.020]   So we are having this original image,
+[00:21:16.020 --> 00:21:18.180]   which is already quite blurry.
+[00:21:18.180 --> 00:21:20.980]   Not sure if it is because of this resize of it
+[00:21:20.980 --> 00:21:22.860]   or what it is exactly.
+[00:21:22.860 --> 00:21:25.500]   But yeah, basically is the blurry outcome
+[00:21:25.500 --> 00:21:28.500]   that you can see not a great outcome.
+[00:21:28.500 --> 00:21:30.860]   Okay.
+[00:21:30.860 --> 00:21:34.460]   And basically to kind of show you a difference
+[00:21:34.460 --> 00:21:36.620]   because in this case like a Gaussian,
+[00:21:36.620 --> 00:21:39.860]   it has the Gaussian form, so it's kind of circular.
+[00:21:39.860 --> 00:21:41.660]   That's why you're having that image.
+[00:21:41.660 --> 00:21:44.340]   We can also have box filters.
+[00:21:44.340 --> 00:21:45.860]   So basically box filters,
+[00:21:45.860 --> 00:21:49.300]   if some of you have worked with neural networks,
+[00:21:49.300 --> 00:21:51.940]   you can actually often see in convolutions
+[00:21:51.940 --> 00:21:54.820]   when you can sadly not see it.
+[00:21:54.820 --> 00:21:59.300]   Technically you would be able to see in this image
+[00:21:59.300 --> 00:22:02.220]   that there is actually like a grid appearing.
+[00:22:02.220 --> 00:22:05.340]   And basically this grid is often happening
+[00:22:05.340 --> 00:22:08.020]   from the convolutions that we're doing in deep learning.
+[00:22:08.020 --> 00:22:10.540]   So it basically often means that the network is not trained
+[00:22:10.540 --> 00:22:12.620]   but it's not related in this case.
+[00:22:12.620 --> 00:22:15.060]   But basically you're doing box kernels
+[00:22:15.060 --> 00:22:18.500]   which is kind of, it's giving a pattern on the image.
+[00:22:18.500 --> 00:22:20.380]   So basically this is kind of that you know
+[00:22:20.380 --> 00:22:21.660]   you have two different types.
+[00:22:21.660 --> 00:22:25.580]   You have the gaussians and you have the box filters
+[00:22:25.580 --> 00:22:27.100]   which are basically giving importance
+[00:22:27.100 --> 00:22:29.220]   to the entire filter.
+[00:22:29.220 --> 00:22:30.060]   Okay.
+[00:22:30.060 --> 00:22:33.820]   So basically the Gaussian smoothing kernel,
+[00:22:33.820 --> 00:22:37.020]   basically this is the mathematical equation.
+[00:22:37.020 --> 00:22:39.740]   It's basically depending on the standard deviation.
+[00:22:39.740 --> 00:22:42.940]   And as you can see again,
+[00:22:42.940 --> 00:22:47.020]   maybe if you remember from some slides five minutes ago,
+[00:22:47.020 --> 00:22:49.660]   this is actually separable.
+[00:22:49.660 --> 00:22:51.660]   So that's why we like Gaussian kernels
+[00:22:51.660 --> 00:22:54.700]   because basically we can work with them
+[00:22:54.700 --> 00:22:56.020]   and we can do them quicker
+[00:22:56.020 --> 00:22:58.420]   and basically they are much more cost efficient
+[00:22:58.420 --> 00:22:59.540]   and memory efficient.
+[00:22:59.540 --> 00:23:01.300]   Okay.
+[00:23:01.300 --> 00:23:04.300]   So to show you basically because I'm showing you a lot of like
+[00:23:04.300 --> 00:23:07.540]   how this is kind of applied on a mathematical term.
+[00:23:07.540 --> 00:23:10.540]   But let's see.
+[00:23:10.540 --> 00:23:15.100]   So basically here you can actually see the Gaussian smoothing kernel,
+[00:23:15.100 --> 00:23:18.540]   how it looks when we apply this actually.
+[00:23:18.540 --> 00:23:21.020]   So basically this depends on the standard deviation
+[00:23:21.020 --> 00:23:23.020]   of the window size.
+[00:23:23.020 --> 00:23:25.980]   So basically to keep in mind one of the,
+[00:23:25.980 --> 00:23:29.180]   basically one of the conclusions you need to kind of keep out of this
+[00:23:29.180 --> 00:23:31.900]   is basically that the result reminds roughly the same
+[00:23:31.900 --> 00:23:35.620]   for filter sizes greater than three standard deviation.
+[00:23:35.620 --> 00:23:37.500]   So basically that's kind of the important one.
+[00:23:37.500 --> 00:23:39.940]   So basically this is the original image.
+[00:23:39.940 --> 00:23:41.580]   We have a kernel seven by seven
+[00:23:41.580 --> 00:23:43.580]   with a standard deviation of one.
+[00:23:43.580 --> 00:23:48.460]   Applying this on a standard deviation of nine,
+[00:23:48.460 --> 00:23:50.900]   you can already see we're blurring the image.
+[00:23:50.900 --> 00:23:54.180]   And since in this one we were already having a black border,
+[00:23:54.180 --> 00:23:57.700]   you can see, not great, but you can see
+[00:23:57.700 --> 00:24:00.260]   the border is already getting thicker.
+[00:24:00.260 --> 00:24:03.940]   This is basically depending on the application of the kernel.
+[00:24:03.940 --> 00:24:08.540]   Doing the same thing with the kernel size of 19 by 19
+[00:24:08.540 --> 00:24:09.580]   with a standard deviation,
+[00:24:09.580 --> 00:24:14.140]   you can see that the border from here to actually here,
+[00:24:14.140 --> 00:24:15.580]   duplicated already.
+[00:24:15.580 --> 00:24:19.660]   While if we apply standard deviation of nine,
+[00:24:19.660 --> 00:24:22.020]   you can see that actually,
+[00:24:22.020 --> 00:24:24.900]   first of all the image is much blurrier
+[00:24:24.900 --> 00:24:28.540]   than before with the bigger kernel size.
+[00:24:28.540 --> 00:24:31.740]   And second, we're having a much thicker black border.
+[00:24:31.740 --> 00:24:34.780]   Also keep in mind that here the images are cut out.
+[00:24:34.780 --> 00:24:37.500]   So there's some part missing.
+[00:24:37.500 --> 00:24:39.700]   So just keep that in mind.
+[00:24:39.700 --> 00:24:41.220]   This is kind of to give you an idea
+[00:24:41.220 --> 00:24:44.100]   of what basically you are looking into.
+[00:24:44.100 --> 00:24:55.180]   I'm going quite quick.
+[00:24:55.180 --> 00:24:59.900]   So basically, do you have any questions so far?
+[00:24:59.900 --> 00:25:01.020]   Is there anything?
+[00:25:01.020 --> 00:25:06.860]   Okay.
+[00:25:07.700 --> 00:25:11.580]   Um, that's good.
+[00:25:11.580 --> 00:25:14.860]   I mean, you will probably be able then to leave earlier.
+[00:25:14.860 --> 00:25:20.060]   Okay.
+[00:25:20.060 --> 00:25:22.700]   Or do you want to do the break now?
+[00:25:22.700 --> 00:25:23.540]   Any comments?
+[00:25:23.540 --> 00:25:26.220]   What, yeah?
+[00:25:26.220 --> 00:25:32.300]   Okay, then go for the break.
+[00:25:34.220 --> 00:25:35.300]   Okay.
+[00:25:35.300 --> 00:25:38.220]   Some of you basically came to ask me some questions.
+[00:25:38.220 --> 00:25:40.780]   Would I'm kind of assume that basically,
+[00:25:40.780 --> 00:25:42.460]   if some of you asked,
+[00:25:42.460 --> 00:25:45.060]   then basically all the others have no clue about it.
+[00:25:45.060 --> 00:25:48.660]   Which is a strong assumption, I know.
+[00:25:48.660 --> 00:25:50.700]   But it's just, I want to really clarify
+[00:25:50.700 --> 00:25:53.420]   because in the end you are starting the semester right now
+[00:25:53.420 --> 00:25:55.860]   and especially convolutions and correlations
+[00:25:55.860 --> 00:25:57.500]   are actually really important.
+[00:25:57.500 --> 00:26:00.340]   And they are really something that kind of like,
+[00:26:00.340 --> 00:26:03.500]   you should have kind of clear and understood.
+[00:26:04.500 --> 00:26:07.700]   So, I mean, I think correlations,
+[00:26:07.700 --> 00:26:10.540]   you kind of all understood them correctly.
+[00:26:10.540 --> 00:26:13.980]   There was, I think, no question in that.
+[00:26:13.980 --> 00:26:16.580]   You basically understood that we're having
+[00:26:16.580 --> 00:26:20.340]   a fixed correlation mass that is applied on the image.
+[00:26:20.340 --> 00:26:22.300]   So basically it's moving,
+[00:26:22.300 --> 00:26:24.380]   but basically it's always this three by three
+[00:26:24.380 --> 00:26:26.260]   by three by three on an image.
+[00:26:26.260 --> 00:26:27.980]   And we're basically doing the summation
+[00:26:27.980 --> 00:26:29.500]   of all the operations.
+[00:26:29.500 --> 00:26:32.580]   Is that clear?
+[00:26:33.580 --> 00:26:37.220]   (student speaking faintly)
+[00:26:37.220 --> 00:26:38.060]   Okay.
+[00:26:38.060 --> 00:26:44.540]   Basically now comes the part where basically
+[00:26:44.540 --> 00:26:46.580]   it's a bit more abstract to understand
+[00:26:46.580 --> 00:26:49.460]   with the convolution.
+[00:26:49.460 --> 00:26:53.100]   So in this case, I can just tell you
+[00:26:53.100 --> 00:26:55.660]   how it was for me the easiest to understand this,
+[00:26:55.660 --> 00:26:59.860]   but basically it's a bit of an abstract term to understand.
+[00:27:00.660 --> 00:27:04.060]   So first of all, as you can see,
+[00:27:04.060 --> 00:27:07.140]   it is already starting different.
+[00:27:07.140 --> 00:27:07.980]   Why?
+[00:27:07.980 --> 00:27:11.100]   Because basically what we're doing is we're having our point
+[00:27:11.100 --> 00:27:13.020]   and what the kernel is doing,
+[00:27:13.020 --> 00:27:17.140]   it's actually moving over the neighborhood of that point.
+[00:27:17.140 --> 00:27:21.620]   So that's why the first kernel point is not the one
+[00:27:21.620 --> 00:27:24.660]   as we had in the correlation, which was the upper one.
+[00:27:24.660 --> 00:27:27.260]   It's the other diagonal.
+[00:27:27.260 --> 00:27:32.260]   That's why K11 is the first one.
+[00:27:32.260 --> 00:27:36.380]   And basically in the next image,
+[00:27:36.380 --> 00:27:40.620]   you can see that the kernel, what it is doing,
+[00:27:40.620 --> 00:27:43.960]   it's basically moving over the neighborhood of the blue pixel.
+[00:27:43.960 --> 00:27:50.220]   In every of the operations,
+[00:27:50.220 --> 00:27:55.380]   you can see that what we are doing is moving
+[00:27:55.380 --> 00:27:56.860]   of the neighboring pixel.
+[00:27:56.860 --> 00:27:59.780]   So we're basically pivoting over the neighborhood.
+[00:27:59.780 --> 00:28:01.220]   And this is what comes out.
+[00:28:01.220 --> 00:28:04.740]   That's also why basic, sorry, I was told
+[00:28:04.740 --> 00:28:06.220]   I should not use basically.
+[00:28:06.220 --> 00:28:10.460]   It's just a filling word.
+[00:28:10.460 --> 00:28:15.140]   But what, the main difference is as you can see
+[00:28:15.140 --> 00:28:17.540]   on a mathematical point of view is the difference of sign.
+[00:28:17.540 --> 00:28:18.380]   Yes?
+[00:28:18.380 --> 00:28:19.700]   - I have a question.
+[00:28:19.700 --> 00:28:23.700]   In the image, it seems like every time you use K00
+[00:28:23.700 --> 00:28:25.820]   for each neighboring pixel,
+[00:28:25.820 --> 00:28:30.020]   that's your K because you have the center of the kernel
+[00:28:30.020 --> 00:28:32.100]   and then you always took the center
+[00:28:32.100 --> 00:28:34.620]   for each one of the neighboring.
+[00:28:34.620 --> 00:28:35.460]   - Wait, what?
+[00:28:35.460 --> 00:28:37.300]   - In the image control.
+[00:28:37.300 --> 00:28:38.140]   - Yes.
+[00:28:38.140 --> 00:28:41.140]   - It seems like you're always using the center
+[00:28:41.140 --> 00:28:46.140]   of the kernel because you are currently in the kernel
+[00:28:46.140 --> 00:28:50.580]   and always to take the center.
+[00:28:50.580 --> 00:28:53.300]   So every time you take K00
+[00:28:53.300 --> 00:28:55.500]   (audience member laughs)
+[00:28:55.500 --> 00:28:58.060]   No, I'm not taking that.
+[00:28:58.060 --> 00:29:01.100]   As you can see in the Mathematic Formula,
+[00:29:01.100 --> 00:29:03.300]   it's a bit difficult to draw.
+[00:29:03.300 --> 00:29:11.460]   It's the pixel of the kernel that is over that point.
+[00:29:11.460 --> 00:29:13.300]   So the one that is in blue,
+[00:29:13.300 --> 00:29:16.220]   but the center of the kernel is the one
+[00:29:16.220 --> 00:29:18.580]   that is basically shown to you.
+[00:29:18.580 --> 00:29:22.500]   So you're having the arrow that is pointing to it,
+[00:29:22.500 --> 00:29:25.820]   but it's because the convolution is
+[00:29:25.820 --> 00:29:28.540]   the entire kernel position one, one
+[00:29:28.540 --> 00:29:31.020]   on the image in position X minus one,
+[00:29:31.020 --> 00:29:34.260]   I minus Y minus one.
+[00:29:34.260 --> 00:29:39.260]   So even if the image is made confusing
+[00:29:39.260 --> 00:29:41.340]   you see that we're actually not using
+[00:29:41.340 --> 00:29:43.780]   always kernel size in the center.
+[00:29:43.780 --> 00:29:46.100]   We are not using kernel 00.
+[00:29:46.100 --> 00:29:47.300]   We're actually moving.
+[00:29:49.780 --> 00:29:53.660]   The image is, I apologize for the image
+[00:29:53.660 --> 00:29:55.180]   but I didn't make the slides.
+[00:29:55.180 --> 00:30:00.580]   I also don't know how to better draw it
+[00:30:00.580 --> 00:30:03.300]   because if I put you just a point
+[00:30:03.300 --> 00:30:05.700]   and I make it move over them
+[00:30:05.700 --> 00:30:08.380]   you then would be probably more confused.
+[00:30:08.380 --> 00:30:14.320]   But is the difference like on a mathematical point of view,
+[00:30:14.320 --> 00:30:17.320]   you have the two compared?
+[00:30:18.460 --> 00:30:22.420]   Like is that clear now?
+[00:30:22.420 --> 00:30:25.380]   Yes.
+[00:30:25.380 --> 00:30:27.020]   - [Man] Notice the bottom,
+[00:30:27.020 --> 00:30:29.340]   do you always represent a correlation
+[00:30:29.340 --> 00:30:30.540]   whatever that effect on the image
+[00:30:30.540 --> 00:30:33.260]   could you achieve the same effect with the convolution
+[00:30:33.260 --> 00:30:36.220]   because there always a corresponding correlation
+[00:30:36.220 --> 00:30:37.380]   for every convolution?
+[00:30:37.380 --> 00:30:38.720]   - Yeah.
+[00:30:38.720 --> 00:30:40.260]   - [Man] It's just a different way of achieving the same.
+[00:30:40.260 --> 00:30:42.500]   I guess why would you use one or the other?
+[00:30:42.500 --> 00:30:44.180]   - Because one is the opposite of the other.
+[00:30:44.180 --> 00:30:49.180]   It's basically, you have the kernel of ij
+[00:30:49.180 --> 00:30:54.820]   which is the correlation and the convolution is the opposite
+[00:30:54.820 --> 00:30:57.980]   which brings me to the next point
+[00:30:57.980 --> 00:30:59.740]   which there were some questioning
+[00:30:59.740 --> 00:31:01.220]   which was with this image.
+[00:31:01.220 --> 00:31:06.020]   It says use convolution
+[00:31:06.020 --> 00:31:10.420]   but if you actually use the correlation it's the inverse
+[00:31:10.420 --> 00:31:12.700]   and when you're using a correlation
+[00:31:12.700 --> 00:31:14.980]   basically what you're doing is on the right side
+[00:31:14.980 --> 00:31:16.620]   you're taking the white pixels
+[00:31:16.620 --> 00:31:17.820]   so you're shifting everything
+[00:31:17.820 --> 00:31:20.300]   that's why it shifted to the left.
+[00:31:20.300 --> 00:31:26.180]   So this convolution turned is a correlation
+[00:31:26.180 --> 00:31:28.180]   with the one on the other side.
+[00:31:28.180 --> 00:31:31.960]   I'm trying to just come up with other ways
+[00:31:31.960 --> 00:31:33.220]   of explaining you things
+[00:31:33.220 --> 00:31:36.020]   and basically you can then make your own mental path
+[00:31:36.020 --> 00:31:37.940]   on how this makes sense or not
+[00:31:37.940 --> 00:31:39.820]   and now is your chance to ask
+[00:31:39.820 --> 00:31:41.620]   if you have some questions.
+[00:31:41.620 --> 00:31:42.460]   - Yes.
+[00:31:42.460 --> 00:31:44.420]   - Before going over this again,
+[00:31:44.420 --> 00:31:49.500]   I expected the shift to be in the other direction.
+[00:31:49.500 --> 00:31:53.500]   Would it be possible to explain it yet again
+[00:31:53.500 --> 00:31:54.940]   maybe as an equation?
+[00:31:54.940 --> 00:32:02.540]   - As an equation, not really.
+[00:32:02.540 --> 00:32:08.180]   I can't really like help you on that.
+[00:32:08.180 --> 00:32:11.500]   I just really like can explain to you on a theoretical level
+[00:32:11.500 --> 00:32:12.340]   but yet.
+[00:32:12.340 --> 00:32:15.820]   - Maybe am I allowed to ask
+[00:32:15.820 --> 00:32:20.820]   if someone understands why the direction is to the left?
+[00:32:20.820 --> 00:32:22.060]   Why is it the left?
+[00:32:22.060 --> 00:32:27.340]   - So I had the exact same confusion.
+[00:32:27.340 --> 00:32:31.100]   I think your current thing is that we apply the one
+[00:32:31.100 --> 00:32:34.500]   to the pixels to the left of the center, right?
+[00:32:34.500 --> 00:32:39.500]   So the new pixel is just a pixel
+[00:32:39.500 --> 00:32:41.460]   that is originally to the left.
+[00:32:41.460 --> 00:32:43.380]   Is that what you're currently thinking?
+[00:32:43.380 --> 00:32:45.420]   That's why it shifts to the right.
+[00:32:45.420 --> 00:32:47.460]   If you look at the convolution,
+[00:32:47.460 --> 00:32:52.460]   you see that you actually apply the left factor
+[00:32:52.460 --> 00:32:55.220]   of the filter to the pixel
+[00:32:55.220 --> 00:32:58.020]   that is to the right of the center.
+[00:32:58.020 --> 00:33:01.900]   It's kind of reflected along the middle point
+[00:33:01.900 --> 00:33:03.580]   along the center.
+[00:33:03.580 --> 00:33:05.780]   We look at the slides afterwards
+[00:33:05.780 --> 00:33:07.580]   with the equation of the convolution.
+[00:33:09.220 --> 00:33:12.900]   So if this was a kind of a mask for a correlation,
+[00:33:12.900 --> 00:33:15.540]   you would have exactly what you think.
+[00:33:15.540 --> 00:33:16.940]   So it would shift to the right.
+[00:33:16.940 --> 00:33:19.140]   - But if I take the right pixel,
+[00:33:19.140 --> 00:33:20.660]   the original image,
+[00:33:20.660 --> 00:33:24.740]   then I get the shift to the right.
+[00:33:24.740 --> 00:33:28.140]   - You know, so you have this pixel
+[00:33:28.140 --> 00:33:30.140]   and then you pixel in this position
+[00:33:30.140 --> 00:33:33.260]   is just the position to the pixel to the right.
+[00:33:33.260 --> 00:33:36.100]   So you just kind of do everything to the left.
+[00:33:37.100 --> 00:33:38.100]   - I don't know.
+[00:33:38.100 --> 00:33:41.100]   Can I have any order of word here, explain it?
+[00:33:41.100 --> 00:33:43.100]   - Yes.
+[00:33:43.100 --> 00:33:45.100]   - I stated it before,
+[00:33:45.100 --> 00:33:47.100]   also that you shift it to the right,
+[00:33:47.100 --> 00:33:50.100]   but the convolution, I think this filter,
+[00:33:50.100 --> 00:33:53.100]   I misunderstood in the way that I thought
+[00:33:53.100 --> 00:33:56.100]   for each pixel we would take the left,
+[00:33:56.100 --> 00:33:57.100]   the one to its left,
+[00:33:57.100 --> 00:34:02.100]   because the left, the center left cell in the filter is one,
+[00:34:02.100 --> 00:34:05.100]   but it's actually the other pixel
+[00:34:05.100 --> 00:34:08.100]   but it's actually the other way around for each pixel.
+[00:34:08.100 --> 00:34:13.100]   We apply the filter and spread its value according to this.
+[00:34:13.100 --> 00:34:16.100]   So for each, in this case for each pixel,
+[00:34:16.100 --> 00:34:21.100]   the thing in this position is shifted one to the left
+[00:34:21.100 --> 00:34:24.100]   because that's the only cell in the filter that's the one.
+[00:34:24.100 --> 00:34:27.100]   If I understood this correctly.
+[00:34:27.100 --> 00:34:31.100]   - Does that make sense? - Thank you.
+[00:34:31.100 --> 00:34:33.100]   - Yes.
+[00:34:33.100 --> 00:34:35.100]   - Does correlation and convolution the same
+[00:34:35.100 --> 00:34:37.100]   just mirror across the diagonal?
+[00:34:37.100 --> 00:34:39.100]   - I mean, you can.
+[00:34:39.100 --> 00:34:41.100]   - Not across the diagonal, not across the center.
+[00:34:41.100 --> 00:34:42.100]   - Yeah.
+[00:34:42.100 --> 00:34:46.100]   - Yeah.
+[00:34:46.100 --> 00:34:48.100]   - Just to see if I have it right,
+[00:34:48.100 --> 00:34:53.100]   if the pixel, like the only entry in the filter
+[00:34:53.100 --> 00:34:56.100]   that was one with the top left corner,
+[00:34:56.100 --> 00:35:00.100]   would every pixel be shifted off into the left?
+[00:35:00.100 --> 00:35:01.100]   - Yeah.
+[00:35:01.100 --> 00:35:07.100]   - Yes.
+[00:35:07.100 --> 00:35:11.100]   I think so.
+[00:35:11.100 --> 00:35:17.100]   Yeah?
+[00:35:17.100 --> 00:35:20.100]   - I think what it does is it tells you
+[00:35:20.100 --> 00:35:23.100]   when you have to filter on a pixel,
+[00:35:23.100 --> 00:35:26.100]   and the pixel is what is in the middle of the filter,
+[00:35:26.100 --> 00:35:28.100]   it tells you how much it goes to the left.
+[00:35:28.100 --> 00:35:31.100]   So the one on the left side, the middle pixel,
+[00:35:31.100 --> 00:35:33.100]   will get once the middle pixel,
+[00:35:33.100 --> 00:35:37.100]   and all the other ones will get zero from this middle pixel.
+[00:35:37.100 --> 00:35:39.100]   And then you move to filter.
+[00:35:39.100 --> 00:35:45.100]   So every pixel will get some add-on from different pixels.
+[00:35:45.100 --> 00:35:48.100]   But the best is to see the picture where you see the splinter,
+[00:35:48.100 --> 00:35:50.100]   then it spreads it out.
+[00:35:50.100 --> 00:35:54.100]   - The point where it spreads it out?
+[00:35:54.100 --> 00:35:57.100]   - Yes. - Yeah.
+[00:35:58.100 --> 00:36:02.100]   Imagine the pixel on the edge of the black point,
+[00:36:02.100 --> 00:36:04.100]   and now you put the filter on it.
+[00:36:04.100 --> 00:36:07.100]   That means part of the filter is on the point,
+[00:36:07.100 --> 00:36:10.100]   and part of the filter is out of the point.
+[00:36:10.100 --> 00:36:13.100]   And now the center pixel of your filter
+[00:36:13.100 --> 00:36:19.100]   will be spread out around with the numbers in this integrated.
+[00:36:19.100 --> 00:36:24.100]   And then you move to filter.
+[00:36:25.100 --> 00:36:30.100]   So every pixel also gets added up from different central pixels.
+[00:36:30.100 --> 00:36:39.100]   - More comments?
+[00:36:39.100 --> 00:36:41.100]   Yeah.
+[00:36:41.100 --> 00:36:45.100]   - I'm not confused why you would use the convolution over a correlation.
+[00:36:45.100 --> 00:36:48.100]   It feels like a more convoluted representation.
+[00:36:50.100 --> 00:36:54.100]   So I can tell you what you will use mostly if you decide,
+[00:36:54.100 --> 00:36:58.100]   as an example, to move into research where we're using deep learning,
+[00:36:58.100 --> 00:37:03.100]   which is the confusing part often when you have not teach,
+[00:37:03.100 --> 00:37:04.100]   which is in my case.
+[00:37:04.100 --> 00:37:10.100]   So basically a correlation is in deep learning actually convolution.
+[00:37:10.100 --> 00:37:14.100]   Yes, it is totally contradictory.
+[00:37:14.100 --> 00:37:18.100]   But literally what we are using in a convolution with pie torch,
+[00:37:18.100 --> 00:37:22.100]   and the flow and everything is literally this.
+[00:37:22.100 --> 00:37:26.100]   So the other thing, nobody is really using it of us.
+[00:37:26.100 --> 00:37:31.100]   But you need to learn the basic knowledge of these things
+[00:37:31.100 --> 00:37:34.100]   because right now you're really focusing on image filters,
+[00:37:34.100 --> 00:37:36.100]   so you're really focusing on blurring,
+[00:37:36.100 --> 00:37:39.100]   you're really focusing on sharpening,
+[00:37:39.100 --> 00:37:43.100]   or all these things because you're third semester.
+[00:37:43.100 --> 00:37:47.100]   But you need to learn the basics
+[00:37:47.100 --> 00:37:50.100]   and then move to the more fun stuff.
+[00:37:50.100 --> 00:37:52.100]   Yes.
+[00:37:52.100 --> 00:37:55.100]   - I'm still a bit confused about the sequence of the...
+[00:37:55.100 --> 00:37:56.100]   - Yeah?
+[00:37:56.100 --> 00:37:59.100]   - ...if we go back to the...
+[00:37:59.100 --> 00:38:00.100]   - Which slide?
+[00:38:00.100 --> 00:38:03.100]   - The slide where the kernel is moving.
+[00:38:03.100 --> 00:38:05.100]   - But isn't it this one?
+[00:38:05.100 --> 00:38:07.100]   Or do you want another one?
+[00:38:07.100 --> 00:38:10.100]   - I think it's the other one where you have to...
+[00:38:10.100 --> 00:38:13.100]   - But wait, I think it's the same image,
+[00:38:13.100 --> 00:38:16.100]   but just with the correlation next to it.
+[00:38:16.100 --> 00:38:18.100]   - Okay, yeah.
+[00:38:18.100 --> 00:38:22.100]   - So, like, if you go on...
+[00:38:22.100 --> 00:38:26.100]   ...through each step, what is the x, y,
+[00:38:26.100 --> 00:38:30.100]   and like in this image,
+[00:38:30.100 --> 00:38:35.100]   each step, if you go to one step where there is a kernel,
+[00:38:35.100 --> 00:38:37.100]   in display?
+[00:38:37.100 --> 00:38:39.100]   - Wait, I'm...
+[00:38:39.100 --> 00:38:40.100]   - Yeah, yeah.
+[00:38:40.100 --> 00:38:41.100]   - Okay.
+[00:38:41.100 --> 00:38:45.100]   - So, in this image, where is our x, y?
+[00:38:45.100 --> 00:38:48.100]   That's the blue square, right?
+[00:38:48.100 --> 00:38:49.100]   - Yeah.
+[00:38:49.100 --> 00:38:51.100]   - And which...
+[00:38:51.100 --> 00:38:54.100]   Where is the...
+[00:38:54.100 --> 00:38:58.100]   ...the position of the kernel
+[00:38:58.100 --> 00:39:01.100]   with that key multiplied?
+[00:39:01.100 --> 00:39:03.100]   I mean...
+[00:39:03.100 --> 00:39:13.100]   ...basically, I'm just trying to figure out where k0 -1 times ix, y + 1 is.
+[00:39:13.100 --> 00:39:16.100]   But, okay.
+[00:39:16.100 --> 00:39:18.100]   Let's start from the beginning,
+[00:39:18.100 --> 00:39:21.100]   just because that's easier.
+[00:39:21.100 --> 00:39:25.100]   So, you're having kernel 1, 1.
+[00:39:25.100 --> 00:39:27.100]   Why is it that one?
+[00:39:27.100 --> 00:39:29.100]   That, yes, right?
+[00:39:29.100 --> 00:39:31.100]   - So, that is...
+[00:39:31.100 --> 00:39:32.100]   - That one, yes.
+[00:39:32.100 --> 00:39:34.100]   You understood that one.
+[00:39:34.100 --> 00:39:36.100]   - Yeah.
+[00:39:36.100 --> 00:39:38.100]   - Okay.
+[00:39:38.100 --> 00:39:43.100]   K1, 1, you can see in the red, it's the lower pixel.
+[00:39:43.100 --> 00:39:47.100]   And then, x - 1, i - 1,
+[00:39:47.100 --> 00:39:52.100]   is because the center, so,
+[00:39:52.100 --> 00:39:57.100]   x, y would be 0, and x - 1, i - 1.
+[00:39:57.100 --> 00:40:01.100]   And then you're moving over it.
+[00:40:01.100 --> 00:40:07.100]   So, the red square is giving you x, i - 1.
+[00:40:07.100 --> 00:40:16.100]   [pause]
+[00:40:16.100 --> 00:40:23.100]   You can see in k0 - 0, which is the blue is on top of the red, it's i, x, y.
+[00:40:23.100 --> 00:40:24.100]   Now?
+[00:40:24.100 --> 00:40:25.100]   - Yeah.
+[00:40:25.100 --> 00:40:27.100]   - Okay.
+[00:40:27.100 --> 00:40:33.100]   Makes sense?
+[00:40:33.100 --> 00:40:34.100]   Okay.
+[00:40:34.100 --> 00:40:40.100]   Is there anything more that you want to kind of go over that something is unclear
+[00:40:40.100 --> 00:40:41.100]   that I went too fast?
+[00:40:41.100 --> 00:40:43.100]   I know I went too fast.
+[00:40:43.100 --> 00:40:46.100]   Yes?
+[00:40:46.100 --> 00:40:49.100]   - How do you get to the computation of the rampage when you separate?
+[00:40:49.100 --> 00:40:52.100]   - I had that question as well.
+[00:40:52.100 --> 00:40:53.100]   Okay.
+[00:40:53.100 --> 00:40:55.100]   Give me a second.
+[00:40:55.100 --> 00:40:57.100]   I can show you the slide.
+[00:40:57.100 --> 00:41:03.100]   [pause]
+[00:41:03.100 --> 00:41:04.100]   Okay.
+[00:41:04.100 --> 00:41:13.100]   You - I have heard from your colleagues that you already had, like, complexities and, like,
+[00:41:13.100 --> 00:41:20.100]   basically, that you kind of know when a operation is linear or quadratic, so you have learned that before.
+[00:41:20.100 --> 00:41:21.100]   You have seen that.
+[00:41:21.100 --> 00:41:27.100]   So, basically, what you're having here, so, normally, a kernel, you can do two things.
+[00:41:27.100 --> 00:41:32.100]   You would have this function, which is basically, you're having the columns and you're applying
+[00:41:32.100 --> 00:41:42.100]   the - basically, the convolution on it, on the columns, and then you do the horizontals.
+[00:41:42.100 --> 00:41:43.100]   Okay?
+[00:41:43.100 --> 00:41:45.100]   So, basically, that's how it would work.
+[00:41:45.100 --> 00:41:51.100]   You would do first diagonal, second horizontal, and that would be your operation.
+[00:41:51.100 --> 00:41:56.100]   This, you can, of course, separate in two operations, two separate ones.
+[00:41:56.100 --> 00:42:04.100]   One is just a convolution over the vertical, and the other one is a convolution of this.
+[00:42:04.100 --> 00:42:09.100]   So, we are convoluting this, but over the horizontal.
+[00:42:09.100 --> 00:42:10.100]   Okay.
+[00:42:10.100 --> 00:42:14.100]   So, this is the mathematical equation.
+[00:42:14.100 --> 00:42:16.100]   Why is it computational advantage?
+[00:42:16.100 --> 00:42:18.100]   Of course, it's quicker, but why?
+[00:42:18.100 --> 00:42:24.100]   And speaking in complexity, if we are doing all this in one step, we are having that complexity.
+[00:42:24.100 --> 00:42:31.100]   So, it's actually a quadratic, which is basically two m, two columns plus one, multiplied by
+[00:42:31.100 --> 00:42:34.100]   two horizontals plus one.
+[00:42:34.100 --> 00:42:42.100]   While if we are basically separating this, we are having just the summation of two operations.
+[00:42:42.100 --> 00:42:43.100]   So, it's linear.
+[00:42:43.100 --> 00:42:44.100]   So, it's quicker.
+[00:42:44.100 --> 00:42:48.100]   Doesn't make sense.
+[00:42:48.100 --> 00:42:50.100]   It's not one inside of the other.
+[00:42:50.100 --> 00:42:54.100]   It's one summed with the other.
+[00:42:54.100 --> 00:42:56.100]   Does that...
+[00:42:56.100 --> 00:42:58.100]   So, that's the filter size.
+[00:42:58.100 --> 00:43:00.100]   Yeah.
+[00:43:00.100 --> 00:43:02.100]   So, it's the filter size.
+[00:43:02.100 --> 00:43:03.100]   Yeah.
+[00:43:03.100 --> 00:43:04.100]   Yeah.
+[00:43:04.100 --> 00:43:05.100]   Yeah.
+[00:43:05.100 --> 00:43:06.100]   Yes.
+[00:43:06.100 --> 00:43:09.100]   You've clarified some of the speed m and n terms.
+[00:43:09.100 --> 00:43:10.100]   Is that the filter?
+[00:43:10.100 --> 00:43:11.100]   Yeah.
+[00:43:11.100 --> 00:43:21.100]   Yeah.
+[00:43:21.100 --> 00:43:24.100]   Yeah.
+[00:43:24.100 --> 00:43:29.100]   Yeah.
+[00:43:29.100 --> 00:43:31.100]   Okay.
+[00:43:31.100 --> 00:43:33.100]   If there...
+[00:43:33.100 --> 00:43:36.100]   Until here, it's everything clear.
+[00:43:36.100 --> 00:43:43.100]   Then I will continue with the normal slides.
+[00:43:43.100 --> 00:43:52.100]   I think we came until here, right?
+[00:43:52.100 --> 00:43:53.100]   Yes.
+[00:43:53.100 --> 00:43:55.100]   Does anyone remember?
+[00:43:55.100 --> 00:43:57.100]   Okay.
+[00:43:57.100 --> 00:43:59.100]   So, yeah.
+[00:43:59.100 --> 00:44:12.100]   Basically, the scale space, which is basically what you have seen after seeing the Gaussian
+[00:44:12.100 --> 00:44:15.100]   smoothing kernel, this brings us to the scale space.
+[00:44:15.100 --> 00:44:20.100]   So, basically, a convolution of a Gaussian with standard deviation, which is going to
+[00:44:20.100 --> 00:44:21.100]   be represented.
+[00:44:21.100 --> 00:44:28.100]   Sigma with itself is a Gaussian standard deviation, which is the deviation of the square of two.
+[00:44:28.100 --> 00:44:35.100]   So, basically, this sentence, which is repeated convolutions by a Gaussian filter, produces
+[00:44:35.100 --> 00:44:37.100]   the scale space of an image.
+[00:44:37.100 --> 00:44:39.100]   So, you're going to see this here.
+[00:44:39.100 --> 00:44:44.100]   We're having the first image, which is the fishes you have seen before.
+[00:44:44.100 --> 00:44:49.100]   Probably when Philip, who is the head TA of this, is going to upload the slides to you,
+[00:44:49.100 --> 00:44:52.100]   you will have much sharper image.
+[00:44:52.100 --> 00:44:55.100]   It technically should look quite good.
+[00:44:55.100 --> 00:45:00.100]   But, basically, we're applying a convolution size 11 by 11 with the standard deviation of
+[00:45:00.100 --> 00:45:01.100]   three.
+[00:45:01.100 --> 00:45:12.100]   So, as you can see, every time I apply the convolution over the image, first, as you can see, this
+[00:45:12.100 --> 00:45:16.100]   one is cut out, but the border should be actually much thicker.
+[00:45:16.100 --> 00:45:19.100]   It was just cut out.
+[00:45:19.100 --> 00:45:23.100]   But you can see that the image is getting blurr and blurr.
+[00:45:23.100 --> 00:45:27.100]   Here, still, we are having some small details like on the fishes.
+[00:45:27.100 --> 00:45:33.100]   We're having kind of like, we're still seeing some, like, also lighter details.
+[00:45:33.100 --> 00:45:36.100]   There, already, most of the fish patterns are gone.
+[00:45:36.100 --> 00:45:40.100]   Here, nothing's left besides the fishes.
+[00:45:40.100 --> 00:45:43.100]   And the light fishes are also, like, gone already.
+[00:45:43.100 --> 00:45:47.100]   So, this is kind of how, basically, the scale space.
+[00:45:47.100 --> 00:45:48.100]   Yeah.
+[00:45:48.100 --> 00:46:14.100]   [ Inaudible ]
+[00:46:14.100 --> 00:46:17.100]   Wait, what are you pointing?
+[00:46:17.100 --> 00:46:25.100]   [ Inaudible ]
+[00:46:25.100 --> 00:46:33.100]   So, it is a bit tricky to say in this kind of case, because at this point, this is just
+[00:46:33.100 --> 00:46:34.100]   the blurr.
+[00:46:34.100 --> 00:46:41.100]   So, if you had this in MATLAB, you would be able to actually see the pixel, like, what
+[00:46:41.100 --> 00:46:43.100]   is basically happening on the image.
+[00:46:43.100 --> 00:46:45.100]   You could kind of check the coordinate.
+[00:46:45.100 --> 00:46:47.100]   And, yeah, it's not growing inward.
+[00:46:47.100 --> 00:46:49.100]   You're right on that.
+[00:46:49.100 --> 00:46:51.100]   Is that what you said?
+[00:46:51.100 --> 00:47:00.100]   [ Inaudible ]
+[00:47:00.100 --> 00:47:03.100]   It's actually, sorry, it's growing inward.
+[00:47:03.100 --> 00:47:04.100]   Yes.
+[00:47:04.100 --> 00:47:05.100]   It is growing inward.
+[00:47:05.100 --> 00:47:10.100]   But the problem is at this point, I can't even tell you on my high quality slide.
+[00:47:10.100 --> 00:47:11.100]   If --
+[00:47:11.100 --> 00:47:14.100]   [ Inaudible ]
+[00:47:14.100 --> 00:47:15.100]   Yeah.
+[00:47:15.100 --> 00:47:21.100]   The pictures are actually -- maybe I can show you, but, yeah, there is -- these pictures
+[00:47:21.100 --> 00:47:24.100]   are from someone, from a photographer.
+[00:47:24.100 --> 00:47:27.100]   So, they are just taken for the slideshow.
+[00:47:27.100 --> 00:47:31.100]   It's not really that Mark made this.
+[00:47:31.100 --> 00:47:32.100]   Yeah.
+[00:47:32.100 --> 00:47:33.100]   Not only that.
+[00:47:33.100 --> 00:47:38.100]   I mean, you can see in this image that just already the image size is different.
+[00:47:38.100 --> 00:47:42.100]   And it's just because he cropped it.
+[00:47:42.100 --> 00:47:44.100]   Okay.
+[00:47:44.100 --> 00:47:51.100]   So, which basically brings up to the top five reasons to choose the Gaussian kernel, which
+[00:47:51.100 --> 00:47:54.100]   is first, they are rotationally symmetric.
+[00:47:54.100 --> 00:47:57.100]   Second, they have a single lobe.
+[00:47:57.100 --> 00:47:59.100]   So, neighbors influence decreases monotonically.
+[00:47:59.100 --> 00:48:02.100]   Still, one open frequency domain.
+[00:48:02.100 --> 00:48:08.100]   Simple relationship between the standard deviation and easy to implement efficiently.
+[00:48:08.100 --> 00:48:13.100]   Those are kind of the top reasons if you want to choose a Gaussian filter for your images
+[00:48:13.100 --> 00:48:15.100]   from now on.
+[00:48:15.100 --> 00:48:18.100]   So, now you have seen Gaussian filters.
+[00:48:18.100 --> 00:48:23.100]   You have seen basically the ones that we are using for blurring and the one that we are
+[00:48:23.100 --> 00:48:25.100]   using for sharpening.
+[00:48:25.100 --> 00:48:27.100]   This brings us to differential filters.
+[00:48:27.100 --> 00:48:31.100]   So, we are having proits and several operators.
+[00:48:31.100 --> 00:48:33.100]   They look like this.
+[00:48:33.100 --> 00:48:40.100]   So, you can see that they are mostly focusing on the vertical information on how the filters
+[00:48:40.100 --> 00:48:41.100]   are made.
+[00:48:41.100 --> 00:48:46.100]   These are the standard filters that you normally find when you Google image filters.
+[00:48:46.100 --> 00:48:50.100]   Like, they are the general ones that you will find information about.
+[00:48:50.100 --> 00:48:56.100]   Has anyone used them before or heard of them before?
+[00:48:56.100 --> 00:48:58.100]   One person?
+[00:48:58.100 --> 00:49:00.100]   Okay.
+[00:49:00.100 --> 00:49:05.100]   You are not -- as far as I know, you are actually going to see these ones in more detail in
+[00:49:05.100 --> 00:49:07.100]   the practical part.
+[00:49:07.100 --> 00:49:09.100]   So, you are actually going to work with these.
+[00:49:09.100 --> 00:49:12.100]   So, you are going to get more information about these.
+[00:49:12.100 --> 00:49:17.100]   That is why we are currently moving to the high pass filters.
+[00:49:17.100 --> 00:49:24.100]   Which maybe if they remind you a bit, at least to me, they remind me of a Gaussian filter.
+[00:49:24.100 --> 00:49:29.100]   So, we are having the importance on the center pixel and we are having the surroundings.
+[00:49:29.100 --> 00:49:34.100]   That one is basically enhancing the neighbors of the center.
+[00:49:34.100 --> 00:49:36.100]   And this one is the high pass filter.
+[00:49:36.100 --> 00:49:39.100]   Which in this case is of course not like Gaussian.
+[00:49:39.100 --> 00:49:46.100]   But, yeah, basically we are putting the strength on the center pixel and, yeah, moving over
+[00:49:46.100 --> 00:49:47.100]   the neighborhood.
+[00:49:47.100 --> 00:49:50.100]   This is how this looks.
+[00:49:50.100 --> 00:49:55.100]   So, in both cases, they are really similar.
+[00:49:55.100 --> 00:49:58.100]   So, basically, I am going to show you how this looks.
+[00:49:58.100 --> 00:50:01.100]   So, basically, I am going to show you how this looks.
+[00:50:01.100 --> 00:50:04.100]   So, basically, I am going to show you how this looks.
+[00:50:04.100 --> 00:50:06.100]   So, basically, I am going to show you how this looks.
+[00:50:06.100 --> 00:50:08.100]   So, basically, I am going to show you how this looks.
+[00:50:08.100 --> 00:50:10.100]   So, basically, I am going to show you how this looks.
+[00:50:10.100 --> 00:50:12.100]   So, basically, I am going to show you how this looks.
+[00:50:12.100 --> 00:50:14.100]   So, basically, I am going to show you how this looks.
+[00:50:14.100 --> 00:50:16.100]   So, basically, I am going to show you how this looks.
+[00:50:16.100 --> 00:50:18.100]   So, basically, I am going to show you how this looks.
+[00:50:18.100 --> 00:50:20.100]   So, basically, I am going to show you how this looks.
+[00:50:20.100 --> 00:50:22.100]   So, basically, I am going to show you how this looks.
+[00:50:22.100 --> 00:50:24.100]   So, basically, I am going to show you how this looks.
+[00:50:24.100 --> 00:50:26.100]   So, basically, I am going to show you how this looks.
+[00:50:26.100 --> 00:50:28.100]   So, basically, I am going to show you how this looks.
+[00:50:28.100 --> 00:50:30.100]   So, basically, I am going to show you how this looks.
+[00:50:30.100 --> 00:50:32.100]   So, basically, I am going to show you how this looks.
+[00:50:32.100 --> 00:50:34.100]   So, basically, I am going to show you how this looks.
+[00:50:34.100 --> 00:50:36.100]   So, basically, I am going to show you how this looks.
+[00:50:36.100 --> 00:50:38.100]   So, basically, I am going to show you how this looks.
+[00:50:38.100 --> 00:50:40.100]   So, basically, I am going to show you how this looks.
+[00:50:40.100 --> 00:50:42.100]   So, basically, I am going to show you how this looks.
+[00:50:42.100 --> 00:50:44.100]   So, basically, I am going to show you how this looks.
+[00:50:44.100 --> 00:50:46.100]   So, basically, I am going to show you how this looks.
+[00:50:46.100 --> 00:50:48.100]   So, basically, I am going to show you how this looks.
+[00:50:48.100 --> 00:50:50.100]   So, basically, I am going to show you how this looks.
+[00:50:50.100 --> 00:50:52.100]   So, basically, I am going to show you how this looks.
+[00:50:52.100 --> 00:50:54.100]   So, basically, I am going to show you how this looks.
+[00:50:54.100 --> 00:50:56.100]   So, basically, I am going to show you how this looks.
+[00:50:56.100 --> 00:50:58.100]   So, basically, I am going to show you how this looks.
+[00:50:58.100 --> 00:51:00.100]   So, basically, I am going to show you how this looks.
+[00:51:00.100 --> 00:51:02.100]   So, basically, I am going to show you how this looks.
+[00:51:02.100 --> 00:51:04.100]   So, basically, I am going to show you how this looks.
+[00:51:04.100 --> 00:51:06.100]   So, basically, I am going to show you how this looks.
+[00:51:06.100 --> 00:51:08.100]   So, basically, I am going to show you how this looks.
+[00:51:08.100 --> 00:51:10.100]   So, basically, I am going to show you how this looks.
+[00:51:10.100 --> 00:51:12.100]   So, basically, I am going to show you how this looks.
+[00:51:12.100 --> 00:51:14.100]   So, basically, I am going to show you how this looks.
+[00:51:14.100 --> 00:51:16.100]   So, basically, I am going to show you how this looks.
+[00:51:16.100 --> 00:51:18.100]   So, basically, I am going to show you how this looks.
+[00:51:18.100 --> 00:51:20.100]   So, basically, I am going to show you how this looks.
+[00:51:20.100 --> 00:51:22.100]   So, basically, I am going to show you how this looks.
+[00:51:22.100 --> 00:51:24.100]   So, basically, I am going to show you how this looks.
+[00:51:24.100 --> 00:51:26.100]   So, basically, I am going to show you how this looks.
+[00:51:26.100 --> 00:51:28.100]   So, basically, I am going to show you how this looks.
+[00:51:28.100 --> 00:51:30.100]   So, basically, I am going to show you how this looks.
+[00:51:30.100 --> 00:51:32.100]   So, basically, I am going to show you how this looks.
+[00:51:32.100 --> 00:51:34.100]   So, basically, I am going to show you how this looks.
+[00:51:34.100 --> 00:51:36.100]   So, basically, I am going to show you how this looks.
+[00:51:36.100 --> 00:51:38.100]   So, basically, I am going to show you how this looks.
+[00:51:38.100 --> 00:51:40.100]   So, basically, I am going to show you how this looks.
+[00:51:40.100 --> 00:51:42.100]   So, basically, I am going to show you how this looks.
+[00:51:42.100 --> 00:51:44.100]   So, basically, I am going to show you how this looks.
+[00:51:44.100 --> 00:51:46.100]   So, basically, I am going to show you how this looks.
+[00:51:46.100 --> 00:51:48.100]   So, basically, I am going to show you how this looks.
+[00:51:48.100 --> 00:51:50.100]   So, basically, I am going to show you how this looks.
+[00:51:50.100 --> 00:51:52.100]   So, basically, I am going to show you how this looks.
+[00:51:52.100 --> 00:51:54.100]   So, basically, I am going to show you how this looks.
+[00:51:54.100 --> 00:51:56.100]   So, basically, I am going to show you how this looks.
+[00:51:56.100 --> 00:51:58.100]   So, basically, I am going to show you how this looks.
+[00:51:58.100 --> 00:52:00.100]   So, basically, I am going to show you how this looks.
+[00:52:00.100 --> 00:52:02.100]   So, basically, I am going to show you how this looks.
+[00:52:02.100 --> 00:52:04.100]   So, basically, I am going to show you how this looks.
+[00:52:04.100 --> 00:52:06.100]   So, basically, I am going to show you how this looks.
+[00:52:06.100 --> 00:52:08.100]   So, basically, I am going to show you how this looks.
+[00:52:08.100 --> 00:52:10.100]   So, basically, I am going to show you how this looks.
+[00:52:10.100 --> 00:52:12.100]   So, basically, I am going to show you how this looks.
+[00:52:12.100 --> 00:52:14.100]   So, basically, I am going to show you how this looks.
+[00:52:14.100 --> 00:52:16.100]   So, basically, I am going to show you how this looks.
+[00:52:16.100 --> 00:52:18.100]   So, basically, I am going to show you how this looks.
+[00:52:18.100 --> 00:52:20.100]   So, basically, I am going to show you how this looks.
+[00:52:20.100 --> 00:52:22.100]   So, basically, I am going to show you how this looks.
+[00:52:22.100 --> 00:52:24.100]   So, basically, I am going to show you how this looks.
+[00:52:24.100 --> 00:52:26.100]   So, basically, I am going to show you how this looks.
+[00:52:26.100 --> 00:52:28.100]   So, basically, I am going to show you how this looks.
+[00:52:28.100 --> 00:52:30.100]   So, basically, I am going to show you how this looks.
+[00:52:30.100 --> 00:52:32.100]   So, basically, I am going to show you how this looks.
+[00:52:32.100 --> 00:52:34.100]   So, basically, I am going to show you how this looks.
+[00:52:34.100 --> 00:52:36.100]   So, basically, I am going to show you how this looks.
+[00:52:36.100 --> 00:52:38.100]   So, basically, I am going to show you how this looks.
+[00:52:38.100 --> 00:52:40.100]   So, basically, I am going to show you how this looks.
+[00:52:40.100 --> 00:52:42.100]   So, basically, I am going to show you how this looks.
+[00:52:42.100 --> 00:52:44.100]   So, basically, I am going to show you how this looks.
+[00:52:44.100 --> 00:52:46.100]   So, basically, I am going to show you how this looks.
+[00:52:46.100 --> 00:52:48.100]   So, basically, I am going to show you how this looks.
+[00:52:48.100 --> 00:52:50.100]   So, basically, I am going to show you how this looks.
+[00:52:50.100 --> 00:52:52.100]   So, basically, I am going to show you how this looks.
+[00:52:52.100 --> 00:52:54.100]   So, basically, I am going to show you how this looks.
+[00:52:54.100 --> 00:52:56.100]   So, basically, I am going to show you how this looks.
+[00:52:56.100 --> 00:52:58.100]   So, basically, I am going to show you how this looks.
+[00:52:58.100 --> 00:53:00.100]   So, basically, I am going to show you how this looks.
+[00:53:00.100 --> 00:53:02.100]   So, basically, I am going to show you how this looks.
+[00:53:02.100 --> 00:53:04.100]   So, basically, I am going to show you how this looks.
+[00:53:04.100 --> 00:53:06.100]   So, basically, I am going to show you how this looks.
+[00:53:06.100 --> 00:53:08.100]   So, basically, I am going to show you how this looks.
+[00:53:08.100 --> 00:53:10.100]   So, basically, I am going to show you how this looks.
+[00:53:10.100 --> 00:53:12.100]   So, basically, I am going to show you how this looks.
+[00:53:12.100 --> 00:53:14.100]   So, basically, I am going to show you how this looks.
+[00:53:14.100 --> 00:53:16.100]   So, basically, I am going to show you how this looks.
+[00:53:16.100 --> 00:53:18.100]   So, basically, I am going to show you how this looks.
+[00:53:18.100 --> 00:53:20.100]   So, basically, I am going to show you how this looks.
+[00:53:20.100 --> 00:53:22.100]   So, basically, I am going to show you how this looks.
+[00:53:22.100 --> 00:53:24.100]   So, basically, I am going to show you how this looks.
+[00:53:24.100 --> 00:53:26.100]   So, basically, I am going to show you how this looks.
+[00:53:26.100 --> 00:53:28.100]   So, basically, I am going to show you how this looks.
+[00:53:28.100 --> 00:53:30.100]   So, basically, I am going to show you how this looks.
+[00:53:30.100 --> 00:53:32.100]   So, basically, I am going to show you how this looks.
+[00:53:32.100 --> 00:53:34.100]   So, basically, I am going to show you how this looks.
+[00:53:34.100 --> 00:53:36.100]   So, basically, I am going to show you how this looks.
+[00:53:36.100 --> 00:53:38.100]   So, basically, I am going to show you how this looks.
+[00:53:38.100 --> 00:53:40.100]   So, basically, I am going to show you how this looks.
+[00:53:40.100 --> 00:53:42.100]   So, basically, I am going to show you how this looks.
+[00:53:42.100 --> 00:53:44.100]   So, basically, I am going to show you how this looks.
+[00:53:44.100 --> 00:53:46.100]   So, basically, I am going to show you how this looks.
+[00:53:46.100 --> 00:53:48.100]   So, basically, I am going to show you how this looks.
+[00:53:48.100 --> 00:53:50.100]   So, basically, I am going to show you how this looks.
+[00:53:50.100 --> 00:53:52.100]   So, basically, I am going to show you how this looks.
+[00:53:52.100 --> 00:53:54.100]   So, basically, I am going to show you how this looks.
+[00:53:54.100 --> 00:53:56.100]   So, basically, I am going to show you how this looks.
+[00:53:56.100 --> 00:53:58.100]   So, basically, I am going to show you how this looks.
+[00:53:58.100 --> 00:54:00.100]   So, basically, I am going to show you how this looks.
+[00:54:00.100 --> 00:54:02.100]   So, basically, I am going to show you how this looks.
+[00:54:02.100 --> 00:54:04.100]   So, basically, I am going to show you how this looks.
+[00:54:04.100 --> 00:54:06.100]   So, basically, I am going to show you how this looks.
+[00:54:06.100 --> 00:54:08.100]   So, basically, I am going to show you how this looks.
+[00:54:08.100 --> 00:54:10.100]   So, basically, I am going to show you how this looks.
+[00:54:10.100 --> 00:54:12.100]   So, basically, I am going to show you how this looks.
+[00:54:12.100 --> 00:54:14.100]   So, basically, I am going to show you how this looks.
+[00:54:14.100 --> 00:54:16.100]   So, basically, I am going to show you how this looks.
+[00:54:16.100 --> 00:54:18.100]   So, basically, I am going to show you how this looks.
+[00:54:18.100 --> 00:54:20.100]   So, basically, I am going to show you how this looks.
+[00:54:20.100 --> 00:54:22.100]   So, basically, I am going to show you how this looks.
+[00:54:22.100 --> 00:54:24.100]   So, basically, I am going to show you how this looks.
+[00:54:24.100 --> 00:54:26.100]   So, basically, I am going to show you how this looks.
+[00:54:26.100 --> 00:54:28.100]   So, basically, I am going to show you how this looks.
+[00:54:28.100 --> 00:54:30.100]   So, basically, I am going to show you how this looks.
+[00:54:30.100 --> 00:54:32.100]   So, basically, I am going to show you how this looks.
+[00:54:32.100 --> 00:54:34.100]   So, basically, I am going to show you how this looks.
+[00:54:34.100 --> 00:54:36.100]   So, basically, I am going to show you how this looks.
+[00:54:36.100 --> 00:54:38.100]   So, basically, I am going to show you how this looks.
+[00:54:38.100 --> 00:54:40.100]   So, basically, I am going to show you how this looks.
+[00:54:40.100 --> 00:54:42.100]   So, basically, I am going to show you how this looks.
+[00:54:42.100 --> 00:54:44.100]   So, basically, I am going to show you how this looks.
+[00:54:44.100 --> 00:54:46.100]   So, basically, I am going to show you how this looks.
+[00:54:46.100 --> 00:54:48.100]   So, basically, I am going to show you how this looks.
+[00:54:48.100 --> 00:54:50.100]   So, basically, I am going to show you how this looks.
+[00:54:50.100 --> 00:54:52.100]   So, basically, I am going to show you how this looks.
+[00:54:52.100 --> 00:54:54.100]   So, basically, I am going to show you how this looks.
+[00:54:54.100 --> 00:54:56.100]   So, basically, I am going to show you how this looks.
+[00:54:56.100 --> 00:54:58.100]   So, basically, I am going to show you how this looks.
+[00:54:58.100 --> 00:55:00.100]   So, basically, I am going to show you how this looks.
+[00:55:00.100 --> 00:55:02.100]   So, basically, I am going to show you how this looks.
+[00:55:02.100 --> 00:55:04.100]   So, basically, I am going to show you how this looks.
+[00:55:04.100 --> 00:55:06.100]   So, basically, I am going to show you how this looks.
+[00:55:06.100 --> 00:55:08.100]   So, basically, I am going to show you how this looks.
+[00:55:08.100 --> 00:55:10.100]   So, basically, I am going to show you how this looks.
+[00:55:10.100 --> 00:55:12.100]   So, basically, I am going to show you how this looks.
+[00:55:12.100 --> 00:55:14.100]   So, basically, I am going to show you how this looks.
+[00:55:14.100 --> 00:55:16.100]   So, basically, I am going to show you how this looks.
+[00:55:16.100 --> 00:55:18.100]   So, basically, I am going to show you how this looks.
+[00:55:18.100 --> 00:55:20.100]   So, basically, I am going to show you how this looks.
+[00:55:20.100 --> 00:55:22.100]   So, basically, I am going to show you how this looks.
+[00:55:22.100 --> 00:55:24.100]   So, basically, I am going to show you how this looks.
+[00:55:24.100 --> 00:55:26.100]   So, basically, I am going to show you how this looks.
+[00:55:26.100 --> 00:55:28.100]   So, basically, I am going to show you how this looks.
+[00:55:28.100 --> 00:55:30.100]   So, basically, I am going to show you how this looks.
+[00:55:30.100 --> 00:55:32.100]   So, basically, I am going to show you how this looks.
+[00:55:32.100 --> 00:55:34.100]   So, basically, I am going to show you how this looks.
+[00:55:34.100 --> 00:55:36.100]   So, basically, I am going to show you how this looks.
+[00:55:36.100 --> 00:55:38.100]   So, basically, I am going to show you how this looks.
+[00:55:38.100 --> 00:55:40.100]   So, basically, I am going to show you how this looks.
+[00:55:40.100 --> 00:55:42.100]   So, basically, I am going to show you how this looks.
+[00:55:42.100 --> 00:55:44.100]   So, basically, I am going to show you how this looks.
+[00:55:44.100 --> 00:55:46.100]   So, basically, I am going to show you how this looks.
+[00:55:46.100 --> 00:55:48.100]   So, basically, I am going to show you how this looks.
+[00:55:48.100 --> 00:55:50.100]   So, basically, I am going to show you how this looks.
+[00:55:50.100 --> 00:55:52.100]   So, basically, I am going to show you how this looks.
+[00:55:52.100 --> 00:55:54.100]   So, basically, I am going to show you how this looks.
+[00:55:54.100 --> 00:55:56.100]   So, basically, I am going to show you how this looks.
+[00:55:56.100 --> 00:55:58.100]   So, basically, I am going to show you how this looks.
+[00:55:58.100 --> 00:56:00.100]   So, basically, I am going to show you how this looks.
+[00:56:00.100 --> 00:56:02.100]   So, basically, I am going to show you how this looks.
+[00:56:02.100 --> 00:56:04.100]   So, basically, I am going to show you how this looks.
+[00:56:04.100 --> 00:56:06.100]   So, basically, I am going to show you how this looks.
+[00:56:06.100 --> 00:56:08.100]   So, basically, I am going to show you how this looks.
+[00:56:08.100 --> 00:56:10.100]   So, basically, I am going to show you how this looks.
+[00:56:10.100 --> 00:56:12.100]   So, basically, I am going to show you how this looks.
+[00:56:12.100 --> 00:56:14.100]   So, basically, I am going to show you how this looks.
+[00:56:14.100 --> 00:56:16.100]   So, basically, I am going to show you how this looks.
+[00:56:16.100 --> 00:56:18.100]   So, basically, I am going to show you how this looks.
+[00:56:18.100 --> 00:56:20.100]   So, basically, I am going to show you how this looks.
+[00:56:20.100 --> 00:56:22.100]   So, basically, I am going to show you how this looks.
+[00:56:22.100 --> 00:56:24.100]   So, basically, I am going to show you how this looks.
+[00:56:24.100 --> 00:56:26.100]   So, basically, I am going to show you how this looks.
+[00:56:26.100 --> 00:56:28.100]   So, basically, I am going to show you how this looks.
+[00:56:28.100 --> 00:56:30.100]   So, basically, I am going to show you how this looks.
+[00:56:30.100 --> 00:56:32.100]   So, basically, I am going to show you how this looks.
+[00:56:32.100 --> 00:56:34.100]   So, basically, I am going to show you how this looks.
+[00:56:34.100 --> 00:56:36.100]   So, basically, I am going to show you how this looks.
+[00:56:36.100 --> 00:56:38.100]   So, basically, I am going to show you how this looks.
+[00:56:38.100 --> 00:56:40.100]   So, basically, I am going to show you how this looks.
+[00:56:40.100 --> 00:56:42.100]   So, basically, I am going to show you how this looks.
+[00:56:42.100 --> 00:56:44.100]   So, basically, I am going to show you how this looks.
+[00:56:44.100 --> 00:56:46.100]   So, basically, I am going to show you how this looks.
+[00:56:46.100 --> 00:56:48.100]   So, basically, I am going to show you how this looks.
+[00:56:48.100 --> 00:56:50.100]   So, basically, I am going to show you how this looks.
+[00:56:50.100 --> 00:56:52.100]   So, basically, I am going to show you how this looks.
+[00:56:52.100 --> 00:56:54.100]   So, basically, I am going to show you how this looks.
+[00:56:54.100 --> 00:56:56.100]   So, basically, I am going to show you how this looks.
+[00:56:56.100 --> 00:56:58.100]   So, basically, I am going to show you how this looks.
+[00:56:58.100 --> 00:57:00.100]   So, basically, I am going to show you how this looks.
+[00:57:00.100 --> 00:57:02.100]   So, basically, I am going to show you how this looks.
+[00:57:02.100 --> 00:57:04.100]   So, basically, I am going to show you how this looks.
+[00:57:04.100 --> 00:57:06.100]   So, basically, I am going to show you how this looks.
+[00:57:06.100 --> 00:57:08.100]   So, basically, I am going to show you how this looks.
+[00:57:08.100 --> 00:57:10.100]   So, basically, I am going to show you how this looks.
+[00:57:10.100 --> 00:57:12.100]   So, basically, I am going to show you how this looks.
+[00:57:12.100 --> 00:57:14.100]   So, basically, I am going to show you how this looks.
+[00:57:14.100 --> 00:57:16.100]   So, basically, I am going to show you how this looks.
+[00:57:16.100 --> 00:57:18.100]   So, basically, I am going to show you how this looks.
+[00:57:18.100 --> 00:57:20.100]   So, basically, I am going to show you how this looks.
+[00:57:20.100 --> 00:57:22.100]   So, basically, I am going to show you how this looks.
+[00:57:22.100 --> 00:57:24.100]   So, basically, I am going to show you how this looks.
+[00:57:24.100 --> 00:57:26.100]   So, basically, I am going to show you how this looks.
+[00:57:26.100 --> 00:57:28.100]   So, basically, I am going to show you how this looks.
+[00:57:28.100 --> 00:57:30.100]   So, basically, I am going to show you how this looks.
+[00:57:30.100 --> 00:57:32.100]   So, basically, I am going to show you how this looks.
+[00:57:32.100 --> 00:57:34.100]   So, basically, I am going to show you how this looks.
+[00:57:34.100 --> 00:57:36.100]   So, basically, I am going to show you how this looks.
+[00:57:36.100 --> 00:57:38.100]   So, basically, I am going to show you how this looks.
+[00:57:38.100 --> 00:57:40.100]   So, basically, I am going to show you how this looks.
+[00:57:40.100 --> 00:57:42.100]   So, basically, I am going to show you how this looks.
+[00:57:42.100 --> 00:57:44.100]   So, basically, I am going to show you how this looks.
+[00:57:44.100 --> 00:57:46.100]   So, basically, I am going to show you how this looks.
+[00:57:46.100 --> 00:57:48.100]   So, basically, I am going to show you how this looks.
+[00:57:48.100 --> 00:57:50.100]   So, basically, I am going to show you how this looks.
+[00:57:50.100 --> 00:57:52.100]   So, basically, I am going to show you how this looks.
+[00:57:52.100 --> 00:57:54.100]   So, basically, I am going to show you how this looks.
+[00:57:54.100 --> 00:57:56.100]   So, basically, I am going to show you how this looks.
+[00:57:56.100 --> 00:57:58.100]   So, basically, I am going to show you how this looks.
+[00:57:58.100 --> 00:58:00.100]   So, basically, I am going to show you how this looks.
+[00:58:00.100 --> 00:58:02.100]   So, basically, I am going to show you how this looks.
+[00:58:02.100 --> 00:58:04.100]   So, basically, I am going to show you how this looks.
+[00:58:04.100 --> 00:58:06.100]   So, basically, I am going to show you how this looks.
+[00:58:06.100 --> 00:58:08.100]   So, basically, I am going to show you how this looks.
+[00:58:08.100 --> 00:58:10.100]   So, basically, I am going to show you how this looks.
+[00:58:10.100 --> 00:58:12.100]   So, basically, I am going to show you how this looks.
+[00:58:12.100 --> 00:58:14.100]   So, basically, I am going to show you how this looks.
+[00:58:14.100 --> 00:58:16.100]   So, basically, I am going to show you how this looks.
+[00:58:16.100 --> 00:58:18.100]   So, basically, I am going to show you how this looks.
+[00:58:18.100 --> 00:58:20.100]   So, basically, I am going to show you how this looks.
+[00:58:20.100 --> 00:58:22.100]   So, basically, I am going to show you how this looks.
+[00:58:22.100 --> 00:58:24.100]   So, basically, I am going to show you how this looks.
+[00:58:24.100 --> 00:58:26.100]   So, basically, I am going to show you how this looks.
+[00:58:26.100 --> 00:58:28.100]   So, basically, I am going to show you how this looks.
+[00:58:28.100 --> 00:58:30.100]   So, basically, I am going to show you how this looks.
+[00:58:30.100 --> 00:58:32.100]   So, basically, I am going to show you how this looks.
+[00:58:32.100 --> 00:58:34.100]   So, basically, I am going to show you how this looks.
+[00:58:34.100 --> 00:58:36.100]   So, basically, I am going to show you how this looks.
+[00:58:36.100 --> 00:58:38.100]   So, basically, I am going to show you how this looks.
+[00:58:38.100 --> 00:58:40.100]   So, basically, I am going to show you how this looks.
+[00:58:40.100 --> 00:58:42.100]   So, basically, I am going to show you how this looks.
+[00:58:42.100 --> 00:58:44.100]   So, basically, I am going to show you how this looks.
+[00:58:44.100 --> 00:58:46.100]   So, basically, I am going to show you how this looks.
+[00:58:46.100 --> 00:58:48.100]   So, basically, I am going to show you how this looks.
+[00:58:48.100 --> 00:58:50.100]   So, basically, I am going to show you how this looks.
+[00:58:50.100 --> 00:58:52.100]   So, basically, I am going to show you how this looks.
+[00:58:52.100 --> 00:58:54.100]   So, basically, I am going to show you how this looks.
+[00:58:54.100 --> 00:58:56.100]   So, basically, I am going to show you how this looks.
+[00:58:56.100 --> 00:58:58.100]   So, basically, I am going to show you how this looks.
+[00:58:58.100 --> 00:59:00.100]   So, basically, I am going to show you how this looks.
+[00:59:00.100 --> 00:59:02.100]   So, basically, I am going to show you how this looks.
+[00:59:02.100 --> 00:59:04.100]   So, basically, I am going to show you how this looks.
+[00:59:04.100 --> 00:59:06.100]   So, basically, I am going to show you how this looks.
+[00:59:06.100 --> 00:59:08.100]   So, basically, I am going to show you how this looks.
+[00:59:08.100 --> 00:59:10.100]   So, basically, I am going to show you how this looks.
+[00:59:10.100 --> 00:59:12.100]   So, basically, I am going to show you how this looks.
+[00:59:12.100 --> 00:59:14.100]   So, basically, I am going to show you how this looks.
+[00:59:14.100 --> 00:59:16.100]   So, basically, I am going to show you how this looks.
+[00:59:16.100 --> 00:59:18.100]   So, basically, I am going to show you how this looks.
+[00:59:18.100 --> 00:59:20.100]   So, basically, I am going to show you how this looks.
+[00:59:20.100 --> 00:59:22.100]   So, basically, I am going to show you how this looks.
+[00:59:22.100 --> 00:59:24.100]   So, basically, I am going to show you how this looks.
+[00:59:24.100 --> 00:59:26.100]   So, basically, I am going to show you how this looks.
+[00:59:26.100 --> 00:59:28.100]   So, basically, I am going to show you how this looks.
+[00:59:28.100 --> 00:59:30.100]   So, basically, I am going to show you how this looks.
+[00:59:30.100 --> 00:59:32.100]   So, basically, I am going to show you how this looks.
+[00:59:32.100 --> 00:59:34.100]   So, basically, I am going to show you how this looks.
+[00:59:34.100 --> 00:59:36.100]   So, basically, I am going to show you how this looks.
+[00:59:36.100 --> 00:59:38.100]   So, basically, I am going to show you how this looks.
+[00:59:38.100 --> 00:59:40.100]   So, basically, I am going to show you how this looks.
+[00:59:40.100 --> 00:59:42.100]   So, basically, I am going to show you how this looks.
+[00:59:42.100 --> 00:59:44.100]   So, basically, I am going to show you how this looks.
+[00:59:44.100 --> 00:59:46.100]   So, basically, I am going to show you how this looks.
+[00:59:46.100 --> 00:59:48.100]   So, basically, I am going to show you how this looks.
+[00:59:48.100 --> 00:59:50.100]   So, basically, I am going to show you how this looks.
+[00:59:50.100 --> 00:59:52.100]   So, basically, I am going to show you how this looks.
+[00:59:52.100 --> 00:59:54.100]   So, basically, I am going to show you how this looks.
+[00:59:54.100 --> 00:59:56.100]   So, basically, I am going to show you how this looks.
+[00:59:56.100 --> 01:00:01.100]   [ Inaudible ]
+[01:00:01.100 --> 01:00:03.100]   Yes, it is minus.
+[01:00:03.100 --> 01:00:06.100]   No, it is not. Sorry.
+[01:00:06.100 --> 01:00:14.100]   [ Inaudible ]
+[01:00:14.100 --> 01:00:16.100]   Okay.
+[01:00:16.100 --> 01:00:20.100]   Any questions?
+[01:00:20.100 --> 01:00:22.100]   No. Okay.
+[01:00:22.100 --> 01:00:25.100]   So, we have seen now blurring filters.
+[01:00:25.100 --> 01:00:27.100]   We have seen sharpening filters.
+[01:00:27.100 --> 01:00:30.100]   These are face detection filters.
+[01:00:30.100 --> 01:00:34.100]   So, does anyone notice something on these filters?
+[01:00:34.100 --> 01:00:37.100]   What could those filters be showing?
+[01:00:37.100 --> 01:00:39.100]   Maybe.
+[01:00:39.100 --> 01:00:43.100]   Yeah.
+[01:00:43.100 --> 01:00:45.100]   One of them looks like nose.
+[01:00:45.100 --> 01:00:46.100]   Exactly.
+[01:00:46.100 --> 01:00:51.100]   So, in this one, you --
+[01:00:51.100 --> 01:00:55.100]   the part of the eye in the really pixeled image
+[01:00:55.100 --> 01:00:59.100]   is going to be darker of the eye section because of --
+[01:00:59.100 --> 01:01:01.100]   in most cases,
+[01:01:01.100 --> 01:01:03.100]   data sets are also, like,
+[01:01:03.100 --> 01:01:06.100]   made on the most general part of society.
+[01:01:06.100 --> 01:01:09.100]   So, mostly, you have darker persons.
+[01:01:09.100 --> 01:01:12.100]   So, pixels are going to be darker in that area.
+[01:01:12.100 --> 01:01:15.100]   So, that is the eye part and the lower part below is white.
+[01:01:15.100 --> 01:01:18.100]   And in this one, you are having the nose part
+[01:01:18.100 --> 01:01:21.100]   and you are having the eyes.
+[01:01:21.100 --> 01:01:24.100]   And that is how face detection filter works.
+[01:01:24.100 --> 01:01:26.100]   I mean, you have seen -- yeah.
+[01:01:26.100 --> 01:01:42.100]   Isn't it?
+[01:01:42.100 --> 01:01:45.100]   This is the nose.
+[01:01:45.100 --> 01:01:48.100]   Like, the white part is the nose.
+[01:01:48.100 --> 01:01:50.100]   Yeah.
+[01:01:50.100 --> 01:01:53.100]   Yeah.
+[01:01:53.100 --> 01:01:55.100]   Yeah.
+[01:01:55.100 --> 01:02:00.100]   Yeah.
+[01:02:00.100 --> 01:02:03.100]   It's this part.
+[01:02:03.100 --> 01:02:07.100]   It's also this example is really to make --
+[01:02:07.100 --> 01:02:11.100]   to show you that you have vertical and horizontal filters.
+[01:02:11.100 --> 01:02:15.100]   Most of these, you have seen them probably in cameras,
+[01:02:15.100 --> 01:02:18.100]   your own phone, which does face detection.
+[01:02:18.100 --> 01:02:21.100]   It actually is capable of detecting your faces.
+[01:02:21.100 --> 01:02:23.100]   And if you are using even image filters,
+[01:02:23.100 --> 01:02:25.100]   that is how they -- in an easy way,
+[01:02:25.100 --> 01:02:27.100]   detect your face right now.
+[01:02:27.100 --> 01:02:29.100]   They are using other algorithms,
+[01:02:29.100 --> 01:02:31.100]   but this is an easy way to do this.
+[01:02:31.100 --> 01:02:33.100]   And it is from 2001.
+[01:02:33.100 --> 01:02:36.100]   So, before any of the social media existed,
+[01:02:36.100 --> 01:02:39.100]   you have seen it in vertical and horizontal.
+[01:02:39.100 --> 01:02:42.100]   And yes, we can also do it diagonal.
+[01:02:42.100 --> 01:02:45.100]   So, this is how it would look.
+[01:02:45.100 --> 01:02:49.100]   Which means, when you are moving your head,
+[01:02:49.100 --> 01:02:52.100]   that is why the camera still detects you,
+[01:02:52.100 --> 01:02:55.100]   even if you are not straightforward looking at the camera.
+[01:02:55.100 --> 01:03:01.100]   And, yeah.
+[01:03:01.100 --> 01:03:06.100]   This brings us to the last slide,
+[01:03:06.100 --> 01:03:10.100]   which basically on Thursday you are going to learn image features.
+[01:03:10.100 --> 01:03:14.100]   Any questions before --
+[01:03:14.100 --> 01:03:18.100]   here is some crazy animation that Marc has put in?
+[01:03:18.100 --> 01:03:22.100]   I know.
+[01:03:22.100 --> 01:03:30.100]   (Applause)
+[01:03:30.100 --> 01:03:33.100]   (Applause)
+[01:03:33.100 --> 01:03:36.260]   (audience applauding)
+

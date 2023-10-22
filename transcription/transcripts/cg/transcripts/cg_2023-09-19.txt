@@ -1,0 +1,443 @@
+
+[00:00:00.000 --> 00:00:04.760]   Good afternoon everybody. Welcome to the first lecture of the Advanced Computer
+[00:00:04.760 --> 00:00:11.240]   Graphics class. My name is Marius Papas. I'm a research scientist with Disney
+[00:00:11.240 --> 00:00:17.200]   Research Studios. I've been giving this class for a few years now together with
+[00:00:17.200 --> 00:00:23.840]   Professor Marcos Gross and I'll be giving the intro lecture today to get you
+[00:00:23.840 --> 00:00:28.720]   interested to show you a little bit what this class is going to be about and what
+[00:00:28.720 --> 00:00:34.000]   you can do with the knowledge that you get out of this class. Also some logistics.
+[00:00:34.000 --> 00:00:41.440]   Alright, so let's start with a quiz. This is an easy one so let's see. Last year
+[00:00:41.440 --> 00:00:45.960]   the students did very well on this. So I have a question and I would like you to
+[00:00:45.960 --> 00:00:51.080]   raise your arms if you think this image here is a photograph or a computer
+[00:00:51.080 --> 00:00:57.160]   generated image. Very good. Results are improving so everyone thinks this is
+[00:00:57.160 --> 00:01:02.240]   computer generated. You're absolutely right. This is a rendering. It took a
+[00:01:02.240 --> 00:01:05.080]   little bit of time. We actually rendered it here on the super computer
+[00:01:05.080 --> 00:01:12.720]   noiler cluster where the admins graciously asked me to test the
+[00:01:12.720 --> 00:01:16.760]   heating, the cooling systems. So I used half the cluster to render a few frames
+[00:01:16.760 --> 00:01:24.240]   of this. So yeah, this is one image for one of our projects called granular media.
+[00:01:24.240 --> 00:01:33.080]   What about this one? Who thinks this is a real one? Okay, we have like 60% thinking
+[00:01:33.080 --> 00:01:41.520]   the real ones. Okay, well indeed it is a real photograph. This we took as
+[00:01:41.520 --> 00:01:46.320]   motivational image for the same paper. We just stacked a few books, put some
+[00:01:46.320 --> 00:01:53.240]   teaspoons and poured grains into those teaspoons to create motivational
+[00:01:53.240 --> 00:01:58.120]   images for our paper. This was our target. This is what we should be able
+[00:01:58.120 --> 00:02:08.000]   to achieve. All right, let's continue. What about this one? Who thinks this is a
+[00:02:08.000 --> 00:02:16.040]   photograph? All right, all right. That is correct. That is a rendering. It was
+[00:02:16.040 --> 00:02:20.520]   rendered with a renderer called RenderMan. Specifically, this is the winner
+[00:02:20.520 --> 00:02:29.880]   of the RenderMan art challenge back in 2017 by Fabio Rossi. All right, one more.
+[00:02:29.880 --> 00:02:38.640]   I promise this is the last one. You're doing great. What about this one? Photo. Who
+[00:02:38.640 --> 00:02:48.120]   thinks it's a photograph? Okay, say like 20%. Think this is a photograph? All right,
+[00:02:48.120 --> 00:02:53.440]   so this is actually computer generated. It was rendered with the same renderer
+[00:02:53.440 --> 00:03:00.400]   as the one generated the image before, but it has a few differences. It has some
+[00:03:00.400 --> 00:03:04.920]   effects that are put there to make us think that it was actually generated or
+[00:03:04.920 --> 00:03:12.960]   captured by a real camera. If you see, you can notice there are some quite
+[00:03:12.960 --> 00:03:17.760]   tough effects to get, like the milk there. It has translucency or subsurface
+[00:03:17.760 --> 00:03:22.600]   scattering. The shadow is blurred. You can actually see light going from the
+[00:03:22.600 --> 00:03:27.360]   illuminated part of the milk down under when there is no lighting there. There's
+[00:03:27.360 --> 00:03:32.160]   also depth of field. It's very subtle. As you go away from the center, you might
+[00:03:32.160 --> 00:03:37.080]   see things getting out of focus. Also, a bit of chromatic aberration. If you see
+[00:03:37.080 --> 00:03:42.840]   also on the glass, there are fingerprint stains. If someone was holding that to
+[00:03:42.840 --> 00:03:49.520]   make us think this is a real one, and some other subtle effects. This was
+[00:03:49.520 --> 00:03:56.880]   rendered with renderer from Hars Agrawal. All right, so I think you did very
+[00:03:56.880 --> 00:04:03.440]   well. We should probably update the image for next year. All right, let's talk
+[00:04:03.440 --> 00:04:08.360]   a little bit about the course. We have two main lectures, Professor Gross and
+[00:04:08.360 --> 00:04:14.000]   myself. We also have a great team of assistants. Many of them are here today.
+[00:04:14.000 --> 00:04:20.000]   The headtee for this year is Carlys, who will be helping with most of the
+[00:04:20.000 --> 00:04:28.040]   organization. Then we have Daniel, Agon, Rajesh, Pascal, Lucas, Kehan,
+[00:04:28.040 --> 00:04:35.320]   Fengxi and Jianyao, who would be helping with various issues to help you with the
+[00:04:35.320 --> 00:04:41.960]   homework, give the exercise sessions, the grading, final exam and all the
+[00:04:41.960 --> 00:04:50.760]   organization. So yeah, big thanks to you. Also, this class has been going for a
+[00:04:50.760 --> 00:04:55.320]   few years. We have been evolving it, but I must credit the people and the
+[00:04:55.320 --> 00:05:01.080]   professors who have well helped to create these amazing slides that I'm
+[00:05:01.080 --> 00:05:09.000]   able to share with you today. All right, so now let's talk a little bit about
+[00:05:09.000 --> 00:05:14.840]   computer graphics lab. So there's a lab with the same name as the class. It was
+[00:05:14.840 --> 00:05:24.840]   founded, it's like 30 years ago, by Professor Markus Gross. It has three
+[00:05:24.840 --> 00:05:33.760]   faculty members, Markus, Barbara and Bob, and also two researchers, Baran and
+[00:05:33.760 --> 00:05:39.600]   Raphael. It's one of the biggest graphics labs in the world. It also has 19 PhD
+[00:05:39.600 --> 00:05:44.920]   students working on various topics that we'll see on the next slide and two
+[00:05:44.920 --> 00:05:51.640]   research engineers to support. The research themes at the computer graphics
+[00:05:51.640 --> 00:05:58.720]   lab are this one and the change over the years. The current snapshot of the
+[00:05:58.720 --> 00:06:04.400]   core research themes is digital characters and AI and how to make
+[00:06:04.400 --> 00:06:09.040]   conversational characters, how to animate them, how to render them, how to make them
+[00:06:09.040 --> 00:06:18.600]   interact with humans. There is also a very closely related direction on
+[00:06:18.600 --> 00:06:23.920]   digital humans where the goal there is actually to create very realistic
+[00:06:23.920 --> 00:06:30.400]   digital versions of real humans and specifically about the face. So there's
+[00:06:30.400 --> 00:06:37.760]   a lot of research going on how to do the appearance capture, animation of
+[00:06:37.760 --> 00:06:43.840]   lips, how the jaws are moving, to put hair or remove hair. There's a lot of
+[00:06:43.840 --> 00:06:48.160]   interesting challenges there and this is very useful especially for visual
+[00:06:48.160 --> 00:06:53.440]   effects as we will see a bit later on. Then there are also medical applications.
+[00:06:53.440 --> 00:06:59.920]   There is also a very interesting work on differentiable simulation and how to
+[00:06:59.920 --> 00:07:05.080]   show that an effect of a surgery, how it will look after it's conducted,
+[00:07:05.080 --> 00:07:13.280]   especially on faces. There is work on simulation and animation, how to simulate
+[00:07:13.280 --> 00:07:20.840]   fluids and gases and also how to animate characters. And finally the part where
+[00:07:20.840 --> 00:07:27.680]   we're also collaborating with CGL and my group is on rendering. This is how,
+[00:07:27.680 --> 00:07:32.680]   this is a part of computer graphics, we'll learn a lot about it and it's mainly
+[00:07:32.680 --> 00:07:39.680]   the focus is to make this faster. We want to make this rendering accelerated
+[00:07:39.680 --> 00:07:45.600]   algorithmically primarily and we work a lot on how to do that. And then there's
+[00:07:45.600 --> 00:07:49.760]   also of course the work on imaging and video, on how to upscale video, how to
+[00:07:49.760 --> 00:07:56.120]   restore images and how to interpolate, to increase frame rates and so on and so
+[00:07:56.120 --> 00:08:03.640]   forth. So that's a snapshot of what the computer graphics lab is doing. We can
+[00:08:03.640 --> 00:08:08.920]   move on now to my company which is the Walt Disney Company. We have a small
+[00:08:08.920 --> 00:08:17.200]   research lab here in Zurich and that's why we are here. And the company itself
+[00:08:17.200 --> 00:08:23.760]   is a huge company. Maybe you know about the studios part of it where the move
+[00:08:23.760 --> 00:08:29.760]   maybe from the movies or the parks or maybe the cruise lines. There's also
+[00:08:29.760 --> 00:08:36.400]   television and sports broadcasting happening. It covers a lot of the
+[00:08:36.400 --> 00:08:42.040]   entertainment. But this company has always been innovating. Maybe the first
+[00:08:42.040 --> 00:08:50.480]   example of the first patent from Disney is a patent back in 1931. It was about
+[00:08:50.480 --> 00:08:56.800]   synchronizing sound and animation. This was an important part for storytelling
+[00:08:56.800 --> 00:09:01.600]   to be able to play animation to show visuals and also have synchronized sound
+[00:09:01.600 --> 00:09:09.720]   with it. They've also continued innovating. This is another patent about the
+[00:09:09.720 --> 00:09:15.240]   multi-plane technology they have developed. This was used in Snow White
+[00:09:15.240 --> 00:09:20.480]   where you would have basically something akin I would say to Photoshop
+[00:09:20.480 --> 00:09:24.800]   players but physical where you could have the background there and just
+[00:09:24.800 --> 00:09:31.360]   overlay with glass planes above it, the characters and then you only
+[00:09:31.360 --> 00:09:36.000]   have to change those. Then you can keep all the background untouched. This was
+[00:09:36.000 --> 00:09:42.120]   much more important when you had to manually make those. Alright and since
+[00:09:42.120 --> 00:09:50.320]   then they have Disney has decided to build a lab specifically tailored for
+[00:09:50.320 --> 00:09:57.960]   research. This was tasked to Marcus Gross to make this lab here in Zurich. I was
+[00:09:57.960 --> 00:10:05.760]   back in 2008 I believe when we started and it has a very unique structure. This
+[00:10:05.760 --> 00:10:14.200]   is very well connected to ETH. There are students that we were fortunate
+[00:10:14.200 --> 00:10:21.560]   enough to co-supervise that are joined between Disney research and ETH. Part
+[00:10:21.560 --> 00:10:26.080]   of the funding comes from Disney research and this means that we can also
+[00:10:26.080 --> 00:10:31.720]   publish together and create IP together that is jointly owned. We have joint
+[00:10:31.720 --> 00:10:37.320]   teaching programs. Many of our researchers are actually also teaching at
+[00:10:37.320 --> 00:10:42.920]   ETH. I am one of those that are fortunate enough to have a teaching
+[00:10:42.920 --> 00:10:49.120]   assignment and then we also have access to infrastructure of the Walt Disney
+[00:10:49.120 --> 00:10:55.600]   company. So we have access to the actual renderers that are used, software used
+[00:10:55.600 --> 00:11:00.360]   to the artist. We can talk to them, we can understand the real problems, have
+[00:11:00.360 --> 00:11:07.240]   access to the hardware and this is something we share and we use to advance
+[00:11:07.240 --> 00:11:12.120]   the state of the art. And finally a leadership between Disney research
+[00:11:12.120 --> 00:11:19.800]   studios and the computer graphics lab at ETH is joined. Marcus and
+[00:11:19.800 --> 00:11:25.440]   Bob are leading both the computer graphics lab and Disney research studios.
+[00:11:25.440 --> 00:11:32.760]   In terms of research we are much more focused towards movie production.
+[00:11:32.760 --> 00:11:40.320]   Since 2018 we have left from under Disney Imagineering which was
+[00:11:40.320 --> 00:11:44.560]   responsible for parks and have moved into the studios and now all our research
+[00:11:44.560 --> 00:11:53.560]   somehow helps towards our production, distribution and so on. And the research
+[00:11:53.560 --> 00:11:59.920]   themes we have is maybe let's start rendering and simulation. As I mentioned
+[00:11:59.920 --> 00:12:04.960]   there are very similar problems as the one we have in academia. How to make
+[00:12:04.960 --> 00:12:11.120]   rendering fast, how to make simulations fast, how to make that controllable,
+[00:12:11.120 --> 00:12:17.720]   intuitive to control. This is two of the main questions that our group is focused
+[00:12:17.720 --> 00:12:24.280]   on. We also have a digital humans group that deals with reconstructing very
+[00:12:24.280 --> 00:12:31.640]   accurately performances from humans, their animation, their appearance and so on
+[00:12:31.640 --> 00:12:35.400]   and so forth. There's also a group working on animation, how to help our
+[00:12:35.400 --> 00:12:44.520]   animators author sequences of motion, how to make their characters move the
+[00:12:44.520 --> 00:12:49.640]   way they want and also maybe simulate some of the secondary effects. Then we
+[00:12:49.640 --> 00:12:57.240]   have our imaging and video group that deals a lot about image enhancement
+[00:12:57.240 --> 00:13:02.600]   if you like. Things we mentioned also earlier such as restoration, upscaling,
+[00:13:02.600 --> 00:13:08.280]   frame interpolation. A lot of cool work coming there. Also denoising of live
+[00:13:08.280 --> 00:13:14.400]   action video. And finally we also have a machine learning group that it's
+[00:13:14.400 --> 00:13:18.480]   advancing the state-of-the-art in machine learning but also contributes to all
+[00:13:18.480 --> 00:13:24.360]   the other groups. Many of our application driven themes require the use of
+[00:13:24.360 --> 00:13:31.200]   machine learning and we have the experts in the field to help us make sure we
+[00:13:31.200 --> 00:13:37.440]   are advancing the state-of-the-art. All right now that's enough about us. Let's
+[00:13:37.440 --> 00:13:43.040]   talk about what you will learn in this class. So by the end of the course you
+[00:13:43.040 --> 00:13:48.920]   should be able to describe basic principles of rendering, how light
+[00:13:48.920 --> 00:13:53.760]   transport is simulated, what equations we should be solving, how to model
+[00:13:53.760 --> 00:14:00.880]   appearance of different materials, how to represent surfaces and volumes and a
+[00:14:00.880 --> 00:14:05.840]   lot about the data structures that we need to so that we can put them in
+[00:14:05.840 --> 00:14:11.080]   memory and show them on a computer. These are essential because we deal with a
+[00:14:11.080 --> 00:14:17.680]   lot of data and we produce a lot of data. And as part of this class you also be
+[00:14:17.680 --> 00:14:24.280]   able to program algorithms to solve some of these problems that we mentioned
+[00:14:24.280 --> 00:14:30.160]   earlier. And I'll give a little bit more info later on. Now about the course
+[00:14:30.160 --> 00:14:38.800]   itself. We have two lectures per week, 45 minute lecture on Tuesdays at
+[00:14:38.800 --> 00:14:43.320]   this room and there's also another lecture on Fridays morning 10.15 until
+[00:14:43.320 --> 00:14:49.120]   12 with a small 15 minute break in the middle. That takes place in the room
+[00:14:49.120 --> 00:14:55.280]   below. And after it after the lunch break there is an exercise session from
+[00:14:55.280 --> 00:15:03.480]   2.15 until 4 p.m. where we will talk about more about the homework and also
+[00:15:03.480 --> 00:15:12.240]   give you additional material for it. In terms of evaluation we have three main
+[00:15:12.240 --> 00:15:18.320]   ways for evaluation. The first one is 50% of the total grade. It's a
+[00:15:18.320 --> 00:15:24.880]   two-hour written final exam. It will be in English and will happen at the
+[00:15:24.880 --> 00:15:32.040]   beginning of next year. This will count for 50% of your grade and there we will
+[00:15:32.040 --> 00:15:39.040]   have questions that are related to the content of the lecture, of the course
+[00:15:39.040 --> 00:15:44.760]   that we present, related to the homework assignments that you will be given. We'll
+[00:15:44.760 --> 00:15:53.600]   be checking similar concepts in the homework and yeah and maybe potentially
+[00:15:53.600 --> 00:15:59.440]   some little programming exercises. Then we have our actual programming
+[00:15:59.440 --> 00:16:04.480]   exercises. This is your homework. That will be 20% of your final grade. We have
+[00:16:04.480 --> 00:16:10.400]   four of them this year. That will you, which one will building more and more
+[00:16:10.400 --> 00:16:16.360]   functionality on a framework that will be sharing with you. And 30% will be your
+[00:16:16.360 --> 00:16:22.040]   final project. And we'll talk a little bit more about that. Total is eight credits
+[00:16:22.040 --> 00:16:26.920]   for the course. Now let's break down a little bit the homework. As I mentioned
+[00:16:26.920 --> 00:16:34.400]   is four programming exercises and the final project. The handouts for the
+[00:16:34.400 --> 00:16:38.600]   programming assignments and the project will happen in the exercise sessions.
+[00:16:38.600 --> 00:16:46.440]   There you can also go with your questions. We also have a forum through
+[00:16:46.440 --> 00:16:51.560]   GitLab where you can post your questions and someone from the team or a colleague
+[00:16:51.560 --> 00:16:58.040]   from the class can answer. I would like to emphasize you have zero tolerance for
+[00:16:58.040 --> 00:17:06.280]   cheating. Please do not attempt that. I highly recommend to use your own
+[00:17:06.280 --> 00:17:11.400]   resources to finish the homework. This will help you understand the material
+[00:17:11.400 --> 00:17:19.200]   and also be able to perform well at the final exam. We also have rendering
+[00:17:19.200 --> 00:17:23.760]   competition. Some of the projects will be selected to participate in the
+[00:17:23.760 --> 00:17:28.600]   rendering competition where you will be tasked to render a themed image of your
+[00:17:28.600 --> 00:17:34.200]   choosing using the software that you will be creating. The renderer that you
+[00:17:34.200 --> 00:17:39.400]   will be creating. The theme for this year will be announced with the project
+[00:17:39.400 --> 00:17:46.200]   handout somewhere in the middle of our lectures. There you will be asked to
+[00:17:46.200 --> 00:17:50.680]   extend your renderer with advanced functionality such that your desired
+[00:17:50.680 --> 00:17:56.920]   image can be rendered as good as possible if you like. You can be creative, very
+[00:17:56.920 --> 00:18:03.760]   ambitious. You can use photographs or images from the web or generated by any
+[00:18:03.760 --> 00:18:11.200]   sort of image, any generative model. You can start thinking about your ideas
+[00:18:11.200 --> 00:18:17.080]   early and then you can also think about how to retrofit them into the theme.
+[00:18:17.080 --> 00:18:23.840]   We will have judges that will include experts from the industry that will be
+[00:18:23.840 --> 00:18:29.960]   evaluating the submissions based on technical contributions, their aesthetics
+[00:18:29.960 --> 00:18:35.920]   and also how well it aligns with the theme. The best images will win prizes.
+[00:18:35.920 --> 00:18:40.680]   Let me show you some of the results of our previous rendering competitions. I
+[00:18:40.680 --> 00:18:45.880]   think you can also browse online and figure out and find them for yourself.
+[00:18:45.880 --> 00:18:51.240]   These are some highlights. This is one of our earliest ones from Benedict. Back in
+[00:18:51.240 --> 00:18:55.640]   2014, that was one of the winners of one of our first rendering competitions
+[00:18:55.640 --> 00:19:03.920]   where he rendered this earth in a museum. Here's the submission of the same year
+[00:19:03.920 --> 00:19:09.320]   from Simon with this very nice typewriter, very nice materials, depth of field
+[00:19:09.320 --> 00:19:18.640]   effects. Later on, we had in 2017 the submission from Virginia and Henrik where
+[00:19:18.640 --> 00:19:27.400]   we had this translucent pumpkin with heterogeneous volumes and a furry
+[00:19:27.400 --> 00:19:33.480]   cut on the top. I think this cut was also featured in a paper later on. Here we
+[00:19:33.480 --> 00:19:40.360]   have another very nice scene where we have this kind of microscopic or
+[00:19:40.360 --> 00:19:46.080]   very small mushrooms where depth of field works really well to show the scale
+[00:19:46.080 --> 00:19:52.880]   of the scene. It's another example, more surreal example with this chopped off
+[00:19:52.880 --> 00:20:01.880]   earth. Here's another more recent one with this launch of the spaceship
+[00:20:01.880 --> 00:20:07.480]   volumetric effects. We have this emission from the spacecraft and also these
+[00:20:07.480 --> 00:20:13.560]   heterogeneous volumes that are the smoke that basically is generated. On the
+[00:20:13.560 --> 00:20:19.240]   right, actually, we see a very difficult effect to simulate which is caustics and
+[00:20:19.240 --> 00:20:23.560]   also volumetric caustics that are generated from a light source when it
+[00:20:23.560 --> 00:20:30.440]   gets focused through a very small surface. And finally, last year winners, we have
+[00:20:30.440 --> 00:20:36.800]   actually the winners with us today, Dario and Sergio, who have produced this
+[00:20:36.800 --> 00:20:41.720]   fantastic looking image here of this piece of earth with a little bit of a
+[00:20:41.720 --> 00:20:47.280]   storm going on inside. It had some very cool features and especially the
+[00:20:47.280 --> 00:20:52.840]   heterogeneous volumes are, we see there, the clouds are really hard to model and
+[00:20:52.840 --> 00:21:01.800]   render. And they won the prize for last year which was a fully paid trip to a
+[00:21:01.800 --> 00:21:06.920]   conference in Delft, our annual conference, it's called "Erographics
+[00:21:06.920 --> 00:21:14.920]   Imposive of Rendering" and this was sponsored by Disney Research. All right,
+[00:21:14.920 --> 00:21:21.560]   now, what you should already know to be able to do well in this class. The first
+[00:21:21.560 --> 00:21:27.200]   one is fundamentals of calculus and linear algebra. We will be solving a
+[00:21:27.200 --> 00:21:33.040]   lot of integrals, a lot of them, many multi-dimensional integrals. We'll also be
+[00:21:33.040 --> 00:21:39.880]   transforming a lot. We'll do a lot of transformations of various points to
+[00:21:39.880 --> 00:21:46.480]   different domains, so linear algebra also be good to have good grasp of it.
+[00:21:46.480 --> 00:21:51.760]   Some basic concepts of algorithmic thought and data structures, this will also
+[00:21:51.760 --> 00:21:56.520]   be needed. We will be developing algorithms here to render these images. This is
+[00:21:56.520 --> 00:22:03.960]   highly encouraged and a very important one, programming in C++. The framework
+[00:22:03.960 --> 00:22:11.360]   that we'll be giving to you is entirely retained in C++ and the code that you
+[00:22:11.360 --> 00:22:17.040]   will be delivering for homework will also be in C++. The main reason for this is
+[00:22:17.040 --> 00:22:23.800]   efficiency and legacy, but efficiency I would say is the number one goal here to
+[00:22:23.800 --> 00:22:29.520]   be able to render these images before we finish the time allocated for the course.
+[00:22:29.520 --> 00:22:34.440]   Also, the visual computing course is strongly recommended. It does touch on
+[00:22:34.440 --> 00:22:42.400]   some of the basic concepts we need for the class. All right, now, in terms of
+[00:22:42.400 --> 00:22:50.600]   announcements, submission and material, we have Moodle. This is the link here. It
+[00:22:50.600 --> 00:22:55.280]   should also be linked from our website. You should be able to access it. In
+[00:22:55.280 --> 00:23:02.720]   there, you'll see announcements. You'll find your homework. You'll be able to
+[00:23:02.720 --> 00:23:07.240]   submit your homework and your final project. You'll be submitting basically a
+[00:23:07.240 --> 00:23:13.920]   hash there. Then, you'll also be able to find the lecture material, such as PDF
+[00:23:13.920 --> 00:23:18.640]   versions of these slides. Maybe they're already there for today's lecture and
+[00:23:18.640 --> 00:23:27.360]   the recordings of the lectures. All right, now, let's talk about computer graphics.
+[00:23:27.360 --> 00:23:36.160]   It uses concepts from a variety of fields to be able to achieve several
+[00:23:36.160 --> 00:23:43.240]   objectives. It borrows concepts from geometry, from physics, from optics,
+[00:23:43.240 --> 00:23:52.600]   engineering, and it also touches geometry processing, image processing,
+[00:23:52.600 --> 00:24:00.720]   animation, computer vision, rendering, and visualization. It has basically, it's a
+[00:24:00.720 --> 00:24:07.160]   link between many of these different fields. In this course, we will cover a
+[00:24:07.160 --> 00:24:13.200]   small slice of what computer graphics is about and we'll try to dive deep in
+[00:24:13.200 --> 00:24:19.680]   into those concepts. For example, even though animation, simulation, real-time
+[00:24:19.680 --> 00:24:24.840]   graphics and computer graphics hardware are very relevant to the field, we will
+[00:24:24.840 --> 00:24:33.240]   not be covering this course. Specifically, what we will be covering is this area
+[00:24:33.240 --> 00:24:47.520]   here, which is how to basically represent scenes. For example, geometry. How do you
+[00:24:47.520 --> 00:24:52.240]   represent geometry? How do you represent lighting in a scene? What about the
+[00:24:52.240 --> 00:24:58.360]   materials of your objects and your cameras? That will be one aspect we will
+[00:24:58.360 --> 00:25:06.320]   be covering. Basically, this is needed to do this circle here. Let me explain
+[00:25:06.320 --> 00:25:10.680]   what's going on here. If we have a scene representation, we can produce images.
+[00:25:10.680 --> 00:25:17.480]   If this representation really captures what the image should be showing. Then,
+[00:25:17.480 --> 00:25:22.280]   from this representation, we'll learn about image synthesis algorithms that
+[00:25:22.280 --> 00:25:25.800]   will take this representation and produce the images as efficiently as
+[00:25:25.800 --> 00:25:32.800]   possible. Then, there is another part of the problem where, let's say we have
+[00:25:32.800 --> 00:25:36.800]   some images, maybe some photographs from the real world. How do we get scene
+[00:25:36.800 --> 00:25:41.600]   representations out of them? That would be covered at the later part of our course
+[00:25:41.600 --> 00:25:46.840]   with a series of methods that we all lump together into this concept of
+[00:25:46.840 --> 00:25:53.640]   inverse rendering. This is basically the overview. We'll learn scene
+[00:25:53.640 --> 00:25:58.120]   representations, algorithms to produce images out of them, and then we'll also
+[00:25:58.120 --> 00:26:01.880]   learn algorithms on how to take photographs and produce scene
+[00:26:01.880 --> 00:26:09.720]   representations out of them. Now, let's dive a little bit deeper into the topics.
+[00:26:09.720 --> 00:26:17.120]   For geometry, our goal there is to be able to efficiently represent and edit
+[00:26:17.120 --> 00:26:22.840]   geometric shapes in digital form. There are various ways to do that. We can have
+[00:26:22.840 --> 00:26:29.000]   parametric models, such as base-ear curves, for example, that are maybe more
+[00:26:29.000 --> 00:26:35.200]   intuitive to control, but a little bit harder to interact with, to trace them,
+[00:26:35.200 --> 00:26:41.120]   to render them with a computer. We have implicit surfaces that are
+[00:26:41.120 --> 00:26:47.320]   basically defined by a continuous function. We also have discrete
+[00:26:47.320 --> 00:26:52.240]   representations that you might be more familiar with, such as triangular measures
+[00:26:52.240 --> 00:27:00.680]   or point clouds, are typically a little bit easier to render. These are just a
+[00:27:00.680 --> 00:27:07.000]   tasting menu of what's to come. This geometry, it could be acquired through
+[00:27:07.000 --> 00:27:13.760]   some inverse rendering process, such as 3D scanning or from depth cameras, image
+[00:27:13.760 --> 00:27:17.960]   based reconstruction, multi-view stereo. There are tons of techniques to capture
+[00:27:17.960 --> 00:27:21.440]   that and get geometry from the real world. Typically, this is challenging
+[00:27:21.440 --> 00:27:27.000]   because there are also a lot of view-dependent effects due to the materials
+[00:27:27.000 --> 00:27:35.240]   that these surfaces have that might interact with the reconstruction
+[00:27:35.240 --> 00:27:40.680]   process. We'll deal with some of those challenges also in this class. It can
+[00:27:40.680 --> 00:27:46.120]   also be modeled by hand, this geometry. There are a lot of very nice tools that
+[00:27:46.120 --> 00:27:52.280]   help us model by hand the body of surface we want to do. There's always a
+[00:27:52.280 --> 00:28:01.080]   balance between reconstruction and modeling. Another part of our scene
+[00:28:01.080 --> 00:28:06.280]   representations are the lights. The lighting in the scene specifically will
+[00:28:06.280 --> 00:28:12.680]   learn about how light is created, how it is measured. This is very important
+[00:28:12.680 --> 00:28:18.280]   because we'll have equations then that will have to know exactly what
+[00:28:18.280 --> 00:28:24.040]   quantities we're computing. But we also need to represent light sources in our
+[00:28:24.040 --> 00:28:29.240]   virtual scene and we'll implement a subset of these type of light sources in
+[00:28:29.240 --> 00:28:35.280]   our renderers such that we can produce light and illuminate our scenes. There's
+[00:28:35.280 --> 00:28:40.320]   also something very cool we will touch on in the class called environmental
+[00:28:40.320 --> 00:28:47.400]   lighting where you can take 360 photo HDR photo and use that as your lighting
+[00:28:47.400 --> 00:28:54.480]   for your scene and we'll talk about how you can do that efficiently. Another big
+[00:28:54.480 --> 00:29:03.800]   component of scene representations are materials. So specifically the
+[00:29:03.800 --> 00:29:08.480]   appearance, even if we have exactly the same shape, if you have a different
+[00:29:08.480 --> 00:29:16.120]   material it will have a much different appearance from one from the other. For
+[00:29:16.120 --> 00:29:20.200]   example here I'm showing some conductors on the left and some dielectrics on the
+[00:29:20.200 --> 00:29:26.600]   right. These are interesting materials with interesting
+[00:29:26.600 --> 00:29:32.680]   appearance that will try to actually very accurately render with some
+[00:29:32.680 --> 00:29:39.200]   advanced models here in the class. We'll learn how to represent the
+[00:29:39.200 --> 00:29:45.040]   appearance of these materials using equations. Specifically here I'm showing
+[00:29:45.040 --> 00:29:50.280]   the BRDF that it would use a function that describes the amount of light
+[00:29:50.280 --> 00:29:55.560]   reflected of a surface as a function of how much light is incident on that
+[00:29:55.560 --> 00:30:01.800]   surface. Basically tells us for each pair of directions how much light will exit.
+[00:30:01.800 --> 00:30:11.080]   And then yes this specific appearance here, characteristics we have. On the
+[00:30:11.080 --> 00:30:15.800]   left and on the right we have a conductor and dielectric and then as we move to
+[00:30:15.800 --> 00:30:19.960]   the bottom row we see that something changed. What we change there is the
+[00:30:19.960 --> 00:30:24.640]   micro surface roughness which now creates a much more interesting appearance
+[00:30:24.640 --> 00:30:29.400]   where all these reflections of the environment are now blurred and also the
+[00:30:29.400 --> 00:30:33.720]   the refraction through the dielectric. And you'll learn how to also simulate that
+[00:30:33.720 --> 00:30:39.800]   and make quite convincing rough dielectrics and rough conductors.
+[00:30:39.800 --> 00:30:45.920]   Alright and finally the last thing we need for a complete scene representation
+[00:30:45.920 --> 00:30:54.920]   are cameras. And we assume we already know the basics about the transformations.
+[00:30:54.920 --> 00:30:59.840]   We will touch them very briefly but then we'll dive into more advanced camera
+[00:30:59.840 --> 00:31:05.600]   models such that we can render effects such as depth of field which happens
+[00:31:05.600 --> 00:31:13.440]   because our cameras have a finite aperture size and light can land on the
+[00:31:13.440 --> 00:31:17.680]   sensor location from different directions. It can get this focus plane
+[00:31:17.680 --> 00:31:23.160]   where everything is in focus and then away from it things become blurry. And we
+[00:31:23.160 --> 00:31:29.520]   will learn how to simulate that very accurately. And also learn how to simulate
+[00:31:29.520 --> 00:31:37.080]   effects such as motion blur. Where the shutter speed of our camera has now
+[00:31:37.080 --> 00:31:41.200]   will be basically the shutter will be open for a finite amount of time and if
+[00:31:41.200 --> 00:31:47.760]   something moves along that time frame that means that the object will
+[00:31:47.760 --> 00:31:51.840]   basically be smeared along the image plane and will create this very nice
+[00:31:51.840 --> 00:31:58.560]   motion blur effects that we can use actually in photography to convey motion
+[00:31:58.560 --> 00:32:05.120]   in a still image. I guess everybody understands that this this
+[00:32:05.120 --> 00:32:09.800]   contraption here is actually moving really fast even though there's nothing
+[00:32:09.800 --> 00:32:16.160]   there's nothing moving in the image. Alright so there are also other aspects of
+[00:32:16.160 --> 00:32:21.080]   scene representations that we will not cover in this class such as animation
+[00:32:21.080 --> 00:32:30.080]   simulation etc. That will be covered in other classes. Right and then the main
+[00:32:30.080 --> 00:32:35.800]   part we'll be focusing on is how to take these scene representations and convert
+[00:32:35.800 --> 00:32:41.960]   them into images. How to generate an image for a digital representation of a
+[00:32:41.960 --> 00:32:51.960]   scene. And this is yeah this is one of our great goals. So there are there are
+[00:32:51.960 --> 00:32:58.760]   first we have to be able to mathematically model physics of light. What
+[00:32:58.760 --> 00:33:04.440]   happens to light as it traverses a scene as it interacts with materials as it
+[00:33:04.440 --> 00:33:09.320]   gets absorbed by participating media or sculpture from them and will create
+[00:33:09.320 --> 00:33:16.440]   algorithms to render it to the light transport and and solve these equations.
+[00:33:16.440 --> 00:33:22.640]   There are tons of applications if we're able to do that for example movies and
+[00:33:22.640 --> 00:33:32.560]   games this is something that's very close to us where we are basically
+[00:33:32.560 --> 00:33:37.120]   synthesized images all the time from digital representations. There's also
+[00:33:37.120 --> 00:33:42.480]   applications in industrial design and product visualization to show how a
+[00:33:42.480 --> 00:33:46.920]   project product would look like without having to spend millions on
+[00:33:46.920 --> 00:33:52.360]   manufacturing it. And then in architecture for a similar goal or
+[00:33:52.360 --> 00:33:59.600]   cultural heritage to reconstruct some of our past and visualize it and also for
+[00:33:59.600 --> 00:34:07.040]   virtual reality. Alright now let's talk about this rendering process.
+[00:34:07.040 --> 00:34:15.440]   Which converts the scene description into an image. There are we will be focusing
+[00:34:15.440 --> 00:34:20.760]   a lot on physically based rendering but there's also a direction that's gaining
+[00:34:20.760 --> 00:34:27.280]   more and more popularity nowadays. It's called non-photorealistic rendering.
+[00:34:27.280 --> 00:34:31.760]   But there the goal is not to show an image of a 3D scene representation as
+[00:34:31.760 --> 00:34:40.720]   accurately as possible but instead to show an interpretation of it. Maybe you
+[00:34:40.720 --> 00:34:45.560]   would like to visualize you know the bones under the skin so actually rendering
+[00:34:45.560 --> 00:34:52.400]   it with full accuracy this might not be desired or show accurately the shape of
+[00:34:52.400 --> 00:34:59.800]   something of an object that you will be really printing for example. So there
+[00:34:59.800 --> 00:35:06.760]   are better visualizations for that type of work. Alright and in our
+[00:35:06.760 --> 00:35:14.920]   scenario for image for video for films and games we focus on two parts of
+[00:35:14.920 --> 00:35:19.080]   rendering. Photorealistic rendering where we want to create an image of a 3D
+[00:35:19.080 --> 00:35:23.440]   scene that's indistinguishable from a photo. This is very useful especially in
+[00:35:23.440 --> 00:35:28.920]   live-action virtual effects where you know maybe live actors will be placed
+[00:35:28.920 --> 00:35:34.880]   together or composited together with some virtual characters. So there we
+[00:35:34.880 --> 00:35:39.840]   typically rely on what will touch later on on physically based rendering but
+[00:35:39.840 --> 00:35:44.640]   there anything goes anything goes to make it as photoreal as possible. At the end
+[00:35:44.640 --> 00:35:50.480]   the eye of the artist decides how to tweak everything. And then physically based
+[00:35:50.480 --> 00:35:54.920]   rendering this is what we'll actually be learning where we follow the physical
+[00:35:54.920 --> 00:36:00.720]   behavior of light as closely as possible to predict what will be observed. So if
+[00:36:00.720 --> 00:36:04.400]   we actually recreated this scene in the real world this is how it should look
+[00:36:04.400 --> 00:36:11.600]   like if we did it all good. Alright so let me show you some images. This is also
+[00:36:11.600 --> 00:36:21.320]   about 30 years old image where had some very nicely rendered dinosaurs rendered.
+[00:36:21.320 --> 00:36:32.060]   Here's some other example from 1995. Here's another one from 1999. And yeah more
+[00:36:32.060 --> 00:36:41.520]   recent examples. Getting humans to render accurately it's really difficult and
+[00:36:41.520 --> 00:36:47.240]   even though this looks very convincing there's still something of about it.
+[00:36:47.240 --> 00:36:53.720]   Whereas for interiors maybe we get a little bit more leeway. I think this is
+[00:36:53.720 --> 00:36:58.600]   also related to our human perception. Alright so that's all good but actually
+[00:36:58.600 --> 00:37:02.800]   in the course we'll start from something simple. Even to learn there's something as
+[00:37:02.800 --> 00:37:07.400]   simple as this one requires rays to be intersected with spheres. We'll
+[00:37:07.400 --> 00:37:11.880]   mathematically formulate that. We have a ground plane here with a texture applied
+[00:37:11.880 --> 00:37:16.800]   on it. There are shadows on this ground plane and there's also some
+[00:37:16.800 --> 00:37:21.000]   environment light. And then we'll scale it up. We'll be able to render a lot more
+[00:37:21.000 --> 00:37:26.880]   of this. And then we'll go into more accurate simulation of light transport
+[00:37:26.880 --> 00:37:33.680]   where we'll learn about algorithms that trace light from the light sources
+[00:37:33.680 --> 00:37:41.120]   interact with the objects materials and eventually deposit the radiance into the
+[00:37:41.120 --> 00:37:48.320]   image plane. Also learn about better algorithms that deal with this problem
+[00:37:48.320 --> 00:37:52.200]   where if you start from light sources you might never reach the camera.
+[00:37:52.200 --> 00:37:58.800]   Especially if you're hidden very carefully. Alright and then this is the
+[00:37:58.800 --> 00:38:04.680]   algorithms that's the basis of many renders that currently used in
+[00:38:04.680 --> 00:38:09.040]   production. It's called path tracing, forward path tracing where we start
+[00:38:09.040 --> 00:38:13.960]   rays actually from the camera and the search for the light. This is actually
+[00:38:13.960 --> 00:38:19.600]   used in many of the offline renderers currently using production and I would
+[00:38:19.600 --> 00:38:25.360]   like to show you here the real of some of the nice images you can generate with
+[00:38:25.360 --> 00:38:28.160]   a path tracer.
+[00:38:28.160 --> 00:38:43.000]  . Epic music is not playing but...
+[00:38:43.000 --> 00:38:45.000]  .
+[00:38:45.000 --> 00:38:48.000]   [Music]
+[00:38:48.000 --> 00:38:51.000]   [Music]
+[00:38:51.000 --> 00:38:54.000]   [Music]
+[00:38:54.000 --> 00:38:57.000]   [Music]
+[00:38:57.000 --> 00:39:00.000]   [Music]
+[00:39:00.000 --> 00:39:04.000]   [Music]
+[00:39:04.000 --> 00:39:08.000]   [Music]
+[00:39:08.000 --> 00:39:12.000]   [Music]
+[00:39:12.000 --> 00:39:16.000]   [Music]
+[00:39:16.000 --> 00:39:20.000]   [Music]
+[00:39:20.000 --> 00:39:24.000]   [Music]
+[00:39:25.000 --> 00:39:28.000]   [Music]
+[00:39:28.000 --> 00:39:32.000]   [Music]
+[00:39:32.000 --> 00:39:36.000]   [Music]
+[00:39:36.000 --> 00:39:40.000]   [Music]
+[00:39:40.000 --> 00:39:44.000]   [Music]
+[00:39:44.000 --> 00:39:48.000]   [Music]
+[00:39:48.000 --> 00:39:52.000]   [Music]
+[00:39:53.000 --> 00:39:56.000]   [Music]
+[00:39:56.000 --> 00:40:00.000]   [Music]
+[00:40:00.000 --> 00:40:04.000]   [Music]
+[00:40:04.000 --> 00:40:08.000]   [Music]
+[00:40:08.000 --> 00:40:12.000]   [Music]
+[00:40:12.000 --> 00:40:16.000]   [Music]
+[00:40:16.000 --> 00:40:20.000]   [Music]
+[00:40:21.000 --> 00:40:24.000]   [Music]
+[00:40:24.000 --> 00:40:28.000]   [Music]
+[00:40:28.000 --> 00:40:32.000]   [Music]
+[00:40:32.000 --> 00:40:36.000]   [Music]
+[00:40:36.000 --> 00:40:40.000]   [Music]
+[00:40:40.000 --> 00:40:44.000]   [Music]
+[00:40:44.000 --> 00:40:48.000]   [Music]
+[00:40:49.000 --> 00:40:52.000]   [Music]
+[00:40:52.000 --> 00:40:56.000]   [Music]
+[00:40:56.000 --> 00:41:00.000]   [Music]
+[00:41:00.000 --> 00:41:04.000]   [Music]
+[00:41:04.000 --> 00:41:08.000]   [Music]
+[00:41:08.000 --> 00:41:12.000]   [Music]
+[00:41:12.000 --> 00:41:16.000]   [Music]
+[00:41:17.000 --> 00:41:20.000]   [Music]
+[00:41:20.000 --> 00:41:24.000]   [Music]
+[00:41:24.000 --> 00:41:28.000]   [Music]
+[00:41:28.000 --> 00:41:32.000]   [Music]
+[00:41:32.000 --> 00:41:36.000]   [Music]
+[00:41:36.000 --> 00:41:40.000]   [Music]
+[00:41:40.000 --> 00:41:44.000]   [Music]
+[00:41:45.000 --> 00:41:48.000]   [Music]
+[00:41:48.000 --> 00:41:52.000]   [Music]
+[00:41:52.000 --> 00:41:56.000]   [Music]
+[00:41:56.000 --> 00:42:00.000]   [Music]
+[00:42:00.000 --> 00:42:04.000]   [Music]
+[00:42:04.000 --> 00:42:08.000]   [Music]
+[00:42:08.000 --> 00:42:12.000]   [Music]
+[00:42:13.000 --> 00:42:16.000]   [Music]
+[00:42:16.000 --> 00:42:20.000]   [Music]
+[00:42:20.000 --> 00:42:24.000]   [Music]
+[00:42:24.000 --> 00:42:28.000]   [Music]
+[00:42:28.000 --> 00:42:32.000]   [Music]
+[00:42:32.000 --> 00:42:36.000]   [Music]
+[00:42:36.000 --> 00:42:40.000]   [Music]
+[00:42:41.000 --> 00:42:44.000]   [Music]
+[00:42:44.000 --> 00:42:48.000]   [Music]
+[00:42:48.000 --> 00:42:52.000]   [Music]
+[00:42:52.000 --> 00:42:56.000]   [Music]
+[00:42:56.000 --> 00:43:00.000]   [Music]
+[00:43:00.000 --> 00:43:04.000]   [Music]
+[00:43:04.000 --> 00:43:08.000]   [Music]
+[00:43:09.000 --> 00:43:12.000]   [Music]
+[00:43:12.000 --> 00:43:16.000]   [Music]
+

@@ -9,6 +9,37 @@ from .models import Lecture
 
 # Create your views here.
 
+
+def search(request):
+    query = request.GET.get('query', '')
+
+    if query:
+        topics = Topic.objects.filter(summary__icontains=query)
+    else:
+        topics = Topic.objects.all()
+
+    result = []
+    for topic in topics:
+        video = topic.discussed_in.all()[0]
+        print(video.id)
+        result.append(
+            {
+                "topic": topic,
+                "videoID": video.id,
+            }
+        )
+    
+    # print(res)
+
+    context = {
+        'query': query,
+        'results': result,
+    }
+
+    return render(request, 'views/search.html', context)
+
+
+
 def index(request):
     lectures = Lecture.objects.all()
     template = loader.get_template('views/index.html')

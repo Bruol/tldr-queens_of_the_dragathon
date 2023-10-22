@@ -1,0 +1,82 @@
+Summary 1:
+According to the lecturer, there are only a few students attending the class due to the COVID pandemic. The lecturer expresses their preference for in-person lectures over recorded ones, as they believe it is more immersive and allows for better engagement and interaction. The lecturer then briefly discusses the course roadmap and mentions that they are currently covering the topic of ray tracing, which is a fundamental and intuitive technique for image synthesis. They explain that ray tracing involves shooting rays through each pixel into the scene and computing the intersection with scene geometry. The lecturer further explains the historical background of ray tracing, mentioning its use in painting and studying rainbows. They also mention that ray tracing and ray casting are often used interchangeably, but ray tracing specifically refers to the recursive version of ray casting.
+
+
+
+Summary 2:
+The excerpt discusses the concept of ray tracing in computer graphics. It mentions that ray casting is the primary method of image synthesis, where rays are shot into the scene and intersect with the geometry of the scene. On the other hand, ray tracing is the recursive version of ray casting, involving secondary, tertiary, and quaternary rays that trace the light back from the eye to the light sources after multiple bounces. The lecture also highlights that ray tracing involves the modeling of refraction and requires recursion and secondary rays. It briefly mentions that true wave optics and solving Maxwell's equations govern light transport but are not typically used in computer graphics. The lecture also touches on the assumptions and approximations made in ray tracing, such as working with geometric optics instead of wave optics, using RGB sampling to approximate spectral phenomena, and assuming superposition and Hamhaut's reciprocity. The fundamental building block of ray tracing, the ray, is mentioned, and the ray equation is described. The lecture also briefly mentions the concept of shooting photons as rays from light sources and tracking their reflection and energy transport. Overall, the excerpt provides an overview of the basic concepts and assumptions involved in ray tracing.
+
+
+
+Summary 3:
+Summary:
+
+The lecture transcript excerpt discusses the concept of ray tracing in computer graphics. It starts by mentioning that in order to accurately model the physics of light, one should start with a light source that emits photons. These photons are then shot into the scene and their interactions with surfaces are observed. The lecture notes that in real life, most materials are a combination of specular (perfectly reflective) and diffuse (equally distributed) surfaces. Modeling the energy propagation of diffuse surfaces requires a large number of secondary rays to capture and becomes computationally expensive. The lecture then introduces the concept of reciprocity and suggests that it makes more sense to trace rays from the eye point into the scene to compute direct illumination components. The lecture also mentions that ray tracing involves computing intersections between rays and geometric objects, usually modeled as triangles. While ray tracing is a good approximation of global illumination for specular surfaces, it cannot capture the diffuse part. The lecture concludes by mentioning that capturing global illumination correctly requires solving the global illumination equation and introduces ray tracing as a first approximation.
+
+
+
+Summary 4:
+This excerpt from a lecture transcript is discussing the concept of ray tracing in computer graphics. Ray tracing is a rendering technique that simulates the path of light as it interacts with objects in a scene. The lecture explains that to accurately capture the energy distribution in a closed environment, a global illumination equation needs to be solved. The lecture also mentions that ray tracing is an approximation of this equation and is limited to the specular part of the light, not the diffuse part. Additionally, it explains that when there are multiple light sources in a scene, separate rays need to be shot to each light source to calculate the direct contribution of each source. Reflection and refraction processes are also mentioned, where reflected and refracted rays are generated and their contributions to the scene are calculated. The lecture highlights the complexity and computational expense of ray tracing, especially as the number of rays per pixel increases. It mentions the use of a pinhole camera model in ray tracing, where rays are projected through a virtual image plane. The lecture also discusses the possibility of modeling different types of lenses and lens effects using ray tracing. Overall, the excerpt provides an overview of the key concepts and processes involved in ray tracing in computer graphics.
+
+
+
+Summary 5:
+The excerpt discusses various aspects of ray tracing and the intersection of rays with surfaces. It mentions that traditional ray tracing techniques are optimized for triangles, but in ray tracing, there is more flexibility to compute intersections with other types of primitives, such as spheres. The use of spheres can be important in applications like molecular modeling. The excerpt also mentions implicit functions, which can represent more complex shapes with higher order polynomials. Implicit functions can provide an inside-outside predicate for determining if a point is inside or outside a shape. The computation of ray-sphere intersections can be solved using quadratic equations, but there is also a geometric approach that can save time by terminating early if there is no possibility of intersection.
+
+
+
+Summary 6:
+The lecture excerpt discusses a geometric approach to solving quadratic equations and evaluating closed form solutions. The lecturer explains how the computation can be broken down into multiple steps to save time and money. The first step involves computing the distance from the ray origin to the sphere center. The lecturer explains that if the dot product of the directional vector and this distance vector is larger than zero, it means the angle is smaller than 90 degrees. This criterion is used to discard rays that point away from the sphere. 
+
+The second criterion involves computing the orthogonal projection of the point C onto the ray and checking if this distance is smaller than the radius of the sphere. If it is smaller, it means the ray lies inside the sphere. 
+
+The lecturer explains that each stage of the computation provides a criteria to determine whether the computation can be terminated or not. Finally, the half-quart distance is computed through Pythagorean theorem to determine the two intersection points with the sphere. 
+
+The lecturer highlights that this approach allows for early termination and can lead to significant acceleration, particularly in complex scenes with numerous objects. 
+
+In addition, the lecture briefly mentions the algebraic and geometric forms of modeling planes and discusses how these equations can be used to determine on which side of the plane a point lies.
+
+Overall, the excerpt provides an overview of a geometric approach to solving quadratic equations and testing for intersection points with spheres and planes.
+
+
+
+Summary 7:
+The excerpt discusses two different forms of representing a plane - the algebraic form and the geometric form. The algebraic form involves the dot product of the difference between a point on the plane and a surface normal, while the geometric form involves all points for which the dot product equals 0. The lecture also mentions that these two equations are similar when using homogeneous coordinates. The lecture then briefly touches on the topic of global illumination and the use of Monte Carlo methods for solving integral equations in ray tracing. It concludes by mentioning the use of denoising techniques, such as AI and deep learning, to improve the quality of ray-traced images.
+
+
+
+Summary 8:
+This excerpt from a lecture transcript discusses ray tracing and shading in computer graphics. The speaker mentions that they will continue with ray tracing and provide the basics. They explain the algebraic and geometric forms of the plane and discuss the dot product equation for points outside the plane. The lecture also mentions the use of barycentric coordinates for testing if an intersection point is within the convex hull of a triangle. The speaker then briefly touches on intersecting with other primitives such as cylinders and cones. They mention that there are many algorithms available for this. The lecture concludes with a mention of the BRDF (bidirectional reflectance distribution function) and its importance in modeling the reflective behavior of surfaces.
+
+
+
+Summary 9:
+In this lecture transcript excerpt, the speaker discusses the fundamental concepts related to modeling surface reflection in computer graphics. They introduce the concept of incident and outgoing directions, represented as omega i and omega r respectively, along with the corresponding angular scalars. They explain that the function, known as Bidirectional Reflectance Distribution Function (BRDF), determines the amount of incident energy or radiance that is transported into the reflected direction. The BRDF is a four-dimensional function and can be challenging to capture for real surfaces. The speaker mentions that there are various models for surface reflectance, including simplified models like the diffuse model, which uses a simple diffuse term for modeling the diffusion of light energy, and the specular model, which represents perfect reflection. They also briefly discuss advanced models that use data-driven methods, such as machine learning, to approximate the BRDF. The speaker emphasizes the importance of understanding radiance, luminous power, and irradiance in the context of light transport. They mention that a ray conceptually transports radiance, and the light source illuminates an object with irradiance. The lecture also touches upon the dependence of irradiance on distance and angle.
+
+
+
+Summary 10:
+The excerpt is from a lecture discussing the topic of shading in computer graphics. 
+
+- The transcript begins by explaining that the amount of light that arrives at a point on a surface is dependent on the distance of the light source. This is referred to as quadratic geometric attenuation. 
+- The lecture goes on to mention that the amount of light also depends on the angle (denoted by theta) between the directional ray and the surface normal. This angle can be measured using the shadow ray or the light ray. 
+- The cosine term in the shading equation represents the Lambertian foreshortening, meaning that the power density per surface unit is higher when light shines orthogonally onto the surface compared to when it shines at an angle. 
+- The lecture then explains that the diffuse part of a local illumination model is based on the interaction between the radiance and the surface with respect to a certain direction. The diffuse part is modeled by the dot product of the normal vector and the vector to the light source. 
+- The lecture mentions that diffuse shading has its limitations, as objects may appear flat and the description is limited. However, it also has the advantage of being independent of camera parameters. 
+- The transcript briefly mentions that there are various cues, including shape from shading and shape from specularity, that help in perceiving the three-dimensional structure of objects. 
+- Next, the lecture discusses the computation of shadows, stating that it involves determining whether the object is intersected by another object. The exact computation can be affected by numerical errors, so certain intersection tolerance is often accepted. 
+- The recursion in ray tracing is mentioned, where secondary rays and tertiary rays are computed to create a tree structure. The contribution of each ray is computed and combined to determine the final contribution to a pixel. 
+- Finally, the lecture notes the need to set limits on the number of recursions in practical ray tracing to manage the exponential growth of the tree structure. Estimating the energy distribution from subtrees can help in determining these limits.
+
+
+
+Summary 11:
+The lecture talks about the challenges of ray tracing due to the exponential growth of the tree and the need to find limits and determine when to finish ray tracing. It mentions that one approach is to set a hard stop on the number of recursions or use heuristics to estimate energy distribution. The possibility of using light rays instead of camera rays for efficient computation of the fused part of shading is mentioned, as well as the concept of radiosity for perfect diffuse global illumination. The lecture also briefly discusses acceleration structures for ray tracing, including uniform grids, KD trees, and bounding volume hierarchies. Geek alert's C code is referenced as a minimalistic ray tracer example. The lecture concludes by mentioning the upcoming lecture on acceleration techniques and the use of procedural modeling in computer graphics.
+
+
+
+Summary 12:
+In this lecture transcript excerpt, the speaker discusses different types of tree structures that are commonly used in ray tracing: arch tree, KD tree, and DSP tree. They mention that in current ray tracing practices, KD trees and bounding volume hierarchies are often used. The speaker also talks about the importance of reducing the number of computations in ray tracing and mentions techniques such as building an oracle to determine when to terminate, adaptive sampling to smartly sample rays, and cellulite trees that trace a bundle of coherent pixels. Furthermore, the speaker mentions the trade-offs between spatial subdivision and object subdivision as two categories of acceleration structures and states that they will explore both in the next lecture. They conclude the lecture by thanking the audience and reminding them of the next session.
+
+
+

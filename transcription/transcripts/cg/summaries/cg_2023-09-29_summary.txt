@@ -1,0 +1,38 @@
+{
+# Summary
+
+## Ray Tracing in Computer Graphics
+### Sourced from Summary 1, Summary 2, Summary 3, Summary 4
+- **Ray Casting vs Ray Tracing**
+   - Ray casting is the primary method of image synthesis, while ray tracing is the recursive version of ray casting that involves secondary, tertiary, and quaternary rays.
+- **Basic Concepts and Assumptions**
+   - Ray tracing involves shooting rays through each pixel into the scene and computing the intersection with scene geometry.
+   - It is a fundamental and intuitive technique for image synthesis.
+   - Assumptions in ray tracing include working with geometric optics, using RGB sampling to approximate spectral phenomena, and assuming superposition and reciprocity.
+- **Modelling Surface Reflection**
+   - The Bidirectional Reflectance Distribution Function (BRDF) determines the amount of incident energy that is transported into the reflected direction.
+   - Surface reflectance models include diffuse and specular models, as well as advanced data-driven methods.
+- **Intersection with Objects**
+   - Ray tracing involves computing intersections with geometric objects such as triangles and spheres.
+   - The use of spheres is important for applications like molecular modeling.
+   - A geometric approach can be used to save time by terminating early if there is no possibility of intersection.
+- **Acceleration Structures**
+   - KD trees and bounding volume hierarchies are commonly used acceleration structures in ray tracing.
+   - Techniques like adaptive sampling and cellulite trees can reduce the number of computations.
+
+# In-Depth Summaries
+
+## Ray Tracing in Computer Graphics
+Ray tracing is a fundamental and intuitive technique for image synthesis in computer graphics. It involves shooting rays through each pixel into the scene and computing the intersection with scene geometry. Ray casting is the primary method of image synthesis, while ray tracing is the recursive version of ray casting that involves secondary, tertiary, and quaternary rays. Ray tracing assumes geometric optics, uses RGB sampling to approximate spectral phenomena, and assumes superposition and reciprocity. The Bidirectional Reflectance Distribution Function (BRDF) is a key concept in ray tracing that determines the amount of incident energy that is transported into the reflected direction. Surface reflectance models range from simple diffuse models to advanced data-driven methods. Ray tracing also involves the computation of intersections with geometric objects such as triangles and spheres. A geometric approach can be used to save time by terminating early if there is no possibility of intersection. KD trees and bounding volume hierarchies are commonly used acceleration structures in ray tracing. Techniques such as adaptive sampling and cellulite trees can reduce the number of computations. 
+
+## Modelling Surface Reflection
+In ray tracing, the Bidirectional Reflectance Distribution Function (BRDF) plays a crucial role in determining the amount of incident energy that is transported into the reflected direction. Various models are used to represent surface reflectance, ranging from simplified models like diffuse and specular models to advanced data-driven methods. The diffuse model uses a simple diffuse term to model the diffusion of light energy, while the specular model represents perfect reflection. Advanced models leverage machine learning techniques to approximate the BRDF. Understanding radiance, luminous power, and irradiance is important in the context of light transport. Ray tracing conceptually transports radiance, while the light source illuminates an object with irradiance. The dependence of irradiance on distance and angle is significant when modeling surface reflection in ray tracing.
+
+## Intersection with Objects
+In ray tracing, intersections with geometric objects such as triangles and spheres must be computed. The modeling of different types of objects is possible, including spheres that are important in applications like molecular modeling. Traditionally, ray tracing techniques are optimized for triangles, but there is flexibility to compute intersections with other types of primitives. Implicit functions can be used to represent more complex shapes, providing an inside-outside predicate for determining if a point lies inside or outside a shape. The computation of ray-sphere intersections can be solved using quadratic equations or geometric approaches that save computation time by terminating early if no intersection is possible. A geometric approach breaks down the computation into multiple steps, utilizing criteria to determine termination. This approach allows for early termination and can significantly accelerate ray tracing, especially in complex scenes with numerous objects. In addition, the lecture briefly mentions the algebraic and geometric forms of modeling planes and their use in determining on which side of the plane a point lies.
+
+## Acceleration Structures
+To improve the efficiency of ray tracing, various acceleration structures are utilized. Typically, KD trees and bounding volume hierarchies are used for this purpose. KD trees provide a data structure for organizing objects in space, allowing for faster intersection tests. Bounding volume hierarchies, on the other hand, partition space using a hierarchical structure of bounding volumes. These structures help reduce the number of computations required in ray tracing. Techniques like adaptive sampling can further optimize the process by smartly sampling rays. Cellulite trees, which trace a bundle of coherent pixels, are another technique to reduce computational overhead. The trade-offs between spatial subdivision and object subdivision are discussed as two categories of acceleration structures. Spatial subdivision divides space into smaller regions, while object subdivision divides objects into smaller parts. The lecture suggests exploring both categories in the next session.
+
+## Challenges and Limits in Ray Tracing
+Ray tracing poses challenges due to the exponential growth of the tree structure and the need to determine limits and termination conditions. One approach is to set a hard stop on the number of recursions or use heuristics to estimate energy distribution. The use of light rays instead of camera rays for efficient computation of the fused part of shading is mentioned. The concept of radiosity for perfect diffuse global illumination is discussed briefly. The lecture also touches on the topic of denoising techniques, such as AI and deep learning, to improve the quality of ray-traced images. The effectiveness of these techniques in reducing noise and artifacts in the rendered images is crucial for achieving realistic results. Finally, acceleration techniques and the use of procedural modeling in computer graphics are mentioned as upcoming topics to be covered in future lectures.

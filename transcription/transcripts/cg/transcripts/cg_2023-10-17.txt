@@ -1,0 +1,277 @@
+
+[00:00:00.000 --> 00:00:08.320]   So, hello everyone. Good afternoon. Welcome to today's computer graphics lecture. Yeah,
+[00:00:08.320 --> 00:00:14.960]   it's me again. And today we will actually start synthesizing images. We'll start talking
+[00:00:14.960 --> 00:00:24.080]   about algorithms to generate images like you see here, this one. So, the topic we will
+[00:00:24.080 --> 00:00:28.920]   be covering in the following three lectures is direct illumination and then following
+[00:00:28.920 --> 00:00:35.320]   that we will be covering algorithms for global illumination. So, this image for example
+[00:00:35.320 --> 00:00:42.640]   has only direct illumination because if you see inside this arc, there is like no direct
+[00:00:42.640 --> 00:00:48.880]   light so it's just totally black. So, for global illumination there will be some inter-reflections
+[00:00:48.880 --> 00:00:59.120]   that would actually illuminate the inside. Alright, so today we'll first do a recap of
+[00:00:59.120 --> 00:01:06.720]   what we learned last Friday about Monte Carlo integration and sampling and then introduce
+[00:01:06.720 --> 00:01:15.160]   the theory for direct illumination in particular what is direct illumination and how do we
+[00:01:15.160 --> 00:01:23.760]   describe it in mathematical equations. So, we will cover this reflection equation and
+[00:01:23.760 --> 00:01:29.480]   there are two formulations of it whether you would integrate over the hemisphere or
+[00:01:29.480 --> 00:01:39.480]   over the surface area in the scene. So, last Friday we covered Monte Carlo integration
+[00:01:39.480 --> 00:01:46.920]   and I hope that some of you at least have had some experience with the relevant topics
+[00:01:46.920 --> 00:01:55.080]   through the assignment or the assignments. So, Monte Carlo integration, the goal is to
+[00:01:55.080 --> 00:02:04.400]   evaluate an integral of a function f and we do that by randomly sampling values of x
+[00:02:04.400 --> 00:02:13.040]   from a distribution p and compute the Monte Carlo estimator which basically is an average
+[00:02:13.040 --> 00:02:22.880]   of the function value f of the samples fxi over the sampling probability density in
+[00:02:22.880 --> 00:02:32.200]   this continuous case and we can prove that in expectation this estimator fn that we just
+[00:02:32.200 --> 00:02:41.520]   formed by this average is equal to the true integral that we want to get. So, that's
+[00:02:41.520 --> 00:02:48.000]   property is called the unbiasedness. So, Monte Carlo integration gives us unbiased estimators
+[00:02:48.000 --> 00:02:58.920]   of the integral and so basically we would write this, this is another way just to write
+[00:02:58.920 --> 00:03:07.920]   how we derive the estimator. So, it's unbiased means that if we have enough meaning like
+[00:03:07.920 --> 00:03:15.360]   in the limit number of samples we can get to the correct integral value but in reality
+[00:03:15.360 --> 00:03:22.880]   if we only have a limited number of samples the convergence rate so how fast the estimator
+[00:03:22.880 --> 00:03:30.920]   will approach the actual expectation is at the rate of 1 over the square root of n and
+[00:03:30.920 --> 00:03:39.920]   we have seen last week how to derive this property. So, this is typically not so good
+[00:03:39.920 --> 00:03:48.720]   so we want to try to improve it and one way is to like achieve better convergence by doing
+[00:03:48.720 --> 00:03:56.240]   important sampling that is we want to find a better distribution that looks similar to
+[00:03:56.240 --> 00:04:04.320]   what the function to be integrated looks like. If we achieve, if we have it perfectly then
+[00:04:04.320 --> 00:04:11.480]   we can achieve zero variance but typically we can only approximate because to achieve
+[00:04:11.480 --> 00:04:20.720]   it perfectly it requires knowing the integral actually. So, this is the first part of the
+[00:04:20.720 --> 00:04:26.720]   lecture about the Monte Carlo integration and then we talked about how to actually sample
+[00:04:26.720 --> 00:04:35.640]   from a distribution so given the PDF how do we actually generate samples that come from
+[00:04:35.640 --> 00:04:43.960]   this distribution. So, we talked about a couple of methods the first one would be the inversion
+[00:04:43.960 --> 00:04:52.560]   so we start from a bunch of as you can see here Xs so which are uniform random variables
+[00:04:52.560 --> 00:05:03.880]   between 0 and 1 and we want to find basically we want to map those to value of X that distribute
+[00:05:03.880 --> 00:05:11.600]   according to for example the distribution it looks like a normal on the left. We would
+[00:05:11.600 --> 00:05:17.160]   by the inversion method first compute the cumulative distribution function which would
+[00:05:17.160 --> 00:05:26.080]   be on the right and we would find the inverse of that function and use that to map Xs to
+[00:05:26.080 --> 00:05:40.840]   values of X. So, that's the first method that we were using to essentially sample 1D distributions
+[00:05:40.840 --> 00:05:47.160]   and then we learned about transformation between distributions which means if we have a distribution
+[00:05:47.160 --> 00:05:56.920]   Px and we have also transformation T of X so Y equals T of X where T is bijective then
+[00:05:56.920 --> 00:06:04.720]   we want to find the probability density in this transformed variable Y so you can use
+[00:06:04.720 --> 00:06:10.960]   the determinant of the Jacobian to do this so basically we have this Py of Y is equal
+[00:06:10.960 --> 00:06:20.040]   to Px of X divided by the absolute value of the determinant of the Jacobian at X. So,
+[00:06:20.040 --> 00:06:25.880]   I think last week I actually didn't mention like how to actually derive this equation
+[00:06:25.880 --> 00:06:34.840]   I think this is this follows from change of variables for the integration so what we actually
+[00:06:34.840 --> 00:06:44.280]   want here is that so on the left hand side we can see this integration of P of X over
+[00:06:44.280 --> 00:06:53.480]   some domain omega X and that is actually the probability of X being within this domain
+[00:06:53.480 --> 00:07:00.480]   and what we want is that after the transformation the probability wouldn't change so if omega
+[00:07:00.480 --> 00:07:09.000]   X would be mapped to omega Y then the probability of Y being in omega Y is equal to that of
+[00:07:09.000 --> 00:07:16.200]   X being in omega X and with this and with the T of X you can actually derive this relationship
+[00:07:16.200 --> 00:07:29.680]   between the densities and that actually enables us to do sampling in multiple dimensions and
+[00:07:29.680 --> 00:07:36.560]   we focused on 2D where we want to preserve the area basically we want to uniformly sample
+[00:07:36.560 --> 00:07:42.360]   some shapes that would be easier to define in another coordinate system for example a
+[00:07:42.360 --> 00:07:51.360]   disk or a surface so the surface of a sphere which would be defined in the spherical coordinates
+[00:07:51.360 --> 00:07:59.280]   so there are basically five step recipe to do that so we first find some probability density
+[00:07:59.280 --> 00:08:05.480]   in some coordinate system probably Cartesian and then if we have a convenient parameterization
+[00:08:05.480 --> 00:08:12.920]   of the points in another coordinate system we can somehow relate the PDFs by finding
+[00:08:12.920 --> 00:08:20.680]   the Jacobian and computing the determinant of it and after that we basically get the
+[00:08:20.680 --> 00:08:29.040]   PDF in the coordinate system that we have this convenient parameterization of the points
+[00:08:29.040 --> 00:08:37.720]   so then we can compute if it's multiple dimensional we can compute the marginal and conditional
+[00:08:37.720 --> 00:08:46.000]   one dimensional PDFs which we then sample with the inversion method so this is a recap
+[00:08:46.000 --> 00:08:55.080]   of last Friday's lecture I don't know if there's anything still not clear about that
+[00:08:55.080 --> 00:09:03.080]   so if not I'll just go into today's topic so in the following lectures we will a lot
+[00:09:03.080 --> 00:09:08.360]   of the following lectures will be focusing on solving the rendering equation which was
+[00:09:08.360 --> 00:09:17.320]   proposed or introduced by James Kajia in the 80s and it is based on energy equilibrium
+[00:09:17.320 --> 00:09:26.520]   so it states that at a point x in a direction omega o if you compute the outgoing radians
+[00:09:26.520 --> 00:09:34.600]   l o it will be the sum of the emitted radians l e plus the sum of the reflected radians
+[00:09:34.600 --> 00:09:47.280]   l r and l e is simple because it just sees whether x is on an emitter or like whether
+[00:09:47.280 --> 00:09:54.080]   x in the direction of omega o has any sort of emission and just that we can just query
+[00:09:54.080 --> 00:10:02.320]   but the interesting part is in l r which would require us to solve in general an integral
+[00:10:02.320 --> 00:10:07.400]   which we have probably seen a couple of times before and that integral is formed by three
+[00:10:07.400 --> 00:10:19.320]   parts the brdf the incident radians and the cosine of the incident direction so this is
+[00:10:19.320 --> 00:10:27.520]   the thing that we want to solve in like for say global illumination and the direct illumination
+[00:10:27.520 --> 00:10:44.160]   would be a simplified version of it so let's take a step and think what is l i so in the
+[00:10:44.160 --> 00:10:52.280]   integral we have point x and we have a fixed direction omega o and this omega i is basically
+[00:10:52.280 --> 00:11:03.200]   over all possible directions in the hemispherical in the hemisphere surrounding x so l i computes
+[00:11:03.200 --> 00:11:10.720]   how much light comes from that direction so where can that come from so we say that comes
+[00:11:10.720 --> 00:11:23.400]   from two possible sources if this one is directly from an emitter so we look at some point and
+[00:11:23.400 --> 00:11:30.200]   some emitter shines directly at it so that is direct illumination and we get this relatively
+[00:11:30.200 --> 00:11:39.120]   simple formula for l i what we do is that we trace array like trace array at x in the
+[00:11:39.120 --> 00:11:46.960]   direction of omega so in this case omega i and we find the closest intersection and
+[00:11:46.960 --> 00:11:55.880]   the basically l i of x at in direction omega would be the emitted radians at that intersection
+[00:11:55.880 --> 00:12:09.080]   point in the direction of minus omega is this one clear all right so of course this
+[00:12:09.080 --> 00:12:18.640]   is what we will try to solve first but if it is if the illumination is not coming directly
+[00:12:18.640 --> 00:12:25.160]   from an emitter for example we're looking at some surface and the illumination comes
+[00:12:25.160 --> 00:12:32.120]   from like a reflection of another surface and then to the emitter this will be called
+[00:12:32.120 --> 00:12:39.480]   indirect illumination and right so one thing to mention here is that we assume that we
+[00:12:39.480 --> 00:12:45.360]   only have surface and vacuum in the scene so we don't have any sort of smoke or fog
+[00:12:45.360 --> 00:12:52.120]   or those volumetric effects because they would actually absorb and scatter light and we will
+[00:12:52.120 --> 00:13:02.080]   cover that in later lectures so back to the indirect illumination so this looks difficult
+[00:13:02.080 --> 00:13:10.800]   yeah and it looks also similar to that part in the rendering equation so what we do here
+[00:13:10.800 --> 00:13:19.080]   is that we will still find the closest intersection so r of x and omega and we will basically
+[00:13:19.080 --> 00:13:28.960]   collect l i at there like in the in the hemisphere surrounding that point so surrounding the
+[00:13:28.960 --> 00:13:37.160]   point r x and omega and I think we will then also integrate that by multiplying with the
+[00:13:37.160 --> 00:13:45.840]   brdf and now we need to know that we are actually gonna reflect in the direction of minus omega
+[00:13:45.840 --> 00:13:53.360]   somehow minus omega yeah and then multiplied by the cosine term so here I want to mention
+[00:13:53.360 --> 00:13:59.800]   one thing maybe also relevant for the assignment is that this is I think a slight abuse of notation
+[00:13:59.800 --> 00:14:05.720]   because this minus omega we we either define like in word coordinates or actually in the
+[00:14:05.720 --> 00:14:14.600]   local coordinate system surrounding x yeah so respect to that normal but like typically
+[00:14:14.600 --> 00:14:22.720]   the brdf the the directions for the brdf would be within the local frame of this point so
+[00:14:22.720 --> 00:14:29.160]   this point r so that's something to note here and also for implementation I'm pretty sure
+[00:14:29.160 --> 00:14:38.280]   like some of you have encountered this issue so if we illustrate this visually we have
+[00:14:38.280 --> 00:14:45.840]   the eye or the sensor or the camera they're all the same and it's looking at a point and
+[00:14:45.840 --> 00:14:51.520]   that's our x and this would be direct illumination so we have a light and that shines directly
+[00:14:51.520 --> 00:14:59.880]   at x and we also have indirect illumination which basically bounces arbitrary number of
+[00:14:59.880 --> 00:15:11.720]   times so so there is the concept of a light path so a light path is a path basically from
+[00:15:11.720 --> 00:15:21.200]   the sensor to the to the emitter so all the three things that we saw in the last so this
+[00:15:21.200 --> 00:15:32.680]   one this one this one they would all be light paths and we can we can create light paths
+[00:15:32.680 --> 00:15:41.280]   from many directions from these three directions so we can trace from light source so basically
+[00:15:41.280 --> 00:15:45.200]   we have the light source and we sample like a direction from a point on the light source
+[00:15:45.200 --> 00:15:52.080]   and gradually until we hit the sensor that's light tracing or we can do from the sensor
+[00:15:52.080 --> 00:15:58.280]   to find to try to find a light source by connecting some middle points and that would be path
+[00:15:58.280 --> 00:16:04.840]   tracing and that's like the core of the course or we can actually do it from both sides so
+[00:16:04.840 --> 00:16:10.960]   we can construct part of the light the light path from the sensor and the other part from
+[00:16:10.960 --> 00:16:18.280]   the light and then try to connect in the middle so that's called bi-directional path tracing
+[00:16:18.280 --> 00:16:25.440]   so all of those has strength and like limitations but I think for this for this course we will
+[00:16:25.440 --> 00:16:33.800]   be focusing on path tracing so the second one and direct and indirect illumination can
+[00:16:33.800 --> 00:16:39.080]   also be defined by the length of the light path in terms of the number of segments so
+[00:16:39.080 --> 00:16:44.080]   direct illumination two segments as you have seen before and indirect illumination would
+[00:16:44.080 --> 00:16:49.720]   be three or more and then there is also light path of one segment which is just looking
+[00:16:49.720 --> 00:17:02.200]   at an emitter so besides the example that we just saw at the beginning this is another
+[00:17:02.200 --> 00:17:07.800]   like scene where we show direct illumination on the left indirect in the middle and both
+[00:17:07.800 --> 00:17:12.760]   direct and indirect illumination so that would be sort of a global illumination of the scene
+[00:17:12.760 --> 00:17:17.640]   on the right so for direct illumination you see the shadows like you should see the strong
+[00:17:17.640 --> 00:17:26.320]   shadows and for indirect the illumination looks pretty like ambient it looks like everywhere
+[00:17:26.320 --> 00:17:32.680]   it's very smooth it doesn't have strong shadow boundaries usually and combining those two
+[00:17:32.680 --> 00:17:45.720]   will give us like actual illumination of the scene so if we were to render also this character
+[00:17:45.720 --> 00:17:50.000]   with directional mission only we can see that the shadow boundaries are very strong and
+[00:17:50.000 --> 00:17:58.800]   it doesn't really look correct so this would be more correct and pleasant to our vision
+[00:17:58.800 --> 00:18:06.600]   because yeah it also considers the indirect illumination or the bounces of light between
+[00:18:06.600 --> 00:18:15.160]   the surfaces so I think one thing maybe interesting to notice that when so it is actually to fake
+[00:18:15.160 --> 00:18:22.040]   this sort of indirect illumination when like only direct illumination was possible because
+[00:18:22.040 --> 00:18:28.640]   you can actually insert some sort of synthetic lights in areas where you think there should
+[00:18:28.640 --> 00:18:40.520]   be light and yeah I think that was one of like the artist's work so any questions so
+[00:18:40.520 --> 00:18:58.760]   far all right so now we continue with the math this thing again yeah so we're trying
+[00:18:58.760 --> 00:19:09.000]   to solve the rendering equation and we will remove stuff so let's first say that we don't
+[00:19:09.000 --> 00:19:15.440]   consider the emission because it's just simple and it takes some space on the slides yeah
+[00:19:15.440 --> 00:19:23.040]   and we get this thing that we call the reflection equation which also we change the symbol from
+[00:19:23.040 --> 00:19:33.480]   L0 to LR so LR is for reflection and we also would say narrow the incident radius definition
+[00:19:33.480 --> 00:19:42.760]   for LI to be basically to be direct illumination and we get this formula so what we want to
+[00:19:42.760 --> 00:19:48.320]   do is that for each direction we want to see whether there is an emitter shining in this
+[00:19:48.320 --> 00:19:57.320]   direction and if there is we integrate this contribution so how to estimate the integral
+[00:19:57.320 --> 00:20:02.720]   so before the previous lecture maybe it wasn't clear now it's pretty clear yeah that we will
+[00:20:02.720 --> 00:20:14.320]   do some random sampling and doing some averaging so so please just take a moment to think how
+[00:20:14.320 --> 00:20:21.920]   to convert this integral to actually a Monte Carlo estimator like to in your mind list
+[00:20:21.920 --> 00:20:29.160]   the terms that you would use like like where does this formula need to change and I will
+[00:20:29.160 --> 00:20:41.800]   just give you some a bit of time because if we just show it it feels like a lot of stuff
+[00:20:41.800 --> 00:20:50.600]   but it actually isn't so what we do is just replace the integral by the sum and take some
+[00:20:50.600 --> 00:20:56.800]   PDF and sample some omegas so here we use k to denote the numbers the samples because
+[00:20:56.800 --> 00:21:06.440]   I is already used and yeah we just divide by the PDF and this is our estimator for the
+[00:21:06.440 --> 00:21:18.560]   direct illumination and then we will basically illustrate like what this means in the scene
+[00:21:18.560 --> 00:21:25.520]   so here we have like this simple scene with one light source and so this formula what it
+[00:21:25.520 --> 00:21:31.760]   means is that at point x we would want to sample or like we would integrate over the
+[00:21:31.760 --> 00:21:39.040]   hemisphere of all directions and get some contribution if it actually hit an emitter
+[00:21:39.040 --> 00:21:45.040]   if we trace away from x in the direction of omega i if we hit an emitter we get nonzero
+[00:21:45.040 --> 00:21:54.280]   contribution but it will hit anywhere else we get zero so it's possible that you can
+[00:21:54.280 --> 00:22:07.680]   spot that this is not the ideal so and yeah basically it's only possible to get contribution
+[00:22:07.680 --> 00:22:16.680]   in this small solid angle like among all the angles so if we basically sample the hemisphere
+[00:22:16.680 --> 00:22:26.280]   we will waste many samples because a lot of samples will just return zero so last week
+[00:22:26.280 --> 00:22:33.200]   we talked about a technique that improved ambient occlusion which is we would not uniformly
+[00:22:33.200 --> 00:22:39.520]   sample the hemisphere to sample all the directions but we will sample according to the cosine
+[00:22:39.520 --> 00:22:48.320]   of the hemisphere so that's not going to help because it's still going to waste a lot of
+[00:22:48.320 --> 00:22:58.840]   samples in directions where there is no light so it's not for shortening it's not the cosine
+[00:22:58.840 --> 00:23:06.520]   term it's not the tilted surface that the problem is actually just there is no light
+[00:23:06.520 --> 00:23:16.480]   so this would be one way to try to make better use of Monte Carlo by actually integrating
+[00:23:16.480 --> 00:23:29.080]   over only the solid angle that where there is light so is this really practical does
+[00:23:29.080 --> 00:23:37.280]   anyone have an idea whether this is going to be practical for like all the lights that
+[00:23:37.280 --> 00:23:52.320]   we have or all the other things that we have yeah well so it is for certain types of light
+[00:23:52.320 --> 00:23:58.840]   sources because we need to compute the solid angle that's covered basically by this light
+[00:23:58.840 --> 00:24:05.000]   sources so if you have a sphere light you can easily compute that and for this light I think
+[00:24:05.000 --> 00:24:11.640]   probably also not so difficult but in general the shape of the lights are sort of like these
+[00:24:11.640 --> 00:24:19.200]   and it's tricky to compute actually the error light it would have on like all the shading
+[00:24:19.200 --> 00:24:36.040]   point on all the x that we have in the in the scene so we yes yes exactly so I think there
+[00:24:36.040 --> 00:24:42.960]   is a the comment that we can even with these sort of light sources they are not regularly
+[00:24:42.960 --> 00:24:49.920]   shaped we can still compute some sort of bounding sphere or some sort of approximation of their
+[00:24:49.920 --> 00:25:00.000]   shape where we can actually compute the solid angle and that is very much correct and I think
+[00:25:00.000 --> 00:25:07.480]   it's actually practically probably used in a lot of cases where you need to estimate the
+[00:25:07.480 --> 00:25:14.200]   contribution of a light but if we are focusing on this particular type of light we're going to
+[00:25:14.200 --> 00:25:21.400]   talk about next is how do we actually just sample a point on the light so that would mean that we
+[00:25:21.400 --> 00:25:27.800]   will actually sample where there is light and that will in at least in the simple scene give us
+[00:25:27.800 --> 00:25:40.960]   a lot much better sampling sample placements so the next step before we go there is to introduce
+[00:25:40.960 --> 00:25:46.640]   the surface area form for the reflection equation so we already talked about the hemispherical
+[00:25:46.640 --> 00:25:53.320]   integration on the left and the surface area is where we no longer integrate over the angles
+[00:25:53.320 --> 00:26:01.400]   but integrate over all the points in the scene so to do that we need to define points in the scene
+[00:26:01.400 --> 00:26:09.040]   so instead of using x and a direction we're using a pair of points x and y so y is some other point
+[00:26:09.040 --> 00:26:20.360]   in the scene and z in this case would be basically a point on the sensor and we would also redefine
+[00:26:20.360 --> 00:26:31.800]   the BSDF or the BRDF to take three points and we will be able to with this transform the integral
+[00:26:31.800 --> 00:26:42.000]   over directions to integral over surface area so to do that we'll need to compute what's the
+[00:26:42.000 --> 00:26:49.000]   Jacobian determinant of such a transformation so from direction or from the solid angle to surface
+[00:26:49.000 --> 00:26:57.200]   area so this is the Jacobian determinant cosine theta all divided by the square distance so
+[00:26:57.200 --> 00:27:05.320]   intuitively this means that if like a surface patch is farther from the point the current
+[00:27:05.320 --> 00:27:16.000]   shading point x it's at the solid angle it will cover becomes smaller and also if it faces like
+[00:27:16.000 --> 00:27:24.160]   away from point x the solid angle it covers is also smaller so like think of it as if we want to
+[00:27:24.160 --> 00:27:32.720]   project da onto a unit surface on the unit sphere surrounding x then if this da rotates away then
+[00:27:32.720 --> 00:27:44.680]   the d omega i so the solid angle it covers will also shrink so now we take the hemispherical form
+[00:27:44.680 --> 00:27:54.400]   and replace each of the terms so here we have LR so reflected radians of x in direction of omega r
+[00:27:54.400 --> 00:28:04.120]   we change it to x from point yep towards point z from integral over hemisphere to an integral of
+[00:28:04.120 --> 00:28:16.400]   surface and brdf incident radians okay then then we sort of defer things to the next slide by using
+[00:28:16.400 --> 00:28:24.200]   g to represent the geometry term which actually covers this cosine and this transformation
+[00:28:24.200 --> 00:28:34.880]   Jacobian so yes g right there's also another term which is v which is the visibility so we
+[00:28:34.880 --> 00:28:42.040]   have seen for the ambient occlusion like v is one when two points are visible from each other so
+[00:28:42.040 --> 00:28:52.080]   there is no a third no third object between them and zero otherwise and the other parts of g we
+[00:28:52.080 --> 00:28:57.720]   have first the cosine of theta i which is basically the original one the fortune in term that we had
+[00:28:57.720 --> 00:29:07.600]   in omega i and also have the Jacobian determinant yeah so this looks symmetric but yeah we probably
+[00:29:07.600 --> 00:29:14.680]   also need to draw something to see why that's symmetric or to see the symmetry yeah so here
+[00:29:14.680 --> 00:29:23.960]   we have two differential patches around x and around y with normals and x and ny so here we
+[00:29:23.960 --> 00:29:37.720]   have the theta i which is the angle of this ray x xy with the normal at x and that at normal at
+[00:29:37.720 --> 00:29:48.880]   point y so this this part this part for the geometry term it sort of intuitively means that
+[00:29:48.880 --> 00:29:55.960]   the chance that a photon emitted from a differential patch at y will be able to hit the differential
+[00:29:55.960 --> 00:30:07.520]   patch at x that chance is relevant to the to these three terms so if the patches face away from
+[00:30:07.520 --> 00:30:12.920]   each other so it means that they become sort of parallel they don't face each other not parallel
+[00:30:12.920 --> 00:30:20.080]   they like they face in the in the same direction then it would be like the cosine would be smaller
+[00:30:20.080 --> 00:30:27.920]   and the chances that the photon emitted from like the patch around y has less chance of hitting
+[00:30:27.920 --> 00:30:38.560]   that at x and also if they are farther away from each other the chance also decreases so for the
+[00:30:38.560 --> 00:30:46.120]   cosine intuitively like if they are placed at this the numerate the numerator will be zero and if
+[00:30:46.120 --> 00:30:54.040]   it's the case that we see here it's like the common case the numerator is between zero and one
+[00:30:54.040 --> 00:31:01.520]   and this best case when these two patches are facing towards each other the numerator will be one
+[00:31:01.520 --> 00:31:14.000]   right so here we have like the previous formulation of integration over the hemisphere and now we
+[00:31:14.000 --> 00:31:25.320]   have the formulation of integration over the surfaces so here basically what we do is that we
+[00:31:25.320 --> 00:31:36.800]   want to for all the points all the points y on these red like areas we connect that with x and
+[00:31:36.800 --> 00:31:46.680]   try to integrate like try to integrate the contribution the emission the visibility term and
+[00:31:46.680 --> 00:31:56.200]   all these terms together to get the reflected radians so this is apparently even more wasteful
+[00:31:56.200 --> 00:32:14.080]   because most of the most of the scene actually doesn't emit anything so it's natural to just limit
+[00:32:14.080 --> 00:32:25.160]   limit the integration over only places that actually emit something so please so we need to
+[00:32:25.160 --> 00:32:32.280]   note that this is possible only if we know where the emitters are in the scene and if you actually
+[00:32:32.280 --> 00:32:38.800]   look at what we have in the homework the scene in nori actually keeps track of the emitters it has
+[00:32:38.800 --> 00:32:46.240]   and this is why we are able to say integrate over the emissive surface only like practically so at
+[00:32:46.240 --> 00:32:57.560]   seeing construction or when you modify a scene like emitters are sort of special right so in this
+[00:32:57.560 --> 00:33:05.760]   part even if we only integrate over emissive surfaces we need to still account for the visibility
+[00:33:05.760 --> 00:33:13.360]   so this is a visibility test by first sampling a point on the light source and then connect
+[00:33:13.360 --> 00:33:20.800]   a ray between x and the point on the light source y so this ray x y will be actually called a shadow
+[00:33:20.800 --> 00:33:28.280]   ray so this is like a term that you probably heard a lot or will hear a lot and this is what it
+[00:33:28.280 --> 00:33:36.000]   actually means it means a visibility test and for example here the visibility test would fail
+[00:33:36.000 --> 00:33:50.480]   and we get say no contribution from that point on the light source because of occlusion right so
+[00:33:50.480 --> 00:34:01.200]   is it so I want to ask this question so is it actually always better to try to integrate over
+[00:34:01.200 --> 00:34:11.560]   the emissive surface in the in the scene is it better than integrating over the hemisphere is
+[00:34:11.560 --> 00:34:22.520]   that always the case if not can someone give me an example front yes
+[00:34:22.520 --> 00:34:47.640]   yeah so I think that's that's a good example so the example is if we have like very large
+[00:34:47.640 --> 00:34:55.720]   meter or even like covering the entire sky then it doesn't make much of a difference or it might be
+[00:34:55.720 --> 00:35:02.360]   even bad to integrate there if there is more occlusion I think if for example we're in an
+[00:35:02.360 --> 00:35:08.680]   indoor scene but then we have this environment in that's illuminating then if we only sample
+[00:35:08.680 --> 00:35:14.960]   every sample points there on that area we most of the rays will be blocked so probably that's
+[00:35:14.960 --> 00:35:26.240]   that's not not even not not so optimal yeah so I think another another example I mean does
+[00:35:26.240 --> 00:35:36.680]   someone have another example maybe all right so for me I can give an example where say you
+[00:35:36.680 --> 00:35:44.720]   have a lot of emitters in the scene like millions of emitters light sources and like your shading
+[00:35:44.720 --> 00:35:54.360]   point X is is close to some of the emitters but very far away from others so when we only sample
+[00:35:54.360 --> 00:35:59.680]   when we uniformly sample all the emission emitting surface it's very hard to actually
+[00:35:59.680 --> 00:36:04.000]   sample the lights that are close to current shading point and that will actually cause
+[00:36:04.000 --> 00:36:10.680]   like higher variance compared to if we sample on the hemisphere because that will hit the the
+[00:36:10.680 --> 00:36:20.160]   nearby emitters more easily right but then for this example like sampling light source is
+[00:36:20.160 --> 00:36:30.200]   like much more efficient so I think it also depends on on the scenes which one would be better so I
+[00:36:30.200 --> 00:36:40.760]   think we will implement this this sort of integrate like sampling of of the emissive
+[00:36:40.760 --> 00:36:47.240]   emissive area I think the Friday lecture will cover that and also the assignment so there I
+[00:36:47.240 --> 00:36:53.800]   think one of the most important thing is to keep in mind there's the change of variables so there's
+[00:36:53.800 --> 00:37:00.720]   the Jacobian that we need to take into account because typically we do the integration over the
+[00:37:00.720 --> 00:37:07.520]   hemisphere so if we are sampling a light source somewhere we need to convert that back to the
+[00:37:07.520 --> 00:37:17.800]   probability of sampling the hemisphere all right so this is yeah a simple scene direct
+[00:37:17.800 --> 00:37:25.480]   illumination we have here the surface a sphere and a spherical light and if we sample the hemisphere
+[00:37:25.480 --> 00:37:31.960]   like the hemisphere at the shading point so on the surface for example we have a small chance of
+[00:37:31.960 --> 00:37:39.280]   hitting the light and we get this very noisy image and here if we sample the area of light we almost
+[00:37:39.280 --> 00:37:45.160]   always get some contribution or we are sure that it's only blocked by the visibility test and we
+[00:37:45.160 --> 00:37:57.400]   can get the convergence much faster so so here that's the material I have for today and the next
+[00:37:57.400 --> 00:38:05.740]   lecture on Friday will actually be talking about how to sample light sources and so we will talk
+[00:38:05.740 --> 00:38:14.840]   about for example the area lights like spheres or like spotlights point lights and like mesh lights
+[00:38:14.840 --> 00:38:21.280]   I think and then there is the multiple important sampling no the important sampling for direct
+[00:38:21.280 --> 00:38:28.560]   illumination so today we only talked about the integrals we only touched about the Monte Carlo
+[00:38:28.560 --> 00:38:35.680]   estimator but we actually didn't mention how we would do it how we would sample the direction or
+[00:38:35.680 --> 00:38:41.760]   the points for direct illumination and that will be covered on Friday and also there is the technique
+[00:38:41.760 --> 00:38:49.560]   called the multiple important sampling which will further reduce variance or which can further
+[00:38:49.560 --> 00:39:01.960]   reduce variance by by say merging together multiple PDFs so are there questions for for today's
+[00:39:01.960 --> 00:39:10.200]   content in general right so if not thank you for your attention and see you on Friday
+[00:39:10.200 --> 00:39:13.560]   [APPLAUSE]
+
