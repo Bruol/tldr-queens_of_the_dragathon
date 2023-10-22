@@ -126,13 +126,15 @@ def summary(request, summary_id):
             if c[:7] == "Summary":
                 c = c[11:]
             cleaned_chunk = re.sub(pattern, '', c)
-            chunks.append(cleaned_chunk)
+            chunks.append(replace_summary_with_lecture(cleaned_chunk))
 
         summary = topic.summary
         summary = summary
         print(summary[-12:])
         if summary[-12:].count("Summary") > 0:
             summary = summary[:-12]
+    
+        summary = replace_summary_with_lecture(summary)
 
 
         tags = [t.lstrip() for t in topic.tags.split(",")]
@@ -165,6 +167,15 @@ def summary(request, summary_id):
     }
     
     return HttpResponse(template.render(context, request))
+
+def replace_summary_with_lecture(input_string):
+    # Define a regular expression pattern to match "Summary x" where x is a number.
+    pattern = r'Summary \d+'
+    
+    # Use re.sub to replace all occurrences of the pattern with "The Lecture".
+    replaced_string = re.sub(pattern, 'The Lecture', input_string)
+    
+    return replaced_string
 
 def capitalize_next_letter(match):
     num = int(match.group(1))  # Get the number
