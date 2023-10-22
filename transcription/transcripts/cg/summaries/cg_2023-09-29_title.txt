@@ -1,1 +1,1 @@
-Title: "Ray Tracing in Computer Graphics: Techniques, Models, and Acceleration Structures"
+Title: Exploring Ray Tracing: Introduction, Basics, Techniques, and Challenges
