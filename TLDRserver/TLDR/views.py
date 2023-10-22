@@ -8,6 +8,8 @@ from django.template import loader
 from django.http import HttpResponse
 from .models import Lecture
 
+import re
+
 # Create your views here.
 
 
@@ -39,6 +41,9 @@ def search(request):
 
     return render(request, 'views/search.html', context)
 
+def about(request):
+    template = loader.get_template("views/about.html")
+    return HttpResponse(template.render({}, request))
 
 def download_text_file(request, summary_id):
     vid = Video.objects.get(pk=summary_id)
@@ -108,15 +113,34 @@ def summary(request, summary_id):
         chunk3 = topic.chunk3
 
         chunks = []
+        temp_chunks = []
 
-        if chunk1 != None:
-            chunks.append(chunk1)
-        if chunk2 != None:
-            chunks.append(chunk2)
-        if chunk3 != None:
-            chunks.append(chunk3)
+        if chunk1 != []:
+            temp_chunks.append(chunk1)
+        if chunk2 != []:
+            temp_chunks.append(chunk2)
+        if chunk3 != []:
+            temp_chunks.append(chunk3)
+     
 
-        tags = topic.tags.split(",")
+        # Clean the temp_chunks
+        pattern = "(Summary \d+: )|\(Summary \d\)"
+        for c in temp_chunks:
+            if c[:7] == "Summary":
+                c = c[11:]
+            cleaned_chunk = re.sub(pattern, '', c)
+            chunks.append(replace_summary_with_lecture(cleaned_chunk))
+
+        summary = topic.summary
+        summary = summary
+        print(summary[-12:])
+        if summary[-12:].count("Summary") > 0:
+            summary = summary[:-12]
+    
+        summary = replace_summary_with_lecture(summary)
+
+
+        tags = [t.lstrip() for t in topic.tags.split(",")]
 
         if len(tags) > 5:
             tags = tags[:5]
@@ -125,7 +149,7 @@ def summary(request, summary_id):
             {
                 "title": topic.title,
                 "bulletpoints": filtered_bps,
-                "summary": topic.summary,
+                "summary": summary,
                 "chunks": chunks,
                 "tags": tags,
             }
@@ -147,7 +171,18 @@ def summary(request, summary_id):
     
     return HttpResponse(template.render(context, request))
 
+def replace_summary_with_lecture(input_string):
+    # Define a regular expression pattern to match "Summary x" where x is a number.
+    pattern = r'Summary \d+'
+    
+    # Use re.sub to replace all occurrences of the pattern with "The Lecture".
+    replaced_string = re.sub(pattern, 'The Lecture', input_string)
+    
+    return replaced_string
 
+def capitalize_next_letter(match):
+    num = int(match.group(1))  # Get the number
+    return f'Summary {num+1}:'
 
 def istitle(str):
     if(len(str) < 100 and (str.count(":") > 0 or str.count("*")>2)):
