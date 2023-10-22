@@ -135,12 +135,18 @@ def summary(request, summary_id):
             summary = summary[:-12]
 
 
+        tags = topic.tags.split(",")
+
+        if len(tags) > 5:
+            tags = tags[:5]
+
         tps.append(
             {
                 "title": topic.title,
                 "bulletpoints": filtered_bps,
                 "summary": summary,
                 "chunks": chunks,
+                "tags": tags,
             }
         )
                
@@ -165,7 +171,7 @@ def capitalize_next_letter(match):
     return f'Summary {num+1}:'
 
 def istitle(str):
-    if(len(str) < 60 and (str.count(":") > 0 or str.count("*")>2)):
+    if(len(str) < 100 and (str.count(":") > 0 or str.count("*")>2)):
         return True
     else:
         return False
