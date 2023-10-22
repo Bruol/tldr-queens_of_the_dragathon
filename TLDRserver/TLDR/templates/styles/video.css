@@ -23,9 +23,6 @@
     position: relative;
     background-color: #ffffff;
     border-radius: 5px;
-    /* border: 1px solid;
-    border-color: #000000; */
-    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
     cursor: pointer;
 }
 
@@ -36,9 +33,6 @@
     position: relative;
     align-self: stretch;
     flex: 0 0 auto;
-    /* border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #000000; */
 }
 
 .course-card .text-wrapper {
