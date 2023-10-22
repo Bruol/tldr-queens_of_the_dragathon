@@ -58,6 +58,8 @@ def populate_videos():
             top.bulletpoints = t[1]
             top.summary = t[2]
 
+            top.tags = ",".join(t[4])
+
             length = len(t[3])
             if (length > 0):
                 top.chunk1 = data["chunks"][int(t[3][0])]
@@ -75,11 +77,6 @@ def populate_videos():
         video.transcript = file
         video.save()
 
-
-
-
-def populate_topics():
-    print("populating topics")
 
 def delete_duplicates():
 
