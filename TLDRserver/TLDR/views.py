@@ -132,7 +132,7 @@ def summary(request, summary_id):
             chunks.append(cleaned_chunk)
 
         summary = topic.summary
-        summary = "test" + summary
+        summary = summary
         print(summary[-12:])
         if summary[-12:].count("Summary") > 0:
             summary = summary[:-12]
