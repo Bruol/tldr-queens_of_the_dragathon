@@ -1,0 +1,1 @@
+Title: Advances in Computer Graphics and Animation: Disney Movies, Texture Mapping, Parameterization, and Ray Tracing

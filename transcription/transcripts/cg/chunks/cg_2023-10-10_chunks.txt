@@ -1,0 +1,35 @@
+Summary 1:
+In this lecture excerpt, the speaker introduces themselves as Rajesh Sharma, a PhD student at ETH and Disney Research, and states that they will be teaching a lecture on appearance modeling and microfacer theory. The speaker explains that they will be covering the topics of materials and microfaceted models, starting with an overview of what materials are and how they are represented with a BRDF (bi
+
+
+
+Summary 2:
+In this lecture excerpt, the speaker discusses the concept of material response and introduces the BRDF (bidirectional reflectance distribution function). The speaker explains that different materials have different responses to light, and uses examples of rough and semi-transparent materials to illustrate this. The lecture also covers the definitions of flux, irradiance, and radiance, which are key quantities used in the
+
+
+
+Summary 3:
+The excerpt discusses the concept of BIDF (Bidirectional Distribution Function) and its significance in rendering. The BIDF is constant and can be taken out of an integral equation. It is explained that BIDF represents the diffuse reflectance of an ideal Lambertian surface, which is always 1 over pi. This means that all incoming light is reflected out in every direction, making it fully diffused. The lecture also covers the principles of ideal specular reflection and refraction based on Snell's law. It is mentioned that ideal specular reflection follows Fermat's principle of least time, and the angle of reflection is equal to the angle of incidence for an ideal mirror. The formula for calculating the direction of ideal reflection is explained. The concept of index of refraction and its effects, such as dispersion and total internal reflection, are briefly discussed.
+
+
+
+Summary 4:
+In this lecture excerpt, the speaker discusses the concepts of CD (compact disc) and total internal reflection. They explain how CDs produce a dispersion pattern similar to a rainbow when held up to light, and how total internal reflection occurs when light passes from a medium with a higher index of refraction to one with a lower index of refraction. The speaker also distinguishes total internal reflection from mirage, which is a different phenomenon. They mention that these concepts can be implemented in projects, but they will not be covered in depth. The lecture then moves on to discussing the derivation of Fresnel equations, which determine how much light is reflected and transmitted by materials. The speaker provides a formula without explanation and states that the average of parallel and perpendicular planes of reflection is taken. The lecture then introduces Fresnel reflection, where materials appear more reflective at grazing angles. The lecture briefly mentions conducting materials and their lack of transmittance and wavelength-dependent response. The real and imaginary parts of the index of refraction for conductors are mentioned as well. The lecture concludes with a mention of delta functions in ideal specular reflection and discusses the transition from empirical models to physically accurate and physically plausible models for rendering materials.
+
+
+
+Summary 5:
+In this excerpt from a lecture transcript, the speaker discusses the evolution of models used to represent materials in computer graphics. The earlier models were empirical and less physically accurate, while the more recent models are physically accurate or physically plausible. Physically accurate models are used in industry, while physically plausible models relax some assumptions to create effects that are not physically possible but desired in films. The lecture also introduces the Fong and BlinFong models, which were ad hoc and not physically meaningful. These models had limitations in terms of energy preservation and representation of certain materials. The current state of the art is microfaceted theory, which considers materials as having jagged edges made up of facets. The theory defines the BRDF (bidirectional reflectance distribution function) using the microfaceted distribution, Fresnel term, and shadowing and masking term. Different distributions, such as the Beckman and Blinn distributions, can be used in microfaceted theory. The excerpt also mentions that rendering examples can be done with these distributions.
+
+
+
+Summary 6:
+In this lecture transcript excerpt, the speaker discusses the different components of the micro facet model for rendering. They mention the subtle differences between distributions and how one is chosen for the class. The third term in the model is shadowing and masking, where some micro facets are obstructed from different angles. The speaker explains that shadowing is from the light direction and masking is from the view direction. They mention that there are equations available for calculating G, the term that represents shadowing and masking. The speaker also talks about the limitations of the micro facet model, particularly in accounting for interreflections within peaks and valleys. They mention that there are extensions to the model, such as for anisotropic reflection and coated materials. The speaker discusses retro reflections and provides examples of retro reflectors in paint and shoes. They mention the Oran Nair model as an approximation for this effect. The lecture ends by saying that there are other possible extensions to the model.
+
+
+
+Summary 7:
+In this lecture excerpt, the speaker discusses a mirror with a moon picture that creates a strong light effect. They mention the Oran Nair model as a way to approximate this effect. The speaker also states that implementing these extensions is not necessary unless desired. They announce that the lecture will stop at this point and suggest discussing further extensions outside the room or in the exercise session on Friday. The lecture concludes with applause from the audience.
+
+
+

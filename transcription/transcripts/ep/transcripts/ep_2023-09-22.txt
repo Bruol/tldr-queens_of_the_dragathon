@@ -1,1170 +1,1172 @@
- Ich hoffe, dass Audio funktioniert. Wenn es für Sie zu laut oder zu leise ist, schreiben Sie es in den Livestream, in den Backchannel.
- Und wir versuchen das dann anzupassen, dass die Anlage in den Sommerferien überholt, verbessert und so weiter geworden ist.
- Und das müssen wir ausprobieren, wie sie jetzt wirklich für uns am besten ist.
- Wir hatten letzte Vorlesung am Dienstag, angefangen uns mit eBNF zu beschäftigen.
- Und ja, warum machen wir das? Wir machen das, um einen präzisen Weg zu haben, zu beschreiben, was für Symbole wir zulassen.
- Und wir hatten bisher als Symbole eben zahlnahes Beispiel, wenn wir auch weiter so einfache Beispiele haben oder einfache Strings wie die Namen der Räume.
- Aber das können wir erweitern und können alle anderen Sachen auch präzise beschreiben, wenn das mal nötig sein sollte.
- Also, so zur Erinnerung, so eine eBNF-Regel, die sieht so aus, da gibt es eine linke Seite, eine rechte Seite.
- Und dazwischen dieser Pfeil von rechts nach links, der ausgesprochen wird, als ist definiert als.
- Links haben wir eben ein einziges Wort, das ist klein und kursiv geschrieben.
- Und das gibt den Namen dieser eBNF-Regel an.
- Und auf der rechten Seite haben wir verschiedene Möglichkeiten, da könnte ein einzelnes Zeichen stehen.
- Dann meinen wir dieses Zeichen, zum Beispiel so eine Ziffer 1 oder den Buchstaben A oder den Buchstaben M oder so was.
- Dann könnte da stehen wieder der Name einer eBNF-Regel.
- Das würde also eine Regel sein, für die irgendwo anders diese selbe Name irgendwo auf der linken Seite erscheint.
- Und natürlich, der ist dann auch kursiv und klein geschrieben, damit wir unterscheiden können, ob wir den Buchstaben A oder eben den Namen A haben.
- Und dann eben Kombination der Kontrollelemente, die ich kurz angefangen hatte zu erklären und über die wir jetzt heute ein bisschen mehr erfahren werden.
- Also diese vier Kontrollmöglichkeiten, Aufreihung und Entscheidung hatten wir schon, das wiederhole ich noch kurz.
- Und dann geht es heute weiter mit Wiederholung.
- Und dann kommen wir danach auch andere Aspekte zu sprechen und die Rekursionen machen wir wahrscheinlich erst am Dienstag.
- So, also kombinieren mit Auswahl und Optionen. Wir haben da eine Menge an Alternativen.
- Diese Alternativen könnten eben wieder sein ein Zeichen oder irgendetwas ein Name, eine andere Regel oder so weiter.
- Und natürlich wieder alles Kombinationen von dem, was ich damit machen kann.
- Und diese Alternativen werden durch diesen senkrechten Strich, Stroke, getrennt.
- Und da hat ich die rein vorgespielt, natürlich keine Rolle.
- Eine dieser Alternativen kann gewählt werden oder muss gewählt werden, wenn ich einen Symbol erzeugen möchte.
- Das ist also, diese Alternative erlaubt es uns eben halt, das kann eben zur Zeit nur ein Zeichen sein oder eine Aufreihung.
- Hatten wir auch schon gesehen, hier unten haben wir die Aufreihung als Beispiel, drei Zeichen hintereinander oder auch ein einzelnes Zeichen.
- Das können wir machen, wie es für uns am besten ist.
- Okay, dann haben wir die Möglichkeit in Eckigenklammern anzuzeigen, dass wir etwas haben oder nicht haben wollen.
- Dieses Square Brackets, die sagen, was immer da drin steht, muss auch wieder den Regeln für eine rechte Seite genügen.
- Also kann wieder sein ein Zeichen, eine Aufreihung und und und.
- Und wir können aber dieses wählen oder nicht wählen, ganz wie wir wollen.
- Das ist optional.
- Also hier habe ich als einfaches Beispiel, drei, eine Aufreihung von zwei Zeichen und einer Option.
- Und diese Option können wir nehmen oder nicht nehmen.
- Das heißt, wir könnten also hier die initialen TG oder TRG verwenden, diese Weise beschreiben oder erzeugen.
- Und für den Raum könnten wir eben sagen, wir haben entweder den MLD28 oder den MLDE12.
- Und Sie sehen, ich habe hier diese Klammer verwendet.
- Das ist nicht ganz Standard, aber machen viele, um uns das Leben zu erleichtern, weil so wissen wir, aha, das hier gehört zusammen und das hier gehört zusammen.
- Und das hier ist die Auswahl, die Option. Es ist also entweder dieser oder dieser, dieses Symbol, das wir da nehmen.
- Ja, und natürlich können sie auch benutzen, um Zahlen, ein zifrige Zahl oder sowas zu definieren, ist alles kein Problem.
- So, und sehr oft finden Sie die Auswahl und die Option kombiniert.
- Man kann das auch schrittweise machen, aber es geht halt oft auch so, dass wir hier wie hier sagen wir, wir wollen ein Vorzeichen.
- Optional, das heißt es kann ja plus oder minus sein, aber eins von beiden nur, aber wir müssen gar keins haben.
- Und dann ist, wenn wir jetzt zeigen wollen, wie wir eben, wir haben hier diese Zahl, das sei jetzt kursiv, und wir wollen zeigen, dass sich daraus plus eins,
- dass das durch diese Zahlregel, dass die diesen Symbol plus eins produzieren kann, dann müsste man sehen, ah, okay,
- eine Zahl ist Vorzeichen und Digit, Vorzeichen haben wir gesehen, ist Optional plus oder minus, ah, wir nehmen mal das plus, da haben wir es ja, ja.
- Und dann eben Digit ist eins von denen, haben wir die eins, ist also auch okay, ja.
- Und wenn wir jetzt sagen würden, wie würde es aussehen, wenn wir zeigen wollten, dass Zahl auch hier die vier zeigen kann, ja,
- dann würden wir sagen, okay, Zahl ist immer noch Vorzeichen oder Digit, aber Vorzeichen ist optional, da ist ja gar nichts,
- wir können auch das ignorieren, ja. Und um das leichter auszudrücken, benutzen wir dieses Epsilon, das Sie vielleicht auch schon mal woanders gesehen haben,
- als Zeichen für die leere Zeichenfolge, das heißt also hier, da ist es verschwindet, das ist nicht wirklich auftretend, ja.
- Also wenn wir jetzt so was mit dem Epsilon arbeiten wollen, könnten wir statt eben Optionalforzeichen plus oder minus,
- dann könnten wir sagen, wir haben plus, minus oder Epsilon und das Epsilon verschwindet dann einfach, ja, ist einfach ein Weg für uns nochmal zu sehen, ah, da passiert eigentlich nichts,
- das ist besser und deutlicher, als wenn wir da nur leeren Platz haben und sonst nichts dabei haben. So.
- Und dann haben wir jetzt, wie sehen Sie hier, hat jemand eine weitere Regel für den Namen, die erste, die ist das, was wir vielleicht schon mal gesehen haben,
- eine Zahl besteht aus einer Digit gefolgt von optional einer zweiten Digit, ja. Und dann hat er gesagt, hm, eigentlich bin ich mir nicht sicher, ob ich eine Digit will oder nicht
- und hat dann geschrieben, okay, ich möchte hier eine Digit optional und das mache ich als Option, ja. Und ja, das können Sie machen, ja.
- Das ist ein und dasselbe, ja, weil Sie sagen halt hier, okay, eine Digit muss, eine Digit kann optional von einer weiteren Digit gefolgt sein, das ist die erste Regel.
- Und für die zweite Regel sagen Sie, okay, eine Digit muss gefolgt sein, optional mit irgendwas und dieses, wenn ich es nehme, erlaubt es mir zu entscheiden, ob ich eine Digit nehme oder nicht, ja.
- Also das ist, es ist vielleicht unelegant, ja, aber es ist immer noch richtig, ja. Es ist einfach nicht das, was wir machen würden, wenn wir uns Arbeit sparen wollen,
- aber es sagt nichts anderes als hier in dieser, zwischen diesen eckigen Klammern steht wieder ein Ausdruck, der eine rechte Seite sein kann
- und eben eine Option ist eine Möglichkeit für eine rechte Seite und daher kann die da auftreten.
- So, jetzt interessant für das Ganze natürlich, wenn wir mehr machen können als nur Zeichen aneinanderreihen oder Zeichen eben optional auswählen oder nicht auswählen.
- Und darum gibt es auch die Möglichkeit eine Wiederholung auszudrücken.
- Und das geschieht so, dass wir den zu wiederholenden Ausdruck zwischen zwei geschweifte Klammern setzen, das sind diese Curly Braces, ja.
- Und das heißt, dass diese, was immer in diesen, zwischen diesen Klammern steht, kann 0, 1 und so weiter mal wiederholt werden.
- Es gibt keine Obergrenze, wie oft das wiederholt werden kann.
- Und das Wichtige ist, es kann eben auch 0 mal wiederholt werden.
- Und 0 mal wiederholt werden heißt weggelassen werden, ja.
- Also diese Curly Braces sagen uns hier, das kann 0 mal genommen werden, also ignoriert werden
- oder kann einmal oder zweimal oder dreimal und so weiter wiederholt werden, ja.
- Das ist wichtig, dass wir sehen, dass eben 0 ist eine mögliche Anzahl an Wiederholungen, mit der wir es hier zu tun haben können, ja.
- Also wenn ich hier diese Dittils wieder habe, ja, dann könnte ich jetzt diejenigen zufrieden stellen, die sagten, ihre Zahlen hatten ja waren ja nur zwei Zifflig.
- Das ist ja wirklich nicht gut, ja.
- Okay, haben Sie recht.
- Wir könnten jetzt eine Folge, eine Regel für eine Folge definieren.
- Und die Regel ist definiert, für Folge ist definiert, als eine Ziffer nach dieser Digitregel, gefolgt von 0, 1, 2, 3 und so weiter,
- möglichen Wiederholungen dieser Digitregel.
- Das heißt, auf diese Weise könnten wir eben die Ziffer 0, die Ziffer 1, natürlich auch die Ziffer 1, 0, auch die Ziffer 7, 4, 5, irgendwas,
- könnten wir da, könnten wir diese Weise produzieren.
- Also diese kleine einfache Regel sagt uns eben, alle Zahlen, die wir hier zulassen, können 0, können so viel, können so aussehen, ja.
- Und hier das erste Mal habe ich eben 0 Wiederholungen, 0 Wiederholungen, eine Wiederholung, ja.
- Und hier, ja, neun Wiederholungen, ja, so, was immer ich da haben wollte, ja.
- Also das ist der Weg, wie ich ausdrücke, dass ich etwas wiederholen möchte und etwas wieder machen.
- Machen wir das noch da rein.
- Also das ist wirklich, das ist vielleicht etwas, am Anfang etwas überraschend, dass man auch 0 mal wiederholen darf, aber ja, so.
- Okay, haben wir jetzt also paar Beispiele, um das zu sehen.
- So, die erste Beispiel wäre eine Beschreibung für Integers.
- Ich habe verschiedene Integer-Beschreibungen im Laufe des heutigen Tages und ich benutze da oben diese Durchnummerierung, um die voneinander zu unterscheiden.
- Ja, und hier haben wir wieder Digit von 0 bis 9 und Integer haben wir jetzt hier beschrieben, wie jetzt, eine Aufreihung, ja.
- Hier ist eine Aufreihung, ja.
- Wir haben hier drei Blöcke, also drei Teile, ja.
- Und jeder dieser blau unterstrichenden, also Blöcke, wäre im Grunde genommen eine legale rechte Seite, ja.
- Die Regeln für die rechte Seite eben sind hier erfüllt, weil das hier ist eine einfache, eine einfache, ein einfaches Symbol, ein einfaches Zeichen, ja.
- Hier haben wir ein Zeichen, hier haben wir eine Wiederholung.
- Und die Wiederholung besteht eben aus diesem Klammern hier, das sagt uns, dass wir wiederholt wird.
- Und dann in der Wiederholung selber haben wir einen Namen, den Namen Digit, ja.
- Und hier haben wir, ich habe mich falsch etwas verschrieben, muss ich mir besser richtig machen.
- Also, ob wir nicht sagen Zeichen, sondern das war ja eigentlich ein Symbol, ein anderer Name, so.
- Also hier haben wir einen Namen, ja.
- Hier haben wir eine Wiederholung, ist auch innen drin einen Namen.
- Und dann haben wir hier eine Auswahloption, Option.
- Und eben die Option besteht zwischen, jetzt kommen die Zeichen, die Option besteht zwischen zwei Zeichen.
- Einen Zeichen hier und dem anderen Zeichen, das ist das Pluszeichen.
- Das andere ist das Minuszeichen, das sind die beiden Zeichen, die wir da haben, ja.
- Und wir müssen eben eine Auswahl treffen, wenn wir das machen wollen.
- Und das heißt, wir haben hier die Auswahl zwischen diesen beiden Zeichen, ja.
- Und wir können optional uns entscheiden, ob wir diese Auswahl treffen wollen oder nicht, ja.
- So, und wenn kann man auch Folge, Digit Folge schreiben, ja, können Sie auch, aber da kommen wir nachher noch drauf, ja.
- Aber zurzeit eben gibt es, Sie können jeden legalen Namen für irgendwo definiertes eine Regel verwenden,
- aber da kommen wir nachher noch drauf, was das denn hieße.
- Ihr Kollege oder Ihre Kollegin fragt eben, ob wir nicht auch den Namen, den wir auf der linken Seite haben, auf der rechten Seite verwenden können.
- Und die Antwort ist, können wir auch, aber machen wir es erst mal unser Leben nicht zu kompliziert, machen wir es am Anfang mal nicht.
- So, und die, wo finden wir die Präsentationsfolie auf dem Netz?
- Ja, da müssen Sie, da tut mir leid, also da muss ich gucken, was da, also die sollten eigentlich verfügbar sein.
- Vielleicht ist aus irgendwelchen Gründen da auch noch was nicht ganz so gelaufen, wie es sein sollte, da muss ich mal nachgucken, ja.
- Das kann ich jetzt, ich gucke in der Pause nach, ob das vielleicht irgendwie aus irgendwelchen anderen Gründen blockiert ist,
- aber an sich sollten Sie die Folien sehen können, ja.
- So, da kommen noch paar mehr Fragen über andere Alternativen, die gucken wir uns doch mal nacheinander an.
- Jetzt machen wir erstmal die einfachen Sachen, was wir hier haben und dann sehen wir, was für andere Optionen es da gibt.
- Also wenn wir zum Beispiel hier, da mal plus 711 hätten, ja, das was wir würden, wie würden wir argumentieren können, dass das,
- dass das ein, ein, ein Symbol ist oder eine Folge von Symbolen ist, die durch diese Integerregeln bestimmt wird.
- Naja, wir sehen hier, wurde die Auswahl getroffen, ja, und optional, also die Option wurde genommen und dann wurde die Auswahl getroffen
- und die Auswahl war dann für das Plus.
- Und dann hatten wir eine Digit, die brauchten wir unbedingt, da haben wir halt die 7 genommen, eine Digit, ja.
- Und dann haben wir halt gesehen, dass hier zwei Wiederholungen sind, ja.
- So, das ist so ein bisschen tricky, weil die zwei Wiederholungen sind hier zufälligerweise dieselbe Ziffer.
- Ich wurde jetzt letzte Woche, äh, letzte Folie schon gefragt, ja, wie geht das dann mit eBNF weiter in den Kompilereien, ja.
- Gute Frage, nur wissen Sie, das können wir noch nicht ganz behandeln, weil wir gehen jetzt mal davon aus, dass wir einfach wissen, dass zwei Wiederholungen ausreichen.
- Wenn wir das später mit einem, in einem Programm automatisch machen wollen, ist das bisschen schwieriger, weil wir wissen ja vielleicht nicht am Anfang,
- dass der, wissen wir am Anfang nicht sofort, wie viele Wiederholungen da sind.
- Aber hier belegen wir mal, gehen wir davon aus, dass die, dass wir einfach wissen, wie viele Wiederholungen dafür nötig sind und dann arbeiten wir dem entsprechend.
- So, also wenn Sie sich das angucken und überlegen, was beschreibt diese eBNF Beschreibung, ja, die beschreibt einfach die ganzen Zahlen, ja.
- Und das könnten wir natürlich auch umgangssprachlich machen und sagen, eine Digit ist definiert, ist eines der Zeichen oder der Buchstaben von 0 bis 9
- und dann könnten wir sagen, eine Integers definiert als eine Folge von drei Elementen, eben ein optionales Vorzeichen,
- wenn vorhanden muss es plus oder minus sein, ja, eine Digit immer gefolgt und eine Wiederholung von null oder mehr Auftreten von Digit,
- wobei jede Digit eine der Alternativen ist von hier oben und die voneinander unabhängig gewählt werden können, ja.
- So, also das ist die, könnten wir umgangssprachlich sagen und jetzt sehen Sie vielleicht, dass so eine Beschreibung, wie ich Sie hier habe,
- den Vorteil hat, dass sie wesentlich kompakter ist und auch wesentlich weniger Diskussionsstoff lässt, ja.
- So, und diese Beschreibungen werden uns jetzt erlauben, weitere Aspekte zu diskutieren.
- So, also nochmal so zur Erinnerung, dass die Beschreibung besteht aus einer Menge von EBNF-Regeln und daher ist die Reihenfolge der Regeln unwichtig
- und zum Weiteren, die Namen, die Sie für diese Regeln verwenden, sind auch unwichtig.
- Ja, ich habe hier eine Beschreibung Integers für I2 und die verwendet eben diese Beschreibung, andere Reihenfolge,
- was ich vorgezeigt hatte, oder ich habe hier eine Beschreibung I3, die benutzt andere Namen, Zahl und Ziffer, Stadt Integer und Digit, ja.
- Und das sind beides, in beiden Fällen werden dieselben Symbole oder dieselben Symbol folgen, auf diese Weise definiert.
- Also die Namen und die Reihenfolge der Regeln sind nicht wichtig.
- Es gibt die Konvention, ja, dass man die Regeln von einfach nach komplex sortiert.
- Also, dass man mit den einfachen Regeln anfängt, fängt so wie ich das eben auf der letzten Slide gezeigt hatte, ja, eben die Digital-Zweide,
- die sind die einfacheren Regeln und das wird dann die komplizierteren Regeln danach kommen.
- Und das dann der Name der letzten Regel, ja, der Name der letzten Regel ist der Name der Beschreibung.
- Also, das ist jetzt hier weniger, hier kann man es nochmal, in dem Beispiel, was ich davor hatte, kommt man das klarer sehen, ja.
- Da war eben die Regel für Integer, war die letzte Regel, das sagen wir, das ist die EBNF-Beschreibung für Integer, ja.
- Das ist halt das, was ich da, was wir machen, um die Diskussion zu vereinfachen.
- Und natürlich für jeden Namen muss es eine Regel geben und natürlich nur eine Regel.
- Wenn wir in der Menge zweimal, zwei Regeln mit demselben Namen hätten, dann hätten wir ein Problem und das ist nicht, das wäre nicht gut.
- Also, das eben ist, wir versuchen da, uns das Leben so einfach wie möglich zu machen.
- Also, hatte gesagt, es gibt diese vier elementaren Ausdrucksmöglichkeiten und davon haben wir jetzt drei gesehen,
- die Aufreihung, die Auswahl, Option und die Wiederholung.
- Und Sie haben jetzt auch, hoffe ich, so ein intuitives Gefühl, wie man so eine EBNF-Beschreibung sich angucken kann, wie man die lesen kann und was man, was sie eben bedeutet.
- So, und jetzt wollen wir als Nächstes gucken, wie wir so eine Beschreibung benutzen können, um zu entscheiden, ob ein Symbol legal ist für eine gegebene EBNF-Beschreibung.
- Sonst macht es ja keinen Sinn, diesen Ausdrucksmöglichkeiten von Legalität da zu reden.
- Wenn wir sagen, dieses Symbol ist legal, müssten wir eigentlich immer dazu sagen, im Zusammenhang mit der EBNF-Beschreibung, also mit der Menge von EBNF-Regeln, die wir da haben.
- So, jetzt, wie könnten wir so eine Beschreibung nehmen und Schiedsrichter spielen und entscheiden, ob diese Symbol, dass wir haben, der Beschreibung genügt oder nicht.
- Da gibt es verschiedene Wege, das zu machen.
- Was ist die Frage, die wir versuchen zu beantworten?
- Wir versuchen, die Frage zu beantworten, eben, wenn wir haben ein Symbol, und wir wollen gucken, ob das legalgemäß einer Regel ist.
- Und was heißt das jetzt konkret?
- Das heißt, dass alle Zeichen des Symbols stimmen mit den Elementen der Regel überein.
- Das heißt, sie stimmen überein und das heißt, es sind die selben Zeichen und die Reihenfolge stimmt.
- Also nicht einfach irgendwie durcheinander gewirbelt, sondern die Reihenfolge stimmt.
- Also, wir haben Symbol, das ist eine Folge von Zeichen.
- Wir wollen gucken, ob dieses Symbol der Regel, die wir da haben, entspricht.
- Und da müssen wir sehen, ob die Zeichen dieses Symbols, das ist ja eine Folge,
- ob die eben halt den Regeln, die wir da haben, entsprechen.
- Da gibt es verschiedene Wege, das zu machen, und die werden wir alle kurz kennenlernen,
- weil wenn wir später irgendwo eine Situation haben, wo so eine Zeichenfolge ist,
- so eine EBNF-Beschreibung, müssen wir irgendwo herausfinden können, was da los ist.
- Also, wie machen wir das?
- Wir fangen an, also wenn die Übereinstimmung dann genau ist, dann sagen wir,
- das Symbol ist legal, genau heißt, wie ich eben sagte, selbe Zeichen, selber Reihenfolge.
- Wir fangen an, das Symbol, diese Zeichenfolge anzugucken,
- und wir lesen die wieder von links nach rechts, Zeichen für Zeichen.
- Und jetzt gucken wir nach, ob jedes dieser Zeichen eben durch die Regel bestimmt ist.
- Und wenn das der Fall ist, dann können wir es abhaken.
- Und wenn wir ein Zeichen finden, wo wir sagen können,
- das kann nie und nimmer aus dieser Regel kommen, und es gibt auch keine andere Regel,
- die uns hierhin, die sowas erklären könnte, dann müssen wir sagen,
- ha, dieses Symbol ist nicht legal.
- Und wir machen wir so lange, bis wir das Ende des Symbols erreicht haben,
- das Ende des Symbols wird irgendwann erreicht.
- Wenn das Ende des Symbols erreicht ist, dann darf kein nicht optionales Element
- der Regeln übrig bleiben.
- Wenn dann auch irgendwelche die Regeln noch mehr erwartet,
- dann müssen wir sagen, nee, ist doch nicht legal.
- Ist legal bis hier aber nicht weiter.
- Und wir müssen sehen, dass kein Zeichen im Symbol übrig bleibt.
- Also wenn wir ein Zeichen haben, für das wir einfach keine Regeln finden,
- die wir benutzen könnten, um dieses Zeichen zu rechtfertigen,
- dann sagen wir auch nicht legal.
- Also wir dürfen nicht die Situation kommen, dass es keine Regel gibt,
- mit der man das machen kann.
- Und nur dann, wenn das der Fall ist, dann sprechen wir von Übereinstimmung
- und sonst sprechen wir von nicht legal oder illegal.
- Manchmal sagen wir, illegal aber genauer wäre es eigentlich zu sagen,
- nicht legal.
- Also hier haben wir ein einfachst trivialer Beispiel.
- Wenn wir nur die Digitregel haben, die ich Ihnen vorher zeigte,
- und wir haben da die Digital 6, dann sehen wir,
- die wird durch eine der Optionen erledigt, ist also legal.
- Wenn wir jetzt hier hinkommen, dann sehen wir,
- die 8, wenn wir die 86 gucken, ob das legal ist,
- sehen wir 86, die 8 ist ja auch legal.
- Und dann gehen wir aber jetzt sehen wir weiter,
- da bleibt ja noch ein Zeichen übrig.
- Hier haben wir das Zeichen übrig geblieben,
- es gibt in der Regel keine Digitalregel allein,
- da gibt es keine weitere Möglichkeit, andere Ziffern hinzuzufügen,
- also ist das Ganze nicht legal.
- Und wenn wir jetzt mit der Digitalregel arbeiten wollten,
- und wir hätten jetzt die Signed numbers definiert,
- Signed numbers ist definiert als ein Vorzeichen,
- gefolgt von einer Digit,
- und da können Sie sehen, dass eben, wenn ich das habe,
- 0 und 9 nicht legal sind.
- Okay, 0, gucken wir uns an, ist kein Vorzeichen,
- aber das ist ja okay, weil es ja optional ist,
- also können wir abhaken, aber so wie wir die Regel hier haben,
- sind es hier nur ein Ziffer gezahlen,
- und ich habe nichts für die 9, und daher würde ich sagen,
- eh, geht nicht, und gegen +9 oder -9, die wären alle okay.
- Also das ist kein, das ist ein informeller Beweis,
- in anderen Vorlesungen lernen Sie genauer, bessere Beweise kennen,
- aber das ist ein informeller Beweis,
- und wenn wir über Einstellung erreichen,
- dann sagen wir, das Symbol ist legal,
- und sonst eben ist es illegal.
- So, gucken wir, ob das hier funktioniert.
- Jetzt sollten Sie in der Lage sein,
- ja, zu sehen, wie das eben automatisch geht,
- kann ich kurz gucken, was hier ist.
- Ahm, ahm.
- So, also Sie sehen, es ist nichts Schwieriges,
- alles einfach, geht automatisch und so weiter.
- Also hier habe ich nochmal die, die, diese Regel, ja, so.
- Jetzt, so informelle Beweise sind eben, also wir können das machen,
- einfach, es ist gut, dass Sie, weil Sie sollten,
- Sie sollten so was machen können, ja, wollen jetzt gucken,
- haben wir die integer Regel, eben, wir fangen an,
- ob das erste Element eben ein optionales Vorzeichen ist,
- wenn ja, dann geht es, gucken wir nach,
- ob das, was gewählt wurde, wirklich da eine der Alternativen ist,
- und dann nehmen wir das nächste Zeichen,
- und das muss eben bitte die Digital Regel übereinstimmen,
- und dann entscheiden wir, ob keine oder mehr Wiederholungen kommen.
- Und der Trick ist eben, also zurzeit,
- wissen wir einfach, wie viele Wiederholungen nötig sind.
- Ja, wenn ich also plus 70 habe, gehe ich hin,
- Vorzeichen wurde gewählt,
- es war in diesem Fall ein plus, ja.
- Die Digital Regel wurde genommen, es gab eine 7,
- wir wissen halt, dass eine Wiederholung ausreichte,
- und daher wird das Zeichen in der Tat ganz durch die,
- wird akzept wirklich die Digital Regel bestimmt,
- und daher haben wir alle Zeichen,
- diese Symbols haben wir gezeigt, konnten auch durch die
- integer Regel definiert werden,
- und das ist daher okay, ja, also das ist dann ganz einfach,
- das können Sie sehen.
- So, jetzt sehen Sie schon, ich zeichne das hier,
- so ein bisschen wie so ein, ja, fast wie so ein Baum, ja,
- und wir werden sehen, das ist ein Weg,
- wie ich diesen informellen Beweis etwas formaler machen, ja,
- formaler machen kann, um sicher zu sein,
- dass wirklich das, was ich da habe, den Regeln entspricht, ja,
- das ist also wirklich einfach.
- So, also mit diesen, bei diesen informellen Beweisen,
- wissen wir entweder, welche Regel anzuwenden ist,
- also ob wir jetzt hier in diesem Beispiel,
- ob wir jetzt da die Digital Regel angewendet haben,
- oder die Vorzeichenregel, ja,
- das wissen wir, wenn wir uns das angeguckt haben,
- wir hatten dieses plus 70, ja,
- als wir uns die 7 anguckten, da wussten wir, ah, das,
- ja, hier Digital, das ist die Regel, die wollen wir nehmen, ja,
- später wenn wir mehr Namen verwenden,
- dann gibt es da mehr Möglichkeiten,
- aber wir wissen einfach halt die richtige,
- wir wissen die richtige Regel anzuwenden,
- und wissen auch die richtige Anzahl von Wiederholungen,
- oder wir probieren es halt, ja, eben,
- ist ein informeller Beweis, ja,
- und wenn die Beschreibung nicht eindeutig ist,
- dann finden wir die richtige Alternative,
- ich hatte ja schon mal gesagt,
- dass EBNF-Beschreibungen müssen nicht zwingenderweise eindeutig sein,
- das ist ganz okay, ja,
- manchmal muss man ein bisschen probieren, bis das rauskommt, ja,
- wenn wir so einen String haben,
- da müssen wir ein bisschen sehen,
- wie viele Wiederholungen wir brauchen da,
- und das können wir auch Schritt für Schritt machen, ja,
- ich kann mir vorzeichen, das haben Sie jetzt gesehen,
- die eine Digital haben Sie auch gesehen, ja, so,
- und jetzt kommt der Punkt, wir wissen halt,
- in diesem Beispiel, dass es eben drei Wiederholungen braucht, ja,
- und eben es wäre möglich,
- null Wiederholungen zu machen,
- da geht es jetzt schon weg,
- aber null Wiederholungen zu machen,
- aber wir wissen halt,
- dass drei Wiederholungen uns hier das Richtige sind,
- und dann wählen wir in diesen drei Wiederholungen
- die richtigen Digit aus,
- und können so zeigen,
- dass dieses Symbol in Ordnung ist,
- dass dieses Symbol der Regel existiert,
- und Sie können die Animation auch noch,
- wenn das funktioniert, sollten sie in der Lage sein,
- die von einem Webserver runterzuladen,
- die kann ich nicht in die PDF-Datei einbetten,
- aber Sie können die dann eben woanders runterbekommen, ja, so.
- Also das war eben halt relativ einfach,
- jetzt weiß ich nicht, kann ich die Leute hier im Raum
- als Repräsentanten fragen,
- wollen Sie, dass ich jetzt den informellen Beweis
- für plus 128 noch mache?
- Wer will den noch sehen?
- Sind Sie alle so früh am Morgen?
- Okay, ein paar wollen ihn sehen,
- ein paar wollen ihn nicht sehen.
- Okay, dann mache ich ein Kompromiss,
- dann zeige ich Ihnen den vom letzten Jahr, ja.
- So, sehen Sie, also wir sehen, ja, so,
- eben wir haben die 028, wir fangen an,
- gucken, da ist das Pluszeichen,
- dann kommt die 1, ist okay,
- wir wissen, dass 2 Alternate,
- 2 Wiederholungen gebraucht werden,
- die 2 und die 18, okay, keine weiteren Wiederholungen,
- und damit ist die Sache okay.
- So, jetzt überlege Sie mal, wie sehr,
- wie könnten wir argumentieren
- oder entscheiden, ob plus 8, plus 1,
- ob das legal ist oder nicht?
- Ja, können Sie überlegen, ja.
- Ist das legal oder nicht legal?
- Ja, gut, Sie würden eben auch wieder,
- also wir würden anfangen, ja,
- das plus wäre das Vorzeichen,
- das wäre schon mal okay, ja,
- da hätten wir keine Probleme damit, ja.
- So, die 8 wäre die erste Digit, ja, so.
- Und jetzt kommt hier ein plus, ja.
- So, plus ist keine Option für Digit,
- unter den Alternativen für Digit
- gibt es nur keine Alternative von Digit,
- unter den Digit gibt es nur die Möglichkeit,
- eine Ziffer von 0 bis 9 rauszusuchen,
- aber kein plus, das heißt, wir kommen da nicht weiter.
- Hätten wir noch irgendwelche anderen Regeln verwenden können,
- um das zu rechtfertigen?
- Nein, keine anderen Regeln gibt es, ja.
- Keine Regel erlaubt ein plus,
- also auch nicht, wenn wir die vorher geändert hätten,
- erlaubt ein plus an dieser Stelle, ja, daher nicht legal, ja,
- daher ist dieses Zeichen nicht legal und daher nicht genug.
- So, jetzt können Sie nächsten paar Minuten,
- während Sie noch diese Beispiele angucken, ja,
- sehen, dass die im Prinzip zu machen werden,
- oder gucken Sie mal diese an,
- sehen Sie andere Zahlendarstellungen, ja,
- gibt ja auch viele Möglichkeiten,
- Zahlen darzustellen, die anders sind als die Regeln,
- die ich Ihnen eben gezeigt hatte, ja,
- und gucken uns die Beispiele an, ob die legal sind,
- oder nicht legal sind,
- also sehen wir sofort, die sind alle nicht legal,
- warum hier gibt es so ein Hochkomma,
- das man zwar häufig verwendet, ja,
- hier ist eine Zahl in einem System, wo A eine Ziffer ist, ja,
- und hier gibt es ein Minus, so wie in den ETH-Büges,
- da ist ein Minus am Ende, ja, werden lachen,
- das Minus am Ende der Zahl heißt, Sie haben einen Guthaben, ja,
- also, ja, aber gell, das ist ein anderer Studiengang,
- ist nicht unser Problem, ja,
- aber das sind alles legale,
- das sind alles legale Zahlen in einer anderen Welt,
- aber diese nicht legal entsprechend der Regel I1, ja,
- das ist halt I1 sagt nicht legal, ja,
- und Sie sehen, deswegen gibt es so viele Beschreibungen,
- die dabei sind, so.
- Jetzt diese informelle Art, die ich jetzt so hatte,
- die ist gut und schön, die können wir ein bisschen formalisieren, ja,
- und zwar können wir das so machen,
- indem wir diese Schritte in Tabellen anordnen, ja,
- und das ist formaler als die Umgangssprache,
- die ich bisher verwendete, ist auch kompakter,
- und dann gibt es halt eben eine ganze Reihe von Schritten,
- die immer so ebnf-Regeln sind,
- und wir fangen an in der ersten Zeile mit dem Namen der ebnf-Regel,
- mit der das Symbol übereinstimmen soll,
- und dann gehen wir hin und ersetzen sukzessive die Regeln
- durch die rechte Seiten,
- und am Ende, wenn wir dann alles funktioniert,
- wenn alles geklappt hat, und das Symbol ein legal ist,
- dann steht am Ende das Symbol da,
- und wenn alle Versuche, die richtige Regel zu finden,
- vielgeschlagen sind, dann müssen wir halt sagen,
- dieses Symbol gehört doch nicht dazu, und ist nicht legal, ja.
- Und jede Zeile,
- jede Zeile,
- wird aus der Vorgängerzeile abgeleitet, ja,
- Schritt für Schritt für Schritt, ja.
- Das heißt, wir ersetzen einen Namen,
- das ist ja eben ein Name, der auch rechts auftreten kann,
- durch die entsprechende Definition,
- also durch die rechte Seite für diese Regel, ja.
- Und wenn es eine Alternative gibt, dann wählen wir da eine aus,
- und wenn eben ein optionales Element da ist,
- dann entscheiden wir, ob das jetzt genommen wird,
- die Option oder nicht,
- und wir bestimmen die Anzahl der Wiederholungen.
- Wobei eben die erste und zweite Schritt werden oft
- in einem zusammengemacht,
- weil das sonst aber zu langsam wird, ja.
- Also, so kann ich eben Schritt für Schritt für Schritt,
- kann ich jetzt eben halt zeigen,
- wie so was geht, ja.
- Also, wenn ich jetzt hier,
- guck mal nach,
- wenn ich jetzt hier zum Beispiel diese Zahl plus 1, 2, 8 habe,
- für die ich entscheiden will, ob sie durch die Integer,
- leider kann ich Ihnen jetzt die Integer jetzt dann nicht sofort,
- nicht mehr zeigen, aber das ist ja eine einfache Sache, ja.
- Da fange ich eben an, ja.
- Ich fange an mit eben der Integer-Regel, ja.
- So, und die Integer-Regel,
- die besteht eben aus einem optionalen Vorzeichen, ja,
- dem einer Digit,
- und dann einer Folge von Digits, ja.
- Also, ich ersetze diese Namen durch die rechte Seite, ja.
- Jetzt gehe ich dann hin und wähle hier eine Option,
- das heißt, ich wähle das Plus, also eine Alternative wähle ich, ja.
- Der Rest bleibt unverändert, ja.
- Dann gehe ich hin und entscheide mich,
- dass ich doch in der Tat diese Option nehmen will.
- Das heißt, das Plus bleibt hier, ja.
- Und dann geht es hier weiter mit Digit
- und eben Digit, ja.
- Der Wiederholung von Digits, ja.
- So, jetzt habe ich dann im nächsten Schritt,
- gehe ich hin, dass ich entscheide,
- dass ich für diese Digit eine Eins wähle, ja.
- Das heißt, diese Eins kommt und dann der Rest bleibt Digit, ja.
- Und jetzt weiß ich halt,
- dass zwei Anwendungen, zwei Wiederholungen nötig sein werden.
- Das heißt, ich ersetze das hier durch Digit und Digit, ja.
- Und jetzt ersetze ich dann im nächsten Schritt das durch eine zwei
- und das hier durch eine acht, ja.
- Und dann sehen Sie, habe ich hier Schritt für Schritt gezeigt,
- wie dieses Plus 1, 2, 8 in der Tat durch Integer erzeugt werden könnte.
- Und damit haben wir die Frage beantwortet, ob das legal ist oder nicht.
- Aber weil eben jede Zeile einen Schritt nach dem anderen macht,
- kann man dann leicht nachvollziehen, was jetzt da gemacht wird, ja.
- Das ist eine Tabelle, das ist eine etwas formalisierte Reform
- der informellen Beweise.
- Und das kann man auch eben, kann man auch eben noch weiter spielen, ja.
- Man kann eben statt das als Tabelle Zeile untereinander,
- Zeile hintereinander zu schreiben, ja, kann man das auch als Baum zeichnen.
- Bäume kennen Sie vielleicht aus irgendwelchen anderen Vorlesungen,
- wenn nicht, werden Sie jetzt gleich einen sehen.
- Das ist ein sehr einfacher Baum.
- Und das ist eine grafische Darstellung eines Beweise, so wie eine Tabelle, ja.
- Oben haben wir den Namen der EBNF-Regel, mit der das Symbol übereinstimmen soll,
- ja, so wie bei der Tabelle.
- Und unten am Ende haben wir dann das Symbol, wenn das klappt, ja.
- Wenn wir irgendwie den Punkt kommen, dass unser Baum nicht weiter wachsen kann, ja.
- Ja, dann haben wir halt Pech gehabt, dann war das kein Baum,
- sondern war das Symbol, kein Symbol entsprechend der Regel.
- Und daher können wir das nicht akzeptieren, ja.
- Und dann zeigen Kanten an, welche Regeln es uns erlauben,
- von einer Schritt zum nächsten zu gehen.
- Es ist ein bisschen kompakter als die Tabelle,
- weil wir können eben die Sachen miteinander organisieren, ja.
- Also, weil das eben, ja, wie würden wir das also hier machen?
- Wir hätten also wieder, aus fehlenderm, haben wir wieder dieses Symbol plus 1, 2, 8, ja.
- Okay, jetzt kommt, ihr müsst hier eben oben den Namen der Regel schreiben, den ich verwende.
- Will das stellen Sie sich mal vor, wer kursiv, ja.
- Aber das ist ja nicht so, hoffentlich nicht so schwierig zu sehen, ja.
- Trotz meiner schlechten Handschrift.
- So, jetzt habe ich ein Baum, jetzt gebe ich es als nächstes,
- das ist das, was ich hier mit den, unter diesem Baum, die verschiedenen Optionen, ja.
- Nämlich die rechte Seite von der integer Regel
- und schreibe eben die verschiedenen Teile dahin, da ist erstmal diese Option,
- ob ich ein plus oder minus wählen will, dann muss da kommen ein digit, ja.
- Und dann muss da kommen eine Wiederholung von digits, so, ja.
- Und das ist der, so sieht der Baum, jetzt gehe ich mal hier weiter und sage, okay,
- ich wähle hier unter diesen beiden Alternativen das Pluszeichen aus
- und jetzt entscheide ich mich, diese Option wirklich zu machen, ja.
- Und darum kommt, indem ich dann hier das Pluszeichen und lasse das dann so, ja.
- Also hier haben wir die Option ja oder nein
- und hier hatten wir die Auswahl zwischen den beiden Alternativen, ja.
- So, und dann gehe ich jetzt hier zur digit
- und da habe ich auch eine Auswahl zu treffen, ja.
- Und die Auswahl, die ich da treffe, ist, dass ich halt eine eins nehme.
- Okay, ja, so, ja.
- So, jetzt habe ich hier die digits, die Wiederholung von digits
- und jetzt weiß ich halt, dass ich zwei Wiederholungen brauchen werde.
- Also habe ich hier eine dieser Wiederholungen
- und hier die andere dieser Wiederholungen, ja.
- Ja, das wäre also ein Weg, das zu machen.
- Jetzt zeige ich Ihnen noch ein leichter anderen, ja.
- Und dann sehe ich, hier mache ich jetzt wieder eine Auswahl, ja.
- Und dann habe ich hier die Ziffer zwei
- und dann mache ich hier auch eine Auswahl
- und ich habe die Ziffer acht, ja.
- So, das wäre ein Weg, das so zu argumentieren, ja.
- Ein anderer Weg mache ich jetzt hier real-time, ja.
- Man könnte auch sagen, ich habe hier die Wiederholung von digits.
- Ich gehe jetzt erst mal hin und habe hier eine digit
- und habe hier nach Wiederholungen von digits, ja.
- Also, was ich mache ist, wenn ich hier, kann ich ja 0, 1 oder beliebig oft wiederholen.
- Also, ich fange mal an mit einer Wiederholung, ja.
- Und dann gehe ich hin und sehe, aha, die zwei wie vorher.
- Und jetzt gehe ich hierhin und mache auch wieder, genauso wie hier,
- die digit und Wiederholung von digits.
- So, ja.
- Dann gehe ich hin, hier brauche ich eine Acht, also Auswahl, ja.
- So, und hier gehe ich jetzt hin und sage, ah, jetzt mache ich 0 Wiederholungen,
- also Epsilon und weg ist alles, ja.
- Wir sehen es nicht mehr.
- Und Sie sehen, ich habe hier den String, nicht den String,
- die Folge 1, 2, 8 produziert.
- Ende habe ich eben 0 Wiederholungen da genommen,
- das Epsilon taucht nicht auf und ist daher verschwunden, ja.
- Das wäre ein anderer Weg, das zu machen.
- So, jetzt habe ich hier als kleinen Test der Live-
- Oh, gosh, ja.
- Als kleinen Test der Live-Infrastruktur,
- hoffe ich, dass Sie jetzt bald das sehen,
- wollte ich Ihnen einen Klicker geben.
- Wir wollen mal gucken, ob Sie jetzt auf das Netz raufkommen
- und können die Frage beantworten, welche dieser Symbole legal sind oder nicht.
- Das müssen wir mal gucken, ob das jetzt hinhaut.
- So, Sie sollten also jetzt Ihren Klicker rausnehmen können
- und wenn Sie nicht auf Klicker kommen,
- hoffe ich, dass Sie auf den Back-Channel kommen
- und mir sagen können, dass das nicht funktioniert.
- Ich habe die Kommentare vielen Dank vom Dienstag
- an die Experten der Edu App-Gruppe weitergereicht
- und die haben mir gesagt, danke für die Hinweise,
- wir gucken mal nach, warum, wieso das nicht funktioniert.
- Also gucken Sie sich mal an, ich hoffe, der Klicker läuft jetzt.
- Ich weiß nicht, läuft der, sieht jemand ihn?
- Ja, okay, super.
- Also dann können ein paar Leute im nächsten antworten
- und ich gucke derweil mal nach,
- ob es noch irgendwelche andere Fragen gibt,
- die beantwortet werden sollten.
- Diejenigen, die den Klicker sehen,
- sehen Sie diese Fragen oder sehen Sie die Fragen vom Dienstag?
- Diese, ja, weil jemand im Back-Channel sagt, er sehe
- oder Sie sehen nur die Fragen von der letzten Woche.
- Ja, okay, dann muss ich die bitten nochmal,
- vielleicht Ihre Edu App-Zurich starten.
- Ich kann jetzt, ich müsste jetzt hier gucken,
- vielleicht sagt es mir jetzt,
- ich sehe halt die Fragen hier,
- aber leider ist das System nicht so mit,
- also ich kann nicht sehen, was Sie machen.
- Ich habe 288 Abstimmungsergebnisse,
- das ist nicht ganz schlecht.
- Ich lasse noch eine halbe, ein bisschen länger laufen
- und dann machen wir die Pause.
- Wollen Sie sich in der Pause weiterlaufen lassen?
- Nee, ja, nein, machen wir jetzt Schluss.
- Machen wir jetzt Schluss und na, es kommen noch mehr rein,
- weil es beladen ist.
- Okay, ich, dann machen wir doch jetzt Pause
- bis 9 Uhr 15 und Klicker läuft.
- Okay, der, verschiedene Leute haben verschiedene Probleme
- mit Klicker gehabt,
- bitte schicken Sie mir, wenn es geht,
- möglichst detaillierte Mail, die ich weiterleiten kann.
- Ich kann auch selber zurzeit nicht auf unsere Webseite zugreifen,
- warum weiß ich auch nicht.
- Das heißt, da muss auch noch was anders sein,
- deswegen weiß ich auch nicht, ob Sie die Slides sehen können
- oder nicht sehen können.
- Ich kann die mir leider aber erst darum kümmern,
- wenn die Vorlesung vorbei ist, aber das werde ich dann machen.
- Also, ich habe den 300, 53 Leute haben doch Antworten können
- und die haben eigentlich fast alle alles richtig,
- das ist hier alles richtig, das war richtig, richtig, richtig.
- Manche Leute haben dann hier bei den 007 gemeint,
- das wäre keine Zahl, aber auch ein kleiner Anteil.
- 007 ist nach diesen Regeln, wie wir sie haben,
- eine legale Integer, das ist also ganz einfach,
- so wie das gemacht, wie das von Ihnen entschieden worden ist, richtig.
- Also, Sie sehen hier die Antworten, ich war das,
- und für die, die einen Baum noch zeichnen wollten,
- die können das dann auch so machen,
- dass wäre auch kein Problem.
- Also, das hoffe ich, also den Baum habe ich,
- die Slides finden Sie dann irgendwann auf dem Web.
- Also, jetzt kamen natürlich da schon ein paar Fragen auf dem Chat,
- ja, es gibt doch noch andere Möglichkeiten,
- EBNF zu beschreiben, gibt es und so weiter, ja.
- Wir haben hier diese gewählt, aber auch wenn wir das so wählen,
- dann gibt es eben halt hier diese Sonderzeichen,
- diese geschweiften Klammern, die Eckigen Klammern,
- die runden Klammern, ja, und dann dazu den Stroke,
- um Alternativen auszudeuten.
- Wie ich sagte, wenn Sie Alternativen haben, A oder B,
- das ist das selber, als wenn Sie B oder A wollten, ja.
- Aber wenn Sie eine Aufreihung haben, dann ist A, B natürlich was ganz anderes,
- als B, A, ja.
- Das ist, wenn erste Zeichen A erscheinen soll dann das Zeichen B,
- das ist was ganz anderes, als B gefolgt von A, ja.
- Also, da ist die Reihenfolge dann wichtig, ja.
- Und wenn wir uns entscheiden sollten, wie diese Spitzenklammern da zu benutzen,
- um kursiv zu imitieren, dann wäre das auch ein Sonderzeichen.
- Und das Problem, das wir natürlich jetzt haben, ist,
- was ist, wenn wir eine EBNF-Regel aufsetzen wollen,
- in der eines der Sonderzeichen als echtes Zeichen erscheint.
- Zum Beispiel, wir wollen eine EBNF-Regel für die Menge von allen Integers haben.
- Mengen erinnern sich in der Mathematik, ja.
- Da haben die auch diese geschweiften Klammern, ja.
- Hier würden wir gerne geschweifte Klammer als Teil unseres Ausdruck sehen.
- Da müssen wir also irgendwie unterscheiden zwischen dem Sonderzeichen
- und dem Zeichen selbst.
- Und das machen wir so, indem wir hier einen Rahmen rumzeichen.
- Wenn wir einen Rahmen um etwas zeichnen, dann meinen wir,
- wir meinen das Zeichen im Rahmen.
- Es ist jetzt kein Sonderzeichen mehr,
- sondern das ist halt das Zeichen, das wir jetzt selber haben wollen.
- Gibt andere Alternativen, Sie könnten diese Hochkommers
- oder Anführungszeichen verwenden, ja.
- Die haben aber auch wieder andere Probleme,
- weil dann wäre das auch wieder ein Sonderzeichen.
- Aber diese Schachtel oder diese Box um das Zeichen herum
- sagt uns, wir meinen dieses Zeichen, ja.
- Das ist das, was wir machen wollen, ja.
- Also es ist halt dann auch schwieriger zu sagen,
- wie ich dann ein Sonderzeichen bekomme.
- Also wie gesagt, da gibt es unterschiedliche Notationen,
- aber dass die Ecke dieser Box ist, die wir verwenden.
- So, jetzt haben wir so gesehen, wir können diese EBNF-Beschreibungen
- heraus benutzen, um festzustellen, ob zwei Symbole legal sind.
- Also, oder ein Symbol ist legal, ein anderes Symbol ist legal.
- Oder ein Symbol ist legal entsprechend einer Beschreibung
- und ist legal entsprechend einer anderen Beschreibung
- oder auch nicht.
- Und jetzt müssen wir einen Weg finden,
- über die EBNF-Regeln und Beschreibungen selber zu reden.
- Und wir sagen, dass zwei EBNF-Beschreibungen entequivalent,
- das heißt gleichwertig, dann sind immer gleich in irgendeinem Kontext,
- sind dann gleichwertig, wenn sie uns eben dieselben Symbole zeigen.
- Equivalenz ist ihnen sicher bekannter, es ist halt immer in einem Kontext.
- Equalent ist nicht gleichwertigkeit überall,
- wenn sie so zwei, fünf liebe da angucken, die sind als Zahlungsmittel
- equivalent einer 10 Franken Note.
- Aber wenn sie abends vor dem ZVV-Automaten stehen
- und der nimmt keine Münzen entgegen, dann sind die eben nicht gleichwertig,
- weil den 10 Franken Schein können sie da nicht irgendwie verwenden.
- Also, sie sind equivalent in der Kaufkraft, aber nicht vor einem Automaten.
- Daher immer wieder bedeutet, wenn wir von Gleichwertigkeit reden,
- ist immer wieder die Frage, in welchem Kontext.
- So, und wenn wir jetzt eben von equivalenten EBNF-Beschreibungen reden,
- dann heißt das eben im Kontext der Symbole, die durch sie beschrieben werden.
- Und equivalente EBNF-Beschreibungen erkennen dieselben legalen und illegalen Symbole.
- Das heißt, jedes mögliche Symbol, das legal ist, wird von beiden Beschreibungen erkannt
- und jedes Symbol, das illegal ist, wird von beiden Beschreibungen als illegal identifiziert.
- Das ist, was wir eine, dann sind die, wenn das der Fall ist,
- dann sind die beiden EBNF-Beschreibungen equivalent.
- Und das heißt, etwas formaler ausgedrückt, würden wir sagen,
- die Sprachen der EBNF-Beschreibungen sind identisch,
- weil die Menge der Symbole, das können wir sagen, ist eine Sprache.
- Das wäre ein anderer Ausdruck, das zu sagen.
- Also eben, diese EBNF-Beschreibungen sind equivalent,
- wenn sie dieselbe Sprache definieren.
- Das heißt, ein Symbol, das legal für B1 ist, ist auch legal für B2.
- Und ein Symbol, das illegal für B1 ist, ist auch illegal für B2.
- Und genauso gilt, dass ein Symbol, das legal für B2 ist, auch legal für B1 ist.
- Und ein Symbol, das illegal für B2 ist, ist auch illegal für B1.
- Dann sagen wir, dass diese Beschreibungen B1 und B2 equivalent sind.
- Das ist etwas Wichtiges, weil manchmal sehen Sie zwei Beschreibungen,
- da kommt die Frage auf, sind die equivalent oder nicht.
- Und dann müssen Sie überlegen, wie wir das entsprechend am besten beantworten.
- Aber fangen wir erst einmal an mit ein paar Beispielen.
- Die Tatsache, dass zwei equivalent sind,
- ist etwas schwieriger zu zeigen, als dass sie nicht equivalent sind.
- Weil wenn ich zeigen will, dass sie nicht equivalent ist,
- sind dann genügend ein Symbol zu finden,
- dass eine dieser vier Regeln verletzt.
- Also ein Symbol, das zum Beispiel legal für B1 ist, aber nicht legal für B2.
- Dann habe ich ein Beispiel gefunden, das das nicht erfüllt.
- Und dann sind die beiden Beschreibungen nicht equivalent.
- Also hier habe ich eine andere Beschreibung für Integer.
- Ein paar von Ihnen haben auch schon im Chat freundlicherweise
- mir weitere Vorschläge gemacht.
- Sie können dann überlegen, ob die Vorschläge,
- die Sie da im Backchannel gesehen haben, Equivalenzen oder nicht.
- Hier haben wir also diese Beschreibung.
- Integer ist beschrieben oder definiert als ein optionales "zein",
- ein "digit" und eine Wiederholung von "digits".
- Mit "digit" wie vorher und "zein" wie vorher.
- Die Frage ist dann natürlich, ist das, egal,
- ist das diese Beschreibung equivalent der ersten Beschreibung, die wir hatten?
- Oder haben wir eine zweite Variation?
- Das war auch im Netz, glaube ich.
- Wir haben hier optional das Vorzeichen.
- Und jetzt haben wir hier eine Folge von "digits".
- Und jetzt ist die Frage, sind diese beiden Beschreibungen i1, i4,
- und i4, sind die beiden equivalent oder nicht?
- Denken Sie eine Sekunde nach.
- Leider kann ich Ihnen nicht die beiden auf einmal jetzt projizieren.
- Und ein bisschen schwierig, da Sie nicht ausdrucken konnten, die Slides,
- aber gucken Sie sich diese an und eben sind die equivalent.
- Also ist die, wenn Sie das gucken, dann sehen Sie,
- dass jedes Symbol, dass der legal entsprechend der ersten Beschreibung ist,
- ist auch legal für die zweite.
- Warum? Das sehen wir hier einfach.
- Hier in der ersten Beschreibung ist also eine "digit" gefolgt von einer beliebigen Wiederholung.
- Das ist ja nichts anderes als eine beliebige,
- also das ist auch abgedeckt durch die Beschreibung da unten,
- also durch die Wiederholung von "digits".
- Wenn ich also irgendeine Folge von "digits" habe, 7, 2, 8,
- das wäre legal entsprechend dieser Regel
- und wäre auch legal entsprechend der Beschreibung,
- die ich auf der nächsten Slide habe.
- Was immer legal entsprechend der ersten Beschreibung ist,
- ist auch legal entsprechend der zweiten.
- Aber mit der Umkehrung, da ist es etwas schwieriger.
- Warum? Weil da gilt das eben nicht.
- Weil wenn ich mir diese Regel jetzt hier angucke,
- tut mir leid, dass ich hier so flippen muss,
- wenn ich mir das angucke,
- ich habe optional ein Vorzeichen gefolgt von Wiederholungen von "digits".
- Wiederholungen heißt Null Wiederholungen, 1, 2 und so weiter
- beliebe ich viele Wiederholungen.
- Also ich kann optional dieses Wellen,
- dann wähle ich hier zwischen den beiden meinetwegen das Plus aus,
- und dann gehe ich hin und mache Null Wiederholungen
- von diesem Kontal da, und Null Wiederholung,
- das ist also "epsilon", also ich nehme nichts,
- das heißt das Symbol,
- das ich auf diese Wolle erzeuge, wäre das Plus Symbol.
- Und dieses Plus Symbol, das können wir nicht nach dieser Regel produzieren,
- weil nach dieser Regel muss nach dem Vorzeichen
- immer noch mindestens eine "digit" folgen.
- Daher ist dieses Plus nicht legal entsprechend der ersten Beschreibung.
- Und weiter, es gibt noch mehr, was hier Schwierigkeiten ist,
- das ist ja optional, und was ist, wenn wir das nicht benutzen?
- Also was ist, wenn wir hier dieses Optionale,
- lassen Sie es mich so schreiben, haben die Option,
- wenn wir die nicht wählen,
- nehmen wir die Option nicht, dann wäre also hier wieder ein "epsilon",
- weil wir nehmen nichts, also schreiben wir mal hin "epsilon",
- das Versehen, was das ist, und dann nehmen wir noch hin,
- Null Wiederholungen des Teils, den wir danach geschrieben haben,
- dieser Teil hier, wieder "epsilon", es gibt eben nichts,
- also hier, da sehen Sie es, also da unten ist nichts zu sehen,
- das ist dann der Grund, warum diese beiden Beschreibungen nicht equivalent sind,
- weil Plus ist eben ein legales, ein legales Symbol entsprechend der zweiten Beschreibung,
- und auch "epsilon", also die leere Zeichenfolge,
- wäre auch ein legales Symbol entsprechend dieser "i4" Strichbeschreibung, die wir da hatten.
- Also das heißt, diese beiden Beschreibungen sind nicht equivalent.
- Wie wäre es, wir würden doch Zahlen in dem Format darstellen wollen,
- indem Sie die Zahlen in Bilanz und so was finden, um so einen Hochkomma hat.
- Naja, das ist jetzt ein Weg, wie wir überlegen könnten, das zu machen.
- Ein Weg wäre, dass wir dieses Hochkomma als Alternative zu den Digits hinzufügen,
- die nenne ich jetzt mal "comma digit", damit ich da mich nicht vertuere,
- und dann würde ich jetzt sagen, hier meine Integers mit Hochkomma,
- die bestehen aus einem optionalen Vorzeichen,
- einer "comma digit" gefolgt von einer Wiederholung von diesen "comma digits",
- das könnte ich doch auf diese Weise machen.
- Und das wäre eine EBNF-Beschreibung, die Beschreibung selbst ist neutral.
- Wenn wir uns das angucken, ist das vielleicht nicht ganz das, was wir wollen,
- weil wenn ich diese Beschreibung hätte, dann wäre auch zum Beispiel 1 hochkommadrei,
- das wäre nach dieser Beschreibung legal.
- Ich nehme kein Vorzeichen, also das hier fällt weg,
- ich nehme als "comma digit" das erste eine 1, und dann mache ich eine Wiederholung,
- dann mache ich ein "comma", das mache ich 2 Wiederholungen, "comma digit",
- ich schreibe das jetzt gleich hier so hin, "comma digit",
- ich mache also 2 Wiederholungen,
- und die erste Wiederholung ergibt mir dann eben das "comma" hier,
- und die zweite Wiederholung ergibt mir die "ziffer 3",
- und Sie sehen, das ist nach dieser Regel, die ich hier habe, ist das legal,
- ist legal, funktioniert, aber ist vielleicht nicht ganz das, was wir wollen.
- Das ist also etwas, was diese Beschreibung lässt, Zimpole zu, die wir nicht akzeptieren wollen, wahrscheinlich.
- Die Frage für Sie, überlegen Sie mal, können wir das so ändern,
- dass Hochkommas richtig gesetzt werden, also zur Gruppierung von Tausenderblöcken verwendet werden.
- Also jede Dreiergruppe von Ziffern ist durch ein Hochkommas von den links davor geschriebenen Ziffern getrennt,
- und wenn eine Dreiergruppe am Anfang steht, dann steht dort natürlich kein Hochkommas.
- Also sowas würden wir nicht akzeptieren wollen,
- es dürfte eben ein Hochkommas nur vor einer Dreiergruppe stehen, die nicht die erste ist.
- So, wie würden Sie das machen?
- Ich zeige Ihnen nochmal hier die erste Beschreibung,
- überlegen Sie mal ein bisschen im Kopf, wie könnte man das so machen,
- und denken Sie daran, deswegen haben wir die Aufreihung.
- Die Aufreihung erlaubt es uns zu erzwingen, dass bestimmte Symbole da auftreten.
- Die erlaubt es uns zu erfolgen, dass immer unsere Symbolfolgen, die wir produzieren,
- eine bestimmte Reihenfolge einhalten und eben da die entsprechende Zeichen auftreten.
- Wie könnte man das machen?
- Wie ist kein Klicker starten, weil das so ist.
- Also hier sehen Sie, der Trick ist, jede Dreiergruppe von Ziffern wird durch ein Hochkommas von den links davor geschriebenen Ziffern getrennt.
- Das heißt, für die links davor geschriebenen Ziffern, wenn sie nicht selber wieder eine Dreiergruppe sind,
- vor der eine Dreiergruppe steht, müssen anders behandelt werden als die Dreiergruppen, die danach kommen,
- die also danach erfolgen.
- Wenn eine Dreiergruppe Sonderfall, wenn eine Dreiergruppe am Anfang steht, dann ist dort kein Hochkommas.
- Also, es müssen unterscheiden zwischen einer Dreiergruppe oder Gruppe, die am Anfang erscheint
- und einer Dreiergruppe, die irgendwo anders erscheint.
- Und was würden wir dann machen? Dann würden wir halt sagen, okay, wir würden eben halt unsere Dreiergruppen irgendwie definieren.
- Wir hätten die comma separated digits, die würden wir die nennen, die hätten wir hier, und die bestünden aus einer Aufreihung von drei digits,
- eine Aufreihung.
- Das heißt, hier müssen drei stehen.
- Und wie sehen unsere Zahlen jetzt aus?
- Unsere Zahlen sehen so aus, dass sie eben optionales Vorzeichen, dass sie hier eine Nambe, also Vorzeichen, eine Nambe haben.
- Und die Nambe ist eben entweder eine Ziffer, zwei Ziffern oder drei Ziffern, wieder Aufreihung und eben Alternative,
- eine von denen.
- Und danach haben wir beliebige Wiederholungen von drei Ziffern, die von einem Hochkommas angeführt sind.
- Das Hochkommas erscheint dann hier als erstes vor dieser Gruppe.
- Und damit kann ich jetzt eben sicherstellen, dass eben Zahlen wie 1, 7, 8, 9 erlaubt sind, aber 7, 8, 9, 5, 6, 3 oder sowas, ja, ist eben nicht erlaubt.
- Warum? Die erste Gruppe kann eben eine Ziffer sein oder zwei oder drei, aber das kann kein Hochkommas sein.
- Das Hochkommas kann nicht am Anfang einer Zahl stehen, die wir mit dieser Regel beschreiben wollen.
- Am Anfang muss eine, müssen ein, zwei oder drei Ziffern stehen und entsprechend danach können diese Gruppen kommen, die mit einem Komma angefangen.
- Müsste nicht Nambe ungleichs Null sein, weiß ich jetzt nicht, was sie, kann ich jetzt leider so schnell nicht beantworten.
- Wir sind immer noch etwas, hier sehe ich noch ein anderen Tipp, es ist noch immer etwas großzügig mit dem Umgang von Nullen.
- Wir erlauben ja wie bei Null, Null, Null, 7, dass die Null als erste Ziffer wiederholt auftritt.
- So, habe ich hier für Sie zum Nachdenken zwei weitere Beschreibungen, sind die equivalent unseren Beschreibungen, die wir am Anfang hatte, dieses i1, das habe ich hier nochmal gezeigt, das war also die Ziffer, die wir da, die Beschreibung für Integer, die wir ganz am Anfang hatten.
- Hier habe ich zwei weitere Beschreibungen, sind die denn gleich, sind die equivalent.
- Können Sie das überlegen?
- Genau, hier fragt mich jemand, zur Echt, ja Null hoch Komma 1, 2, 3 ist nach unserer, ist okay.
- Wir wollen es einfach halten, in drei Slides, vier Slides weiter habe ich auch das Beispiel, wie wir mit den Null wegkommen können.
- Natürlich, ja ist noch nicht perfekt, wir sind auch erst in der zweiten Vorlesung, also ja, kann man das hochkommen, sie können das überall hinpacken, sie könnten das hochkommen, also das ist, sehen Sie, die eBNF Beschreibungen sind nicht so, dass es nur eine richtige eBNF Beschreibung gibt,
- können sich verschiedenste eBNF Beschreibungen ausdenken, ja, hier gibt es viele Möglichkeiten das zu machen, ja.
- Und, ja, hier ist die Frage, wann genügt ein Symbol der Beschreibung, ein Symbol genügt der Beschreibung, wenn ich durch die Regeln der Beschreibung angefangen mit dem
- Namen der Regel, die die Beschreibung eben zusammenfasst, ja, wenn ich da schrittweise die Zeichen herausbekommen kann, die dieses Symbol ausmachen, ja.
- Also, die beiden sind equivalente, weil die eben halt in allen Fällen gleich sind.
- Sie sehen, ob Sie das Digit hier haben und danach die Folge der Wiederholungen oder erst die Wiederholungen und dann das Zeichen, das ist gleich, weil wir wissen halt magischerweise, ob Null oder Eins oder zwei Wiederholungen gefordert sind.
- Und ob wir die Option mit der Auswahl hier oben in einem separaten Regel haben oder ob wir einfach eine Auswahl haben und in der Option dann auf eine andere Regel uns beziehen, die die Auswahl zulässt,
- das können Sie alles machen, wie Sie wollen. Ja, also hier hatten wir die einfach sofort reingeschrieben, die Tatsache, dass wir zwischen plus und minus wählen können, aber optional müssen gar nicht mal wählen.
- Ja, und hier haben wir die in einer separaten Regel oder in separaten Regeln.
- Das macht alles keinen Unterschied.
- Entscheidend ist, was für Symbole können wir beschreiben, kann ich für jedes Symbol der einen Regel auch ein Symbol, kann ich auch zeigen, dass diese Symbole durch die andere Regel genauso als legal erkannt wird.
- So, gucken wir nach, was da noch alles möglich ist.
- So, jetzt, worauf läuft das Ganze hinaus.
- EBNF erlaubt es uns, die Sündungszeiten zu beschreiben.
- Sündungszeiten ist der Ausdruck, den wir verwenden, um zu sagen, das ist die Form.
- Also die Zahlen, mit denen wir uns beschäftigen, die müssen halt so aussehen, dass da eine Ziffer kommt und noch eine Ziffer kommt und noch eine Ziffer kommt.
- Das ist die Form.
- Wir sagen aber überhaupt nichts, was diese Ziffernfolge, dieses Symbol überhaupt bedeutet.
- Weil Bedeutung ist eine andere Dimension.
- Das ist die Semantik, was ist die Bedeutung.
- Die können wir eben halt durch EBNF leider eben nicht festlegen.
- Und das ist auch in vielen anderen Situationen so.
- Sündungszeiten legt wirklich nur die Form fest.
- Ein Satz besteht aus einem Subjekt und einem Prädikat.
- Und eventuell hat das Prädikat noch ein Adverb.
- Sie könnten also im Deutschen ganz legal den Satz formen.
- Alle lesenden Schiffe riechen gelb.
- Das wäre ja okay.
- Wir haben hier ein Subjekt, noch etwas erweitert.
- Wir haben ein Verb.
- Wir haben eine Adverbialkonstruktion.
- Das ist nach diesen Regeln der Sündtags ein korrekter Satz.
- Aber das ist kein Satz, der irgendwie Sinn macht.
- Von der Bedeutung her ist der unsinnig.
- Wir haben in den natürlichen Sprachen diverse Mechanismen, um das zu kontrollieren.
- Frage?
- Guten Witz.
- Den möchte ich auch.
- Wir haben Zeichensetzung.
- Der Herrscher dachte an sich selbst zuletzt.
- Wir haben in unserer Sprache verschiedene Ausdruckmöglichkeiten.
- In eBNF haben wir das nicht.
- Wir beschreiben nur die Sündtags.
- Wir sagen hier, das sind so sehen die legal geformten Integers aus.
- Aber ob das jetzt Integers sind oder was anderes zeicheln,
- das ist etwas, was wir nicht behandeln.
- Aber wenn wir anfangen,
- zu programmieren, dann ist die Bedeutung genauso wichtig.
- Wir haben die Frage,
- können zwei unterschiedliche Symbole dieselbe Bedeutung haben?
- Das kann vielleicht zur Verwirrung führen.
- Oder kann ein Symbol verschiedene Bedeutungen haben?
- Abhängig vom Kontext, in dem es sich befindet.
- Da wird es schwieriger,
- das zu untersuchen.
- Wenn wir als Raum der Symbole,
- mit denen wir uns beschäftigen, die Namen von Personen nehmen,
- dann wären die drei Namen Herrwirt, Professorwirt oder Niklas Wirt.
- Das wären drei legale Namen, wenn ich in eBNF aussetze.
- Die können sich alle auf dieselbe Person beziehen.
- Wobei es wahrscheinlich mehrere Personen gibt, die diesen Namen haben.
- Wenn wir den Ausdruck "Nächste Vorlesung" nehmen,
- und sagen, die nächste Vorlesung fällt aus,
- wenn ich das gestern gesagt hätte, dann gäbe es heute keine Vorlesung
- und sie hätten länger schlafen können.
- Wenn aber jemand das gestern gesagt hätte
- und hätte sich auf eine andere Vorlesung bezogen,
- nämlich die Algorithmen und Datenstrukturen,
- dann würde sich eben das heißen,
- dass am Montag keine Vorlesung stattfindet.
- Also "Nächste Vorlesung" ist auch immer nur relevant oder richtig wichtig,
- wenn es in einem Kontext ist.
- Damit kommen wir zu den Integers.
- Integers haben eben auch eine Bedeutung.
- Das ist der Normalerweise der Wert.
- Daher 1 und +1 haben beide den Wert 1.
- Und die Null hat +0, -0, 0 hat immer den Wert 0.
- Aber die Frage, ob jetzt eben 0012 und 112 dieselbe Bedeutung haben,
- die Frage ist nicht ganz einfach.
- Weil in der Mathematik würde man sagen, ja,
- also in der Mathematik ignorieren wir die vorstehenden Nullen
- und die spielen für uns keine weitere Rolle.
- Aber wenn das zum Beispiel PINZ sind,
- mit denen sie Zugang zu einem Safe bekommen,
- dann sollte das besser ein Unterschied sein,
- ob da jemand 0012 oder 112 eingibt.
- Also die Integer-Beschreibung von eBNF,
- die sagt uns nur, wie Zahlen aussehen soll.
- Die sagt uns nichts über die Bedeutung oder den Wert dieser Zahlen.
- Jetzt auch ein bisschen komplizierter,
- dass wir uns die Frage stellen,
- ob wir eine eBNF-Beschreibung hinbekommen können,
- die es uns erlaubt, die Mengen von Zahlen zu beschreiben.
- Und das heißt, wie sieht so eine Menge aus?
- Erinnern Sie sich vielleicht noch, eine endliche Menge,
- wir machen das ganz einfach, besteht eben in der Mathematik
- und auch bei uns aus diesen geschweiften Klammern
- und dann eine Aufzählung von Zahlen.
- So, und zwischen diesen, was kann jetzt hier als Aufzählung kommen?
- Da können natürlich ganz klar, können so was kommen.
- Mitkommert oder ohnekommert, das könnten wir definieren.
- Es könnte auch eine einzige Zahl sein.
- Und es könnte auch gar nichts sein.
- Es könnte ja hier zwischen keine Aufzählung sein.
- Also die Aufzählung wäre Epsilon.
- Das heißt, unsere Menge, die sähe so aus,
- das wäre also die bekannte Learemenge.
- Das ist im Grunde genommen abhängig von dem,
- was ich für eine Menge jetzt ausdrücken möchte.
- Sieht das eben so aus oder so oder so.
- Oder eben, ich kann auch sagen, ich will gar keine Kommas.
- Ich lasse nur Zwischenräume zu als Trennung.
- Das können Sie machen, wie Sie wollen.
- So, jetzt wie bekommen wir diese geschweiften Klammern
- in unsere eBNF-Beschreibung?
- Die eBNF-Beschreibung muss natürlich dies auch produzieren.
- Das heißt, wir müssen also einen Weg finden,
- diese Zeichen zu zeigen.
- Und wir müssen also unterscheiden zwischen der geschweiften Klammer,
- die wir für eBNF verwenden,
- um Wiederholungen auszudrücken.
- Und dem Symbol beginnt eine Menge.
- Das sagt mir hier, beginnt eine Menge.
- Da müssen wir unterscheiden.
- Und dementsprechend würden wir jetzt also unsere eBNF-Beschreibung
- so aussehen, dass das hätten also die Regel für Integer-Set.
- Ich schreibe Ihnen mal hin.
- Integer-Set wäre eben definiert als eine sich öffnende Klammer.
- Und dann natürlich wollen wir auch, dass das symmetisch ist,
- eine sich schließende Klammer.
- Und dann wollen wir eine Integer-List haben.
- Das sei jetzt mal alles kursiv geschrieben.
- Das wäre der Name einer weiteren eBNF-Regel.
- Also wir brauchen hier eine Regel, sei ein N.
- Meine Handschrift ist leider nicht die beste.
- Integer-List müssten wir also auch definieren.
- Und Integer-List wäre jetzt definiert als,
- was würden wir machen?
- Nehmen wir an, wir wählen die Komma-Option.
- Dann besteht eine Integer-List aus einer Integer,
- wie wir sie vorher schon mal definiert haben.
- Und dann eben Wiederholungen einem Komma, das ist das Kommasymbol.
- Und dann wieder einer weiteren,
- dem was unser Integer sagen will.
- Und natürlich, ich will da ja auch die Lehremenge zulassen.
- Also mache ich das optional.
- Also die Integer-List, die zwischen den beiden geschweiften Klammern
- für unsere Menge steht, die kann auch leer sein.
- Da ist eben gar nichts an die Lehremenge.
- Also Sie sehen hier den Unterschied zwischen eben diesem Zeichen.
- Das ist hier, dieses Zeichen muss im Symbol auftreten.
- Und hier die Wiederholung, die ich benutzen möchte,
- um zu sagen, dass meine Menge eben noch weitere Zahlen mehr als eine
- enthalten kann.
- Und hier habe ich die Option, und das habe ich jetzt so gemacht,
- dass wenn ich die Nicht-Wähle, dann habe ich halt,
- bekomme ich halt die Lehremenge.
- Dann bekomme ich die Lehremenge, die ich ja auch als legale Integer-Menge
- zulassen möchte.
- Also Sie sehen hier, kann ich mit diesem EBNF-Bestandteilen auf einfache
- und vielleicht nicht elegant, aber auf einfache Weise die Mengen beschreiben.
- Also wie gesagt, hier haben Sie unten das nochmal eben so ingeschrieben,
- dass Sie es besser lesen können.
- Und die Regel für Integer sind halt die Regeln, die wir eben halt woanders
- gesehen haben.
- Und diese solche Regeln finden Sie immer und überall in Java.
- In den Beschreibungen finden Sie sowas.
- Und jetzt könnten Sie für irgend ein beliebige Menge,
- könnten Sie jetzt zeigen, dass eben diese Menge den entsprechenden
- Regeln entsprechend stellt ist.
- Und dann nehmen wir an, wir hätten jetzt hier die Menge 2 minus 5 und 18.
- Und dann könnten wir jetzt anfangen, eine Tabelle bauen.
- Und könnten eben zeigen, dass eben da ist eine Integer,
- eine Integer besteht aus einem Vorzeichen.
- Und das Vorzeichen kann gewählt werden oder nicht.
- Und dann kommt eine Ziffer.
- Und möglicherweise danach folgend 0, 1, 2, 3 Wiederholungen und so weiter.
- Und das wird natürlich sehr schnell, sehr langweilig.
- Und darum, was wir normalerweise machen, wir helfen uns mit Lemmas.
- Wir sagen also, ein Lämmer wäre 2 ist eine Integer.
- Das heißt, ich sage damit, dass ich mit der EBNF-Beschreibung von Integer,
- die ich ja eben auch mitbewendet habe, kann ich zeigen, dass 2 eine Integer ist.
- Und minus 5 kann ich zeigen, ist auch eine Integer und 10 ist eine Integer.
- Wenn ich das habe, dann kann ich meine Tabelle wesentlich vereinfachen.
- Ich will also zeigen, dass diese Menge der Regel Integer-Set entsprechend gebildet ist.
- Wir fangen also an mit der EBNF-Regel, die ich da gezeigt habe.
- Das ist der Anfang jeder Tabelle.
- Das sehe ich besteht aus dem Symbol.
- Hier sehen Sie den Kasten, damit wir wirklich meinen zeigen.
- Wir meinen ...
- Bitte nicht.
- Sie sehen wir dieses Zeichen, dass die Mengenbegrenzung anzeigt.
- Dann haben wir optional die Integer-List und das andere Zeichen.
- Und dann ersetzen wir Integer-Set durch die rechte Handseite von Integer-Set.
- Und das war eben hier dieser Ausdruck.
- Und jetzt gehen wir hin und entscheiden uns, dass wir die Option nehmen.
- Wir nehmen die Option, dann ersetzen wir die Integer-List durch das,
- was wir für Integer-List gezeigt hatten.
- Das war also Integer, gefolgt von 0, 1, 2, 3 Wiederholungen.
- Und jede Wiederholung ist ein Komma, gefolgt von einer Integer.
- Und wir wissen halt jetzt, dass wir zwei Wiederholungen brauchen.
- Also haben wir hier Integer-Comma, Integer-Comma, Integer.
- Und dann sehen wir nach dem Lämmer, dass ich eben zeigte, dass zwei eine Integer ist,
- minus fünf ist eine Integer und 18 ist eine Integer.
- Und die Tatsache, dass wir zwei brauchen, ja, das ist halt die bisschen,
- das können wir sehen, weil wir wissen ja, wie viele Zahlen da sind.
- Da gibt es später andere Möglichkeiten, das besser genauer zu machen.
- Aber uns interessiert ja nur, wie das Ganze überhaupt funktioniert.
- Ja, und das könnten wir auch genauso mit einem Ableitungsbaum zeigen,
- dass wir keinen Unterschied, könnten wir auch so machen.
- Ich will jetzt nicht noch mal schreiben, da sehen Sie,
- können wir genauso in einem Baum zeigen.
- Also diese beiden Methoden, die ich Ihnen vorher zeigte, Baum oder Tabelle,
- können beide gleich benutzt werden, um zu zeigen,
- dass das eine legale Integer-Set ist, ja.
- Also heißt Lämmer einsetzen.
- Ja, ein Lämmer einsetzen heißt, ich ersprare mir die Mühe.
- Ich erspare mir die Mühe, ich weiß einfach, das ist eine Integer, ja.
- Und daher kann ich das Lämmer da einsetzen, ja.
- Und genauso ich weiß aus dem vorherigen, dass minus fünf eine Integer ist
- und daher brauche ich hier in der Tabelle nicht die einzelnen Schritte zu haben,
- die es da gibt.
- So, ja, so.
- So, jetzt haben wir uns unterhalten über die Equivalenz von EBNF-Beschreibungen.
- Und jetzt haben wir hier eine EBNF-Beschreibung, um diese Mengen zu beschreiben.
- Und jetzt kommt natürlich die Frage, die Sie auch irgendwann mal kennengelernt haben,
- vielleicht schon, ja.
- Wann sind denn zwei Mengen equivalent?
- Zwei Mengen sind equivalent, wenn sie dieselben Elemente enthalten.
- Und da gilt noch ein paar weitere, sagen wir mal, genauer Clarifizierungen, ja.
- Mehrfachnennungen sind nicht wichtig.
- Das heißt, diese Menge hier, eins, zwei, drei, drei, und dann nochmal eine zwei und hier hinten, ja.
- Dass diese Menge ist equivalent zur Menge, eins, zwei, drei.
- Weil beim Mengen von Zahlen, da zählt eben halt, da können dieselbe Zahl wiederholt auftreten, ja.
- Das hat keine Bedeutung bezüglich der Zusammensetzung der Menge, ja.
- Wenn wir als Menge EBNF-Regeln haben, sie könnten dieselbe Regel mehrfach hinschreiben.
- Aber wer würde sich denn sowas antun, ja.
- Aber sie dürfen nicht, für Sie geht es noch, okay,
- Sie dürfen aber nicht hingehen und die unterschiedliche Regeln mit demselben Namen auf der linken Seite haben, ja.
- Das ist natürlich nicht so, nicht erlaubt, ja.
- Und dann haben wir weiterhin, dass die Reihenfolge unwichtig ist, ja.
- Also eins, zwei, drei ist das Gleiche wie drei, zwei, eins, ja.
- Das macht keinen Unterschied, ja.
- Jetzt um jetzt die Equivalent von Mengen zu diskutieren, ja.
- Da würden Sie jetzt gucken, ob die, würden Sie diese Mengen in eine kanonische Darstellung bringen, ja.
- Sie würden also kanonisch heiß in Übereinstimmung mit irgendwelchen Regeln, ja.
- Und das würde man so machen, dass man sagt, die Zahlen der Menge sind geordnet von der kleinsten, ganz links zur größten, ganz rechts, ja.
- So, und wenn ich das habe, ja, dann kann ich zwei Mengen gleich, kann ich eben zeigen oder checken, ob die beiden Mengen Equivalent sind,
- weil dann muss ich nur gucken, ob die Zahlen da in der richtigen Reihenfolge erscheinen.
- So, und jetzt haben wir das interessante Beobachtung.
- Die kanonische Darstellung, die kann ich nicht durch die EBNF-Regeln erzwingen.
- Die EBNF-Regeln sagen mir nur, wie so eine Zahl Menge aussehen muss.
- Die sagen mir nichts über die Reihenfolge, die eingehalten werden muss.
- Sie sagen nichts über den Wert, den diese Integers vielleicht haben.
- Da sagen die nichts zu, ja.
- Die gehen einfach nur hin, die EBNF-Regel sagt, so sieht eine Menge aus, ja.
- Also, das ist auch der Grund, warum in unseren EBNF-Beschreibungen 007 dasselbe war, eben eine legale Zahl war,
- weil wir eben nichts über die Bedeutung sagen würden.
- Und wenn wir jetzt eben eine Situation wollen, wo 007 illegal ist, aber 7 legal ist,
- dann bräuchten wir dafür eine andere Beschreibung, als wir sie bisher hatten, ja.
- Dann würden wir eben halt die Null besonders behandeln müssen.
- Und ein Weg, das zu machen, wäre vielleicht diese Beschreibung, wo wir die Null rausnehmen, ja.
- Und dann sagen die erste Ziffer muss eine Ziffer sein, die nicht Null ist, ja.
- Und dann kann ich sicherstellen, dass eben 007 keine legale Ziffer mehr wäre,
- weil die erste Ziffer muss eine Ziffer sein, die nicht legal ist.
- So, ich würde es aber so machen, dann ist auf einmal Null kein gültiges Symbol, ja.
- Weil Sie sehen, die erste Ziffer muss ja nicht, muss ja eben ungleich Null sein.
- Also, müssen wir uns überlegen, was machen wir jetzt?
- Also, würden müssen wir vielleicht unsere Beschreibung noch etwas ändern,
- indem wir zum Beispiel explizit die Null als eine Option hinzufügen, ja.
- Wir sagen, Auswahl zwischen Null, das wäre dann nur die Ziffer Null,
- oder eben einer Ziffer, wie wir sie bisher kennengelernt haben,
- die dann mit einer nicht Null-Ziffer als ersten Ziffer anfängt.
- Und wenn wir das so machen, dann gibt es eben keinen Plus Null und keinen Minus Null,
- und das war ja auch im Backchannel wiederholt gewünscht worden,
- und daher erfüllen wir dann auch diesen Wunsch, ja.
- Also, wir sehen mit diesen E-BNF-Beschreibungen,
- einfach können wir eine ganze Menge machen
- und können auch eben interessanterweise diskutieren,
- dass die Bedeutung nicht mit dabei ist.
- So, jetzt können wir auch ein bisschen weitermachen.
- Wir können die Regeln auch grafisch darstellen,
- wo wir dann einen Pfad durch den Grafen wählen würden,
- um zu zeigen, dass ein Zeichen dem entspricht,
- das für manche Leute einfacher zu erkennen, als die Tabelle, ja.
- Also, ein Pfad durch den Grafen entspricht einem legalen Symbol,
- wo wir links anfangen, durch den Grafen durchgehen, ja.
- Und so kann man leicht erkennen,
- ob ein Zeichen in einer bestimmten Reihenfolge auftreten muss.
- Also, wenn wir zum Beispiel Aufreihung ABCD haben,
- dann könnten wir eben als Grafen das so zeigen,
- dass wir eben die Symbol A gefolgt von Symbol,
- gefolgt von Symbol, gefolgt von Symbol eben entsprechend beschreiben, ja.
- Oder wenn wir als die Option A als Graf darstellen wollen,
- oder die Wiederholung, als Graf, eine Wiederholung
- von irgendwas als Graf darstellen wollten,
- dann würden wir das so machen, dass wir eben halt hier sagen, okay,
- es gibt hier die Möglichkeit, entweder,
- durchzugehen, das wäre das eben die nicht gewählte Option,
- das wäre der Epsilon Pfad, oder wir nehmen die,
- oder hier, das wären Null-Wiederholungen,
- oder wir gehen hier ein oder mehrere Male durch diese Schleife durch
- und wiederholen da, was immer das A uns da sagt, ja.
- Und das können wir auch machen mit der Auswahl.
- Die Auswahl würde einfach dann nur unsere Leiter sein,
- auf der wir verschiedene Symbole da haben, ja.
- Und dann eben ein Fahrt durch den Graf,
- entspricht einem legalen Symbol, wenn wir da,
- wenn wir einen Punkt kommen, können wir eine Kante nehmen,
- und wenn wir dann eine Abzweigung haben,
- können wir auch eine dieser Abzweigungen wählen, ja.
- Und das ist halt der Weg, wie wir das machen können.
- Und jetzt kommen wir noch zum Schluss dazu.
- Eben, wofür brauchen wir diese runden Klammern, ja.
- Wir hatten die gebraucht, weil war nicht klar,
- ob wenn wir Ab/C schreiben,
- meinen wir damit A, gefolgt von B oder C,
- oder A, gefolgt von B,
- oder stattdessen die C, ja.
- Und die Konvention ist,
- dass wir meinen, wenn wir Ab/C schreiben,
- dass wir eben A, gefolgt von B
- oder eben stattdessen C nehmen, ja.
- Wir können die Klammern verwenden,
- um Unklarheiten zu vermeiden.
- In anderen Systemen würden Sie sagen,
- dass die Aufreihung stärker bindet als die Stroh.
- Also das, wie gesagt, so kann man sich auch darstellen,
- wie die Symbole da sind.
- So, das haben wir für heute.
- Ich wünsche Ihnen ein produktives Wochenende.
- Und wir sehen uns dann am Dienstag.
- (Applaus)
+
+[00:00:00.000 --> 00:00:10.000]   Ich hoffe, dass Audio funktioniert. Wenn es für Sie zu laut oder zu leise ist, schreiben Sie es in den Livestream, in den Backchannel.
+[00:00:10.000 --> 00:00:17.000]   Und wir versuchen das dann anzupassen, dass die Anlage in den Sommerferien überholt, verbessert und so weiter geworden ist.
+[00:00:17.000 --> 00:00:21.000]   Und das müssen wir ausprobieren, wie sie jetzt wirklich für uns am besten ist.
+[00:00:21.000 --> 00:00:28.000]   Wir hatten letzte Vorlesung am Dienstag, angefangen uns mit eBNF zu beschäftigen.
+[00:00:28.000 --> 00:00:37.000]   Und ja, warum machen wir das? Wir machen das, um einen präzisen Weg zu haben, zu beschreiben, was für Symbole wir zulassen.
+[00:00:37.000 --> 00:00:48.000]   Und wir hatten bisher als Symbole eben zahlnahes Beispiel, wenn wir auch weiter so einfache Beispiele haben oder einfache Strings wie die Namen der Räume.
+[00:00:48.000 --> 00:00:54.000]   Aber das können wir erweitern und können alle anderen Sachen auch präzise beschreiben, wenn das mal nötig sein sollte.
+[00:00:54.000 --> 00:01:00.000]   Also, so zur Erinnerung, so eine eBNF-Regel, die sieht so aus, da gibt es eine linke Seite, eine rechte Seite.
+[00:01:00.000 --> 00:01:07.000]   Und dazwischen dieser Pfeil von rechts nach links, der ausgesprochen wird, als ist definiert als.
+[00:01:07.000 --> 00:01:13.000]   Links haben wir eben ein einziges Wort, das ist klein und kursiv geschrieben.
+[00:01:13.000 --> 00:01:16.000]   Und das gibt den Namen dieser eBNF-Regel an.
+[00:01:16.000 --> 00:01:21.000]   Und auf der rechten Seite haben wir verschiedene Möglichkeiten, da könnte ein einzelnes Zeichen stehen.
+[00:01:21.000 --> 00:01:29.000]   Dann meinen wir dieses Zeichen, zum Beispiel so eine Ziffer 1 oder den Buchstaben A oder den Buchstaben M oder so was.
+[00:01:29.000 --> 00:01:34.000]   Dann könnte da stehen wieder der Name einer eBNF-Regel.
+[00:01:34.000 --> 00:01:40.000]   Das würde also eine Regel sein, für die irgendwo anders diese selbe Name irgendwo auf der linken Seite erscheint.
+[00:01:40.000 --> 00:01:50.000]   Und natürlich, der ist dann auch kursiv und klein geschrieben, damit wir unterscheiden können, ob wir den Buchstaben A oder eben den Namen A haben.
+[00:01:50.000 --> 00:01:59.000]   Und dann eben Kombination der Kontrollelemente, die ich kurz angefangen hatte zu erklären und über die wir jetzt heute ein bisschen mehr erfahren werden.
+[00:01:59.000 --> 00:02:05.000]   Also diese vier Kontrollmöglichkeiten, Aufreihung und Entscheidung hatten wir schon, das wiederhole ich noch kurz.
+[00:02:05.000 --> 00:02:08.000]   Und dann geht es heute weiter mit Wiederholung.
+[00:02:08.000 --> 00:02:15.000]   Und dann kommen wir danach auch andere Aspekte zu sprechen und die Rekursionen machen wir wahrscheinlich erst am Dienstag.
+[00:02:15.000 --> 00:02:20.000]   So, also kombinieren mit Auswahl und Optionen. Wir haben da eine Menge an Alternativen.
+[00:02:20.000 --> 00:02:31.000]   Diese Alternativen könnten eben wieder sein ein Zeichen oder irgendetwas ein Name, eine andere Regel oder so weiter.
+[00:02:31.000 --> 00:02:37.000]   Und natürlich wieder alles Kombinationen von dem, was ich damit machen kann.
+[00:02:37.000 --> 00:02:43.000]   Und diese Alternativen werden durch diesen senkrechten Strich, Stroke, getrennt.
+[00:02:43.000 --> 00:02:46.000]   Und da hat ich die rein vorgespielt, natürlich keine Rolle.
+[00:02:46.000 --> 00:02:55.000]   Eine dieser Alternativen kann gewählt werden oder muss gewählt werden, wenn ich einen Symbol erzeugen möchte.
+[00:02:55.000 --> 00:03:06.000]   Das ist also, diese Alternative erlaubt es uns eben halt, das kann eben zur Zeit nur ein Zeichen sein oder eine Aufreihung.
+[00:03:06.000 --> 00:03:13.000]   Hatten wir auch schon gesehen, hier unten haben wir die Aufreihung als Beispiel, drei Zeichen hintereinander oder auch ein einzelnes Zeichen.
+[00:03:13.000 --> 00:03:17.000]   Das können wir machen, wie es für uns am besten ist.
+[00:03:17.000 --> 00:03:27.000]   Okay, dann haben wir die Möglichkeit in Eckigenklammern anzuzeigen, dass wir etwas haben oder nicht haben wollen.
+[00:03:27.000 --> 00:03:35.000]   Dieses Square Brackets, die sagen, was immer da drin steht, muss auch wieder den Regeln für eine rechte Seite genügen.
+[00:03:35.000 --> 00:03:39.000]   Also kann wieder sein ein Zeichen, eine Aufreihung und und und.
+[00:03:39.000 --> 00:03:43.000]   Und wir können aber dieses wählen oder nicht wählen, ganz wie wir wollen.
+[00:03:43.000 --> 00:03:45.000]   Das ist optional.
+[00:03:45.000 --> 00:03:53.000]   Also hier habe ich als einfaches Beispiel, drei, eine Aufreihung von zwei Zeichen und einer Option.
+[00:03:53.000 --> 00:03:57.000]   Und diese Option können wir nehmen oder nicht nehmen.
+[00:03:57.000 --> 00:04:05.000]   Das heißt, wir könnten also hier die initialen TG oder TRG verwenden, diese Weise beschreiben oder erzeugen.
+[00:04:05.000 --> 00:04:17.000]   Und für den Raum könnten wir eben sagen, wir haben entweder den MLD28 oder den MLDE12.
+[00:04:17.000 --> 00:04:19.000]   Und Sie sehen, ich habe hier diese Klammer verwendet.
+[00:04:19.000 --> 00:04:29.000]   Das ist nicht ganz Standard, aber machen viele, um uns das Leben zu erleichtern, weil so wissen wir, aha, das hier gehört zusammen und das hier gehört zusammen.
+[00:04:29.000 --> 00:04:37.000]   Und das hier ist die Auswahl, die Option. Es ist also entweder dieser oder dieser, dieses Symbol, das wir da nehmen.
+[00:04:37.000 --> 00:04:44.000]   Ja, und natürlich können sie auch benutzen, um Zahlen, ein zifrige Zahl oder sowas zu definieren, ist alles kein Problem.
+[00:04:44.000 --> 00:04:50.000]   So, und sehr oft finden Sie die Auswahl und die Option kombiniert.
+[00:04:50.000 --> 00:04:58.000]   Man kann das auch schrittweise machen, aber es geht halt oft auch so, dass wir hier wie hier sagen wir, wir wollen ein Vorzeichen.
+[00:04:58.000 --> 00:05:06.000]   Optional, das heißt es kann ja plus oder minus sein, aber eins von beiden nur, aber wir müssen gar keins haben.
+[00:05:06.000 --> 00:05:16.000]   Und dann ist, wenn wir jetzt zeigen wollen, wie wir eben, wir haben hier diese Zahl, das sei jetzt kursiv, und wir wollen zeigen, dass sich daraus plus eins,
+[00:05:16.000 --> 00:05:26.000]   dass das durch diese Zahlregel, dass die diesen Symbol plus eins produzieren kann, dann müsste man sehen, ah, okay,
+[00:05:26.000 --> 00:05:35.000]   eine Zahl ist Vorzeichen und Digit, Vorzeichen haben wir gesehen, ist Optional plus oder minus, ah, wir nehmen mal das plus, da haben wir es ja, ja.
+[00:05:35.000 --> 00:05:40.000]   Und dann eben Digit ist eins von denen, haben wir die eins, ist also auch okay, ja.
+[00:05:40.000 --> 00:05:47.000]   Und wenn wir jetzt sagen würden, wie würde es aussehen, wenn wir zeigen wollten, dass Zahl auch hier die vier zeigen kann, ja,
+[00:05:47.000 --> 00:05:53.000]   dann würden wir sagen, okay, Zahl ist immer noch Vorzeichen oder Digit, aber Vorzeichen ist optional, da ist ja gar nichts,
+[00:05:53.000 --> 00:06:01.000]   wir können auch das ignorieren, ja. Und um das leichter auszudrücken, benutzen wir dieses Epsilon, das Sie vielleicht auch schon mal woanders gesehen haben,
+[00:06:01.000 --> 00:06:10.000]   als Zeichen für die leere Zeichenfolge, das heißt also hier, da ist es verschwindet, das ist nicht wirklich auftretend, ja.
+[00:06:10.000 --> 00:06:18.000]   Also wenn wir jetzt so was mit dem Epsilon arbeiten wollen, könnten wir statt eben Optionalforzeichen plus oder minus,
+[00:06:18.000 --> 00:06:29.000]   dann könnten wir sagen, wir haben plus, minus oder Epsilon und das Epsilon verschwindet dann einfach, ja, ist einfach ein Weg für uns nochmal zu sehen, ah, da passiert eigentlich nichts,
+[00:06:29.000 --> 00:06:37.000]   das ist besser und deutlicher, als wenn wir da nur leeren Platz haben und sonst nichts dabei haben. So.
+[00:06:37.000 --> 00:06:45.000]   Und dann haben wir jetzt, wie sehen Sie hier, hat jemand eine weitere Regel für den Namen, die erste, die ist das, was wir vielleicht schon mal gesehen haben,
+[00:06:45.000 --> 00:06:57.000]   eine Zahl besteht aus einer Digit gefolgt von optional einer zweiten Digit, ja. Und dann hat er gesagt, hm, eigentlich bin ich mir nicht sicher, ob ich eine Digit will oder nicht
+[00:06:57.000 --> 00:07:06.000]   und hat dann geschrieben, okay, ich möchte hier eine Digit optional und das mache ich als Option, ja. Und ja, das können Sie machen, ja.
+[00:07:06.000 --> 00:07:18.000]   Das ist ein und dasselbe, ja, weil Sie sagen halt hier, okay, eine Digit muss, eine Digit kann optional von einer weiteren Digit gefolgt sein, das ist die erste Regel.
+[00:07:18.000 --> 00:07:30.000]   Und für die zweite Regel sagen Sie, okay, eine Digit muss gefolgt sein, optional mit irgendwas und dieses, wenn ich es nehme, erlaubt es mir zu entscheiden, ob ich eine Digit nehme oder nicht, ja.
+[00:07:30.000 --> 00:07:41.000]   Also das ist, es ist vielleicht unelegant, ja, aber es ist immer noch richtig, ja. Es ist einfach nicht das, was wir machen würden, wenn wir uns Arbeit sparen wollen,
+[00:07:41.000 --> 00:07:50.000]   aber es sagt nichts anderes als hier in dieser, zwischen diesen eckigen Klammern steht wieder ein Ausdruck, der eine rechte Seite sein kann
+[00:07:50.000 --> 00:07:57.000]   und eben eine Option ist eine Möglichkeit für eine rechte Seite und daher kann die da auftreten.
+[00:07:57.000 --> 00:08:11.000]   So, jetzt interessant für das Ganze natürlich, wenn wir mehr machen können als nur Zeichen aneinanderreihen oder Zeichen eben optional auswählen oder nicht auswählen.
+[00:08:11.000 --> 00:08:15.000]   Und darum gibt es auch die Möglichkeit eine Wiederholung auszudrücken.
+[00:08:15.000 --> 00:08:25.000]   Und das geschieht so, dass wir den zu wiederholenden Ausdruck zwischen zwei geschweifte Klammern setzen, das sind diese Curly Braces, ja.
+[00:08:25.000 --> 00:08:34.000]   Und das heißt, dass diese, was immer in diesen, zwischen diesen Klammern steht, kann 0, 1 und so weiter mal wiederholt werden.
+[00:08:34.000 --> 00:08:39.000]   Es gibt keine Obergrenze, wie oft das wiederholt werden kann.
+[00:08:39.000 --> 00:08:43.000]   Und das Wichtige ist, es kann eben auch 0 mal wiederholt werden.
+[00:08:43.000 --> 00:08:47.000]   Und 0 mal wiederholt werden heißt weggelassen werden, ja.
+[00:08:47.000 --> 00:08:54.000]   Also diese Curly Braces sagen uns hier, das kann 0 mal genommen werden, also ignoriert werden
+[00:08:54.000 --> 00:09:01.000]   oder kann einmal oder zweimal oder dreimal und so weiter wiederholt werden, ja.
+[00:09:01.000 --> 00:09:12.000]   Das ist wichtig, dass wir sehen, dass eben 0 ist eine mögliche Anzahl an Wiederholungen, mit der wir es hier zu tun haben können, ja.
+[00:09:12.000 --> 00:09:21.000]   Also wenn ich hier diese Dittils wieder habe, ja, dann könnte ich jetzt diejenigen zufrieden stellen, die sagten, ihre Zahlen hatten ja waren ja nur zwei Zifflig.
+[00:09:21.000 --> 00:09:25.000]   Das ist ja wirklich nicht gut, ja.
+[00:09:25.000 --> 00:09:27.000]   Okay, haben Sie recht.
+[00:09:27.000 --> 00:09:31.000]   Wir könnten jetzt eine Folge, eine Regel für eine Folge definieren.
+[00:09:31.000 --> 00:09:42.000]   Und die Regel ist definiert, für Folge ist definiert, als eine Ziffer nach dieser Digitregel, gefolgt von 0, 1, 2, 3 und so weiter,
+[00:09:42.000 --> 00:09:47.000]   möglichen Wiederholungen dieser Digitregel.
+[00:09:47.000 --> 00:09:59.000]   Das heißt, auf diese Weise könnten wir eben die Ziffer 0, die Ziffer 1, natürlich auch die Ziffer 1, 0, auch die Ziffer 7, 4, 5, irgendwas,
+[00:09:59.000 --> 00:10:03.000]   könnten wir da, könnten wir diese Weise produzieren.
+[00:10:03.000 --> 00:10:14.000]   Also diese kleine einfache Regel sagt uns eben, alle Zahlen, die wir hier zulassen, können 0, können so viel, können so aussehen, ja.
+[00:10:14.000 --> 00:10:21.000]   Und hier das erste Mal habe ich eben 0 Wiederholungen, 0 Wiederholungen, eine Wiederholung, ja.
+[00:10:21.000 --> 00:10:26.000]   Und hier, ja, neun Wiederholungen, ja, so, was immer ich da haben wollte, ja.
+[00:10:26.000 --> 00:10:37.000]   Also das ist der Weg, wie ich ausdrücke, dass ich etwas wiederholen möchte und etwas wieder machen.
+[00:10:37.000 --> 00:10:46.000]   Machen wir das noch da rein.
+[00:10:46.000 --> 00:10:59.000]   Also das ist wirklich, das ist vielleicht etwas, am Anfang etwas überraschend, dass man auch 0 mal wiederholen darf, aber ja, so.
+[00:10:59.000 --> 00:11:03.000]   Okay, haben wir jetzt also paar Beispiele, um das zu sehen.
+[00:11:03.000 --> 00:11:07.000]   So, die erste Beispiel wäre eine Beschreibung für Integers.
+[00:11:07.000 --> 00:11:17.000]   Ich habe verschiedene Integer-Beschreibungen im Laufe des heutigen Tages und ich benutze da oben diese Durchnummerierung, um die voneinander zu unterscheiden.
+[00:11:17.000 --> 00:11:24.000]   Ja, und hier haben wir wieder Digit von 0 bis 9 und Integer haben wir jetzt hier beschrieben, wie jetzt, eine Aufreihung, ja.
+[00:11:24.000 --> 00:11:26.000]   Hier ist eine Aufreihung, ja.
+[00:11:26.000 --> 00:11:32.000]   Wir haben hier drei Blöcke, also drei Teile, ja.
+[00:11:32.000 --> 00:11:41.000]   Und jeder dieser blau unterstrichenden, also Blöcke, wäre im Grunde genommen eine legale rechte Seite, ja.
+[00:11:41.000 --> 00:11:54.000]   Die Regeln für die rechte Seite eben sind hier erfüllt, weil das hier ist eine einfache, eine einfache, ein einfaches Symbol, ein einfaches Zeichen, ja.
+[00:11:54.000 --> 00:12:01.000]   Hier haben wir ein Zeichen, hier haben wir eine Wiederholung.
+[00:12:01.000 --> 00:12:09.000]   Und die Wiederholung besteht eben aus diesem Klammern hier, das sagt uns, dass wir wiederholt wird.
+[00:12:09.000 --> 00:12:14.000]   Und dann in der Wiederholung selber haben wir einen Namen, den Namen Digit, ja.
+[00:12:14.000 --> 00:12:21.000]   Und hier haben wir, ich habe mich falsch etwas verschrieben, muss ich mir besser richtig machen.
+[00:12:21.000 --> 00:12:28.000]   Also, ob wir nicht sagen Zeichen, sondern das war ja eigentlich ein Symbol, ein anderer Name, so.
+[00:12:28.000 --> 00:12:31.000]   Also hier haben wir einen Namen, ja.
+[00:12:31.000 --> 00:12:34.000]   Hier haben wir eine Wiederholung, ist auch innen drin einen Namen.
+[00:12:34.000 --> 00:12:44.000]   Und dann haben wir hier eine Auswahloption, Option.
+[00:12:44.000 --> 00:12:50.000]   Und eben die Option besteht zwischen, jetzt kommen die Zeichen, die Option besteht zwischen zwei Zeichen.
+[00:12:50.000 --> 00:12:55.000]   Einen Zeichen hier und dem anderen Zeichen, das ist das Pluszeichen.
+[00:12:55.000 --> 00:13:01.000]   Das andere ist das Minuszeichen, das sind die beiden Zeichen, die wir da haben, ja.
+[00:13:01.000 --> 00:13:05.000]   Und wir müssen eben eine Auswahl treffen, wenn wir das machen wollen.
+[00:13:05.000 --> 00:13:10.000]   Und das heißt, wir haben hier die Auswahl zwischen diesen beiden Zeichen, ja.
+[00:13:10.000 --> 00:13:17.000]   Und wir können optional uns entscheiden, ob wir diese Auswahl treffen wollen oder nicht, ja.
+[00:13:17.000 --> 00:13:27.000]   So, und wenn kann man auch Folge, Digit Folge schreiben, ja, können Sie auch, aber da kommen wir nachher noch drauf, ja.
+[00:13:27.000 --> 00:13:37.000]   Aber zurzeit eben gibt es, Sie können jeden legalen Namen für irgendwo definiertes eine Regel verwenden,
+[00:13:37.000 --> 00:13:40.000]   aber da kommen wir nachher noch drauf, was das denn hieße.
+[00:13:40.000 --> 00:13:48.000]   Ihr Kollege oder Ihre Kollegin fragt eben, ob wir nicht auch den Namen, den wir auf der linken Seite haben, auf der rechten Seite verwenden können.
+[00:13:48.000 --> 00:13:54.000]   Und die Antwort ist, können wir auch, aber machen wir es erst mal unser Leben nicht zu kompliziert, machen wir es am Anfang mal nicht.
+[00:13:54.000 --> 00:14:01.000]   So, und die, wo finden wir die Präsentationsfolie auf dem Netz?
+[00:14:01.000 --> 00:14:08.000]   Ja, da müssen Sie, da tut mir leid, also da muss ich gucken, was da, also die sollten eigentlich verfügbar sein.
+[00:14:08.000 --> 00:14:16.000]   Vielleicht ist aus irgendwelchen Gründen da auch noch was nicht ganz so gelaufen, wie es sein sollte, da muss ich mal nachgucken, ja.
+[00:14:16.000 --> 00:14:22.000]   Das kann ich jetzt, ich gucke in der Pause nach, ob das vielleicht irgendwie aus irgendwelchen anderen Gründen blockiert ist,
+[00:14:22.000 --> 00:14:26.000]   aber an sich sollten Sie die Folien sehen können, ja.
+[00:14:26.000 --> 00:14:31.000]   So, da kommen noch paar mehr Fragen über andere Alternativen, die gucken wir uns doch mal nacheinander an.
+[00:14:31.000 --> 00:14:36.000]   Jetzt machen wir erstmal die einfachen Sachen, was wir hier haben und dann sehen wir, was für andere Optionen es da gibt.
+[00:14:36.000 --> 00:14:47.000]   Also wenn wir zum Beispiel hier, da mal plus 711 hätten, ja, das was wir würden, wie würden wir argumentieren können, dass das,
+[00:14:47.000 --> 00:14:57.000]   dass das ein, ein, ein Symbol ist oder eine Folge von Symbolen ist, die durch diese Integerregeln bestimmt wird.
+[00:14:57.000 --> 00:15:06.000]   Naja, wir sehen hier, wurde die Auswahl getroffen, ja, und optional, also die Option wurde genommen und dann wurde die Auswahl getroffen
+[00:15:06.000 --> 00:15:09.000]   und die Auswahl war dann für das Plus.
+[00:15:09.000 --> 00:15:14.000]   Und dann hatten wir eine Digit, die brauchten wir unbedingt, da haben wir halt die 7 genommen, eine Digit, ja.
+[00:15:14.000 --> 00:15:19.000]   Und dann haben wir halt gesehen, dass hier zwei Wiederholungen sind, ja.
+[00:15:19.000 --> 00:15:26.000]   So, das ist so ein bisschen tricky, weil die zwei Wiederholungen sind hier zufälligerweise dieselbe Ziffer.
+[00:15:26.000 --> 00:15:32.000]   Ich wurde jetzt letzte Woche, äh, letzte Folie schon gefragt, ja, wie geht das dann mit eBNF weiter in den Kompilereien, ja.
+[00:15:32.000 --> 00:15:40.000]   Gute Frage, nur wissen Sie, das können wir noch nicht ganz behandeln, weil wir gehen jetzt mal davon aus, dass wir einfach wissen, dass zwei Wiederholungen ausreichen.
+[00:15:40.000 --> 00:15:48.000]   Wenn wir das später mit einem, in einem Programm automatisch machen wollen, ist das bisschen schwieriger, weil wir wissen ja vielleicht nicht am Anfang,
+[00:15:48.000 --> 00:15:53.000]   dass der, wissen wir am Anfang nicht sofort, wie viele Wiederholungen da sind.
+[00:15:53.000 --> 00:16:03.000]   Aber hier belegen wir mal, gehen wir davon aus, dass die, dass wir einfach wissen, wie viele Wiederholungen dafür nötig sind und dann arbeiten wir dem entsprechend.
+[00:16:03.000 --> 00:16:12.000]   So, also wenn Sie sich das angucken und überlegen, was beschreibt diese eBNF Beschreibung, ja, die beschreibt einfach die ganzen Zahlen, ja.
+[00:16:12.000 --> 00:16:21.000]   Und das könnten wir natürlich auch umgangssprachlich machen und sagen, eine Digit ist definiert, ist eines der Zeichen oder der Buchstaben von 0 bis 9
+[00:16:21.000 --> 00:16:30.000]   und dann könnten wir sagen, eine Integers definiert als eine Folge von drei Elementen, eben ein optionales Vorzeichen,
+[00:16:30.000 --> 00:16:39.000]   wenn vorhanden muss es plus oder minus sein, ja, eine Digit immer gefolgt und eine Wiederholung von null oder mehr Auftreten von Digit,
+[00:16:39.000 --> 00:16:48.000]   wobei jede Digit eine der Alternativen ist von hier oben und die voneinander unabhängig gewählt werden können, ja.
+[00:16:48.000 --> 00:17:00.000]   So, also das ist die, könnten wir umgangssprachlich sagen und jetzt sehen Sie vielleicht, dass so eine Beschreibung, wie ich Sie hier habe,
+[00:17:00.000 --> 00:17:07.000]   den Vorteil hat, dass sie wesentlich kompakter ist und auch wesentlich weniger Diskussionsstoff lässt, ja.
+[00:17:07.000 --> 00:17:13.000]   So, und diese Beschreibungen werden uns jetzt erlauben, weitere Aspekte zu diskutieren.
+[00:17:13.000 --> 00:17:25.000]   So, also nochmal so zur Erinnerung, dass die Beschreibung besteht aus einer Menge von EBNF-Regeln und daher ist die Reihenfolge der Regeln unwichtig
+[00:17:25.000 --> 00:17:30.000]   und zum Weiteren, die Namen, die Sie für diese Regeln verwenden, sind auch unwichtig.
+[00:17:30.000 --> 00:17:39.000]   Ja, ich habe hier eine Beschreibung Integers für I2 und die verwendet eben diese Beschreibung, andere Reihenfolge,
+[00:17:39.000 --> 00:17:47.000]   was ich vorgezeigt hatte, oder ich habe hier eine Beschreibung I3, die benutzt andere Namen, Zahl und Ziffer, Stadt Integer und Digit, ja.
+[00:17:47.000 --> 00:17:56.000]   Und das sind beides, in beiden Fällen werden dieselben Symbole oder dieselben Symbol folgen, auf diese Weise definiert.
+[00:17:56.000 --> 00:18:00.000]   Also die Namen und die Reihenfolge der Regeln sind nicht wichtig.
+[00:18:00.000 --> 00:18:08.000]   Es gibt die Konvention, ja, dass man die Regeln von einfach nach komplex sortiert.
+[00:18:08.000 --> 00:18:16.000]   Also, dass man mit den einfachen Regeln anfängt, fängt so wie ich das eben auf der letzten Slide gezeigt hatte, ja, eben die Digital-Zweide,
+[00:18:16.000 --> 00:18:21.000]   die sind die einfacheren Regeln und das wird dann die komplizierteren Regeln danach kommen.
+[00:18:21.000 --> 00:18:28.000]   Und das dann der Name der letzten Regel, ja, der Name der letzten Regel ist der Name der Beschreibung.
+[00:18:28.000 --> 00:18:37.000]   Also, das ist jetzt hier weniger, hier kann man es nochmal, in dem Beispiel, was ich davor hatte, kommt man das klarer sehen, ja.
+[00:18:37.000 --> 00:18:45.000]   Da war eben die Regel für Integer, war die letzte Regel, das sagen wir, das ist die EBNF-Beschreibung für Integer, ja.
+[00:18:45.000 --> 00:18:56.000]   Das ist halt das, was ich da, was wir machen, um die Diskussion zu vereinfachen.
+[00:18:56.000 --> 00:19:02.000]   Und natürlich für jeden Namen muss es eine Regel geben und natürlich nur eine Regel.
+[00:19:02.000 --> 00:19:10.000]   Wenn wir in der Menge zweimal, zwei Regeln mit demselben Namen hätten, dann hätten wir ein Problem und das ist nicht, das wäre nicht gut.
+[00:19:10.000 --> 00:19:15.000]   Also, das eben ist, wir versuchen da, uns das Leben so einfach wie möglich zu machen.
+[00:19:15.000 --> 00:19:23.000]   Also, hatte gesagt, es gibt diese vier elementaren Ausdrucksmöglichkeiten und davon haben wir jetzt drei gesehen,
+[00:19:23.000 --> 00:19:27.000]   die Aufreihung, die Auswahl, Option und die Wiederholung.
+[00:19:27.000 --> 00:19:39.000]   Und Sie haben jetzt auch, hoffe ich, so ein intuitives Gefühl, wie man so eine EBNF-Beschreibung sich angucken kann, wie man die lesen kann und was man, was sie eben bedeutet.
+[00:19:39.000 --> 00:19:50.000]   So, und jetzt wollen wir als Nächstes gucken, wie wir so eine Beschreibung benutzen können, um zu entscheiden, ob ein Symbol legal ist für eine gegebene EBNF-Beschreibung.
+[00:19:50.000 --> 00:19:55.000]   Sonst macht es ja keinen Sinn, diesen Ausdrucksmöglichkeiten von Legalität da zu reden.
+[00:19:55.000 --> 00:20:08.000]   Wenn wir sagen, dieses Symbol ist legal, müssten wir eigentlich immer dazu sagen, im Zusammenhang mit der EBNF-Beschreibung, also mit der Menge von EBNF-Regeln, die wir da haben.
+[00:20:08.000 --> 00:20:19.000]   So, jetzt, wie könnten wir so eine Beschreibung nehmen und Schiedsrichter spielen und entscheiden, ob diese Symbol, dass wir haben, der Beschreibung genügt oder nicht.
+[00:20:19.000 --> 00:20:22.000]   Da gibt es verschiedene Wege, das zu machen.
+[00:20:22.000 --> 00:20:25.000]   Was ist die Frage, die wir versuchen zu beantworten?
+[00:20:25.000 --> 00:20:34.000]   Wir versuchen, die Frage zu beantworten, eben, wenn wir haben ein Symbol, und wir wollen gucken, ob das legalgemäß einer Regel ist.
+[00:20:34.000 --> 00:20:36.000]   Und was heißt das jetzt konkret?
+[00:20:36.000 --> 00:20:42.000]   Das heißt, dass alle Zeichen des Symbols stimmen mit den Elementen der Regel überein.
+[00:20:42.000 --> 00:20:55.000]   Das heißt, sie stimmen überein und das heißt, es sind die selben Zeichen und die Reihenfolge stimmt.
+[00:20:55.000 --> 00:21:00.000]   Also nicht einfach irgendwie durcheinander gewirbelt, sondern die Reihenfolge stimmt.
+[00:21:00.000 --> 00:21:03.000]   Also, wir haben Symbol, das ist eine Folge von Zeichen.
+[00:21:03.000 --> 00:21:07.000]   Wir wollen gucken, ob dieses Symbol der Regel, die wir da haben, entspricht.
+[00:21:07.000 --> 00:21:11.000]   Und da müssen wir sehen, ob die Zeichen dieses Symbols, das ist ja eine Folge,
+[00:21:11.000 --> 00:21:16.000]   ob die eben halt den Regeln, die wir da haben, entsprechen.
+[00:21:16.000 --> 00:21:21.000]   Da gibt es verschiedene Wege, das zu machen, und die werden wir alle kurz kennenlernen,
+[00:21:21.000 --> 00:21:26.000]   weil wenn wir später irgendwo eine Situation haben, wo so eine Zeichenfolge ist,
+[00:21:26.000 --> 00:21:32.000]   so eine EBNF-Beschreibung, müssen wir irgendwo herausfinden können, was da los ist.
+[00:21:32.000 --> 00:21:36.000]   Also, wie machen wir das?
+[00:21:36.000 --> 00:21:40.000]   Wir fangen an, also wenn die Übereinstimmung dann genau ist, dann sagen wir,
+[00:21:40.000 --> 00:21:46.000]   das Symbol ist legal, genau heißt, wie ich eben sagte, selbe Zeichen, selber Reihenfolge.
+[00:21:46.000 --> 00:21:50.000]   Wir fangen an, das Symbol, diese Zeichenfolge anzugucken,
+[00:21:50.000 --> 00:21:56.000]   und wir lesen die wieder von links nach rechts, Zeichen für Zeichen.
+[00:21:56.000 --> 00:22:00.000]   Und jetzt gucken wir nach, ob jedes dieser Zeichen eben durch die Regel bestimmt ist.
+[00:22:00.000 --> 00:22:02.000]   Und wenn das der Fall ist, dann können wir es abhaken.
+[00:22:02.000 --> 00:22:07.000]   Und wenn wir ein Zeichen finden, wo wir sagen können,
+[00:22:07.000 --> 00:22:11.000]   das kann nie und nimmer aus dieser Regel kommen, und es gibt auch keine andere Regel,
+[00:22:11.000 --> 00:22:15.000]   die uns hierhin, die sowas erklären könnte, dann müssen wir sagen,
+[00:22:15.000 --> 00:22:18.000]   ha, dieses Symbol ist nicht legal.
+[00:22:18.000 --> 00:22:22.000]   Und wir machen wir so lange, bis wir das Ende des Symbols erreicht haben,
+[00:22:22.000 --> 00:22:24.000]   das Ende des Symbols wird irgendwann erreicht.
+[00:22:24.000 --> 00:22:29.000]   Wenn das Ende des Symbols erreicht ist, dann darf kein nicht optionales Element
+[00:22:29.000 --> 00:22:31.000]   der Regeln übrig bleiben.
+[00:22:31.000 --> 00:22:34.000]   Wenn dann auch irgendwelche die Regeln noch mehr erwartet,
+[00:22:34.000 --> 00:22:36.000]   dann müssen wir sagen, nee, ist doch nicht legal.
+[00:22:36.000 --> 00:22:38.000]   Ist legal bis hier aber nicht weiter.
+[00:22:38.000 --> 00:22:43.000]   Und wir müssen sehen, dass kein Zeichen im Symbol übrig bleibt.
+[00:22:43.000 --> 00:22:47.000]   Also wenn wir ein Zeichen haben, für das wir einfach keine Regeln finden,
+[00:22:47.000 --> 00:22:51.000]   die wir benutzen könnten, um dieses Zeichen zu rechtfertigen,
+[00:22:51.000 --> 00:22:54.000]   dann sagen wir auch nicht legal.
+[00:22:54.000 --> 00:22:59.000]   Also wir dürfen nicht die Situation kommen, dass es keine Regel gibt,
+[00:22:59.000 --> 00:23:02.000]   mit der man das machen kann.
+[00:23:02.000 --> 00:23:06.000]   Und nur dann, wenn das der Fall ist, dann sprechen wir von Übereinstimmung
+[00:23:06.000 --> 00:23:09.000]   und sonst sprechen wir von nicht legal oder illegal.
+[00:23:09.000 --> 00:23:12.000]   Manchmal sagen wir, illegal aber genauer wäre es eigentlich zu sagen,
+[00:23:12.000 --> 00:23:14.000]   nicht legal.
+[00:23:14.000 --> 00:23:18.000]   Also hier haben wir ein einfachst trivialer Beispiel.
+[00:23:18.000 --> 00:23:22.000]   Wenn wir nur die Digitregel haben, die ich Ihnen vorher zeigte,
+[00:23:22.000 --> 00:23:25.000]   und wir haben da die Digital 6, dann sehen wir,
+[00:23:25.000 --> 00:23:30.000]   die wird durch eine der Optionen erledigt, ist also legal.
+[00:23:30.000 --> 00:23:33.000]   Wenn wir jetzt hier hinkommen, dann sehen wir,
+[00:23:33.000 --> 00:23:37.000]   die 8, wenn wir die 86 gucken, ob das legal ist,
+[00:23:37.000 --> 00:23:40.000]   sehen wir 86, die 8 ist ja auch legal.
+[00:23:40.000 --> 00:23:42.000]   Und dann gehen wir aber jetzt sehen wir weiter,
+[00:23:42.000 --> 00:23:44.000]   da bleibt ja noch ein Zeichen übrig.
+[00:23:44.000 --> 00:23:47.000]   Hier haben wir das Zeichen übrig geblieben,
+[00:23:47.000 --> 00:23:50.000]   es gibt in der Regel keine Digitalregel allein,
+[00:23:50.000 --> 00:23:54.000]   da gibt es keine weitere Möglichkeit, andere Ziffern hinzuzufügen,
+[00:23:54.000 --> 00:23:57.000]   also ist das Ganze nicht legal.
+[00:23:57.000 --> 00:24:01.000]   Und wenn wir jetzt mit der Digitalregel arbeiten wollten,
+[00:24:01.000 --> 00:24:06.000]   und wir hätten jetzt die Signed numbers definiert,
+[00:24:06.000 --> 00:24:09.000]   Signed numbers ist definiert als ein Vorzeichen,
+[00:24:09.000 --> 00:24:11.000]   gefolgt von einer Digit,
+[00:24:11.000 --> 00:24:14.000]   und da können Sie sehen, dass eben, wenn ich das habe,
+[00:24:14.000 --> 00:24:17.000]   0 und 9 nicht legal sind.
+[00:24:17.000 --> 00:24:22.000]   Okay, 0, gucken wir uns an, ist kein Vorzeichen,
+[00:24:22.000 --> 00:24:25.000]   aber das ist ja okay, weil es ja optional ist,
+[00:24:25.000 --> 00:24:28.000]   also können wir abhaken, aber so wie wir die Regel hier haben,
+[00:24:28.000 --> 00:24:30.000]   sind es hier nur ein Ziffer gezahlen,
+[00:24:30.000 --> 00:24:32.000]   und ich habe nichts für die 9, und daher würde ich sagen,
+[00:24:32.000 --> 00:24:37.000]   eh, geht nicht, und gegen +9 oder -9, die wären alle okay.
+[00:24:37.000 --> 00:24:41.000]   Also das ist kein, das ist ein informeller Beweis,
+[00:24:41.000 --> 00:24:45.000]   in anderen Vorlesungen lernen Sie genauer, bessere Beweise kennen,
+[00:24:45.000 --> 00:24:48.000]   aber das ist ein informeller Beweis,
+[00:24:48.000 --> 00:24:50.000]   und wenn wir über Einstellung erreichen,
+[00:24:50.000 --> 00:24:53.000]   dann sagen wir, das Symbol ist legal,
+[00:24:53.000 --> 00:24:55.000]   und sonst eben ist es illegal.
+[00:24:55.000 --> 00:24:57.000]   So, gucken wir, ob das hier funktioniert.
+[00:24:57.000 --> 00:24:59.000]   Jetzt sollten Sie in der Lage sein,
+[00:24:59.000 --> 00:25:01.000]   ja, zu sehen, wie das eben automatisch geht,
+[00:25:01.000 --> 00:25:03.000]   kann ich kurz gucken, was hier ist.
+[00:25:03.000 --> 00:25:07.000]   Ahm, ahm.
+[00:25:32.000 --> 00:25:35.000]   So, also Sie sehen, es ist nichts Schwieriges,
+[00:25:35.000 --> 00:25:38.000]   alles einfach, geht automatisch und so weiter.
+[00:25:38.000 --> 00:25:43.000]   Also hier habe ich nochmal die, die, diese Regel, ja, so.
+[00:25:43.000 --> 00:25:46.000]   Jetzt, so informelle Beweise sind eben, also wir können das machen,
+[00:25:46.000 --> 00:25:49.000]   einfach, es ist gut, dass Sie, weil Sie sollten,
+[00:25:49.000 --> 00:25:54.000]   Sie sollten so was machen können, ja, wollen jetzt gucken,
+[00:25:54.000 --> 00:25:56.000]   haben wir die integer Regel, eben, wir fangen an,
+[00:25:56.000 --> 00:26:00.000]   ob das erste Element eben ein optionales Vorzeichen ist,
+[00:26:00.000 --> 00:26:02.000]   wenn ja, dann geht es, gucken wir nach,
+[00:26:02.000 --> 00:26:07.000]   ob das, was gewählt wurde, wirklich da eine der Alternativen ist,
+[00:26:07.000 --> 00:26:09.000]   und dann nehmen wir das nächste Zeichen,
+[00:26:09.000 --> 00:26:13.000]   und das muss eben bitte die Digital Regel übereinstimmen,
+[00:26:13.000 --> 00:26:17.000]   und dann entscheiden wir, ob keine oder mehr Wiederholungen kommen.
+[00:26:17.000 --> 00:26:19.000]   Und der Trick ist eben, also zurzeit,
+[00:26:19.000 --> 00:26:23.000]   wissen wir einfach, wie viele Wiederholungen nötig sind.
+[00:26:23.000 --> 00:26:26.000]   Ja, wenn ich also plus 70 habe, gehe ich hin,
+[00:26:26.000 --> 00:26:28.000]   Vorzeichen wurde gewählt,
+[00:26:28.000 --> 00:26:31.000]   es war in diesem Fall ein plus, ja.
+[00:26:31.000 --> 00:26:34.000]   Die Digital Regel wurde genommen, es gab eine 7,
+[00:26:34.000 --> 00:26:37.000]   wir wissen halt, dass eine Wiederholung ausreichte,
+[00:26:37.000 --> 00:26:42.000]   und daher wird das Zeichen in der Tat ganz durch die,
+[00:26:42.000 --> 00:26:44.000]   wird akzept wirklich die Digital Regel bestimmt,
+[00:26:44.000 --> 00:26:47.000]   und daher haben wir alle Zeichen,
+[00:26:47.000 --> 00:26:50.000]   diese Symbols haben wir gezeigt, konnten auch durch die
+[00:26:50.000 --> 00:26:53.000]   integer Regel definiert werden,
+[00:26:53.000 --> 00:26:57.000]   und das ist daher okay, ja, also das ist dann ganz einfach,
+[00:26:57.000 --> 00:26:59.000]   das können Sie sehen.
+[00:26:59.000 --> 00:27:02.000]   So, jetzt sehen Sie schon, ich zeichne das hier,
+[00:27:02.000 --> 00:27:05.000]   so ein bisschen wie so ein, ja, fast wie so ein Baum, ja,
+[00:27:05.000 --> 00:27:07.000]   und wir werden sehen, das ist ein Weg,
+[00:27:07.000 --> 00:27:12.000]   wie ich diesen informellen Beweis etwas formaler machen, ja,
+[00:27:12.000 --> 00:27:15.000]   formaler machen kann, um sicher zu sein,
+[00:27:15.000 --> 00:27:20.000]   dass wirklich das, was ich da habe, den Regeln entspricht, ja,
+[00:27:20.000 --> 00:27:22.000]   das ist also wirklich einfach.
+[00:27:22.000 --> 00:27:26.000]   So, also mit diesen, bei diesen informellen Beweisen,
+[00:27:26.000 --> 00:27:29.000]   wissen wir entweder, welche Regel anzuwenden ist,
+[00:27:29.000 --> 00:27:32.000]   also ob wir jetzt hier in diesem Beispiel,
+[00:27:32.000 --> 00:27:35.000]   ob wir jetzt da die Digital Regel angewendet haben,
+[00:27:35.000 --> 00:27:37.000]   oder die Vorzeichenregel, ja,
+[00:27:37.000 --> 00:27:39.000]   das wissen wir, wenn wir uns das angeguckt haben,
+[00:27:39.000 --> 00:27:41.000]   wir hatten dieses plus 70, ja,
+[00:27:41.000 --> 00:27:44.000]   als wir uns die 7 anguckten, da wussten wir, ah, das,
+[00:27:44.000 --> 00:27:47.000]   ja, hier Digital, das ist die Regel, die wollen wir nehmen, ja,
+[00:27:47.000 --> 00:27:50.000]   später wenn wir mehr Namen verwenden,
+[00:27:50.000 --> 00:27:52.000]   dann gibt es da mehr Möglichkeiten,
+[00:27:52.000 --> 00:27:55.000]   aber wir wissen einfach halt die richtige,
+[00:27:55.000 --> 00:27:57.000]   wir wissen die richtige Regel anzuwenden,
+[00:27:57.000 --> 00:28:00.000]   und wissen auch die richtige Anzahl von Wiederholungen,
+[00:28:00.000 --> 00:28:02.000]   oder wir probieren es halt, ja, eben,
+[00:28:02.000 --> 00:28:04.000]   ist ein informeller Beweis, ja,
+[00:28:04.000 --> 00:28:06.000]   und wenn die Beschreibung nicht eindeutig ist,
+[00:28:06.000 --> 00:28:08.000]   dann finden wir die richtige Alternative,
+[00:28:08.000 --> 00:28:09.000]   ich hatte ja schon mal gesagt,
+[00:28:09.000 --> 00:28:14.000]   dass EBNF-Beschreibungen müssen nicht zwingenderweise eindeutig sein,
+[00:28:14.000 --> 00:28:16.000]   das ist ganz okay, ja,
+[00:28:16.000 --> 00:28:18.000]   manchmal muss man ein bisschen probieren, bis das rauskommt, ja,
+[00:28:18.000 --> 00:28:20.000]   wenn wir so einen String haben,
+[00:28:20.000 --> 00:28:22.000]   da müssen wir ein bisschen sehen,
+[00:28:22.000 --> 00:28:25.000]   wie viele Wiederholungen wir brauchen da,
+[00:28:25.000 --> 00:28:27.000]   und das können wir auch Schritt für Schritt machen, ja,
+[00:28:27.000 --> 00:28:29.000]   ich kann mir vorzeichen, das haben Sie jetzt gesehen,
+[00:28:29.000 --> 00:28:31.000]   die eine Digital haben Sie auch gesehen, ja, so,
+[00:28:31.000 --> 00:28:33.000]   und jetzt kommt der Punkt, wir wissen halt,
+[00:28:33.000 --> 00:28:38.000]   in diesem Beispiel, dass es eben drei Wiederholungen braucht, ja,
+[00:28:38.000 --> 00:28:40.000]   und eben es wäre möglich,
+[00:28:40.000 --> 00:28:42.000]   null Wiederholungen zu machen,
+[00:28:42.000 --> 00:28:43.000]   da geht es jetzt schon weg,
+[00:28:43.000 --> 00:28:45.000]   aber null Wiederholungen zu machen,
+[00:28:45.000 --> 00:28:47.000]   aber wir wissen halt,
+[00:28:47.000 --> 00:28:49.000]   dass drei Wiederholungen uns hier das Richtige sind,
+[00:28:49.000 --> 00:28:52.000]   und dann wählen wir in diesen drei Wiederholungen
+[00:28:52.000 --> 00:28:54.000]   die richtigen Digit aus,
+[00:28:54.000 --> 00:28:56.000]   und können so zeigen,
+[00:28:56.000 --> 00:29:00.000]   dass dieses Symbol in Ordnung ist,
+[00:29:00.000 --> 00:29:02.000]   dass dieses Symbol der Regel existiert,
+[00:29:02.000 --> 00:29:04.000]   und Sie können die Animation auch noch,
+[00:29:04.000 --> 00:29:06.000]   wenn das funktioniert, sollten sie in der Lage sein,
+[00:29:06.000 --> 00:29:08.000]   die von einem Webserver runterzuladen,
+[00:29:08.000 --> 00:29:11.000]   die kann ich nicht in die PDF-Datei einbetten,
+[00:29:11.000 --> 00:29:14.000]   aber Sie können die dann eben woanders runterbekommen, ja, so.
+[00:29:14.000 --> 00:29:17.000]   Also das war eben halt relativ einfach,
+[00:29:17.000 --> 00:29:20.000]   jetzt weiß ich nicht, kann ich die Leute hier im Raum
+[00:29:20.000 --> 00:29:22.000]   als Repräsentanten fragen,
+[00:29:22.000 --> 00:29:24.000]   wollen Sie, dass ich jetzt den informellen Beweis
+[00:29:24.000 --> 00:29:27.000]   für plus 128 noch mache?
+[00:29:27.000 --> 00:29:29.000]   Wer will den noch sehen?
+[00:29:29.000 --> 00:29:31.000]   Sind Sie alle so früh am Morgen?
+[00:29:31.000 --> 00:29:33.000]   Okay, ein paar wollen ihn sehen,
+[00:29:33.000 --> 00:29:35.000]   ein paar wollen ihn nicht sehen.
+[00:29:35.000 --> 00:29:37.000]   Okay, dann mache ich ein Kompromiss,
+[00:29:37.000 --> 00:29:39.000]   dann zeige ich Ihnen den vom letzten Jahr, ja.
+[00:29:39.000 --> 00:29:42.000]   So, sehen Sie, also wir sehen, ja, so,
+[00:29:42.000 --> 00:29:45.000]   eben wir haben die 028, wir fangen an,
+[00:29:45.000 --> 00:29:47.000]   gucken, da ist das Pluszeichen,
+[00:29:47.000 --> 00:29:49.000]   dann kommt die 1, ist okay,
+[00:29:49.000 --> 00:29:51.000]   wir wissen, dass 2 Alternate,
+[00:29:51.000 --> 00:29:53.000]   2 Wiederholungen gebraucht werden,
+[00:29:53.000 --> 00:29:55.000]   die 2 und die 18, okay, keine weiteren Wiederholungen,
+[00:29:55.000 --> 00:29:57.000]   und damit ist die Sache okay.
+[00:29:57.000 --> 00:29:59.000]   So, jetzt überlege Sie mal, wie sehr,
+[00:29:59.000 --> 00:30:01.000]   wie könnten wir argumentieren
+[00:30:01.000 --> 00:30:04.000]   oder entscheiden, ob plus 8, plus 1,
+[00:30:04.000 --> 00:30:07.000]   ob das legal ist oder nicht?
+[00:30:07.000 --> 00:30:12.000]   Ja, können Sie überlegen, ja.
+[00:30:12.000 --> 00:30:15.000]   Ist das legal oder nicht legal?
+[00:30:15.000 --> 00:30:17.000]   Ja, gut, Sie würden eben auch wieder,
+[00:30:17.000 --> 00:30:19.000]   also wir würden anfangen, ja,
+[00:30:19.000 --> 00:30:21.000]   das plus wäre das Vorzeichen,
+[00:30:21.000 --> 00:30:23.000]   das wäre schon mal okay, ja,
+[00:30:23.000 --> 00:30:26.000]   da hätten wir keine Probleme damit, ja.
+[00:30:26.000 --> 00:30:31.000]   So, die 8 wäre die erste Digit, ja, so.
+[00:30:31.000 --> 00:30:34.000]   Und jetzt kommt hier ein plus, ja.
+[00:30:34.000 --> 00:30:38.000]   So, plus ist keine Option für Digit,
+[00:30:38.000 --> 00:30:41.000]   unter den Alternativen für Digit
+[00:30:41.000 --> 00:30:47.000]   gibt es nur keine Alternative von Digit,
+[00:30:47.000 --> 00:30:50.000]   unter den Digit gibt es nur die Möglichkeit,
+[00:30:50.000 --> 00:30:52.000]   eine Ziffer von 0 bis 9 rauszusuchen,
+[00:30:52.000 --> 00:30:55.000]   aber kein plus, das heißt, wir kommen da nicht weiter.
+[00:30:55.000 --> 00:30:58.000]   Hätten wir noch irgendwelche anderen Regeln verwenden können,
+[00:30:58.000 --> 00:31:00.000]   um das zu rechtfertigen?
+[00:31:00.000 --> 00:31:03.000]   Nein, keine anderen Regeln gibt es, ja.
+[00:31:03.000 --> 00:31:06.000]   Keine Regel erlaubt ein plus,
+[00:31:06.000 --> 00:31:09.000]   also auch nicht, wenn wir die vorher geändert hätten,
+[00:31:09.000 --> 00:31:15.000]   erlaubt ein plus an dieser Stelle, ja, daher nicht legal, ja,
+[00:31:15.000 --> 00:31:20.000]   daher ist dieses Zeichen nicht legal und daher nicht genug.
+[00:31:20.000 --> 00:31:23.000]   So, jetzt können Sie nächsten paar Minuten,
+[00:31:23.000 --> 00:31:27.000]   während Sie noch diese Beispiele angucken, ja,
+[00:31:27.000 --> 00:31:32.000]   sehen, dass die im Prinzip zu machen werden,
+[00:31:32.000 --> 00:31:34.000]   oder gucken Sie mal diese an,
+[00:31:34.000 --> 00:31:37.000]   sehen Sie andere Zahlendarstellungen, ja,
+[00:31:37.000 --> 00:31:39.000]   gibt ja auch viele Möglichkeiten,
+[00:31:39.000 --> 00:31:42.000]   Zahlen darzustellen, die anders sind als die Regeln,
+[00:31:42.000 --> 00:31:45.000]   die ich Ihnen eben gezeigt hatte, ja,
+[00:31:45.000 --> 00:31:50.000]   und gucken uns die Beispiele an, ob die legal sind,
+[00:31:50.000 --> 00:31:51.000]   oder nicht legal sind,
+[00:31:51.000 --> 00:31:54.000]   also sehen wir sofort, die sind alle nicht legal,
+[00:31:54.000 --> 00:31:56.000]   warum hier gibt es so ein Hochkomma,
+[00:31:56.000 --> 00:31:58.000]   das man zwar häufig verwendet, ja,
+[00:31:58.000 --> 00:32:02.000]   hier ist eine Zahl in einem System, wo A eine Ziffer ist, ja,
+[00:32:02.000 --> 00:32:07.000]   und hier gibt es ein Minus, so wie in den ETH-Büges,
+[00:32:07.000 --> 00:32:11.000]   da ist ein Minus am Ende, ja, werden lachen,
+[00:32:11.000 --> 00:32:15.000]   das Minus am Ende der Zahl heißt, Sie haben einen Guthaben, ja,
+[00:32:15.000 --> 00:32:18.000]   also, ja, aber gell, das ist ein anderer Studiengang,
+[00:32:18.000 --> 00:32:20.000]   ist nicht unser Problem, ja,
+[00:32:20.000 --> 00:32:22.000]   aber das sind alles legale,
+[00:32:22.000 --> 00:32:25.000]   das sind alles legale Zahlen in einer anderen Welt,
+[00:32:25.000 --> 00:32:30.000]   aber diese nicht legal entsprechend der Regel I1, ja,
+[00:32:30.000 --> 00:32:33.000]   das ist halt I1 sagt nicht legal, ja,
+[00:32:33.000 --> 00:32:37.000]   und Sie sehen, deswegen gibt es so viele Beschreibungen,
+[00:32:37.000 --> 00:32:39.000]   die dabei sind, so.
+[00:32:39.000 --> 00:32:45.000]   Jetzt diese informelle Art, die ich jetzt so hatte,
+[00:32:45.000 --> 00:32:48.000]   die ist gut und schön, die können wir ein bisschen formalisieren, ja,
+[00:32:48.000 --> 00:32:50.000]   und zwar können wir das so machen,
+[00:32:50.000 --> 00:32:54.000]   indem wir diese Schritte in Tabellen anordnen, ja,
+[00:32:54.000 --> 00:32:57.000]   und das ist formaler als die Umgangssprache,
+[00:32:57.000 --> 00:32:59.000]   die ich bisher verwendete, ist auch kompakter,
+[00:32:59.000 --> 00:33:04.000]   und dann gibt es halt eben eine ganze Reihe von Schritten,
+[00:33:04.000 --> 00:33:07.000]   die immer so ebnf-Regeln sind,
+[00:33:07.000 --> 00:33:12.000]   und wir fangen an in der ersten Zeile mit dem Namen der ebnf-Regel,
+[00:33:12.000 --> 00:33:15.000]   mit der das Symbol übereinstimmen soll,
+[00:33:15.000 --> 00:33:19.000]   und dann gehen wir hin und ersetzen sukzessive die Regeln
+[00:33:19.000 --> 00:33:21.000]   durch die rechte Seiten,
+[00:33:21.000 --> 00:33:24.000]   und am Ende, wenn wir dann alles funktioniert,
+[00:33:24.000 --> 00:33:27.000]   wenn alles geklappt hat, und das Symbol ein legal ist,
+[00:33:27.000 --> 00:33:30.000]   dann steht am Ende das Symbol da,
+[00:33:30.000 --> 00:33:34.000]   und wenn alle Versuche, die richtige Regel zu finden,
+[00:33:34.000 --> 00:33:36.000]   vielgeschlagen sind, dann müssen wir halt sagen,
+[00:33:36.000 --> 00:33:41.000]   dieses Symbol gehört doch nicht dazu, und ist nicht legal, ja.
+[00:33:41.000 --> 00:33:44.000]   Und jede Zeile,
+[00:33:44.000 --> 00:33:49.000]   jede Zeile,
+[00:33:49.000 --> 00:33:53.000]   wird aus der Vorgängerzeile abgeleitet, ja,
+[00:33:53.000 --> 00:33:56.000]   Schritt für Schritt für Schritt, ja.
+[00:33:56.000 --> 00:33:59.000]   Das heißt, wir ersetzen einen Namen,
+[00:33:59.000 --> 00:34:01.000]   das ist ja eben ein Name, der auch rechts auftreten kann,
+[00:34:01.000 --> 00:34:03.000]   durch die entsprechende Definition,
+[00:34:03.000 --> 00:34:06.000]   also durch die rechte Seite für diese Regel, ja.
+[00:34:06.000 --> 00:34:09.000]   Und wenn es eine Alternative gibt, dann wählen wir da eine aus,
+[00:34:09.000 --> 00:34:12.000]   und wenn eben ein optionales Element da ist,
+[00:34:12.000 --> 00:34:15.000]   dann entscheiden wir, ob das jetzt genommen wird,
+[00:34:15.000 --> 00:34:17.000]   die Option oder nicht,
+[00:34:17.000 --> 00:34:20.000]   und wir bestimmen die Anzahl der Wiederholungen.
+[00:34:20.000 --> 00:34:23.000]   Wobei eben die erste und zweite Schritt werden oft
+[00:34:23.000 --> 00:34:26.000]   in einem zusammengemacht,
+[00:34:26.000 --> 00:34:28.000]   weil das sonst aber zu langsam wird, ja.
+[00:34:28.000 --> 00:34:31.000]   Also, so kann ich eben Schritt für Schritt für Schritt,
+[00:34:31.000 --> 00:34:34.000]   kann ich jetzt eben halt zeigen,
+[00:34:34.000 --> 00:34:38.000]   wie so was geht, ja.
+[00:34:38.000 --> 00:34:40.000]   Also, wenn ich jetzt hier,
+[00:34:40.000 --> 00:34:42.000]   guck mal nach,
+[00:34:42.000 --> 00:34:47.000]   wenn ich jetzt hier zum Beispiel diese Zahl plus 1, 2, 8 habe,
+[00:34:47.000 --> 00:34:50.000]   für die ich entscheiden will, ob sie durch die Integer,
+[00:34:50.000 --> 00:34:53.000]   leider kann ich Ihnen jetzt die Integer jetzt dann nicht sofort,
+[00:34:53.000 --> 00:34:56.000]   nicht mehr zeigen, aber das ist ja eine einfache Sache, ja.
+[00:34:56.000 --> 00:34:58.000]   Da fange ich eben an, ja.
+[00:34:58.000 --> 00:35:01.000]   Ich fange an mit eben der Integer-Regel, ja.
+[00:35:01.000 --> 00:35:03.000]   So, und die Integer-Regel,
+[00:35:03.000 --> 00:35:08.000]   die besteht eben aus einem optionalen Vorzeichen, ja,
+[00:35:08.000 --> 00:35:10.000]   dem einer Digit,
+[00:35:10.000 --> 00:35:13.000]   und dann einer Folge von Digits, ja.
+[00:35:13.000 --> 00:35:18.000]   Also, ich ersetze diese Namen durch die rechte Seite, ja.
+[00:35:18.000 --> 00:35:23.000]   Jetzt gehe ich dann hin und wähle hier eine Option,
+[00:35:23.000 --> 00:35:28.000]   das heißt, ich wähle das Plus, also eine Alternative wähle ich, ja.
+[00:35:28.000 --> 00:35:33.000]   Der Rest bleibt unverändert, ja.
+[00:35:33.000 --> 00:35:35.000]   Dann gehe ich hin und entscheide mich,
+[00:35:35.000 --> 00:35:39.000]   dass ich doch in der Tat diese Option nehmen will.
+[00:35:39.000 --> 00:35:42.000]   Das heißt, das Plus bleibt hier, ja.
+[00:35:42.000 --> 00:35:45.000]   Und dann geht es hier weiter mit Digit
+[00:35:45.000 --> 00:35:48.000]   und eben Digit, ja.
+[00:35:48.000 --> 00:35:50.000]   Der Wiederholung von Digits, ja.
+[00:35:50.000 --> 00:35:53.000]   So, jetzt habe ich dann im nächsten Schritt,
+[00:35:53.000 --> 00:35:55.000]   gehe ich hin, dass ich entscheide,
+[00:35:55.000 --> 00:35:58.000]   dass ich für diese Digit eine Eins wähle, ja.
+[00:35:58.000 --> 00:36:02.000]   Das heißt, diese Eins kommt und dann der Rest bleibt Digit, ja.
+[00:36:02.000 --> 00:36:04.000]   Und jetzt weiß ich halt,
+[00:36:04.000 --> 00:36:07.000]   dass zwei Anwendungen, zwei Wiederholungen nötig sein werden.
+[00:36:07.000 --> 00:36:12.000]   Das heißt, ich ersetze das hier durch Digit und Digit, ja.
+[00:36:12.000 --> 00:36:16.000]   Und jetzt ersetze ich dann im nächsten Schritt das durch eine zwei
+[00:36:16.000 --> 00:36:18.000]   und das hier durch eine acht, ja.
+[00:36:18.000 --> 00:36:21.000]   Und dann sehen Sie, habe ich hier Schritt für Schritt gezeigt,
+[00:36:21.000 --> 00:36:29.000]   wie dieses Plus 1, 2, 8 in der Tat durch Integer erzeugt werden könnte.
+[00:36:29.000 --> 00:36:33.000]   Und damit haben wir die Frage beantwortet, ob das legal ist oder nicht.
+[00:36:33.000 --> 00:36:36.000]   Aber weil eben jede Zeile einen Schritt nach dem anderen macht,
+[00:36:36.000 --> 00:36:41.000]   kann man dann leicht nachvollziehen, was jetzt da gemacht wird, ja.
+[00:36:41.000 --> 00:36:45.000]   Das ist eine Tabelle, das ist eine etwas formalisierte Reform
+[00:36:45.000 --> 00:36:48.000]   der informellen Beweise.
+[00:36:48.000 --> 00:36:57.000]   Und das kann man auch eben, kann man auch eben noch weiter spielen, ja.
+[00:36:57.000 --> 00:37:00.000]   Man kann eben statt das als Tabelle Zeile untereinander,
+[00:37:00.000 --> 00:37:05.000]   Zeile hintereinander zu schreiben, ja, kann man das auch als Baum zeichnen.
+[00:37:05.000 --> 00:37:08.000]   Bäume kennen Sie vielleicht aus irgendwelchen anderen Vorlesungen,
+[00:37:08.000 --> 00:37:10.000]   wenn nicht, werden Sie jetzt gleich einen sehen.
+[00:37:10.000 --> 00:37:12.000]   Das ist ein sehr einfacher Baum.
+[00:37:12.000 --> 00:37:17.000]   Und das ist eine grafische Darstellung eines Beweise, so wie eine Tabelle, ja.
+[00:37:17.000 --> 00:37:22.000]   Oben haben wir den Namen der EBNF-Regel, mit der das Symbol übereinstimmen soll,
+[00:37:22.000 --> 00:37:24.000]   ja, so wie bei der Tabelle.
+[00:37:24.000 --> 00:37:28.000]   Und unten am Ende haben wir dann das Symbol, wenn das klappt, ja.
+[00:37:28.000 --> 00:37:32.000]   Wenn wir irgendwie den Punkt kommen, dass unser Baum nicht weiter wachsen kann, ja.
+[00:37:32.000 --> 00:37:35.000]   Ja, dann haben wir halt Pech gehabt, dann war das kein Baum,
+[00:37:35.000 --> 00:37:39.000]   sondern war das Symbol, kein Symbol entsprechend der Regel.
+[00:37:39.000 --> 00:37:42.000]   Und daher können wir das nicht akzeptieren, ja.
+[00:37:42.000 --> 00:37:46.000]   Und dann zeigen Kanten an, welche Regeln es uns erlauben,
+[00:37:46.000 --> 00:37:48.000]   von einer Schritt zum nächsten zu gehen.
+[00:37:48.000 --> 00:37:51.000]   Es ist ein bisschen kompakter als die Tabelle,
+[00:37:51.000 --> 00:37:55.000]   weil wir können eben die Sachen miteinander organisieren, ja.
+[00:37:55.000 --> 00:38:00.000]   Also, weil das eben, ja, wie würden wir das also hier machen?
+[00:38:00.000 --> 00:38:07.000]   Wir hätten also wieder, aus fehlenderm, haben wir wieder dieses Symbol plus 1, 2, 8, ja.
+[00:38:07.000 --> 00:38:14.000]   Okay, jetzt kommt, ihr müsst hier eben oben den Namen der Regel schreiben, den ich verwende.
+[00:38:14.000 --> 00:38:17.000]   Will das stellen Sie sich mal vor, wer kursiv, ja.
+[00:38:17.000 --> 00:38:22.000]   Aber das ist ja nicht so, hoffentlich nicht so schwierig zu sehen, ja.
+[00:38:22.000 --> 00:38:24.000]   Trotz meiner schlechten Handschrift.
+[00:38:24.000 --> 00:38:26.000]   So, jetzt habe ich ein Baum, jetzt gebe ich es als nächstes,
+[00:38:26.000 --> 00:38:33.000]   das ist das, was ich hier mit den, unter diesem Baum, die verschiedenen Optionen, ja.
+[00:38:33.000 --> 00:38:36.000]   Nämlich die rechte Seite von der integer Regel
+[00:38:36.000 --> 00:38:40.000]   und schreibe eben die verschiedenen Teile dahin, da ist erstmal diese Option,
+[00:38:40.000 --> 00:38:46.000]   ob ich ein plus oder minus wählen will, dann muss da kommen ein digit, ja.
+[00:38:46.000 --> 00:38:52.000]   Und dann muss da kommen eine Wiederholung von digits, so, ja.
+[00:38:52.000 --> 00:38:56.000]   Und das ist der, so sieht der Baum, jetzt gehe ich mal hier weiter und sage, okay,
+[00:38:56.000 --> 00:39:02.000]   ich wähle hier unter diesen beiden Alternativen das Pluszeichen aus
+[00:39:02.000 --> 00:39:07.000]   und jetzt entscheide ich mich, diese Option wirklich zu machen, ja.
+[00:39:07.000 --> 00:39:13.000]   Und darum kommt, indem ich dann hier das Pluszeichen und lasse das dann so, ja.
+[00:39:13.000 --> 00:39:16.000]   Also hier haben wir die Option ja oder nein
+[00:39:16.000 --> 00:39:21.000]   und hier hatten wir die Auswahl zwischen den beiden Alternativen, ja.
+[00:39:21.000 --> 00:39:24.000]   So, und dann gehe ich jetzt hier zur digit
+[00:39:24.000 --> 00:39:27.000]   und da habe ich auch eine Auswahl zu treffen, ja.
+[00:39:27.000 --> 00:39:32.000]   Und die Auswahl, die ich da treffe, ist, dass ich halt eine eins nehme.
+[00:39:32.000 --> 00:39:34.000]   Okay, ja, so, ja.
+[00:39:34.000 --> 00:39:38.000]   So, jetzt habe ich hier die digits, die Wiederholung von digits
+[00:39:38.000 --> 00:39:42.000]   und jetzt weiß ich halt, dass ich zwei Wiederholungen brauchen werde.
+[00:39:42.000 --> 00:39:45.000]   Also habe ich hier eine dieser Wiederholungen
+[00:39:45.000 --> 00:39:49.000]   und hier die andere dieser Wiederholungen, ja.
+[00:39:49.000 --> 00:39:51.000]   Ja, das wäre also ein Weg, das zu machen.
+[00:39:51.000 --> 00:39:53.000]   Jetzt zeige ich Ihnen noch ein leichter anderen, ja.
+[00:39:53.000 --> 00:39:58.000]   Und dann sehe ich, hier mache ich jetzt wieder eine Auswahl, ja.
+[00:39:58.000 --> 00:40:01.000]   Und dann habe ich hier die Ziffer zwei
+[00:40:01.000 --> 00:40:03.000]   und dann mache ich hier auch eine Auswahl
+[00:40:03.000 --> 00:40:05.000]   und ich habe die Ziffer acht, ja.
+[00:40:05.000 --> 00:40:09.000]   So, das wäre ein Weg, das so zu argumentieren, ja.
+[00:40:09.000 --> 00:40:13.000]   Ein anderer Weg mache ich jetzt hier real-time, ja.
+[00:40:13.000 --> 00:40:17.000]   Man könnte auch sagen, ich habe hier die Wiederholung von digits.
+[00:40:17.000 --> 00:40:22.000]   Ich gehe jetzt erst mal hin und habe hier eine digit
+[00:40:22.000 --> 00:40:26.000]   und habe hier nach Wiederholungen von digits, ja.
+[00:40:26.000 --> 00:40:32.000]   Also, was ich mache ist, wenn ich hier, kann ich ja 0, 1 oder beliebig oft wiederholen.
+[00:40:32.000 --> 00:40:35.000]   Also, ich fange mal an mit einer Wiederholung, ja.
+[00:40:35.000 --> 00:40:39.000]   Und dann gehe ich hin und sehe, aha, die zwei wie vorher.
+[00:40:39.000 --> 00:40:43.000]   Und jetzt gehe ich hierhin und mache auch wieder, genauso wie hier,
+[00:40:43.000 --> 00:40:48.000]   die digit und Wiederholung von digits.
+[00:40:48.000 --> 00:40:49.000]   So, ja.
+[00:40:49.000 --> 00:40:53.000]   Dann gehe ich hin, hier brauche ich eine Acht, also Auswahl, ja.
+[00:40:53.000 --> 00:40:59.000]   So, und hier gehe ich jetzt hin und sage, ah, jetzt mache ich 0 Wiederholungen,
+[00:40:59.000 --> 00:41:01.000]   also Epsilon und weg ist alles, ja.
+[00:41:01.000 --> 00:41:03.000]   Wir sehen es nicht mehr.
+[00:41:03.000 --> 00:41:06.000]   Und Sie sehen, ich habe hier den String, nicht den String,
+[00:41:06.000 --> 00:41:09.000]   die Folge 1, 2, 8 produziert.
+[00:41:09.000 --> 00:41:12.000]   Ende habe ich eben 0 Wiederholungen da genommen,
+[00:41:12.000 --> 00:41:16.000]   das Epsilon taucht nicht auf und ist daher verschwunden, ja.
+[00:41:16.000 --> 00:41:19.000]   Das wäre ein anderer Weg, das zu machen.
+[00:41:19.000 --> 00:41:23.000]   So, jetzt habe ich hier als kleinen Test der Live-
+[00:41:23.000 --> 00:41:26.000]   Oh, gosh, ja.
+[00:41:26.000 --> 00:41:29.000]   Als kleinen Test der Live-Infrastruktur,
+[00:41:29.000 --> 00:41:32.000]   hoffe ich, dass Sie jetzt bald das sehen,
+[00:41:32.000 --> 00:41:35.000]   wollte ich Ihnen einen Klicker geben.
+[00:41:35.000 --> 00:41:38.000]   Wir wollen mal gucken, ob Sie jetzt auf das Netz raufkommen
+[00:41:38.000 --> 00:41:47.000]   und können die Frage beantworten, welche dieser Symbole legal sind oder nicht.
+[00:41:47.000 --> 00:41:50.000]   Das müssen wir mal gucken, ob das jetzt hinhaut.
+[00:41:50.000 --> 00:41:55.000]   So, Sie sollten also jetzt Ihren Klicker rausnehmen können
+[00:41:55.000 --> 00:41:58.000]   und wenn Sie nicht auf Klicker kommen,
+[00:41:58.000 --> 00:42:00.000]   hoffe ich, dass Sie auf den Back-Channel kommen
+[00:42:00.000 --> 00:42:02.000]   und mir sagen können, dass das nicht funktioniert.
+[00:42:02.000 --> 00:42:05.000]   Ich habe die Kommentare vielen Dank vom Dienstag
+[00:42:05.000 --> 00:42:08.000]   an die Experten der Edu App-Gruppe weitergereicht
+[00:42:08.000 --> 00:42:11.000]   und die haben mir gesagt, danke für die Hinweise,
+[00:42:11.000 --> 00:42:14.000]   wir gucken mal nach, warum, wieso das nicht funktioniert.
+[00:42:14.000 --> 00:42:18.000]   Also gucken Sie sich mal an, ich hoffe, der Klicker läuft jetzt.
+[00:42:18.000 --> 00:42:20.000]   Ich weiß nicht, läuft der, sieht jemand ihn?
+[00:42:20.000 --> 00:42:22.000]   Ja, okay, super.
+[00:42:22.000 --> 00:42:24.000]   Also dann können ein paar Leute im nächsten antworten
+[00:42:24.000 --> 00:42:26.000]   und ich gucke derweil mal nach,
+[00:42:26.000 --> 00:42:28.000]   ob es noch irgendwelche andere Fragen gibt,
+[00:42:28.000 --> 00:42:30.000]   die beantwortet werden sollten.
+[00:42:30.000 --> 00:42:44.000]   Diejenigen, die den Klicker sehen,
+[00:42:44.000 --> 00:42:49.000]   sehen Sie diese Fragen oder sehen Sie die Fragen vom Dienstag?
+[00:42:49.000 --> 00:42:55.000]   Diese, ja, weil jemand im Back-Channel sagt, er sehe
+[00:42:55.000 --> 00:42:58.000]   oder Sie sehen nur die Fragen von der letzten Woche.
+[00:42:58.000 --> 00:43:01.000]   Ja, okay, dann muss ich die bitten nochmal,
+[00:43:01.000 --> 00:43:03.000]   vielleicht Ihre Edu App-Zurich starten.
+[00:43:03.000 --> 00:43:06.000]   Ich kann jetzt, ich müsste jetzt hier gucken,
+[00:43:06.000 --> 00:43:08.000]   vielleicht sagt es mir jetzt,
+[00:43:08.000 --> 00:43:10.000]   ich sehe halt die Fragen hier,
+[00:43:10.000 --> 00:43:13.000]   aber leider ist das System nicht so mit,
+[00:43:13.000 --> 00:43:16.000]   also ich kann nicht sehen, was Sie machen.
+[00:43:16.000 --> 00:43:19.000]   Ich habe 288 Abstimmungsergebnisse,
+[00:43:19.000 --> 00:43:21.000]   das ist nicht ganz schlecht.
+[00:43:21.000 --> 00:43:24.000]   Ich lasse noch eine halbe, ein bisschen länger laufen
+[00:43:24.000 --> 00:43:27.000]   und dann machen wir die Pause.
+[00:43:27.000 --> 00:43:29.000]   Wollen Sie sich in der Pause weiterlaufen lassen?
+[00:43:29.000 --> 00:43:32.000]   Nee, ja, nein, machen wir jetzt Schluss.
+[00:43:32.000 --> 00:43:39.000]   Machen wir jetzt Schluss und na, es kommen noch mehr rein,
+[00:43:39.000 --> 00:43:41.000]   weil es beladen ist.
+[00:43:41.000 --> 00:43:51.000]   Okay, ich, dann machen wir doch jetzt Pause
+[00:43:51.000 --> 00:43:56.000]   bis 9 Uhr 15 und Klicker läuft.
+[00:43:56.000 --> 00:44:05.000]   Okay, der, verschiedene Leute haben verschiedene Probleme
+[00:44:05.000 --> 00:44:07.000]   mit Klicker gehabt,
+[00:44:07.000 --> 00:44:09.000]   bitte schicken Sie mir, wenn es geht,
+[00:44:09.000 --> 00:44:12.000]   möglichst detaillierte Mail, die ich weiterleiten kann.
+[00:44:12.000 --> 00:44:15.000]   Ich kann auch selber zurzeit nicht auf unsere Webseite zugreifen,
+[00:44:15.000 --> 00:44:17.000]   warum weiß ich auch nicht.
+[00:44:17.000 --> 00:44:20.000]   Das heißt, da muss auch noch was anders sein,
+[00:44:20.000 --> 00:44:23.000]   deswegen weiß ich auch nicht, ob Sie die Slides sehen können
+[00:44:23.000 --> 00:44:25.000]   oder nicht sehen können.
+[00:44:25.000 --> 00:44:27.000]   Ich kann die mir leider aber erst darum kümmern,
+[00:44:27.000 --> 00:44:30.000]   wenn die Vorlesung vorbei ist, aber das werde ich dann machen.
+[00:44:30.000 --> 00:44:36.000]   Also, ich habe den 300, 53 Leute haben doch Antworten können
+[00:44:36.000 --> 00:44:38.000]   und die haben eigentlich fast alle alles richtig,
+[00:44:38.000 --> 00:44:44.000]   das ist hier alles richtig, das war richtig, richtig, richtig.
+[00:44:44.000 --> 00:44:48.000]   Manche Leute haben dann hier bei den 007 gemeint,
+[00:44:48.000 --> 00:44:50.000]   das wäre keine Zahl, aber auch ein kleiner Anteil.
+[00:44:50.000 --> 00:44:53.000]   007 ist nach diesen Regeln, wie wir sie haben,
+[00:44:53.000 --> 00:44:57.000]   eine legale Integer, das ist also ganz einfach,
+[00:44:57.000 --> 00:45:02.000]   so wie das gemacht, wie das von Ihnen entschieden worden ist, richtig.
+[00:45:02.000 --> 00:45:05.000]   Also, Sie sehen hier die Antworten, ich war das,
+[00:45:05.000 --> 00:45:09.000]   und für die, die einen Baum noch zeichnen wollten,
+[00:45:09.000 --> 00:45:11.000]   die können das dann auch so machen,
+[00:45:11.000 --> 00:45:13.000]   dass wäre auch kein Problem.
+[00:45:13.000 --> 00:45:17.000]   Also, das hoffe ich, also den Baum habe ich,
+[00:45:17.000 --> 00:45:21.000]   die Slides finden Sie dann irgendwann auf dem Web.
+[00:45:21.000 --> 00:45:25.000]   Also, jetzt kamen natürlich da schon ein paar Fragen auf dem Chat,
+[00:45:25.000 --> 00:45:28.000]   ja, es gibt doch noch andere Möglichkeiten,
+[00:45:28.000 --> 00:45:31.000]   EBNF zu beschreiben, gibt es und so weiter, ja.
+[00:45:31.000 --> 00:45:35.000]   Wir haben hier diese gewählt, aber auch wenn wir das so wählen,
+[00:45:35.000 --> 00:45:39.000]   dann gibt es eben halt hier diese Sonderzeichen,
+[00:45:39.000 --> 00:45:43.000]   diese geschweiften Klammern, die Eckigen Klammern,
+[00:45:43.000 --> 00:45:47.000]   die runden Klammern, ja, und dann dazu den Stroke,
+[00:45:47.000 --> 00:45:50.000]   um Alternativen auszudeuten.
+[00:45:50.000 --> 00:45:53.000]   Wie ich sagte, wenn Sie Alternativen haben, A oder B,
+[00:45:53.000 --> 00:45:56.000]   das ist das selber, als wenn Sie B oder A wollten, ja.
+[00:45:56.000 --> 00:46:01.000]   Aber wenn Sie eine Aufreihung haben, dann ist A, B natürlich was ganz anderes,
+[00:46:01.000 --> 00:46:03.000]   als B, A, ja.
+[00:46:03.000 --> 00:46:07.000]   Das ist, wenn erste Zeichen A erscheinen soll dann das Zeichen B,
+[00:46:07.000 --> 00:46:11.000]   das ist was ganz anderes, als B gefolgt von A, ja.
+[00:46:11.000 --> 00:46:14.000]   Also, da ist die Reihenfolge dann wichtig, ja.
+[00:46:14.000 --> 00:46:19.000]   Und wenn wir uns entscheiden sollten, wie diese Spitzenklammern da zu benutzen,
+[00:46:19.000 --> 00:46:23.000]   um kursiv zu imitieren, dann wäre das auch ein Sonderzeichen.
+[00:46:23.000 --> 00:46:26.000]   Und das Problem, das wir natürlich jetzt haben, ist,
+[00:46:26.000 --> 00:46:29.000]   was ist, wenn wir eine EBNF-Regel aufsetzen wollen,
+[00:46:29.000 --> 00:46:33.000]   in der eines der Sonderzeichen als echtes Zeichen erscheint.
+[00:46:33.000 --> 00:46:38.000]   Zum Beispiel, wir wollen eine EBNF-Regel für die Menge von allen Integers haben.
+[00:46:38.000 --> 00:46:41.000]   Mengen erinnern sich in der Mathematik, ja.
+[00:46:41.000 --> 00:46:44.000]   Da haben die auch diese geschweiften Klammern, ja.
+[00:46:44.000 --> 00:46:48.000]   Hier würden wir gerne geschweifte Klammer als Teil unseres Ausdruck sehen.
+[00:46:48.000 --> 00:46:51.000]   Da müssen wir also irgendwie unterscheiden zwischen dem Sonderzeichen
+[00:46:51.000 --> 00:46:54.000]   und dem Zeichen selbst.
+[00:46:54.000 --> 00:46:57.000]   Und das machen wir so, indem wir hier einen Rahmen rumzeichen.
+[00:46:57.000 --> 00:47:00.000]   Wenn wir einen Rahmen um etwas zeichnen, dann meinen wir,
+[00:47:00.000 --> 00:47:02.000]   wir meinen das Zeichen im Rahmen.
+[00:47:02.000 --> 00:47:04.000]   Es ist jetzt kein Sonderzeichen mehr,
+[00:47:04.000 --> 00:47:11.000]   sondern das ist halt das Zeichen, das wir jetzt selber haben wollen.
+[00:47:11.000 --> 00:47:14.000]   Gibt andere Alternativen, Sie könnten diese Hochkommers
+[00:47:14.000 --> 00:47:17.000]   oder Anführungszeichen verwenden, ja.
+[00:47:17.000 --> 00:47:19.000]   Die haben aber auch wieder andere Probleme,
+[00:47:19.000 --> 00:47:21.000]   weil dann wäre das auch wieder ein Sonderzeichen.
+[00:47:21.000 --> 00:47:25.000]   Aber diese Schachtel oder diese Box um das Zeichen herum
+[00:47:25.000 --> 00:47:28.000]   sagt uns, wir meinen dieses Zeichen, ja.
+[00:47:28.000 --> 00:47:32.000]   Das ist das, was wir machen wollen, ja.
+[00:47:32.000 --> 00:47:36.000]   Also es ist halt dann auch schwieriger zu sagen,
+[00:47:36.000 --> 00:47:38.000]   wie ich dann ein Sonderzeichen bekomme.
+[00:47:38.000 --> 00:47:41.000]   Also wie gesagt, da gibt es unterschiedliche Notationen,
+[00:47:41.000 --> 00:47:45.000]   aber dass die Ecke dieser Box ist, die wir verwenden.
+[00:47:45.000 --> 00:47:48.000]   So, jetzt haben wir so gesehen, wir können diese EBNF-Beschreibungen
+[00:47:48.000 --> 00:47:55.000]   heraus benutzen, um festzustellen, ob zwei Symbole legal sind.
+[00:47:55.000 --> 00:47:58.000]   Also, oder ein Symbol ist legal, ein anderes Symbol ist legal.
+[00:47:58.000 --> 00:48:02.000]   Oder ein Symbol ist legal entsprechend einer Beschreibung
+[00:48:02.000 --> 00:48:05.000]   und ist legal entsprechend einer anderen Beschreibung
+[00:48:05.000 --> 00:48:06.000]   oder auch nicht.
+[00:48:06.000 --> 00:48:08.000]   Und jetzt müssen wir einen Weg finden,
+[00:48:08.000 --> 00:48:12.000]   über die EBNF-Regeln und Beschreibungen selber zu reden.
+[00:48:12.000 --> 00:48:17.000]   Und wir sagen, dass zwei EBNF-Beschreibungen entequivalent,
+[00:48:17.000 --> 00:48:23.000]   das heißt gleichwertig, dann sind immer gleich in irgendeinem Kontext,
+[00:48:23.000 --> 00:48:29.000]   sind dann gleichwertig, wenn sie uns eben dieselben Symbole zeigen.
+[00:48:29.000 --> 00:48:34.000]   Equivalenz ist ihnen sicher bekannter, es ist halt immer in einem Kontext.
+[00:48:34.000 --> 00:48:40.000]   Equalent ist nicht gleichwertigkeit überall,
+[00:48:40.000 --> 00:48:46.000]   wenn sie so zwei, fünf liebe da angucken, die sind als Zahlungsmittel
+[00:48:46.000 --> 00:48:49.000]   equivalent einer 10 Franken Note.
+[00:48:49.000 --> 00:48:52.000]   Aber wenn sie abends vor dem ZVV-Automaten stehen
+[00:48:52.000 --> 00:48:57.000]   und der nimmt keine Münzen entgegen, dann sind die eben nicht gleichwertig,
+[00:48:57.000 --> 00:49:01.000]   weil den 10 Franken Schein können sie da nicht irgendwie verwenden.
+[00:49:01.000 --> 00:49:05.000]   Also, sie sind equivalent in der Kaufkraft, aber nicht vor einem Automaten.
+[00:49:05.000 --> 00:49:09.000]   Daher immer wieder bedeutet, wenn wir von Gleichwertigkeit reden,
+[00:49:09.000 --> 00:49:12.000]   ist immer wieder die Frage, in welchem Kontext.
+[00:49:12.000 --> 00:49:18.000]   So, und wenn wir jetzt eben von equivalenten EBNF-Beschreibungen reden,
+[00:49:18.000 --> 00:49:25.000]   dann heißt das eben im Kontext der Symbole, die durch sie beschrieben werden.
+[00:49:25.000 --> 00:49:32.000]   Und equivalente EBNF-Beschreibungen erkennen dieselben legalen und illegalen Symbole.
+[00:49:32.000 --> 00:49:38.000]   Das heißt, jedes mögliche Symbol, das legal ist, wird von beiden Beschreibungen erkannt
+[00:49:38.000 --> 00:49:44.000]   und jedes Symbol, das illegal ist, wird von beiden Beschreibungen als illegal identifiziert.
+[00:49:44.000 --> 00:49:48.000]   Das ist, was wir eine, dann sind die, wenn das der Fall ist,
+[00:49:48.000 --> 00:49:53.000]   dann sind die beiden EBNF-Beschreibungen equivalent.
+[00:49:53.000 --> 00:49:57.000]   Und das heißt, etwas formaler ausgedrückt, würden wir sagen,
+[00:49:57.000 --> 00:50:00.000]   die Sprachen der EBNF-Beschreibungen sind identisch,
+[00:50:00.000 --> 00:50:05.000]   weil die Menge der Symbole, das können wir sagen, ist eine Sprache.
+[00:50:05.000 --> 00:50:09.000]   Das wäre ein anderer Ausdruck, das zu sagen.
+[00:50:09.000 --> 00:50:13.000]   Also eben, diese EBNF-Beschreibungen sind equivalent,
+[00:50:13.000 --> 00:50:15.000]   wenn sie dieselbe Sprache definieren.
+[00:50:15.000 --> 00:50:21.000]   Das heißt, ein Symbol, das legal für B1 ist, ist auch legal für B2.
+[00:50:21.000 --> 00:50:26.000]   Und ein Symbol, das illegal für B1 ist, ist auch illegal für B2.
+[00:50:26.000 --> 00:50:33.000]   Und genauso gilt, dass ein Symbol, das legal für B2 ist, auch legal für B1 ist.
+[00:50:33.000 --> 00:50:38.000]   Und ein Symbol, das illegal für B2 ist, ist auch illegal für B1.
+[00:50:38.000 --> 00:50:44.000]   Dann sagen wir, dass diese Beschreibungen B1 und B2 equivalent sind.
+[00:50:44.000 --> 00:50:49.000]   Das ist etwas Wichtiges, weil manchmal sehen Sie zwei Beschreibungen,
+[00:50:49.000 --> 00:50:52.000]   da kommt die Frage auf, sind die equivalent oder nicht.
+[00:50:52.000 --> 00:50:57.000]   Und dann müssen Sie überlegen, wie wir das entsprechend am besten beantworten.
+[00:50:57.000 --> 00:51:01.000]   Aber fangen wir erst einmal an mit ein paar Beispielen.
+[00:51:01.000 --> 00:51:06.000]   Die Tatsache, dass zwei equivalent sind,
+[00:51:06.000 --> 00:51:10.000]   ist etwas schwieriger zu zeigen, als dass sie nicht equivalent sind.
+[00:51:10.000 --> 00:51:13.000]   Weil wenn ich zeigen will, dass sie nicht equivalent ist,
+[00:51:13.000 --> 00:51:16.000]   sind dann genügend ein Symbol zu finden,
+[00:51:16.000 --> 00:51:18.000]   dass eine dieser vier Regeln verletzt.
+[00:51:18.000 --> 00:51:24.000]   Also ein Symbol, das zum Beispiel legal für B1 ist, aber nicht legal für B2.
+[00:51:24.000 --> 00:51:27.000]   Dann habe ich ein Beispiel gefunden, das das nicht erfüllt.
+[00:51:27.000 --> 00:51:30.000]   Und dann sind die beiden Beschreibungen nicht equivalent.
+[00:51:30.000 --> 00:51:33.000]   Also hier habe ich eine andere Beschreibung für Integer.
+[00:51:33.000 --> 00:51:36.000]   Ein paar von Ihnen haben auch schon im Chat freundlicherweise
+[00:51:36.000 --> 00:51:38.000]   mir weitere Vorschläge gemacht.
+[00:51:38.000 --> 00:51:41.000]   Sie können dann überlegen, ob die Vorschläge,
+[00:51:41.000 --> 00:51:45.000]   die Sie da im Backchannel gesehen haben, Equivalenzen oder nicht.
+[00:51:45.000 --> 00:51:48.000]   Hier haben wir also diese Beschreibung.
+[00:51:48.000 --> 00:51:53.000]   Integer ist beschrieben oder definiert als ein optionales "zein",
+[00:51:53.000 --> 00:51:56.000]   ein "digit" und eine Wiederholung von "digits".
+[00:51:56.000 --> 00:51:59.000]   Mit "digit" wie vorher und "zein" wie vorher.
+[00:51:59.000 --> 00:52:02.000]   Die Frage ist dann natürlich, ist das, egal,
+[00:52:02.000 --> 00:52:08.000]   ist das diese Beschreibung equivalent der ersten Beschreibung, die wir hatten?
+[00:52:08.000 --> 00:52:11.000]   Oder haben wir eine zweite Variation?
+[00:52:11.000 --> 00:52:13.000]   Das war auch im Netz, glaube ich.
+[00:52:13.000 --> 00:52:16.000]   Wir haben hier optional das Vorzeichen.
+[00:52:16.000 --> 00:52:21.000]   Und jetzt haben wir hier eine Folge von "digits".
+[00:52:21.000 --> 00:52:26.000]   Und jetzt ist die Frage, sind diese beiden Beschreibungen i1, i4,
+[00:52:26.000 --> 00:52:32.000]   und i4, sind die beiden equivalent oder nicht?
+[00:52:32.000 --> 00:52:34.000]   Denken Sie eine Sekunde nach.
+[00:52:34.000 --> 00:52:38.000]   Leider kann ich Ihnen nicht die beiden auf einmal jetzt projizieren.
+[00:52:38.000 --> 00:52:41.000]   Und ein bisschen schwierig, da Sie nicht ausdrucken konnten, die Slides,
+[00:52:41.000 --> 00:52:47.000]   aber gucken Sie sich diese an und eben sind die equivalent.
+[00:52:47.000 --> 00:52:52.000]   Also ist die, wenn Sie das gucken, dann sehen Sie,
+[00:52:52.000 --> 00:52:59.000]   dass jedes Symbol, dass der legal entsprechend der ersten Beschreibung ist,
+[00:52:59.000 --> 00:53:02.000]   ist auch legal für die zweite.
+[00:53:02.000 --> 00:53:04.000]   Warum? Das sehen wir hier einfach.
+[00:53:04.000 --> 00:53:09.000]   Hier in der ersten Beschreibung ist also eine "digit" gefolgt von einer beliebigen Wiederholung.
+[00:53:09.000 --> 00:53:13.000]   Das ist ja nichts anderes als eine beliebige,
+[00:53:13.000 --> 00:53:20.000]   also das ist auch abgedeckt durch die Beschreibung da unten,
+[00:53:20.000 --> 00:53:23.000]   also durch die Wiederholung von "digits".
+[00:53:23.000 --> 00:53:28.000]   Wenn ich also irgendeine Folge von "digits" habe, 7, 2, 8,
+[00:53:28.000 --> 00:53:32.000]   das wäre legal entsprechend dieser Regel
+[00:53:32.000 --> 00:53:37.000]   und wäre auch legal entsprechend der Beschreibung,
+[00:53:37.000 --> 00:53:40.000]   die ich auf der nächsten Slide habe.
+[00:53:40.000 --> 00:53:45.000]   Was immer legal entsprechend der ersten Beschreibung ist,
+[00:53:45.000 --> 00:53:48.000]   ist auch legal entsprechend der zweiten.
+[00:53:48.000 --> 00:53:51.000]   Aber mit der Umkehrung, da ist es etwas schwieriger.
+[00:53:51.000 --> 00:53:55.000]   Warum? Weil da gilt das eben nicht.
+[00:53:55.000 --> 00:53:57.000]   Weil wenn ich mir diese Regel jetzt hier angucke,
+[00:53:57.000 --> 00:53:59.000]   tut mir leid, dass ich hier so flippen muss,
+[00:53:59.000 --> 00:54:01.000]   wenn ich mir das angucke,
+[00:54:01.000 --> 00:54:08.000]   ich habe optional ein Vorzeichen gefolgt von Wiederholungen von "digits".
+[00:54:08.000 --> 00:54:12.000]   Wiederholungen heißt Null Wiederholungen, 1, 2 und so weiter
+[00:54:12.000 --> 00:54:14.000]   beliebe ich viele Wiederholungen.
+[00:54:14.000 --> 00:54:18.000]   Also ich kann optional dieses Wellen,
+[00:54:18.000 --> 00:54:21.000]   dann wähle ich hier zwischen den beiden meinetwegen das Plus aus,
+[00:54:21.000 --> 00:54:26.000]   und dann gehe ich hin und mache Null Wiederholungen
+[00:54:26.000 --> 00:54:30.000]   von diesem Kontal da, und Null Wiederholung,
+[00:54:30.000 --> 00:54:33.000]   das ist also "epsilon", also ich nehme nichts,
+[00:54:33.000 --> 00:54:35.000]   das heißt das Symbol,
+[00:54:35.000 --> 00:54:40.000]   das ich auf diese Wolle erzeuge, wäre das Plus Symbol.
+[00:54:40.000 --> 00:54:46.000]   Und dieses Plus Symbol, das können wir nicht nach dieser Regel produzieren,
+[00:54:46.000 --> 00:54:51.000]   weil nach dieser Regel muss nach dem Vorzeichen
+[00:54:51.000 --> 00:54:54.000]   immer noch mindestens eine "digit" folgen.
+[00:54:54.000 --> 00:55:02.000]   Daher ist dieses Plus nicht legal entsprechend der ersten Beschreibung.
+[00:55:02.000 --> 00:55:07.000]   Und weiter, es gibt noch mehr, was hier Schwierigkeiten ist,
+[00:55:07.000 --> 00:55:13.000]   das ist ja optional, und was ist, wenn wir das nicht benutzen?
+[00:55:13.000 --> 00:55:17.000]   Also was ist, wenn wir hier dieses Optionale,
+[00:55:17.000 --> 00:55:19.000]   lassen Sie es mich so schreiben, haben die Option,
+[00:55:19.000 --> 00:55:22.000]   wenn wir die nicht wählen,
+[00:55:22.000 --> 00:55:26.000]   nehmen wir die Option nicht, dann wäre also hier wieder ein "epsilon",
+[00:55:26.000 --> 00:55:29.000]   weil wir nehmen nichts, also schreiben wir mal hin "epsilon",
+[00:55:29.000 --> 00:55:33.000]   das Versehen, was das ist, und dann nehmen wir noch hin,
+[00:55:33.000 --> 00:55:39.000]   Null Wiederholungen des Teils, den wir danach geschrieben haben,
+[00:55:39.000 --> 00:55:44.000]   dieser Teil hier, wieder "epsilon", es gibt eben nichts,
+[00:55:44.000 --> 00:55:49.000]   also hier, da sehen Sie es, also da unten ist nichts zu sehen,
+[00:55:49.000 --> 00:55:56.000]   das ist dann der Grund, warum diese beiden Beschreibungen nicht equivalent sind,
+[00:55:56.000 --> 00:56:02.000]   weil Plus ist eben ein legales, ein legales Symbol entsprechend der zweiten Beschreibung,
+[00:56:02.000 --> 00:56:05.000]   und auch "epsilon", also die leere Zeichenfolge,
+[00:56:05.000 --> 00:56:14.000]   wäre auch ein legales Symbol entsprechend dieser "i4" Strichbeschreibung, die wir da hatten.
+[00:56:14.000 --> 00:56:20.000]   Also das heißt, diese beiden Beschreibungen sind nicht equivalent.
+[00:56:20.000 --> 00:56:29.000]   Wie wäre es, wir würden doch Zahlen in dem Format darstellen wollen,
+[00:56:29.000 --> 00:56:35.000]   indem Sie die Zahlen in Bilanz und so was finden, um so einen Hochkomma hat.
+[00:56:35.000 --> 00:56:40.000]   Naja, das ist jetzt ein Weg, wie wir überlegen könnten, das zu machen.
+[00:56:40.000 --> 00:56:46.000]   Ein Weg wäre, dass wir dieses Hochkomma als Alternative zu den Digits hinzufügen,
+[00:56:46.000 --> 00:56:51.000]   die nenne ich jetzt mal "comma digit", damit ich da mich nicht vertuere,
+[00:56:51.000 --> 00:56:56.000]   und dann würde ich jetzt sagen, hier meine Integers mit Hochkomma,
+[00:56:56.000 --> 00:56:59.000]   die bestehen aus einem optionalen Vorzeichen,
+[00:56:59.000 --> 00:57:05.000]   einer "comma digit" gefolgt von einer Wiederholung von diesen "comma digits",
+[00:57:05.000 --> 00:57:09.000]   das könnte ich doch auf diese Weise machen.
+[00:57:09.000 --> 00:57:18.000]   Und das wäre eine EBNF-Beschreibung, die Beschreibung selbst ist neutral.
+[00:57:18.000 --> 00:57:23.000]   Wenn wir uns das angucken, ist das vielleicht nicht ganz das, was wir wollen,
+[00:57:23.000 --> 00:57:30.000]   weil wenn ich diese Beschreibung hätte, dann wäre auch zum Beispiel 1 hochkommadrei,
+[00:57:30.000 --> 00:57:34.000]   das wäre nach dieser Beschreibung legal.
+[00:57:34.000 --> 00:57:39.000]   Ich nehme kein Vorzeichen, also das hier fällt weg,
+[00:57:39.000 --> 00:57:44.000]   ich nehme als "comma digit" das erste eine 1, und dann mache ich eine Wiederholung,
+[00:57:44.000 --> 00:57:51.000]   dann mache ich ein "comma", das mache ich 2 Wiederholungen, "comma digit",
+[00:57:51.000 --> 00:57:57.000]   ich schreibe das jetzt gleich hier so hin, "comma digit",
+[00:57:57.000 --> 00:58:02.000]   ich mache also 2 Wiederholungen,
+[00:58:02.000 --> 00:58:09.000]   und die erste Wiederholung ergibt mir dann eben das "comma" hier,
+[00:58:09.000 --> 00:58:13.000]   und die zweite Wiederholung ergibt mir die "ziffer 3",
+[00:58:13.000 --> 00:58:19.000]   und Sie sehen, das ist nach dieser Regel, die ich hier habe, ist das legal,
+[00:58:19.000 --> 00:58:26.000]   ist legal, funktioniert, aber ist vielleicht nicht ganz das, was wir wollen.
+[00:58:26.000 --> 00:58:34.000]   Das ist also etwas, was diese Beschreibung lässt, Zimpole zu, die wir nicht akzeptieren wollen, wahrscheinlich.
+[00:58:34.000 --> 00:58:39.000]   Die Frage für Sie, überlegen Sie mal, können wir das so ändern,
+[00:58:39.000 --> 00:58:46.000]   dass Hochkommas richtig gesetzt werden, also zur Gruppierung von Tausenderblöcken verwendet werden.
+[00:58:46.000 --> 00:58:53.000]   Also jede Dreiergruppe von Ziffern ist durch ein Hochkommas von den links davor geschriebenen Ziffern getrennt,
+[00:58:53.000 --> 00:58:57.000]   und wenn eine Dreiergruppe am Anfang steht, dann steht dort natürlich kein Hochkommas.
+[00:58:57.000 --> 00:59:03.000]   Also sowas würden wir nicht akzeptieren wollen,
+[00:59:03.000 --> 00:59:13.000]   es dürfte eben ein Hochkommas nur vor einer Dreiergruppe stehen, die nicht die erste ist.
+[00:59:13.000 --> 00:59:15.000]   So, wie würden Sie das machen?
+[00:59:15.000 --> 00:59:19.000]   Ich zeige Ihnen nochmal hier die erste Beschreibung,
+[00:59:19.000 --> 00:59:24.000]   überlegen Sie mal ein bisschen im Kopf, wie könnte man das so machen,
+[00:59:24.000 --> 00:59:27.000]   und denken Sie daran, deswegen haben wir die Aufreihung.
+[00:59:27.000 --> 00:59:33.000]   Die Aufreihung erlaubt es uns zu erzwingen, dass bestimmte Symbole da auftreten.
+[00:59:33.000 --> 00:59:42.000]   Die erlaubt es uns zu erfolgen, dass immer unsere Symbolfolgen, die wir produzieren,
+[00:59:42.000 --> 00:59:50.000]   eine bestimmte Reihenfolge einhalten und eben da die entsprechende Zeichen auftreten.
+[00:59:50.000 --> 00:59:52.000]   Wie könnte man das machen?
+[00:59:52.000 --> 00:59:57.000]   Wie ist kein Klicker starten, weil das so ist.
+[00:59:57.000 --> 01:00:10.000]   Also hier sehen Sie, der Trick ist, jede Dreiergruppe von Ziffern wird durch ein Hochkommas von den links davor geschriebenen Ziffern getrennt.
+[01:00:10.000 --> 01:00:16.000]   Das heißt, für die links davor geschriebenen Ziffern, wenn sie nicht selber wieder eine Dreiergruppe sind,
+[01:00:16.000 --> 01:00:22.000]   vor der eine Dreiergruppe steht, müssen anders behandelt werden als die Dreiergruppen, die danach kommen,
+[01:00:22.000 --> 01:00:24.000]   die also danach erfolgen.
+[01:00:24.000 --> 01:00:31.000]   Wenn eine Dreiergruppe Sonderfall, wenn eine Dreiergruppe am Anfang steht, dann ist dort kein Hochkommas.
+[01:00:31.000 --> 01:00:37.000]   Also, es müssen unterscheiden zwischen einer Dreiergruppe oder Gruppe, die am Anfang erscheint
+[01:00:37.000 --> 01:00:40.000]   und einer Dreiergruppe, die irgendwo anders erscheint.
+[01:00:40.000 --> 01:00:50.000]   Und was würden wir dann machen? Dann würden wir halt sagen, okay, wir würden eben halt unsere Dreiergruppen irgendwie definieren.
+[01:00:50.000 --> 01:00:59.000]   Wir hätten die comma separated digits, die würden wir die nennen, die hätten wir hier, und die bestünden aus einer Aufreihung von drei digits,
+[01:00:59.000 --> 01:01:01.000]   eine Aufreihung.
+[01:01:01.000 --> 01:01:05.000]   Das heißt, hier müssen drei stehen.
+[01:01:05.000 --> 01:01:07.000]   Und wie sehen unsere Zahlen jetzt aus?
+[01:01:07.000 --> 01:01:16.000]   Unsere Zahlen sehen so aus, dass sie eben optionales Vorzeichen, dass sie hier eine Nambe, also Vorzeichen, eine Nambe haben.
+[01:01:16.000 --> 01:01:24.000]   Und die Nambe ist eben entweder eine Ziffer, zwei Ziffern oder drei Ziffern, wieder Aufreihung und eben Alternative,
+[01:01:24.000 --> 01:01:25.000]   eine von denen.
+[01:01:25.000 --> 01:01:34.000]   Und danach haben wir beliebige Wiederholungen von drei Ziffern, die von einem Hochkommas angeführt sind.
+[01:01:34.000 --> 01:01:38.000]   Das Hochkommas erscheint dann hier als erstes vor dieser Gruppe.
+[01:01:38.000 --> 01:01:54.000]   Und damit kann ich jetzt eben sicherstellen, dass eben Zahlen wie 1, 7, 8, 9 erlaubt sind, aber 7, 8, 9, 5, 6, 3 oder sowas, ja, ist eben nicht erlaubt.
+[01:01:54.000 --> 01:02:02.000]   Warum? Die erste Gruppe kann eben eine Ziffer sein oder zwei oder drei, aber das kann kein Hochkommas sein.
+[01:02:02.000 --> 01:02:09.000]   Das Hochkommas kann nicht am Anfang einer Zahl stehen, die wir mit dieser Regel beschreiben wollen.
+[01:02:09.000 --> 01:02:20.000]   Am Anfang muss eine, müssen ein, zwei oder drei Ziffern stehen und entsprechend danach können diese Gruppen kommen, die mit einem Komma angefangen.
+[01:02:20.000 --> 01:02:28.000]   Müsste nicht Nambe ungleichs Null sein, weiß ich jetzt nicht, was sie, kann ich jetzt leider so schnell nicht beantworten.
+[01:02:28.000 --> 01:02:41.000]   Wir sind immer noch etwas, hier sehe ich noch ein anderen Tipp, es ist noch immer etwas großzügig mit dem Umgang von Nullen.
+[01:02:41.000 --> 01:02:47.000]   Wir erlauben ja wie bei Null, Null, Null, 7, dass die Null als erste Ziffer wiederholt auftritt.
+[01:02:47.000 --> 01:03:06.000]   So, habe ich hier für Sie zum Nachdenken zwei weitere Beschreibungen, sind die equivalent unseren Beschreibungen, die wir am Anfang hatte, dieses i1, das habe ich hier nochmal gezeigt, das war also die Ziffer, die wir da, die Beschreibung für Integer, die wir ganz am Anfang hatten.
+[01:03:06.000 --> 01:03:14.000]   Hier habe ich zwei weitere Beschreibungen, sind die denn gleich, sind die equivalent.
+[01:03:14.000 --> 01:03:20.000]   Können Sie das überlegen?
+[01:03:20.000 --> 01:03:31.000]   Genau, hier fragt mich jemand, zur Echt, ja Null hoch Komma 1, 2, 3 ist nach unserer, ist okay.
+[01:03:31.000 --> 01:03:40.000]   Wir wollen es einfach halten, in drei Slides, vier Slides weiter habe ich auch das Beispiel, wie wir mit den Null wegkommen können.
+[01:03:40.000 --> 01:03:59.000]   Natürlich, ja ist noch nicht perfekt, wir sind auch erst in der zweiten Vorlesung, also ja, kann man das hochkommen, sie können das überall hinpacken, sie könnten das hochkommen, also das ist, sehen Sie, die eBNF Beschreibungen sind nicht so, dass es nur eine richtige eBNF Beschreibung gibt,
+[01:03:59.000 --> 01:04:06.000]   können sich verschiedenste eBNF Beschreibungen ausdenken, ja, hier gibt es viele Möglichkeiten das zu machen, ja.
+[01:04:06.000 --> 01:04:28.000]   Und, ja, hier ist die Frage, wann genügt ein Symbol der Beschreibung, ein Symbol genügt der Beschreibung, wenn ich durch die Regeln der Beschreibung angefangen mit dem
+[01:04:28.000 --> 01:04:39.000]   Namen der Regel, die die Beschreibung eben zusammenfasst, ja, wenn ich da schrittweise die Zeichen herausbekommen kann, die dieses Symbol ausmachen, ja.
+[01:04:39.000 --> 01:04:50.000]   Also, die beiden sind equivalente, weil die eben halt in allen Fällen gleich sind.
+[01:04:50.000 --> 01:05:07.000]   Sie sehen, ob Sie das Digit hier haben und danach die Folge der Wiederholungen oder erst die Wiederholungen und dann das Zeichen, das ist gleich, weil wir wissen halt magischerweise, ob Null oder Eins oder zwei Wiederholungen gefordert sind.
+[01:05:07.000 --> 01:05:27.000]   Und ob wir die Option mit der Auswahl hier oben in einem separaten Regel haben oder ob wir einfach eine Auswahl haben und in der Option dann auf eine andere Regel uns beziehen, die die Auswahl zulässt,
+[01:05:27.000 --> 01:05:41.000]   das können Sie alles machen, wie Sie wollen. Ja, also hier hatten wir die einfach sofort reingeschrieben, die Tatsache, dass wir zwischen plus und minus wählen können, aber optional müssen gar nicht mal wählen.
+[01:05:41.000 --> 01:05:46.000]   Ja, und hier haben wir die in einer separaten Regel oder in separaten Regeln.
+[01:05:46.000 --> 01:05:47.000]   Das macht alles keinen Unterschied.
+[01:05:47.000 --> 01:06:02.000]   Entscheidend ist, was für Symbole können wir beschreiben, kann ich für jedes Symbol der einen Regel auch ein Symbol, kann ich auch zeigen, dass diese Symbole durch die andere Regel genauso als legal erkannt wird.
+[01:06:02.000 --> 01:06:08.000]   So, gucken wir nach, was da noch alles möglich ist.
+[01:06:08.000 --> 01:06:11.000]   So, jetzt, worauf läuft das Ganze hinaus.
+[01:06:11.000 --> 01:06:16.000]   EBNF erlaubt es uns, die Sündungszeiten zu beschreiben.
+[01:06:16.000 --> 01:06:21.000]   Sündungszeiten ist der Ausdruck, den wir verwenden, um zu sagen, das ist die Form.
+[01:06:21.000 --> 01:06:31.000]   Also die Zahlen, mit denen wir uns beschäftigen, die müssen halt so aussehen, dass da eine Ziffer kommt und noch eine Ziffer kommt und noch eine Ziffer kommt.
+[01:06:31.000 --> 01:06:32.000]   Das ist die Form.
+[01:06:32.000 --> 01:06:40.000]   Wir sagen aber überhaupt nichts, was diese Ziffernfolge, dieses Symbol überhaupt bedeutet.
+[01:06:40.000 --> 01:06:43.000]   Weil Bedeutung ist eine andere Dimension.
+[01:06:43.000 --> 01:06:47.000]   Das ist die Semantik, was ist die Bedeutung.
+[01:06:47.000 --> 01:06:53.000]   Die können wir eben halt durch EBNF leider eben nicht festlegen.
+[01:06:53.000 --> 01:06:56.000]   Und das ist auch in vielen anderen Situationen so.
+[01:06:56.000 --> 01:06:59.000]   Sündungszeiten legt wirklich nur die Form fest.
+[01:06:59.000 --> 01:07:03.000]   Ein Satz besteht aus einem Subjekt und einem Prädikat.
+[01:07:03.000 --> 01:07:07.000]   Und eventuell hat das Prädikat noch ein Adverb.
+[01:07:07.000 --> 01:07:11.000]   Sie könnten also im Deutschen ganz legal den Satz formen.
+[01:07:11.000 --> 01:07:15.000]   Alle lesenden Schiffe riechen gelb.
+[01:07:15.000 --> 01:07:16.000]   Das wäre ja okay.
+[01:07:16.000 --> 01:07:22.000]   Wir haben hier ein Subjekt, noch etwas erweitert.
+[01:07:22.000 --> 01:07:23.000]   Wir haben ein Verb.
+[01:07:23.000 --> 01:07:27.000]   Wir haben eine Adverbialkonstruktion.
+[01:07:27.000 --> 01:07:32.000]   Das ist nach diesen Regeln der Sündtags ein korrekter Satz.
+[01:07:32.000 --> 01:07:36.000]   Aber das ist kein Satz, der irgendwie Sinn macht.
+[01:07:36.000 --> 01:07:39.000]   Von der Bedeutung her ist der unsinnig.
+[01:07:39.000 --> 01:07:46.000]   Wir haben in den natürlichen Sprachen diverse Mechanismen, um das zu kontrollieren.
+[01:07:46.000 --> 01:07:47.000]   Frage?
+[01:07:47.000 --> 01:07:50.000]   Guten Witz.
+[01:07:50.000 --> 01:07:51.000]   Den möchte ich auch.
+[01:07:51.000 --> 01:07:56.000]   Wir haben Zeichensetzung.
+[01:07:56.000 --> 01:08:00.000]   Der Herrscher dachte an sich selbst zuletzt.
+[01:08:00.000 --> 01:08:05.000]   Wir haben in unserer Sprache verschiedene Ausdruckmöglichkeiten.
+[01:08:05.000 --> 01:08:08.000]   In eBNF haben wir das nicht.
+[01:08:08.000 --> 01:08:11.000]   Wir beschreiben nur die Sündtags.
+[01:08:11.000 --> 01:08:16.000]   Wir sagen hier, das sind so sehen die legal geformten Integers aus.
+[01:08:16.000 --> 01:08:21.000]   Aber ob das jetzt Integers sind oder was anderes zeicheln,
+[01:08:21.000 --> 01:08:24.000]   das ist etwas, was wir nicht behandeln.
+[01:08:24.000 --> 01:08:26.000]   Aber wenn wir anfangen,
+[01:08:26.000 --> 01:08:31.000]   zu programmieren, dann ist die Bedeutung genauso wichtig.
+[01:08:31.000 --> 01:08:34.000]   Wir haben die Frage,
+[01:08:34.000 --> 01:08:38.000]   können zwei unterschiedliche Symbole dieselbe Bedeutung haben?
+[01:08:38.000 --> 01:08:41.000]   Das kann vielleicht zur Verwirrung führen.
+[01:08:41.000 --> 01:08:45.000]   Oder kann ein Symbol verschiedene Bedeutungen haben?
+[01:08:45.000 --> 01:08:49.000]   Abhängig vom Kontext, in dem es sich befindet.
+[01:08:49.000 --> 01:08:51.000]   Da wird es schwieriger,
+[01:08:51.000 --> 01:08:56.000]   das zu untersuchen.
+[01:08:56.000 --> 01:09:01.000]   Wenn wir als Raum der Symbole,
+[01:09:01.000 --> 01:09:05.000]   mit denen wir uns beschäftigen, die Namen von Personen nehmen,
+[01:09:05.000 --> 01:09:11.000]   dann wären die drei Namen Herrwirt, Professorwirt oder Niklas Wirt.
+[01:09:11.000 --> 01:09:16.000]   Das wären drei legale Namen, wenn ich in eBNF aussetze.
+[01:09:16.000 --> 01:09:20.000]   Die können sich alle auf dieselbe Person beziehen.
+[01:09:20.000 --> 01:09:24.000]   Wobei es wahrscheinlich mehrere Personen gibt, die diesen Namen haben.
+[01:09:24.000 --> 01:09:27.000]   Wenn wir den Ausdruck "Nächste Vorlesung" nehmen,
+[01:09:27.000 --> 01:09:29.000]   und sagen, die nächste Vorlesung fällt aus,
+[01:09:29.000 --> 01:09:33.000]   wenn ich das gestern gesagt hätte, dann gäbe es heute keine Vorlesung
+[01:09:33.000 --> 01:09:35.000]   und sie hätten länger schlafen können.
+[01:09:35.000 --> 01:09:38.000]   Wenn aber jemand das gestern gesagt hätte
+[01:09:38.000 --> 01:09:41.000]   und hätte sich auf eine andere Vorlesung bezogen,
+[01:09:41.000 --> 01:09:44.000]   nämlich die Algorithmen und Datenstrukturen,
+[01:09:44.000 --> 01:09:47.000]   dann würde sich eben das heißen,
+[01:09:47.000 --> 01:09:50.000]   dass am Montag keine Vorlesung stattfindet.
+[01:09:50.000 --> 01:09:56.000]   Also "Nächste Vorlesung" ist auch immer nur relevant oder richtig wichtig,
+[01:09:56.000 --> 01:09:59.000]   wenn es in einem Kontext ist.
+[01:09:59.000 --> 01:10:02.000]   Damit kommen wir zu den Integers.
+[01:10:02.000 --> 01:10:05.000]   Integers haben eben auch eine Bedeutung.
+[01:10:05.000 --> 01:10:08.000]   Das ist der Normalerweise der Wert.
+[01:10:08.000 --> 01:10:13.000]   Daher 1 und +1 haben beide den Wert 1.
+[01:10:13.000 --> 01:10:19.000]   Und die Null hat +0, -0, 0 hat immer den Wert 0.
+[01:10:19.000 --> 01:10:26.000]   Aber die Frage, ob jetzt eben 0012 und 112 dieselbe Bedeutung haben,
+[01:10:26.000 --> 01:10:29.000]   die Frage ist nicht ganz einfach.
+[01:10:29.000 --> 01:10:32.000]   Weil in der Mathematik würde man sagen, ja,
+[01:10:32.000 --> 01:10:35.000]   also in der Mathematik ignorieren wir die vorstehenden Nullen
+[01:10:35.000 --> 01:10:38.000]   und die spielen für uns keine weitere Rolle.
+[01:10:38.000 --> 01:10:41.000]   Aber wenn das zum Beispiel PINZ sind,
+[01:10:41.000 --> 01:10:43.000]   mit denen sie Zugang zu einem Safe bekommen,
+[01:10:43.000 --> 01:10:45.000]   dann sollte das besser ein Unterschied sein,
+[01:10:45.000 --> 01:10:50.000]   ob da jemand 0012 oder 112 eingibt.
+[01:10:50.000 --> 01:10:56.000]   Also die Integer-Beschreibung von eBNF,
+[01:10:56.000 --> 01:10:59.000]   die sagt uns nur, wie Zahlen aussehen soll.
+[01:10:59.000 --> 01:11:04.000]   Die sagt uns nichts über die Bedeutung oder den Wert dieser Zahlen.
+[01:11:04.000 --> 01:11:08.000]   Jetzt auch ein bisschen komplizierter,
+[01:11:08.000 --> 01:11:10.000]   dass wir uns die Frage stellen,
+[01:11:10.000 --> 01:11:13.000]   ob wir eine eBNF-Beschreibung hinbekommen können,
+[01:11:13.000 --> 01:11:17.000]   die es uns erlaubt, die Mengen von Zahlen zu beschreiben.
+[01:11:17.000 --> 01:11:20.000]   Und das heißt, wie sieht so eine Menge aus?
+[01:11:20.000 --> 01:11:23.000]   Erinnern Sie sich vielleicht noch, eine endliche Menge,
+[01:11:23.000 --> 01:11:27.000]   wir machen das ganz einfach, besteht eben in der Mathematik
+[01:11:27.000 --> 01:11:30.000]   und auch bei uns aus diesen geschweiften Klammern
+[01:11:30.000 --> 01:11:33.000]   und dann eine Aufzählung von Zahlen.
+[01:11:33.000 --> 01:11:37.000]   So, und zwischen diesen, was kann jetzt hier als Aufzählung kommen?
+[01:11:37.000 --> 01:11:42.000]   Da können natürlich ganz klar, können so was kommen.
+[01:11:42.000 --> 01:11:47.000]   Mitkommert oder ohnekommert, das könnten wir definieren.
+[01:11:47.000 --> 01:11:50.000]   Es könnte auch eine einzige Zahl sein.
+[01:11:50.000 --> 01:11:52.000]   Und es könnte auch gar nichts sein.
+[01:11:52.000 --> 01:11:56.000]   Es könnte ja hier zwischen keine Aufzählung sein.
+[01:11:56.000 --> 01:11:58.000]   Also die Aufzählung wäre Epsilon.
+[01:11:58.000 --> 01:12:01.000]   Das heißt, unsere Menge, die sähe so aus,
+[01:12:01.000 --> 01:12:05.000]   das wäre also die bekannte Learemenge.
+[01:12:05.000 --> 01:12:09.000]   Das ist im Grunde genommen abhängig von dem,
+[01:12:09.000 --> 01:12:13.000]   was ich für eine Menge jetzt ausdrücken möchte.
+[01:12:13.000 --> 01:12:17.000]   Sieht das eben so aus oder so oder so.
+[01:12:17.000 --> 01:12:20.000]   Oder eben, ich kann auch sagen, ich will gar keine Kommas.
+[01:12:20.000 --> 01:12:23.000]   Ich lasse nur Zwischenräume zu als Trennung.
+[01:12:23.000 --> 01:12:27.000]   Das können Sie machen, wie Sie wollen.
+[01:12:27.000 --> 01:12:32.000]   So, jetzt wie bekommen wir diese geschweiften Klammern
+[01:12:32.000 --> 01:12:34.000]   in unsere eBNF-Beschreibung?
+[01:12:34.000 --> 01:12:37.000]   Die eBNF-Beschreibung muss natürlich dies auch produzieren.
+[01:12:37.000 --> 01:12:40.000]   Das heißt, wir müssen also einen Weg finden,
+[01:12:40.000 --> 01:12:44.000]   diese Zeichen zu zeigen.
+[01:12:44.000 --> 01:12:47.000]   Und wir müssen also unterscheiden zwischen der geschweiften Klammer,
+[01:12:47.000 --> 01:12:50.000]   die wir für eBNF verwenden,
+[01:12:50.000 --> 01:12:52.000]   um Wiederholungen auszudrücken.
+[01:12:52.000 --> 01:12:55.000]   Und dem Symbol beginnt eine Menge.
+[01:12:55.000 --> 01:12:58.000]   Das sagt mir hier, beginnt eine Menge.
+[01:12:58.000 --> 01:13:00.000]   Da müssen wir unterscheiden.
+[01:13:00.000 --> 01:13:04.000]   Und dementsprechend würden wir jetzt also unsere eBNF-Beschreibung
+[01:13:04.000 --> 01:13:08.000]   so aussehen, dass das hätten also die Regel für Integer-Set.
+[01:13:08.000 --> 01:13:10.000]   Ich schreibe Ihnen mal hin.
+[01:13:10.000 --> 01:13:17.000]   Integer-Set wäre eben definiert als eine sich öffnende Klammer.
+[01:13:17.000 --> 01:13:20.000]   Und dann natürlich wollen wir auch, dass das symmetisch ist,
+[01:13:20.000 --> 01:13:22.000]   eine sich schließende Klammer.
+[01:13:22.000 --> 01:13:25.000]   Und dann wollen wir eine Integer-List haben.
+[01:13:25.000 --> 01:13:29.000]   Das sei jetzt mal alles kursiv geschrieben.
+[01:13:29.000 --> 01:13:32.000]   Das wäre der Name einer weiteren eBNF-Regel.
+[01:13:32.000 --> 01:13:36.000]   Also wir brauchen hier eine Regel, sei ein N.
+[01:13:36.000 --> 01:13:40.000]   Meine Handschrift ist leider nicht die beste.
+[01:13:40.000 --> 01:13:44.000]   Integer-List müssten wir also auch definieren.
+[01:13:44.000 --> 01:13:47.000]   Und Integer-List wäre jetzt definiert als,
+[01:13:47.000 --> 01:13:49.000]   was würden wir machen?
+[01:13:49.000 --> 01:13:52.000]   Nehmen wir an, wir wählen die Komma-Option.
+[01:13:52.000 --> 01:13:56.000]   Dann besteht eine Integer-List aus einer Integer,
+[01:13:56.000 --> 01:13:59.000]   wie wir sie vorher schon mal definiert haben.
+[01:13:59.000 --> 01:14:04.000]   Und dann eben Wiederholungen einem Komma, das ist das Kommasymbol.
+[01:14:04.000 --> 01:14:09.000]   Und dann wieder einer weiteren,
+[01:14:09.000 --> 01:14:13.000]   dem was unser Integer sagen will.
+[01:14:13.000 --> 01:14:17.000]   Und natürlich, ich will da ja auch die Lehremenge zulassen.
+[01:14:17.000 --> 01:14:19.000]   Also mache ich das optional.
+[01:14:19.000 --> 01:14:24.000]   Also die Integer-List, die zwischen den beiden geschweiften Klammern
+[01:14:24.000 --> 01:14:27.000]   für unsere Menge steht, die kann auch leer sein.
+[01:14:27.000 --> 01:14:30.000]   Da ist eben gar nichts an die Lehremenge.
+[01:14:30.000 --> 01:14:34.000]   Also Sie sehen hier den Unterschied zwischen eben diesem Zeichen.
+[01:14:34.000 --> 01:14:39.000]   Das ist hier, dieses Zeichen muss im Symbol auftreten.
+[01:14:39.000 --> 01:14:44.000]   Und hier die Wiederholung, die ich benutzen möchte,
+[01:14:44.000 --> 01:14:50.000]   um zu sagen, dass meine Menge eben noch weitere Zahlen mehr als eine
+[01:14:50.000 --> 01:14:52.000]   enthalten kann.
+[01:14:52.000 --> 01:14:56.000]   Und hier habe ich die Option, und das habe ich jetzt so gemacht,
+[01:14:56.000 --> 01:15:01.000]   dass wenn ich die Nicht-Wähle, dann habe ich halt,
+[01:15:01.000 --> 01:15:03.000]   bekomme ich halt die Lehremenge.
+[01:15:03.000 --> 01:15:08.000]   Dann bekomme ich die Lehremenge, die ich ja auch als legale Integer-Menge
+[01:15:08.000 --> 01:15:10.000]   zulassen möchte.
+[01:15:10.000 --> 01:15:16.000]   Also Sie sehen hier, kann ich mit diesem EBNF-Bestandteilen auf einfache
+[01:15:16.000 --> 01:15:21.000]   und vielleicht nicht elegant, aber auf einfache Weise die Mengen beschreiben.
+[01:15:21.000 --> 01:15:29.000]   Also wie gesagt, hier haben Sie unten das nochmal eben so ingeschrieben,
+[01:15:29.000 --> 01:15:32.000]   dass Sie es besser lesen können.
+[01:15:32.000 --> 01:15:39.000]   Und die Regel für Integer sind halt die Regeln, die wir eben halt woanders
+[01:15:39.000 --> 01:15:41.000]   gesehen haben.
+[01:15:41.000 --> 01:15:44.000]   Und diese solche Regeln finden Sie immer und überall in Java.
+[01:15:44.000 --> 01:15:46.000]   In den Beschreibungen finden Sie sowas.
+[01:15:46.000 --> 01:15:49.000]   Und jetzt könnten Sie für irgend ein beliebige Menge,
+[01:15:49.000 --> 01:15:55.000]   könnten Sie jetzt zeigen, dass eben diese Menge den entsprechenden
+[01:15:55.000 --> 01:15:58.000]   Regeln entsprechend stellt ist.
+[01:15:58.000 --> 01:16:03.000]   Und dann nehmen wir an, wir hätten jetzt hier die Menge 2 minus 5 und 18.
+[01:16:03.000 --> 01:16:06.000]   Und dann könnten wir jetzt anfangen, eine Tabelle bauen.
+[01:16:06.000 --> 01:16:09.000]   Und könnten eben zeigen, dass eben da ist eine Integer,
+[01:16:09.000 --> 01:16:11.000]   eine Integer besteht aus einem Vorzeichen.
+[01:16:11.000 --> 01:16:14.000]   Und das Vorzeichen kann gewählt werden oder nicht.
+[01:16:14.000 --> 01:16:16.000]   Und dann kommt eine Ziffer.
+[01:16:16.000 --> 01:16:22.000]   Und möglicherweise danach folgend 0, 1, 2, 3 Wiederholungen und so weiter.
+[01:16:22.000 --> 01:16:26.000]   Und das wird natürlich sehr schnell, sehr langweilig.
+[01:16:26.000 --> 01:16:31.000]   Und darum, was wir normalerweise machen, wir helfen uns mit Lemmas.
+[01:16:31.000 --> 01:16:34.000]   Wir sagen also, ein Lämmer wäre 2 ist eine Integer.
+[01:16:34.000 --> 01:16:39.000]   Das heißt, ich sage damit, dass ich mit der EBNF-Beschreibung von Integer,
+[01:16:39.000 --> 01:16:44.000]   die ich ja eben auch mitbewendet habe, kann ich zeigen, dass 2 eine Integer ist.
+[01:16:44.000 --> 01:16:49.000]   Und minus 5 kann ich zeigen, ist auch eine Integer und 10 ist eine Integer.
+[01:16:49.000 --> 01:16:53.000]   Wenn ich das habe, dann kann ich meine Tabelle wesentlich vereinfachen.
+[01:16:53.000 --> 01:17:02.000]   Ich will also zeigen, dass diese Menge der Regel Integer-Set entsprechend gebildet ist.
+[01:17:02.000 --> 01:17:12.000]   Wir fangen also an mit der EBNF-Regel, die ich da gezeigt habe.
+[01:17:12.000 --> 01:17:14.000]   Das ist der Anfang jeder Tabelle.
+[01:17:14.000 --> 01:17:17.000]   Das sehe ich besteht aus dem Symbol.
+[01:17:17.000 --> 01:17:21.000]   Hier sehen Sie den Kasten, damit wir wirklich meinen zeigen.
+[01:17:21.000 --> 01:17:23.000]   Wir meinen ...
+[01:17:23.000 --> 01:17:25.000]   Bitte nicht.
+[01:17:36.000 --> 01:17:42.000]   Sie sehen wir dieses Zeichen, dass die Mengenbegrenzung anzeigt.
+[01:17:42.000 --> 01:17:46.000]   Dann haben wir optional die Integer-List und das andere Zeichen.
+[01:17:46.000 --> 01:17:52.000]   Und dann ersetzen wir Integer-Set durch die rechte Handseite von Integer-Set.
+[01:17:52.000 --> 01:17:56.000]   Und das war eben hier dieser Ausdruck.
+[01:17:56.000 --> 01:18:01.000]   Und jetzt gehen wir hin und entscheiden uns, dass wir die Option nehmen.
+[01:18:01.000 --> 01:18:06.000]   Wir nehmen die Option, dann ersetzen wir die Integer-List durch das,
+[01:18:06.000 --> 01:18:09.000]   was wir für Integer-List gezeigt hatten.
+[01:18:09.000 --> 01:18:16.000]   Das war also Integer, gefolgt von 0, 1, 2, 3 Wiederholungen.
+[01:18:16.000 --> 01:18:20.000]   Und jede Wiederholung ist ein Komma, gefolgt von einer Integer.
+[01:18:20.000 --> 01:18:24.000]   Und wir wissen halt jetzt, dass wir zwei Wiederholungen brauchen.
+[01:18:24.000 --> 01:18:28.000]   Also haben wir hier Integer-Comma, Integer-Comma, Integer.
+[01:18:28.000 --> 01:18:32.000]   Und dann sehen wir nach dem Lämmer, dass ich eben zeigte, dass zwei eine Integer ist,
+[01:18:32.000 --> 01:18:36.000]   minus fünf ist eine Integer und 18 ist eine Integer.
+[01:18:36.000 --> 01:18:39.000]   Und die Tatsache, dass wir zwei brauchen, ja, das ist halt die bisschen,
+[01:18:39.000 --> 01:18:43.000]   das können wir sehen, weil wir wissen ja, wie viele Zahlen da sind.
+[01:18:43.000 --> 01:18:48.000]   Da gibt es später andere Möglichkeiten, das besser genauer zu machen.
+[01:18:48.000 --> 01:18:53.000]   Aber uns interessiert ja nur, wie das Ganze überhaupt funktioniert.
+[01:18:53.000 --> 01:18:58.000]   Ja, und das könnten wir auch genauso mit einem Ableitungsbaum zeigen,
+[01:18:58.000 --> 01:19:01.000]   dass wir keinen Unterschied, könnten wir auch so machen.
+[01:19:01.000 --> 01:19:04.000]   Ich will jetzt nicht noch mal schreiben, da sehen Sie,
+[01:19:04.000 --> 01:19:06.000]   können wir genauso in einem Baum zeigen.
+[01:19:06.000 --> 01:19:11.000]   Also diese beiden Methoden, die ich Ihnen vorher zeigte, Baum oder Tabelle,
+[01:19:11.000 --> 01:19:14.000]   können beide gleich benutzt werden, um zu zeigen,
+[01:19:14.000 --> 01:19:18.000]   dass das eine legale Integer-Set ist, ja.
+[01:19:18.000 --> 01:19:20.000]   Also heißt Lämmer einsetzen.
+[01:19:20.000 --> 01:19:24.000]   Ja, ein Lämmer einsetzen heißt, ich ersprare mir die Mühe.
+[01:19:24.000 --> 01:19:30.000]   Ich erspare mir die Mühe, ich weiß einfach, das ist eine Integer, ja.
+[01:19:30.000 --> 01:19:33.000]   Und daher kann ich das Lämmer da einsetzen, ja.
+[01:19:33.000 --> 01:19:38.000]   Und genauso ich weiß aus dem vorherigen, dass minus fünf eine Integer ist
+[01:19:38.000 --> 01:19:43.000]   und daher brauche ich hier in der Tabelle nicht die einzelnen Schritte zu haben,
+[01:19:43.000 --> 01:19:45.000]   die es da gibt.
+[01:19:45.000 --> 01:19:47.000]   So, ja, so.
+[01:19:47.000 --> 01:19:54.000]   So, jetzt haben wir uns unterhalten über die Equivalenz von EBNF-Beschreibungen.
+[01:19:54.000 --> 01:20:01.000]   Und jetzt haben wir hier eine EBNF-Beschreibung, um diese Mengen zu beschreiben.
+[01:20:01.000 --> 01:20:05.000]   Und jetzt kommt natürlich die Frage, die Sie auch irgendwann mal kennengelernt haben,
+[01:20:05.000 --> 01:20:06.000]   vielleicht schon, ja.
+[01:20:06.000 --> 01:20:09.000]   Wann sind denn zwei Mengen equivalent?
+[01:20:09.000 --> 01:20:15.000]   Zwei Mengen sind equivalent, wenn sie dieselben Elemente enthalten.
+[01:20:15.000 --> 01:20:21.000]   Und da gilt noch ein paar weitere, sagen wir mal, genauer Clarifizierungen, ja.
+[01:20:21.000 --> 01:20:24.000]   Mehrfachnennungen sind nicht wichtig.
+[01:20:24.000 --> 01:20:30.000]   Das heißt, diese Menge hier, eins, zwei, drei, drei, und dann nochmal eine zwei und hier hinten, ja.
+[01:20:30.000 --> 01:20:34.000]   Dass diese Menge ist equivalent zur Menge, eins, zwei, drei.
+[01:20:34.000 --> 01:20:42.000]   Weil beim Mengen von Zahlen, da zählt eben halt, da können dieselbe Zahl wiederholt auftreten, ja.
+[01:20:42.000 --> 01:20:48.000]   Das hat keine Bedeutung bezüglich der Zusammensetzung der Menge, ja.
+[01:20:48.000 --> 01:20:54.000]   Wenn wir als Menge EBNF-Regeln haben, sie könnten dieselbe Regel mehrfach hinschreiben.
+[01:20:54.000 --> 01:20:56.000]   Aber wer würde sich denn sowas antun, ja.
+[01:20:56.000 --> 01:21:01.000]   Aber sie dürfen nicht, für Sie geht es noch, okay,
+[01:21:01.000 --> 01:21:12.000]   Sie dürfen aber nicht hingehen und die unterschiedliche Regeln mit demselben Namen auf der linken Seite haben, ja.
+[01:21:12.000 --> 01:21:16.000]   Das ist natürlich nicht so, nicht erlaubt, ja.
+[01:21:16.000 --> 01:21:22.000]   Und dann haben wir weiterhin, dass die Reihenfolge unwichtig ist, ja.
+[01:21:22.000 --> 01:21:27.000]   Also eins, zwei, drei ist das Gleiche wie drei, zwei, eins, ja.
+[01:21:27.000 --> 01:21:29.000]   Das macht keinen Unterschied, ja.
+[01:21:29.000 --> 01:21:34.000]   Jetzt um jetzt die Equivalent von Mengen zu diskutieren, ja.
+[01:21:34.000 --> 01:21:41.000]   Da würden Sie jetzt gucken, ob die, würden Sie diese Mengen in eine kanonische Darstellung bringen, ja.
+[01:21:41.000 --> 01:21:46.000]   Sie würden also kanonisch heiß in Übereinstimmung mit irgendwelchen Regeln, ja.
+[01:21:46.000 --> 01:21:55.000]   Und das würde man so machen, dass man sagt, die Zahlen der Menge sind geordnet von der kleinsten, ganz links zur größten, ganz rechts, ja.
+[01:21:55.000 --> 01:22:06.000]   So, und wenn ich das habe, ja, dann kann ich zwei Mengen gleich, kann ich eben zeigen oder checken, ob die beiden Mengen Equivalent sind,
+[01:22:06.000 --> 01:22:10.000]   weil dann muss ich nur gucken, ob die Zahlen da in der richtigen Reihenfolge erscheinen.
+[01:22:10.000 --> 01:22:14.000]   So, und jetzt haben wir das interessante Beobachtung.
+[01:22:14.000 --> 01:22:20.000]   Die kanonische Darstellung, die kann ich nicht durch die EBNF-Regeln erzwingen.
+[01:22:20.000 --> 01:22:25.000]   Die EBNF-Regeln sagen mir nur, wie so eine Zahl Menge aussehen muss.
+[01:22:25.000 --> 01:22:32.000]   Die sagen mir nichts über die Reihenfolge, die eingehalten werden muss.
+[01:22:32.000 --> 01:22:36.000]   Sie sagen nichts über den Wert, den diese Integers vielleicht haben.
+[01:22:36.000 --> 01:22:38.000]   Da sagen die nichts zu, ja.
+[01:22:38.000 --> 01:22:43.000]   Die gehen einfach nur hin, die EBNF-Regel sagt, so sieht eine Menge aus, ja.
+[01:22:43.000 --> 01:22:57.000]   Also, das ist auch der Grund, warum in unseren EBNF-Beschreibungen 007 dasselbe war, eben eine legale Zahl war,
+[01:22:57.000 --> 01:23:01.000]   weil wir eben nichts über die Bedeutung sagen würden.
+[01:23:01.000 --> 01:23:09.000]   Und wenn wir jetzt eben eine Situation wollen, wo 007 illegal ist, aber 7 legal ist,
+[01:23:09.000 --> 01:23:14.000]   dann bräuchten wir dafür eine andere Beschreibung, als wir sie bisher hatten, ja.
+[01:23:14.000 --> 01:23:18.000]   Dann würden wir eben halt die Null besonders behandeln müssen.
+[01:23:18.000 --> 01:23:23.000]   Und ein Weg, das zu machen, wäre vielleicht diese Beschreibung, wo wir die Null rausnehmen, ja.
+[01:23:23.000 --> 01:23:33.000]   Und dann sagen die erste Ziffer muss eine Ziffer sein, die nicht Null ist, ja.
+[01:23:33.000 --> 01:23:38.000]   Und dann kann ich sicherstellen, dass eben 007 keine legale Ziffer mehr wäre,
+[01:23:38.000 --> 01:23:44.000]   weil die erste Ziffer muss eine Ziffer sein, die nicht legal ist.
+[01:23:44.000 --> 01:23:49.000]   So, ich würde es aber so machen, dann ist auf einmal Null kein gültiges Symbol, ja.
+[01:23:49.000 --> 01:23:57.000]   Weil Sie sehen, die erste Ziffer muss ja nicht, muss ja eben ungleich Null sein.
+[01:23:57.000 --> 01:24:00.000]   Also, müssen wir uns überlegen, was machen wir jetzt?
+[01:24:00.000 --> 01:24:04.000]   Also, würden müssen wir vielleicht unsere Beschreibung noch etwas ändern,
+[01:24:04.000 --> 01:24:10.000]   indem wir zum Beispiel explizit die Null als eine Option hinzufügen, ja.
+[01:24:10.000 --> 01:24:14.000]   Wir sagen, Auswahl zwischen Null, das wäre dann nur die Ziffer Null,
+[01:24:14.000 --> 01:24:18.000]   oder eben einer Ziffer, wie wir sie bisher kennengelernt haben,
+[01:24:18.000 --> 01:24:22.000]   die dann mit einer nicht Null-Ziffer als ersten Ziffer anfängt.
+[01:24:22.000 --> 01:24:27.000]   Und wenn wir das so machen, dann gibt es eben keinen Plus Null und keinen Minus Null,
+[01:24:27.000 --> 01:24:30.000]   und das war ja auch im Backchannel wiederholt gewünscht worden,
+[01:24:30.000 --> 01:24:34.000]   und daher erfüllen wir dann auch diesen Wunsch, ja.
+[01:24:34.000 --> 01:24:38.000]   Also, wir sehen mit diesen E-BNF-Beschreibungen,
+[01:24:38.000 --> 01:24:41.000]   einfach können wir eine ganze Menge machen
+[01:24:41.000 --> 01:24:44.000]   und können auch eben interessanterweise diskutieren,
+[01:24:44.000 --> 01:24:47.000]   dass die Bedeutung nicht mit dabei ist.
+[01:24:47.000 --> 01:24:49.000]   So, jetzt können wir auch ein bisschen weitermachen.
+[01:24:49.000 --> 01:24:52.000]   Wir können die Regeln auch grafisch darstellen,
+[01:24:52.000 --> 01:24:57.000]   wo wir dann einen Pfad durch den Grafen wählen würden,
+[01:24:57.000 --> 01:25:01.000]   um zu zeigen, dass ein Zeichen dem entspricht,
+[01:25:01.000 --> 01:25:06.000]   das für manche Leute einfacher zu erkennen, als die Tabelle, ja.
+[01:25:06.000 --> 01:25:09.000]   Also, ein Pfad durch den Grafen entspricht einem legalen Symbol,
+[01:25:09.000 --> 01:25:12.000]   wo wir links anfangen, durch den Grafen durchgehen, ja.
+[01:25:12.000 --> 01:25:14.000]   Und so kann man leicht erkennen,
+[01:25:14.000 --> 01:25:18.000]   ob ein Zeichen in einer bestimmten Reihenfolge auftreten muss.
+[01:25:18.000 --> 01:25:21.000]   Also, wenn wir zum Beispiel Aufreihung ABCD haben,
+[01:25:21.000 --> 01:25:24.000]   dann könnten wir eben als Grafen das so zeigen,
+[01:25:24.000 --> 01:25:27.000]   dass wir eben die Symbol A gefolgt von Symbol,
+[01:25:27.000 --> 01:25:33.000]   gefolgt von Symbol, gefolgt von Symbol eben entsprechend beschreiben, ja.
+[01:25:33.000 --> 01:25:39.000]   Oder wenn wir als die Option A als Graf darstellen wollen,
+[01:25:39.000 --> 01:25:42.000]   oder die Wiederholung, als Graf, eine Wiederholung
+[01:25:42.000 --> 01:25:44.000]   von irgendwas als Graf darstellen wollten,
+[01:25:44.000 --> 01:25:48.000]   dann würden wir das so machen, dass wir eben halt hier sagen, okay,
+[01:25:48.000 --> 01:25:51.000]   es gibt hier die Möglichkeit, entweder,
+[01:25:51.000 --> 01:25:56.000]   durchzugehen, das wäre das eben die nicht gewählte Option,
+[01:25:56.000 --> 01:25:59.000]   das wäre der Epsilon Pfad, oder wir nehmen die,
+[01:25:59.000 --> 01:26:02.000]   oder hier, das wären Null-Wiederholungen,
+[01:26:02.000 --> 01:26:08.000]   oder wir gehen hier ein oder mehrere Male durch diese Schleife durch
+[01:26:08.000 --> 01:26:14.000]   und wiederholen da, was immer das A uns da sagt, ja.
+[01:26:14.000 --> 01:26:17.000]   Und das können wir auch machen mit der Auswahl.
+[01:26:17.000 --> 01:26:21.000]   Die Auswahl würde einfach dann nur unsere Leiter sein,
+[01:26:21.000 --> 01:26:24.000]   auf der wir verschiedene Symbole da haben, ja.
+[01:26:24.000 --> 01:26:27.000]   Und dann eben ein Fahrt durch den Graf,
+[01:26:27.000 --> 01:26:30.000]   entspricht einem legalen Symbol, wenn wir da,
+[01:26:30.000 --> 01:26:33.000]   wenn wir einen Punkt kommen, können wir eine Kante nehmen,
+[01:26:33.000 --> 01:26:36.000]   und wenn wir dann eine Abzweigung haben,
+[01:26:36.000 --> 01:26:39.000]   können wir auch eine dieser Abzweigungen wählen, ja.
+[01:26:39.000 --> 01:26:44.000]   Und das ist halt der Weg, wie wir das machen können.
+[01:26:44.000 --> 01:26:46.000]   Und jetzt kommen wir noch zum Schluss dazu.
+[01:26:46.000 --> 01:26:50.000]   Eben, wofür brauchen wir diese runden Klammern, ja.
+[01:26:50.000 --> 01:26:52.000]   Wir hatten die gebraucht, weil war nicht klar,
+[01:26:52.000 --> 01:26:56.000]   ob wenn wir Ab/C schreiben,
+[01:26:56.000 --> 01:27:00.000]   meinen wir damit A, gefolgt von B oder C,
+[01:27:00.000 --> 01:27:03.000]   oder A, gefolgt von B,
+[01:27:03.000 --> 01:27:06.000]   oder stattdessen die C, ja.
+[01:27:06.000 --> 01:27:08.000]   Und die Konvention ist,
+[01:27:08.000 --> 01:27:12.000]   dass wir meinen, wenn wir Ab/C schreiben,
+[01:27:12.000 --> 01:27:15.000]   dass wir eben A, gefolgt von B
+[01:27:15.000 --> 01:27:18.000]   oder eben stattdessen C nehmen, ja.
+[01:27:18.000 --> 01:27:20.000]   Wir können die Klammern verwenden,
+[01:27:20.000 --> 01:27:22.000]   um Unklarheiten zu vermeiden.
+[01:27:22.000 --> 01:27:25.000]   In anderen Systemen würden Sie sagen,
+[01:27:25.000 --> 01:27:29.000]   dass die Aufreihung stärker bindet als die Stroh.
+[01:27:29.000 --> 01:27:33.000]   Also das, wie gesagt, so kann man sich auch darstellen,
+[01:27:33.000 --> 01:27:36.000]   wie die Symbole da sind.
+[01:27:36.000 --> 01:27:38.000]   So, das haben wir für heute.
+[01:27:38.000 --> 01:27:40.000]   Ich wünsche Ihnen ein produktives Wochenende.
+[01:27:40.000 --> 01:27:43.000]   Und wir sehen uns dann am Dienstag.
+[01:27:43.000 --> 01:27:45.760]   (Applaus)
+

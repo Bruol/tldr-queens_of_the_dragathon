@@ -1,0 +1,1263 @@
+
+[00:00:00.000 --> 00:00:02.120]   (gentle music)
+[00:00:02.120 --> 00:00:04.640]   - All right, hello, good morning everyone.
+[00:00:04.640 --> 00:00:07.920]   Welcome to today's computer graphics lecture.
+[00:00:07.920 --> 00:00:13.280]   It's a pleasure for me to be teaching this topic today,
+[00:00:13.280 --> 00:00:14.720]   Monte Carlo integration.
+[00:00:14.720 --> 00:00:16.160]   My name is Zhang Xinyao.
+[00:00:16.160 --> 00:00:20.600]   I'm a PhD student at the computer graphics lab
+[00:00:20.600 --> 00:00:22.920]   and the DC research studios.
+[00:00:22.920 --> 00:00:24.400]   So if I'm not mistaken,
+[00:00:24.400 --> 00:00:26.480]   I'm like the fourth lecturer of the semester.
+[00:00:26.480 --> 00:00:30.920]   But yeah, it's overall my first experience
+[00:00:30.920 --> 00:00:33.560]   to give a proper lecture as they call it.
+[00:00:33.560 --> 00:00:34.840]   So I'll try my best.
+[00:00:34.840 --> 00:00:39.300]   And yeah, honestly, it's a bit of pressure for me as well
+[00:00:39.300 --> 00:00:42.840]   because this is one of the most important topics
+[00:00:42.840 --> 00:00:44.460]   of the entire course.
+[00:00:44.460 --> 00:00:49.460]   So today we'll be covering quite some mathematical things,
+[00:00:49.460 --> 00:00:53.920]   like how to compute integrals with sampling
+[00:00:53.920 --> 00:00:56.320]   and how to do sampling actually.
+[00:00:56.320 --> 00:01:00.680]   And this will be the foundation or basis
+[00:01:00.680 --> 00:01:04.640]   of the rendering algorithms that we will be using
+[00:01:04.640 --> 00:01:08.440]   or developing in this semester.
+[00:01:08.440 --> 00:01:11.360]   So particularly we will release the second
+[00:01:11.360 --> 00:01:14.280]   programming assignment today in the exercise session,
+[00:01:14.280 --> 00:01:19.280]   which will be basically based on what we will learn today.
+[00:01:19.280 --> 00:01:22.400]   In terms of the course roadmap,
+[00:01:22.400 --> 00:01:26.000]   we've done the first row
+[00:01:26.000 --> 00:01:27.520]   and we're at this turn right now.
+[00:01:27.520 --> 00:01:31.000]   So on Tuesday, I think we covered light materials
+[00:01:31.000 --> 00:01:32.640]   and microfacets.
+[00:01:32.640 --> 00:01:37.080]   And now we are going to dive into Monte Carlo integration.
+[00:01:37.080 --> 00:01:41.080]   So the Monte Carlo integration methods
+[00:01:41.080 --> 00:01:44.160]   are part of the image synthesis techniques
+[00:01:44.160 --> 00:01:45.720]   that will be covered in this course,
+[00:01:45.720 --> 00:01:49.520]   particularly how we simulate light transport.
+[00:01:49.520 --> 00:01:51.980]   So later on we will learn about path tracing,
+[00:01:51.980 --> 00:01:55.960]   photo mapping and how to compute volumetric
+[00:01:55.960 --> 00:01:59.640]   effects and those are almost all based on
+[00:01:59.640 --> 00:02:02.480]   the theory that we will learn today.
+[00:02:02.480 --> 00:02:06.080]   So we will first give a review,
+[00:02:06.080 --> 00:02:08.600]   a quick, very quick, not rigorous at all review
+[00:02:08.600 --> 00:02:10.680]   of the probability theory.
+[00:02:10.680 --> 00:02:14.720]   And then just introduce the concept
+[00:02:14.720 --> 00:02:18.040]   and some simple examples of Monte Carlo integration.
+[00:02:18.040 --> 00:02:21.920]   And then we go more into details
+[00:02:21.920 --> 00:02:24.340]   of how to do some particular random sampling
+[00:02:24.340 --> 00:02:29.340]   and also use that to illustrate the general recipe
+[00:02:29.340 --> 00:02:33.820]   of the sampling techniques in rendering.
+[00:02:33.820 --> 00:02:38.500]   Okay, so let's start with a bit of fun.
+[00:02:38.500 --> 00:02:42.300]   So Monte Carlo is somewhere nearby.
+[00:02:42.300 --> 00:02:43.540]   I don't know exactly where it is,
+[00:02:43.540 --> 00:02:46.400]   but it's supposed to be in Monaco.
+[00:02:46.400 --> 00:02:51.400]   And a Monte Carlo algorithm is a randomized algorithm
+[00:02:51.400 --> 00:02:54.320]   with a deterministic running time
+[00:02:54.320 --> 00:02:58.540]   but a random or a stochastic output.
+[00:02:58.540 --> 00:03:03.340]   So there is, so you can get incorrect answers,
+[00:03:03.340 --> 00:03:06.460]   but there should be some, maybe some bounds
+[00:03:06.460 --> 00:03:11.460]   on the probability of like the chances
+[00:03:11.460 --> 00:03:15.380]   the output is incorrect or like the distance
+[00:03:15.380 --> 00:03:18.220]   from the correct answer.
+[00:03:18.220 --> 00:03:22.140]   And basically it uses random numbers
+[00:03:22.140 --> 00:03:23.680]   to solve numerical problems
+[00:03:23.680 --> 00:03:27.860]   and it is seen as early use during the development
+[00:03:27.860 --> 00:03:31.100]   of the atomic bomb in the Manhattan Project
+[00:03:31.100 --> 00:03:36.100]   and its development was, I think, advanced by von Neumann,
+[00:03:36.100 --> 00:03:39.420]   Ulam Metropolis and their colleagues.
+[00:03:39.420 --> 00:03:42.260]   So the name Monte Carlo was first introduced
+[00:03:42.260 --> 00:03:46.260]   in a paper by Metropolis and Ulam in 1949.
+[00:03:46.260 --> 00:03:53.540]   Yeah, and of course it's named after the casino in Monte Carlo.
+[00:03:53.540 --> 00:03:57.960]   And so as a duo for the Monte Carlo algorithms,
+[00:03:57.960 --> 00:04:00.200]   there is also another type of random algorithms
+[00:04:00.200 --> 00:04:03.320]   called the Las Vegas algorithms.
+[00:04:03.320 --> 00:04:05.520]   Yeah, not sure where that comes from,
+[00:04:05.520 --> 00:04:08.240]   but sounds fun, doesn't it?
+[00:04:08.240 --> 00:04:13.240]   And so the difference between these two type of algorithms,
+[00:04:13.240 --> 00:04:15.320]   as we've talked about before,
+[00:04:15.320 --> 00:04:18.600]   Monte Carlo algorithms give stochastic output
+[00:04:18.600 --> 00:04:22.200]   with a fixed run time and Las Vegas algorithms
+[00:04:22.200 --> 00:04:24.300]   are the other way around.
+[00:04:24.300 --> 00:04:28.100]   It always gives the correct result
+[00:04:28.100 --> 00:04:33.100]   but takes a randomized amount of time for execution.
+[00:04:33.100 --> 00:04:37.820]   So if we just say this, it might not be so clear
+[00:04:37.820 --> 00:04:40.220]   of an example of the Las Vegas algorithm,
+[00:04:40.220 --> 00:04:42.500]   but if I mention sorting,
+[00:04:42.500 --> 00:04:46.140]   then you probably, something will come to mind
+[00:04:46.140 --> 00:04:50.060]   because as in the quicksort algorithm,
+[00:04:50.060 --> 00:04:51.780]   which is prevalent today,
+[00:04:51.780 --> 00:04:54.640]   the choice of the pivot items
+[00:04:54.640 --> 00:04:58.980]   is one typical example of Las Vegas algorithms.
+[00:04:58.980 --> 00:05:03.100]   So of course those are the differences
+[00:05:03.100 --> 00:05:07.880]   besides the difference in the number of zeros on the roulette.
+[00:05:07.880 --> 00:05:11.140]   And we can say that Monte Carlo algorithms
+[00:05:11.140 --> 00:05:15.240]   gambles with the result, not with the run time,
+[00:05:15.240 --> 00:05:18.560]   but Las Vegas algorithms gambles with the run time
+[00:05:18.560 --> 00:05:21.060]   but always gives correct result.
+[00:05:21.060 --> 00:05:29.220]   So if we are talking about integration in particular,
+[00:05:29.220 --> 00:05:32.900]   the Monte Carlo methods are flexible
+[00:05:32.900 --> 00:05:35.860]   and easy to implement because one only needs
+[00:05:35.860 --> 00:05:37.420]   to be able to implement,
+[00:05:37.420 --> 00:05:41.240]   no, to evaluate the function to be integrated.
+[00:05:41.240 --> 00:05:43.560]   So you don't need to actually compute
+[00:05:43.560 --> 00:05:45.380]   more complex functions.
+[00:05:46.320 --> 00:05:49.240]   And it can easily handle complex integrants
+[00:05:49.240 --> 00:05:54.240]   by randomly sampling some points within the domain.
+[00:05:54.240 --> 00:05:57.840]   And it is also efficient for high dimensional integrants
+[00:05:57.840 --> 00:06:00.420]   because the number of samples you can draw
+[00:06:00.420 --> 00:06:02.860]   is independent of actually the dimensionality
+[00:06:02.860 --> 00:06:05.140]   of the integrant, which is one of,
+[00:06:05.140 --> 00:06:10.140]   I think the decisive factors that's why we would use
+[00:06:10.140 --> 00:06:12.320]   Monte Carlo integration for path tracing
+[00:06:12.320 --> 00:06:14.820]   because it is essentially,
+[00:06:14.820 --> 00:06:16.760]   if you consider global illumination,
+[00:06:16.760 --> 00:06:21.760]   if you want to simulate arbitrary number of bounces
+[00:06:21.760 --> 00:06:24.400]   of light transport in the scene,
+[00:06:24.400 --> 00:06:27.260]   it is of infinite dimensions.
+[00:06:27.260 --> 00:06:31.240]   On the other side, on the other hand,
+[00:06:31.240 --> 00:06:33.320]   as we mentioned before,
+[00:06:33.320 --> 00:06:37.200]   Monte Carlo methods gives not always the correct results.
+[00:06:37.200 --> 00:06:41.280]   So the result will show up as some,
+[00:06:41.280 --> 00:06:44.560]   it would have some variance for the integration methods.
+[00:06:44.560 --> 00:06:46.300]   So if we're rendering an image,
+[00:06:46.300 --> 00:06:48.620]   we'll see some noise on it.
+[00:06:48.620 --> 00:06:50.900]   And if we want to reduce that noise,
+[00:06:50.900 --> 00:06:54.740]   we need to basically run the algorithm longer.
+[00:06:54.740 --> 00:06:59.740]   But there the problem is that it has a slower,
+[00:06:59.740 --> 00:07:02.020]   it has a relatively slow convergence,
+[00:07:02.020 --> 00:07:06.060]   which is on the rate of one over the square root of n.
+[00:07:06.060 --> 00:07:11.300]   That is if we compare that to some classic
+[00:07:11.300 --> 00:07:13.740]   quadrature methods like for integration.
+[00:07:14.180 --> 00:07:19.180]   So to do Monte Carlo integration,
+[00:07:19.180 --> 00:07:21.020]   to create the randomness,
+[00:07:21.020 --> 00:07:22.700]   we need random variables.
+[00:07:22.700 --> 00:07:26.240]   And we denote that by like capital letters such as x.
+[00:07:26.240 --> 00:07:30.380]   And without, if it's not particularly mentioned,
+[00:07:30.380 --> 00:07:33.380]   the axis assumed to be continuous.
+[00:07:33.380 --> 00:07:39.580]   And we can also, we can then define this cumulative
+[00:07:40.980 --> 00:07:45.300]   distribution function or shorthand with CDF.
+[00:07:45.300 --> 00:07:49.260]   That is the probability of this random variable
+[00:07:49.260 --> 00:07:52.340]   being less than or equal to a particular value,
+[00:07:52.340 --> 00:07:54.520]   which we denote by a small x.
+[00:07:54.520 --> 00:07:58.340]   So this P of x will be always between zero and one.
+[00:07:58.340 --> 00:08:01.580]   So you get a hundred percent probability
+[00:08:01.580 --> 00:08:04.600]   of being less than or equal to infinity.
+[00:08:04.600 --> 00:08:06.620]   That's in the one D case.
+[00:08:08.980 --> 00:08:13.420]   So if this CDF is differentiable,
+[00:08:13.420 --> 00:08:17.620]   we can take the derivative of it
+[00:08:17.620 --> 00:08:21.660]   to get the probability density function,
+[00:08:21.660 --> 00:08:22.940]   or we call the PDF,
+[00:08:22.940 --> 00:08:26.860]   which has the property or has the constraint
+[00:08:26.860 --> 00:08:29.380]   that it has to be non-negative,
+[00:08:29.380 --> 00:08:33.820]   but this one can have arbitrarily high values.
+[00:08:33.820 --> 00:08:37.020]   But it should integrate to one.
+[00:08:37.020 --> 00:08:40.660]   And here, like this integration should be over,
+[00:08:40.660 --> 00:08:44.260]   over like some domain, like intervals or some areas,
+[00:08:44.260 --> 00:08:45.940]   if you have multiple dimensions,
+[00:08:45.940 --> 00:08:47.620]   but like here we just omitted it.
+[00:08:47.620 --> 00:08:54.300]   And we can also compute the probability
+[00:08:54.300 --> 00:09:00.540]   of this random variable x being in a certain range,
+[00:09:00.540 --> 00:09:02.460]   certain interval between a and b.
+[00:09:02.460 --> 00:09:06.060]   So that's the probability of x between a and b.
+[00:09:06.060 --> 00:09:10.020]   We can compute that as an integral
+[00:09:10.020 --> 00:09:14.700]   of the probability density function from a to b.
+[00:09:14.700 --> 00:09:19.380]   And yeah, that's some sort of 101, calculus 101.
+[00:09:19.380 --> 00:09:24.380]   So that would be the CDF at b minus the CDF at a.
+[00:09:24.380 --> 00:09:30.300]   In particular, we will be using
+[00:09:30.300 --> 00:09:32.780]   this uniform random variables a lot
+[00:09:32.780 --> 00:09:35.420]   during these sampling methods.
+[00:09:36.180 --> 00:09:40.820]   Especially the canonical uniform random variable,
+[00:09:40.820 --> 00:09:43.740]   which has the PDF equals to one
+[00:09:43.740 --> 00:09:46.380]   between the domain of zero and one,
+[00:09:46.380 --> 00:09:49.660]   between the interval zero and one and zero everywhere else.
+[00:09:49.660 --> 00:09:53.500]   So the reason we will use this is because
+[00:09:53.500 --> 00:09:55.820]   the pseudo random number generators
+[00:09:55.820 --> 00:09:57.260]   that we have in our computers,
+[00:09:57.260 --> 00:09:58.700]   they often give,
+[00:09:58.700 --> 00:10:03.060]   they often are able to give random numbers
+[00:10:03.060 --> 00:10:05.100]   between that range.
+[00:10:05.100 --> 00:10:08.980]   So as you may know that these random number generators
+[00:10:08.980 --> 00:10:10.780]   are typically not truly random,
+[00:10:10.780 --> 00:10:15.140]   but for our purposes I think they are good enough.
+[00:10:15.140 --> 00:10:22.860]   Right, so given random variable x,
+[00:10:22.860 --> 00:10:25.460]   according to some distribution p,
+[00:10:25.460 --> 00:10:28.060]   we can say transform it with a function
+[00:10:28.060 --> 00:10:32.820]   and get another random variable y equals f of x.
+[00:10:32.820 --> 00:10:35.020]   And then we can have the expected value
+[00:10:35.020 --> 00:10:37.740]   or the expectation of y,
+[00:10:37.740 --> 00:10:39.620]   notice e of y,
+[00:10:39.620 --> 00:10:43.220]   as the integral of f, basically this transformation,
+[00:10:43.220 --> 00:10:48.220]   this fx times the probability density over the domain.
+[00:10:48.220 --> 00:10:52.020]   And this is like one of the fundamental things
+[00:10:52.020 --> 00:10:54.500]   that we will see very, very often.
+[00:10:54.500 --> 00:10:58.180]   Yeah, almost everywhere.
+[00:10:58.180 --> 00:11:01.540]   Then the variance would be also an expectation,
+[00:11:01.540 --> 00:11:04.860]   but this expectation is over the square difference
+[00:11:04.860 --> 00:11:09.860]   between the random variable itself and its expectation.
+[00:11:09.860 --> 00:11:13.940]   So with these two definitions,
+[00:11:13.940 --> 00:11:16.580]   we can derive these properties.
+[00:11:16.580 --> 00:11:21.460]   So first we would know that this expectation is linear.
+[00:11:21.460 --> 00:11:23.620]   That is if you multiply it by,
+[00:11:23.620 --> 00:11:25.500]   multiply the random variable by a constant,
+[00:11:25.500 --> 00:11:28.060]   you can take that out and compute the variance
+[00:11:28.060 --> 00:11:32.260]   or if you add together two random variables,
+[00:11:32.260 --> 00:11:35.580]   their expectation would also just be added up.
+[00:11:35.580 --> 00:11:38.700]   But for variance, because there is a square,
+[00:11:38.700 --> 00:11:41.300]   you need to take the square of the constant
+[00:11:41.300 --> 00:11:46.300]   and you can only add up the variance of two random variables
+[00:11:46.300 --> 00:11:49.300]   if they are independent.
+[00:11:49.300 --> 00:11:52.780]   Otherwise there should be this covariance term
+[00:11:52.780 --> 00:11:56.420]   that we, between these two random variables.
+[00:11:57.540 --> 00:11:59.940]   And from these properties,
+[00:11:59.940 --> 00:12:03.420]   we can actually get a formula that we typically use
+[00:12:03.420 --> 00:12:04.340]   to compute the variance,
+[00:12:04.340 --> 00:12:08.180]   which is by taking the expectation of the square
+[00:12:08.180 --> 00:12:10.700]   minus the square of the expectation.
+[00:12:10.700 --> 00:12:16.780]   All right, so question so far.
+[00:12:16.780 --> 00:12:20.420]   Yeah, good sign.
+[00:12:23.660 --> 00:12:26.660]   All right, now we are going to this,
+[00:12:26.660 --> 00:12:31.340]   we're going closer to the Monte Carlo domain
+[00:12:31.340 --> 00:12:35.420]   by looking at like this expected value.
+[00:12:35.420 --> 00:12:37.220]   We can express it as an integral,
+[00:12:37.220 --> 00:12:40.420]   but then we can also estimate the expected value
+[00:12:40.420 --> 00:12:45.100]   by taking some samples from the distribution, P of X,
+[00:12:45.100 --> 00:12:49.100]   and averaging basically their function values.
+[00:12:50.580 --> 00:12:54.260]   So note that these XIs should also be independent.
+[00:12:54.260 --> 00:12:59.220]   So then per strong law of large numbers,
+[00:12:59.220 --> 00:13:03.420]   we get the following equation,
+[00:13:03.420 --> 00:13:07.180]   which states that if we have enough samples,
+[00:13:07.180 --> 00:13:15.180]   we will just get to the correct expected value.
+[00:13:15.180 --> 00:13:17.740]   So this estimator would be,
+[00:13:17.740 --> 00:13:21.100]   say correct if you have enough number of samples.
+[00:13:21.100 --> 00:13:25.420]   Yeah, so that is,
+[00:13:25.420 --> 00:13:27.220]   so we're now going closer and closer
+[00:13:27.220 --> 00:13:31.180]   to what we actually want to do with Monte Carlo integration,
+[00:13:31.180 --> 00:13:36.180]   which here we actually want to integrate some function
+[00:13:36.180 --> 00:13:39.820]   without this P of X,
+[00:13:39.820 --> 00:13:44.460]   we just want to integrate F of X over some domain D.
+[00:13:45.500 --> 00:13:48.340]   And we can call that value the true value F.
+[00:13:48.340 --> 00:13:55.140]   So to use this estimator or to use this average
+[00:13:55.140 --> 00:13:58.420]   that we saw in the last slides,
+[00:13:58.420 --> 00:14:03.420]   we just say come up with a distribution P of X
+[00:14:03.420 --> 00:14:08.180]   and then do some manipulation so that like,
+[00:14:08.180 --> 00:14:13.180]   it goes with the form that we've seen before.
+[00:14:14.460 --> 00:14:18.940]   So now here the FX would actually be F over P.
+[00:14:18.940 --> 00:14:22.340]   And now if we sample according to P of X,
+[00:14:22.340 --> 00:14:25.740]   if we have random numbers sampled according
+[00:14:25.740 --> 00:14:26.860]   to this distribution,
+[00:14:26.860 --> 00:14:30.860]   we can compute an estimate of this integral
+[00:14:30.860 --> 00:14:35.460]   by taking a lot of samples and averaging them.
+[00:14:35.460 --> 00:14:37.780]   So if we use N samples,
+[00:14:37.780 --> 00:14:41.700]   we can denote the resulting value as FN.
+[00:14:41.700 --> 00:14:46.420]   Yeah, so that is an N sample estimator of this integral.
+[00:14:46.420 --> 00:14:56.100]   After this, we will see this simple,
+[00:14:56.100 --> 00:15:00.140]   well this one D example of Monte Carlo integration
+[00:15:00.140 --> 00:15:04.020]   where we have this function,
+[00:15:04.020 --> 00:15:06.140]   the exponential of,
+[00:15:06.140 --> 00:15:09.100]   so E to the sine of three X squared.
+[00:15:09.980 --> 00:15:11.580]   Yeah, it's a lovely function.
+[00:15:11.580 --> 00:15:15.940]   Yeah, very hard to integrate by hand.
+[00:15:15.940 --> 00:15:21.700]   And we say we want to take the integral between zero and one.
+[00:15:21.700 --> 00:15:27.340]   So here's what we're gonna do.
+[00:15:27.340 --> 00:15:33.900]   By taking this estimator with N samples,
+[00:15:33.900 --> 00:15:38.900]   we want to just come up with the probability distribution P
+[00:15:39.900 --> 00:15:44.900]   and sample from it and then average the values of F over P.
+[00:15:44.900 --> 00:15:47.900]   So now F would be this function that we're interested in.
+[00:15:47.900 --> 00:15:53.700]   And to implement this, it's actually pretty simple.
+[00:15:53.700 --> 00:15:58.700]   We would generate random numbers and calculate,
+[00:15:58.700 --> 00:16:03.660]   yeah and calculate basically the evaluated function F
+[00:16:03.660 --> 00:16:06.780]   and sum them up and then divide by the number of samples.
+[00:16:08.380 --> 00:16:12.980]   So yeah, there might be one thing that seems missing
+[00:16:12.980 --> 00:16:16.100]   which is here the P there.
+[00:16:16.100 --> 00:16:21.100]   Like here we are not dividing by any P, that is because
+[00:16:21.100 --> 00:16:23.740]   when we are calling this D run 48,
+[00:16:23.740 --> 00:16:27.900]   it typically gives a random like float or double
+[00:16:27.900 --> 00:16:29.860]   between the interval of zero and one.
+[00:16:29.860 --> 00:16:34.340]   So the PDF is one and we don't need to actually deal with it.
+[00:16:36.140 --> 00:16:41.140]   So this is like the simplest form
+[00:16:41.140 --> 00:16:43.300]   of the Monte Carlo integration.
+[00:16:43.300 --> 00:16:53.500]   But then we may want to compute a more generalized integral
+[00:16:53.500 --> 00:17:00.940]   over an interval of A and B.
+[00:17:00.940 --> 00:17:04.620]   And now we can still take a random number
+[00:17:04.620 --> 00:17:06.740]   by calling this D run 48 function
+[00:17:06.740 --> 00:17:09.420]   but that random number is no longer
+[00:17:09.420 --> 00:17:11.460]   within the range of our interest.
+[00:17:11.460 --> 00:17:18.700]   So we need to transform it to be between A and B.
+[00:17:18.700 --> 00:17:23.180]   So now I think we also assume that A is less than B.
+[00:17:23.180 --> 00:17:31.780]   And now we also need to note that the probability density
+[00:17:31.780 --> 00:17:35.060]   changes from one to one over B minus A.
+[00:17:35.060 --> 00:17:39.380]   And that means we need to somehow divide by it
+[00:17:39.380 --> 00:17:41.100]   and after some simplification,
+[00:17:41.100 --> 00:17:43.940]   you can see that we can just multiply the final result
+[00:17:43.940 --> 00:17:45.580]   by B minus A.
+[00:17:45.580 --> 00:17:54.420]   All right, so if we were to run this procedure,
+[00:17:54.420 --> 00:18:01.100]   run this program with enough samples,
+[00:18:01.100 --> 00:18:06.100]   we can see that the result would say converge
+[00:18:06.100 --> 00:18:10.180]   to some value that should be the correct,
+[00:18:10.180 --> 00:18:13.180]   should be the correct integral in the end.
+[00:18:13.180 --> 00:18:17.860]   And I think it would also help if like,
+[00:18:17.860 --> 00:18:21.340]   you can implement this simple program yourself
+[00:18:21.340 --> 00:18:23.420]   and try to see what you get
+[00:18:23.420 --> 00:18:25.300]   if you have lower number of samples
+[00:18:25.300 --> 00:18:26.540]   or higher number of samples,
+[00:18:26.540 --> 00:18:28.540]   or if you change the function,
+[00:18:28.540 --> 00:18:32.620]   or if you can also change the interval or the PDF,
+[00:18:32.620 --> 00:18:34.020]   but changing the PDF is something
+[00:18:34.020 --> 00:18:36.180]   that we'll actually talk about later.
+[00:18:36.180 --> 00:18:37.980]   Yes?
+[00:18:37.980 --> 00:18:42.980]   (audience member speaking off microphone)
+[00:18:42.980 --> 00:18:56.620]   So here, the question is,
+[00:18:58.180 --> 00:19:00.420]   so what is the difference between--
+[00:19:00.420 --> 00:19:05.420]   (audience member speaking off microphone)
+[00:19:05.420 --> 00:19:11.860]   Yeah, so I think if we take,
+[00:19:11.860 --> 00:19:14.260]   so with this random approach,
+[00:19:14.260 --> 00:19:18.260]   what you can get is that with enough number of samples,
+[00:19:18.260 --> 00:19:23.060]   like, or yeah, you'll be guaranteed
+[00:19:23.060 --> 00:19:24.340]   to get to the correct result,
+[00:19:24.340 --> 00:19:29.340]   but yeah, I think if we take this discrete set of samples,
+[00:19:29.340 --> 00:19:37.100]   so for example, you can take 10 or can take 20 there.
+[00:19:37.100 --> 00:19:45.180]   I think this one is, I think it can be just biased,
+[00:19:45.180 --> 00:19:47.980]   like you just don't get to the correct value
+[00:19:47.980 --> 00:19:52.020]   depending on like the function itself, I think,
+[00:19:52.020 --> 00:19:54.100]   like given a limited number of samples.
+[00:19:54.100 --> 00:19:59.260]   Yeah, and I think probably that's the main thing,
+[00:19:59.260 --> 00:20:02.620]   it's not so general also,
+[00:20:02.620 --> 00:20:04.820]   if you want to sample on this dimension
+[00:20:04.820 --> 00:20:09.820]   as a discrete set of, or like at the equal steps,
+[00:20:09.820 --> 00:20:15.580]   then say we go to two dimensions, three dimensions there,
+[00:20:15.580 --> 00:20:20.420]   like you will need, say exponentially more samples
+[00:20:20.420 --> 00:20:25.420]   to create this grid to do this sort of integration quadrature.
+[00:20:25.420 --> 00:20:30.340]   Yeah, I think maybe this dimensionality
+[00:20:30.340 --> 00:20:31.780]   is actually the main reason,
+[00:20:31.780 --> 00:20:35.860]   like we would still focus on this Monte Carlo method,
+[00:20:35.860 --> 00:20:39.500]   like it does not suffer the curse of dimensionality,
+[00:20:39.500 --> 00:20:42.460]   like if say on one D, yes, I think indeed,
+[00:20:42.460 --> 00:20:47.460]   if we use some more advanced techniques, numerical methods,
+[00:20:47.900 --> 00:20:51.220]   we would get faster convergence,
+[00:20:51.220 --> 00:20:56.220]   but yeah, but that would not generalize
+[00:20:56.220 --> 00:21:01.380]   to actually say the path that we sample in the scenes,
+[00:21:01.380 --> 00:21:06.380]   and yeah, it would not be as efficient, I think,
+[00:21:06.380 --> 00:21:09.940]   but I think we will later see,
+[00:21:09.940 --> 00:21:11.820]   I think a little bit mentioned in the lecture,
+[00:21:11.820 --> 00:21:14.060]   also in a later lecture,
+[00:21:14.060 --> 00:21:17.140]   where we do this random sampling,
+[00:21:17.140 --> 00:21:22.140]   because people find that if you get these true random numbers,
+[00:21:22.140 --> 00:21:25.660]   if you use true random numbers,
+[00:21:25.660 --> 00:21:28.780]   you get this convergence rate of one over square root of n,
+[00:21:28.780 --> 00:21:33.020]   because so the error goes down relatively slowly,
+[00:21:33.020 --> 00:21:37.060]   but then there is this stratified sampling,
+[00:21:37.060 --> 00:21:40.420]   so you divide this domain, say, into 10 intervals
+[00:21:40.420 --> 00:21:43.900]   and take a random sample from each of them,
+[00:21:43.900 --> 00:21:48.500]   and there you're guaranteed to not increase the variance,
+[00:21:48.500 --> 00:21:51.860]   so you can somehow get lower error,
+[00:21:51.860 --> 00:21:56.860]   and you can also develop this quasi Monte Carlo methods
+[00:21:56.860 --> 00:22:02.900]   which use these sequences of, let's say, quasi random,
+[00:22:02.900 --> 00:22:06.460]   these sequences, low discrepancy sequences,
+[00:22:06.460 --> 00:22:11.460]   which are say random in a sense, but also well distributed,
+[00:22:11.580 --> 00:22:15.460]   so they would also give, like, avoid sort of
+[00:22:15.460 --> 00:22:19.740]   this discontinuities problem that this should also
+[00:22:19.740 --> 00:22:23.300]   give the unbiased or just correct result in expectation,
+[00:22:23.300 --> 00:22:26.100]   but they would converge faster
+[00:22:26.100 --> 00:22:28.260]   than just using true random numbers.
+[00:22:28.260 --> 00:22:32.140]   Yeah, I hope that's, maybe that's a bit much,
+[00:22:32.140 --> 00:22:34.060]   so other questions, yes?
+[00:22:34.060 --> 00:22:36.620]   - So just reading over the code,
+[00:22:36.620 --> 00:22:39.980]   is it correct to say that the value of the Monte Carlo
+[00:22:39.980 --> 00:22:43.900]   integration is just the average value
+[00:22:43.900 --> 00:22:45.860]   of the valuation of the function
+[00:22:45.860 --> 00:22:47.620]   over some set of N samples?
+[00:22:47.620 --> 00:22:54.500]   - I think, yes, but there is this PDF that you need
+[00:22:54.500 --> 00:22:57.380]   to divide by, yes.
+[00:22:57.380 --> 00:23:00.900]   So yes, the value of the Monte Carlo estimator
+[00:23:00.900 --> 00:23:04.540]   of this integral is the average of some samples,
+[00:23:04.540 --> 00:23:08.580]   function values over its sampling PDF.
+[00:23:09.420 --> 00:23:14.420]   - Right, so I think visually,
+[00:23:14.420 --> 00:23:19.100]   you can interpret this Monte Carlo integral
+[00:23:19.100 --> 00:23:24.100]   as either we take some random height of the function
+[00:23:24.100 --> 00:23:29.340]   and say this is an average height
+[00:23:29.340 --> 00:23:32.780]   and then we multiply that by the width of the interval,
+[00:23:32.780 --> 00:23:36.300]   or we can treat it as like this
+[00:23:38.500 --> 00:23:42.460]   random area, we sample some random area
+[00:23:42.460 --> 00:23:45.020]   of the area under the curve
+[00:23:45.020 --> 00:23:47.060]   and then take an average of it.
+[00:23:47.060 --> 00:23:52.820]   Right, so in summary,
+[00:23:52.820 --> 00:23:55.860]   the goal of Monte Carlo integration is to integrate,
+[00:23:55.860 --> 00:24:00.260]   and we integrate by using random sampling,
+[00:24:00.260 --> 00:24:04.180]   so we have probability distribution
+[00:24:04.180 --> 00:24:09.180]   and we would sample a lot from it, independent samples,
+[00:24:09.180 --> 00:24:14.020]   and then we compute the Monte Carlo estimator
+[00:24:14.020 --> 00:24:17.940]   with, by computing the function f divided by p
+[00:24:17.940 --> 00:24:21.300]   and averaging them, and in expectation,
+[00:24:21.300 --> 00:24:25.700]   we would get the correct answer, basically.
+[00:24:25.700 --> 00:24:31.820]   The expectation of the estimator is the true integral.
+[00:24:32.100 --> 00:24:37.100]   So the last property actually makes it an unbiased estimator,
+[00:24:37.100 --> 00:24:40.300]   so that's the definition of unbiased,
+[00:24:40.300 --> 00:24:43.620]   that's the expected value equals the true thing.
+[00:24:43.620 --> 00:24:47.660]   And also as we discussed before,
+[00:24:47.660 --> 00:24:50.780]   the extension to higher dimensions is straightforward
+[00:24:50.780 --> 00:24:54.020]   because the number of samples is chosen by us
+[00:24:54.020 --> 00:24:56.420]   and it's independent of the dimension,
+[00:24:56.420 --> 00:25:00.660]   like to be able to say reach a certain error bounds,
+[00:25:00.660 --> 00:25:05.580]   but yeah, I'm not familiar anymore with those techniques,
+[00:25:05.580 --> 00:25:09.340]   so maybe, yeah, it's further reading for me.
+[00:25:09.340 --> 00:25:15.540]   And then there is this convergence rate
+[00:25:15.540 --> 00:25:18.660]   of one over the square root of n,
+[00:25:18.660 --> 00:25:23.660]   so if we want to reduce the error of Monte Carlo integration
+[00:25:23.660 --> 00:25:27.940]   by a factor of two, we need four times as many samples,
+[00:25:27.940 --> 00:25:32.940]   so consider rendering, say, we're rendering a scene
+[00:25:32.940 --> 00:25:35.380]   for one day and we saw the image
+[00:25:35.380 --> 00:25:36.580]   and we want half the error,
+[00:25:36.580 --> 00:25:39.660]   and that means we need to render for three more days.
+[00:25:39.660 --> 00:25:44.660]   So error here is measured in terms of standard deviation
+[00:25:44.660 --> 00:25:48.820]   or standard error, and the reason behind this one
+[00:25:48.820 --> 00:25:53.580]   over the square root of n is because the variance goes down
+[00:25:53.580 --> 00:25:57.620]   by one over n, and we can see that by using some
+[00:25:57.620 --> 00:25:59.620]   of the probabilities we learned before.
+[00:25:59.620 --> 00:26:04.260]   So first, we expand this variance of the estimator,
+[00:26:04.260 --> 00:26:12.020]   and we can take out the one over n to be one over n squared
+[00:26:12.020 --> 00:26:17.840]   because of this, and because I think each of these excise,
+[00:26:17.840 --> 00:26:25.660]   each of these excise are sampled from the same distribution,
+[00:26:25.660 --> 00:26:27.140]   no, not from the same distribution,
+[00:26:27.140 --> 00:26:29.140]   because they are independent,
+[00:26:29.140 --> 00:26:34.140]   we can actually take the sum out for the variance,
+[00:26:34.140 --> 00:26:36.940]   and because they are from the same distribution,
+[00:26:36.940 --> 00:26:38.860]   the variance should be the same,
+[00:26:38.860 --> 00:26:40.980]   so it's just n of the same thing
+[00:26:40.980 --> 00:26:42.700]   and one of the n's canceled out,
+[00:26:42.700 --> 00:26:45.860]   so if we look on the far right,
+[00:26:45.860 --> 00:26:49.300]   we see that this is actually the variance
+[00:26:49.300 --> 00:26:51.500]   of a single sample estimator,
+[00:26:52.340 --> 00:26:56.220]   and we see that the n sample estimator is,
+[00:26:56.220 --> 00:27:00.220]   the variance of that is one over n times the variance
+[00:27:00.220 --> 00:27:02.140]   of a single sample estimator,
+[00:27:02.140 --> 00:27:05.820]   that means the variance goes down at the rate of one over n
+[00:27:05.820 --> 00:27:10.020]   and the standard deviation at one over the square root of n.
+[00:27:10.020 --> 00:27:15.200]   Yep, hopefully that's clear,
+[00:27:15.200 --> 00:27:19.620]   and this is rendered images, I think,
+[00:27:19.620 --> 00:27:21.820]   yeah, like 17 years ago.
+[00:27:22.660 --> 00:27:25.060]   (audience member mumbles)
+[00:27:25.060 --> 00:27:26.580]   Yeah, I think that's 2006.
+[00:27:26.580 --> 00:27:30.500]   I think this is also rendered.
+[00:27:30.500 --> 00:27:36.900]   Yes, there are other questions about the previous part.
+[00:27:36.900 --> 00:27:40.300]   This is what we're gonna talk about next.
+[00:27:40.300 --> 00:27:44.540]   All right, so,
+[00:27:44.540 --> 00:27:51.660]   now we're going to talk about sampling random variables,
+[00:27:51.660 --> 00:27:56.540]   so given a PDF, given P of X,
+[00:27:56.540 --> 00:27:58.180]   how do we actually generate samples
+[00:27:58.180 --> 00:28:01.300]   that come from this distribution?
+[00:28:01.300 --> 00:28:05.020]   So when we're talking about sampling,
+[00:28:05.020 --> 00:28:09.780]   typically what we mean is having,
+[00:28:09.780 --> 00:28:13.020]   is that we have a bunch of,
+[00:28:13.020 --> 00:28:16.860]   or we have a generator that can give us random numbers
+[00:28:16.860 --> 00:28:20.340]   with uniform distribution between zero and one,
+[00:28:20.340 --> 00:28:23.940]   so that's the canonical uniform variables,
+[00:28:23.940 --> 00:28:28.940]   which I will actually call Xs in the following sometimes,
+[00:28:28.940 --> 00:28:33.980]   and we want to turn them into random variables
+[00:28:33.980 --> 00:28:36.100]   or into numbers that are distributed
+[00:28:36.100 --> 00:28:38.180]   according to the desired distribution.
+[00:28:38.180 --> 00:28:44.100]   So one particular type of these sampling applications
+[00:28:44.100 --> 00:28:49.300]   is like how do we sample uniformly on some domain?
+[00:28:49.300 --> 00:28:52.540]   So we've learned, so we're given a uniform sample
+[00:28:52.540 --> 00:28:54.540]   between the interval zero and one,
+[00:28:54.540 --> 00:28:57.940]   we can, we're seeing how to sample between A and B,
+[00:28:57.940 --> 00:29:01.940]   and how do we sample a point on a circle,
+[00:29:01.940 --> 00:29:05.660]   or within a circle, how do we sample a point
+[00:29:05.660 --> 00:29:09.420]   on a sphere surface, or on a hemisphere,
+[00:29:09.420 --> 00:29:14.900]   or some more random arbitrary complex domains,
+[00:29:14.900 --> 00:29:16.660]   so that's one of the,
+[00:29:16.660 --> 00:29:20.660]   that's one important range of sampling
+[00:29:20.660 --> 00:29:23.940]   that we will need to discuss and implement.
+[00:29:23.940 --> 00:29:30.260]   So one example that we will talk a lot about
+[00:29:30.260 --> 00:29:33.300]   is how to uniformly sample a disk,
+[00:29:33.300 --> 00:29:37.380]   so suppose we have this light source
+[00:29:37.380 --> 00:29:41.900]   that is just round, that is a circle,
+[00:29:41.900 --> 00:29:44.300]   and we want to sample point within it.
+[00:29:45.500 --> 00:29:49.860]   So if we are given, so the probability density
+[00:29:49.860 --> 00:29:52.980]   of this sampling unit disk would be like that,
+[00:29:52.980 --> 00:29:55.820]   if we define it in the Cartesian coordinates,
+[00:29:55.820 --> 00:29:58.140]   basically within the disk it's one over pi,
+[00:29:58.140 --> 00:30:02.980]   otherwise it would be zeros, so this is the goal.
+[00:30:02.980 --> 00:30:07.900]   And here, as I mentioned before,
+[00:30:07.900 --> 00:30:11.900]   the casis we got, they are from the canonical
+[00:30:11.900 --> 00:30:14.420]   uniform distribution, so they only cover
+[00:30:14.420 --> 00:30:19.420]   the unit hyper, how do I say the unit hypercube,
+[00:30:19.420 --> 00:30:23.060]   depending on the number of dimensions,
+[00:30:23.060 --> 00:30:25.660]   here it's just the unit square,
+[00:30:25.660 --> 00:30:28.540]   and we will need to somehow transform it
+[00:30:28.540 --> 00:30:31.820]   to give us random numbers inside the unit disk.
+[00:30:31.820 --> 00:30:38.020]   So we can first say, surround the disk with a square
+[00:30:38.020 --> 00:30:41.660]   and reject a sample inside the square
+[00:30:41.660 --> 00:30:44.260]   and reject samples that are outside of the disk.
+[00:30:44.260 --> 00:30:46.740]   So this is what we call rejection sampling,
+[00:30:46.740 --> 00:30:51.580]   and there is also you see the transformation
+[00:30:51.580 --> 00:30:54.940]   between from zero to one to minus one to one,
+[00:30:54.940 --> 00:30:57.260]   so that's one minus two times c.
+[00:30:57.260 --> 00:31:01.500]   And we can actually use this technique
+[00:31:01.500 --> 00:31:03.860]   for sampling a sphere, so as you can already see,
+[00:31:03.860 --> 00:31:05.580]   we're already wasting a bit of samples,
+[00:31:05.580 --> 00:31:09.900]   but no worries, this is only like 20% of the samples,
+[00:31:09.900 --> 00:31:12.020]   it's fine, we're good.
+[00:31:12.020 --> 00:31:13.660]   And we can also use the similar technique
+[00:31:13.660 --> 00:31:18.660]   for sampling a sphere, yeah, this is a sphere,
+[00:31:18.660 --> 00:31:24.940]   and it can be surrounded by a cube,
+[00:31:24.940 --> 00:31:29.140]   so we assume that this sphere is also a unisphere centered
+[00:31:29.140 --> 00:31:31.700]   at origin with radius of one,
+[00:31:31.700 --> 00:31:36.180]   so we can sample within this cube.
+[00:31:36.180 --> 00:31:39.060]   So suppose the goal is to actually sample
+[00:31:39.060 --> 00:31:40.540]   a point on the sphere,
+[00:31:41.540 --> 00:31:45.300]   we can still just reject the samples
+[00:31:45.300 --> 00:31:47.820]   that are outside of the sphere
+[00:31:47.820 --> 00:31:50.380]   and then do this normalization to project
+[00:31:50.380 --> 00:31:53.940]   the resulting samples onto the sphere,
+[00:31:53.940 --> 00:31:57.300]   so this will actually give us uniform distribution
+[00:31:57.300 --> 00:31:58.620]   on the sphere surface.
+[00:31:58.620 --> 00:32:02.220]   So we can also do that for the hemisphere,
+[00:32:02.220 --> 00:32:07.220]   we can reject samples not in the hemisphere,
+[00:32:09.220 --> 00:32:14.220]   project, and then we can also do this,
+[00:32:14.220 --> 00:32:16.140]   like, but then how do we do this
+[00:32:16.140 --> 00:32:17.860]   for an arbitrary orientation?
+[00:32:17.860 --> 00:32:23.140]   Yeah, we can check and reject things
+[00:32:23.140 --> 00:32:28.020]   that are not within this hemisphere of this orientation,
+[00:32:28.020 --> 00:32:30.820]   but I think can probably spot something
+[00:32:30.820 --> 00:32:32.220]   that we can improve here.
+[00:32:32.220 --> 00:32:38.740]   Yeah, do you have ideas of how to improve this procedure?
+[00:32:38.740 --> 00:32:43.740]   (audience member speaking off microphone)
+[00:32:43.740 --> 00:32:48.620]   Yes?
+[00:32:48.620 --> 00:32:52.260]   (audience member speaking off microphone)
+[00:32:52.260 --> 00:32:54.860]   Yes, so the while loop here
+[00:32:54.860 --> 00:32:56.660]   is because of the rejection, right?
+[00:32:56.660 --> 00:33:01.660]   (audience member speaking off microphone)
+[00:33:01.660 --> 00:33:05.700]   Yeah, so I think that is a very good point,
+[00:33:05.700 --> 00:33:08.380]   but so this will be covered, I think, later
+[00:33:08.380 --> 00:33:12.180]   in this lecture, so the problem there is
+[00:33:12.180 --> 00:33:14.500]   I do not know the distribution,
+[00:33:14.500 --> 00:33:16.020]   I don't know yet the distribution
+[00:33:16.020 --> 00:33:18.700]   that these spherical coordinates should take
+[00:33:18.700 --> 00:33:20.420]   and whether they would actually give me
+[00:33:20.420 --> 00:33:24.140]   the uniform distribution on the sphere surface.
+[00:33:24.140 --> 00:33:27.740]   Yeah, so, any other ideas, maybe?
+[00:33:27.740 --> 00:33:34.300]   (audience member speaking off microphone)
+[00:33:35.220 --> 00:33:40.220]   (audience member speaking off microphone)
+[00:33:40.220 --> 00:33:43.940]   Yes, so that's what it does, right?
+[00:33:43.940 --> 00:33:47.740]   So this is still within this rejection sampling framework,
+[00:33:47.740 --> 00:33:50.460]   like I don't need to actually compute
+[00:33:50.460 --> 00:33:54.660]   in another coordinate system what is the correct
+[00:33:54.660 --> 00:33:57.980]   distribution I want, but I can just still say
+[00:33:57.980 --> 00:34:00.380]   improve the efficiency by two,
+[00:34:00.380 --> 00:34:03.540]   by actually using both sides of the,
+[00:34:03.540 --> 00:34:05.900]   both hemispheres to sample.
+[00:34:05.900 --> 00:34:08.780]   But still, it would,
+[00:34:08.780 --> 00:34:11.980]   this would achieve our goal,
+[00:34:11.980 --> 00:34:16.980]   but it would actually be inefficient.
+[00:34:16.980 --> 00:34:19.300]   I mean, as you have more and more complex shapes,
+[00:34:19.300 --> 00:34:22.220]   you might actually waste more and more samples
+[00:34:22.220 --> 00:34:24.460]   and you can already see that it's quite flexible,
+[00:34:24.460 --> 00:34:25.580]   as long as you have a shape,
+[00:34:25.580 --> 00:34:27.700]   you can define inside/outside,
+[00:34:27.700 --> 00:34:29.580]   you can do this sort of sampling,
+[00:34:29.580 --> 00:34:32.500]   given some uniform random numbers.
+[00:34:32.500 --> 00:34:37.540]   Yeah, but the inefficiency and also it's,
+[00:34:37.540 --> 00:34:39.660]   at least sometimes it's difficult to combine
+[00:34:39.660 --> 00:34:42.700]   with the stratification that we mentioned before
+[00:34:42.700 --> 00:34:45.020]   because now if we stratify the domain,
+[00:34:45.020 --> 00:34:49.300]   if we slice the square into some smaller squares,
+[00:34:49.300 --> 00:34:52.380]   smaller places, some of them may just be outside,
+[00:34:52.380 --> 00:34:56.780]   I think, outside of the thing that we want to sample.
+[00:34:56.780 --> 00:34:59.580]   So maybe that breaks some nice properties.
+[00:34:59.580 --> 00:35:05.220]   Right, so, let me see.
+[00:35:05.220 --> 00:35:10.820]   So one, so after the rejection sampling,
+[00:35:10.820 --> 00:35:14.100]   let's look at some actual application
+[00:35:14.100 --> 00:35:16.060]   in the rendering setup.
+[00:35:16.060 --> 00:35:19.420]   So we have diffuse objects,
+[00:35:19.420 --> 00:35:22.020]   we learned last time what diffuse is,
+[00:35:22.020 --> 00:35:24.980]   and we have illumination by ambient white skies,
+[00:35:24.980 --> 00:35:27.460]   so what this means is that from all directions
+[00:35:27.460 --> 00:35:29.300]   you get a constant illumination.
+[00:35:29.300 --> 00:35:33.300]   And here is what we want to compute,
+[00:35:33.300 --> 00:35:35.540]   we want to compute like the direct illumination
+[00:35:35.540 --> 00:35:40.780]   from at each point that we see.
+[00:35:40.780 --> 00:35:44.460]   Because of the simplified setup,
+[00:35:44.460 --> 00:35:47.700]   we would be able to simplify this equation.
+[00:35:47.700 --> 00:35:54.220]   I think to this,
+[00:35:54.220 --> 00:35:58.540]   so there are two things to simplify.
+[00:35:58.540 --> 00:36:01.500]   First, the illumination,
+[00:36:01.500 --> 00:36:03.740]   which is the LI in this equation,
+[00:36:03.740 --> 00:36:05.100]   which is LI in this equation,
+[00:36:05.100 --> 00:36:10.100]   and that is just, I think, assumed to be one now.
+[00:36:10.100 --> 00:36:14.100]   And then the BRDF term,
+[00:36:14.100 --> 00:36:18.380]   there is diffuse, so we have some albedo rho over pi,
+[00:36:18.380 --> 00:36:20.300]   and then we have the visibility term,
+[00:36:20.300 --> 00:36:23.260]   which means whether we can actually see the sky
+[00:36:23.260 --> 00:36:24.340]   in that direction.
+[00:36:24.340 --> 00:36:28.900]   So to be able to do this rendering,
+[00:36:28.900 --> 00:36:30.340]   to do this integration,
+[00:36:30.340 --> 00:36:35.340]   we rely on Monte Carlo,
+[00:36:35.340 --> 00:36:38.100]   and let's see how it's done.
+[00:36:38.100 --> 00:36:44.740]   Let's say,
+[00:36:44.740 --> 00:36:48.780]   so this is what the visibility term actually means.
+[00:36:48.780 --> 00:36:52.980]   So V would be one in this blue range,
+[00:36:52.980 --> 00:36:56.020]   and V zero in this red range.
+[00:36:56.020 --> 00:37:01.380]   Okay, so first, we replace the integral
+[00:37:01.380 --> 00:37:04.740]   by an estimator with Monte Carlo integration,
+[00:37:04.740 --> 00:37:06.900]   so this would be like the general recipe,
+[00:37:06.900 --> 00:37:10.140]   the first step to do Monte Carlo integration,
+[00:37:10.140 --> 00:37:15.140]   you take the integral and replace the integral symbol
+[00:37:15.140 --> 00:37:20.740]   by a sum of some samples,
+[00:37:20.740 --> 00:37:22.300]   and divide by the PDF,
+[00:37:22.300 --> 00:37:25.660]   and divide by the number of samples outside, yeah,
+[00:37:25.660 --> 00:37:29.300]   and then we want to know the PDF.
+[00:37:29.300 --> 00:37:34.140]   So there are some options that we can take.
+[00:37:34.140 --> 00:37:36.580]   So first, we can just sample uniformly
+[00:37:36.580 --> 00:37:37.820]   within the hemisphere,
+[00:37:37.820 --> 00:37:42.180]   because the hemisphere has the area of two pi,
+[00:37:42.180 --> 00:37:47.180]   and the PDF is just constant,
+[00:37:47.180 --> 00:37:50.620]   and this is what we get after we plug in
+[00:37:50.620 --> 00:37:51.660]   the PDF.
+[00:37:51.660 --> 00:37:57.180]   So this is an illustration of how this would translate
+[00:37:57.180 --> 00:37:59.420]   to this simple C.
+[00:37:59.420 --> 00:38:02.500]   As you can see that all directions in the hemisphere
+[00:38:02.500 --> 00:38:05.260]   has equal chance of being sampled.
+[00:38:05.260 --> 00:38:09.460]   So the problem there is that those rays
+[00:38:09.460 --> 00:38:14.180]   that are almost horizontal or parallel to the ground,
+[00:38:14.180 --> 00:38:17.620]   they contribute very little to the actual integral
+[00:38:17.620 --> 00:38:21.260]   because of this cosine four-shortening term.
+[00:38:21.260 --> 00:38:26.340]   So they would actually be one source of variance,
+[00:38:26.340 --> 00:38:28.060]   so whatever is not certain there
+[00:38:28.060 --> 00:38:30.420]   can be a source of variance.
+[00:38:30.420 --> 00:38:34.740]   So what we can improve with our PDF
+[00:38:34.740 --> 00:38:38.380]   is by actually taking into account of this cosine term.
+[00:38:38.380 --> 00:38:41.660]   So we are actually sampling according to the cosine,
+[00:38:41.660 --> 00:38:44.940]   and the normalization becomes pi,
+[00:38:45.860 --> 00:38:50.420]   and now we get a simpler equation,
+[00:38:50.420 --> 00:38:53.540]   which just contains in the sum the visibility.
+[00:38:53.540 --> 00:39:00.580]   So as you can see in the bottom right illustration,
+[00:39:00.580 --> 00:39:03.420]   now the directions that are more towards up
+[00:39:03.420 --> 00:39:04.780]   are sampled more frequently,
+[00:39:04.780 --> 00:39:07.940]   and those that are towards parallel to the ground
+[00:39:07.940 --> 00:39:12.460]   are sampled much less.
+[00:39:15.700 --> 00:39:19.500]   So for this, to see the actual effect,
+[00:39:19.500 --> 00:39:24.500]   we can compare these two sampling PDFs visually.
+[00:39:24.500 --> 00:39:29.140]   So this is actually like just that scene in 3D.
+[00:39:29.140 --> 00:39:30.380]   So if we just take one sample
+[00:39:30.380 --> 00:39:32.020]   with the uniform hemisphere sampling,
+[00:39:32.020 --> 00:39:34.220]   we see we get this image,
+[00:39:34.220 --> 00:39:38.100]   and if we use the cosine weighted hemispherical sampling,
+[00:39:38.100 --> 00:39:39.860]   we get actually this image.
+[00:39:39.860 --> 00:39:42.540]   From my perspective, I think you can also see it.
+[00:39:42.540 --> 00:39:46.220]   One major difference is that first,
+[00:39:46.220 --> 00:39:49.020]   you get much less noise,
+[00:39:49.020 --> 00:39:50.820]   you get much less noise on the bottom,
+[00:39:50.820 --> 00:39:54.220]   but also you don't see this clear cut,
+[00:39:54.220 --> 00:39:56.580]   clear cut of noise and clean
+[00:39:56.580 --> 00:39:59.260]   that we see on the uniform hemispherical sampling.
+[00:39:59.260 --> 00:40:02.020]   So why is that?
+[00:40:02.020 --> 00:40:05.900]   So this is because there is a plane,
+[00:40:05.900 --> 00:40:07.900]   and in the back there's just nothing,
+[00:40:07.900 --> 00:40:11.420]   so you just shoot the camera towards the sky,
+[00:40:11.420 --> 00:40:13.980]   and you get a constant value always,
+[00:40:13.980 --> 00:40:17.140]   but then when you hit the plane,
+[00:40:17.140 --> 00:40:18.940]   you have a cosine term,
+[00:40:18.940 --> 00:40:20.820]   and that cosine term can cause variance
+[00:40:20.820 --> 00:40:23.020]   basically everywhere on the plane,
+[00:40:23.020 --> 00:40:24.700]   but here on the bottom,
+[00:40:24.700 --> 00:40:26.420]   you don't have that cosine term anymore,
+[00:40:26.420 --> 00:40:30.860]   so the only source of noise is from the visibility.
+[00:40:30.860 --> 00:40:31.700]   So like,
+[00:40:31.700 --> 00:40:36.340]   then you get actually,
+[00:40:36.340 --> 00:40:38.940]   don't get, like when the visibility is perfect,
+[00:40:38.940 --> 00:40:41.500]   you actually don't get any noise.
+[00:40:41.500 --> 00:40:45.100]   And if we increase the sample count,
+[00:40:45.100 --> 00:40:46.900]   we can see that, I mean,
+[00:40:46.900 --> 00:40:48.140]   how many samples you use,
+[00:40:48.140 --> 00:40:50.780]   the bottom would typically look cleaner.
+[00:40:50.780 --> 00:40:54.740]   This is 16, this is 256.
+[00:40:54.740 --> 00:40:57.420]   I think you can still see that the bottom,
+[00:40:57.420 --> 00:40:59.580]   top one is noisier,
+[00:40:59.580 --> 00:41:03.300]   and eventually at 1024 samples,
+[00:41:03.300 --> 00:41:05.340]   the bottom one already seemed pretty good,
+[00:41:05.340 --> 00:41:07.100]   and if you spot closely,
+[00:41:07.100 --> 00:41:10.300]   you can still spot noise on the top part.
+[00:41:10.300 --> 00:41:17.420]   All right, questions about the previous parts?
+[00:41:17.420 --> 00:41:21.420]   All right.
+[00:41:21.420 --> 00:41:28.540]   So what we were trying to do
+[00:41:28.540 --> 00:41:35.380]   is actually an example of important sampling.
+[00:41:35.380 --> 00:41:38.660]   So important sampling, by definition,
+[00:41:38.660 --> 00:41:41.700]   means sampling important parts.
+[00:41:41.700 --> 00:41:46.060]   So sampling important parts more frequently,
+[00:41:46.060 --> 00:41:47.460]   that's what it means.
+[00:41:47.460 --> 00:41:52.540]   So given this integral and this estimator,
+[00:41:52.540 --> 00:41:55.260]   what we have control is over the p,
+[00:41:55.260 --> 00:41:57.500]   over the PDF, so the p of x.
+[00:41:57.500 --> 00:42:01.020]   So if we do the thought experiment,
+[00:42:01.020 --> 00:42:03.460]   if the PDF is actually a constant,
+[00:42:03.460 --> 00:42:06.780]   times the actual integral value,
+[00:42:06.780 --> 00:42:10.700]   what would we get as the estimator?
+[00:42:10.700 --> 00:42:14.300]   Do we still need multiple samples?
+[00:42:14.300 --> 00:42:20.380]   So this would be actually the normalization factor,
+[00:42:20.380 --> 00:42:25.660]   and we can see that,
+[00:42:25.660 --> 00:42:29.340]   given any sample, just take one sample
+[00:42:29.340 --> 00:42:31.380]   and we get actually the correct integral value,
+[00:42:31.380 --> 00:42:34.940]   so we have no variance, which is good,
+[00:42:34.940 --> 00:42:37.620]   which is, yeah, we achieved our goal,
+[00:42:37.620 --> 00:42:41.220]   but note that we already know
+[00:42:41.220 --> 00:42:43.820]   what the integral is when computing the normalization.
+[00:42:43.820 --> 00:42:47.220]   So this is not achievable in practice,
+[00:42:47.220 --> 00:42:54.860]   but we can always do better if we have a PDF
+[00:42:54.860 --> 00:42:57.620]   that is similar to the function that we want to integrate.
+[00:42:57.620 --> 00:43:00.260]   So before we have a cosine term
+[00:43:00.260 --> 00:43:04.860]   in the function, and if we sample according to a cosine term,
+[00:43:04.860 --> 00:43:08.100]   we see that we get less variance.
+[00:43:08.100 --> 00:43:10.260]   So in 1D, this would be like
+[00:43:10.260 --> 00:43:13.420]   if we have this sort of weekly FX,
+[00:43:13.420 --> 00:43:16.420]   and if we do uniform sampling over the domain,
+[00:43:16.420 --> 00:43:18.500]   it will give higher variance
+[00:43:18.500 --> 00:43:22.220]   than if we do the important sampling with some p of x
+[00:43:22.220 --> 00:43:25.580]   that is more similar to the shape of F.
+[00:43:27.620 --> 00:43:31.380]   So in a lot of the techniques,
+[00:43:31.380 --> 00:43:33.780]   we will introduce later,
+[00:43:33.780 --> 00:43:35.980]   like for rendering, for sampling some,
+[00:43:35.980 --> 00:43:38.740]   like for rendering, like sampling this thing,
+[00:43:38.740 --> 00:43:42.340]   sampling that thing, what we are trying to do
+[00:43:42.340 --> 00:43:46.220]   is try to sample as proportional to the integrand as possible,
+[00:43:46.220 --> 00:43:49.420]   so because that will save us time for rendering
+[00:43:49.420 --> 00:43:53.980]   and eventually just get cleaner images faster.
+[00:43:55.020 --> 00:44:00.540]   So with this definition,
+[00:44:00.540 --> 00:44:03.140]   we can look at this ambient occlusion estimator.
+[00:44:03.140 --> 00:44:05.420]   When we do the uniform hemispherical sampling,
+[00:44:05.420 --> 00:44:07.940]   we are not doing actually important sampling over anything
+[00:44:07.940 --> 00:44:11.180]   over that's similar to the integrand,
+[00:44:11.180 --> 00:44:16.820]   so we get higher noise or variance,
+[00:44:16.820 --> 00:44:19.140]   but if we use a PDF according to the cosine,
+[00:44:19.140 --> 00:44:21.780]   we get a simpler estimator
+[00:44:21.780 --> 00:44:31.380]   and also just in general a lower variance in the image.
+[00:44:31.380 --> 00:44:35.940]   So one may also want to important sample that visibility term,
+[00:44:35.940 --> 00:44:38.820]   so if we actually know at each point of the scene
+[00:44:38.820 --> 00:44:42.580]   where it can see the sky, then we actually get no noise at all,
+[00:44:42.580 --> 00:44:44.860]   and that is perfectly correct,
+[00:44:44.860 --> 00:44:49.580]   unless, like until we realize that it's impossible,
+[00:44:49.580 --> 00:44:52.180]   I mean, it's often impossible to know beforehand
+[00:44:52.180 --> 00:44:55.180]   what is actually visible and what is not
+[00:44:55.180 --> 00:44:58.900]   until you're at the location and sample something.
+[00:44:58.900 --> 00:45:00.100]   All right?
+[00:45:00.100 --> 00:45:02.940]   I think that's a good timing for me,
+[00:45:02.940 --> 00:45:06.220]   so we will continue after the break.
+[00:45:06.220 --> 00:45:12.940]   So we'll come back.
+[00:45:12.940 --> 00:45:16.940]   Yeah, there were some questions during the interval
+[00:45:16.940 --> 00:45:20.700]   that may be worth clarifying a little bit,
+[00:45:20.700 --> 00:45:25.060]   particularly about, like here,
+[00:45:25.060 --> 00:45:29.620]   what is this cosine term that we get?
+[00:45:29.620 --> 00:45:32.380]   So this would, I think maybe from a previous lecture,
+[00:45:32.380 --> 00:45:35.540]   we would see that if you have a surface
+[00:45:35.540 --> 00:45:37.900]   and you have a light source illuminating it,
+[00:45:37.900 --> 00:45:39.940]   depending on the angle between the light source
+[00:45:39.940 --> 00:45:42.860]   and the surface itself,
+[00:45:42.860 --> 00:45:47.100]   the unit area on the surface gets, like, more or less
+[00:45:47.100 --> 00:45:50.580]   amount of light and can reflect more or less,
+[00:45:50.580 --> 00:45:54.180]   and that more or less is dependent on the cosine
+[00:45:54.180 --> 00:45:57.740]   of the light source direction
+[00:45:57.740 --> 00:46:00.140]   with respect to the surface normal,
+[00:46:00.140 --> 00:46:02.220]   so the surface normal would be there.
+[00:46:02.220 --> 00:46:04.900]   Yeah, be perpendicular to the surface.
+[00:46:04.900 --> 00:46:11.260]   All right, after we see some images,
+[00:46:12.260 --> 00:46:17.260]   we will move into the next part of this lecture,
+[00:46:17.260 --> 00:46:21.260]   which is when we have P of x,
+[00:46:21.260 --> 00:46:24.260]   how to actually generate samples from it.
+[00:46:24.260 --> 00:46:29.260]   So how to actually sample it, sample a distribution,
+[00:46:29.260 --> 00:46:33.260]   meaning how to turn xy into numbers
+[00:46:33.260 --> 00:46:37.260]   that are distributed according to this distribution.
+[00:46:38.260 --> 00:46:42.260]   So we have, first, the inversion method,
+[00:46:42.260 --> 00:46:47.260]   which basically means I want to know what value of x is
+[00:46:47.260 --> 00:46:54.260]   at, say, a random percentile of this distribution,
+[00:46:54.260 --> 00:46:59.260]   so if I know that, then I can actually just take a sample
+[00:46:59.260 --> 00:47:03.260]   at, say, at 10%, 20%, 50%, whatever,
+[00:47:03.260 --> 00:47:06.260]   then those samples will be distributed
+[00:47:06.260 --> 00:47:10.260]   according to my distribution, P of x.
+[00:47:10.260 --> 00:47:13.260]   So to do that, we first compute the CDF,
+[00:47:13.260 --> 00:47:16.260]   which would be a monotonic function,
+[00:47:16.260 --> 00:47:18.260]   because P of x is non-negative,
+[00:47:18.260 --> 00:47:20.260]   like the PDF is non-negative,
+[00:47:20.260 --> 00:47:24.260]   and if we can compute its inverse, we do it,
+[00:47:24.260 --> 00:47:27.260]   and we get a kasey,
+[00:47:27.260 --> 00:47:30.260]   and we would do this,
+[00:47:30.260 --> 00:47:32.260]   so the kasey is, you can think of it
+[00:47:32.260 --> 00:47:35.260]   as this percentile that we want to actually find out,
+[00:47:35.260 --> 00:47:40.260]   and we just find that out by taking the inverse of the CDF.
+[00:47:40.260 --> 00:47:46.260]   So, for example, about 68% percent is at there,
+[00:47:46.260 --> 00:47:49.260]   and about, like, 90% is at there,
+[00:47:49.260 --> 00:47:51.260]   and if we take more and more samples,
+[00:47:51.260 --> 00:47:54.260]   they will be distributed according to the PDF
+[00:47:54.260 --> 00:47:57.260]   that we see on the left.
+[00:47:57.260 --> 00:48:00.260]   So intuitively, you can see that it's very difficult
+[00:48:00.260 --> 00:48:03.260]   to sample anything at zero, around zero,
+[00:48:03.260 --> 00:48:08.260]   or around one, which, like, also matches intuitively.
+[00:48:08.260 --> 00:48:14.260]   Let's take a simple example, 1D,
+[00:48:14.260 --> 00:48:19.260]   with the PDF, just, P of y is 2y,
+[00:48:19.260 --> 00:48:22.260]   so that's the near ramp,
+[00:48:22.260 --> 00:48:27.260]   and the CDF is simple to compute,
+[00:48:27.260 --> 00:48:32.260]   and also there's the inverse of that,
+[00:48:32.260 --> 00:48:40.260]   and then we would be able to get a sample
+[00:48:40.260 --> 00:48:44.260]   according to this PDF, yi,
+[00:48:44.260 --> 00:48:47.260]   if we take the square root of xi,
+[00:48:47.260 --> 00:48:50.260]   well, should be xi, but, yeah, it's the same,
+[00:48:50.260 --> 00:48:55.260]   so if it's from a canonical uniform distribution.
+[00:48:55.260 --> 00:49:01.260]   So, after that, we may want to know
+[00:49:01.260 --> 00:49:04.260]   if this commutation is correct,
+[00:49:04.260 --> 00:49:07.260]   so if we actually computed some samples
+[00:49:07.260 --> 00:49:10.260]   that actually would follow the distribution we want,
+[00:49:10.260 --> 00:49:13.260]   so, because we already defined a transformation
+[00:49:13.260 --> 00:49:17.260]   between x and y,
+[00:49:17.260 --> 00:49:20.260]   so we can actually use this method,
+[00:49:20.260 --> 00:49:23.260]   so we call somewhat the Jacobian method
+[00:49:23.260 --> 00:49:27.260]   to, say, compute the density,
+[00:49:27.260 --> 00:49:31.260]   if we have, say, the density of x, Px of x,
+[00:49:31.260 --> 00:49:34.260]   then we have the transform t,
+[00:49:34.260 --> 00:49:38.260]   we can compute the density Py of y
+[00:49:38.260 --> 00:49:41.260]   by dividing by the determinant,
+[00:49:41.260 --> 00:49:45.260]   well, absolute value of the determinant of the Jacobian,
+[00:49:45.260 --> 00:49:55.260]   which, so the Jacobian is, yeah, but y,
+[00:49:55.260 --> 00:50:00.260]   so the Jacobian is, like, this is just intuitive,
+[00:50:00.260 --> 00:50:06.260]   I think, the Jacobian is a linear approximation,
+[00:50:06.260 --> 00:50:09.260]   a local approximation of the transformation,
+[00:50:09.260 --> 00:50:12.260]   and the matrix determinant would describe
+[00:50:12.260 --> 00:50:16.260]   the stretching or compressing of volume,
+[00:50:16.260 --> 00:50:20.260]   and then the Jacobian determinant would describe
+[00:50:20.260 --> 00:50:24.260]   the local stretching by applying the transformation,
+[00:50:24.260 --> 00:50:30.260]   so if we think about it, if y equals, say, 3x,
+[00:50:30.260 --> 00:50:34.260]   then the determinant would be just 3,
+[00:50:34.260 --> 00:50:39.260]   and intuitively you would think that if P of x is 1,
+[00:50:39.260 --> 00:50:41.260]   then P of y would be 1/3,
+[00:50:41.260 --> 00:50:44.260]   so because the area is sort of stretched
+[00:50:44.260 --> 00:50:48.260]   and then the probability density would need to go lower,
+[00:50:48.260 --> 00:50:53.260]   so come back to the linear ramp example,
+[00:50:53.260 --> 00:50:58.260]   we have this transformation, y equals the square root of x,
+[00:50:58.260 --> 00:51:02.260]   and we want to sort of confirm the PDF by using this,
+[00:51:02.260 --> 00:51:05.260]   and I honestly don't think it's a good practice
+[00:51:05.260 --> 00:51:12.260]   to omit the y and x there, like Py of y, Px of x, yeah,
+[00:51:12.260 --> 00:51:17.260]   so we get determinant of Jacobian this,
+[00:51:17.260 --> 00:51:21.260]   and if we take P of y as 2 times the square root of x,
+[00:51:21.260 --> 00:51:24.260]   then the square root of x is 2 times y,
+[00:51:24.260 --> 00:51:30.260]   so I want to actually go back a bit to this slide,
+[00:51:30.260 --> 00:51:33.260]   so this equation, as we see here,
+[00:51:33.260 --> 00:51:36.260]   it can be used to compute Py of y,
+[00:51:36.260 --> 00:51:39.260]   but it can also be used to compute Px of x,
+[00:51:39.260 --> 00:51:42.260]   so if we know the distribution for y,
+[00:51:42.260 --> 00:51:47.260]   and we know the transformation from x to y,
+[00:51:47.260 --> 00:51:53.260]   we can compute Px of x by just multiplying the determinant,
+[00:51:53.260 --> 00:51:57.260]   and this, to my opinion, is actually a bit more natural
+[00:51:57.260 --> 00:52:01.260]   because everything there has actually the variable x,
+[00:52:01.260 --> 00:52:05.260]   so finally, theoretically, you can also use this,
+[00:52:05.260 --> 00:52:07.260]   if you have Py of y, Px of x,
+[00:52:07.260 --> 00:52:10.260]   you can use this to determine t,
+[00:52:10.260 --> 00:52:13.260]   but that's like a differential equation,
+[00:52:13.260 --> 00:52:18.260]   so yeah, not recommended.
+[00:52:18.260 --> 00:52:23.260]   All right, so we have seen 1D distributions,
+[00:52:23.260 --> 00:52:28.260]   now we want to sample 2D distributions,
+[00:52:28.260 --> 00:52:33.260]   so there, we want to draw samples from P of x and y,
+[00:52:33.260 --> 00:52:38.260]   if it's separable, so we can treat x and y as sort of independent,
+[00:52:38.260 --> 00:52:42.260]   we can sample Px of x and Py of y,
+[00:52:42.260 --> 00:52:48.260]   and then, so if they are not, if they are somehow correlated,
+[00:52:48.260 --> 00:52:51.260]   we can compute first the marginal density function
+[00:52:51.260 --> 00:52:54.260]   by integrating out, for example, y,
+[00:52:54.260 --> 00:52:57.260]   and then we can have the conditional
+[00:52:57.260 --> 00:53:02.260]   by dividing the joint with the marginal,
+[00:53:02.260 --> 00:53:07.260]   and then we first sample the marginal, then the conditional,
+[00:53:07.260 --> 00:53:11.260]   so this would be useful when we want to, for example,
+[00:53:11.260 --> 00:53:14.260]   this sample of 2D array,
+[00:53:14.260 --> 00:53:16.260]   if you have a 2D array of positive numbers
+[00:53:16.260 --> 00:53:20.260]   and you want to create a distribution from it,
+[00:53:20.260 --> 00:53:27.260]   there, it's typical that the two dimensions are correlated with each other.
+[00:53:27.260 --> 00:53:32.260]   But now we come back to this famous example of sampling a disk,
+[00:53:32.260 --> 00:53:34.260]   and now we don't want to reject anything,
+[00:53:34.260 --> 00:53:39.260]   we want to make full use of all the cases that we have,
+[00:53:39.260 --> 00:53:42.260]   so the idea is to use the polar coordinates
+[00:53:42.260 --> 00:53:47.260]   because there we can define a disk without using an if/else,
+[00:53:47.260 --> 00:53:54.260]   and we want to somehow map 2x to r and theta,
+[00:53:54.260 --> 00:54:00.260]   so simply we can think that we will just uniformly sample r
+[00:54:00.260 --> 00:54:02.260]   and then sample theta,
+[00:54:02.260 --> 00:54:06.260]   but we see that this will fail
+[00:54:06.260 --> 00:54:11.260]   because it's not uniform with respect to area,
+[00:54:11.260 --> 00:54:15.260]   so here we see this dartboard-like thing,
+[00:54:15.260 --> 00:54:20.260]   each cell in this will correspond to the same area
+[00:54:20.260 --> 00:54:25.260]   in the same area in the unit square,
+[00:54:25.260 --> 00:54:29.260]   so the same number of cases will actually fall in each of these cells,
+[00:54:29.260 --> 00:54:33.260]   and the result would be like you have more samples at the center,
+[00:54:33.260 --> 00:54:36.260]   but much less at the borders,
+[00:54:36.260 --> 00:54:38.260]   and what we want is actually on the right,
+[00:54:38.260 --> 00:54:42.260]   where we have uniformly distributed over the entire disk.
+[00:54:42.260 --> 00:54:46.260]   So here, so now we don't know,
+[00:54:46.260 --> 00:54:52.260]   we don't really know the probability density that we will have for the polar coordinates,
+[00:54:52.260 --> 00:54:57.260]   but what we do know is we have the density in Cartesian coordinates,
+[00:54:57.260 --> 00:55:00.260]   so we want to somehow combine it to
+[00:55:00.260 --> 00:55:04.260]   and then do this area-preserving sampling.
+[00:55:04.260 --> 00:55:08.260]   So we first define the desired probability density
+[00:55:08.260 --> 00:55:10.260]   in a convenient coordinate system,
+[00:55:10.260 --> 00:55:12.260]   which is the Cartesian in this case,
+[00:55:12.260 --> 00:55:17.260]   and another coordinate system for parameterization of the samples,
+[00:55:17.260 --> 00:55:19.260]   the polar in this case,
+[00:55:19.260 --> 00:55:21.260]   and then we want to relate the two PDFs.
+[00:55:21.260 --> 00:55:25.260]   So for this we will use the determinant of the Jacobian
+[00:55:25.260 --> 00:55:29.260]   to basically translate the PDFs.
+[00:55:29.260 --> 00:55:31.260]   And then we do the sampling,
+[00:55:31.260 --> 00:55:35.260]   which involves the marginal conditional inversion method.
+[00:55:35.260 --> 00:55:41.260]   So let's see how we actually do it for this disk example.
+[00:55:41.260 --> 00:55:52.260]   So we first define the uniform density in Cartesian coordinate frame
+[00:55:52.260 --> 00:55:54.260]   that we see before, one over pi,
+[00:55:54.260 --> 00:55:58.260]   for inside the disk, zero otherwise.
+[00:55:58.260 --> 00:56:03.260]   And then we would find these polar coordinates that we like
+[00:56:03.260 --> 00:56:07.260]   to parameterize points on a disk.
+[00:56:07.260 --> 00:56:12.260]   So x is our cosine theta, y is our sine theta.
+[00:56:12.260 --> 00:56:14.260]   That's the transformation,
+[00:56:14.260 --> 00:56:20.260]   and we then can use the Jacobian to transform these sampling densities.
+[00:56:20.260 --> 00:56:27.260]   So this is the time when I was mentioning before
+[00:56:27.260 --> 00:56:29.260]   where we can actually use,
+[00:56:29.260 --> 00:56:32.260]   when we know the p-credition of x, y,
+[00:56:32.260 --> 00:56:36.260]   and we would know the Jacobian from r theta to x, y,
+[00:56:36.260 --> 00:56:43.260]   we can use that to compute the PDF in the polar system for r and theta.
+[00:56:43.260 --> 00:56:45.260]   So here is the Jacobian matrix,
+[00:56:45.260 --> 00:56:47.260]   take r in the front theta,
+[00:56:47.260 --> 00:56:49.260]   take the second column,
+[00:56:49.260 --> 00:56:52.260]   and get this and take the determinant.
+[00:56:52.260 --> 00:56:54.260]   It's a happy result.
+[00:56:54.260 --> 00:56:57.260]   So it's a happy result, just r.
+[00:56:57.260 --> 00:57:04.260]   And we can basically substitute all the results that we got,
+[00:57:04.260 --> 00:57:10.260]   and we get the p-polar r and theta is just r times p-credition of x and y,
+[00:57:10.260 --> 00:57:12.260]   so it's r over pi.
+[00:57:12.260 --> 00:57:17.260]   So of course, we remember that we used to have these if-else
+[00:57:17.260 --> 00:57:20.260]   in the Cartesian coordinate system.
+[00:57:20.260 --> 00:57:23.260]   So here there would actually be if-else,
+[00:57:23.260 --> 00:57:26.260]   if r is between 0 and 1,
+[00:57:26.260 --> 00:57:29.260]   or if r is less than 1, we get this,
+[00:57:29.260 --> 00:57:35.260]   otherwise it's 0, but it's so convenient that we don't need to write it out.
+[00:57:35.260 --> 00:57:38.260]   Right, so this is,
+[00:57:38.260 --> 00:57:43.260]   if we want to have a uniform distribution in terms of area in Cartesian coordinates,
+[00:57:43.260 --> 00:57:46.260]   we need to sample r theta, not all uniformly,
+[00:57:46.260 --> 00:57:50.260]   but from such a distribution.
+[00:57:50.260 --> 00:57:55.260]   So to do this, what we can do, honestly, if we see that here,
+[00:57:55.260 --> 00:58:00.260]   we only have r in it, so theta can be just sampled uniformly,
+[00:58:00.260 --> 00:58:02.260]   like it's actually separable,
+[00:58:02.260 --> 00:58:05.260]   but we are going to do these steps for marginal and conditional.
+[00:58:05.260 --> 00:58:08.260]   For example, we can compute the marginal for r,
+[00:58:08.260 --> 00:58:11.260]   so the pdf of r is 2r,
+[00:58:11.260 --> 00:58:14.260]   which is the linear ramp that we saw before.
+[00:58:14.260 --> 00:58:19.260]   And then the conditional pdf of theta given r is the uniform one,
+[00:58:19.260 --> 00:58:26.260]   1 over 2pi, so we just will be able to sample
+[00:58:26.260 --> 00:58:30.260]   using the inversion method for both by giving,
+[00:58:30.260 --> 00:58:32.260]   when we are given two x's,
+[00:58:32.260 --> 00:58:35.260]   so r would be equal to the square root of x1,
+[00:58:35.260 --> 00:58:38.260]   and theta is 2pi times x2,
+[00:58:38.260 --> 00:58:40.260]   and this will be,
+[00:58:40.260 --> 00:58:45.260]   this will give the correct area preserving sampling result.
+[00:58:45.260 --> 00:58:52.260]   So if we compare this to the naive method
+[00:58:52.260 --> 00:58:55.260]   of sampling r uniformly and sampling theta uniformly,
+[00:58:55.260 --> 00:58:58.260]   we see that this one on the left,
+[00:58:58.260 --> 00:59:01.260]   the naive method is not aqueous area,
+[00:59:01.260 --> 00:59:05.260]   it samples much more densely in the center,
+[00:59:05.260 --> 00:59:10.260]   but if we also draw out the cells that would map to the same number of c's,
+[00:59:10.260 --> 00:59:16.260]   we see that each of these, say, tiles are actually covering the same area,
+[00:59:16.260 --> 00:59:20.260]   and we actually get sampling results that we want.
+[00:59:20.260 --> 00:59:23.260]   So any questions for this part?
+[00:59:23.260 --> 00:59:35.260]   So we would go over the general recipe to do area preserving sampling,
+[00:59:35.260 --> 00:59:41.260]   or if there is the translation between coordinate systems,
+[00:59:41.260 --> 00:59:48.260]   so if we can define the desired probability density more easily in one coordinate system,
+[00:59:48.260 --> 00:59:54.260]   and parameterize the samples in another coordinate system,
+[00:59:54.260 --> 00:59:59.260]   we can relate the PDFs using basically the transformation
+[00:59:59.260 --> 01:00:04.260]   between the two coordinate systems and computing its Jacobian,
+[01:00:04.260 --> 01:00:15.260]   and then we can actually get the PDF in the coordinate system that we used in step two.
+[01:00:15.260 --> 01:00:20.260]   So in the disk example is the polar coordinates,
+[01:00:20.260 --> 01:00:27.260]   and then we can use this marginal conditional or the separable methods
+[01:00:27.260 --> 01:00:35.260]   to compute 1D PDFs, and then we do the sampling of this 1D PDFs.
+[01:00:35.260 --> 01:00:45.260]   More renderings?
+[01:00:45.260 --> 01:00:48.260]   Yeah, I think this is also, yeah, this is not ambient occlusion,
+[01:00:48.260 --> 01:00:55.260]   you have different colors of light sources.
+[01:00:55.260 --> 01:01:03.260]   So then we're going to actually sampling this sphere.
+[01:01:03.260 --> 01:01:08.260]   I think we discussed quite a bit about that in the first half of this lecture.
+[01:01:08.260 --> 01:01:13.260]   So to be able to sample a unit sphere,
+[01:01:13.260 --> 01:01:17.260]   so what we mean by sampling a sphere is that we sample a point on the sphere,
+[01:01:17.260 --> 01:01:26.260]   so it would be still 2D manifold in this 3D space,
+[01:01:26.260 --> 01:01:32.260]   so we still would only need two x's,
+[01:01:32.260 --> 01:01:39.260]   and the intuitive way to parameterize with the spherical coordinate system,
+[01:01:39.260 --> 01:01:44.260]   so the spherical coordinate system can have like r theta and phi,
+[01:01:44.260 --> 01:01:48.260]   but we don't need r because it's a unit sphere.
+[01:01:48.260 --> 01:01:54.260]   So we can uniformly sample theta because it's within 0 to pi,
+[01:01:54.260 --> 01:02:00.260]   we multiply that by pi, and for phi we multiply by 2 pi,
+[01:02:00.260 --> 01:02:06.260]   and of course that's wrong because it's not uniform with respect to area,
+[01:02:06.260 --> 01:02:15.260]   and here we have actually the correct solution after some working out,
+[01:02:15.260 --> 01:02:20.260]   which involves doing some r cosine,
+[01:02:20.260 --> 01:02:25.260]   and here is the algorithm for actually generating a sample
+[01:02:25.260 --> 01:02:29.260]   and converting it actually back to the Cartesian coordinates.
+[01:02:29.260 --> 01:02:35.260]   So as you can see here, there are one, two, three, four, five trigonometry functions
+[01:02:35.260 --> 01:02:40.260]   and actually r cosine, which is not good when you have to call this function
+[01:02:40.260 --> 01:02:44.260]   like millions of times, so this is one of the better methods
+[01:02:44.260 --> 01:02:49.260]   where you have only two cosine, two like a cosine and a sine,
+[01:02:49.260 --> 01:02:55.260]   and so this is achieved, or one of the ways to achieve this
+[01:02:55.260 --> 01:03:01.260]   is by using this hat box theorem which states the surface area of a sphere
+[01:03:01.260 --> 01:03:06.260]   between any two horizontal planes is equal to the corresponding area
+[01:03:06.260 --> 01:03:10.260]   on the circumscribing cylinder.
+[01:03:10.260 --> 01:03:17.260]   So if this sphere is a unit sphere centered at the origin with radius of 1,
+[01:03:17.260 --> 01:03:23.260]   the circumscribing cylinder would be also centered at the origin
+[01:03:23.260 --> 01:03:27.260]   with the height of 2 and the radius of 1,
+[01:03:27.260 --> 01:03:32.260]   and the theorem basically says that this blue part, this lighter blue part
+[01:03:32.260 --> 01:03:38.260]   of these two shapes are of the same surface area.
+[01:03:38.260 --> 01:03:46.260]   So since those two are typically on two different corner systems,
+[01:03:46.260 --> 01:03:51.260]   we probably want to know what is the determinant of the Jacobian,
+[01:03:51.260 --> 01:03:59.260]   but given this theorem, we would be able to say deduce
+[01:03:59.260 --> 01:04:05.260]   that the determinant of Jacobian is actually one
+[01:04:05.260 --> 01:04:12.260]   between I think the area, the surface area on the cylinder and on the sphere,
+[01:04:12.260 --> 01:04:17.260]   but I think on the sphere it would be maybe better explained with solid angles
+[01:04:17.260 --> 01:04:21.260]   but not exactly sure.
+[01:04:21.260 --> 01:04:32.260]   So this would mean that uniform areas on a cylinder project to uniform areas on a sphere.
+[01:04:32.260 --> 01:04:38.260]   And when we want to actually sample the sphere, we can sample the cylinder
+[01:04:38.260 --> 01:04:43.260]   and then project the value back onto the sphere.
+[01:04:43.260 --> 01:04:47.260]   So this is what this improved algorithm does.
+[01:04:47.260 --> 01:04:51.260]   So it first takes this point on the cylinder,
+[01:04:51.260 --> 01:04:57.260]   so we could say we take one sample along the z dimension
+[01:04:57.260 --> 01:05:01.260]   and then we take an angle 5,
+[01:05:01.260 --> 01:05:10.260]   and then we would want to map the point on the cylinder to a point on the sphere
+[01:05:10.260 --> 01:05:20.260]   that is not quite, but a little bit inside because we are now a sphere not on a cylinder anymore.
+[01:05:20.260 --> 01:05:27.260]   So questions about this?
+[01:05:27.260 --> 01:05:32.260]   So when we can sample a sphere, we can also directly sample a hemisphere
+[01:05:32.260 --> 01:05:34.260]   using the same method.
+[01:05:34.260 --> 01:05:41.260]   So basically now we have a smaller cylinder because we have only half the sphere,
+[01:05:41.260 --> 01:05:46.260]   but there is also the thing that we were talking about before,
+[01:05:46.260 --> 01:05:51.260]   like we were showing how to uniformly sample, how it is beneficial sometimes
+[01:05:51.260 --> 01:05:54.260]   to do cosine weighted hemispherical sampling,
+[01:05:54.260 --> 01:05:58.260]   say basically by taking into account a cosine theta,
+[01:05:58.260 --> 01:06:03.260]   which is the angle between a direction and the surface normal.
+[01:06:03.260 --> 01:06:09.260]   So what we could do is to compute the marginal and the conditional density,
+[01:06:09.260 --> 01:06:16.260]   so we define the cosine weighted, so we define the PDF and then we do the sampling,
+[01:06:16.260 --> 01:06:20.260]   but there is also like a shortcut to do this,
+[01:06:20.260 --> 01:06:24.260]   so we can first uniformly sample the disk
+[01:06:24.260 --> 01:06:30.260]   and we can then project these points on the surface of the hemisphere.
+[01:06:30.260 --> 01:06:38.260]   So basically we sample these black points and we move upwards to find where it is on the hemisphere.
+[01:06:38.260 --> 01:06:48.260]   So that actually gives us the desired distribution of cosine theta over pi.
+[01:06:48.260 --> 01:06:56.260]   Alright.
+[01:06:56.260 --> 01:07:05.260]   I think we have covered some sampling methods in this lecture,
+[01:07:05.260 --> 01:07:14.260]   mostly circle related things, so disks, hemispheres, cylinders, those things,
+[01:07:14.260 --> 01:07:22.260]   but in rendering actually we would need to sample a lot of other shapes like triangles
+[01:07:22.260 --> 01:07:26.260]   and also we would need to sample discrete PDFs,
+[01:07:26.260 --> 01:07:31.260]   which basically has some, is an array, 1D or 2D,
+[01:07:31.260 --> 01:07:36.260]   and we would need to be able to choose one value from it.
+[01:07:36.260 --> 01:07:42.260]   And this would be very helpful, for example when we are doing the environment maps.
+[01:07:42.260 --> 01:07:49.260]   So you can find more content on the sampling in chapter 13 of the textbook,
+[01:07:49.260 --> 01:08:02.260]   and here is just, yeah, here is an aged page of some sampling routines of various distributions,
+[01:08:02.260 --> 01:08:06.260]   yeah, from 30 years ago.
+[01:08:06.260 --> 01:08:11.260]   So yeah, we have some interesting methods,
+[01:08:11.260 --> 01:08:18.260]   I think you can also use that as reference for implementing some of the assignments.
+[01:08:18.260 --> 01:08:26.260]   And actually within rendering there are more dimensions that we want to integrate
+[01:08:26.260 --> 01:08:29.260]   other than the surface area.
+[01:08:29.260 --> 01:08:33.260]   So for example when we are actually shooting a camera array,
+[01:08:33.260 --> 01:08:37.260]   we want to actually pick a point on the image plane that we want to sample,
+[01:08:37.260 --> 01:08:40.260]   so this will be related with anti-aliasing,
+[01:08:40.260 --> 01:08:49.260]   and also the surface of area lights for more efficiently render like direct illumination, for example.
+[01:08:49.260 --> 01:08:53.260]   And then if we want to achieve depth of field,
+[01:08:53.260 --> 01:08:56.260]   we have actually, the camera is not a paint hole anymore,
+[01:08:56.260 --> 01:09:02.260]   we have like some shape for the camera aperture and we would like to sample that.
+[01:09:02.260 --> 01:09:05.260]   And then we have another source of blur,
+[01:09:05.260 --> 01:09:08.260]   which is because of motion of objects in the scene,
+[01:09:08.260 --> 01:09:15.260]   and this will basically require sampling a random point in time.
+[01:09:15.260 --> 01:09:21.260]   And furthermore, more complicated cases would involve if we have not just one light,
+[01:09:21.260 --> 01:09:23.260]   but multiple lights, like millions of lights,
+[01:09:23.260 --> 01:09:28.260]   how do we effectively sample that at each point of the scene?
+[01:09:28.260 --> 01:09:33.260]   So typical objective would be,
+[01:09:33.260 --> 01:09:39.260]   I want to sample lights that are stronger and closer to the current point,
+[01:09:39.260 --> 01:09:43.260]   and there are many methods to achieve that,
+[01:09:43.260 --> 01:09:51.260]   and then we need to, for global illumination, simulate multiple bounces of light,
+[01:09:51.260 --> 01:09:56.260]   like not just whether a light source is visible to me,
+[01:09:56.260 --> 01:10:03.260]   but how light would travel after multiple bounces before hitting the camera,
+[01:10:03.260 --> 01:10:10.260]   and last but not least, there is plenty of scenes with participating media effects,
+[01:10:10.260 --> 01:10:15.260]   or volumetric effects such as smoke or clouds or even fire,
+[01:10:15.260 --> 01:10:20.260]   and then there we would not only sample like a 2D surface,
+[01:10:20.260 --> 01:10:22.260]   but actually a 3D volume,
+[01:10:22.260 --> 01:10:26.260]   and more decisions must be made there,
+[01:10:26.260 --> 01:10:33.260]   which makes it more important to develop techniques to more efficiently do important sampling
+[01:10:33.260 --> 01:10:36.260]   to reduce the variance there.
+[01:10:36.260 --> 01:10:41.260]   And in addition to the distributions,
+[01:10:41.260 --> 01:10:45.260]   we can also consider where do we actually want to,
+[01:10:45.260 --> 01:10:49.260]   like how do we actually generate our random numbers,
+[01:10:49.260 --> 01:10:53.260]   so how to actually generate our crises.
+[01:10:53.260 --> 01:10:59.260]   So far we've worked under the assumption that we are doing random sampling,
+[01:10:59.260 --> 01:11:02.260]   so on the top left, which is uniform,
+[01:11:02.260 --> 01:11:06.260]   and it has the simplicity as a benefit,
+[01:11:06.260 --> 01:11:12.260]   but as you can see, the sample is generated from it,
+[01:11:12.260 --> 01:11:14.260]   it somehow cluttered together,
+[01:11:14.260 --> 01:11:21.260]   or on the other hand, it leaves big empty holes in other places,
+[01:11:21.260 --> 01:11:24.260]   which is undesirable because that can,
+[01:11:24.260 --> 01:11:31.260]   no matter if even if your PDF is good, you just don't cover what you need to cover.
+[01:11:31.260 --> 01:11:38.260]   So to ameliorate those problems, there are many ways to do that,
+[01:11:38.260 --> 01:11:41.260]   so some take the stratified approach,
+[01:11:41.260 --> 01:11:46.260]   so we subdivide the hypercube,
+[01:11:46.260 --> 01:11:51.260]   or the unit hypercube into smaller cubes,
+[01:11:51.260 --> 01:11:55.260]   and pick random samples in each of them,
+[01:11:55.260 --> 01:12:03.260]   and we can even go crazier to disallow some sort of alignment
+[01:12:03.260 --> 01:12:07.260]   between the samples, such as with the n-rooks algorithm,
+[01:12:07.260 --> 01:12:11.260]   we can also have more advanced methods,
+[01:12:11.260 --> 01:12:17.260]   so these in general are called this quasi Monte Carlo integration,
+[01:12:17.260 --> 01:12:23.260]   with this random but not really uniformly,
+[01:12:23.260 --> 01:12:27.260]   with this random but not actually so random,
+[01:12:27.260 --> 01:12:31.260]   they are assumed to improve the convergence rate,
+[01:12:31.260 --> 01:12:36.260]   especially when your integrand is continuous,
+[01:12:36.260 --> 01:12:40.260]   like it doesn't have these continuities everywhere.
+[01:12:40.260 --> 01:12:44.260]   So this will actually be covered in a later lecture for the course,
+[01:12:44.260 --> 01:12:52.260]   so this is just a simple overview of what is coming.
+[01:12:52.260 --> 01:12:57.260]   So eventually maybe we just use this,
+[01:12:57.260 --> 01:13:01.260]   go a bit deeper into the stratification,
+[01:13:01.260 --> 01:13:05.260]   so stratified sampling would subdivide integration domain
+[01:13:05.260 --> 01:13:08.260]   into disjoint regions, for example,
+[01:13:08.260 --> 01:13:11.260]   like even a distributed intervals,
+[01:13:11.260 --> 01:13:15.260]   and we would place one random sample in each region,
+[01:13:15.260 --> 01:13:20.260]   so basically we say here we have 10 subintervals,
+[01:13:20.260 --> 01:13:22.260]   and we sample in each of them,
+[01:13:22.260 --> 01:13:28.260]   so there the cluttering can only happen at the edge of these subintervals,
+[01:13:28.260 --> 01:13:32.260]   not arbitrarily everywhere,
+[01:13:32.260 --> 01:13:39.260]   when we do uniform sampling in the entire domain.
+[01:13:39.260 --> 01:13:45.260]   So this is probably not going to increase variance,
+[01:13:45.260 --> 01:13:49.260]   and often reduces variance considerably,
+[01:13:49.260 --> 01:13:52.260]   so I think this actually goes one step closer
+[01:13:52.260 --> 01:13:57.260]   towards the integration methods that we discussed,
+[01:13:57.260 --> 01:14:00.260]   in a question before,
+[01:14:00.260 --> 01:14:04.260]   and also it would actually suffer the same problem,
+[01:14:04.260 --> 01:14:07.260]   because if you have two d-intervals,
+[01:14:07.260 --> 01:14:08.260]   three d-intervals,
+[01:14:08.260 --> 01:14:11.260]   if you want to achieve the same stratification,
+[01:14:11.260 --> 01:14:20.260]   the number of, say, stratas, the number of these subregions
+[01:14:20.260 --> 01:14:24.260]   have to grow exponentially, which is undesirable,
+[01:14:24.260 --> 01:14:29.260]   so that's why people started to develop other quasi-monocular methods
+[01:14:29.260 --> 01:14:35.260]   with better random number, say, sequences,
+[01:14:35.260 --> 01:14:39.260]   which we will learn more in the next,
+[01:14:39.260 --> 01:14:43.260]   well, in later parts of this class.
+[01:14:43.260 --> 01:14:50.260]   So are there other questions about the class in general?
+[01:14:50.260 --> 01:14:55.260]   Okay, pretty good.
+[01:14:55.260 --> 01:14:59.260]   Yeah, so with that,
+[01:14:59.260 --> 01:15:03.260]   I don't think I have any more to cover today.
+[01:15:03.260 --> 01:15:09.260]   Do you want to actually cover the part that you didn't, on Tuesday?
+[01:15:09.260 --> 01:15:13.260]   Yeah, I mean, I think Rajesh left some part out
+[01:15:13.260 --> 01:15:19.260]   due to time on Tuesday, and yeah.
+[01:15:19.260 --> 01:15:20.260]   All right.
+[01:15:20.260 --> 01:15:22.260]   Hello, everyone.
+[01:15:22.260 --> 01:15:25.260]   So last time I talked about BRDFs,
+[01:15:25.260 --> 01:15:31.260]   which is what we will use to specify the properties of the material.
+[01:15:31.260 --> 01:15:34.260]   So as we talked about last time,
+[01:15:34.260 --> 01:15:40.260]   the BRDF is essentially a function of four variables,
+[01:15:40.260 --> 01:15:45.260]   or incoming light direction, outgoing light direction,
+[01:15:45.260 --> 01:15:48.260]   and you can parameterize that by theta and phi,
+[01:15:48.260 --> 01:15:52.260]   as we saw in a spherical coordinate system.
+[01:15:52.260 --> 01:15:55.260]   So essentially it's a four-dimensional function
+[01:15:55.260 --> 01:15:58.260]   that depends on both the incoming light direction
+[01:15:58.260 --> 01:16:00.260]   and the outgoing light direction.
+[01:16:00.260 --> 01:16:03.260]   So all these materials that you see in the real world,
+[01:16:03.260 --> 01:16:08.260]   they have a BRDF that we want to ideally capture
+[01:16:08.260 --> 01:16:14.260]   and then make sure that our algorithm, they represent them faithfully.
+[01:16:14.260 --> 01:16:17.260]   So there are devices that people have built
+[01:16:17.260 --> 01:16:22.260]   that allow you to capture a material from real world.
+[01:16:22.260 --> 01:16:27.260]   So it consists of basically a platform where you place a sample of the material,
+[01:16:27.260 --> 01:16:32.260]   and it has a camera and a light,
+[01:16:32.260 --> 01:16:37.260]   and then a gantry and setup that allows you to basically
+[01:16:37.260 --> 01:16:39.260]   rotate the light and the camera,
+[01:16:39.260 --> 01:16:45.260]   and what you do is you change a couple of degrees of light direction,
+[01:16:45.260 --> 01:16:48.260]   take a picture, change a couple of more degrees, take a light direction.
+[01:16:48.260 --> 01:16:51.260]   So then you cover the entire hemisphere,
+[01:16:51.260 --> 01:16:55.260]   essentially with combinations of light and camera movements,
+[01:16:55.260 --> 01:16:59.260]   and take a picture essentially of each of those directions.
+[01:16:59.260 --> 01:17:06.260]   So as you can imagine, even if you sample like one degree in each direction,
+[01:17:06.260 --> 01:17:12.260]   and you cover from zero to 90 degrees this way
+[01:17:12.260 --> 01:17:15.260]   and zero to 2 pi this way,
+[01:17:15.260 --> 01:17:20.260]   you would have something like 90 times 180 times 90 times 180 samples.
+[01:17:20.260 --> 01:17:26.260]   And those can generate like a lot of data, so per material.
+[01:17:26.260 --> 01:17:30.260]   And people have done that in real life, not only that,
+[01:17:30.260 --> 01:17:35.260]   but because we also discussed earlier that all the light response
+[01:17:35.260 --> 01:17:38.260]   is dependent on the wavelength of the light.
+[01:17:38.260 --> 01:17:42.260]   So we can add yet another dimension to our BIDF
+[01:17:42.260 --> 01:17:45.260]   that takes into account the wavelength of the light.
+[01:17:45.260 --> 01:17:49.260]   So that way now you're generating even more samples.
+[01:17:49.260 --> 01:17:53.260]   So these are huge data files that you can use that
+[01:17:53.260 --> 01:17:59.260]   and actually get a realistic response to an actual physical material.
+[01:17:59.260 --> 01:18:03.260]   And then we build our models like the microfaceted model.
+[01:18:03.260 --> 01:18:08.260]   We want to make sure that they in some way represent the materials
+[01:18:08.260 --> 01:18:10.260]   that are in real life.
+[01:18:10.260 --> 01:18:14.260]   So as you can try some of these data files,
+[01:18:14.260 --> 01:18:18.260]   so there are some other different kinds of set up,
+[01:18:18.260 --> 01:18:21.260]   different labs have, this can get expensive.
+[01:18:21.260 --> 01:18:24.260]   And here is one of the earliest attempts
+[01:18:24.260 --> 01:18:26.260]   of putting out some of the materials.
+[01:18:26.260 --> 01:18:30.260]   So all these spheres are rendered using the data
+[01:18:30.260 --> 01:18:34.260]   that was taken from actual measurements of different surfaces.
+[01:18:34.260 --> 01:18:39.260]   So some of them are fabrics, some of them are painted materials,
+[01:18:39.260 --> 01:18:42.260]   and some of them are conductors.
+[01:18:42.260 --> 01:18:47.260]   So all these hundred samples are available at the website.
+[01:18:47.260 --> 01:18:51.260]   Once you have this data, you can read in that data,
+[01:18:51.260 --> 01:18:55.260]   and instead of using this formula for BIDF,
+[01:18:55.260 --> 01:18:58.260]   you can just use that data directly that was measured.
+[01:18:58.260 --> 01:19:00.260]   You can render objects using that.
+[01:19:00.260 --> 01:19:04.260]   So this is an example of measuring a nickel-like material
+[01:19:04.260 --> 01:19:07.260]   and then using that data to directly render a teapot.
+[01:19:07.260 --> 01:19:11.260]   It's the same thing with a different kind of material, a fabric.
+[01:19:11.260 --> 01:19:14.260]   So this particular data set for 100 materials
+[01:19:14.260 --> 01:19:17.260]   is available from the Merle data site.
+[01:19:17.260 --> 01:19:21.260]   This was done a while ago, but it's still pretty popular.
+[01:19:21.260 --> 01:19:24.260]   So this was a set of simple materials,
+[01:19:24.260 --> 01:19:28.260]   and then people went in and did some more complex materials
+[01:19:28.260 --> 01:19:31.260]   that are anisotropic in nature,
+[01:19:31.260 --> 01:19:34.260]   that have color-changing properties,
+[01:19:34.260 --> 01:19:36.260]   and these are also wavelength-dependent.
+[01:19:36.260 --> 01:19:38.260]   So these are huge data files.
+[01:19:38.260 --> 01:19:40.260]   They are actually spectral in nature,
+[01:19:40.260 --> 01:19:42.260]   which means wavelength-dependent,
+[01:19:42.260 --> 01:19:44.260]   and this data set is also available.
+[01:19:44.260 --> 01:19:47.260]   So there are about 80 materials here.
+[01:19:47.260 --> 01:19:53.260]   And I think you can, in one of your projects,
+[01:19:53.260 --> 01:19:57.260]   try to kind of measure, load these data files
+[01:19:57.260 --> 01:19:59.260]   and then render with them directly.
+[01:19:59.260 --> 01:20:01.260]   So something like this.
+[01:20:01.260 --> 01:20:04.260]   So this is the RGL material database.
+[01:20:04.260 --> 01:20:08.260]   There are tools available to look at different BRDFs,
+[01:20:08.260 --> 01:20:11.260]   because BRDFs can be a complex function.
+[01:20:11.260 --> 01:20:13.260]   It's not easily visualizable
+[01:20:13.260 --> 01:20:15.260]   because it's a four-dimensional function.
+[01:20:15.260 --> 01:20:19.260]   So usually what people do is they plot the BRDF in different ways.
+[01:20:19.260 --> 01:20:21.260]   So you can fix one of the dimensions.
+[01:20:21.260 --> 01:20:24.260]   So you fix the viewing angle,
+[01:20:24.260 --> 01:20:28.260]   and then you have a three-dimensional function that comes up.
+[01:20:28.260 --> 01:20:30.260]   So this blob that you see,
+[01:20:30.260 --> 01:20:34.260]   that is kind of a gold and blue-colored blob,
+[01:20:34.260 --> 01:20:37.260]   so that is the visualization of the BRDF.
+[01:20:37.260 --> 01:20:39.260]   So you're fixing one of the angles,
+[01:20:39.260 --> 01:20:41.260]   which is the light direction,
+[01:20:41.260 --> 01:20:45.260]   and then you can then move around in a 3D viewer
+[01:20:45.260 --> 01:20:48.260]   to look at the light response for different directions.
+[01:20:48.260 --> 01:20:50.260]   So that's one way to do it.
+[01:20:50.260 --> 01:20:54.260]   So you can do one of the tools that you can download and try it out.
+[01:20:54.260 --> 01:20:57.260]   And the other different plots.
+[01:20:57.260 --> 01:20:59.260]   So you can go smaller dimensions,
+[01:20:59.260 --> 01:21:04.260]   you can fix the view two of the four dimensions,
+[01:21:04.260 --> 01:21:10.260]   and then look at it as a 2D graph or a polar chart,
+[01:21:10.260 --> 01:21:13.260]   and all of these are different ways of visualizing the BRDF.
+[01:21:13.260 --> 01:21:16.260]   So on the bottom right,
+[01:21:16.260 --> 01:21:19.260]   you see a 2D version of the same plot.
+[01:21:19.260 --> 01:21:21.260]   Then the more dimensions you reduce,
+[01:21:21.260 --> 01:21:23.260]   the less idea you get.
+[01:21:23.260 --> 01:21:25.260]   You get an idea of the general shape,
+[01:21:25.260 --> 01:21:28.260]   and because most materials kind of are symmetric in nature,
+[01:21:28.260 --> 01:21:31.260]   they would have a similar response on the other side,
+[01:21:31.260 --> 01:21:33.260]   so you maybe don't need to see the entire thing.
+[01:21:33.260 --> 01:21:35.260]   But that's the idea.
+[01:21:35.260 --> 01:21:37.260]   So all these BRDFs, you can plot them
+[01:21:37.260 --> 01:21:40.260]   and kind of see what they actually look like.
+[01:21:40.260 --> 01:21:45.260]   So further reading from the PBR book,
+[01:21:45.260 --> 01:21:52.260]   we'll have more on how to sample these BRDFs,
+[01:21:52.260 --> 01:21:55.260]   especially around the more specular region.
+[01:21:55.260 --> 01:22:02.260]   We already saw the diffuse BRDF in your first assignment
+[01:22:02.260 --> 01:22:04.260]   that you're doing,
+[01:22:04.260 --> 01:22:10.260]   probably the material that we use for direct lighting,
+[01:22:10.260 --> 01:22:13.260]   that whole thing is diffuse objects.
+[01:22:13.260 --> 01:22:15.260]   So we are already doing that.
+[01:22:15.260 --> 01:22:19.260]   You have a sample method that is cosign weighted hemisphere sampling
+[01:22:19.260 --> 01:22:21.260]   that is given to you that you're using.
+[01:22:21.260 --> 01:22:23.260]   But there will be more to come,
+[01:22:23.260 --> 01:22:26.260]   and things get more exciting from here on.
+[01:22:26.260 --> 01:22:31.260]   Any questions on this or clarifications on BRDFs?
+[01:22:31.260 --> 01:22:38.260]   Awesome.
+[01:22:38.260 --> 01:22:40.260]   So I think we are almost in time.
+[01:22:40.260 --> 01:22:44.260]   So we'll see you at the exercise session, any of you.
+[01:22:44.260 --> 01:22:47.260]   Thank you.
+[01:22:47.260 --> 01:22:49.960]   (audience applauding)
+

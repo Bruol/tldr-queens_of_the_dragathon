@@ -1,414 +1,1008 @@
- So einen schönen guten Tag. Ich hoffe der Lautsprecher funktioniert heute und wenn es zu laut ist,
- Sie wissen ja, den Kurskanal können Sie benutzen, um da was zu sagen.
- Und wir hatten uns in der letzten Vorlesung eben mit Verzweigungen beschäftigt, mit eben diesen IF-Anweisungen,
- IF-ELS und so weiter, hatten gesehen, dass wir eben diese Vergleichsoperatoren benutzen können,
- um Ausdrücke zu formulieren, die dann eben entweder True oder False ergeben
- und hatten dann uns mit Pre- und Post-Conditions für IF-Anweisungen beschäftigt.
- Und dann blieb übrig als letztes Thema in dieser Gruppe das Thema der schwächsten Vorbedingungen.
- Und Sie wissen ja, Sie können dieses Kurskanal benutzen, um Fragen zu stellen,
- aber eine Frage eben, was ist der Sinn von Y größer 5, wenn Y bekommt den Wert 20 geschrieben wird?
- Ich vermute, bezieht sich auf dieses Statement hier.
- Na ja, sehen Sie, erstmal, hier steht zwar Y wird zu 20 gesetzt,
- aber das ist nur der Fall, wenn Y nicht größer gleich 7 ist,
- wenn X eben einen anderen Wert hat, wenn nämlich das ja True ist, dann geht es hier durch
- und in dem Fall findet diese Anweisung statt, wird diese Anweisung ausgeführt und nicht die untere.
- Ja, warum könnten wir sowas denn vielleicht haben wollen?
- Ja, nun vielleicht deswegen, weil an einem späteren Teil des Programms
- dividieren wir die Zahl, die Variable Z durch diesen Ausdruck, Y dividiert durch 6.
- Und wir wollen vielleicht sicher sein, dass Y mindestens den Wert 6 hat,
- weil wenn wir eben den Wert 5 hätten, dann würde natürlich Y dividiert durch 6,
- da ist eine integer Division, ist den Wert 0 ergeben und das würden wir natürlich nicht wollen.
- Also das kann so ein Grund sein, warum wir so eine Aussage da haben.
- Aber natürlich, das ist halt eben die Situation, die wir da haben.
- In diesem Beispiel, aber in allgemeinen Fragen, wo ist natürlich immer,
- was für eine Vorbedingungen wollen wir eigentlich haben, nach was für einer Vorbedingungen sollten wir suchen?
- Wenn wir hier so eine Postcondition haben, Y größer gleich 2, dann würde es natürlich für uns,
- nach dem, was wir jetzt gelernt haben, völlig ausreichen, wenn wir jetzt wüssten, dass X größer als 10 ist.
- Wenn X größer als 10 ist, dann ist Y wird dann zu einem Wert gesetzt, der mindestens 12 ist.
- Weil eben wenn es größer als 10 ist, muss es ja mindestens 11 sein und eins dazu ist mindestens 12.
- Also wäre das erfüllt.
- Also könnten wir das in der Tat als Vorbedingungen nehmen und könnten noch genauso gut sagen,
- ja es genügt ja, wenn wir zeigen können, dass Y größer 5 ist.
- Auch in dem Fall wäre die Bedingung, die wir als Postcondition haben, hier nachher erfüllt.
- Das ist auch noch, aber wenn wir jetzt hingehen und sagen, X größer gleich 1, das wäre doch eigentlich besser.
- Das wäre eigentlich die Bedingung, die am wenigsten anspruchsvoll ist.
- Und um das eben etwas formaler zu machen, führe ich jetzt die Idee ein, dass wir sagen können,
- dass eine Aussage stärker oder schwächer ist.
- Also wenn Sie eine Aussage P1 haben und eine zweite Aussage P2 und diese Aussage P1, die Aussage P2 impliziert,
- also wir können schließen, dass wenn P1 gilt, dann gilt auch immer P2, dann ist P1 stärker als P2.
- Und umgekehrt sagen wir, dass P2 ist schwächer als P1.
- Also wenn wir jetzt die Aussage haben, nehmen wir an, dass wir haben die Aussage X ist größer 3
- und wir haben die Aussage X ist größer 5, dann impliziert die Aussage, dass X größer 3 ist, dass auch,
- umgekehrt, ich habe jetzt falsch gezeichnet, wenn ich hier X größer als 5 habe und X ist größer 3,
- wenn ich weiß, dass X größer 5 ist, dann impliziert das auch die Aussage, dass X größer 3 ist.
- Also das wäre meine Aussage P1 und das wäre meine Aussage P2.
- Wenn immer P1 gilt, dann gilt auch P2.
- Also es ist schwieriger P1 zu erfüllen oder zumindest genauso schwierig, wie es ist P2 zu erfüllen.
- Und wenn wir sagen stärker als, dann sagen wir stärker als oder gleich stark.
- Wir machen da keinen Unterschied.
- Also stärker ist stärker als oder genauso stark wie.
- Die Aussage X ist größer als 3 ist genauso stark wie die Aussage X ist größer als 3.
- Das würden wir auch noch sagen, weil wenn immer X ist größer als 3 gilt, gilt wirklich auch,
- X ist immer größer als 3.
- Also das ist einfach nur jetzt, jetzt warum ist das für uns interessant?
- Jetzt wir haben uns mit Pre- und Postconditions beschäftigt.
- Wir haben hier eine Pre-Condition P und eine Post-Condition Q.
- Und jetzt haben wir eine Pre-Condition P1, sagen wir mal, die ist stärker als die Pre-Condition P.
- Wenn das P1 ist stärker, das heißt aus P1 impliziert P, dann gilt doch auch,
- dass aus das P1 als Pre-Condition für das Statement S die Post-Condition Q dann nachgültig sein lässt.
- Warum? Weil aus P1 folgt P und wir wissen, dass wenn das ein gültiges Hoartrippel ist,
- das ist nämlich die Annahme, das hier gültiges Hoartrippel, dann ist das auch in der Tat der Fall,
- wenn ich P1 als Pre-Condition nehme.
- Und umgekehrt, wenn ich jetzt eine Post-Condition habe, eine Aussage Q1 und diese Aussage ist schwächer als Q
- oder umgekehrt, Q ist stärker als diese Aussage.
- Naja, wenn eben P als Pre-Condition mir erlaubt zu sagen, dass nachdem ich S ausgeführt habe,
- gilt die Post-Condition Q, dann gilt auch danach, dass die Aussage Q1 gilt dann auch.
- Warum? Weil aus Q folgt Q1 und Q war stärker als Q1 und daher ist das auch ein gültiges Hoartrippel.
- Und natürlich kann ich genauso argumentieren, dass eben P1 mit dem Statement S und der Post-Condition Q1
- auch noch wieder ein gültiges Hoartrippel ist, weil aus P1 folgt P, P ist Pre-Condition für S,
- danach folgt Q und aus Q folgt Q1.
- Also, dann muss man sich das angucken. Stärkere Pre-Conditions sind kein Problem
- und schwächere Post-Conditions sind kein Problem.
- Aber jetzt warum überlegen wir uns das? Wir wollen doch, wenn wir jetzt so ein Statement S haben
- mit einer Post-Condition Q und wir suchen die beste Pre-Condition P,
- dann wollen wir doch an sich eine Pre-Condition haben, die so ist, dass es die schwächste Pre-Condition ist,
- die gerade noch ausreicht, um mir zu zeigen, dass nach der Ausführung von S gilt die Post-Condition Q.
- Also, wenn wir zeigen könnten, dass wir eben ein PS finden, so, dass das PS die schwächste Pre-Condition ist,
- dann haben wir die Situation, dass wir gerade so viele Annahmen machen für die Ausführung dieses Programmes,
- wie nötig sind, dass wir das eben halt machen können.
- Das ist also der Gedanke, warum wir das machen, weil wenn wir nämlich das so gewählt haben,
- dann können wir uns irgendeine Pre-Condition wählen, die das auch gültig machen lässt
- und dann ist diese Pre-Condition stärker als unsere Schwächste oder zumindest genauso stark,
- wenn wir daran denken wollen, dass wir die Gleichheit mitberücksichtigen.
- Also, wenn wir so eine Situation haben, dass wir die Pre-Condition suchen,
- dann wollen wir eine Pre-Condition, die so schwach ist wie irgend möglich.
- Und das Gute ist nämlich jetzt, dass wir für jedes von den Statements, die ich Ihnen bisher erklärt habe,
- nämlich für Zuweisungen und Conditionals, gibt es für jedes Programmsegment und jede Post-Condition,
- gibt es eine eindeutige schwächste Pre-Condition.
- Also eine eindeutige schwächste Pre-Condition PS, wenn Sie so wollen,
- oder die kürzen wir ab eben als, das ist die weakest Pre-Condition für S unter der Annahme,
- dass wir die Post-Condition Q haben wollen.
- Aber das gilt eben ohne Schleifen.
- Deswegen habe ich die Schleifen bisher noch nicht diskutiert, kommen nachher, gilt das nicht.
- Aber ohne Schleifen gibt es die eindeutig und es gibt einen Weg, wie wir diese schwächste Vorbedingungen erfüllen können.
- Also, fangen wir mit einem einfachen Statement an, das ist wieder das einfachste, was wir denken können.
- "Ist die schwächste Pre-Condition nicht true?", fragt mich jemand.
- Oh nein, ganz und gar nicht.
- "True" heißt ja, dass egal, was der Fall ist, das ist immer gültig.
- Wenn ich aber true als Pre-Condition und jetzt ein S und danach irgendeine Post-Condition Q, dann gilt das immer.
- Und je nachdem, also zum Beispiel unser X wird gesetzt zu X plus eins und meine Post-Condition ist,
- dass X ist größer als zehn, dann gilt das ganz sicher nicht immer.
- Dann gilt das nur dann, wenn X eben eine Vorbedingung erfüllt.
- Also eine Vorbedingung könnte zum Beispiel sein, dass wir sagen, X ist größer als zehn.
- Wenn ich das als Vorbedingungen habe, dann ist X plus eins sicher größer als zehn.
- Das ist aber nicht die schwächste Vorbedingung.
- Die schwächste Vorbedingung wäre doch wahrscheinlich, dass X größer als zehn ist.
- Wenn X größer als zehn ist, dann habe ich die Aussage, dass danach eben, nachdem ich das um eins erhöht habe,
- X sicher strikt größer als zehn ist.
- Also die schwächste Vorbedingung wäre hier und nicht dieses hier.
- Und true wäre ganz sicher falsch, weil das gilt ja nicht in allen Situationen.
- Wenn X den Wert neun hätte zum Beispiel, dann würde eben danach diese Verbedingungen nicht gelten.
- Also true heißt eben keine Annahmen und das ist am anderen Ende.
- Wohin ergibt sich denn, dass P aus Folk Q stärker ist?
- Wir definieren halt so, wir sagen, wenn ich also erst mal, wenn ich irgendeine Bedingung P1 habe und die impliziert P2,
- dann sagen wir, dass P1 ist stärker.
- Das haben wir halt so fest, das definieren wir, um das einfacher ausdrücken zu können.
- Das heißt jetzt nicht, dass wenn ich hier P, S und Q habe, dass das Q impliziert.
- Wenn ich hier ein P habe und das gilt im Allgemeinen nicht, weil das gilt ja nur dann, nachdem dieses Statement S ausgeführt wurde.
- Im Allgemeinen gilt nicht, dass aus dem P Q folgt, sondern nachdem das Statement S ausgeführt wurde, gilt das Q.
- Also zurück zu diesem einfachen Beispiel, dass wir eben halt eine Zuweisung uns angucken wollen.
- Wir wollen jetzt eben für eine Zuweisung finden, was ist die schwächste Vorbedingung,
- die für eine gegebene Postcondition erfüllt sein muss, damit nach dieser Zuweisung diese Postcondition gilt.
- Und das machen wir so, indem wir jedes X durch E ersetzen.
- Das ist die rechte Seite, das ist irgendein Ausdruck.
- Und in dem Q soll natürlich diese Variable X irgendwo auftreten.
- Und da ersetzen wir die durch die rechte Seite E und dann haben wir eine neue Aussage.
- Und das ist unsere schwächste Vorbedingung.
- Also wenn mein Statement zum Beispiel hier X wird gesetzt zu Y² und meine Postcondition Q ist X soll größer als X4 sein, dann ersetze ich das.
- Dann nehme ich also das E, das ist Y², ersetze das und dann bekomme ich eben hier als neue Aussage Y² größer 4.
- Und das ist meine schwächste Vorbedingung, die ich haben muss oder die erfüllt sein muss, um für dieses Statement und diese Postcondition sicherzustellen,
- dass danach die Postcondition erfüllt ist.
- Und Y mal Quadrat größer 4 kann ich umformulieren.
- Der Betrag von Y muss größer 2 sein.
- So kann ich also für ein gegebenes Statement und eine gewünschte Postcondition herausfinden, was erfüllt sein muss, bevor ich das Statement ausführe, damit eben nachher die Postcondition gilt.
- So, jetzt ein Statement ist einfach.
- Was machen wir denn, wenn wir eine Folge von Statements haben?
- Das ist ja die nächste Frage, die uns hier berührt.
- Also wir haben hier zwei Statements und wir haben wieder eine Postcondition Q.
- Und jetzt suchen wir die schwächste Vorbedingung für diese beiden Statements, damit nachher Q gelten soll.
- Und die schwächste Vorbedingung dafür ist die, dass ich erstmal die schwächste Vorbedingung finde, mit der ich S2 erfüllen kann.
- Und diese Vorbedingung, die ich da habe, das nehme ich als Aussage Q für mein Statement S1 und finde dann dafür die schwächste Vorbedingung.
- Und das ist dann die schwächste Vorbedingung für diese Folge von Statements.
- Also rückwärts gehen Sie hin, Sie sehen, was will ich am Ende dieser Statementfolge haben?
- Am Ende will ich, dass eben die Aussage Q gilt.
- Was muss gelten, bevor es Statement S2 ausgeführt wird?
- Weil die werden ja in dieser Reihenfolge ausgeführt.
- Also erst S1 und dann S2.
- Was muss gelten, bevor S2 ausgeführt wird?
- Ah, ok, jetzt habe ich diese Aussage.
- Was muss dann erfüllt sein, bevor Statement S1 ausgeführt wird, damit ich nachher eben diese Aussage bekomme?
- Und das ist die schwächste Vorbedingung.
- Also wenn ich hier als einfaches Beispiel das erste Statement habe, das Y wird gesetzt auf X + 3
- und das nächste Statement geht hin und setzt Z zu Y + 1.
- Und meine Aussage am Ende soll wieder sein, dass Z größer als 4 ist.
- So, dann setze ich die rechte Seite hier, das ist mein erstes E da ein.
- Und dann bekomme ich eben Y + 1 wird hier eingesetzt, muss größer sein als 4, kann ich umwandeln usw.
- Und kann, also gehe ich also hin, gucke, was ist die Vorbedingung dafür?
- Ich nehme diese Vorbedingung hin und sehe mir, aha, setze das da ein.
- Y + 1 ist größer als 4, das heißt Y muss größer als 3 sein.
- Das ist meine schwächste Vorbedingung für das Statement Z wird gesetzt zu Y + 1.
- Und meine Bedingung danach ist Z größer als 4.
- Und jetzt gehe ich hin, nachdem ich das als Bedingung gefunden habe, gehe ich hin und setze ein,
- was muss denn jetzt hier gelten, damit die Ausführung des Statements Y wird gesetzt auf X + 3,
- diese Aussage gültig macht.
- Das ist ja meine Aussage, die vor S2 gelten muss.
- Dann setze ich das ein, aha, X + 3 wird hier eingesetzt, größer 3.
- Und das kann ich umformen in X größer als 0.
- Das heißt, die die die schwächste Vorbedingung für diese ganze Folge ist eben X größer als 0.
- Das ist die schwächste Vorbedingung, die erfüllt sein muss, damit das eben funktioniert.
- Also wenn ich ein anderes Beispiel mir nehme, ja, weiß nicht, ob das schon sagen Sie mir, wenn Sie als Folge haben,
- Y, das ist mein S1, wird gesetzt zu X + 1 und Z ist Y - 3, das ist mein Z2.
- Und meine Bedingung am Ende sollte sein Z = 10.
- Was ist dann die schwächste Vorbedingung?
- Da fange ich also an, okay, gucke ich mir an, also ich hier, das möchte ich bestimmen.
- Da gehe ich jetzt hin und setze jetzt erst mal diese rechte Seite hier in diese Bedingung hier ein.
- Das ergibt dann, also ich versuche jetzt die Vorbedingung zu finden, indem ich hier,
- also die die schwächste Vorbedingung für S2 und dieser Aussage Z = 10 zu finden.
- Also das will ich hier haben, das mache ich jetzt genauso, wie ich es gesagt habe.
- Ich setze das in die hier ein, also ich setze das E, Y - 3 hier ein, also habe ich dann Y - 3, muss gleich 10 sein.
- Das ist meine Zwischenbedingung, wenn Sie so wollen.
- Das kann ich jetzt umformen und zum Beispiel eben sagen, Y muss hier gleich 7 sein.
- Und dann setze ich das wieder ein, also X + 1 - 3 muss gleich 10 sein, kann ich umsetzen, 12 habe ich X = 12.
- Oder wenn das für Sie zu schnell ist, nachdem wir hier diesen Punkt erreicht haben,
- also wir wollen hier, da habe ich einen Fehler gemacht eben, tut mir leid, das war ein Fehler, Entschuldigung.
- Sehen Sie das nicht 10, das muss ja 13 sein, so sehen Sie, da muss das 13 sein, so stimmt es dann wieder.
- Danke, wenn ich also Y - 3 = 10, dann ist das erhöht, kann ich auf beiden Seiten das 3er zuaddieren,
- dann habe ich also Y = 13 und dann habe ich hier, setze ich diese rechte Seite wieder da ein,
- dann ist X + 1 = 13 und daraus kriegen wir raus X = 12.
- Also, wer findet das langweilig, seien Sie mir ehrlich. Rechnen Sie mit, wenn es langweilig ist,
- dann finden Sie bitte diese Rechenfehler von mir schneller.
- Okay, so, jetzt haben wir also einzelne Zuweisungen, jetzt haben wir Folgen von Zuweisungen.
- Wenn ich zwei Statements kann, dann kann ich auch drei machen und so weiter.
- Jetzt, was bleibt noch übrig, um das interessant zu machen? Okay, jetzt kommt die If Statement.
- So, jetzt zur Erinnerung, also wir hatten gesagt, wir haben hier so ein If Statement,
- also If oder If-L Statement, das macht keinen Unterschied,
- und wir sagten, so ein Triple ist gültig, wenn es solche Aussagen Q1 und Q2 gibt,
- sodass eben erstens hier der If-Part oder der If-Teil, der muss gültig sein, also mit P und B,
- und S1 ist danach Q1, gilt danach Q1, und der L-Part muss ein gültiges Triple ergeben,
- also wenn ich P und nicht B habe und dann S2 ausführe, dann muss danach Q2 gültig sein.
- So, und dann muss gelten nach dem If Statement, aus Q1 folgt Q und aus Q2 folgt Q.
- Und ich empfehle Ihnen das praktisch so zu merken, also ich hatte Ihnen das auch ein bisschen anders zusammengefasst,
- aber so ist es an sich am einfachsten zu merken, weil Sie müssen halt in der Lage sein,
- zu zeigen, dass aus Q1 das Q folgt und aus Q2 folgt das Q.
- Und jetzt haben wir irgendeine Aussage Q und jetzt würden wir gerne wissen, was für eine Precondition P brauche ich denn,
- damit nachher, nach der Ausführung dieses If Statements die Precondition gültig ist.
- So, also, jetzt können wir folgendes überlegen.
- Wir könnten natürlich hingehen und sagen, ok, wenn ich das habe, aus Q1 muss Q folgen und aus Q2 muss Q folgen,
- also können wir doch einfach hingehen und sagen, meine Precondition ist B und die weakest Precondition für S1
- und aus nicht B und die weakest Precondition für S2 und Q2 habe ich das dann.
- Und das wäre ok, das wäre gültig, aber das würde nicht unbedingt unsere schwächste Vorbedingung sein.
- Denn Q1 muss ja stärker sein als Q, weil sonst könnten wir ja nicht zeigen, dass aus Q1 das Q folgt.
- Und daher ist eine weakest Precondition, die ich für Q1 bekomme, stärker oder zumindest genauso stark wie die weakest Precondition,
- die ich für Q bekäme.
- Und genauso haben wir gesehen, dass eben Q2 ist auch stärker als Q und daher die weakest Precondition, die ich für S2
- und die postcondition Q2, die ich bekomme, die ist auch stärker als die weakest Precondition, die ich für S2 und Q bekomme.
- Also zumindest ist stärker oder genauso stark.
- Das heißt, die würde uns auch ein gültiges Statement geben, aber nicht unbedingt die schwächste Vorbedingung.
- Also das heißt, was wir also wirklich brauchen, ist nicht, dass wir eben halt diese postcondition Q benutzen,
- um die weakest Precondition für den IF-Part zu finden, und dass wir Q benutzen, um die weakest Precondition für den ELF-Part zu finden.
- Wenn ich das nehme, dann habe ich die weakest Precondition bekommen für dieses IF-Statement.
- Weil dann, egal wie ich durch das IF-Statement durchgegangen bin, entweder durch den ELF-Part oder den ELF-Part,
- in beiden Fällen erreiche ich einen Zustand, aus dem ich dann eben der Q den Zustand, den ich haben möchte,
- nach dem das IF-Statement ausgeführt wurde, impliziert.
- Ich habe also einen Zustand, den ich benutzen kann, um das abzuleiten.
- Und dann bin ich an sich in der Lage, das entsprechend zu folgern, dass das gilt, wenn das erfüllt ist.
- So, jetzt so ein Ausdruck ist natürlich manchmal etwas mühsam, und da können Sie natürlich den gern vereinfachen.
- Aber das ist letztlich, was Sie brauchen, um die weakest Precondition für dieses IF-Statement mit dieser Postcondition zu finden.
- So, da habe ich auch ein Beispiel für Sie.
- Nehmen wir mal an, wir hätten hier dieses Statement, IF x kleiner als 5, dann setzen wir y zu x², und andernfalls setzen wir y zu x+1.
- Und unsere Aussage Q, am Ende sollte jetzt sein, dass y größer als 3 ist.
- Das wäre jetzt die Aussage, die ich am Ende dieses Statements machen will.
- Jetzt, wenn Sie das gucken, also hier habe ich mein Statement S1 und mein Statement S2.
- Und da will ich jetzt eben gucken, wie ich das so hinbekomme, dass das funktioniert.
- Also, jetzt will ich eben rausbekommen, wie ich dafür das entsprechende Postcondition habe.
- Also, fange ich mal an, ich fange an, dass ich mir erst überlege, also hier, ich brauche die weakest Precondition für dieses Statement mit der Postcondition y größer als 9.
- Jetzt gehe ich also hin und setze das in die Formel ein, die ich leider jetzt nicht zeigen kann.
- Also, diese Formel hier ein.
- Also, mein Q ist y größer als 9 und S1 und S2 sind so, wie ich es hier gezeigt habe.
- Und dann bekomme ich diese Aussage.
- Also, hier ist meine Condition B, hier ist meine Condition nicht B und die weakest Precondition für y, das ist hier mein Statement S1, wird gesetzt zu x mal x.
- Und hier ist mein Statement S2, y wird gesetzt zu x plus 1.
- Und in beiden Fällen benutze ich als Postcondition Q, was am Ende dieses Blockes gelten soll.
- Und das kann ich natürlich jetzt, diese weakest Precondition hier, diese hier, die können Sie ja berechnen und diese hier auch, weil haben wir gesehen, entweder ein Statement oder eine Statement Folge.
- Also, gehe ich jetzt hin und berechne das. Jetzt gehe ich also hin und setze jetzt eben halt hier diese rechte Seite und diese rechte Seite in diese Aussage Q ein.
- Und dann bekomme ich hier eben x kleiner als 5 und x Quadrat oder x mal x größer als 9 oder x größer als 5 und x plus 1 größer als 9.
- Und das kann ich jetzt vereinfachen.
- Und dann bekomme ich, also sehe ich hier, also x muss sein kleiner als 5 und x Quadrat muss sein größer als 9.
- Daraus folgt, dass dieses sind ja alles Ins, dass x kleiner gleich minus 3 sein muss.
- Und für das andere sehe ich das x oder aber ich habe eben x ist größer als 3.
- Das wäre auch ein Weg, wie ich das bekommen kann.
- Und x ist kleiner als 5.
- Oder eben hier kann ich das einsetzen x plus 1 gleich 9 kann ich setzen als x größer als 8.
- Kann ich also sehen, aha das oder das muss gelten.
- Wenn ich also x größer als 5 habe und x kleiner als 3, dann habe ich das.
- Und wenn ich also das sehe, dann kann ich also gucken, das sind die Bedingungen, die jetzt für x erfüllt sein müssen.
- Entweder ist x kleiner als minus 3 oder x ist zwischen 2 und 5 oder x ist zwischen 8 größer als 8, also 8, 9 und so weiter.
- Also wenn Sie jetzt ein Beispiel haben, wo Sie eben überlegen müssen, was für Werte sind legal, dann können Sie dieses, dann können wir in diesem Fall diese Aussagen hier machen.
- So, jetzt fragt mich jemand, wie unterscheidet sich Q1 und Q2 von Q?
- Na ja sehen Sie, ich habe jetzt hier Q gewählt. Ich hätte auch, wenn Sie sich an die Aufgaben oder die Probleme von der letzten Folgerung erinnern,
- ich könnte auch ein anderes Q1 mir hier einfallen lassen oder ein anderes Q2 mir hier einfallen lassen.
- Dass ich jetzt hier Q als die Bedingung nehme, die hier und hier gelten muss, das ist etwas, was ich mache, weil ich die schwächste Vorbedingungen will.
- Sie erinnern sich an das Beispiel, das ich heute zu Beginn der Vorlesung hatte, wo ich sagte, am Ende wollen wir haben x größer als 5.
- Da kann ich eben halt jedes beliebige, da hätte ich auch eine andere Aussage nehmen können als Aussage Q1 und Q2.
- Damit wäre dann das Triple immer noch gültig, aber es wäre eben nicht mehr die schwächste Vorbedingung, die wir in dem Fall haben.
- Also die schwächste Vorbedingung ist halt die, die so ist, dass eben alle anderen Vorbedingungen, die das gültige Triple machen, die implizieren diese Vorbedingungen.
- Und jetzt nochmal zur Erinnerung, was heißt es denn jetzt, wenn ich sage, die weakest precondition ist true, wenn die weakest precondition für ein Statement S
- oder eine Folge von Statement S und eine Aussage Q tools, dann heißt das, dass die Ausführung, dass nach der Ausführung von S diese Aussage Q immer gilt.
- Es gibt keine weiteren Annahmen. Jetzt warum machen wir das Ganze?
- Also stellen Sie sich vor, Sie haben so ein Programm oder Programmsegment mit irgendeinem Statement S und irgendeine Aussage Q, die nach der Ausführung gelten soll,
- wie zum Beispiel diese Aussage Y größer als 5, weil Sie sicher sein wollen, dass die Division mindestens 1 ergibt oder was.
- Und jetzt suchen Sie ein P, sodass eben wenn diese Bedingung erfüllt ist, dann ist die Aussage Q nach der Ausführung von S gültig.
- So, und jetzt könnten Sie ja verschiedene Aussagen finden, P1, P2, P3 und zwar so, dass das PI immer schwächer ist als die vorhergehende.
- Also das wäre die stärkste Aussage. Das wäre eine etwas schwächere. Das wäre noch eine etwas schwächere und so weiter eine ganz schwache Aussage.
- So und jetzt nehmen wir mal an, dass eben wenn wir so eine Folge von Aussagen haben P1, P2 und so weiter sind immer noch P1 mit dem Statement S und der Aussage Q ist gültig.
- P2 mit dem Statement S und der Aussage Q ist gültig. Aber das P5, das wir haben, gilt nicht mehr.
- Also wenn wir P5 als Vorbedingungen haben, dann genügt das nicht, um zu zeigen, dass nach der Ausführung von S die Aussage Q gültig ist.
- Also P5 reicht nicht aus, um das zu zeigen.
- So, also wie könnte sowas aussehen? Wir hätten hier zum Beispiel als Statement X wird gesetzt zu 5 plus A.
- Und ich möchte, dass danach X sicher sein, dass X größer als 5 ist.
- Ja, können Sie ja sehen, dass, hoffentlich bleibt das.
- Okay, bleibt nicht die Farbe hier auf dem, können Sie sehen, dass also aus der Aussage P1, wenn ich weiß, dass das A hat den Wert 4, das ist meine Aussage P1.
- Und ich führe jetzt dieses Statement aus, dann gilt ganz sicher, dass X größer als 5 ist, weil eben X wird gesetzt zum Wert 5 plus A.
- A hat den Wert 4, also ist das der Fall.
- Wenn ich die Aussage P2 nehme, dass wir hier A ist größer als 3, dann gilt das auch.
- So, also so weit zu gut.
- Und jetzt gehen wir weiter mit P4, überspringen wir P3, mit P4 der Aussage A ist größer als 2.
- Können wir immer noch zeigen, dass 5 plus A größer, wenn wir jetzt X zu 5 plus A setzen, ist X immer noch größer als 5.
- So, und jetzt nehmen wir uns die Aussage P5 vor, wo wir sagen hier A ist größer als minus 1.
- Na ja, setzen wir das ein.
- Da haben wir hier 5 plus A und das können wir jetzt nicht mehr zeigen, dass eben X größer als 5 ist.
- Das gilt also nicht.
- Das ist kein gültiges hoher Trippel.
- Das heißt, diese Aussage 5 ist nicht ausreichend, ist zu schwach, um zu zeigen, dass das eben halt gilt.
- Das heißt, wir haben also jetzt diese verschiedenen Aussagen und wir haben jetzt eben eine, die eben nicht mehr gilt.
- Jetzt könnten wir natürlich sagen, was war denn einfacher zu zeigen?
- War es denn einfacher zu zeigen, wenn wir P1 als Voraussage machen oder war es einfacher, das zu zeigen, wenn P4 als Aussage genommen wird?
- Und natürlich ist das einfacher zu zeigen, wenn wir die stärkst mögliche Vorbedingungen haben.
- Wenn ich weiß, dass A hat den Wert 4, ist das einfacher zu zeigen, als wenn ich eben die Aussage nehme, A ist nur größer als 2.
- In diesem einfachen arithmetischen Beispiel macht es vielleicht nicht viel aus, aber mit einer starken Aussage ist es einfacher zu zeigen,
- dass danach die Aussage Q gilt.
- Also, dass ich starke P1 habe, ist es leichter zu zeigen, dass nach S die Aussage Q gilt.
- Das ist ja gerade der Grund, warum wir sagen, P1 ist stärker.
- Nur, wenn Sie ein Programm haben, dann haben Sie im Allgemeinen nicht nur ein einziges Statement, sondern Sie haben auch eine Folge von Statements.
- Und wenn Sie jetzt sagen, ich benutze P1, um zu zeigen, dass nach der Ausführung von S die Aussage Q gilt,
- dann müssen Sie vielleicht irgendwann einmal zeigen, dass diese Aussage auch gilt.
- Weil klar, wenn Sie P1 haben, dann gilt nach der Ausführung von S die Aussage Q.
- Aber jetzt müssen Sie erst einmal zeigen, dass dieses P1 gilt.
- Und je stärker das ist, desto schwieriger wird das.
- Deswegen sind Sie daran interessiert, die schwächste Aussage zu finden.
- Weil wenn Sie die schwächste Aussage haben, mit der Sie gerade noch zeigen können, dass das ein gültiges Tupel ist,
- dann ist es leichter, diese schwache Aussage zu zeigen.
- Weil irgendwann müssen Sie eben diese Aussage, die zwischen S und M steht, zeigen.
- Und da wollen Sie natürlich, wenn es geht, die Schwächstmögliche haben.
- Wenn Sie hier eine starke Aussage haben, dann müssen Sie zeigen, dass das ein gültiges Tupel ist.
- Und wenn ich hier eine schwache Aussage habe, ist das etwas leichter, als wenn ich eben zeigen muss, dass das eben eine schwache Aussage ist.
- Und ich muss zeigen, dass diese Aussage gilt.
- Deswegen sind wir an der schwächsten Aussage interessiert, weil das ist die Aussage, die wir mindestens brauchen,
- um danach dieses Statement zu zeigen, dass das ein gültiges Tupel ist.
- Und zu zeigen, dass dieses Statement die gewünschte Aussage Q mit sich bringt.
- Wenn Sie rückwärts schließen, dann wollen Sie eben ein P finden, das gerade noch gültig ist.
- Das also die schwächste Vorbedingung ist, weil dann haben Sie das gezeigt, was da am besten oder das für Sie am einfachsten macht.
- Also, ich habe Ihnen noch ein weiteres Beispiel auf die Slides gelegt, die Sie auf dem Web finden.
- Es gibt dann noch ein paar kleinere Komplikationen, die sich eigentlich mehr so aus der Nomenklatur ergeben.
- Wenn Sie sich das hier angucken, aber die sind alle trivial.
- Sie haben hier ein "setzen Sie W zu X + Y" und Sie wollen am Ende eine bestimmte Aussage über W.
- Jetzt haben wir ja gesehen, wenn wir so vorwärts schließen, dann können wir einfach hingehen und sagen,
- ok, hier das W ist X + Y, also kann ich das da entsprechend einsetzen.
- Hier habe ich das als Postcondition, jetzt habe ich X = 4, also kann ich das hier einsetzen als Postcondition.
- Ich weiß ja, dass das gilt. Und dann habe ich das eingesetzt und habe ich hier aufgrund der Statements, die ich hatte als Postcondition,
- das W = X + Y und X = 4 und Y = 4.
- Und jetzt könnte man schnell falsch schließen, dass dieses W den Wert 7 hätte, weil X ist ja 4 und Y ist ja 3.
- Und wenn wir das uns so anschauen, dann haben wir halt einen Fehler gemacht, weil das X + Y, das wir hier benutzt haben,
- um W zu setzen, war natürlich ein X + Y mit anderen Werten.
- Und deswegen unterscheiden wir zwischen den verschiedenen Varianten, weil diese Werte, die wir da vorher benutzt haben,
- sind nicht unbedingt die, die nachher gültig sind.
- Also wir könnten hingehen und zum Beispiel sagen, jetzt wird hier ein, das hier das X ist das, das hier oben eingesetzt wurde.
- Wir können das X alt nennen oder wir können das irgendeinen anderen Namen geben.
- Das ist einfach ein Weg, das zu machen.
- Oder Sie können einfach ganz andere Namen sich da ausdenken, um das ebenso zu machen.
- So können Sie dann auch zeigen, dass der Austausch zwischen zwei Werten funktioniert.
- Und die Pol machen wir jetzt aber nicht, weil ich habe noch eine andere Sache für Sie, die ich Ihnen noch zeigen will.
- Weil nämlich einige von Ihnen haben mir gesagt, dass die Programme, die Sie schreiben können, doch sehr langweilig wären.
- Und das kann ich ja im Prinzip verstehen, weil Sie haben eben da nicht so viele Möglichkeiten, irgendwas auszudrücken.
- Und darum machen wir hier einen Schub.
- Wie können wir denn unsere Programme etwas interaktiver machen?
- Also ein interaktives Programm ist ein Programm, das Benutzerinput einliest und dann aufgrund des Benutzerinputs irgendetwas macht.
- Und wir machen jetzt das mal einfach.
- Den Benutzerinput, den wir zulassen, ist auch nur Text.
- Macht das Leben einfacher.
- Wir können später sehen, wie wir auf andere Weise Input machen.
- Aber fürs erste Mal genügt es uns, wenn wir das nur mit eben mit Text arbeiten.
- Und da gibt es eben eine Bibliothek oder einen Service in Java, der das sehr einfach möglich macht.
- Das ist ja so ein Scanner.
- Und da können wir mit dem eben einlesen und Ausgaben können wir machen, wie wir es schon gelernt haben, nämlich mit Printline ohne weitere Schwierigkeiten.
- Also so ein interaktives Programm liest Input von der Konsole.
- Da sage ich gleich, was das ist und dann praktisch abhängig von dem, was für Werte Sie da eingeben, können Sie das eine oder das andere machen.
- Wie gesagt, später können wir mit der Maus arbeiten, aber das ist für den ersten Tag noch ein bisschen viel.
- Also so eine Konsole, das war früher ein Gerät, das mit dem Computer verbunden war und das Eingabe erlaubte so eine Art Schreibmaschine mit eben besonderen Fähigkeiten.
- Manchmal war die auch in der Lage, Ausgaben zu machen.
- Der Name ist halt geblieben.
- Und heute ist der Konsole ein Fenster in unserem Benutzer Interface, also in Eclipse.
- Und in Java gibt es zwei vordefinierte Fenster.
- Das eine heißt System.in und das andere heißt System.out.
- Und die haben halt vordefinierte Fenster.
- Und es ist möglich, das kann man machen, und das ist auch so eingestellt im Normalfall,
- dass System.in und System.out dasselbe Fenster sind.
- So jetzt warum haben wir mit Input bis heute gewartet?
- Input ist schon um einiges komplizierter als Output.
- Warum? Weil die Benutzer können dann auf unvorhergesehenen Weise Eingaben machen, die man nicht erwartet, können Fehler machen und so weiter.
- Deswegen ist das ein bisschen trickiger.
- Und wir haben eben ein Fenster in Eclipse, mit dem wir eben den Input eingeben können und den Output sehen.
- Und das machen wir mittels eines Bibliothek.
- Die heißt Scanner.
- Das ist ein Programm, das eben halt solche Daten aus dem Fenster einliest und in eine vernünftige Form aufbereitet.
- Und Input, Output ist in Java sehr gut geregelt.
- Was Sie heute mit dem Scanner machen, können Sie oder lernen, können Sie später auch mit ganz anderen Sachen wie Dateien und so weiter, weiter verwenden.
- Also der Benutzer tippt ein und der Scanner liest das.
- Und so können wir dann eben halt das verarbeiten.
- Und um das zu machen, müssen wir wieder ein bisschen blaue Farbe verwenden.
- Wir müssen dieses Statement hinzufügen, unser Programm.
- Import java.util.scanner.
- Und dann haben wir den Scanner bekannt gemacht.
- Und dann brauchen wir eben ein Exemplar von dem Scanner und den müssen wir auch deklarieren.
- Den können wir irgendeinen Namen geben.
- Scanner Name gleich Eclipse wird gesetzt zu New Scanner.
- Und dann sagen wir, wir hätten gerne einen Scanner, der von der Konsolessystem dort in für uns das liest.
- Dann können wir den MyConsole nennen und dann haben wir so einen Scanner.
- Und der hat jetzt drei Methoden, die uns eigentlich interessieren, mit denen wir Int, Doubles und Strings lesen können.
- Ganz einfach.
- Ich gehe also hin.
- Ich habe diese Konsole und dann lese ich die nächste Eingabe.
- Und dann wartet das System so lange, bis der Benutzer eine Eingabe gemacht hat und mit dem Return Key abgeschlossen hat.
- Wenn der Benutzer Enter oder Return aus immer gedrückt hat, dann wird der wird das gelesen und dem Programm zur Verfügung gestellt.
- Und natürlich ist es gut, wenn Sie vorher den Benutzer oder der Benutzerin sagen, was Sie jetzt als Eingabe erwarten.
- Zum Beispiel Wie alt sind Sie?
- Da wird ausgedruckt und dann wartet das System, bis die Eingabe kommt.
- Hier ist das komplette Programm.
- Können Sie nachher kopieren?
- Ich habe hier den Scanner und jetzt kommt hier der Prompt.
- Ich tippe das System aus.
- Das tippt dann aus.
- Wie alt sind Sie?
- Und jetzt ist Sache des Benutzer oder der Benutzerin, das Alter einzugeben.
- Und wenn das Alter eingegeben ist, dann gibt das System diese Zahl zurück an die variable Alter und dann findet eine Überrechnung statt.
- Und dann findet die Berechnung statt, dass das eben wie viele Jahre noch bis zur Pensionierung sind unter der Annahme, dass sich das nicht wieder ändert und so weiter.
- Also das können Sie ganz einfach machen ohne Schwierigkeiten.
- Können auch mehr als eine Zahl lesen.
- Wichtig ist, dass Sie das Richtige machen.
- In der Java Doc finden Sie mehr Informationen und da können Sie alles lesen.
- Aber so können Sie, wenn Sie wollen, interessanter Programme machen.
- Machen Sie es nur richtig.
- Wenn Sie falsche Eingabe machen, noch haben wir eine Minute, dann sind wir damit fertig.
- So, also das ist halt, wie Sie das machen können.
- Diese drei Methoden können Sie benutzen und können auf diese Weise etwas interessanter Programme schreiben.
- (Glockenzeichen)
+
+[00:00:00.000 --> 00:00:04.560]   So, einen schönen guten Tag. Ich hoffe, der Lautsprecher funktioniert heute.
+[00:00:04.560 --> 00:00:11.160]   Und wenn es zu laut ist, Sie wissen ja, den Kurskanal können Sie benutzen, um da was zu sagen.
+[00:00:11.160 --> 00:00:16.160]   Und wir hatten uns in der letzten Vorlesung eben mit Verzweigungen beschäftigt,
+[00:00:16.160 --> 00:00:19.240]   mit eben diesen IF-Anweisungen, IF-ELS und so weiter,
+[00:00:19.240 --> 00:00:24.520]   hatten gesehen, dass wir eben diese Vergleichsoperatoren benutzen können,
+[00:00:24.520 --> 00:00:28.560]   um Ausdrücke zu formulieren, die dann eben entweder true oder false ergeben
+[00:00:28.560 --> 00:00:34.160]   und hatten dann uns mit PRI und POST-Conditions für IF-Anweisungen beschäftigt.
+[00:00:34.160 --> 00:00:40.560]   Und dann blieb ich übrig, als letztes Thema in dieser Gruppe das Thema der schwächsten Vorbedingung.
+[00:00:40.560 --> 00:00:45.360]   Und Sie wissen ja, Sie können dieses Kurskanal benutzen, um Fragen zu stellen,
+[00:00:45.360 --> 00:00:52.760]   aber eine Frage eben, was ist der Sinn von Y größer 5, wenn Y bekommt, den wir jetzt 20 geschrieben wird?
+[00:00:52.760 --> 00:00:56.760]   Ich vermute, bezieht sich auf dieses Statement hier.
+[00:00:56.760 --> 00:01:01.760]   Naja, sehen Sie, erst mal hier steht zwar Y wird zu 20 gesetzt,
+[00:01:01.760 --> 00:01:06.960]   aber das ist nur der Fall, wenn Y nicht größer gleich 7 ist,
+[00:01:06.960 --> 00:01:14.560]   denn der Y, wenn X eben einen anderen Wert hat, dann, wenn nämlich das erführt,
+[00:01:14.560 --> 00:01:18.960]   dann geht es hier durch und in dem Fall findet diese Anweisung statt,
+[00:01:18.960 --> 00:01:22.360]   wird diese Anweisung ausgeführt und nicht die untere.
+[00:01:22.360 --> 00:01:24.560]   Ja, warum könnten wir so was denn vielleicht haben wollen?
+[00:01:24.560 --> 00:01:29.160]   Ja, nun vielleicht deswegen, weil in einem späteren Teil des Programms
+[00:01:29.160 --> 00:01:35.160]   dividieren wir die Zahl der Variable Z durch diesen Ausdruck Y/6.
+[00:01:35.160 --> 00:01:39.760]   Und wir wollen vielleicht sicher sein, dass Y mindestens den Wert 6 hat,
+[00:01:39.760 --> 00:01:47.160]   weil wenn wir eben den Wert 5 hätten, dann würde natürlich Y/6,
+[00:01:47.160 --> 00:01:52.760]   da ist eine Integer-Division, ist den Wert 0 ergeben und das würden wir natürlich nicht wollen.
+[00:01:52.760 --> 00:01:56.560]   Also das kann so ein Grund sein, warum wir so eine Aussage da haben.
+[00:01:56.560 --> 00:02:01.960]   Aber natürlich, das ist halt eben die Situation, die wir da haben.
+[00:02:01.960 --> 00:02:06.360]   In diesem Beispiel, aber in allgemein fragen wir uns natürlich immer,
+[00:02:06.360 --> 00:02:09.160]   was für eine Vorbedingung wollen wir eigentlich haben?
+[00:02:09.160 --> 00:02:11.560]   Nach was für eine Vorbedingung sollten wir suchen?
+[00:02:11.560 --> 00:02:15.560]   Wenn wir hier so eine Post-Condition haben, Y größer gleich 2,
+[00:02:15.560 --> 00:02:19.760]   dann würde es natürlich für uns, nachdem was wir jetzt gelernt haben,
+[00:02:19.760 --> 00:02:24.760]   völlig ausreichen, wenn wir wüssten, dass X größer als 10 ist.
+[00:02:24.760 --> 00:02:29.760]   Weil wenn X größer als 10 ist, dann ist Y wird dann zu einem Wert gesetzt,
+[00:02:29.760 --> 00:02:31.760]   der mindestens 12 ist.
+[00:02:31.760 --> 00:02:35.360]   Weil eben wenn es größer als 10 ist, muss es ja mindestens 11 sein.
+[00:02:35.360 --> 00:02:37.760]   Und eins dazu ist mindestens 12.
+[00:02:37.760 --> 00:02:39.360]   Also wer das erfüllt, ja?
+[00:02:39.360 --> 00:02:42.760]   Also könnten wir das in der Tat als Vorbedingung nehmen.
+[00:02:42.760 --> 00:02:45.760]   Und könnte noch genauso gut sagen, ja, ist genügt ja,
+[00:02:45.760 --> 00:02:49.560]   wenn wir zeigen können, dass Y größer 5 ist.
+[00:02:49.560 --> 00:02:53.960]   Auch in dem Fall, wer die Bedingungen, die wir als Post-Condition haben,
+[00:02:53.960 --> 00:02:56.160]   hier nachher erfüllt.
+[00:02:56.160 --> 00:02:59.560]   Das ist auch noch, aber wenn wir jetzt hingegen und sagen,
+[00:02:59.560 --> 00:03:03.760]   X größer gleich 1, das wäre doch eigentlich besser, ja?
+[00:03:03.760 --> 00:03:08.760]   Das wäre eigentlich die Bedingung, die am wenigsten anspruchsvoll ist.
+[00:03:08.760 --> 00:03:11.360]   Und um das eben etwas formaler zu machen,
+[00:03:11.360 --> 00:03:15.160]   führe ich jetzt die Idee ein, dass wir sagen können,
+[00:03:15.160 --> 00:03:18.560]   dass eine Aussage stärker oder schwächer ist.
+[00:03:18.560 --> 00:03:26.560]   Also wenn Sie eine Aussage P1 haben und eine zweite Aussage P2.
+[00:03:26.560 --> 00:03:30.560]   Und diese Aussage P1, die Aussage P2 impliziert.
+[00:03:30.560 --> 00:03:36.560]   Also wir können schließen, dass wenn P1 gilt, dann gilt auch immer P2, ja?
+[00:03:36.560 --> 00:03:39.560]   Dann ist P1 stärker als P2, ja?
+[00:03:39.560 --> 00:03:48.360]   Und umgekehrt sagen wir, dass P2 ist schwächer als P1, ja?
+[00:03:48.360 --> 00:03:52.160]   Also wenn wir zum Beispiel die Aussage haben, nehmen wir an,
+[00:03:52.160 --> 00:03:55.960]   dass wir haben die Aussage X ist größer 3, ja?
+[00:03:55.960 --> 00:03:59.160]   Und wir haben die Aussage X ist größer 5, ja?
+[00:03:59.160 --> 00:04:03.360]   Dann impliziert die Aussage, dass X größer 3 ist,
+[00:04:03.360 --> 00:04:07.160]   dass auch, umgekehrt, das habe ich jetzt falsch gezeichnet,
+[00:04:07.160 --> 00:04:08.960]   ja, sehen Sie, ja?
+[00:04:08.960 --> 00:04:15.960]   Also wenn ich hier X größer als 5 habe und X ist größer 3, ja?
+[00:04:15.960 --> 00:04:20.560]   Wenn ich weiß, dass X größer 5 ist, dann impliziert das auch die Aussage,
+[00:04:20.560 --> 00:04:22.360]   dass X größer 3 ist, ja?
+[00:04:22.360 --> 00:04:27.760]   Also das wäre meine Aussage P1 und das wäre meine Aussage P2, ja?
+[00:04:27.760 --> 00:04:31.360]   Wenn immer P1 gilt, dann gilt auch P2, ja?
+[00:04:31.360 --> 00:04:34.560]   Also es ist schwieriger, P1 zu erfüllen
+[00:04:34.560 --> 00:04:36.760]   oder zumindest genauso schwierig, ja?
+[00:04:36.760 --> 00:04:39.160]   Wie es ist, P2 zu erfüllen.
+[00:04:39.160 --> 00:04:43.760]   Und wenn wir sagen stärker als, dann sagen wir stärker als oder gleich stark.
+[00:04:43.760 --> 00:04:46.560]   Wir machen da keinen Unterschied, ja?
+[00:04:46.560 --> 00:04:49.960]   Also stärker ist stärker als oder genauso stark wie, ja?
+[00:04:49.960 --> 00:04:53.160]   Also die Aussage X ist größer als 3,
+[00:04:53.160 --> 00:04:57.560]   ist genauso stark wie die Aussage X ist größer als 3, ja?
+[00:04:57.560 --> 00:05:01.160]   Das würden wir auch noch sagen, weil wenn immer X ist größer als 3,
+[00:05:01.160 --> 00:05:04.560]   gilt wirklich auch X ist immer größer als 3, ja?
+[00:05:04.560 --> 00:05:07.760]   So, also das ist einfach nur jetzt,
+[00:05:07.760 --> 00:05:10.560]   jetzt warum ist das für uns interessant?
+[00:05:10.560 --> 00:05:14.360]   Jetzt, wir haben uns mit Pri und Post Conditions beschäftigt, ja?
+[00:05:14.360 --> 00:05:16.760]   Also wir haben hier eine Pri Condition P
+[00:05:16.760 --> 00:05:19.360]   und eine Post Condition Q, ja?
+[00:05:19.360 --> 00:05:23.760]   So, und jetzt haben wir eine Pri Condition P1,
+[00:05:23.760 --> 00:05:24.960]   sagen wir mal, ja?
+[00:05:24.960 --> 00:05:28.960]   Die ist stärker als die Pri Condition P, ja?
+[00:05:28.960 --> 00:05:35.160]   Naja, wenn das P1 ist stärker, das heißt aus P1 impliziert P, ja?
+[00:05:35.160 --> 00:05:40.560]   Naja, dann gilt doch auch, dass aus das P1 als Pri Condition
+[00:05:40.560 --> 00:05:46.560]   für das Statement S die Post Condition Q danach gültig sein lässt, ja?
+[00:05:46.560 --> 00:05:50.360]   Warum? Weil aus P1 folgt P
+[00:05:50.360 --> 00:05:53.960]   und wir wissen, dass wenn das ein gültiges Hortrippel ist,
+[00:05:53.960 --> 00:05:55.360]   das ist natürlich die Annahme, ja?
+[00:05:55.360 --> 00:05:58.960]   Das hier, gültiges Hortrippel, ja?
+[00:05:58.960 --> 00:06:06.360]   Dann ist das auch in der Tat der Fall, wenn ich P1 als Pri Condition nehme, ja?
+[00:06:06.360 --> 00:06:10.560]   Und umgekehrt, wenn ich jetzt eine Post Condition habe,
+[00:06:10.560 --> 00:06:14.760]   eine Aussage Q1 und diese Aussage ist schwächer als Q,
+[00:06:14.760 --> 00:06:18.760]   oder umgekehrt Q ist stärker als diese Aussage.
+[00:06:18.760 --> 00:06:23.160]   Naja, wenn ich, wenn eben P als Pri Condition
+[00:06:23.160 --> 00:06:27.360]   mir erlaubt zu sagen, dass sich nachdem ich S ausgeführt habe,
+[00:06:27.360 --> 00:06:30.760]   gilt die Post Condition Q, dann gilt auch danach,
+[00:06:30.760 --> 00:06:33.560]   dass die Aussage Q1 gilt dann auch.
+[00:06:33.560 --> 00:06:38.160]   Warum? Weil aus Q folgt Q1 und Q war stärker als Q1
+[00:06:38.160 --> 00:06:41.560]   und daher ist das auch ein gültiges Hortrippel, ja?
+[00:06:41.560 --> 00:06:43.560]   Und natürlich kann ich genauso argumentieren,
+[00:06:43.560 --> 00:06:48.760]   dass eben P1 mit dem Statement S und der Post Condition Q1
+[00:06:48.760 --> 00:06:50.960]   auch noch wieder ein gültiges Hortrippel ist,
+[00:06:50.960 --> 00:06:56.160]   weil aus P1 folgt P, P ist Pri Condition für S,
+[00:06:56.160 --> 00:07:01.160]   danach folgt Q und aus Q folgt dann eben folgt Q1, ja?
+[00:07:01.160 --> 00:07:04.560]   Also, wir müssen uns das angucken,
+[00:07:04.560 --> 00:07:07.160]   stärkere Pri Condition sind kein Problem
+[00:07:07.160 --> 00:07:10.160]   und schwächere Post Condition sind kein Problem, ja?
+[00:07:10.160 --> 00:07:14.760]   So, jetzt warum überlegen wir uns das, ja?
+[00:07:14.760 --> 00:07:16.760]   Wir wollen doch, wenn wir jetzt so eine,
+[00:07:16.760 --> 00:07:20.760]   wenn wir so ein Statement S haben mit einer Post Condition Q
+[00:07:20.760 --> 00:07:24.960]   und wir suchen unsere, die beste Pri Condition P, ja?
+[00:07:24.960 --> 00:07:27.960]   Dann wollen wir doch an sich eine Pri Condition haben,
+[00:07:27.960 --> 00:07:31.960]   die so ist, dass es die schwächste Pri Condition ist,
+[00:07:31.960 --> 00:07:34.960]   die gerade noch ausreicht, um ihr zu zeigen,
+[00:07:34.960 --> 00:07:37.960]   dass nach der Ausführung von S gilt,
+[00:07:37.960 --> 00:07:40.560]   das gilt die Post Condition Q, ja?
+[00:07:40.560 --> 00:07:44.760]   Also, wenn wir zeigen könnten, dass wir eben ein PS finden, so, ja?
+[00:07:44.760 --> 00:07:47.960]   Dass das PS die schwächste Pri Condition ist,
+[00:07:47.960 --> 00:07:49.960]   dann haben wir die Situation,
+[00:07:49.960 --> 00:07:52.360]   dass wir gerade so viele Annahmen machen
+[00:07:52.360 --> 00:07:55.160]   für die Ausführung dieses Programmes, wie nötig sind,
+[00:07:55.160 --> 00:07:58.160]   dass wir das eben halt machen können, ja?
+[00:07:58.160 --> 00:08:00.160]   Das ist also der Gedanke, warum wir das machen,
+[00:08:00.160 --> 00:08:03.760]   weil wenn wir nämlich das so gewählt haben,
+[00:08:03.760 --> 00:08:06.760]   dann können wir uns irgendeine Pri Condition wählen,
+[00:08:06.760 --> 00:08:08.960]   die das auch gültig machen lässt
+[00:08:08.960 --> 00:08:12.760]   und dann ist diese Pri Condition stärker als unsere Schwächste
+[00:08:12.760 --> 00:08:14.960]   oder zumindest genauso stark, ja?
+[00:08:14.960 --> 00:08:17.360]   Wenn wir daran denken wollen,
+[00:08:17.360 --> 00:08:21.760]   dass diese, das eben wie die Gleichheit mit berücksichtigen, ja?
+[00:08:21.760 --> 00:08:23.760]   Also, wenn wir so eine Situation haben,
+[00:08:23.760 --> 00:08:25.760]   dass wir die Pri Condition suchen,
+[00:08:25.760 --> 00:08:27.960]   dann wollen wir eine Pri Condition, die so schwach ist,
+[00:08:27.960 --> 00:08:29.560]   wie irgend möglich, ja?
+[00:08:29.560 --> 00:08:31.960]   Und das Gute ist nämlich jetzt,
+[00:08:31.960 --> 00:08:36.560]   dass wir für jedes von den Statements,
+[00:08:36.560 --> 00:08:38.960]   die ich Ihnen bisher erklärt habe,
+[00:08:38.960 --> 00:08:43.360]   oder gezeigt habe, nämlich für Zuweisungen und Conditionals, ja,
+[00:08:43.360 --> 00:08:47.760]   gibt es für jedes Programmssegment ein und jede Post Condition,
+[00:08:47.760 --> 00:08:51.560]   gibt es eine eindeutige schwächste Pri Condition.
+[00:08:51.560 --> 00:08:55.160]   Also, eine eindeutige schwächste Pri Condition, PS,
+[00:08:55.160 --> 00:08:56.960]   wenn Sie sie wollen, ja?
+[00:08:56.960 --> 00:08:59.360]   Oder die kürzen wir ab, eben als,
+[00:08:59.360 --> 00:09:04.760]   das ist die wieges Pri Condition für S unter der Annahme,
+[00:09:04.760 --> 00:09:07.160]   dass wir die Post Condition Q haben wollen, ja?
+[00:09:07.160 --> 00:09:10.760]   Aber das gilt eben ohne Schleifen, ja?
+[00:09:10.760 --> 00:09:12.760]   Und mit Schleifen, deswegen habe ich die Schleifen
+[00:09:12.760 --> 00:09:15.560]   bisher noch nicht diskutiert, komm nachher, ja?
+[00:09:15.560 --> 00:09:17.360]   Gilt das nicht, ja?
+[00:09:17.360 --> 00:09:19.960]   Aber ohne Schleifen gibt es die eindeutig
+[00:09:19.960 --> 00:09:22.360]   und es gibt einen Weg, wie wir das ganz einfach,
+[00:09:22.360 --> 00:09:25.960]   wie wir diese schwächste Vorbedingung erfüllen können, ja?
+[00:09:25.960 --> 00:09:30.560]   Also, fangen wir mit einem einfachen Statement an,
+[00:09:30.560 --> 00:09:35.360]   das ist wieder das einfachste, was wir denken können, ja?
+[00:09:35.360 --> 00:09:40.160]   Ist die schwächste Pri Condition nicht tru, fragt mich jemand.
+[00:09:40.160 --> 00:09:41.560]   Oh nein, ganz und gar nicht.
+[00:09:41.560 --> 00:09:44.760]   Tru heißt ja, dass egal, was der Fall ist,
+[00:09:44.760 --> 00:09:46.760]   das ist immer gültig, ja?
+[00:09:46.760 --> 00:09:50.560]   Wenn ich aber tru als Pri Condition, ja?
+[00:09:50.560 --> 00:09:54.960]   Und jetzt ein S und danach irgendeine Post Condition Q, ja?
+[00:09:54.960 --> 00:10:00.160]   Dann muss diese, dann muss das, dann gilt das immer, ja?
+[00:10:00.160 --> 00:10:06.160]   Und je nachdem, also zum Beispiel unser X wird gesetzt zu X plus 1, ja?
+[00:10:06.160 --> 00:10:10.160]   Und meine Post Condition ist, das X ist größer als 10, ja?
+[00:10:10.160 --> 00:10:12.160]   Dann gilt das ganz sicher nicht immer.
+[00:10:12.160 --> 00:10:17.160]   Dann gilt das nur dann, wenn X eben eine Vorbedingung erfüllt, ja?
+[00:10:17.160 --> 00:10:20.760]   Also, X, eine Vorbedingung könnte zum Beispiel sein,
+[00:10:20.760 --> 00:10:25.560]   dass wir sagen X ist größer als, sagen wir mal, 10.
+[00:10:25.560 --> 00:10:31.160]   Wenn ich das als Vorbedingung habe, dann ist X plus 1 sicher größer als 10.
+[00:10:31.160 --> 00:10:34.160]   Das ist aber nicht die schwächste Vorbedingung, ja?
+[00:10:34.160 --> 00:10:39.560]   Die schwächste Vorbedingung wäre doch wahrscheinlich,
+[00:10:39.560 --> 00:10:47.560]   dass wir das X größer gleich 10 ist, ja?
+[00:10:47.560 --> 00:10:50.560]   Wenn X größer gleich 10 ist, ja?
+[00:10:50.560 --> 00:10:54.560]   Dann habe ich, also, wenn die Aussage, dass danach eben,
+[00:10:54.560 --> 00:10:56.560]   nachdem ich das um eins erhöht habe,
+[00:10:56.560 --> 00:11:01.560]   X sicher echt strikt größer als 10 ist, ja?
+[00:11:01.560 --> 00:11:05.560]   Also, die schwächste Vorbedingung wäre hier und nicht dieses hier, ja?
+[00:11:05.560 --> 00:11:08.560]   So, und tru wäre ganz sicher falsch,
+[00:11:08.560 --> 00:11:10.560]   das gilt ja nicht in allen Situationen.
+[00:11:10.560 --> 00:11:15.560]   Wenn X den Wert 9 hätte zum Beispiel, dann würde eben danach diese Vorbedingungen nicht gelten.
+[00:11:15.560 --> 00:11:18.560]   Also tru heißt eben keine Annahmen.
+[00:11:18.560 --> 00:11:20.560]   Und das ist am anderen Ende, ja?
+[00:11:20.560 --> 00:11:27.560]   So, woraus ergibt sich denn, dass P aus Vollq, q stärker ist.
+[00:11:27.560 --> 00:11:29.560]   Wir definieren halt so.
+[00:11:29.560 --> 00:11:32.560]   Wir sagen, wenn ich, also, erst mal,
+[00:11:32.560 --> 00:11:38.560]   aus, wenn ich irgendeine Bedingung P1 habe und die impliziert P2,
+[00:11:38.560 --> 00:11:41.560]   dann sagen wir, das P1 ist stärker.
+[00:11:41.560 --> 00:11:43.560]   Ja, das haben wir halt so fest, das definieren wir,
+[00:11:43.560 --> 00:11:46.560]   um das einfacher ausdrücken zu können, ja?
+[00:11:46.560 --> 00:11:51.560]   Das heißt jetzt nicht, dass wenn ich hier P, S und Q habe,
+[00:11:51.560 --> 00:11:55.560]   also, wenn ich hier P, S und Q habe,
+[00:11:55.560 --> 00:11:59.560]   das aus P, das Q impliziert, ja?
+[00:11:59.560 --> 00:12:03.560]   Wenn ich hier ein P habe, und das gilt im Allgemeinen nicht,
+[00:12:03.560 --> 00:12:08.560]   weil das gilt ja nur dann, nachdem dieses Statement S ausgeführt wurde, ja?
+[00:12:08.560 --> 00:12:11.560]   Im Allgemeinen gilt nicht, dass aus dem P Q folgt,
+[00:12:11.560 --> 00:12:16.560]   sondern nachdem das Statement S ausgeführt wurde, gilt das Q, ja?
+[00:12:16.560 --> 00:12:22.560]   Also, zurück zu, also jetzt zu einem einfachen Beispiel, ja?
+[00:12:22.560 --> 00:12:25.560]   Dass wir eben halt eine Zuweisung uns angucken wollen.
+[00:12:25.560 --> 00:12:28.560]   Wir wollen jetzt eben für eine Zuweisung finden,
+[00:12:28.560 --> 00:12:30.560]   was ist die schwächste Vorbedingung,
+[00:12:30.560 --> 00:12:34.560]   die für eine gegebene Postcondition erfüllt sein muss,
+[00:12:34.560 --> 00:12:37.560]   damit nach dieser Zuweisung diese Postcondition gilt.
+[00:12:37.560 --> 00:12:42.560]   Und das machen wir so, indem wir in diesem, in dem,
+[00:12:42.560 --> 00:12:46.560]   jedes X durch E ersetzen, also, das ist die rechte Seite,
+[00:12:46.560 --> 00:12:48.560]   das ist irgendein Ausdruck, ja?
+[00:12:48.560 --> 00:12:53.560]   Und in dem Q soll natürlich diese Variable X irgendwo auftreten,
+[00:12:53.560 --> 00:12:56.560]   und da ersetzen wir die durch die rechte Seite E,
+[00:12:56.560 --> 00:12:58.560]   und dann haben wir eine neue Aussage,
+[00:12:58.560 --> 00:13:00.560]   und das ist unsere schwächste Vorbedingung.
+[00:13:00.560 --> 00:13:06.560]   Also, wenn mein Statement zum Beispiel hier X wird gesetzt zu Y²,
+[00:13:06.560 --> 00:13:12.560]   und meine Postcondition Q ist X soll größer als X4 sein, ja?
+[00:13:12.560 --> 00:13:14.560]   Dann ersetze ich das, ja?
+[00:13:14.560 --> 00:13:17.560]   Dann nehme ich also das E, das ist Y², ersetze das,
+[00:13:17.560 --> 00:13:25.560]   und dann bekomme ich eben hier als neue Aussage Y², größer 4, ja?
+[00:13:25.560 --> 00:13:29.560]   Und das ist meine schwächste Vorbedingung, ja?
+[00:13:29.560 --> 00:13:33.560]   Die ich haben muss, oder die erfüllt sein muss,
+[00:13:33.560 --> 00:13:38.560]   um für dieses Statement, für dieses Statement,
+[00:13:38.560 --> 00:13:42.560]   und diese Postcondition sicherzustellen,
+[00:13:42.560 --> 00:13:45.560]   dass danach die Postcondition erfüllt ist.
+[00:13:45.560 --> 00:13:49.560]   Und Y², größer 4, kann ich umformulieren,
+[00:13:49.560 --> 00:13:53.560]   der Betrag von Y muss größer 2 sein, ja?
+[00:13:53.560 --> 00:13:58.560]   Das ist also, so kann ich also für ein gegebenes Statement
+[00:13:58.560 --> 00:14:02.560]   und eine gegebene erwünschte Postcondition herausfinden,
+[00:14:02.560 --> 00:14:05.560]   was erfüllt sein muss, bevor ich das Statement ausführe,
+[00:14:05.560 --> 00:14:09.560]   damit eben nachher die Postcondition gilt, ja?
+[00:14:09.560 --> 00:14:13.560]   So, jetzt ein Statement ist einfach,
+[00:14:13.560 --> 00:14:16.560]   was machen wir denn, wenn wir eine Folge von Statements haben?
+[00:14:16.560 --> 00:14:20.560]   Das ist ja die nächste Frage, die uns hier berührt, ja?
+[00:14:20.560 --> 00:14:23.560]   Also, wir haben hier zwei Statements, ja?
+[00:14:23.560 --> 00:14:26.560]   Und wir haben wieder eine Postcondition Q.
+[00:14:26.560 --> 00:14:29.560]   Und jetzt suchen wir die schwächste Vorbedingung
+[00:14:29.560 --> 00:14:34.560]   für diese beiden Statements, damit nachher Q gelten soll, ja?
+[00:14:34.560 --> 00:14:39.560]   Und diese, die schwächste Vorbedingung dafür ist die,
+[00:14:39.560 --> 00:14:42.560]   dass ich erst mal die schwächste Vorbedingung finde,
+[00:14:42.560 --> 00:14:45.560]   mit der ich S2 erfüllen kann.
+[00:14:45.560 --> 00:14:48.560]   Und diese Vorbedingung, die ich da habe,
+[00:14:48.560 --> 00:14:53.560]   das nehme ich als Aussage Q für mein Statement S1
+[00:14:53.560 --> 00:14:56.560]   und finde dann dafür die schwächste Vorbedingung, ja?
+[00:14:56.560 --> 00:14:59.560]   Und das ist dann die schwächste Vorbedingung
+[00:14:59.560 --> 00:15:01.560]   für diese Folge von Statements.
+[00:15:01.560 --> 00:15:04.560]   Also, rückwärts praktisch gehen Sie hin, Sie sehen,
+[00:15:04.560 --> 00:15:07.560]   was will ich am Ende dieser Statementfolge haben?
+[00:15:07.560 --> 00:15:10.560]   Am Ende will ich, dass eben diese Aussage Q gilt.
+[00:15:10.560 --> 00:15:13.560]   Was muss gelten, bevor Statement S2 ausgeführt wird?
+[00:15:13.560 --> 00:15:16.560]   Weil die werden ja in dieser Reihenfolge ausgeführt.
+[00:15:16.560 --> 00:15:18.560]   Also, erst S1 und dann S2, ja?
+[00:15:18.560 --> 00:15:21.560]   Was muss gelten, bevor S2 ausgeführt wird?
+[00:15:21.560 --> 00:15:24.560]   Ah, okay, jetzt habe ich diese Aussage.
+[00:15:24.560 --> 00:15:27.560]   Was muss dann erfüllt sein, bevor Statement S1 ausgeführt wird,
+[00:15:27.560 --> 00:15:30.560]   damit ich nachher eben diese Aussage bekomme?
+[00:15:30.560 --> 00:15:33.560]   Und das ist die schwächste Vorbedingung, ja?
+[00:15:33.560 --> 00:15:36.560]   Also, wenn ich hier als einfaches Beispiel
+[00:15:36.560 --> 00:15:38.560]   das erste Statement habe,
+[00:15:38.560 --> 00:15:41.560]   das Y wird gesetzt auf X plus 3
+[00:15:41.560 --> 00:15:44.560]   und das nächste Statement geht hin
+[00:15:44.560 --> 00:15:47.560]   und setzt Z zu Y plus 1.
+[00:15:47.560 --> 00:15:50.560]   Und meine Aussage am Ende soll wieder sein,
+[00:15:50.560 --> 00:15:53.560]   dass Z größer als 4 ist, ja?
+[00:15:53.560 --> 00:15:56.560]   So, dann setze ich das die rechte Seite hier,
+[00:15:56.560 --> 00:15:59.560]   das ist mein erstes E da ein, ja?
+[00:15:59.560 --> 00:16:03.560]   Und dann bekomme ich eben Y plus 1, ja?
+[00:16:03.560 --> 00:16:06.560]   Und jetzt wird hier eingesetzt,
+[00:16:06.560 --> 00:16:08.560]   muss größer sein als 4,
+[00:16:08.560 --> 00:16:11.560]   kann ich umwandeln und so weiter, ja?
+[00:16:11.560 --> 00:16:14.560]   Und kann, also gehe ich also hin,
+[00:16:14.560 --> 00:16:16.560]   gucke, was ist die Vorbedingung dafür, ja?
+[00:16:16.560 --> 00:16:18.560]   Ich nehme diese Vorbedingung hin und sehe mir,
+[00:16:18.560 --> 00:16:20.560]   aha, ich setze das da ein, ja?
+[00:16:20.560 --> 00:16:22.560]   Y plus 1 ist größer 4,
+[00:16:22.560 --> 00:16:25.560]   das heißt Y plus muss größer 3 sein.
+[00:16:25.560 --> 00:16:28.560]   Das ist meine größte, meine schwächste Vorbedingung
+[00:16:28.560 --> 00:16:31.560]   für das Statement Z
+[00:16:31.560 --> 00:16:34.560]   wird gesetzt zu Y plus 1
+[00:16:34.560 --> 00:16:37.560]   und meine Bedingung danach ist Z größer 4.
+[00:16:37.560 --> 00:16:42.560]   So, und jetzt gehe ich hin, nachdem ich das als Bedingung gefunden habe, ja?
+[00:16:42.560 --> 00:16:45.560]   Gehe ich hin und setze ein, was muss denn jetzt hier gelten,
+[00:16:45.560 --> 00:16:48.560]   damit die Ausführung des Statements Y
+[00:16:48.560 --> 00:16:50.560]   wird gesetzt auf X plus 3.
+[00:16:50.560 --> 00:16:52.560]   Diese Aussage gültig mache, ja?
+[00:16:52.560 --> 00:16:57.560]   Das ist ja meine Aussage, die vor S2 gelten muss, ja?
+[00:16:57.560 --> 00:16:59.560]   Ich setze das ein, ja?
+[00:16:59.560 --> 00:17:02.560]   Aha, X plus 3 wird hier eingesetzt, größer 3
+[00:17:02.560 --> 00:17:05.560]   und das kann ich umformen in X größer als 0.
+[00:17:05.560 --> 00:17:09.560]   Das heißt, die, die schächste Vorbedingung
+[00:17:09.560 --> 00:17:13.560]   für diese ganze Folge ist eben X größer als 0, ja?
+[00:17:13.560 --> 00:17:16.560]   So, das ist die schwächste Vorbedingung,
+[00:17:16.560 --> 00:17:21.560]   die erfüllt sein muss, damit das eben funktioniert, ja?
+[00:17:21.560 --> 00:17:25.560]   Also, wenn ich ein anderes Beispiel mir nehme, ja?
+[00:17:25.560 --> 00:17:28.560]   Weiß nicht, ob das schon, sagen Sie mir, wenn es, ja?
+[00:17:28.560 --> 00:17:32.560]   Wenn Sie als Folge haben Y, das ist mein S1, ja?
+[00:17:32.560 --> 00:17:38.560]   Wird gesetzt zu X plus 1 und Z ist Y minus 3, das ist mein S2, ja?
+[00:17:38.560 --> 00:17:44.560]   Und meine Bedingung am Ende sollte sein, Z ist gleich 10, ja?
+[00:17:44.560 --> 00:17:46.560]   Was ist dann die schwächste Vorbedingung, ja?
+[00:17:46.560 --> 00:17:48.560]   Da fange ich also an, okay?
+[00:17:48.560 --> 00:17:52.560]   Gucke ich mir an, also ich hier, das möchte ich bestimmen, ja?
+[00:17:52.560 --> 00:17:58.560]   Da gehe ich jetzt hin und setze jetzt erstmal diese rechte Seite hier
+[00:17:58.560 --> 00:18:03.560]   in diese, in diese Bedingung hier ein.
+[00:18:03.560 --> 00:18:10.560]   Das ergibt dann, also ich versuche jetzt die Vorbedingung zu finden,
+[00:18:10.560 --> 00:18:15.560]   indem ich hier, also die, die schwächste Vorbedingung für S2
+[00:18:15.560 --> 00:18:19.560]   und dieser Aussage Z gleich 10 zu finden, ja?
+[00:18:19.560 --> 00:18:23.560]   Also das will ich hier haben, das mache ich jetzt genauso wie ich das gesagt habe.
+[00:18:23.560 --> 00:18:30.560]   Ich setze das in die, hier ein, also ich setze das E Y minus 3, hier ein.
+[00:18:30.560 --> 00:18:34.560]   Also habe ich dann Y minus 3, muss gleich 10 sein, ja?
+[00:18:34.560 --> 00:18:37.560]   Das ist meine Zwischenbedingung, wenn Sie so wollen, ja?
+[00:18:37.560 --> 00:18:42.560]   Das kann ich jetzt umformen und zum Beispiel eben sagen,
+[00:18:42.560 --> 00:18:46.560]   Y muss hier gleich 7 sein und dann setze ich das wieder ein,
+[00:18:46.560 --> 00:18:54.560]   also X plus 1 minus 3 muss gleich 10 sein, kann ich umsetzen, 12 habe ich X gleich 12, ja?
+[00:18:54.560 --> 00:18:57.560]   Oder wenn das für Sie zu schnell ist, ja?
+[00:18:57.560 --> 00:19:01.560]   Also nachdem wir hier diesen, diesen Punkt erreicht haben, ja?
+[00:19:01.560 --> 00:19:06.560]   Also wir wollen hier, jetzt habe ich Fehler gemacht, eben, tut mir leid, ja?
+[00:19:06.560 --> 00:19:09.560]   Das war ein Fehler, Entschuldigung.
+[00:19:09.560 --> 00:19:12.560]   Sehen Sie das nicht, nicht 10, das muss ja 13 sein, ja?
+[00:19:12.560 --> 00:19:15.560]   So, sehen Sie, da muss das 13 sein, so, ja, so.
+[00:19:15.560 --> 00:19:18.560]   So, stimmt es dann wieder, ja? Danke.
+[00:19:18.560 --> 00:19:20.560]   Ja, so, ja?
+[00:19:20.560 --> 00:19:23.560]   Wenn ich also Y minus 3 ist gleich 10, ja?
+[00:19:23.560 --> 00:19:28.560]   Dann ist das erhöht, kann ich auf beiden Seiten das 3er zuaddieren,
+[00:19:28.560 --> 00:19:32.560]   dann habe ich also Y gleich 13 und dann habe ich hier,
+[00:19:32.560 --> 00:19:37.560]   setze ich diese rechte Seite wieder da ein, dann ist X plus 1 ist gleich 13
+[00:19:37.560 --> 00:19:40.560]   und daraus kriegen wir raus X gleich 12.
+[00:19:40.560 --> 00:19:42.560]   So, ja? So, also, ja?
+[00:19:42.560 --> 00:19:47.560]   Also, wer findet das langweilig, seien Sie mir ehrlich?
+[00:19:47.560 --> 00:19:51.560]   Rechnen Sie mit, wenn es langweilig ist, dann finden Sie bitte
+[00:19:51.560 --> 00:19:54.560]   diese Rechenfehler von mir schneller, ja?
+[00:19:54.560 --> 00:19:58.560]   Okay, so, jetzt haben wir also einzelne Zuweisungen,
+[00:19:58.560 --> 00:20:01.560]   jetzt haben wir Folgen von Zuweisungen,
+[00:20:01.560 --> 00:20:04.560]   wenn ich zwei Statements kann, dann kann ich auch drei machen und so weiter, ja?
+[00:20:04.560 --> 00:20:08.560]   Jetzt, was bleibt noch übrig, um das interessant zu machen?
+[00:20:08.560 --> 00:20:10.560]   Okay, jetzt kommen die IF-Statements.
+[00:20:10.560 --> 00:20:15.560]   So, jetzt zur Erinnerung, also, wir hatten gesagt,
+[00:20:15.560 --> 00:20:19.560]   wir haben hier so ein IF-Statement, also IF oder IF-L-Statement,
+[00:20:19.560 --> 00:20:21.560]   macht keinen Unterschied, ja?
+[00:20:21.560 --> 00:20:24.560]   Und wir sagten so, ein Triple ist gültig,
+[00:20:24.560 --> 00:20:28.560]   wenn es durch Aussagen Q1 und Q2 gibt,
+[00:20:28.560 --> 00:20:34.560]   so dass eben erstens hier der IF-Part oder der IF-Teil,
+[00:20:34.560 --> 00:20:38.560]   der muss gültig sein, also mit P und B und S1
+[00:20:38.560 --> 00:20:46.560]   gilt danach Q1 und der ELS-Part muss ein gültiges Triple ergeben,
+[00:20:46.560 --> 00:20:51.560]   also nicht P und nicht B habe und dann S2 ausführe,
+[00:20:51.560 --> 00:20:54.560]   dann muss danach Q2 gültig sein.
+[00:20:54.560 --> 00:20:59.560]   So, und dann muss gelten nach dem IF-Statement aus Q1 folgt Q
+[00:20:59.560 --> 00:21:01.560]   und aus Q2 folgt Q.
+[00:21:01.560 --> 00:21:05.560]   Und ich empfehle Ihnen das, praktisch so zu merken,
+[00:21:05.560 --> 00:21:09.560]   also ich hatte Ihnen auch ein bisschen anders noch zusammengefasst,
+[00:21:09.560 --> 00:21:12.560]   aber so ist es an sich am einfachsten zu merken,
+[00:21:12.560 --> 00:21:15.560]   weil Sie müssen halt in der Lage sein, zu zeigen,
+[00:21:15.560 --> 00:21:19.560]   dass aus Q1 das Q folgt und aus Q2 folgt das Q.
+[00:21:19.560 --> 00:21:21.560]   So, jetzt haben wir irgendeine Aussage Q
+[00:21:21.560 --> 00:21:26.560]   und jetzt würden wir gerne wissen, was für eine Pre-Condition P brauche ich denn,
+[00:21:26.560 --> 00:21:30.560]   damit nachher, nach der Ausführung dieses IF-Statements,
+[00:21:30.560 --> 00:21:32.560]   die pre-condition gültig ist.
+[00:21:32.560 --> 00:21:37.560]   So, also jetzt können wir folgendes überlegen.
+[00:21:37.560 --> 00:21:39.560]   Wir könnten natürlich hingehen und sagen,
+[00:21:39.560 --> 00:21:43.560]   okay, wenn ich das habe, ja, aus Q1 muss Q folgen
+[00:21:43.560 --> 00:21:46.560]   und aus Q2 muss Q folgen.
+[00:21:46.560 --> 00:21:49.560]   Also können wir doch einfach hingehen und sagen,
+[00:21:49.560 --> 00:21:52.560]   meine Pre-Condition ist so B
+[00:21:52.560 --> 00:21:56.560]   und die Wieckes-Precondition für S1
+[00:21:56.560 --> 00:21:58.560]   und aus nicht B
+[00:21:58.560 --> 00:22:02.560]   und die Wieckes-Precondition für S2 und Q2
+[00:22:02.560 --> 00:22:04.560]   habe ich das dann, ja.
+[00:22:04.560 --> 00:22:09.560]   Und das wäre okay, das wäre gültig, ja,
+[00:22:09.560 --> 00:22:14.560]   aber das würde nicht unseren, nicht unbedingt
+[00:22:14.560 --> 00:22:17.560]   unsere schwächste Vorbedingung sein, ja,
+[00:22:17.560 --> 00:22:21.560]   denn Q1 muss ja stärker sein als Q,
+[00:22:21.560 --> 00:22:23.560]   weil sonst könnten wir ja nicht zeigen,
+[00:22:23.560 --> 00:22:26.560]   dass aus Q1 das Q folgt, ja.
+[00:22:26.560 --> 00:22:29.560]   Und daher ist eine Wieckes-Precondition,
+[00:22:29.560 --> 00:22:34.560]   die ich für Q1 bekomme, stärker oder zumindest genauso stark
+[00:22:34.560 --> 00:22:38.560]   wie die Wieckes-Precondition, die ich für Q bekäme, ja.
+[00:22:38.560 --> 00:22:40.560]   Und genauso haben wir gesehen,
+[00:22:40.560 --> 00:22:44.560]   dass eben Q2,
+[00:22:44.560 --> 00:22:50.560]   Q2 ist auch stärker als Q
+[00:22:50.560 --> 00:22:52.560]   und daher die Wieckes-Precondition,
+[00:22:52.560 --> 00:22:54.560]   die ich für S2
+[00:22:54.560 --> 00:22:57.560]   und die Postcondition Q2, die ich bekomme,
+[00:22:57.560 --> 00:23:00.560]   die ist auch stärker als die Wieckes-Precondition,
+[00:23:00.560 --> 00:23:03.560]   die ich für S2 und Q bekomme, ja.
+[00:23:03.560 --> 00:23:06.560]   Also zumindest ist stärker oder genauso stark.
+[00:23:06.560 --> 00:23:10.560]   Das heißt, die würde also zwar auch unser Ziel,
+[00:23:10.560 --> 00:23:13.560]   würde uns auch ein gültiges Statement geben,
+[00:23:13.560 --> 00:23:15.560]   aber nicht unbedingt eins,
+[00:23:15.560 --> 00:23:18.560]   das nicht unbedingt die schwächste Vorbedingung, ja.
+[00:23:18.560 --> 00:23:23.560]   Also, es heißt, was wir also wirklich brauchen,
+[00:23:23.560 --> 00:23:35.560]   ist nicht, dass wir eben halt diese Postcondition Q benutzen,
+[00:23:35.560 --> 00:23:39.560]   um die Wieckes-Precondition für den IF-Part zu finden
+[00:23:39.560 --> 00:23:41.560]   und dass wir Q benutzen,
+[00:23:41.560 --> 00:23:45.560]   um die Wieckes-Precondition für den ELS-Part zu finden, ja.
+[00:23:45.560 --> 00:23:50.560]   Wenn ich das nehme, ja, dann habe ich die Wieckes-Precondition
+[00:23:50.560 --> 00:23:53.560]   für den ELS-Part bekommen für dieses IF-Statement.
+[00:23:53.560 --> 00:23:56.560]   Weil dann, egal wie ich durch das IF-Statement durchgegangen bin,
+[00:23:56.560 --> 00:23:59.560]   entweder durch den ELS-Part oder den ELS-Part,
+[00:23:59.560 --> 00:24:02.560]   also den IF-Part und den ELS-Part, ja,
+[00:24:02.560 --> 00:24:05.560]   in beiden Fällen erreiche ich einen Zustand,
+[00:24:05.560 --> 00:24:11.560]   aus dem ich dann eben der QD, den Zustand, den ich haben möchte,
+[00:24:11.560 --> 00:24:14.560]   nachdem das IF-Statement ausgeführt wurde, impliziert.
+[00:24:14.560 --> 00:24:17.560]   Ich habe also einen Zustand, den ich benutzen kann,
+[00:24:17.560 --> 00:24:19.560]   um das abzuleiten.
+[00:24:19.560 --> 00:24:21.560]   Und ich habe auch einen Zustand,
+[00:24:21.560 --> 00:24:23.560]   um das ELS-Part zu finden,
+[00:24:23.560 --> 00:24:25.560]   um das ELS-Part zu finden,
+[00:24:25.560 --> 00:24:27.560]   um das ELS-Part zu finden,
+[00:24:27.560 --> 00:24:29.560]   um das ELS-Part zu finden,
+[00:24:29.560 --> 00:24:31.560]   um das ELS-Part zu finden,
+[00:24:31.560 --> 00:24:33.560]   um das ELS-Part zu finden,
+[00:24:33.560 --> 00:24:35.560]   um das ELS-Part zu finden,
+[00:24:35.560 --> 00:24:37.560]   um das ELS-Part zu finden,
+[00:24:37.560 --> 00:24:39.560]   um das ELS-Part zu finden,
+[00:24:39.560 --> 00:24:41.560]   um das ELS-Part zu finden,
+[00:24:41.560 --> 00:24:43.560]   um das ELS-Part zu finden,
+[00:24:43.560 --> 00:24:45.560]   um das ELS-Part zu finden,
+[00:24:45.560 --> 00:24:47.560]   um das ELS-Part zu finden,
+[00:24:47.560 --> 00:24:49.560]   um das ELS-Part zu finden,
+[00:24:49.560 --> 00:24:51.560]   um das ELS-Part zu finden,
+[00:24:51.560 --> 00:24:53.560]   um das ELS-Part zu finden,
+[00:24:53.560 --> 00:24:55.560]   um das ELS-Part zu finden,
+[00:24:55.560 --> 00:24:57.560]   um das ELS-Part zu finden,
+[00:24:57.560 --> 00:24:59.560]   um das ELS-Part zu finden,
+[00:24:59.560 --> 00:25:01.560]   um das ELS-Part zu finden,
+[00:25:01.560 --> 00:25:03.560]   um das ELS-Part zu finden,
+[00:25:03.560 --> 00:25:05.560]   um das ELS-Part zu finden,
+[00:25:05.560 --> 00:25:07.560]   um das ELS-Part zu finden,
+[00:25:07.560 --> 00:25:09.560]   um das ELS-Part zu finden,
+[00:25:09.560 --> 00:25:11.560]   um das ELS-Part zu finden,
+[00:25:11.560 --> 00:25:13.560]   um das ELS-Part zu finden,
+[00:25:13.560 --> 00:25:15.560]   um das ELS-Part zu finden,
+[00:25:15.560 --> 00:25:17.560]   um das ELS-Part zu finden,
+[00:25:17.560 --> 00:25:19.560]   um das ELS-Part zu finden,
+[00:25:19.560 --> 00:25:21.560]   um das ELS-Part zu finden,
+[00:25:21.560 --> 00:25:23.560]   um das ELS-Part zu finden,
+[00:25:23.560 --> 00:25:25.560]   um das ELS-Part zu finden,
+[00:25:25.560 --> 00:25:27.560]   um das ELS-Part zu finden,
+[00:25:27.560 --> 00:25:29.560]   um das ELS-Part zu finden,
+[00:25:29.560 --> 00:25:31.560]   um das ELS-Part zu finden,
+[00:25:31.560 --> 00:25:33.560]   um das ELS-Part zu finden,
+[00:25:33.560 --> 00:25:35.560]   um das ELS-Part zu finden,
+[00:25:35.560 --> 00:25:37.560]   um das ELS-Part zu finden,
+[00:25:37.560 --> 00:25:39.560]   um das ELS-Part zu finden,
+[00:25:39.560 --> 00:25:41.560]   um das ELS-Part zu finden,
+[00:25:41.560 --> 00:25:43.560]   um das ELS-Part zu finden,
+[00:25:43.560 --> 00:25:45.560]   um das ELS-Part zu finden,
+[00:25:45.560 --> 00:25:47.560]   um das ELS-Part zu finden,
+[00:25:47.560 --> 00:25:49.560]   um das ELS-Part zu finden,
+[00:25:49.560 --> 00:25:51.560]   um das ELS-Part zu finden,
+[00:25:51.560 --> 00:25:53.560]   um das ELS-Part zu finden,
+[00:25:53.560 --> 00:25:55.560]   um das ELS-Part zu finden,
+[00:25:55.560 --> 00:25:57.560]   um das ELS-Part zu finden,
+[00:25:57.560 --> 00:25:59.560]   um das ELS-Part zu finden,
+[00:25:59.560 --> 00:26:01.560]   um das ELS-Part zu finden,
+[00:26:01.560 --> 00:26:03.560]   um das ELS-Part zu finden,
+[00:26:03.560 --> 00:26:05.560]   um das ELS-Part zu finden,
+[00:26:05.560 --> 00:26:07.560]   um das ELS-Part zu finden,
+[00:26:07.560 --> 00:26:09.560]   um das ELS-Part zu finden,
+[00:26:09.560 --> 00:26:11.560]   um das ELS-Part zu finden,
+[00:26:11.560 --> 00:26:13.560]   um das ELS-Part zu finden,
+[00:26:13.560 --> 00:26:15.560]   um das ELS-Part zu finden,
+[00:26:15.560 --> 00:26:17.560]   um das ELS-Part zu finden,
+[00:26:17.560 --> 00:26:19.560]   um das ELS-Part zu finden,
+[00:26:19.560 --> 00:26:21.560]   um das ELS-Part zu finden,
+[00:26:21.560 --> 00:26:23.560]   um das ELS-Part zu finden,
+[00:26:23.560 --> 00:26:25.560]   um das ELS-Part zu finden,
+[00:26:25.560 --> 00:26:27.560]   um das ELS-Part zu finden,
+[00:26:27.560 --> 00:26:29.560]   um das ELS-Part zu finden,
+[00:26:29.560 --> 00:26:31.560]   um das ELS-Part zu finden,
+[00:26:31.560 --> 00:26:33.560]   um das ELS-Part zu finden,
+[00:26:33.560 --> 00:26:35.560]   um das ELS-Part zu finden,
+[00:26:35.560 --> 00:26:37.560]   um das ELS-Part zu finden,
+[00:26:37.560 --> 00:26:39.560]   um das ELS-Part zu finden,
+[00:26:39.560 --> 00:26:41.560]   um das ELS-Part zu finden,
+[00:26:41.560 --> 00:26:43.560]   um das ELS-Part zu finden,
+[00:26:43.560 --> 00:26:45.560]   um das ELS-Part zu finden,
+[00:26:45.560 --> 00:26:47.560]   um das ELS-Part zu finden,
+[00:26:47.560 --> 00:26:49.560]   um das ELS-Part zu finden,
+[00:26:49.560 --> 00:26:51.560]   um das ELS-Part zu finden,
+[00:26:51.560 --> 00:26:53.560]   um das ELS-Part zu finden,
+[00:26:53.560 --> 00:26:55.560]   um das ELS-Part zu finden,
+[00:26:55.560 --> 00:26:57.560]   um das ELS-Part zu finden,
+[00:26:57.560 --> 00:26:59.560]   um das ELS-Part zu finden,
+[00:26:59.560 --> 00:27:01.560]   um das ELS-Part zu finden,
+[00:27:01.560 --> 00:27:03.560]   um das ELS-Part zu finden,
+[00:27:03.560 --> 00:27:05.560]   um das ELS-Part zu finden,
+[00:27:05.560 --> 00:27:07.560]   um das ELS-Part zu finden,
+[00:27:07.560 --> 00:27:09.560]   um das ELS-Part zu finden,
+[00:27:09.560 --> 00:27:11.560]   um das ELS-Part zu finden,
+[00:27:11.560 --> 00:27:13.560]   um das ELS-Part zu finden,
+[00:27:13.560 --> 00:27:15.560]   um das ELS-Part zu finden,
+[00:27:15.560 --> 00:27:17.560]   um das ELS-Part zu finden,
+[00:27:17.560 --> 00:27:19.560]   um das ELS-Part zu finden,
+[00:27:19.560 --> 00:27:21.560]   um das ELS-Part zu finden,
+[00:27:21.560 --> 00:27:23.560]   um das ELS-Part zu finden,
+[00:27:23.560 --> 00:27:25.560]   um das ELS-Part zu finden,
+[00:27:25.560 --> 00:27:27.560]   um das ELS-Part zu finden,
+[00:27:27.560 --> 00:27:29.560]   um das ELS-Part zu finden,
+[00:27:29.560 --> 00:27:31.560]   um das ELS-Part zu finden,
+[00:27:31.560 --> 00:27:33.560]   um das ELS-Part zu finden,
+[00:27:33.560 --> 00:27:35.560]   um das ELS-Part zu finden,
+[00:27:35.560 --> 00:27:37.560]   um das ELS-Part zu finden,
+[00:27:37.560 --> 00:27:39.560]   um das ELS-Part zu finden,
+[00:27:39.560 --> 00:27:41.560]   um das ELS-Part zu finden,
+[00:27:41.560 --> 00:27:43.560]   um das ELS-Part zu finden,
+[00:27:43.560 --> 00:27:45.560]   um das ELS-Part zu finden,
+[00:27:45.560 --> 00:27:47.560]   um das ELS-Part zu finden,
+[00:27:47.560 --> 00:27:49.560]   um das ELS-Part zu finden,
+[00:27:49.560 --> 00:27:51.560]   um das ELS-Part zu finden,
+[00:27:51.560 --> 00:27:53.560]   um das ELS-Part zu finden,
+[00:27:53.560 --> 00:27:55.560]   um das ELS-Part zu finden,
+[00:27:55.560 --> 00:27:57.560]   um das ELS-Part zu finden,
+[00:27:57.560 --> 00:27:59.560]   um das ELS-Part zu finden,
+[00:27:59.560 --> 00:28:01.560]   um das ELS-Part zu finden,
+[00:28:01.560 --> 00:28:03.560]   um das ELS-Part zu finden,
+[00:28:03.560 --> 00:28:05.560]   um das ELS-Part zu finden,
+[00:28:05.560 --> 00:28:07.560]   um das ELS-Part zu finden,
+[00:28:07.560 --> 00:28:09.560]   um das ELS-Part zu finden,
+[00:28:09.560 --> 00:28:11.560]   um das ELS-Part zu finden,
+[00:28:11.560 --> 00:28:13.560]   um das ELS-Part zu finden,
+[00:28:13.560 --> 00:28:15.560]   um das ELS-Part zu finden,
+[00:28:15.560 --> 00:28:17.560]   um das ELS-Part zu finden,
+[00:28:17.560 --> 00:28:19.560]   um das ELS-Part zu finden,
+[00:28:19.560 --> 00:28:21.560]   um das ELS-Part zu finden,
+[00:28:21.560 --> 00:28:23.560]   um das ELS-Part zu finden,
+[00:28:23.560 --> 00:28:25.560]   um das ELS-Part zu finden,
+[00:28:25.560 --> 00:28:27.560]   um das ELS-Part zu finden,
+[00:28:27.560 --> 00:28:29.560]   um das ELS-Part zu finden,
+[00:28:29.560 --> 00:28:31.560]   um das ELS-Part zu finden,
+[00:28:31.560 --> 00:28:33.560]   um das ELS-Part zu finden,
+[00:28:33.560 --> 00:28:35.560]   um das ELS-Part zu finden,
+[00:28:35.560 --> 00:28:37.560]   um das ELS-Part zu finden,
+[00:28:37.560 --> 00:28:39.560]   um das ELS-Part zu finden,
+[00:28:39.560 --> 00:28:41.560]   um das ELS-Part zu finden,
+[00:28:41.560 --> 00:28:43.560]   um das ELS-Part zu finden,
+[00:28:43.560 --> 00:28:45.560]   um das ELS-Part zu finden,
+[00:28:45.560 --> 00:28:47.560]   um das ELS-Part zu finden,
+[00:28:47.560 --> 00:28:49.560]   um das ELS-Part zu finden,
+[00:28:49.560 --> 00:28:51.560]   um das ELS-Part zu finden,
+[00:28:51.560 --> 00:28:53.560]   um das ELS-Part zu finden,
+[00:28:53.560 --> 00:28:55.560]   um das ELS-Part zu finden,
+[00:28:55.560 --> 00:28:57.560]   um das ELS-Part zu finden,
+[00:28:57.560 --> 00:28:59.560]   um das ELS-Part zu finden,
+[00:28:59.560 --> 00:29:01.560]   um das ELS-Part zu finden,
+[00:29:01.560 --> 00:29:03.560]   um das ELS-Part zu finden,
+[00:29:03.560 --> 00:29:05.560]   um das ELS-Part zu finden,
+[00:29:05.560 --> 00:29:07.560]   um das ELS-Part zu finden,
+[00:29:07.560 --> 00:29:09.560]   um das ELS-Part zu finden,
+[00:29:09.560 --> 00:29:11.560]   um das ELS-Part zu finden,
+[00:29:11.560 --> 00:29:13.560]   um das ELS-Part zu finden,
+[00:29:13.560 --> 00:29:15.560]   um das ELS-Part zu finden,
+[00:29:15.560 --> 00:29:17.560]   um das ELS-Part zu finden,
+[00:29:17.560 --> 00:29:19.560]   um das ELS-Part zu finden,
+[00:29:19.560 --> 00:29:21.560]   um das ELS-Part zu finden,
+[00:29:21.560 --> 00:29:23.560]   um das ELS-Part zu finden,
+[00:29:23.560 --> 00:29:25.560]   um das ELS-Part zu finden,
+[00:29:25.560 --> 00:29:27.560]   um das ELS-Part zu finden,
+[00:29:27.560 --> 00:29:29.560]   um das ELS-Part zu finden,
+[00:29:29.560 --> 00:29:31.560]   um das ELS-Part zu finden,
+[00:29:31.560 --> 00:29:33.560]   um das ELS-Part zu finden,
+[00:29:33.560 --> 00:29:35.560]   um das ELS-Part zu finden,
+[00:29:35.560 --> 00:29:37.560]   um das ELS-Part zu finden,
+[00:29:37.560 --> 00:29:39.560]   um das ELS-Part zu finden,
+[00:29:39.560 --> 00:29:41.560]   um das ELS-Part zu finden,
+[00:29:41.560 --> 00:29:43.560]   um das ELS-Part zu finden,
+[00:29:43.560 --> 00:29:45.560]   um das ELS-Part zu finden,
+[00:29:45.560 --> 00:29:47.560]   um das ELS-Part zu finden,
+[00:29:47.560 --> 00:29:49.560]   um das ELS-Part zu finden,
+[00:29:49.560 --> 00:29:51.560]   um das ELS-Part zu finden,
+[00:29:51.560 --> 00:29:53.560]   um das ELS-Part zu finden,
+[00:29:53.560 --> 00:29:55.560]   um das ELS-Part zu finden,
+[00:29:55.560 --> 00:29:57.560]   um das ELS-Part zu finden,
+[00:29:57.560 --> 00:29:59.560]   um das ELS-Part zu finden,
+[00:29:59.560 --> 00:30:01.560]   um das ELS-Part zu finden,
+[00:30:01.560 --> 00:30:03.560]   um das ELS-Part zu finden,
+[00:30:03.560 --> 00:30:05.560]   um das ELS-Part zu finden,
+[00:30:05.560 --> 00:30:07.560]   um das ELS-Part zu finden,
+[00:30:07.560 --> 00:30:09.560]   um das ELS-Part zu finden,
+[00:30:09.560 --> 00:30:11.560]   um das ELS-Part zu finden,
+[00:30:11.560 --> 00:30:13.560]   um das ELS-Part zu finden,
+[00:30:13.560 --> 00:30:15.560]   um das ELS-Part zu finden,
+[00:30:15.560 --> 00:30:17.560]   um das ELS-Part zu finden,
+[00:30:17.560 --> 00:30:19.560]   um das ELS-Part zu finden,
+[00:30:19.560 --> 00:30:21.560]   um das ELS-Part zu finden,
+[00:30:21.560 --> 00:30:23.560]   um das ELS-Part zu finden,
+[00:30:23.560 --> 00:30:25.560]   um das ELS-Part zu finden,
+[00:30:25.560 --> 00:30:27.560]   um das ELS-Part zu finden,
+[00:30:27.560 --> 00:30:29.560]   um das ELS-Part zu finden,
+[00:30:29.560 --> 00:30:31.560]   um das ELS-Part zu finden,
+[00:30:31.560 --> 00:30:33.560]   um das ELS-Part zu finden,
+[00:30:33.560 --> 00:30:35.560]   um das ELS-Part zu finden,
+[00:30:35.560 --> 00:30:37.560]   um das ELS-Part zu finden,
+[00:30:37.560 --> 00:30:39.560]   um das ELS-Part zu finden,
+[00:30:39.560 --> 00:30:41.560]   um das ELS-Part zu finden,
+[00:30:41.560 --> 00:30:43.560]   um das ELS-Part zu finden,
+[00:30:43.560 --> 00:30:45.560]   um das ELS-Part zu finden,
+[00:30:45.560 --> 00:30:47.560]   um das ELS-Part zu finden,
+[00:30:47.560 --> 00:30:49.560]   um das ELS-Part zu finden,
+[00:30:49.560 --> 00:30:51.560]   um das ELS-Part zu finden,
+[00:30:51.560 --> 00:30:53.560]   um das ELS-Part zu finden,
+[00:30:53.560 --> 00:30:55.560]   um das ELS-Part zu finden,
+[00:30:55.560 --> 00:30:57.560]   um das ELS-Part zu finden,
+[00:30:57.560 --> 00:30:59.560]   um das ELS-Part zu finden,
+[00:30:59.560 --> 00:31:01.560]   um das ELS-Part zu finden,
+[00:31:01.560 --> 00:31:03.560]   um das ELS-Part zu finden,
+[00:31:03.560 --> 00:31:05.560]   um das ELS-Part zu finden,
+[00:31:05.560 --> 00:31:07.560]   um das ELS-Part zu finden,
+[00:31:07.560 --> 00:31:09.560]   um das ELS-Part zu finden,
+[00:31:09.560 --> 00:31:11.560]   um das ELS-Part zu finden,
+[00:31:11.560 --> 00:31:13.560]   um das ELS-Part zu finden,
+[00:31:13.560 --> 00:31:15.560]   um das ELS-Part zu finden,
+[00:31:15.560 --> 00:31:17.560]   um das ELS-Part zu finden,
+[00:31:17.560 --> 00:31:19.560]   um das ELS-Part zu finden,
+[00:31:19.560 --> 00:31:21.560]   um das ELS-Part zu finden,
+[00:31:21.560 --> 00:31:23.560]   um das ELS-Part zu finden,
+[00:31:23.560 --> 00:31:25.560]   um das ELS-Part zu finden,
+[00:31:25.560 --> 00:31:27.560]   um das ELS-Part zu finden,
+[00:31:27.560 --> 00:31:29.560]   um das ELS-Part zu finden,
+[00:31:29.560 --> 00:31:31.560]   um das ELS-Part zu finden,
+[00:31:31.560 --> 00:31:33.560]   um das ELS-Part zu finden,
+[00:31:33.560 --> 00:31:35.560]   um das ELS-Part zu finden,
+[00:31:35.560 --> 00:31:37.560]   um das ELS-Part zu finden,
+[00:31:37.560 --> 00:31:39.560]   um das ELS-Part zu finden,
+[00:31:39.560 --> 00:31:41.560]   um das ELS-Part zu finden,
+[00:31:41.560 --> 00:31:43.560]   um das ELS-Part zu finden,
+[00:31:43.560 --> 00:31:45.560]   um das ELS-Part zu finden,
+[00:31:45.560 --> 00:31:47.560]   um das ELS-Part zu finden,
+[00:31:47.560 --> 00:31:49.560]   um das ELS-Part zu finden,
+[00:31:49.560 --> 00:31:51.560]   um das ELS-Part zu finden,
+[00:31:51.560 --> 00:31:53.560]   um das ELS-Part zu finden,
+[00:31:53.560 --> 00:31:55.560]   um das ELS-Part zu finden,
+[00:31:55.560 --> 00:31:57.560]   um das ELS-Part zu finden,
+[00:31:57.560 --> 00:31:59.560]   um das ELS-Part zu finden,
+[00:31:59.560 --> 00:32:01.560]   um das ELS-Part zu finden,
+[00:32:01.560 --> 00:32:03.560]   um das ELS-Part zu finden,
+[00:32:03.560 --> 00:32:05.560]   um das ELS-Part zu finden,
+[00:32:05.560 --> 00:32:07.560]   um das ELS-Part zu finden,
+[00:32:07.560 --> 00:32:09.560]   um das ELS-Part zu finden,
+[00:32:09.560 --> 00:32:11.560]   um das ELS-Part zu finden,
+[00:32:11.560 --> 00:32:13.560]   um das ELS-Part zu finden,
+[00:32:13.560 --> 00:32:15.560]   um das ELS-Part zu finden,
+[00:32:15.560 --> 00:32:17.560]   um das ELS-Part zu finden,
+[00:32:17.560 --> 00:32:19.560]   um das ELS-Part zu finden,
+[00:32:19.560 --> 00:32:21.560]   um das ELS-Part zu finden,
+[00:32:21.560 --> 00:32:23.560]   um das ELS-Part zu finden,
+[00:32:23.560 --> 00:32:25.560]   um das ELS-Part zu finden,
+[00:32:25.560 --> 00:32:27.560]   um das ELS-Part zu finden,
+[00:32:27.560 --> 00:32:29.560]   um das ELS-Part zu finden,
+[00:32:29.560 --> 00:32:31.560]   um das ELS-Part zu finden,
+[00:32:31.560 --> 00:32:33.560]   um das ELS-Part zu finden,
+[00:32:33.560 --> 00:32:35.560]   um das ELS-Part zu finden,
+[00:32:35.560 --> 00:32:37.560]   um das ELS-Part zu finden,
+[00:32:37.560 --> 00:32:39.560]   um das ELS-Part zu finden,
+[00:32:39.560 --> 00:32:41.560]   um das ELS-Part zu finden,
+[00:32:41.560 --> 00:32:43.560]   um das ELS-Part zu finden,
+[00:32:43.560 --> 00:32:45.560]   um das ELS-Part zu finden,
+[00:32:45.560 --> 00:32:47.560]   um das ELS-Part zu finden,
+[00:32:47.560 --> 00:32:49.560]   um das ELS-Part zu finden,
+[00:32:49.560 --> 00:32:51.560]   um das ELS-Part zu finden,
+[00:32:51.560 --> 00:32:53.560]   um das ELS-Part zu finden,
+[00:32:53.560 --> 00:32:55.560]   um das ELS-Part zu finden,
+[00:32:55.560 --> 00:32:57.560]   um das ELS-Part zu finden,
+[00:32:57.560 --> 00:32:59.560]   um das ELS-Part zu finden,
+[00:32:59.560 --> 00:33:01.560]   um das ELS-Part zu finden,
+[00:33:01.560 --> 00:33:03.560]   um das ELS-Part zu finden,
+[00:33:03.560 --> 00:33:05.560]   um das ELS-Part zu finden,
+[00:33:05.560 --> 00:33:07.560]   um das ELS-Part zu finden,
+[00:33:07.560 --> 00:33:09.560]   um das ELS-Part zu finden,
+[00:33:09.560 --> 00:33:11.560]   um das ELS-Part zu finden,
+[00:33:11.560 --> 00:33:13.560]   um das ELS-Part zu finden,
+[00:33:13.560 --> 00:33:15.560]   um das ELS-Part zu finden,
+[00:33:15.560 --> 00:33:17.560]   um das ELS-Part zu finden,
+[00:33:17.560 --> 00:33:19.560]   um das ELS-Part zu finden,
+[00:33:19.560 --> 00:33:21.560]   um das ELS-Part zu finden,
+[00:33:21.560 --> 00:33:23.560]   um das ELS-Part zu finden,
+[00:33:23.560 --> 00:33:25.560]   um das ELS-Part zu finden,
+[00:33:25.560 --> 00:33:27.560]   um das ELS-Part zu finden,
+[00:33:27.560 --> 00:33:29.560]   um das ELS-Part zu finden,
+[00:33:29.560 --> 00:33:31.560]   um das ELS-Part zu finden,
+[00:33:31.560 --> 00:33:33.560]   um das ELS-Part zu finden,
+[00:33:33.560 --> 00:33:35.560]   um das ELS-Part zu finden,
+[00:33:35.560 --> 00:33:37.560]   um das ELS-Part zu finden,
+[00:33:37.560 --> 00:33:39.560]   um das ELS-Part zu finden,
+[00:33:39.560 --> 00:33:41.560]   um das ELS-Part zu finden,
+[00:33:41.560 --> 00:33:43.560]   um das ELS-Part zu finden,
+[00:33:43.560 --> 00:33:45.560]   um das ELS-Part zu finden,
+[00:33:45.560 --> 00:33:47.560]   um das ELS-Part zu finden,
+[00:33:47.560 --> 00:33:49.560]   um das ELS-Part zu finden,
+[00:33:49.560 --> 00:33:51.560]   um das ELS-Part zu finden,
+[00:33:51.560 --> 00:33:53.560]   um das ELS-Part zu finden,
+[00:33:53.560 --> 00:33:55.560]   um das ELS-Part zu finden,
+[00:33:55.560 --> 00:33:57.560]   um das ELS-Part zu finden,
+[00:33:57.560 --> 00:33:59.560]   um das ELS-Part zu finden,
+[00:33:59.560 --> 00:34:01.560]   um das ELS-Part zu finden,
+[00:34:01.560 --> 00:34:03.560]   um das ELS-Part zu finden,
+[00:34:03.560 --> 00:34:05.560]   um das ELS-Part zu finden,
+[00:34:05.560 --> 00:34:07.560]   um das ELS-Part zu finden,
+[00:34:07.560 --> 00:34:09.560]   um das ELS-Part zu finden,
+[00:34:09.560 --> 00:34:11.560]   um das ELS-Part zu finden,
+[00:34:11.560 --> 00:34:13.560]   um das ELS-Part zu finden,
+[00:34:13.560 --> 00:34:15.560]   um das ELS-Part zu finden,
+[00:34:15.560 --> 00:34:17.560]   um das ELS-Part zu finden,
+[00:34:17.560 --> 00:34:19.560]   um das ELS-Part zu finden,
+[00:34:19.560 --> 00:34:21.560]   um das ELS-Part zu finden,
+[00:34:21.560 --> 00:34:23.560]   um das ELS-Part zu finden,
+[00:34:23.560 --> 00:34:25.560]   um das ELS-Part zu finden,
+[00:34:25.560 --> 00:34:27.560]   um das ELS-Part zu finden,
+[00:34:27.560 --> 00:34:29.560]   um das ELS-Part zu finden,
+[00:34:29.560 --> 00:34:31.560]   um das ELS-Part zu finden,
+[00:34:31.560 --> 00:34:33.560]   um das ELS-Part zu finden,
+[00:34:33.560 --> 00:34:35.560]   um das ELS-Part zu finden,
+[00:34:35.560 --> 00:34:37.560]   um das ELS-Part zu finden,
+[00:34:37.560 --> 00:34:39.560]   um das ELS-Part zu finden,
+[00:34:39.560 --> 00:34:41.560]   um das ELS-Part zu finden,
+[00:34:41.560 --> 00:34:43.560]   um das ELS-Part zu finden,
+[00:34:43.560 --> 00:34:45.560]   um das ELS-Part zu finden,
+[00:34:45.560 --> 00:34:47.560]   um das ELS-Part zu finden,
+[00:34:47.560 --> 00:34:49.560]   um das ELS-Part zu finden,
+[00:34:49.560 --> 00:34:51.560]   um das ELS-Part zu finden,
+[00:34:51.560 --> 00:34:53.560]   um das ELS-Part zu finden,
+[00:34:53.560 --> 00:34:55.560]   um das ELS-Part zu finden,
+[00:34:55.560 --> 00:34:57.560]   um das ELS-Part zu finden,
+[00:34:57.560 --> 00:34:59.560]   um das ELS-Part zu finden,
+[00:34:59.560 --> 00:35:01.560]   um das ELS-Part zu finden,
+[00:35:01.560 --> 00:35:03.560]   um das ELS-Part zu finden,
+[00:35:03.560 --> 00:35:05.560]   um das ELS-Part zu finden,
+[00:35:05.560 --> 00:35:07.560]   um das ELS-Part zu finden,
+[00:35:07.560 --> 00:35:09.560]   um das ELS-Part zu finden,
+[00:35:09.560 --> 00:35:11.560]   um das ELS-Part zu finden,
+[00:35:11.560 --> 00:35:13.560]   um das ELS-Part zu finden,
+[00:35:13.560 --> 00:35:15.560]   um das ELS-Part zu finden,
+[00:35:15.560 --> 00:35:17.560]   um das ELS-Part zu finden,
+[00:35:17.560 --> 00:35:19.560]   um das ELS-Part zu finden,
+[00:35:19.560 --> 00:35:21.560]   um das ELS-Part zu finden,
+[00:35:21.560 --> 00:35:23.560]   um das ELS-Part zu finden,
+[00:35:23.560 --> 00:35:25.560]   um das ELS-Part zu finden,
+[00:35:25.560 --> 00:35:27.560]   um das ELS-Part zu finden,
+[00:35:27.560 --> 00:35:29.560]   um das ELS-Part zu finden,
+[00:35:29.560 --> 00:35:31.560]   um das ELS-Part zu finden,
+[00:35:31.560 --> 00:35:33.560]   um das ELS-Part zu finden,
+[00:35:33.560 --> 00:35:35.560]   um das ELS-Part zu finden,
+[00:35:35.560 --> 00:35:37.560]   um das ELS-Part zu finden,
+[00:35:37.560 --> 00:35:39.560]   um das ELS-Part zu finden,
+[00:35:39.560 --> 00:35:41.560]   um das ELS-Part zu finden,
+[00:35:41.560 --> 00:35:43.560]   um das ELS-Part zu finden,
+[00:35:43.560 --> 00:35:45.560]   um das ELS-Part zu finden,
+[00:35:45.560 --> 00:35:47.560]   um das ELS-Part zu finden,
+[00:35:47.560 --> 00:35:49.560]   um das ELS-Part zu finden,
+[00:35:49.560 --> 00:35:51.560]   um das ELS-Part zu finden,
+[00:35:51.560 --> 00:35:53.560]   um das ELS-Part zu finden,
+[00:35:53.560 --> 00:35:55.560]   um das ELS-Part zu finden,
+[00:35:55.560 --> 00:35:57.560]   um das ELS-Part zu finden,
+[00:35:57.560 --> 00:35:59.560]   um das ELS-Part zu finden,
+[00:35:59.560 --> 00:36:01.560]   um das ELS-Part zu finden,
+[00:36:01.560 --> 00:36:03.560]   um das ELS-Part zu finden,
+[00:36:03.560 --> 00:36:05.560]   um das ELS-Part zu finden,
+[00:36:05.560 --> 00:36:07.560]   um das ELS-Part zu finden,
+[00:36:07.560 --> 00:36:09.560]   um das ELS-Part zu finden,
+[00:36:09.560 --> 00:36:11.560]   um das ELS-Part zu finden,
+[00:36:11.560 --> 00:36:13.560]   um das ELS-Part zu finden,
+[00:36:13.560 --> 00:36:15.560]   um das ELS-Part zu finden,
+[00:36:15.560 --> 00:36:17.560]   um das ELS-Part zu finden,
+[00:36:17.560 --> 00:36:19.560]   um das ELS-Part zu finden,
+[00:36:19.560 --> 00:36:21.560]   um das ELS-Part zu finden,
+[00:36:21.560 --> 00:36:23.560]   um das ELS-Part zu finden,
+[00:36:23.560 --> 00:36:25.560]   um das ELS-Part zu finden,
+[00:36:25.560 --> 00:36:27.560]   um das ELS-Part zu finden,
+[00:36:27.560 --> 00:36:29.560]   um danach dieses Statement zu zeigen,
+[00:36:29.560 --> 00:36:31.560]   dass das ein gültiges Tupel ist,
+[00:36:31.560 --> 00:36:33.560]   und zu zeigen, dass dieses Statement
+[00:36:33.560 --> 00:36:35.560]   die gewünschte Aussage "Q" mit sich bringt.
+[00:36:35.560 --> 00:36:37.560]   Also, wenn Sie rückwärts schließen,
+[00:36:37.560 --> 00:36:39.560]   dann wollen Sie eben ein "P" finden,
+[00:36:39.560 --> 00:36:41.560]   dass gerade noch gültig ist,
+[00:36:41.560 --> 00:36:43.560]   dass also die schwächste Vorbedingung ist,
+[00:36:43.560 --> 00:36:45.560]   weil dann haben Sie das gezeigt,
+[00:36:45.560 --> 00:36:47.560]   was da am besten,
+[00:36:47.560 --> 00:36:49.560]   oder das für Sie am einfachsten macht.
+[00:36:49.560 --> 00:36:51.560]   Also, ich habe Ihnen noch ein weiteres Beispiel,
+[00:36:51.560 --> 00:36:53.560]   das ist ein Beispiel,
+[00:36:53.560 --> 00:36:55.560]   das Sie in der letzten Video-Szene haben,
+[00:36:55.560 --> 00:36:57.560]   ich habe Ihnen noch ein weiteres Beispiel,
+[00:36:57.560 --> 00:36:59.560]   auf die Slides gelegt,
+[00:36:59.560 --> 00:37:01.560]   die Sie auf dem Web finden.
+[00:37:01.560 --> 00:37:03.560]   Gibt dann noch ein paar kleinere Komplikationen,
+[00:37:03.560 --> 00:37:05.560]   die Sie eigentlich mehr so aus der
+[00:37:05.560 --> 00:37:07.560]   Nomenklatur ergeben.
+[00:37:07.560 --> 00:37:09.560]   Wenn Sie sich das hier angucken,
+[00:37:09.560 --> 00:37:11.560]   aber die sind alle trivial,
+[00:37:11.560 --> 00:37:13.560]   haben hier ein "setzen Sie W
+[00:37:13.560 --> 00:37:15.560]   zu X plus Y"
+[00:37:15.560 --> 00:37:17.560]   und Sie wollen am Ende
+[00:37:17.560 --> 00:37:19.560]   eine bestimmte Aussage über W.
+[00:37:19.560 --> 00:37:21.560]   Jetzt haben wir gesehen,
+[00:37:21.560 --> 00:37:23.560]   wenn wir so vorwärts schließen,
+[00:37:23.560 --> 00:37:25.560]   dann können wir einfach hingehen und sagen,
+[00:37:25.560 --> 00:37:27.560]   okay, hier das W ist X plus Y,
+[00:37:27.560 --> 00:37:29.560]   also kann ich das da entsprechend einsetzen,
+[00:37:29.560 --> 00:37:31.560]   hier habe ich das
+[00:37:31.560 --> 00:37:33.560]   als Post Condition,
+[00:37:33.560 --> 00:37:35.560]   jetzt habe ich X gleich 4,
+[00:37:35.560 --> 00:37:37.560]   also kann ich das hier einsetzen,
+[00:37:37.560 --> 00:37:39.560]   als Post Condition,
+[00:37:39.560 --> 00:37:41.560]   weiß ja, dass das gilt,
+[00:37:41.560 --> 00:37:43.560]   und dann habe ich das eingesetzt,
+[00:37:43.560 --> 00:37:45.560]   dann habe ich hier aufgrund der Statements,
+[00:37:45.560 --> 00:37:47.560]   die ich hatte, als Post Condition,
+[00:37:47.560 --> 00:37:49.560]   das W ist gleich X plus Y
+[00:37:49.560 --> 00:37:51.560]   und X gleich 4,
+[00:37:51.560 --> 00:37:53.560]   und Y gleich 4.
+[00:37:53.560 --> 00:37:55.560]   Und jetzt könnte man
+[00:37:55.560 --> 00:37:57.560]   schnell falsch schließen,
+[00:37:57.560 --> 00:37:59.560]   dass dieses W den Wert 7
+[00:37:59.560 --> 00:38:01.560]   hätte, weil X ist ja 4
+[00:38:01.560 --> 00:38:03.560]   und Y ist ja 3.
+[00:38:03.560 --> 00:38:05.560]   Und wenn wir das uns so anschauen,
+[00:38:05.560 --> 00:38:07.560]   dann haben wir halt ein Fehler gemacht,
+[00:38:07.560 --> 00:38:09.560]   weil das X plus Y,
+[00:38:09.560 --> 00:38:11.560]   das wir hier benutzt haben, um W zu setzen,
+[00:38:11.560 --> 00:38:13.560]   war natürlich ein X
+[00:38:13.560 --> 00:38:15.560]   plus Y mit anderen Wärten.
+[00:38:15.560 --> 00:38:17.560]   Und deswegen unterscheiden wir
+[00:38:17.560 --> 00:38:19.560]   zwischen den verschiedenen
+[00:38:19.560 --> 00:38:21.560]   Varianten,
+[00:38:21.560 --> 00:38:23.560]   weil diese Werte,
+[00:38:23.560 --> 00:38:25.560]   die wir da vorher benutzt haben,
+[00:38:25.560 --> 00:38:27.560]   sind nicht unbedingt die, die nachher
+[00:38:27.560 --> 00:38:29.560]   gültig sind. Also wir könnten
+[00:38:29.560 --> 00:38:31.560]   hingehen und zum Beispiel sagen,
+[00:38:31.560 --> 00:38:33.560]   jetzt wird ja ein, dass das hier,
+[00:38:33.560 --> 00:38:35.560]   das X ist das, das hier oben eingesetzt
+[00:38:35.560 --> 00:38:37.560]   wurde, oder wir können das X
+[00:38:37.560 --> 00:38:39.560]   alt nennen, oder wir können das
+[00:38:39.560 --> 00:38:41.560]   irgendeinen anderen Namen geben.
+[00:38:41.560 --> 00:38:43.560]   Das ist einfach ein Weg,
+[00:38:43.560 --> 00:38:45.560]   das zu machen.
+[00:38:45.560 --> 00:38:47.560]   Oder Sie können einfach ganz andere
+[00:38:47.560 --> 00:38:49.560]   Namen sich da ausdenken,
+[00:38:49.560 --> 00:38:51.560]   um das ebenso zu machen.
+[00:38:51.560 --> 00:38:53.560]   Also das ist,
+[00:38:53.560 --> 00:38:55.560]   und das so können Sie dann auch zeigen,
+[00:38:55.560 --> 00:38:57.560]   dass der Austausch zwischen zwei Werten
+[00:38:57.560 --> 00:38:59.560]   funktioniert. Und die Pol machen wir
+[00:38:59.560 --> 00:39:01.560]   jetzt aber nicht, weil ich habe noch eine
+[00:39:01.560 --> 00:39:03.560]   andere Sache für Sie, die ich Ihnen noch
+[00:39:03.560 --> 00:39:05.560]   zeigen will. So, weil nämlich einige
+[00:39:05.560 --> 00:39:07.560]   von Ihnen haben mir gesagt, dass die Programme,
+[00:39:07.560 --> 00:39:09.560]   die Sie schreiben können, doch sehr langweilig
+[00:39:09.560 --> 00:39:11.560]   werden. Und das kann ich ja im Prinzip
+[00:39:11.560 --> 00:39:13.560]   verstehen, weil Sie haben eben da nicht
+[00:39:13.560 --> 00:39:15.560]   so viele Möglichkeiten,
+[00:39:15.560 --> 00:39:17.560]   irgendwas auszudrücken.
+[00:39:17.560 --> 00:39:19.560]   Und darum machen wir hier
+[00:39:19.560 --> 00:39:21.560]   einen Schub, wie
+[00:39:21.560 --> 00:39:23.560]   können wir denn etwas, unsere Programme
+[00:39:23.560 --> 00:39:25.560]   etwas interaktiver machen.
+[00:39:25.560 --> 00:39:27.560]   Also ein interaktives Programm ist
+[00:39:27.560 --> 00:39:29.560]   ein Programm, das Benutzerinput
+[00:39:29.560 --> 00:39:31.560]   einliest, ja, und dann auf
+[00:39:31.560 --> 00:39:33.560]   Grund des Benutzerinputs irgendetwas
+[00:39:33.560 --> 00:39:35.560]   macht.
+[00:39:35.560 --> 00:39:37.560]   Und wir machen gestern mal einfach den
+[00:39:37.560 --> 00:39:39.560]   Benutzerinput, den wir zulassen,
+[00:39:39.560 --> 00:39:41.560]   ist auch nur Text.
+[00:39:41.560 --> 00:39:43.560]   Macht das Leben einfacher.
+[00:39:43.560 --> 00:39:45.560]   Wir können später sehen, wie wir auf
+[00:39:45.560 --> 00:39:47.560]   andere Weise Input machen.
+[00:39:47.560 --> 00:39:49.560]   Aber fürs erste Mal genügt es uns,
+[00:39:49.560 --> 00:39:51.560]   wenn wir das nur mit
+[00:39:51.560 --> 00:39:53.560]   Text arbeiten.
+[00:39:53.560 --> 00:39:55.560]   Und da gibt es eben eine Bibliothek
+[00:39:55.560 --> 00:39:57.560]   oder ein Service in Java, der das
+[00:39:57.560 --> 00:39:59.560]   sehr einfach möglich macht, ja,
+[00:39:59.560 --> 00:40:01.560]   das ist ja so das Kennen. Und da können
+[00:40:01.560 --> 00:40:03.560]   wir mit dem eben einlesen
+[00:40:03.560 --> 00:40:05.560]   und Ausgaben können wir machen, wie
+[00:40:05.560 --> 00:40:07.560]   wir es schon gelernt haben, nämlich mit
+[00:40:07.560 --> 00:40:09.560]   PrintLine ohne weiteres Schwierigkeiten.
+[00:40:09.560 --> 00:40:11.560]   Also
+[00:40:11.560 --> 00:40:13.560]   ein interaktives Programm liest
+[00:40:13.560 --> 00:40:15.560]   Input von der Konsole.
+[00:40:15.560 --> 00:40:17.560]   Da sage ich gleich, was das ist.
+[00:40:17.560 --> 00:40:19.560]   Und dann faktisch abhängig von dem,
+[00:40:19.560 --> 00:40:21.560]   was für Werte sie da eingeben,
+[00:40:21.560 --> 00:40:23.560]   können sie das eine oder das andere
+[00:40:23.560 --> 00:40:25.560]   machen.
+[00:40:25.560 --> 00:40:27.560]   Wie gesagt, später können wir mit der
+[00:40:27.560 --> 00:40:29.560]   Maus arbeiten, aber das ist für den
+[00:40:29.560 --> 00:40:31.560]   ersten Tag noch ein bisschen viel.
+[00:40:31.560 --> 00:40:33.560]   Also, so eine Konsole, das war früher
+[00:40:33.560 --> 00:40:35.560]   ein Gerät, das mit dem Computer verbunden
+[00:40:35.560 --> 00:40:37.560]   war und das Eingabe erlaubte, so eine Art
+[00:40:37.560 --> 00:40:39.560]   Schreibmaschine mit eben
+[00:40:39.560 --> 00:40:41.560]   besonderen Fähigkeiten. Und manchmal war
+[00:40:41.560 --> 00:40:43.560]   die auch in der Lage, Ausgaben
+[00:40:43.560 --> 00:40:45.560]   zu machen.
+[00:40:45.560 --> 00:40:47.560]   Der Name ist halt geblieben. Und heute
+[00:40:47.560 --> 00:40:49.560]   ist der Konsole ein Fenster
+[00:40:49.560 --> 00:40:51.560]   in unserem Benutzerinterface,
+[00:40:51.560 --> 00:40:53.560]   also in Eclipse.
+[00:40:53.560 --> 00:40:55.560]   Und in Java gibt es
+[00:40:55.560 --> 00:40:57.560]   zwei vordefinierte Fenster.
+[00:40:57.560 --> 00:40:59.560]   Das eine heißt System.In
+[00:40:59.560 --> 00:41:01.560]   und das andere heißt System.out
+[00:41:01.560 --> 00:41:03.560]   und die haben halt
+[00:41:03.560 --> 00:41:05.560]   vordefinierte Fenster und es ist
+[00:41:05.560 --> 00:41:07.560]   möglich, das kann man machen,
+[00:41:07.560 --> 00:41:09.560]   aber das ist auch so eingestellt.
+[00:41:09.560 --> 00:41:11.560]   Im Normalfall, das System.in
+[00:41:11.560 --> 00:41:13.560]   und System.out dasselbe
+[00:41:13.560 --> 00:41:15.560]   Fenster sind.
+[00:41:15.560 --> 00:41:17.560]   So, jetzt warum haben wir mit Input
+[00:41:17.560 --> 00:41:19.560]   bis heute gewartet?
+[00:41:19.560 --> 00:41:21.560]   Naja, Input ist schon um einiges komplizierter
+[00:41:21.560 --> 00:41:23.560]   als Output. Warum?
+[00:41:23.560 --> 00:41:25.560]   Weil die Benutzer können dann
+[00:41:25.560 --> 00:41:27.560]   auf unvorhergesehene
+[00:41:27.560 --> 00:41:29.560]   Weise Eingaben machen, die man
+[00:41:29.560 --> 00:41:31.560]   nicht erwartet können, Fehler machen
+[00:41:31.560 --> 00:41:33.560]   und so weiter. Deswegen ist das ein
+[00:41:33.560 --> 00:41:35.560]   bisschen trickiger.
+[00:41:35.560 --> 00:41:37.560]   Wir haben eben ein Fenster
+[00:41:37.560 --> 00:41:39.560]   in Eclipse, mit dem wir
+[00:41:39.560 --> 00:41:41.560]   den Input eingeben können
+[00:41:41.560 --> 00:41:43.560]   und den Output sehen.
+[00:41:43.560 --> 00:41:45.560]   Das machen wir mittels eines Bibliothek
+[00:41:45.560 --> 00:41:47.560]   die heißt Scanner.
+[00:41:47.560 --> 00:41:49.560]   Das ist ein Programm,
+[00:41:49.560 --> 00:41:51.560]   das eben halt
+[00:41:51.560 --> 00:41:53.560]   solche Daten aus dem Fenster einliest
+[00:41:53.560 --> 00:41:55.560]   und in eine vernünftige Form
+[00:41:55.560 --> 00:41:57.560]   aufbereitet.
+[00:41:57.560 --> 00:41:59.560]   Input Output ist in Java sehr gut geregelt.
+[00:41:59.560 --> 00:42:01.560]   Was Sie heute mit dem Scanner machen,
+[00:42:01.560 --> 00:42:03.560]   können Sie lernen, können Sie später
+[00:42:03.560 --> 00:42:05.560]   mit anderen Sachen
+[00:42:05.560 --> 00:42:07.560]   wie Dateien und so weiter
+[00:42:07.560 --> 00:42:09.560]   verwenden. Also, der Benutzer
+[00:42:09.560 --> 00:42:11.560]   tippt ein und der Scanner liest das
+[00:42:11.560 --> 00:42:13.560]   und so können wir dann eben halt
+[00:42:13.560 --> 00:42:15.560]   das verarbeiten.
+[00:42:15.560 --> 00:42:17.560]   Um das zu machen, müssen wir wieder
+[00:42:17.560 --> 00:42:19.560]   ein bisschen blaue Farbe verwenden.
+[00:42:19.560 --> 00:42:21.560]   Wir müssen dieses Statement hinzufügen,
+[00:42:21.560 --> 00:42:23.560]   unseren Programm.
+[00:42:23.560 --> 00:42:25.560]   Import Java.util.scanner
+[00:42:25.560 --> 00:42:27.560]   und dann haben wir den Scanner bekannt gemacht
+[00:42:27.560 --> 00:42:29.560]   und dann brauchen wir
+[00:42:29.560 --> 00:42:31.560]   ein Exemplar von dem Scanner
+[00:42:31.560 --> 00:42:33.560]   und dann müssen wir auch deklarieren.
+[00:42:33.560 --> 00:42:35.560]   Den können wir irgendeinen Namen geben.
+[00:42:35.560 --> 00:42:37.560]   Scanner Name =
+[00:42:37.560 --> 00:42:39.560]   wird gesetzt zu.
+[00:42:39.560 --> 00:42:41.560]   Und dann sagen wir, wir hätten gerne
+[00:42:41.560 --> 00:42:43.560]   einen Scanner der Formal-Konsolesystem
+[00:42:43.560 --> 00:42:45.560]   dort in für uns das liest.
+[00:42:45.560 --> 00:42:47.560]   Dann können wir den im My-Konsol nennen
+[00:42:47.560 --> 00:42:49.560]   und dann haben wir so einen Scanner.
+[00:42:49.560 --> 00:42:51.560]   Und der hat jetzt drei Methoden,
+[00:42:51.560 --> 00:42:53.560]   die uns eigentlich interessieren,
+[00:42:53.560 --> 00:42:55.560]   mit denen wir int, doubles
+[00:42:55.560 --> 00:42:57.560]   und strings lesen können. Ganz einfach.
+[00:42:57.560 --> 00:42:59.560]   Ich gehe also hin.
+[00:42:59.560 --> 00:43:01.560]   Ich habe diese Konsole
+[00:43:01.560 --> 00:43:03.560]   und dann lese ich die nächste Eingabe
+[00:43:03.560 --> 00:43:05.560]   und dann wartet das System
+[00:43:05.560 --> 00:43:07.560]   so lange, bis der Benutzer eine Eingabe
+[00:43:07.560 --> 00:43:09.560]   gemacht hat und mit dem Return-Key
+[00:43:09.560 --> 00:43:11.560]   abgeschlossen hat.
+[00:43:11.560 --> 00:43:13.560]   Wenn der Benutzer Enter oder Return aus immer gedrückt hat,
+[00:43:13.560 --> 00:43:15.560]   dann wird
+[00:43:15.560 --> 00:43:17.560]   das gelesen
+[00:43:17.560 --> 00:43:19.560]   und dem Programm zur Verfügung gestellt.
+[00:43:19.560 --> 00:43:21.560]   Natürlich ist es gut, wenn Sie vorher den Benutzer
+[00:43:21.560 --> 00:43:23.560]   oder der Benutzerin sagen, was Sie jetzt
+[00:43:23.560 --> 00:43:25.560]   als Eingabe erwarten, zum Beispiel,
+[00:43:25.560 --> 00:43:27.560]   wie alt sind Sie? Da wird ausgedruckt
+[00:43:27.560 --> 00:43:29.560]   und dann wartet das System, bis die Eingabe kommt.
+[00:43:29.560 --> 00:43:31.560]   Hier ist das komplette Programm.
+[00:43:31.560 --> 00:43:33.560]   Können Sie her kopieren.
+[00:43:33.560 --> 00:43:35.560]   Ich habe hier den Scanner
+[00:43:35.560 --> 00:43:37.560]   und jetzt kommt hier der Prompt.
+[00:43:37.560 --> 00:43:39.560]   Ich tippe das System aus.
+[00:43:39.560 --> 00:43:41.560]   Ich tippe dann aus, wie alt sind Sie.
+[00:43:41.560 --> 00:43:43.560]   Und jetzt ist das Benutzer,
+[00:43:43.560 --> 00:43:45.560]   das Benutzerin, das Alter einzugeben.
+[00:43:45.560 --> 00:43:47.560]   Wenn das Alter eingegeben ist,
+[00:43:47.560 --> 00:43:49.560]   dann gibt das System
+[00:43:49.560 --> 00:43:51.560]   diese Zahl zurück an die variable Alter
+[00:43:51.560 --> 00:43:53.560]   und dann findet
+[00:43:53.560 --> 00:43:55.560]   die Berechnung statt.
+[00:43:55.560 --> 00:43:57.560]   Dass das eben
+[00:43:57.560 --> 00:43:59.560]   wie viele Jahre noch bis zur Pensionierung sind
+[00:43:59.560 --> 00:44:01.560]   unter der Annahme,
+[00:44:01.560 --> 00:44:03.560]   dass sich das nicht wieder ändert und so weiter.
+[00:44:03.560 --> 00:44:05.560]   Also, das können Sie
+[00:44:05.560 --> 00:44:07.560]   ganz einfach machen,
+[00:44:07.560 --> 00:44:09.560]   ohne Schwierigkeiten.
+[00:44:09.560 --> 00:44:11.560]   Du können auch mehr als eine Zahl lesen.
+[00:44:11.560 --> 00:44:13.560]   Wichtig ist, dass Sie das Richtige machen.
+[00:44:13.560 --> 00:44:15.560]   In der Java-Doc
+[00:44:15.560 --> 00:44:17.560]   finden Sie mehr Informationen.
+[00:44:17.560 --> 00:44:19.560]   Und man kann das alles lesen.
+[00:44:19.560 --> 00:44:21.560]   So können Sie, wenn Sie wollen,
+[00:44:21.560 --> 00:44:23.560]   interessanterer
+[00:44:23.560 --> 00:44:25.560]   interessante Programme machen.
+[00:44:25.560 --> 00:44:27.560]   Machen Sie es nur richtig.
+[00:44:27.560 --> 00:44:29.560]   Wenn Sie falsche Eingabe machen,
+[00:44:29.560 --> 00:44:31.560]   noch haben wir eine Minute.
+[00:44:31.560 --> 00:44:33.560]   Dann sind wir damit fertig.
+[00:44:33.560 --> 00:44:35.560]   Also, das ist halt, wie Sie das machen können.
+[00:44:35.560 --> 00:44:37.560]   Diese drei Methoden können Sie benutzen
+[00:44:37.560 --> 00:44:39.560]   und können auf diese Weise
+[00:44:39.560 --> 00:44:41.560]   etwas interessanterer Programme schreiben.
+[00:44:41.560 --> 00:44:43.560]   Viel Spaß!
+

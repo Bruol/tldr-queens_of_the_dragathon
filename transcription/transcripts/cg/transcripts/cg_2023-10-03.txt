@@ -1,0 +1,725 @@
+
+[00:00:00.000 --> 00:00:07.000]   >> As we get to go, let me just get better lighting lecture.
+[00:00:07.000 --> 00:00:12.000]   Is that what we want?
+[00:00:12.000 --> 00:00:14.000]   Maybe we can get rid of this one.
+[00:00:14.000 --> 00:00:15.000]   Yeah, that's perfect.
+[00:00:15.000 --> 00:00:17.000]   So good afternoon, everybody.
+[00:00:17.000 --> 00:00:21.000]   I see there are many more students than in the Friday lecture.
+[00:00:21.000 --> 00:00:24.000]   So you probably, many of you, do a happy Friday.
+[00:00:24.000 --> 00:00:27.000]   As a matter of fact, we also have home office on Friday, literally,
+[00:00:27.000 --> 00:00:29.000]   but I have to show up and teach.
+[00:00:29.000 --> 00:00:31.000]   So please do come.
+[00:00:31.000 --> 00:00:38.000]   Physical presence in the lecture is always warmly welcome.
+[00:00:38.000 --> 00:00:45.000]   If you have a chance in the main hall of ETH, there is this installation,
+[00:00:45.000 --> 00:00:48.000]   and it's called Digital Einstein.
+[00:00:48.000 --> 00:00:50.000]   Many of you probably have seen it before.
+[00:00:50.000 --> 00:00:51.000]   Maybe not everybody.
+[00:00:51.000 --> 00:00:55.000]   If you didn't have the experience, please try.
+[00:00:55.000 --> 00:01:04.000]   So basically, it was built under my sort of suggestion and under my supervision,
+[00:01:04.000 --> 00:01:07.000]   and it's basically an interactive AI character.
+[00:01:07.000 --> 00:01:10.000]   You know, Albert Einstein was our most famous student ever,
+[00:01:10.000 --> 00:01:13.000]   and also he was like you, and he was like me.
+[00:01:13.000 --> 00:01:16.000]   He was also the most famous professor at ATR ever,
+[00:01:16.000 --> 00:01:21.000]   my most famous colleague, and on the occasion of the 100th anniversary of his Nobel Prize,
+[00:01:21.000 --> 00:01:24.000]   you know what he got the Nobel Prize for?
+[00:01:24.000 --> 00:01:26.000]   Who knows that?
+[00:01:26.000 --> 00:01:29.000]   [inaudible]
+[00:01:29.000 --> 00:01:31.000]   Yes, exactly.
+[00:01:31.000 --> 00:01:33.000]   Not the theory of relativity.
+[00:01:33.000 --> 00:01:35.000]   He probably deserved three Nobel Prizes,
+[00:01:35.000 --> 00:01:42.000]   one for the photoelectric effect, which was subject of his PhD thesis,
+[00:01:42.000 --> 00:01:44.000]   which interestingly did not happen at ATR.
+[00:01:44.000 --> 00:01:46.000]   There's a wonderful story around it.
+[00:01:46.000 --> 00:01:49.000]   The professors didn't like him, so they got rid of him,
+[00:01:49.000 --> 00:01:51.000]   and then they went to the patent office to burn,
+[00:01:51.000 --> 00:01:58.000]   and he handed in his PhD, which is the original still in our library.
+[00:01:58.000 --> 00:02:01.000]   But it was defended at the University of Zurich,
+[00:02:01.000 --> 00:02:06.000]   which was big in physics back in the olden days as well.
+[00:02:06.000 --> 00:02:10.000]   And then he came back as a junior as an assistant professor,
+[00:02:10.000 --> 00:02:13.000]   and then as a full professor, and finally he moved to Berlin,
+[00:02:13.000 --> 00:02:15.000]   and then to Princeton.
+[00:02:15.000 --> 00:02:19.000]   So we wanted to build this interactive, funny experience
+[00:02:19.000 --> 00:02:23.000]   where you have a conversation with Albert Einstein about his life at ETH,
+[00:02:23.000 --> 00:02:27.000]   his experience as a student, as a professor, and so forth,
+[00:02:27.000 --> 00:02:31.000]   his socks, his wife, God knows what,
+[00:02:31.000 --> 00:02:34.000]   and this is what's happening here.
+[00:02:34.000 --> 00:02:38.000]   It was an artistic project as well as a technological project,
+[00:02:38.000 --> 00:02:40.000]   so there are lots of hurdles.
+[00:02:40.000 --> 00:02:43.000]   It's a scripted dialogue, what you see, so it's a huge tree,
+[00:02:43.000 --> 00:02:48.000]   or a huge graph, but it is finite,
+[00:02:48.000 --> 00:02:51.000]   so there are just so many actions you can do with him,
+[00:02:51.000 --> 00:02:55.000]   but the beauty of it is now it's also a research project,
+[00:02:55.000 --> 00:02:58.000]   so we use it, we market it, it travels around the world,
+[00:02:58.000 --> 00:03:03.000]   he will do a large U.S. tour soon in its current form,
+[00:03:03.000 --> 00:03:09.000]   but we have a whole research team that tries to make him more AI,
+[00:03:09.000 --> 00:03:15.000]   literally conversational, he's connected already in a trial version to GPT,
+[00:03:15.000 --> 00:03:20.000]   to a sort of, of course, prompt engineered version of GPT
+[00:03:20.000 --> 00:03:24.000]   to make him stay in person, but he can have general dialogue with him,
+[00:03:24.000 --> 00:03:29.000]   there's voice synthesis and everything included, automatic animation.
+[00:03:29.000 --> 00:03:35.000]   So if you haven't seen it yet, please go there and check it out.
+[00:03:35.000 --> 00:03:38.000]   It's a wonderful example for what's coming,
+[00:03:38.000 --> 00:03:43.000]   which is sort of the world of interactive characters
+[00:03:43.000 --> 00:03:46.000]   that are driven by advanced artificial intelligence.
+[00:03:46.000 --> 00:03:51.000]   Anyways, we had worked on data structures in the last lecture,
+[00:03:51.000 --> 00:03:54.000]   and I just put up this chart to give you an idea,
+[00:03:54.000 --> 00:03:56.000]   it's all about acceleration rate tracing,
+[00:03:56.000 --> 00:03:59.000]   it's prohibitively expensive in its naive form,
+[00:03:59.000 --> 00:04:02.000]   and there are three different categories, how we can accelerate,
+[00:04:02.000 --> 00:04:06.000]   we can basically try to get fewer rays,
+[00:04:06.000 --> 00:04:11.000]   we can try to generalize the rays in terms of beams or cones,
+[00:04:11.000 --> 00:04:14.000]   or we focus on fewer intersections,
+[00:04:14.000 --> 00:04:17.000]   and this is one of the most fundamental ones
+[00:04:17.000 --> 00:04:20.000]   that is implemented in each and every ray tracer.
+[00:04:20.000 --> 00:04:24.000]   There are two essential categories of acceleration structures,
+[00:04:24.000 --> 00:04:28.000]   one relates to subdividing the space,
+[00:04:28.000 --> 00:04:30.000]   so if you know the extent of your scene,
+[00:04:30.000 --> 00:04:33.000]   you can structure it in a hierarchical fashion,
+[00:04:33.000 --> 00:04:34.000]   so we go through that.
+[00:04:34.000 --> 00:04:38.000]   And then the other one is to organize the objects,
+[00:04:38.000 --> 00:04:40.000]   to start from an object-centered view,
+[00:04:40.000 --> 00:04:46.000]   and then build a hierarchy of so-called bounding volumes,
+[00:04:46.000 --> 00:04:52.000]   BVH, around the objects in sort of in modern advanced ray tracing.
+[00:04:52.000 --> 00:04:55.000]   I would probably say that bounding volume hierarchies
+[00:04:55.000 --> 00:04:57.000]   are the most popular ones.
+[00:04:57.000 --> 00:05:01.000]   If you look at the latest NVIDIA RTX engines,
+[00:05:01.000 --> 00:05:03.000]   which have ray tracing on-chip,
+[00:05:03.000 --> 00:05:08.000]   they offer versatile acceleration for BVH,
+[00:05:08.000 --> 00:05:11.000]   for bounding volume hierarchies.
+[00:05:11.000 --> 00:05:17.000]   One of the challenges of all these hierarchical data structures
+[00:05:17.000 --> 00:05:19.000]   is a dynamic scene.
+[00:05:19.000 --> 00:05:22.000]   If the scene is static,
+[00:05:22.000 --> 00:05:25.000]   so basically there is a cost you have to invest
+[00:05:25.000 --> 00:05:27.000]   to build the data structure,
+[00:05:27.000 --> 00:05:30.000]   and the cost can be significant to build a bounding volume hierarchy
+[00:05:30.000 --> 00:05:33.000]   or a BSP tree hierarchy that costs you.
+[00:05:33.000 --> 00:05:37.000]   Well, the cost is offset by, once you have the structure,
+[00:05:37.000 --> 00:05:40.000]   by the number of images you create.
+[00:05:40.000 --> 00:05:42.000]   However, as you can imagine,
+[00:05:42.000 --> 00:05:44.000]   as long as the scene is static,
+[00:05:44.000 --> 00:05:48.000]   the spatial organization and relationship of the object stays intact.
+[00:05:48.000 --> 00:05:51.000]   If you change, if you start animating,
+[00:05:51.000 --> 00:05:53.000]   then of course the scene changes,
+[00:05:53.000 --> 00:05:57.000]   and so the bounding volume hierarchy literally comes,
+[00:05:57.000 --> 00:06:04.000]   or any other hierarchical data structure becomes erroneous and obsolete,
+[00:06:04.000 --> 00:06:07.000]   so you have to think about updating it.
+[00:06:07.000 --> 00:06:10.000]   Of course, one option is to rebuild it from scratch,
+[00:06:10.000 --> 00:06:13.000]   but as you can imagine, it's probably expensive.
+[00:06:13.000 --> 00:06:16.000]   Another one is to adjust it,
+[00:06:16.000 --> 00:06:20.000]   and there are different strategies for doing that.
+[00:06:20.000 --> 00:06:23.000]   Let's walk through the basics a little bit.
+[00:06:23.000 --> 00:06:27.000]   The most simple one is uniform spatial subdivision,
+[00:06:27.000 --> 00:06:33.000]   which means we divide the scene into a three-dimensional grid,
+[00:06:33.000 --> 00:06:35.000]   a uniform grid,
+[00:06:35.000 --> 00:06:40.000]   and then the compute, basically, this I have already said,
+[00:06:40.000 --> 00:06:46.000]   we basically compute all the objects that intersect with the cells.
+[00:06:46.000 --> 00:06:49.000]   There will be a lot of empty cells, which we can discard,
+[00:06:49.000 --> 00:06:54.000]   and then there will be cells that literally have parts of the objects,
+[00:06:54.000 --> 00:06:56.000]   or objects included.
+[00:06:56.000 --> 00:06:58.000]   Typically, we do this on the primitive level,
+[00:06:58.000 --> 00:07:01.000]   not on the object level, because an object has a lot of primitives.
+[00:07:01.000 --> 00:07:05.000]   You want to think of it as individual triangles.
+[00:07:05.000 --> 00:07:16.000]   And this I will show you before we get to the uniform grids just very quickly.
+[00:07:16.000 --> 00:07:23.000]   Let me see if I had... No, it's right.
+[00:07:23.000 --> 00:07:32.000]   Very no matter. Sorry for that.
+[00:07:32.000 --> 00:07:33.000]   So here we go.
+[00:07:33.000 --> 00:07:37.000]   So once we have these uniform boxes or grid cells
+[00:07:37.000 --> 00:07:42.000]   in which we store primitives or references to primitives,
+[00:07:42.000 --> 00:07:49.000]   the fundamental assumption we have is that as we do the intersection test,
+[00:07:49.000 --> 00:07:52.000]   we don't intersect with each and every primitive
+[00:07:52.000 --> 00:07:55.000]   where there is a lot of intersections that fail,
+[00:07:55.000 --> 00:07:58.000]   because literally it's triangles,
+[00:07:58.000 --> 00:08:03.000]   and if the ray intersects outside the interior of the triangle,
+[00:08:03.000 --> 00:08:06.000]   then the intersection is invalid.
+[00:08:06.000 --> 00:08:10.000]   And we would like to replace all these intersections
+[00:08:10.000 --> 00:08:16.000]   by intersecting the ray with the bounding cell,
+[00:08:16.000 --> 00:08:20.000]   so literally with a cube of a certain size.
+[00:08:20.000 --> 00:08:24.000]   And so these are axis-aligned bounding boxes.
+[00:08:24.000 --> 00:08:29.000]   So the idea of replacing the intersection test from the primitive level
+[00:08:29.000 --> 00:08:33.000]   to the bounding box level is a fundamental one,
+[00:08:33.000 --> 00:08:37.000]   and in many of the data structures, also in octrees or KD trees,
+[00:08:37.000 --> 00:08:40.000]   we have these axis-aligned bounding boxes in the end,
+[00:08:40.000 --> 00:08:44.000]   and you assume that a lot of these tests are fast,
+[00:08:44.000 --> 00:08:48.000]   they don't cost much, and they will fail in a lot of times.
+[00:08:48.000 --> 00:08:52.000]   So it's basically a very simple ray rejection criterion.
+[00:08:52.000 --> 00:08:55.000]   That's fundamental.
+[00:08:55.000 --> 00:08:59.000]   Now an axis-aligned bounding box is defined typically by two vectors.
+[00:08:59.000 --> 00:09:03.000]   It's a min and a max, which gives you the main diagonal,
+[00:09:03.000 --> 00:09:07.000]   and this is how you would basically define it.
+[00:09:07.000 --> 00:09:10.000]   Now the intersection is interesting,
+[00:09:10.000 --> 00:09:13.000]   because we do it for the two-dimensional case very quickly.
+[00:09:13.000 --> 00:09:17.000]   It is based on a very old concept in computer graphics,
+[00:09:17.000 --> 00:09:24.000]   which is what we call parametric clipping.
+[00:09:24.000 --> 00:09:30.000]   So the notion of clipping, clipping away sort of geometry
+[00:09:30.000 --> 00:09:34.000]   that is potentially not visible, for instance, to the viewport,
+[00:09:34.000 --> 00:09:38.000]   to the window that is projected outside the boundaries,
+[00:09:38.000 --> 00:09:44.000]   is, as you know, an important acceleration in the classic graphics pipeline.
+[00:09:44.000 --> 00:09:49.000]   So if you basically dissect clipping algorithms,
+[00:09:49.000 --> 00:09:55.000]   they ultimately boil down to intersecting a line with an axis in two dimensions.
+[00:09:55.000 --> 00:09:59.000]   For instance, with an axis-aligned bounding box, that's what it is.
+[00:09:59.000 --> 00:10:07.000]   So it's very similar, it's actually equivalent to this ray-bounding-volume intersection,
+[00:10:07.000 --> 00:10:10.000]   and here's how it works.
+[00:10:10.000 --> 00:10:17.000]   So basically what you do is, and you do this for x, y, and c,
+[00:10:17.000 --> 00:10:23.000]   you want to compute for, you know, the way you define the bounding box
+[00:10:23.000 --> 00:10:29.000]   is you have a line that is given by a constant x value.
+[00:10:29.000 --> 00:10:32.000]   This is where the box starts, literally.
+[00:10:32.000 --> 00:10:37.000]   So if you think a line divides the plane into half planes,
+[00:10:37.000 --> 00:10:41.000]   there's one half plane where the box is outside,
+[00:10:41.000 --> 00:10:43.000]   and then there's another one where the box is inside.
+[00:10:43.000 --> 00:10:48.000]   So for instance, for x, if we go from y,
+[00:10:48.000 --> 00:10:53.000]   so if you increase the x values on the x-axis,
+[00:10:53.000 --> 00:10:58.000]   there will be a minimum value, and that's basically the point where the box starts.
+[00:10:58.000 --> 00:11:03.000]   So literally this line x-min defines the half plane in which the box is,
+[00:11:03.000 --> 00:11:07.000]   and x-max is sort of the opposite, that's where the box ends.
+[00:11:07.000 --> 00:11:11.000]   And the same for y-min and y-max and for c-min and c-max,
+[00:11:11.000 --> 00:11:13.000]   and this is how you define this box.
+[00:11:13.000 --> 00:11:17.000]   So in the end, all the intersections for the box boil down
+[00:11:17.000 --> 00:11:22.000]   intersecting with those lines, line by line, literally.
+[00:11:22.000 --> 00:11:28.000]   And this can be done by computing these intersection points.
+[00:11:28.000 --> 00:11:32.000]   Now, for each of the three dimensions,
+[00:11:32.000 --> 00:11:36.000]   you will inevitably come up with two intersection points.
+[00:11:36.000 --> 00:11:42.000]   One point for increasing parametric value of the ray,
+[00:11:42.000 --> 00:11:47.000]   that's an entry point where it enters the half plane where the box lies
+[00:11:47.000 --> 00:11:49.000]   and the other one is an exit point.
+[00:11:49.000 --> 00:11:52.000]   So this would be entry and the other one would be exit.
+[00:11:52.000 --> 00:11:54.000]   There are always two, no matter how,
+[00:11:54.000 --> 00:11:59.000]   but you will always intersect two of such lines for each dimension.
+[00:11:59.000 --> 00:12:05.000]   Now, so as you intersect those all, and this is the two-dimensional view,
+[00:12:05.000 --> 00:12:09.000]   we define what's called t-min,
+[00:12:09.000 --> 00:12:16.000]   which is the maximum value in parametric terms of these entry intersections.
+[00:12:16.000 --> 00:12:22.000]   The y-1, ty-1 comes first and tx-1 comes second,
+[00:12:22.000 --> 00:12:25.000]   so it's the maximum, the larger of the two.
+[00:12:25.000 --> 00:12:29.000]   And we do the same for these exit points where it leaves.
+[00:12:29.000 --> 00:12:35.000]   Basically, here, ty-2 is the last one,
+[00:12:35.000 --> 00:12:38.000]   so it's the one with the largest t-value and the other one is the second.
+[00:12:38.000 --> 00:12:42.000]   And this is, we color them for simplicity.
+[00:12:42.000 --> 00:12:46.000]   Now, if you do this and here are the equations,
+[00:12:46.000 --> 00:12:49.000]   so the min-max one, we intersect them, we compare,
+[00:12:49.000 --> 00:12:51.000]   it's relatively simple to compute them.
+[00:12:51.000 --> 00:12:55.000]   Basically, if you will, it's a parametric computation.
+[00:12:55.000 --> 00:13:02.000]   If you look at the equations, they are in closed form to compute tx-1, tx-2, and so forth and so on.
+[00:13:02.000 --> 00:13:08.000]   Very simple, one-dimensional, because they happen in parameter space
+[00:13:08.000 --> 00:13:14.000]   and the parameter space of a line is a scalar, it's a one-dimensional function.
+[00:13:14.000 --> 00:13:17.000]   Very simple equations, compute those,
+[00:13:17.000 --> 00:13:23.000]   and now the beauty of this whole thing is if the red one,
+[00:13:23.000 --> 00:13:29.000]   I call it the red one, so the t-min is larger than the t-max,
+[00:13:29.000 --> 00:13:32.000]   which happens exactly in those situations,
+[00:13:32.000 --> 00:13:35.000]   as you can easily figure out,
+[00:13:35.000 --> 00:13:38.000]   so the red one would be this one and the green one, this one,
+[00:13:38.000 --> 00:13:41.000]   both are flipped, if you will.
+[00:13:41.000 --> 00:13:46.000]   In this case, the ray passes the box but doesn't intersect it.
+[00:13:46.000 --> 00:13:52.000]   So it's a super simple rejection criterion on this condition.
+[00:13:52.000 --> 00:13:59.000]   If, in the other case, and here are the computations,
+[00:13:59.000 --> 00:14:02.000]   the red one is smaller than the green one,
+[00:14:02.000 --> 00:14:04.000]   sorry, so that it got lost,
+[00:14:04.000 --> 00:14:09.000]   then the ray must intersect the box.
+[00:14:09.000 --> 00:14:12.000]   And if it intersects the box, then inevitably,
+[00:14:12.000 --> 00:14:14.000]   if the box is a leaf node of some data structure,
+[00:14:14.000 --> 00:14:19.000]   then you have to go into it and try to intersect with all primitives.
+[00:14:19.000 --> 00:14:21.000]   Does that make sense?
+[00:14:21.000 --> 00:14:28.000]   This is the very fundamental operation you would rely on
+[00:14:28.000 --> 00:14:30.000]   in many of those data structures,
+[00:14:30.000 --> 00:14:34.000]   maybe except if you have bounding spheres,
+[00:14:34.000 --> 00:14:37.000]   because then it's sort of a sphere intersection,
+[00:14:37.000 --> 00:14:42.000]   or if it's BSP trees which are not axis-lined.
+[00:14:42.000 --> 00:14:44.000]   We will see this in a minute.
+[00:14:44.000 --> 00:14:47.000]   But for most of the common ones, this is how you operate.
+[00:14:47.000 --> 00:14:50.000]   And once again, the fundamental assumption is
+[00:14:50.000 --> 00:14:54.000]   that you can replace the naive primitive by primitive,
+[00:14:54.000 --> 00:14:58.000]   expensive intersection computation and test
+[00:14:58.000 --> 00:15:00.000]   by something that is super simple,
+[00:15:00.000 --> 00:15:03.000]   and that would cull away a lot of,
+[00:15:03.000 --> 00:15:07.000]   and reject a lot of the rays and eliminate a lot of the intersections.
+[00:15:07.000 --> 00:15:10.000]   And it does. It really does.
+[00:15:10.000 --> 00:15:15.000]   So, fundamental to this,
+[00:15:15.000 --> 00:15:19.000]   we start with the spatial ones and then go into the object ones.
+[00:15:19.000 --> 00:15:23.000]   And then we go into the spatial organization as a pre-process
+[00:15:23.000 --> 00:15:27.000]   that decomposes the space into disjoint regions.
+[00:15:27.000 --> 00:15:31.000]   And the assumption is, no matter whether it's hierarchical or uniform,
+[00:15:31.000 --> 00:15:35.000]   that you eliminate the ones that are empty, right,
+[00:15:35.000 --> 00:15:43.000]   and only store those sort of free sub-regions that contain objects.
+[00:15:43.000 --> 00:15:47.000]   And you store a pointer to overlapping objects within each region,
+[00:15:47.000 --> 00:15:50.000]   because that's one of the issues that comes up.
+[00:15:50.000 --> 00:15:55.000]   What might happen is that a single object, single primitive,
+[00:15:55.000 --> 00:16:00.000]   would lie in multiple of these final regions.
+[00:16:00.000 --> 00:16:03.000]   And then you have to think about how to test the best way.
+[00:16:03.000 --> 00:16:07.000]   And then as you render, so this is the way to build up the data structure,
+[00:16:07.000 --> 00:16:10.000]   and as you render, you have to traverse the data structure
+[00:16:10.000 --> 00:16:15.000]   in whichever way, through these regions of overlapping with array.
+[00:16:15.000 --> 00:16:20.000]   And then finally intersect the object within each region
+[00:16:20.000 --> 00:16:22.000]   until a hit is found.
+[00:16:22.000 --> 00:16:25.000]   Now, uniform crits.
+[00:16:25.000 --> 00:16:30.000]   So, you compute a bounding box, you determine a crits resolution,
+[00:16:30.000 --> 00:16:33.000]   and that's the first caveat of this data structure.
+[00:16:33.000 --> 00:16:39.000]   You have to come up with a heuristic to have a meaningful value
+[00:16:39.000 --> 00:16:42.000]   for the resolution of the crits.
+[00:16:42.000 --> 00:16:50.000]   And intuitively, it would probably be related to the average size of the object,
+[00:16:50.000 --> 00:16:56.000]   or if you do it on a triangle basis, to the average size of a primitive.
+[00:16:56.000 --> 00:16:59.000]   I mean, there are some heuristics to do it.
+[00:16:59.000 --> 00:17:03.000]   Oftentimes, it's three times the cube root of n,
+[00:17:03.000 --> 00:17:07.000]   where n is the number of primitives or the number of objects.
+[00:17:07.000 --> 00:17:10.000]   There are other heuristics, but you can imagine
+[00:17:10.000 --> 00:17:13.000]   that if the resolution is too fine,
+[00:17:13.000 --> 00:17:18.000]   then you would have a lot of overlap of the objects are too large.
+[00:17:18.000 --> 00:17:25.000]   They overlap multiple crits, and you do a lot of unnecessary poindering and testing.
+[00:17:25.000 --> 00:17:29.000]   If it's too small, it's too coarse, literally,
+[00:17:29.000 --> 00:17:32.000]   then you potentially have a lot of...
+[00:17:32.000 --> 00:17:35.000]   If you don't have a tight... You want to have a tight packing.
+[00:17:35.000 --> 00:17:40.000]   You don't have tight packing, and a lot of it would potentially...
+[00:17:40.000 --> 00:17:44.000]   a lot of primitives per cell, which is also not good.
+[00:17:44.000 --> 00:17:52.000]   But they are more powerful than you would think if you get the crit size right.
+[00:17:52.000 --> 00:17:55.000]   You insert the objects into cells.
+[00:17:55.000 --> 00:17:58.000]   You rasterize the bounding books, obviously,
+[00:17:58.000 --> 00:18:00.000]   and then you prune empty cells, very important,
+[00:18:00.000 --> 00:18:04.000]   because we only want to store the cells that really contain objects.
+[00:18:04.000 --> 00:18:11.000]   But as I said, here in all these drawings,
+[00:18:11.000 --> 00:18:14.000]   it's basically on an object level,
+[00:18:14.000 --> 00:18:18.000]   but think of it also in terms of a primitive level,
+[00:18:18.000 --> 00:18:22.000]   literally replace this circle by triangles.
+[00:18:22.000 --> 00:18:27.000]   And then you will see that easily...
+[00:18:27.000 --> 00:18:31.000]   and there is infected triangle here on the right, the lower right,
+[00:18:31.000 --> 00:18:35.000]   and this triangle overlaps multiple crit cells,
+[00:18:35.000 --> 00:18:39.000]   which means we have to store a reference to this object,
+[00:18:39.000 --> 00:18:43.000]   to this triangle in each of the crit cells.
+[00:18:43.000 --> 00:18:47.000]   And potentially, as we traverse the individual cells,
+[00:18:47.000 --> 00:18:51.000]   we would intersect it multiple times if you are not careful.
+[00:18:51.000 --> 00:18:54.000]   It's also an issue.
+[00:18:54.000 --> 00:18:58.000]   Traversal in principle is as follows.
+[00:18:58.000 --> 00:19:04.000]   You generate the ray, you overlay it with a data structure, so to speak,
+[00:19:04.000 --> 00:19:09.000]   and then you start rasterizing the ray.
+[00:19:09.000 --> 00:19:12.000]   Rasterization...
+[00:19:12.000 --> 00:19:16.000]   So basically, you rasterize and then check for the box intersection.
+[00:19:16.000 --> 00:19:19.000]   If the box is empty, you don't need to intersect, obviously.
+[00:19:19.000 --> 00:19:21.000]   You can just move forward.
+[00:19:21.000 --> 00:19:25.000]   It's illustrated right here, until you hit a box that contains an object.
+[00:19:25.000 --> 00:19:30.000]   And there, you do the intersection test, and if you're lucky, you hit.
+[00:19:30.000 --> 00:19:34.000]   Once you hit, you can stop, because if there is no transparency,
+[00:19:34.000 --> 00:19:39.000]   and if we don't speak about recursive ray tracing for a moment,
+[00:19:39.000 --> 00:19:43.000]   just to simple the atomic operation of a ray-scene intersection,
+[00:19:43.000 --> 00:19:45.000]   you stop. It's done.
+[00:19:45.000 --> 00:19:49.000]   You have your intersection and your t-value.
+[00:19:52.000 --> 00:19:58.000]   The traversal of the ray, the rasterization of the ray,
+[00:19:58.000 --> 00:20:01.000]   with respect to the box resolution,
+[00:20:01.000 --> 00:20:06.000]   is equivalent to conversion of lines.
+[00:20:06.000 --> 00:20:11.000]   And I think those who attended the visual computing lecture last year,
+[00:20:11.000 --> 00:20:17.000]   I did a little intermezzo on the beautiful old Presenhem algorithm,
+[00:20:17.000 --> 00:20:24.000]   which is a very beautiful and beautifully fast algorithm to rasterize lines.
+[00:20:24.000 --> 00:20:29.000]   Does everybody know the Presenhem algorithm? Who doesn't know it?
+[00:20:29.000 --> 00:20:33.000]   There's a few. Please look it up, maybe in some of the material.
+[00:20:33.000 --> 00:20:36.000]   It's also all over the place at Wikipedia,
+[00:20:36.000 --> 00:20:40.000]   but it's a super-fast algorithm to do that.
+[00:20:40.000 --> 00:20:44.000]   So you can use such algorithms, obviously, if you want.
+[00:20:44.000 --> 00:20:52.000]   So that once, if you want to compare this operation with Proud Force
+[00:20:52.000 --> 00:20:57.000]   and intersection with each ray, you know, literally every primitive,
+[00:20:57.000 --> 00:21:01.000]   and then take the closest intersection for the t-pot,
+[00:21:01.000 --> 00:21:06.000]   here's a very simple example with 6,300 triangles,
+[00:21:06.000 --> 00:21:13.000]   the Proud Force intersection tests per ray would be 6,321,
+[00:21:13.000 --> 00:21:18.000]   and the number of primitives, of course, which is a total of 3.7 billion
+[00:21:18.000 --> 00:21:22.000]   intersection tests, literally.
+[00:21:22.000 --> 00:21:26.000]   And on the uniform grid with the right proper size,
+[00:21:26.000 --> 00:21:29.000]   you prune it down to 45 roughly,
+[00:21:29.000 --> 00:21:36.000]   which is 26 million ray intersection tests in total.
+[00:21:36.000 --> 00:21:41.000]   So that's a dramatic drop for a very simple data structure.
+[00:21:41.000 --> 00:21:44.000]   As you will see, if you go into hierarchies such as BSP trees,
+[00:21:44.000 --> 00:21:47.000]   it becomes much more powerful.
+[00:21:47.000 --> 00:21:54.000]   But the reduction of cost and computational effort is dramatic,
+[00:21:54.000 --> 00:21:56.000]   and that's nice.
+[00:21:56.000 --> 00:22:00.000]   So the advantage is it's easy to code, everybody can implement it,
+[00:22:00.000 --> 00:22:03.000]   building the data structure fast.
+[00:22:03.000 --> 00:22:08.000]   If you can build it fast, you can rebuild it fast,
+[00:22:08.000 --> 00:22:11.000]   and believe it or not, if you attend the lecture on
+[00:22:11.000 --> 00:22:14.000]   physical-based simulation, it's now done by Stelian,
+[00:22:14.000 --> 00:22:17.000]   I think partly by Barbara.
+[00:22:17.000 --> 00:22:21.000]   You will also talk about fluid simulation,
+[00:22:21.000 --> 00:22:23.000]   and for fluid simulation there are two categories,
+[00:22:23.000 --> 00:22:25.000]   it's Eulerian methods, grid-based methods,
+[00:22:25.000 --> 00:22:27.000]   and particle-based L'Aconge methods.
+[00:22:27.000 --> 00:22:30.000]   And for L'Aconge, you have to handle tons of particles,
+[00:22:30.000 --> 00:22:33.000]   literally in production settings,
+[00:22:33.000 --> 00:22:37.000]   100 million easily, probably, for a nice fluid.
+[00:22:37.000 --> 00:22:43.000]   And in a particle simulation, very simply,
+[00:22:43.000 --> 00:22:45.000]   in order to compute the force,
+[00:22:45.000 --> 00:22:48.000]   you compute the force that acts upon a single particle,
+[00:22:48.000 --> 00:22:51.000]   and then through forward integration,
+[00:22:51.000 --> 00:22:53.000]   you get from the force to the acceleration,
+[00:22:53.000 --> 00:22:56.000]   to the velocity, to the new position, right?
+[00:22:56.000 --> 00:22:58.000]   It's a simple Eulerian forward step.
+[00:22:58.000 --> 00:23:02.000]   So to do this, you have to collect the interaction
+[00:23:02.000 --> 00:23:04.000]   with all other particles.
+[00:23:04.000 --> 00:23:07.000]   And in order to do this in a meaningful way,
+[00:23:07.000 --> 00:23:09.000]   you have to have a spatial data structure,
+[00:23:09.000 --> 00:23:12.000]   you have to understand which particles are nearby.
+[00:23:12.000 --> 00:23:15.000]   And we had a lot, we worked a lot on these
+[00:23:15.000 --> 00:23:17.000]   particle simulations in the past,
+[00:23:17.000 --> 00:23:20.000]   and the data structures we are using for that
+[00:23:20.000 --> 00:23:22.000]   are uniform crits, why?
+[00:23:22.000 --> 00:23:26.000]   Because the particles change with each update,
+[00:23:26.000 --> 00:23:28.000]   you know, of your forward integrator,
+[00:23:28.000 --> 00:23:30.000]   you change the position of the particles,
+[00:23:30.000 --> 00:23:33.000]   and then they move from one grid cell into the next.
+[00:23:33.000 --> 00:23:37.000]   And the beauty of this one is it's so simple to build
+[00:23:37.000 --> 00:23:40.000]   that you literally, in each iteration,
+[00:23:40.000 --> 00:23:42.000]   you can either adjust them,
+[00:23:42.000 --> 00:23:46.000]   or you can rebuild them with a hierarchical data structure.
+[00:23:46.000 --> 00:23:47.000]   It's not that simple.
+[00:23:47.000 --> 00:23:50.000]   So it is not so bad.
+[00:23:50.000 --> 00:23:53.000]   Disadvantages, of course, they don't adapt
+[00:23:53.000 --> 00:23:55.000]   to non-uniform scenes.
+[00:23:55.000 --> 00:23:58.000]   We call this the teapot in a stadium problem.
+[00:23:58.000 --> 00:24:01.000]   So if you have a very large grid
+[00:24:01.000 --> 00:24:04.000]   and a very small super dense object,
+[00:24:04.000 --> 00:24:07.000]   then obviously that doesn't fly.
+[00:24:07.000 --> 00:24:12.000]   There is sort of an easy fix to it,
+[00:24:12.000 --> 00:24:14.000]   which means hierarchical crits,
+[00:24:14.000 --> 00:24:18.000]   that you have a global grid in which all the objects sit,
+[00:24:18.000 --> 00:24:21.000]   and then you have object-specific,
+[00:24:21.000 --> 00:24:24.000]   or primitive, let's call it primitive cluster-specific,
+[00:24:24.000 --> 00:24:27.000]   smaller crits of smaller resolution.
+[00:24:27.000 --> 00:24:30.000]   And this is how you simply, in this particular case,
+[00:24:30.000 --> 00:24:33.000]   introduce a two-level hierarchy,
+[00:24:33.000 --> 00:24:36.000]   one that is capturing the global scene,
+[00:24:36.000 --> 00:24:38.000]   and the other one is sort of per object,
+[00:24:38.000 --> 00:24:42.000]   or per spatial cluster of primitives.
+[00:24:42.000 --> 00:24:44.000]   And it makes sense.
+[00:24:44.000 --> 00:24:46.000]   It doesn't look super elegant.
+[00:24:46.000 --> 00:24:49.000]   As a matter of fact, it is not very elegant,
+[00:24:49.000 --> 00:24:55.000]   but it can further reduce the computational effort
+[00:24:55.000 --> 00:24:58.000]   from a uniform grid to a two-level grid.
+[00:24:58.000 --> 00:25:00.000]   In this particular example,
+[00:25:00.000 --> 00:25:02.000]   you would still get a factor of,
+[00:25:02.000 --> 00:25:04.000]   it's not quite four,
+[00:25:04.000 --> 00:25:06.000]   but maybe three and a half or something,
+[00:25:06.000 --> 00:25:09.000]   that can make sense already good.
+[00:25:09.000 --> 00:25:11.000]   So that works.
+[00:25:11.000 --> 00:25:15.000]   Here, just a couple of examples.
+[00:25:15.000 --> 00:25:17.000]   These are old images.
+[00:25:17.000 --> 00:25:19.000]   That's a real complex scene.
+[00:25:19.000 --> 00:25:22.000]   I mean, it's not so difficult to build complex scenes.
+[00:25:22.000 --> 00:25:24.000]   And in this example,
+[00:25:24.000 --> 00:25:28.000]   they just built this sort of almost random, organic assembly
+[00:25:28.000 --> 00:25:33.000]   of 250,000 instances of these spaceships, right?
+[00:25:33.000 --> 00:25:35.000]   You can stagger together.
+[00:25:35.000 --> 00:25:37.000]   And it creates a lot of polygons.
+[00:25:37.000 --> 00:25:41.000]   Typically, such test scenes are compiled to test algorithms
+[00:25:41.000 --> 00:25:45.000]   and to show performance.
+[00:25:45.000 --> 00:25:48.000]   Well, now, obviously,
+[00:25:48.000 --> 00:25:51.000]   the next level of sophistication would be
+[00:25:51.000 --> 00:25:56.000]   to move from a uniform grid
+[00:25:56.000 --> 00:25:58.000]   to something that is hierarchical,
+[00:25:58.000 --> 00:26:03.000]   but better than a two-level, two-grids that are independent.
+[00:26:03.000 --> 00:26:06.000]   And we have...
+[00:26:06.000 --> 00:26:10.000]   There are different spatial data structures, as you know,
+[00:26:10.000 --> 00:26:12.000]   but I would say the three most popular ones
+[00:26:12.000 --> 00:26:16.000]   in computer graphics are octries,
+[00:26:16.000 --> 00:26:20.000]   because of its simplicity and its implicit definition,
+[00:26:20.000 --> 00:26:22.000]   so you don't need to...
+[00:26:22.000 --> 00:26:25.000]   The storage overhead per node is very little,
+[00:26:25.000 --> 00:26:28.000]   so you can represent octries in a very compact fashion.
+[00:26:28.000 --> 00:26:31.000]   For instance, on graphics hardware, makes sense.
+[00:26:31.000 --> 00:26:36.000]   Another one, which is typically the one that is most often used,
+[00:26:36.000 --> 00:26:38.000]   is a so-called KD tree,
+[00:26:38.000 --> 00:26:41.000]   which combines the simplicity of an octry
+[00:26:41.000 --> 00:26:47.000]   with the tighter packing of what's called a BSP tree.
+[00:26:47.000 --> 00:26:51.000]   If you look at it, the KD tree has axis-aligned bounding boxes,
+[00:26:51.000 --> 00:26:54.000]   but the boxes are not all quadratic.
+[00:26:54.000 --> 00:26:56.000]   They can be rectangular,
+[00:26:56.000 --> 00:26:59.000]   which means if I start subdividing,
+[00:26:59.000 --> 00:27:04.000]   say I have this cell here, the upper half of the original root,
+[00:27:04.000 --> 00:27:07.000]   and I divide, I have the freedom of choice
+[00:27:07.000 --> 00:27:11.000]   along the axis to position the dividing plane,
+[00:27:11.000 --> 00:27:14.000]   which has a couple of advantages.
+[00:27:14.000 --> 00:27:17.000]   For instance, minimize object overlap.
+[00:27:17.000 --> 00:27:19.000]   Object overlap is always bad.
+[00:27:19.000 --> 00:27:24.000]   If an object is in two cells, it means it can happen
+[00:27:24.000 --> 00:27:28.000]   that I hit this object multiple times.
+[00:27:28.000 --> 00:27:31.000]   It's an overhead. You want to minimize those.
+[00:27:31.000 --> 00:27:34.000]   This is a possibility, but it still axis-aligned,
+[00:27:34.000 --> 00:27:38.000]   which means we can use all these apparatus of parametric clipping,
+[00:27:38.000 --> 00:27:41.000]   which I briefly introduced earlier.
+[00:27:41.000 --> 00:27:45.000]   The BSP tree is even a better one.
+[00:27:45.000 --> 00:27:48.000]   There was really good early work on this.
+[00:27:48.000 --> 00:27:53.000]   Here I have besides the sort of the scalar value
+[00:27:53.000 --> 00:27:57.000]   that gives me the position along the x, y, or c axis of the dividing plane,
+[00:27:57.000 --> 00:28:00.000]   I can also rotate the plane.
+[00:28:00.000 --> 00:28:05.000]   So I deviate, but the resulting subsets
+[00:28:05.000 --> 00:28:10.000]   are no longer axis-aligned bounding boxes.
+[00:28:10.000 --> 00:28:14.000]   They are more complex, which means that the intersection test
+[00:28:14.000 --> 00:28:17.000]   of the ray with the cell becomes more expensive.
+[00:28:17.000 --> 00:28:23.000]   But the potential of packing tightly
+[00:28:23.000 --> 00:28:28.000]   and avoiding overlapping objects increases.
+[00:28:28.000 --> 00:28:33.000]   This is the actual trade-off between the density of the packing
+[00:28:33.000 --> 00:28:39.000]   that is possible and the complexity of the early intersection tests.
+[00:28:39.000 --> 00:28:44.000]   The density tests that are needed are basically also similar
+[00:28:44.000 --> 00:28:48.000]   with the object-oriented bounding boxes.
+[00:28:48.000 --> 00:28:52.000]   These are the three.
+[00:28:52.000 --> 00:28:55.000]   We want to look into KD trees as an example,
+[00:28:55.000 --> 00:29:00.000]   because they are the most, I would say, the ones that you would recommend
+[00:29:00.000 --> 00:29:05.000]   if you go for a spatial subdivision.
+[00:29:05.000 --> 00:29:09.000]   So there's a pre-processing stage to build the KD tree
+[00:29:09.000 --> 00:29:13.000]   and your computer bounding box, then at the next step
+[00:29:13.000 --> 00:29:18.000]   you recursively split the cell using an axis-aligned plane,
+[00:29:18.000 --> 00:29:24.000]   and the positioning of this axis-aligned plane is already heuristic.
+[00:29:24.000 --> 00:29:27.000]   So you can choose it according to several criteria.
+[00:29:27.000 --> 00:29:30.000]   You want to balance the two child nodes.
+[00:29:30.000 --> 00:29:37.000]   You want to have approximately probably the same number of primitives
+[00:29:37.000 --> 00:29:41.000]   in the left child node, you know, this left half volume,
+[00:29:41.000 --> 00:29:44.000]   then in the right half volume, that's probably one criterion.
+[00:29:44.000 --> 00:29:48.000]   The other one is you want to minimize the overlap of objects.
+[00:29:48.000 --> 00:29:49.000]   Does that make sense?
+[00:29:49.000 --> 00:29:53.000]   So you have to trade it off in a way.
+[00:29:53.000 --> 00:29:56.000]   The second heuristic is when do you stop?
+[00:29:56.000 --> 00:30:01.000]   You can imagine that probably the deeper you go into the recursion,
+[00:30:01.000 --> 00:30:06.000]   the more levels you have in your tree, the better,
+[00:30:06.000 --> 00:30:11.000]   because the tighter the packing, the less primitives per leaf cell and so forth,
+[00:30:11.000 --> 00:30:18.000]   but of course upon sort of when you are in rendering mode,
+[00:30:18.000 --> 00:30:23.000]   computing the intersection with a ray means I have to traverse this tree
+[00:30:23.000 --> 00:30:27.000]   in sort of breath or death first order, whatever it is,
+[00:30:27.000 --> 00:30:29.000]   but I have to traverse the entire tree,
+[00:30:29.000 --> 00:30:34.000]   which means if I go deeper into the hierarchy, more work in traversal.
+[00:30:34.000 --> 00:30:39.000]   That's also a trait of you have to find,
+[00:30:39.000 --> 00:30:44.000]   and typically you go heuristically by a maximum depth.
+[00:30:44.000 --> 00:30:48.000]   So I go down to level 7 maximum no more,
+[00:30:48.000 --> 00:30:53.000]   and/or the minimum number of objects.
+[00:30:53.000 --> 00:30:59.000]   So if there's a minimum number reach, maybe 5 or 6 or 7 triangles, I stop.
+[00:30:59.000 --> 00:31:04.000]   And then if you do that, and it's illustrated right here,
+[00:31:04.000 --> 00:31:09.000]   you create this spatial subdivision, this hierarchy,
+[00:31:09.000 --> 00:31:13.000]   and topologically it corresponds to a binary tree structure,
+[00:31:13.000 --> 00:31:15.000]   which is that from the root,
+[00:31:15.000 --> 00:31:19.000]   and then you compute a left child and the right child,
+[00:31:19.000 --> 00:31:28.000]   and then recursively split up the children into grandchildren and so forth and so on,
+[00:31:28.000 --> 00:31:34.000]   up until a level where the termination criteria are met,
+[00:31:34.000 --> 00:31:37.000]   and you just stop.
+[00:31:37.000 --> 00:31:41.000]   And importantly, so this is a read note,
+[00:31:41.000 --> 00:31:44.000]   this is designed to have no nodes,
+[00:31:44.000 --> 00:31:48.000]   you have to store some information in the internal nodes, but hopefully not too much,
+[00:31:48.000 --> 00:31:56.000]   and then the leaf nodes, or the termination nodes, the leaf nodes,
+[00:31:56.000 --> 00:32:04.000]   literally have to store the reference to a list of objects or primitives
+[00:32:04.000 --> 00:32:10.000]   that lie within that leaf cell, or that at least overlap with it.
+[00:32:10.000 --> 00:32:15.000]   In this case we don't have overlapping geometry.
+[00:32:15.000 --> 00:32:21.000]   And only the leaf nodes store the reference to the cell.
+[00:32:21.000 --> 00:32:26.000]   So once again, what do you need to store conceptually for the internal nodes?
+[00:32:26.000 --> 00:32:31.000]   You store the split axis, it can be the x, y, or c axis,
+[00:32:31.000 --> 00:32:36.000]   you store the split position, which is a singular coordinate,
+[00:32:36.000 --> 00:32:40.000]   just one scalar, one float, one double,
+[00:32:40.000 --> 00:32:47.000]   and then reference to the child nodes, basically a pointer to the left and to the right.
+[00:32:47.000 --> 00:32:51.000]   And then on the leaf nodes level, you store the list of primitives,
+[00:32:51.000 --> 00:32:56.000]   or reference to the list, whatever, and optionally some mailboxing information.
+[00:32:56.000 --> 00:33:04.000]   Mailboxing information is basically, you can imagine if you, upon traversal,
+[00:33:04.000 --> 00:33:11.000]   it can happen for overlapping objects, objects that are assigned to multiple cells
+[00:33:11.000 --> 00:33:16.000]   that you have intersected the ray with the object in one cell,
+[00:33:16.000 --> 00:33:20.000]   but as you traverse, you intersect the same object again.
+[00:33:20.000 --> 00:33:24.000]   This is also one of the reasons why you would want to avoid too much overlap.
+[00:33:24.000 --> 00:33:30.000]   And in order to sort of cache, to remind you the system
+[00:33:30.000 --> 00:33:34.000]   that you have already computed that ray object intersection,
+[00:33:34.000 --> 00:33:40.000]   you use this mailbox information so that basically tells the system,
+[00:33:40.000 --> 00:33:44.000]   hey, whatever, it includes numbering the rays,
+[00:33:44.000 --> 00:33:49.000]   and that the previous ray was already there and had computed the intersection.
+[00:33:49.000 --> 00:33:51.000]   So that's called mailboxing. You will see it.
+[00:33:51.000 --> 00:33:56.000]   It's one of these many tricks to increase efficiency
+[00:33:56.000 --> 00:34:01.000]   and tackle with some of the issues of these data structures.
+[00:34:01.000 --> 00:34:08.000]   Once again, traversal is really not a scan conversion of the ray, obviously.
+[00:34:08.000 --> 00:34:16.000]   It's more like a recursive intersection with axis-aligned bounding boxes,
+[00:34:16.000 --> 00:34:18.000]   the way I explained earlier.
+[00:34:18.000 --> 00:34:20.000]   So we start with the topmost box.
+[00:34:20.000 --> 00:34:25.000]   Of course, if it doesn't intersect the scene, then there is no need to go further.
+[00:34:25.000 --> 00:34:32.000]   And then you compute T min, so an entry point and an exit point for the box,
+[00:34:32.000 --> 00:34:38.000]   plus the intersection with the splitting plane.
+[00:34:38.000 --> 00:34:43.000]   But that's so, for instance, if you could easily imagine
+[00:34:43.000 --> 00:34:46.000]   if the split-plane intersection does not exist,
+[00:34:46.000 --> 00:34:49.000]   literally if you have only T min, T max,
+[00:34:49.000 --> 00:34:54.000]   then you can continue the recursion in the upper part of the half tree.
+[00:34:54.000 --> 00:34:59.000]   You don't have to do, you know, you don't have to visit the rest anymore.
+[00:34:59.000 --> 00:35:01.000]   So that's basically how it works.
+[00:35:01.000 --> 00:35:05.000]   And then you go recursively down here.
+[00:35:05.000 --> 00:35:09.000]   In this one, it's a sort of breadth-first traversal,
+[00:35:09.000 --> 00:35:13.000]   but you literally have to traverse this entire thing.
+[00:35:13.000 --> 00:35:17.000]   I just animated it down for you, so that was pretty much it.
+[00:35:17.000 --> 00:35:20.000]   For all the others, you did not intersect.
+[00:35:20.000 --> 00:35:24.000]   And as you don't intersect, the bounding works also shows you
+[00:35:24.000 --> 00:35:27.000]   the power of these intersection tests.
+[00:35:27.000 --> 00:35:31.000]   If you don't intersect the bounding box, then of course,
+[00:35:31.000 --> 00:35:34.000]   there is no need to go any further.
+[00:35:34.000 --> 00:35:39.000]   So then finally, on the leaf node, you intersect, you get your thing.
+[00:35:39.000 --> 00:35:44.000]   So this is an example of a typical KT tree for a realistic object.
+[00:35:44.000 --> 00:35:47.000]   Once again, so this is the stand for dragging.
+[00:35:47.000 --> 00:35:49.000]   It's a lot of triangles.
+[00:35:49.000 --> 00:35:52.000]   I don't know the resolution of this particular model,
+[00:35:52.000 --> 00:35:56.000]   but say 50,000 or 30,000, then of course,
+[00:35:56.000 --> 00:35:59.000]   the tree is being built up on the primitive level,
+[00:35:59.000 --> 00:36:02.000]   not so much on the object level.
+[00:36:02.000 --> 00:36:05.000]   It divides, it subdivides the object.
+[00:36:05.000 --> 00:36:08.000]   And once again, uniform crit and KT tree,
+[00:36:08.000 --> 00:36:14.000]   simplicity versus sophistication and tightness of packing.
+[00:36:14.000 --> 00:36:18.000]   Once again, here's a comparison.
+[00:36:18.000 --> 00:36:26.000]   Put forth, you get the 6,321 intersection tests per ray
+[00:36:26.000 --> 00:36:29.000]   for the U-tarty part.
+[00:36:29.000 --> 00:36:34.000]   And we tabulated the different depth, you know,
+[00:36:34.000 --> 00:36:36.000]   levels, maximum depth.
+[00:36:36.000 --> 00:36:38.000]   And this is a minimum number of objects.
+[00:36:38.000 --> 00:36:40.000]   These are two criteria that were used.
+[00:36:40.000 --> 00:36:43.000]   And you can get it down if you go deep enough.
+[00:36:43.000 --> 00:36:52.000]   You really get it down to 2.8 intersection tests per ray.
+[00:36:52.000 --> 00:36:55.000]   Once again, it doesn't translate,
+[00:36:55.000 --> 00:36:59.000]   so you have to look at this table a little bit with a crane of salt.
+[00:36:59.000 --> 00:37:01.000]   You would assume, well, yeah,
+[00:37:01.000 --> 00:37:04.000]   the fewer intersection tests the better, the faster.
+[00:37:04.000 --> 00:37:08.000]   But this is a much deeper recursion level,
+[00:37:08.000 --> 00:37:11.000]   so you have to recurve much more often
+[00:37:11.000 --> 00:37:14.000]   because depth is 32.
+[00:37:14.000 --> 00:37:16.000]   And as I said, there is a trade-off.
+[00:37:16.000 --> 00:37:19.000]   And there's also no global parameter.
+[00:37:19.000 --> 00:37:22.000]   It really depends on the scene and everything.
+[00:37:22.000 --> 00:37:26.000]   But in general, there's a trade-off between the depth
+[00:37:26.000 --> 00:37:31.000]   and the average number of intersection tests per ray.
+[00:37:31.000 --> 00:37:33.000]   But it's fairly remarkable to get it down
+[00:37:33.000 --> 00:37:39.000]   by a factor of literally 2,000 easily or 2,500.
+[00:37:39.000 --> 00:37:41.000]   That's quite -- so it once again illustrates,
+[00:37:41.000 --> 00:37:43.000]   even for the simple object,
+[00:37:43.000 --> 00:37:48.000]   how important these acceleration structures are.
+[00:37:48.000 --> 00:37:52.000]   Finally, octrees.
+[00:37:52.000 --> 00:37:55.000]   Octrees have simple prey processing.
+[00:37:55.000 --> 00:37:57.000]   Of course, you have to compute a bounding box,
+[00:37:57.000 --> 00:38:00.000]   and then you recursively subdivide the cells
+[00:38:00.000 --> 00:38:04.000]   without optimizing for a split plane or anything.
+[00:38:04.000 --> 00:38:07.000]   All subsets have equal size.
+[00:38:07.000 --> 00:38:10.000]   They are all cubes, if you will.
+[00:38:10.000 --> 00:38:15.000]   And then until you hit a termination criteria,
+[00:38:15.000 --> 00:38:17.000]   it could be pretty much the same.
+[00:38:17.000 --> 00:38:19.000]   It's sort of the minimum number of objects hit
+[00:38:19.000 --> 00:38:22.000]   or a maximum depth that's hit.
+[00:38:22.000 --> 00:38:27.000]   And the traversal is very similar to a KD tree.
+[00:38:27.000 --> 00:38:29.000]   So you once again use this as why I was saying,
+[00:38:29.000 --> 00:38:32.000]   this access-aligned bounding box test,
+[00:38:32.000 --> 00:38:34.000]   the fundamental test we looked at earlier,
+[00:38:34.000 --> 00:38:39.000]   can be applied to many of these data structures.
+[00:38:39.000 --> 00:38:41.000]   Pewdy of an octree is super easy to implement.
+[00:38:41.000 --> 00:38:45.000]   It doesn't require to store a lot along with nodes.
+[00:38:45.000 --> 00:38:49.000]   And you have cheaper costs for insertion,
+[00:38:49.000 --> 00:38:55.000]   deletion, but the spatial packing is less effective.
+[00:38:55.000 --> 00:38:58.000]   So if you have a lot of dynamic change in the scene,
+[00:38:58.000 --> 00:39:01.000]   you might consider this data structure
+[00:39:01.000 --> 00:39:04.000]   because it's more simple and can be rebuilt
+[00:39:04.000 --> 00:39:07.000]   or readjusted more easily.
+[00:39:07.000 --> 00:39:11.000]   If you really want to make sure you have a tight packing,
+[00:39:11.000 --> 00:39:15.000]   then of course you go for a KD tree at least,
+[00:39:15.000 --> 00:39:18.000]   or you go for a BSP tree.
+[00:39:18.000 --> 00:39:21.000]   It's more like academically relevant.
+[00:39:21.000 --> 00:39:25.000]   I'm not sure if it's being used literally a lot in production.
+[00:39:25.000 --> 00:39:28.000]   Rache, are you aware that BSP trees are used?
+[00:39:28.000 --> 00:39:32.000]   They are just Utah academic from my friend,
+[00:39:32.000 --> 00:39:34.000]   who was one of the inventors.
+[00:39:34.000 --> 00:39:36.000]   It's a great data structure.
+[00:39:36.000 --> 00:39:39.000]   The idea is simply to compute a bounding box
+[00:39:39.000 --> 00:39:41.000]   and then to recursively split like a KD tree,
+[00:39:41.000 --> 00:39:44.000]   but have one more parameter of freedom.
+[00:39:44.000 --> 00:39:48.000]   Literally it's three because it's a rotational axis of the planes.
+[00:39:48.000 --> 00:39:49.000]   It's not only in position,
+[00:39:49.000 --> 00:39:53.000]   but it's also how you rotate the plane in space,
+[00:39:53.000 --> 00:39:58.000]   which implies that per internal node of this hierarchy
+[00:39:58.000 --> 00:40:00.000]   you have to store more information.
+[00:40:00.000 --> 00:40:03.000]   It's not only the split position along one of the axes,
+[00:40:03.000 --> 00:40:08.000]   it's also the rotational angles of the planes.
+[00:40:08.000 --> 00:40:11.000]   Of course they give you much tighter packing,
+[00:40:11.000 --> 00:40:14.000]   but you can imagine that the intersection test
+[00:40:14.000 --> 00:40:18.000]   is more involved.
+[00:40:18.000 --> 00:40:20.000]   This is where we are.
+[00:40:20.000 --> 00:40:25.000]   In a way, if you go down from arch tree to KD tree to BSP tree,
+[00:40:25.000 --> 00:40:29.000]   you have fewer intersections on average
+[00:40:29.000 --> 00:40:32.000]   because the packing is much more tight,
+[00:40:32.000 --> 00:40:36.000]   but the complexity also increases.
+[00:40:36.000 --> 00:40:39.000]   Now for the last five minutes,
+[00:40:39.000 --> 00:40:43.000]   a little bit on bounding volume hierarchies,
+[00:40:43.000 --> 00:40:47.000]   there's the opposite approach to it.
+[00:40:47.000 --> 00:40:51.000]   It's sort of an alternative divide and conquer method,
+[00:40:51.000 --> 00:40:55.000]   which is related to spatial sorting.
+[00:40:55.000 --> 00:41:03.000]   The spatial sorting,
+[00:41:03.000 --> 00:41:05.000]   this is a little bit confusing because I made it in,
+[00:41:05.000 --> 00:41:08.000]   this was just a recap on the spatial sorting,
+[00:41:08.000 --> 00:41:10.000]   which we looked at.
+[00:41:10.000 --> 00:41:13.000]   You basically decompose the space in regions.
+[00:41:13.000 --> 00:41:14.000]   On the bounding volumes,
+[00:41:14.000 --> 00:41:19.000]   you decompose the objects into overlapping sets
+[00:41:19.000 --> 00:41:23.000]   and bounds using simple volumes for faster checking.
+[00:41:23.000 --> 00:41:26.000]   The most popular ones, as you can imagine,
+[00:41:26.000 --> 00:41:30.000]   are axis-aligned bounding boxes.
+[00:41:30.000 --> 00:41:33.000]   In this case, the difference between the spatial subdivision,
+[00:41:33.000 --> 00:41:34.000]   the object subdivision,
+[00:41:34.000 --> 00:41:37.000]   is the bounding boxes can overlap,
+[00:41:37.000 --> 00:41:40.000]   and they do overlap.
+[00:41:40.000 --> 00:41:43.000]   And the other one is spheres
+[00:41:43.000 --> 00:41:46.000]   because spheres are also a way to pack
+[00:41:46.000 --> 00:41:49.000]   and encapsulate sets of objects.
+[00:41:49.000 --> 00:41:51.000]   And here we go, the spheres,
+[00:41:51.000 --> 00:41:54.000]   it's a very simple way.
+[00:41:54.000 --> 00:41:58.000]   It can be efficient if the distribution of the primitives,
+[00:41:58.000 --> 00:42:05.000]   or objects, is such that a sphere can tightly pack it.
+[00:42:05.000 --> 00:42:08.000]   This doesn't have to be the case.
+[00:42:08.000 --> 00:42:12.000]   In this case, the sphere would probably not be very efficient.
+[00:42:12.000 --> 00:42:16.000]   Then another one is the axis-aligned bounding box.
+[00:42:16.000 --> 00:42:21.000]   As we have seen, we have the flexibility to scale in x, y, c direction,
+[00:42:21.000 --> 00:42:26.000]   which means we can adjust to a certain spatial distribution
+[00:42:26.000 --> 00:42:29.000]   or arrangement of sub-primitives,
+[00:42:29.000 --> 00:42:34.000]   as long as the arrangement is axis-aligned.
+[00:42:34.000 --> 00:42:37.000]   If it's line-x, y, or c-axis, the packings are good.
+[00:42:37.000 --> 00:42:41.000]   If they are slanted, the packings are bad.
+[00:42:41.000 --> 00:42:45.000]   So this is spheres and AAPBs,
+[00:42:45.000 --> 00:42:47.000]   most popular ones.
+[00:42:47.000 --> 00:42:49.000]   Of course, as you can imagine,
+[00:42:49.000 --> 00:42:52.000]   there are more fancy ones,
+[00:42:52.000 --> 00:42:56.000]   for instance, OBBs, oriented bounding boxes.
+[00:42:56.000 --> 00:42:58.000]   And as the name says,
+[00:42:58.000 --> 00:43:04.000]   there you have an additional freedom to rotate the box in x, y, and c direction.
+[00:43:04.000 --> 00:43:07.000]   If the box is rotated, it's not such a big deal.
+[00:43:07.000 --> 00:43:09.000]   You can store the angles of rotation,
+[00:43:09.000 --> 00:43:12.000]   which would be three scalar values.
+[00:43:12.000 --> 00:43:17.000]   The problem is, or a criterion, whatever you want,
+[00:43:17.000 --> 00:43:23.000]   but the problem is the intersection test with array becomes more involved,
+[00:43:23.000 --> 00:43:28.000]   because the whole parametric idea of computing these T-minz and T-max,
+[00:43:28.000 --> 00:43:33.000]   of course, only works if those lines are axis-aligned.
+[00:43:33.000 --> 00:43:35.000]   If the lines are slanted,
+[00:43:35.000 --> 00:43:38.000]   you know the ones we intersect with,
+[00:43:38.000 --> 00:43:43.000]   then you have to compute it very explicitly in x, y, c,
+[00:43:43.000 --> 00:43:46.000]   which makes it more expensive.
+[00:43:46.000 --> 00:43:52.000]   So we get, now, of course, if there is a bad distribution of the primitives,
+[00:43:52.000 --> 00:43:57.000]   then still these boxes can be a bad fit.
+[00:43:57.000 --> 00:43:59.000]   And there are so-called,
+[00:43:59.000 --> 00:44:03.000]   and now we increase the tightness of the packing
+[00:44:03.000 --> 00:44:05.000]   in terms of data structures.
+[00:44:05.000 --> 00:44:10.000]   There are K-dubs, also not so popular,
+[00:44:10.000 --> 00:44:14.000]   but they exist, which are bounding volumes.
+[00:44:14.000 --> 00:44:18.000]   They are K-discrete orientation polytopes.
+[00:44:18.000 --> 00:44:22.000]   The best way to compare them is with a BSP tree.
+[00:44:22.000 --> 00:44:27.000]   So you give the bounding planes that define this polytope.
+[00:44:27.000 --> 00:44:30.000]   You give them the possibility they don't need to be axis-aligned.
+[00:44:30.000 --> 00:44:33.000]   They can have any orientation,
+[00:44:33.000 --> 00:44:35.000]   and so they lead to a tighter packing.
+[00:44:35.000 --> 00:44:39.000]   And finally, of course, the ultimate packing would be,
+[00:44:39.000 --> 00:44:42.000]   or one of the ultimate packings would be the convex hull.
+[00:44:42.000 --> 00:44:45.000]   Does everybody know what the convex hull is?
+[00:44:45.000 --> 00:44:47.000]   Good. Sounds good.
+[00:44:47.000 --> 00:44:50.000]   Can you also go to the blackboard and define it mathematically?
+[00:44:50.000 --> 00:44:51.000]   No.
+[00:44:51.000 --> 00:44:52.000]   But you know what it is.
+[00:44:52.000 --> 00:44:56.000]   I mean, so intuitively, it's like this one.
+[00:44:56.000 --> 00:45:00.000]   No, it's actually the old points within the con...
+[00:45:00.000 --> 00:45:02.000]   And this is my last sentence,
+[00:45:02.000 --> 00:45:05.000]   and you can write it down as an equation.
+[00:45:05.000 --> 00:45:09.000]   It's old points, the convex hull in a plane,
+[00:45:09.000 --> 00:45:12.000]   is the sum of all points, you know, p,
+[00:45:12.000 --> 00:45:14.000]   that have an x, y coordinate,
+[00:45:14.000 --> 00:45:21.000]   for which p can be expanded as a weighted linear combination,
+[00:45:21.000 --> 00:45:25.000]   a sum of lambda i times p i,
+[00:45:25.000 --> 00:45:28.000]   are the given points, because you compute the convex hull
+[00:45:28.000 --> 00:45:31.000]   of a set of given points, right?
+[00:45:31.000 --> 00:45:35.000]   Such that all the lambdas, partition unity,
+[00:45:35.000 --> 00:45:38.000]   the sum of all lambdas from 1 to n equals 1,
+[00:45:38.000 --> 00:45:40.000]   and they are all positive definite,
+[00:45:40.000 --> 00:45:43.000]   they are all between 0 and 1, obviously.
+[00:45:43.000 --> 00:45:44.000]   So this is...
+[00:45:44.000 --> 00:45:48.000]   It's basically what we often call the convex combination.
+[00:45:48.000 --> 00:45:50.000]   You know, it's a linear combination where the weights
+[00:45:50.000 --> 00:45:53.000]   have to partition unity, they have to sum up to 1,
+[00:45:53.000 --> 00:45:56.000]   they all have to be positive definite, so that's the definition.
+[00:45:56.000 --> 00:46:01.000]   But now you know it, write it up, so we'll ask it in the exam.
+[00:46:01.000 --> 00:46:05.000]   Thank you very much, I will see you on Friday.
+[00:46:05.000 --> 00:46:07.000]   [APPLAUSE]
+

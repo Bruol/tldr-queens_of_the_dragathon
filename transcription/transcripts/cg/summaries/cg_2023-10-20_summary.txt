@@ -1,0 +1,48 @@
+# Summary
+
+## Topic 1: Assignment Three
+### Sourced from Summary 1
+- Implement direct illumination using Monte Carlo ray tracing
+- Implement area emitter and different integrators with different sampling strategies
+- Use microfacet BRDF to create rough materials in scenes
+
+## Topic 2: Direct Illumination
+### Sourced from Summary 1
+- Direct illumination refers to light directly from an emitter to a point of interest
+- Only direct illumination will be considered in this assignment
+- Global illumination will be addressed in a future assignment
+
+## Topic 3: Sampling and Importance Sampling
+### Sourced from Summary 1
+- Sampling is used to solve integrals in Monte Carlo ray tracing
+- Uniform sampling a hemisphere has limitations
+- Importance sampling can sample the BRDF and solid angles that hit an emitter
+
+## Topic 4: Multiple Importance Sampling (MIS)
+### Sourced from Summary 2
+- MIS combines emitter and BRDF sampling strategies
+- Balancing heuristics determine the better estimation approach
+- Only sample a single light source when combining the emitter sampling code into MIS code
+
+## Topic 5: Microfaceted PRDF
+### Sourced from Summary 2 and 3
+- Microfaceted PRDF models rough surfaces in rendering
+- Consists of Fresnel coefficient, microfaceted distribution, and shadowing/masking term
+- Different microfaceted distributions can accurately represent various objects
+
+# In-Depth Summaries
+
+## Topic 1: Assignment Three
+In this lecture, the focus is on Assignment Three, which involves the implementation of direct illumination using Monte Carlo ray tracing. Students are required to implement an area emitter and different integrators with different sampling strategies. Additionally, the use of a microfacet BRDF to create rough materials in scenes is introduced. The lecture emphasizes that only direct illumination will be considered in this assignment, with global illumination being addressed in the future. The speaker explains that the rendering equation is a requirement for image rendering, but simplifications are applied for direct illumination. (Summary 1)
+
+## Topic 2: Direct Illumination
+Direct illumination refers to light that directly comes from an emitter to a point of interest. In Assignment Three, the lecture focuses on direct illumination and excludes global illumination. The speaker highlights that understanding direct illumination is important for future assignments involving global illumination. By considering only direct illumination, the assignment allows students to grasp the fundamentals before tackling more complex lighting scenarios. (Summary 1)
+
+## Topic 3: Sampling and Importance Sampling
+Sampling plays a crucial role in Monte Carlo ray tracing. The lecture explains that uniformly sampling a hemisphere has limitations, leading to the introduction of importance sampling. Importance sampling allows more efficient integration over specific surfaces, such as emitters, by considering the probability of sampling certain directions. The lecture emphasizes the need to sample the BRDF and the solid angles that hit an emitter to improve accuracy. The speaker also introduces the concept of the geometry term in the reflection equation, highlighting the importance of accounting for changes in variables when sampling. (Summary 1)
+
+## Topic 4: Multiple Importance Sampling (MIS)
+Multiple Importance Sampling (MIS) is introduced as a method that combines emitter and BRDF sampling strategies. The lecture explains how MIS allows for the weighting of these strategies based on balancing heuristics to determine the better estimation approach. However, in order to combine the emitter sampling code into the MIS code, it is necessary to only sample a single light source. This restriction ensures accurate estimations when utilizing MIS for efficient integration in computer graphics rendering. (Summary 2)
+
+## Topic 5: Microfaceted PRDF
+The microfaceted PRDF model is discussed as a technique used to simulate roughness in objects for more realistic rendering. The model consists of three components: the Fresnel coefficient, microfaceted distribution, and shadowing/masking term. Various microfaceted distributions can be chosen based on their accuracy in representing different objects. The lecture focuses on the implementation of a specific microfaceted PRDF that combines the diffused lope and rough, dielectric, microfaceted PRDF. The Backman distribution and Smith approximation techniques are used in this implementation. The lecture offers tips and tricks for working with Nori, a computer graphics framework, suggesting the reading of existing classes, understanding the implemented code, and utilizing helper functions. (Summary 2 and 3)

@@ -1,0 +1,651 @@
+
+[00:00:00.000 --> 00:00:02.240]   >> All right.
+[00:00:02.240 --> 00:00:05.560]   Can you all hear me?
+[00:00:05.560 --> 00:00:08.360]   Good. So let's get started.
+[00:00:08.360 --> 00:00:11.360]   My name is Rajesh Sharma.
+[00:00:11.360 --> 00:00:16.480]   I'm a PhD student at ETH and at Disney Research.
+[00:00:16.480 --> 00:00:21.360]   And I'll be teaching you this appearance modeling
+[00:00:21.360 --> 00:00:24.320]   and microfacer theory lecture.
+[00:00:24.320 --> 00:00:26.600]   So let's just get started.
+[00:00:26.600 --> 00:00:28.600]   Where we are right now.
+[00:00:28.600 --> 00:00:33.680]   Last time we talked a little bit about lights and materials.
+[00:00:33.680 --> 00:00:37.840]   And today we're going to cover two topics.
+[00:00:37.840 --> 00:00:40.320]   Materials and microfaceted models.
+[00:00:40.320 --> 00:00:42.840]   So let's see what that entails.
+[00:00:42.840 --> 00:00:46.200]   So materials are essentially part of your scene representation
+[00:00:46.200 --> 00:00:47.520]   or scene description.
+[00:00:47.520 --> 00:00:51.920]   Where you describe your scene with geometry, lights, cameras,
+[00:00:51.920 --> 00:00:53.760]   and also materials.
+[00:00:53.760 --> 00:00:57.560]   And we'll cover that in detail today.
+[00:00:57.560 --> 00:01:01.080]   And specifically we'll be covering a bunch of topics.
+[00:01:01.080 --> 00:01:02.840]   We'll start with what materials are,
+[00:01:02.840 --> 00:01:06.920]   how to represent them with a BRDF or bi-directional
+[00:01:06.920 --> 00:01:08.920]   reflectance distribution function.
+[00:01:08.920 --> 00:01:11.160]   We'll go over some simple materials
+[00:01:11.160 --> 00:01:13.760]   and then get into some complexity
+[00:01:13.760 --> 00:01:16.560]   with the physically based models as well.
+[00:01:16.560 --> 00:01:18.480]   Particularly the microfaceted model.
+[00:01:18.480 --> 00:01:23.240]   And this will be formed the core of your material model
+[00:01:23.240 --> 00:01:25.560]   that you will be using in your assignments.
+[00:01:25.560 --> 00:01:27.640]   So I'll spend more time on the microfaceted model
+[00:01:27.640 --> 00:01:31.040]   and we'll quickly go over different other models
+[00:01:31.040 --> 00:01:37.160]   that will build up from simple ones to a more complex one.
+[00:01:37.160 --> 00:01:38.720]   So what are materials?
+[00:01:38.720 --> 00:01:42.680]   So if you look at any everyday object, something like this,
+[00:01:42.680 --> 00:01:46.280]   this is some kind of a plastic.
+[00:01:46.280 --> 00:01:48.360]   This is wood.
+[00:01:48.360 --> 00:01:51.160]   And they all kind of look different.
+[00:01:51.160 --> 00:01:54.520]   They behave different when light falls on them.
+[00:01:54.520 --> 00:01:57.040]   And that is what we want to capture.
+[00:01:57.040 --> 00:02:00.840]   Like what is the inherent property of each of these materials
+[00:02:00.840 --> 00:02:02.960]   that we can model.
+[00:02:02.960 --> 00:02:05.000]   So we don't want to go into each material
+[00:02:05.000 --> 00:02:06.320]   and model it specifically.
+[00:02:06.320 --> 00:02:09.360]   We don't want to have a model for wood, model for plastic,
+[00:02:09.360 --> 00:02:10.600]   model for metals.
+[00:02:10.600 --> 00:02:13.800]   We want to have a general model that kind of encapsulates
+[00:02:13.800 --> 00:02:15.880]   many different kinds of materials.
+[00:02:15.880 --> 00:02:19.240]   So real world materials are quite diverse.
+[00:02:19.240 --> 00:02:22.240]   They range from metallic things like copper
+[00:02:22.240 --> 00:02:25.240]   to something like glass that is transparent,
+[00:02:25.240 --> 00:02:29.360]   and also the water in the glass that is also transparent.
+[00:02:29.360 --> 00:02:32.120]   But on a different form, we have wood.
+[00:02:32.120 --> 00:02:34.880]   So there are specific things about each of these materials
+[00:02:34.880 --> 00:02:37.560]   that we want to understand and capture in a model
+[00:02:37.560 --> 00:02:40.200]   that we can represent.
+[00:02:40.200 --> 00:02:43.400]   So we can roughly divide most materials
+[00:02:43.400 --> 00:02:46.760]   into two categories, metals and non-metals.
+[00:02:46.760 --> 00:02:48.960]   So in computer graphics, we use the term
+[00:02:48.960 --> 00:02:52.080]   conductors and dielectrics, conductors for metals,
+[00:02:52.080 --> 00:02:55.840]   and dielectrics for non-metals.
+[00:02:55.840 --> 00:02:58.160]   These are some examples of materials,
+[00:02:58.160 --> 00:03:00.560]   different materials that have been rendered.
+[00:03:00.560 --> 00:03:04.360]   And you'll see they behave differently
+[00:03:04.360 --> 00:03:08.360]   based on what you are looking at and where the light is.
+[00:03:08.360 --> 00:03:12.760]   So it's not just a property of the material itself,
+[00:03:12.760 --> 00:03:16.280]   but it's dependent on where you look from
+[00:03:16.280 --> 00:03:17.720]   and where the light is.
+[00:03:17.720 --> 00:03:20.400]   So if you look at any material and you
+[00:03:20.400 --> 00:03:22.560]   were to move slightly, which means
+[00:03:22.560 --> 00:03:24.720]   that the viewing angle is changing,
+[00:03:24.720 --> 00:03:26.720]   you'll see that it looks different.
+[00:03:26.720 --> 00:03:29.720]   So the material response is dependent
+[00:03:29.720 --> 00:03:33.320]   on where you look from and also where the light is coming from.
+[00:03:33.320 --> 00:03:40.640]   So in general, material response can be very complex.
+[00:03:40.640 --> 00:03:44.480]   So this diagram kind of in 2D explains a little bit
+[00:03:44.480 --> 00:03:47.840]   what happens to light when it travels through materials.
+[00:03:47.840 --> 00:03:51.880]   So this slab in gray that you see, that is the material.
+[00:03:51.880 --> 00:03:54.680]   And the incoming light is coming from the left side.
+[00:03:54.680 --> 00:03:59.320]   And part of it gets reflected in a specific direction
+[00:03:59.320 --> 00:04:03.280]   that you see the big arrow at the top that is going out.
+[00:04:03.280 --> 00:04:06.800]   And that is the shiny material will respond like that.
+[00:04:06.800 --> 00:04:08.880]   So if you look at any shiny material on the top,
+[00:04:08.880 --> 00:04:14.000]   you'll see a very directed light coming out in a direction that
+[00:04:14.000 --> 00:04:15.920]   is specific to that material.
+[00:04:15.920 --> 00:04:20.680]   And rest of the light can get diffusely distributed.
+[00:04:20.680 --> 00:04:25.200]   So things like wood that is rough,
+[00:04:25.200 --> 00:04:27.920]   you'll see that the light response is very
+[00:04:27.920 --> 00:04:29.760]   diffused in all directions.
+[00:04:29.760 --> 00:04:32.160]   And then for certain kind of materials,
+[00:04:32.160 --> 00:04:36.160]   the light can pass through, like glass or semi-transparent
+[00:04:36.160 --> 00:04:37.000]   materials.
+[00:04:37.000 --> 00:04:38.880]   So when light passes through that,
+[00:04:38.880 --> 00:04:42.320]   it comes out on the other side, not at the same angle,
+[00:04:42.320 --> 00:04:44.200]   because of the laws of refraction.
+[00:04:44.200 --> 00:04:46.160]   It basically bends a little bit.
+[00:04:46.160 --> 00:04:48.040]   And we'll go over that, why that is,
+[00:04:48.040 --> 00:04:49.480]   and how to calculate that.
+[00:04:49.480 --> 00:04:51.680]   And it comes out on the other side.
+[00:04:51.680 --> 00:04:53.400]   So that is the transmittance.
+[00:04:53.400 --> 00:04:56.520]   And then on the other side, also, it can be slightly diffused.
+[00:04:56.520 --> 00:04:59.360]   So this is kind of one diagram that
+[00:04:59.360 --> 00:05:02.520]   explains all different kinds of material responses.
+[00:05:02.520 --> 00:05:04.840]   And that is what we will try to capture today
+[00:05:04.840 --> 00:05:07.880]   using math and physics.
+[00:05:07.880 --> 00:05:11.280]   So as you see, this diagram is an easy way
+[00:05:11.280 --> 00:05:13.360]   to describe things materially.
+[00:05:13.360 --> 00:05:14.920]   So we'll use that a lot.
+[00:05:14.920 --> 00:05:17.200]   And this is used in computer graphics literature
+[00:05:17.200 --> 00:05:21.480]   a lot to describe material responses to light.
+[00:05:21.480 --> 00:05:24.680]   So for a smooth conductor, that's
+[00:05:24.680 --> 00:05:29.440]   something like a shiny metallic copper that you see here,
+[00:05:29.440 --> 00:05:32.400]   it doesn't transmit any light through the material.
+[00:05:32.400 --> 00:05:35.680]   So again, the gray part box is the material.
+[00:05:35.680 --> 00:05:38.840]   And the light is coming into the red color.
+[00:05:38.840 --> 00:05:42.520]   And for metals, there is no transmittance.
+[00:05:42.520 --> 00:05:44.560]   It goes out directly.
+[00:05:44.560 --> 00:05:46.920]   And the angle at which it goes out
+[00:05:46.920 --> 00:05:51.680]   is physically dependent on the kind of material you have.
+[00:05:51.680 --> 00:05:54.160]   And on the right side, what you see
+[00:05:54.160 --> 00:05:57.640]   is something called a smooth dielectric, which
+[00:05:57.640 --> 00:06:00.680]   both reflects light and also transmits light.
+[00:06:00.680 --> 00:06:03.800]   So that's why you see this transparency through it,
+[00:06:03.800 --> 00:06:06.520]   but you're also seeing reflection on top of it.
+[00:06:06.520 --> 00:06:10.600]   So that happens usually for transparent materials
+[00:06:10.600 --> 00:06:12.000]   that are a little bit glossy.
+[00:06:12.000 --> 00:06:13.400]   And they're smooth.
+[00:06:13.400 --> 00:06:15.840]   So there are a couple of examples.
+[00:06:15.840 --> 00:06:18.120]   So we are taking specific examples
+[00:06:18.120 --> 00:06:22.560]   to show you what happens in an ideal case of different kinds
+[00:06:22.560 --> 00:06:23.440]   of materials.
+[00:06:23.440 --> 00:06:27.080]   So for a rough material, as you can see,
+[00:06:27.080 --> 00:06:30.280]   the response would be a little bit diffuse.
+[00:06:30.280 --> 00:06:33.240]   It's still very directed in a direction,
+[00:06:33.240 --> 00:06:36.320]   but it's diffuse on the side.
+[00:06:36.320 --> 00:06:40.120]   So you have this lobe that is basically
+[00:06:40.120 --> 00:06:44.240]   representing the diffuseness of the rough part of the material.
+[00:06:44.240 --> 00:06:48.520]   So similarly, if you had a rough, semi-transparent plastic
+[00:06:48.520 --> 00:06:51.920]   like thing, it would transmit and then also reflect.
+[00:06:51.920 --> 00:06:54.520]   And both of those areas would be slightly diffused,
+[00:06:54.520 --> 00:06:57.560]   but still directional.
+[00:06:57.560 --> 00:07:00.360]   So to represent this, we need to go back
+[00:07:00.360 --> 00:07:03.840]   to what we learned in the earlier lectures.
+[00:07:03.840 --> 00:07:07.640]   Basically, we had these quantities
+[00:07:07.640 --> 00:07:12.480]   of different kind of representation of light as energy.
+[00:07:12.480 --> 00:07:16.280]   So flux is the wattage.
+[00:07:16.280 --> 00:07:20.560]   But then when you direct it to a specific point
+[00:07:20.560 --> 00:07:23.040]   over the hemisphere, you get the irradiance.
+[00:07:23.040 --> 00:07:26.760]   And then irradiance is basically the same as radiosity.
+[00:07:26.760 --> 00:07:27.560]   One is going out.
+[00:07:27.560 --> 00:07:28.920]   The other one is coming in.
+[00:07:28.920 --> 00:07:34.440]   And then the quantity that we'll deal with a lot is radiance.
+[00:07:34.440 --> 00:07:39.560]   So radiance is essentially a projected area
+[00:07:39.560 --> 00:07:41.000]   of the light intensity.
+[00:07:41.000 --> 00:07:45.120]   So once you just keep this chart handy
+[00:07:45.120 --> 00:07:49.160]   and this series of formulations, we'll use them a lot.
+[00:07:49.160 --> 00:07:52.200]   And this will form the basis of our representation
+[00:07:52.200 --> 00:07:55.680]   of not just materials, but also we'll
+[00:07:55.680 --> 00:07:57.040]   create the rendering equation.
+[00:07:57.040 --> 00:07:59.800]   And that follows a lot of this.
+[00:07:59.800 --> 00:08:02.640]   And these are important quantities to remember.
+[00:08:02.640 --> 00:08:06.000]   And just make a note of that.
+[00:08:06.000 --> 00:08:08.520]   So now we can formally define something
+[00:08:08.520 --> 00:08:10.480]   called a material response.
+[00:08:10.480 --> 00:08:14.080]   We call that BRDF, or a bidirectional reflectance
+[00:08:14.080 --> 00:08:15.520]   distribution function.
+[00:08:15.520 --> 00:08:22.600]   It's a ratio of the differential reflected radiance to--
+[00:08:22.600 --> 00:08:24.840]   I'll go back to the definition so you can read it--
+[00:08:24.840 --> 00:08:27.120]   to the differential incident radiance.
+[00:08:27.120 --> 00:08:30.200]   So to just write it mathematically,
+[00:08:30.200 --> 00:08:37.840]   it's, again, differential reflected radiance, which
+[00:08:37.840 --> 00:08:40.600]   is that on the top.
+[00:08:40.600 --> 00:08:46.640]   And the bottom part is the differential incident irradiance.
+[00:08:46.640 --> 00:08:48.360]   So these are the two quantities.
+[00:08:48.360 --> 00:08:49.520]   So it's a ratio.
+[00:08:49.520 --> 00:08:50.960]   So it shouldn't have units.
+[00:08:50.960 --> 00:08:54.160]   But because we are dealing with solid angles,
+[00:08:54.160 --> 00:09:00.160]   we use one over two radiance as the unit for that.
+[00:09:00.160 --> 00:09:04.800]   So this is just expanding the definition of DE.
+[00:09:04.800 --> 00:09:06.360]   It's that.
+[00:09:06.360 --> 00:09:09.560]   And in a diagrammatic geometric fashion,
+[00:09:09.560 --> 00:09:12.440]   you can see where these quantities come from and what
+[00:09:12.440 --> 00:09:13.280]   they are.
+[00:09:13.280 --> 00:09:14.320]   So this is a definition.
+[00:09:14.320 --> 00:09:16.400]   So this is how it is defined as a ratio.
+[00:09:16.400 --> 00:09:19.320]   So there's nothing to derive this one.
+[00:09:19.320 --> 00:09:22.720]   This is just a definition of the BRDF function itself.
+[00:09:22.720 --> 00:09:26.080]   So from this, we can derive different things.
+[00:09:26.080 --> 00:09:29.040]   So if you take the BRDF definition,
+[00:09:29.040 --> 00:09:31.320]   just multiply it on the right side
+[00:09:31.320 --> 00:09:34.280]   and integrate on both sides.
+[00:09:34.280 --> 00:09:36.560]   And this particular equation that we get,
+[00:09:36.560 --> 00:09:40.160]   that is known as the reflection equation.
+[00:09:40.160 --> 00:09:43.680]   So basically, it's a local illumination model
+[00:09:43.680 --> 00:09:47.840]   that kind of describes a reflected radiance
+[00:09:47.840 --> 00:09:49.640]   due to all the--
+[00:09:49.640 --> 00:09:52.120]   because we integrated over the hemisphere,
+[00:09:52.120 --> 00:09:54.400]   it's describing all the light that is coming in
+[00:09:54.400 --> 00:09:56.560]   and then going out in a particular direction.
+[00:09:57.560 --> 00:09:58.560]   OK.
+[00:09:58.560 --> 00:10:02.560]   So this is the basic definition of the BRDF.
+[00:10:02.560 --> 00:10:04.560]   And there are some properties of the BRDF
+[00:10:04.560 --> 00:10:06.560]   that kind of make them nice.
+[00:10:06.560 --> 00:10:11.560]   One is the reciprocity, which is that if you switch the viewing
+[00:10:11.560 --> 00:10:15.560]   and the lighting direction, the equations remain the same.
+[00:10:15.560 --> 00:10:18.560]   The second is the energy conservation, which is the total
+[00:10:18.560 --> 00:10:21.560]   light coming in equals total light coming out.
+[00:10:21.560 --> 00:10:23.560]   So this light has energies.
+[00:10:23.560 --> 00:10:27.560]   So those are the two properties that are very useful.
+[00:10:27.560 --> 00:10:34.560]   So one other thing, certain kinds of materials,
+[00:10:34.560 --> 00:10:38.560]   like a diffused plastic ball, for example,
+[00:10:38.560 --> 00:10:40.560]   the response doesn't change.
+[00:10:40.560 --> 00:10:44.560]   No matter where you look from around the hemisphere,
+[00:10:44.560 --> 00:10:46.560]   the material looks the same.
+[00:10:46.560 --> 00:10:49.560]   So it's not dependent on one of the angles.
+[00:10:49.560 --> 00:10:52.560]   So those kinds of materials are called isotropic.
+[00:10:52.560 --> 00:10:56.560]   And if the response changes based on where you look from,
+[00:10:56.560 --> 00:11:00.560]   then it becomes an isotropic material.
+[00:11:00.560 --> 00:11:03.560]   So let me...
+[00:11:03.560 --> 00:11:08.560]   That's what I said.
+[00:11:08.560 --> 00:11:09.560]   OK.
+[00:11:09.560 --> 00:11:13.560]   So this is on the top right, you see two examples of sphere.
+[00:11:13.560 --> 00:11:16.560]   So one of them is isotropic, the left one,
+[00:11:16.560 --> 00:11:19.560]   because no matter where you look from, you get the same response.
+[00:11:19.560 --> 00:11:23.560]   The other one has this kind of brushed aluminum look.
+[00:11:23.560 --> 00:11:27.560]   So it kind of favors one direction over the other.
+[00:11:27.560 --> 00:11:30.560]   So if you look from one side, the response is different.
+[00:11:30.560 --> 00:11:34.560]   And if you look from the other side, it's a different response.
+[00:11:34.560 --> 00:11:38.560]   So that is an isotropic material.
+[00:11:38.560 --> 00:11:45.560]   So let's start with this building up a simple model
+[00:11:45.560 --> 00:11:49.560]   of an ideal case of diffused reflection.
+[00:11:49.560 --> 00:11:52.560]   So if you have a kind of a rough material,
+[00:11:52.560 --> 00:11:56.560]   which transmits lights in all directions.
+[00:11:56.560 --> 00:11:58.560]   So if the light coming in,
+[00:11:58.560 --> 00:12:01.560]   and it's basically going to reflect it in all possible directions.
+[00:12:01.560 --> 00:12:04.560]   Similar to the homework example that you did,
+[00:12:04.560 --> 00:12:08.560]   we assumed that for a point hitting in,
+[00:12:08.560 --> 00:12:12.560]   that the light would go out in any direction.
+[00:12:12.560 --> 00:12:16.560]   So then we did the cosine hemisphere sampling, as you recall.
+[00:12:16.560 --> 00:12:19.560]   So this is a material like that.
+[00:12:19.560 --> 00:12:23.560]   But it's perfectly diffused, which means there's no variation.
+[00:12:23.560 --> 00:12:25.560]   And no matter where you go,
+[00:12:25.560 --> 00:12:29.560]   the probability of each of these directions is equal.
+[00:12:29.560 --> 00:12:33.560]   So it's a perfectly diffused surface.
+[00:12:33.560 --> 00:12:38.560]   So let's try to do some math on an ideal diffused surface
+[00:12:38.560 --> 00:12:41.560]   and see where we get.
+[00:12:41.560 --> 00:12:45.560]   So the BIDF is a constant, right?
+[00:12:45.560 --> 00:12:47.560]   Because it doesn't matter where you go.
+[00:12:47.560 --> 00:12:49.560]   Sorry.
+[00:12:49.560 --> 00:12:52.560]   So the BIDF is constant.
+[00:12:52.560 --> 00:12:56.560]   So we can take that BIDF out of this integral.
+[00:12:56.560 --> 00:12:58.560]   There you go.
+[00:12:58.560 --> 00:13:01.560]   And that gives us this equation.
+[00:13:01.560 --> 00:13:07.560]   So BIDF is essentially LR over EX.
+[00:13:07.560 --> 00:13:10.560]   So all incoming light is reflected out
+[00:13:10.560 --> 00:13:12.560]   because of the energy conservation.
+[00:13:12.560 --> 00:13:15.560]   So this diagram looks like that.
+[00:13:15.560 --> 00:13:18.560]   And then we can equate these two quantities
+[00:13:18.560 --> 00:13:21.560]   and then taking one from the top.
+[00:13:21.560 --> 00:13:26.560]   Basically, we can take this LR out of the integral,
+[00:13:26.560 --> 00:13:29.560]   integrate over the hemisphere for cosine theta.
+[00:13:29.560 --> 00:13:34.560]   And that is just 1 over pi.
+[00:13:34.560 --> 00:13:39.560]   So BIDF for an ideal Lambertian surface
+[00:13:39.560 --> 00:13:42.560]   is just 1 over pi.
+[00:13:42.560 --> 00:13:48.560]   So everybody got that?
+[00:13:48.560 --> 00:13:50.560]   So that's easy.
+[00:13:50.560 --> 00:13:52.560]   So it doesn't depend on viewing angle or lighting angle.
+[00:13:52.560 --> 00:13:55.560]   It basically always 1 over pi.
+[00:13:55.560 --> 00:13:57.560]   And that makes sense because it's fully diffused.
+[00:13:57.560 --> 00:14:01.560]   Light is going out similarly in every direction.
+[00:14:01.560 --> 00:14:08.560]   So we represent it by phi, diffuse reflectance.
+[00:14:08.560 --> 00:14:10.560]   We can call it albedo or color of the material.
+[00:14:10.560 --> 00:14:13.560]   So we can multiply it by the color during rendering.
+[00:14:13.560 --> 00:14:17.560]   And that will give us the color of the object as well.
+[00:14:17.560 --> 00:14:24.560]   So for all energy is absorbed,
+[00:14:24.560 --> 00:14:27.560]   which means it's kind of a black material,
+[00:14:27.560 --> 00:14:32.560]   then this diffuse reflectance albedo would be zero.
+[00:14:32.560 --> 00:14:35.560]   If it's super white, then everything is reflected.
+[00:14:35.560 --> 00:14:40.560]   At that time, the diffused reflectance albedo would be one.
+[00:14:40.560 --> 00:14:44.560]   So this is an example of a teapot
+[00:14:44.560 --> 00:14:49.560]   that is made up of an ideal diffuse Lambertian surface.
+[00:14:49.560 --> 00:14:55.560]   So this will look very similar to the average visibility that you did.
+[00:14:55.560 --> 00:15:01.560]   So let's go to the other side
+[00:15:01.560 --> 00:15:05.560]   where things are not reflected in all directions,
+[00:15:05.560 --> 00:15:07.560]   but in one specific direction.
+[00:15:07.560 --> 00:15:10.560]   So if you have an ideal specular surface like a mirror
+[00:15:10.560 --> 00:15:12.560]   or a very shiny object,
+[00:15:12.560 --> 00:15:16.560]   then the reflected ray will go in one specific direction.
+[00:15:16.560 --> 00:15:22.560]   And we know intuitively that these two angles are equal for an ideal mirror.
+[00:15:22.560 --> 00:15:25.560]   But how does that become equal?
+[00:15:25.560 --> 00:15:29.560]   So that comes from a Fermat's principle of reflection.
+[00:15:29.560 --> 00:15:33.560]   And what it says is the light follows the path of least time.
+[00:15:33.560 --> 00:15:35.560]   So this was an important observation,
+[00:15:35.560 --> 00:15:37.560]   very controversial at its time,
+[00:15:37.560 --> 00:15:39.560]   but it's true.
+[00:15:39.560 --> 00:15:42.560]   So imagine if these angles were not equal,
+[00:15:42.560 --> 00:15:45.560]   even in case of ideal reflection.
+[00:15:45.560 --> 00:15:48.560]   So we would assume that they were different,
+[00:15:48.560 --> 00:15:50.560]   say theta one and theta two.
+[00:15:50.560 --> 00:15:53.560]   And then what we would do is try to make sure
+[00:15:53.560 --> 00:15:58.560]   that this least time property from Fermat that is observed.
+[00:15:58.560 --> 00:16:02.560]   So to do that, we basically just differentiate
+[00:16:02.560 --> 00:16:05.560]   and set the derivative to zero
+[00:16:05.560 --> 00:16:08.560]   and try to find thetas.
+[00:16:08.560 --> 00:16:11.560]   And it turns out that theta one equals theta two,
+[00:16:11.560 --> 00:16:16.560]   which means that these angles are equal in case of ideal reflection.
+[00:16:16.560 --> 00:16:22.560]   So the way to calculate this direction,
+[00:16:22.560 --> 00:16:25.560]   so at times you would need to in your program
+[00:16:25.560 --> 00:16:29.560]   calculate this ideal reflected direction.
+[00:16:29.560 --> 00:16:31.560]   You can take this incoming direction
+[00:16:31.560 --> 00:16:34.560]   and create a rotation matrix and rotate it over.
+[00:16:34.560 --> 00:16:36.560]   But there's a simpler formula to do that.
+[00:16:36.560 --> 00:16:38.560]   It's pretty clever.
+[00:16:38.560 --> 00:16:42.560]   Now you take this distance and then you flip the rectangle over.
+[00:16:42.560 --> 00:16:47.560]   And essentially that gives you this formula.
+[00:16:47.560 --> 00:16:51.560]   So if it's not clear, just note it down
+[00:16:51.560 --> 00:16:53.560]   and we can talk about it after the class.
+[00:16:53.560 --> 00:16:56.560]   So all you have to do is basically double this point
+[00:16:56.560 --> 00:17:01.560]   from the projection of w onto the normal.
+[00:17:01.560 --> 00:17:04.560]   And this and this are equal.
+[00:17:04.560 --> 00:17:06.560]   They are basically two n.
+[00:17:06.560 --> 00:17:08.560]   So two one cos theta minus w,
+[00:17:08.560 --> 00:17:10.560]   which is two vectors like this.
+[00:17:10.560 --> 00:17:13.560]   And you sum up the two vectors as the third vector.
+[00:17:13.560 --> 00:17:16.560]   And that's how you get that.
+[00:17:16.560 --> 00:17:21.560]   Okay, so ideal specular reflection looks like this.
+[00:17:21.560 --> 00:17:24.560]   This is the direct opposite of the diffuse reflection that you saw,
+[00:17:24.560 --> 00:17:26.560]   which kind of looked like average visibility.
+[00:17:26.560 --> 00:17:30.560]   This one looks almost like a mirror.
+[00:17:30.560 --> 00:17:37.560]   So the third part, so we now covered things that light came in
+[00:17:37.560 --> 00:17:39.560]   and then got reflected out.
+[00:17:39.560 --> 00:17:42.560]   So we're covering down the third case where light comes in,
+[00:17:42.560 --> 00:17:44.560]   passes through the material.
+[00:17:44.560 --> 00:17:46.560]   So index of refraction,
+[00:17:46.560 --> 00:17:48.560]   you know from basic physics,
+[00:17:48.560 --> 00:17:51.560]   is speed of light in vacuum, speed of light in medium.
+[00:17:51.560 --> 00:17:55.560]   And they're actually wavelength dependent,
+[00:17:55.560 --> 00:17:59.560]   but we won't go into that for this particular class.
+[00:17:59.560 --> 00:18:04.560]   So the ideal specular refraction is based on Snell's law.
+[00:18:04.560 --> 00:18:10.560]   So you have this dependence on the sine theaters of the angles.
+[00:18:10.560 --> 00:18:15.560]   And you have the index of refraction of the material
+[00:18:15.560 --> 00:18:17.560]   where the light came from,
+[00:18:17.560 --> 00:18:21.560]   and the index of refraction of the object that you're trying to render.
+[00:18:21.560 --> 00:18:23.560]   So if these two are different,
+[00:18:23.560 --> 00:18:26.560]   then there is a bend in the incoming ray.
+[00:18:26.560 --> 00:18:31.560]   And that's what you see these effects where if you look at a pencil
+[00:18:31.560 --> 00:18:34.560]   in a glass of water, you'll see this bend in the pencil.
+[00:18:34.560 --> 00:18:39.560]   That comes from basically Snell's law and refraction.
+[00:18:39.560 --> 00:18:43.560]   Because the index of refraction of water
+[00:18:43.560 --> 00:18:46.560]   is higher than the index of refraction of air.
+[00:18:46.560 --> 00:18:49.560]   So the outside area,
+[00:18:49.560 --> 00:18:52.560]   we normally take it as index of refraction of air,
+[00:18:52.560 --> 00:18:54.560]   or one in vacuum.
+[00:18:54.560 --> 00:18:58.560]   So we use the same Fermat's principle
+[00:18:58.560 --> 00:19:00.560]   to figure out what the angle should be.
+[00:19:00.560 --> 00:19:03.560]   So we've done this before, we do it again.
+[00:19:03.560 --> 00:19:07.560]   And now in this case, we see that Snell's law
+[00:19:07.560 --> 00:19:12.560]   actually comes from also Fermat's principle of shortest time.
+[00:19:12.560 --> 00:19:22.560]   So this is again, same formulation.
+[00:19:22.560 --> 00:19:26.560]   Now you're using, instead of using sine-thetas,
+[00:19:26.560 --> 00:19:31.560]   we can reformulate this as a product of vectors and square roots.
+[00:19:31.560 --> 00:19:34.560]   So it's easier to calculate, easier to specify.
+[00:19:34.560 --> 00:19:37.560]   Again, if you have time, you can derive this from the sine-thetas,
+[00:19:37.560 --> 00:19:39.560]   but you don't have to.
+[00:19:40.560 --> 00:19:45.560]   So index of refraction usually depends on the light
+[00:19:45.560 --> 00:19:47.560]   and the polarization.
+[00:19:47.560 --> 00:19:53.560]   And we get these effects like dispersion that cause rainbows.
+[00:19:53.560 --> 00:19:58.560]   And if you have a CD, people don't even know what CD is anymore.
+[00:19:58.560 --> 00:20:03.560]   So there was this thing called CD a long time ago.
+[00:20:03.560 --> 00:20:05.560]   And if you hold it in a light in a certain way,
+[00:20:05.560 --> 00:20:08.560]   you would get this dispersion pattern similar to a rainbow.
+[00:20:08.560 --> 00:20:10.560]   But in a different way.
+[00:20:10.560 --> 00:20:14.560]   So this is caused by the index of refraction.
+[00:20:14.560 --> 00:20:18.560]   And you also get something like total internal reflection.
+[00:20:18.560 --> 00:20:22.560]   So when you are looking from a medium that is,
+[00:20:22.560 --> 00:20:24.560]   that is a higher index of refraction,
+[00:20:24.560 --> 00:20:26.560]   like if you are submerged in the water,
+[00:20:26.560 --> 00:20:31.560]   and then looking out, up into a material with lower index of refraction,
+[00:20:31.560 --> 00:20:35.560]   which is the air, and then you can get this effect
+[00:20:35.560 --> 00:20:38.560]   called total internal reflection at certain angles,
+[00:20:38.560 --> 00:20:42.560]   where everything becomes kind of like mirrored up in the top.
+[00:20:42.560 --> 00:20:44.560]   This is not the same as mirage.
+[00:20:44.560 --> 00:20:46.560]   So mirage is something totally different.
+[00:20:46.560 --> 00:20:49.560]   You see mirage where you are driving and you see
+[00:20:49.560 --> 00:20:54.560]   sometimes this water-like object or some reflection.
+[00:20:54.560 --> 00:20:58.560]   So that's a different phenomenon than total internal reflection.
+[00:20:58.560 --> 00:21:00.560]   So all these are cool things.
+[00:21:00.560 --> 00:21:02.560]   We're not going to implement them,
+[00:21:02.560 --> 00:21:06.560]   but you can if you want to in your projects.
+[00:21:06.560 --> 00:21:09.560]   So these are the conditions for total internal reflection.
+[00:21:09.560 --> 00:21:11.560]   So now we have that.
+[00:21:11.560 --> 00:21:16.560]   So now imagine, like you want to implement rendering for an object
+[00:21:16.560 --> 00:21:21.560]   that is partially light goes through it and partially gets reflected.
+[00:21:21.560 --> 00:21:24.560]   How much? How much of it gets reflected?
+[00:21:24.560 --> 00:21:26.560]   How much of it goes through?
+[00:21:26.560 --> 00:21:29.560]   So we'll derive that next.
+[00:21:29.560 --> 00:21:32.560]   And those are done with something called Fresnel equations.
+[00:21:32.560 --> 00:21:34.560]   They are derived from Maxwell's equations,
+[00:21:34.560 --> 00:21:36.560]   so we're not going to go into full derivations.
+[00:21:36.560 --> 00:21:41.560]   And without explanation, we'll give you this formula,
+[00:21:41.560 --> 00:21:47.560]   and that basically tells you how much of the light gets reflected
+[00:21:47.560 --> 00:21:51.560]   and how much of light gets passed through.
+[00:21:51.560 --> 00:21:55.560]   And because we're not using polarize or we're not using wavelength,
+[00:21:55.560 --> 00:21:58.560]   we are just going to take the average of the parallel
+[00:21:58.560 --> 00:22:01.560]   and the perpendicular planes of reflection.
+[00:22:01.560 --> 00:22:04.560]   So again, without further explanation,
+[00:22:04.560 --> 00:22:11.560]   you can take these equations and learn them and use them.
+[00:22:11.560 --> 00:22:15.560]   So this is an example of Fresnel reflection.
+[00:22:15.560 --> 00:22:20.560]   So what happens is like most materials,
+[00:22:20.560 --> 00:22:24.560]   if you look at them at an angle that is kind of grazing,
+[00:22:24.560 --> 00:22:28.560]   you will see that it starts reflecting light back.
+[00:22:28.560 --> 00:22:30.560]   So the response is not linear.
+[00:22:30.560 --> 00:22:32.560]   So response is kind of mostly linear,
+[00:22:32.560 --> 00:22:36.560]   and then suddenly it kind of jumps and becomes like a mirror-like object.
+[00:22:36.560 --> 00:22:39.560]   So if you see the third picture, the rightmost one,
+[00:22:39.560 --> 00:22:45.560]   you'll see that as you kind of start looking a little bit more down
+[00:22:45.560 --> 00:22:50.560]   at the grazing angles, then the table essentially has become reflective.
+[00:22:50.560 --> 00:22:56.560]   So through Fresnel equations, you get that property,
+[00:22:56.560 --> 00:23:01.560]   and that's what we would be implementing in one of the programming exercises.
+[00:23:01.560 --> 00:23:07.560]   So let's get back to our conductors and dielectrics.
+[00:23:07.560 --> 00:23:12.560]   This is a smooth copper,
+[00:23:12.560 --> 00:23:16.560]   and then once you start looking at conductors,
+[00:23:16.560 --> 00:23:20.560]   as I said earlier, the conductor doesn't have any transmittance.
+[00:23:20.560 --> 00:23:24.560]   So light comes in, and most of it is reflected back.
+[00:23:24.560 --> 00:23:26.560]   Actually, all of it is reflected back.
+[00:23:26.560 --> 00:23:30.560]   Some of it is absorbed at the very fine layers of the metal,
+[00:23:30.560 --> 00:23:37.560]   but for metals, basically conductors, they don't transmit any light.
+[00:23:37.560 --> 00:23:41.560]   So also the response is dependent on the wavelength,
+[00:23:41.560 --> 00:23:46.560]   and because we're not doing spectral or wavelength-dependent path tracing
+[00:23:46.560 --> 00:23:48.560]   in this course, we're going to ignore that,
+[00:23:48.560 --> 00:23:55.560]   but in reality the index of refraction of conductors is given by a complex number.
+[00:23:55.560 --> 00:24:00.560]   And the complex number can be represented by two quantities,
+[00:24:00.560 --> 00:24:02.560]   the real part and the imaginary part.
+[00:24:02.560 --> 00:24:07.560]   So we take Eta and Kappa as two of those, the imaginary and the real part,
+[00:24:07.560 --> 00:24:10.560]   and then we use those in the equations.
+[00:24:10.560 --> 00:24:14.560]   So this wavelength response is what gives material the color.
+[00:24:14.560 --> 00:24:16.560]   So certain wavelengths will respond differently.
+[00:24:16.560 --> 00:24:19.560]   So it's not a single response.
+[00:24:19.560 --> 00:24:22.560]   Different wavelengths will respond differently.
+[00:24:22.560 --> 00:24:28.560]   So for, say, gold, the wavelengths that kind of capture the gold,
+[00:24:28.560 --> 00:24:34.560]   they're the ones that are reflected back, and the rest of it is absorbed.
+[00:24:34.560 --> 00:24:39.560]   So this is in a graph form, what I just said.
+[00:24:39.560 --> 00:24:45.560]   So these are the real and imaginary parts of the response for different wavelengths.
+[00:24:45.560 --> 00:24:47.560]   On the x-axis are different wavelengths.
+[00:24:47.560 --> 00:24:54.560]   As you can see, the response is higher at certain wavelengths,
+[00:24:54.560 --> 00:24:59.560]   and those are the colors that kind of come for this particular material.
+[00:24:59.560 --> 00:25:03.560]   So each material or a conductor will kind of have these values
+[00:25:03.560 --> 00:25:08.560]   that people have measured, and there are some resources that we will send you
+[00:25:08.560 --> 00:25:13.560]   after this lecture to kind of get you a table of the most common materials
+[00:25:13.560 --> 00:25:17.560]   and their Kappa and Eta values.
+[00:25:17.560 --> 00:25:27.560]   Okay, so next we get into the specular reflections, BRDF.
+[00:25:27.560 --> 00:25:35.560]   So in the ideal case, you get the final equations,
+[00:25:35.560 --> 00:25:41.560]   you figure out how much of the light is reflected, how much left is transmitted,
+[00:25:41.560 --> 00:25:49.560]   and then for ideal specular reflection, this is a delta function.
+[00:25:49.560 --> 00:25:53.560]   So again, you will learn more about delta functions
+[00:25:53.560 --> 00:25:56.560]   when you do light sampling for point lights,
+[00:25:56.560 --> 00:26:01.560]   but for now, just that there is for ideal specular reflection, the response,
+[00:26:01.560 --> 00:26:04.560]   because there is only one direction that the light can come out.
+[00:26:04.560 --> 00:26:06.560]   The response everywhere else is zero.
+[00:26:06.560 --> 00:26:10.560]   So we treat that like a delta function.
+[00:26:10.560 --> 00:26:12.560]   It's a special treatment for it,
+[00:26:12.560 --> 00:26:16.560]   and we will talk about it in a later lecture on how to sample these
+[00:26:16.560 --> 00:26:18.560]   and how to calculate these.
+[00:26:19.560 --> 00:26:24.560]   Let's keep that.
+[00:26:24.560 --> 00:26:40.560]   All right, so now we have these ad hoc models for the just built,
+[00:26:40.560 --> 00:26:47.560]   they are physically correct for ideal specular, ideal diffuse, and some transmittance.
+[00:26:47.560 --> 00:26:50.560]   How do we combine all of this into one thing?
+[00:26:50.560 --> 00:26:56.560]   So for that, we need to go back to the little bit of history.
+[00:26:56.560 --> 00:27:01.560]   So in the '70s, people came up with these models without using physics,
+[00:27:01.560 --> 00:27:06.560]   they just observed things and tried to look at geometry, how things would work,
+[00:27:06.560 --> 00:27:11.560]   and then over time, people wanted to build more and more complex models
+[00:27:11.560 --> 00:27:16.560]   that can actually represent physical materials, and these are important,
+[00:27:16.560 --> 00:27:21.560]   because if you are trying to render actual materials, you want it to be accurate
+[00:27:21.560 --> 00:27:23.560]   as much as possible.
+[00:27:23.560 --> 00:27:30.560]   So the earlier empirical models gave way to the following models that are more physically accurate,
+[00:27:30.560 --> 00:27:34.560]   and then we have these two divisions now.
+[00:27:34.560 --> 00:27:37.560]   You have physically accurate models that are used in industry,
+[00:27:37.560 --> 00:27:42.560]   and there are physically plausible models where they relax some assumptions
+[00:27:42.560 --> 00:27:47.560]   to kind of make films and other effects which are not physically possible,
+[00:27:47.560 --> 00:27:50.560]   but they would like to put them in the films.
+[00:27:50.560 --> 00:27:54.560]   So they relax some of the assumptions to make physically plausible materials,
+[00:27:54.560 --> 00:27:59.560]   and then you have on the left side physically accurate materials.
+[00:27:59.560 --> 00:28:06.560]   So this is basically the chart of the history of how these models have evolved over time.
+[00:28:06.560 --> 00:28:09.560]   You don't need to know any of this, but just to, if you are a history buff,
+[00:28:09.560 --> 00:28:15.560]   you can just follow through this line of reasoning where people came up with empirical models
+[00:28:15.560 --> 00:28:20.560]   and started building theoretical foundations for what these materials could be.
+[00:28:20.560 --> 00:28:27.560]   So we'll go over a little bit of the couple of models that are not physical,
+[00:28:27.560 --> 00:28:32.560]   just to give you an idea of how people thought about that at that time.
+[00:28:32.560 --> 00:28:42.560]   So what the Fong model did was it looked at basically this ideal reflection direction
+[00:28:42.560 --> 00:28:47.560]   and then blurred around that direction to get you a load.
+[00:28:47.560 --> 00:28:56.560]   So basically using this exponent that is ad hoc, so again it has no physical meaning,
+[00:28:56.560 --> 00:29:05.560]   just use an exponent and if, say, example, exponent is greater, the shinier the material is,
+[00:29:05.560 --> 00:29:09.560]   and then if the exponent is smaller, the more diffused the material is.
+[00:29:09.560 --> 00:29:19.560]   So basically it gave you a way to represent shiny materials that have some kind of a diffuse element to them.
+[00:29:19.560 --> 00:29:26.560]   So it's still directional, but that looks some kind of a diffuseness that is added by using these equations.
+[00:29:26.560 --> 00:29:31.560]   Again, just experimental and no physical meaning at all.
+[00:29:31.560 --> 00:29:38.560]   And next was the BlinFong model, which kind of improved on this a little bit.
+[00:29:38.560 --> 00:29:46.560]   Instead of taking the angle from the normal, it took an angle from something called a half factor.
+[00:29:46.560 --> 00:29:54.560]   You'll see this half factor again and again in rendering, which is basically just an average of the incoming and the outgoing direction.
+[00:29:54.560 --> 00:29:59.560]   So that's not the true normal, but it's a half-vector between the two.
+[00:29:59.560 --> 00:30:10.560]   So using that as the basis of blurring the ideal reflection, you get certain results which are better than the Fong model.
+[00:30:10.560 --> 00:30:13.560]   So the BlinFong model kind of improves on that a little bit.
+[00:30:13.560 --> 00:30:16.560]   Again, not physical, it's just ad hoc.
+[00:30:16.560 --> 00:30:21.560]   So there are a lot of issues with these models.
+[00:30:21.560 --> 00:30:27.560]   They don't preserve energy and they could be adding energy or making things darker.
+[00:30:27.560 --> 00:30:35.560]   They don't offer Fresnel effects and again there are many materials that cannot be fully represented that.
+[00:30:35.560 --> 00:30:40.560]   So that was kind of like the impetus to kind of start looking for better models.
+[00:30:40.560 --> 00:30:46.560]   So that's what the state of the art today is something called microfaceted theory.
+[00:30:46.560 --> 00:30:57.560]   So microfaceted theory again has a history from Torrance and Sparrow and then adapted by Blin for graphics and explains a lot of the materials.
+[00:30:57.560 --> 00:31:03.560]   And it's used currently with small modifications here and there, but that's pretty much the state of the art today.
+[00:31:03.560 --> 00:31:12.560]   So it used to be in the past that we would show copper basically as a plastic which is copper color.
+[00:31:12.560 --> 00:31:18.560]   With the microfaceted model, you can truly represent copper as it should be.
+[00:31:18.560 --> 00:31:21.560]   So what is microfaceted theory?
+[00:31:21.560 --> 00:31:27.560]   So imagine what you do is you look at material not as a smooth thing even though it looks smooth.
+[00:31:27.560 --> 00:31:33.560]   Imagine you look through a microscope and what you see are these jagged edges.
+[00:31:33.560 --> 00:31:42.560]   So everything that you see, no matter how ever smooth it looks, is actually a little bit jaggy if you look close enough.
+[00:31:42.560 --> 00:31:52.560]   So what we can think of it as that these squiggly lines that you see, they are made up of facets.
+[00:31:52.560 --> 00:31:57.560]   Instead of being curvy, they can be slanted and they're facets.
+[00:31:57.560 --> 00:32:06.560]   So then what we look for, this complicated looking formula which we'll go over because it's important,
+[00:32:06.560 --> 00:32:13.560]   is that then the BRDF can be then defined as different L coefficient that we calculated earlier
+[00:32:13.560 --> 00:32:17.560]   and something called a microfaceted distribution.
+[00:32:17.560 --> 00:32:21.560]   And we'll go over that.
+[00:32:21.560 --> 00:32:26.560]   And the third part of that formula is the shadowing and masking term.
+[00:32:26.560 --> 00:32:36.560]   And the two items below that you see, they are basically just how much of the light the viewer sees
+[00:32:36.560 --> 00:32:43.560]   and then how much of the light is basically, if you look at it from the point of the light, how much of the light is coming in.
+[00:32:43.560 --> 00:32:46.560]   The Jessica just cosine terms because they're dot products.
+[00:32:46.560 --> 00:32:50.560]   So two cosine terms and number four.
+[00:32:50.560 --> 00:32:58.560]   And then on top you have the Fresnel coefficient, the microfaceted distribution and G as the shadowing and masking terms.
+[00:32:58.560 --> 00:33:01.560]   So let's go over that in detail like what these are.
+[00:33:01.560 --> 00:33:07.560]   So Fresnel term we already covered, you understand that now.
+[00:33:07.560 --> 00:33:10.560]   So let's go over what is this microfaceted distribution.
+[00:33:10.560 --> 00:33:14.560]   So again, if looking at the surface in detail, you have these squiggly lines.
+[00:33:14.560 --> 00:33:33.560]   So imagine each of these have some normal, the points that you show.
+[00:33:33.560 --> 00:33:38.560]   So what we're saying essentially is that treat each of these facets like as if they are mirrors.
+[00:33:38.560 --> 00:33:42.560]   So imagine there are these hundreds of mirrors on each of these.
+[00:33:42.560 --> 00:33:53.560]   And what this distribution is trying to do is trying to figure out how many of these are facing the viewer or the light, right?
+[00:33:53.560 --> 00:34:05.560]   So imagine like this table is made up of tiny little mirrors and you have one here and you have another one that is facing slightly different.
+[00:34:05.560 --> 00:34:10.560]   And what you would do is you would try to find the normals of these facets.
+[00:34:10.560 --> 00:34:20.560]   And what this distribution is trying to basically figure out is how many of these normals are facing the light direction.
+[00:34:20.560 --> 00:34:28.560]   So that's because we can't measure each of these microfacets individually, we want to kind of figure that out statistically.
+[00:34:28.560 --> 00:34:41.560]   So we say for something like a shiny object, you can imagine that many of these mirrors would be facing the light direction because that's what is causing all this shininess to happen.
+[00:34:41.560 --> 00:34:49.560]   And for something like not as shiny, diffusive material, not many of these normals are facing the view.
+[00:34:49.560 --> 00:34:56.560]   So that statistics is basically that's what it describes, how many of these normals are facing and what is the distribution of these normals.
+[00:34:56.560 --> 00:35:05.560]   So it's also called the normal distribution function or NDF in the literature.
+[00:35:05.560 --> 00:35:08.560]   So there are many distributions like that.
+[00:35:08.560 --> 00:35:11.560]   People have over time come up with multiple distribution.
+[00:35:11.560 --> 00:35:25.560]   So something like the earlier one that you saw.
+[00:35:25.560 --> 00:35:29.560]   So this one is called the Beckman distribution.
+[00:35:29.560 --> 00:35:34.560]   And this one is called the Blinn distribution, the one earlier.
+[00:35:34.560 --> 00:35:38.560]   There is something called the GGX distribution, which is the state of the art today.
+[00:35:38.560 --> 00:35:41.560]   And we're not going to cover that in detail.
+[00:35:41.560 --> 00:35:42.560]   It's just a formula.
+[00:35:42.560 --> 00:35:43.560]   So it's the formula for the distribution.
+[00:35:43.560 --> 00:35:45.560]   We don't have to derive it.
+[00:35:45.560 --> 00:35:46.560]   People have done the work for us.
+[00:35:46.560 --> 00:35:50.560]   So essentially there are subtle differences between each of these distributions.
+[00:35:50.560 --> 00:35:58.560]   We pick one and use one for this class.
+[00:35:58.560 --> 00:36:06.560]   So these are some examples of rendering done with this different distributions.
+[00:36:06.560 --> 00:36:07.560]   So now the third term.
+[00:36:07.560 --> 00:36:12.560]   So the third term is something called shadowing and masking.
+[00:36:12.560 --> 00:36:20.560]   So as you can see, if you look at this material from different angles,
+[00:36:20.560 --> 00:36:26.560]   some of these micro facets are going to be shadowed, right?
+[00:36:26.560 --> 00:36:31.560]   Because they are being obstructed by the peaks in the earlier position.
+[00:36:31.560 --> 00:36:34.560]   So they can be shadowed.
+[00:36:34.560 --> 00:36:53.560]   And similarly, if you look at --
+[00:36:53.560 --> 00:36:58.560]   if you look at from the viewing side, same thing can happen.
+[00:36:58.560 --> 00:37:00.560]   So you're not able to see all the micro facets.
+[00:37:00.560 --> 00:37:03.560]   So that part is called masking.
+[00:37:03.560 --> 00:37:06.560]   So it's shadowing from the light direction, masking from the view direction.
+[00:37:06.560 --> 00:37:13.560]   So all this shadowing and masking will essentially reduce the number of micro facets that are visible here.
+[00:37:13.560 --> 00:37:20.560]   So that's the term that defines G.
+[00:37:20.560 --> 00:37:30.560]   So again, there are several equations available for G as well corresponding to each of the micro facets distributions.
+[00:37:30.560 --> 00:37:33.560]   There is a corresponding shadowing and masking term that you use.
+[00:37:33.560 --> 00:37:40.560]   Again, we'll use this without further explanation, but just to get an idea of what they are.
+[00:37:40.560 --> 00:37:46.560]   So again, they look complicated, but they are basically math formulas.
+[00:37:46.560 --> 00:37:48.560]   So you would just calculate them.
+[00:37:48.560 --> 00:37:52.560]   So then our general micro facet model is now complete.
+[00:37:52.560 --> 00:37:58.560]   You have the Fresnel part, the shadowing and masking part that is G.
+[00:37:58.560 --> 00:38:10.560]   In between you have the micro facet distribution or the normal distribution function that is the NDF.
+[00:38:10.560 --> 00:38:16.560]   So for many of these things, we would need to also sample.
+[00:38:16.560 --> 00:38:22.560]   So we need to do this half angle because if you look back at the formula,
+[00:38:22.560 --> 00:38:30.560]   the D term has a dependence on something called WH, which is the half angle that I talked about.
+[00:38:30.560 --> 00:38:36.560]   So we have to convert from half angle to the terms that we use.
+[00:38:36.560 --> 00:38:44.560]   So it basically, it's just a simple conversion.
+[00:38:44.560 --> 00:38:47.560]   Okay. Everybody clear on what these things are?
+[00:38:47.560 --> 00:38:58.560]   Do you know what quantities are or they're confused?
+[00:38:58.560 --> 00:39:03.560]   So the micro facet model as good as it is in the state of the art, there is still some issues with that.
+[00:39:03.560 --> 00:39:13.560]   So what happens is that what we have not accounted for that these rays that are coming in the red direction,
+[00:39:13.560 --> 00:39:16.560]   they may interreflect within these peaks and valleys.
+[00:39:16.560 --> 00:39:25.560]   So we don't account for that. We assume that it just one shot thing and there is a mirror at each of these points where the ray hits,
+[00:39:25.560 --> 00:39:29.560]   which is not true because things can interreflect.
+[00:39:29.560 --> 00:39:33.560]   So this part is not covered by most micro facet models.
+[00:39:33.560 --> 00:39:45.560]   It doesn't happen that often, but you can see an example of it where you have some issue with too much light forming
+[00:39:45.560 --> 00:39:52.560]   or not enough because things may be not hitting it the right way.
+[00:39:52.560 --> 00:39:56.560]   So the interreflections are not taken into account in some of the micro facet models.
+[00:39:56.560 --> 00:40:01.560]   So we can do more extensions to the micro facet model because now we have a basic idea.
+[00:40:01.560 --> 00:40:09.560]   So something for an isotropic reflection, again, it's not required. It could be an extra credit.
+[00:40:09.560 --> 00:40:17.560]   Another extension you could do is coated materials where you have material that has layers.
+[00:40:17.560 --> 00:40:21.560]   So you have a diffuse base layer and a dielectric coating on top of that.
+[00:40:21.560 --> 00:40:29.560]   So the response in that case is not just a reflection, but there is complex interactions that is happening in the coating area
+[00:40:29.560 --> 00:40:37.560]   and then still, if you look at it again.
+[00:40:37.560 --> 00:40:41.560]   So this diffuse base layer is having small little interactions there.
+[00:40:41.560 --> 00:40:48.560]   So to capture that, they have a different model that is an extension of the micro facet model that we can cover.
+[00:40:48.560 --> 00:40:54.560]   So this gives you an example of if you just have something like this versus a coated material.
+[00:40:54.560 --> 00:40:56.560]   So you can look, there is a difference. It's subtle.
+[00:40:56.560 --> 00:41:02.560]   The coated material versus just a shiny textured plastic.
+[00:41:02.560 --> 00:41:13.560]   So what happens is when you have inter reflections within the layer and the material is diffuse, you would absorb more.
+[00:41:13.560 --> 00:41:19.560]   So as you absorb more, things get darker, but also get richer in color.
+[00:41:19.560 --> 00:41:31.560]   So you have basically the difference between that and that is darkness and a little bit of richer color.
+[00:41:31.560 --> 00:41:35.560]   So same idea, layered materials, smooth plastic.
+[00:41:35.560 --> 00:41:48.560]   So one other extension for diffuse materials is something like if you take a picture of the moon, which is shown in the top row,
+[00:41:48.560 --> 00:41:52.560]   you don't see any darkening effect on the side.
+[00:41:52.560 --> 00:42:00.560]   But if you render a sphere with lamberation, we know that the dependence is only on the cosine.
+[00:42:00.560 --> 00:42:06.560]   So as cosine goes to one, you would get darkening around the side, as you can see here.
+[00:42:06.560 --> 00:42:15.560]   So that is not correct, obviously, because you look at the moon every day, you see that it has no darkening.
+[00:42:15.560 --> 00:42:19.560]   So that is caused by...
+[00:42:19.560 --> 00:42:26.560]   So if you look at the moon, that is full moon like this, the light is coming from the back, the sun, and then that's what's causing that.
+[00:42:26.560 --> 00:42:33.560]   So there is a certain case where you have a very rough surface, and the moon's surface is very rough,
+[00:42:33.560 --> 00:42:38.560]   that you can get this extra reflection that comes out.
+[00:42:38.560 --> 00:42:41.560]   So that's the retro reflection is what it's called.
+[00:42:41.560 --> 00:42:48.560]   Like when you are viewing from the same direction as the light, the object can throw back light in the same direction.
+[00:42:48.560 --> 00:42:52.560]   And it's counterintuitive, but it's true.
+[00:42:52.560 --> 00:42:57.560]   So an example here is like if you drive on the freeway, I haven't driven here in the freeway,
+[00:42:57.560 --> 00:43:06.560]   but if you drive in the US on the freeway, there are these stripes that are coated with white material.
+[00:43:06.560 --> 00:43:13.560]   And as you drive, you can see those because your light from your car that hits this stripe.
+[00:43:13.560 --> 00:43:21.560]   And the stripe is special because it has millions of small little spheres, glass spheres in it.
+[00:43:21.560 --> 00:43:24.560]   And that is mixed in the paint and painted on the stripe.
+[00:43:24.560 --> 00:43:31.560]   So what ends up happening is your car's headlight hits these spheres, again, they're very tiny,
+[00:43:31.560 --> 00:43:36.560]   and through refraction process, the light comes back at you.
+[00:43:36.560 --> 00:43:39.560]   So those are kind of retro reflectors.
+[00:43:39.560 --> 00:43:43.560]   So we call them reflectors, but they're actually retro reflectors.
+[00:43:43.560 --> 00:43:49.560]   Same idea with when you have shoes that reflect light in the night.
+[00:43:49.560 --> 00:43:55.560]   They have a coating that is either they have tiny little spheres or some kind of a prism embedded in them.
+[00:43:55.560 --> 00:44:02.560]   So the light basically goes around, refracts a little bit and comes back at you, not all of it, but some of it.
+[00:44:02.560 --> 00:44:08.560]   So enough of it comes back that you can see the reflection come back at you.
+[00:44:08.560 --> 00:44:15.560]   So these are like designed retro reflector materials so that you can kind of see in the dark
+[00:44:15.560 --> 00:44:18.560]   if you have a strong light that come back to you.
+[00:44:18.560 --> 00:44:23.560]   The same idea behind this mirror with this moon picture.
+[00:44:23.560 --> 00:44:29.560]   So there is a particular model called the Oran Nair model that kind of tries to approximate this effect.
+[00:44:29.560 --> 00:44:32.560]   And again, this is all these are extensions.
+[00:44:32.560 --> 00:44:36.560]   You don't have to implement them unless you want to in your project.
+[00:44:36.560 --> 00:44:39.560]   And that kind of takes care of some of that.
+[00:44:39.560 --> 00:44:44.560]   You are in the meeting now.
+[00:44:44.560 --> 00:44:50.560]   All right.
+[00:44:50.560 --> 00:44:54.560]   So I think we'll stop here because this is a good time to stop.
+[00:44:54.560 --> 00:44:59.560]   And I was going to talk a little bit more about some of the other possible extensions that you could do.
+[00:44:59.560 --> 00:45:02.560]   But we have to get out of the room.
+[00:45:02.560 --> 00:45:07.560]   But if you have questions, you can meet me outside the room if you want to talk about it.
+[00:45:07.560 --> 00:45:13.560]   Or we can cover that in the exercise session later on Friday.
+[00:45:13.560 --> 00:45:15.560]   All right. Thank you.
+[00:45:15.560 --> 00:45:18.720]   (audience applauding)
+

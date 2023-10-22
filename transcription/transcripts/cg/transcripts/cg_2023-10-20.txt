@@ -1,0 +1,336 @@
+
+[00:00:00.000 --> 00:00:02.000]   Hello.
+[00:00:02.000 --> 00:00:06.000]   Okay, let's get started.
+[00:00:06.000 --> 00:00:11.000]   My name is Argon and I'm presenting today or introducing today assignment three.
+[00:00:11.000 --> 00:00:15.000]   Before I do that, let me remind you that the deadline for assignment two is today.
+[00:00:15.000 --> 00:00:20.000]   So after this short presentation, you will have the chance to come again to us
+[00:00:20.000 --> 00:00:26.000]   and ask for any remaining issues that you might have.
+[00:00:26.000 --> 00:00:28.000]   Okay.
+[00:00:28.000 --> 00:00:33.000]   So for the next assignment, you are going to look into Monte Carlo ray tracing
+[00:00:33.000 --> 00:00:37.000]   and more specifically you are going to implement direct illumination.
+[00:00:37.000 --> 00:00:43.000]   And for this, you are going to implement an area emitter and different integrators
+[00:00:43.000 --> 00:00:45.000]   that use different sampling strategies.
+[00:00:45.000 --> 00:00:50.000]   So the emitter sampling, the BSDF sampling, and then a combination between the both
+[00:00:50.000 --> 00:00:54.000]   and be a multiple important sampling.
+[00:00:54.000 --> 00:00:59.000]   And the last thing for this assignment, you are going to implement a micro facet BRDF
+[00:00:59.000 --> 00:01:05.000]   which allows you to have kind of rough materials in your scenes.
+[00:01:05.000 --> 00:01:11.000]   So this introduction is kind of, or this lecture here is kind of,
+[00:01:11.000 --> 00:01:15.000]   is meant to be an exercise session, right?
+[00:01:15.000 --> 00:01:20.000]   So you have the chance to ask me about anything that is maybe unclear in the lecture.
+[00:01:20.000 --> 00:01:27.000]   So those slides are going over the most important parts of the lecture for this assignment.
+[00:01:27.000 --> 00:01:33.000]   So the lecture introduced you to this concept of direct and indirect illumination
+[00:01:33.000 --> 00:01:39.000]   where direct illumination is the light that directly comes from an emitter to a point of interest
+[00:01:39.000 --> 00:01:44.000]   and indirect illumination is every other path basically that light can make
+[00:01:44.000 --> 00:01:50.000]   and so multiple bounces in a scene before it actually reaches the point of interest.
+[00:01:50.000 --> 00:01:56.000]   So for this assignment, we are only going to look at direct illumination
+[00:01:56.000 --> 00:02:01.000]   and in the next assignment, you are going to implement global illumination
+[00:02:01.000 --> 00:02:06.000]   where you have to take care of those other paths.
+[00:02:06.000 --> 00:02:10.000]   So to render an image, we need the rendering equation
+[00:02:10.000 --> 00:02:16.000]   and in the case of direct illumination, you can make some slight simplification of this equation.
+[00:02:16.000 --> 00:02:21.000]   For example, you have to ask yourself, if you look at one point, where is light coming from?
+[00:02:21.000 --> 00:02:24.000]   And so there are two main, two sources basically.
+[00:02:24.000 --> 00:02:29.000]   One is the point itself is emitting light, which is this first component of the term.
+[00:02:29.000 --> 00:02:35.000]   But let's assume the point we are looking at is not an emitter.
+[00:02:35.000 --> 00:02:42.000]   Then the only other source of light can only come from an emitter, right?
+[00:02:42.000 --> 00:02:47.000]   So we can reformulate the reflection equation in this case without the emitter term
+[00:02:47.000 --> 00:02:54.000]   as kind of the incident light at the position x
+[00:02:54.000 --> 00:02:58.000]   that can come from a specific direction omega i
+[00:02:58.000 --> 00:03:04.000]   has to be emitted at the closest intersection from x towards this direction
+[00:03:04.000 --> 00:03:07.000]   and this kind of emitted towards us, right?
+[00:03:07.000 --> 00:03:11.000]   So this is what that means.
+[00:03:11.000 --> 00:03:18.000]   And so we basically have this formulation and this is what you are going to implement in the assignment.
+[00:03:18.000 --> 00:03:21.000]   Any questions so far?
+[00:03:21.000 --> 00:03:25.000]   Do you all understand this simplification?
+[00:03:25.000 --> 00:03:27.000]   Okay.
+[00:03:27.000 --> 00:03:32.000]   So the question now is how to kind of compute this integral, right?
+[00:03:32.000 --> 00:03:35.000]   And for that you are going to use Monte Carlo estimations,
+[00:03:35.000 --> 00:03:41.000]   which basically means that, so you cannot solve this integral in a closed-form solution,
+[00:03:41.000 --> 00:03:44.000]   so you are going to sample over the domain of the integral.
+[00:03:44.000 --> 00:03:48.000]   In this case, you are going to sample different directions
+[00:03:48.000 --> 00:03:53.000]   and then evaluate the reflection equation
+[00:03:53.000 --> 00:03:58.000]   and kind of do this weighted sum over those samples.
+[00:03:58.000 --> 00:04:05.000]   And you are going to weight according to the probability of sampling a specific direction.
+[00:04:05.000 --> 00:04:09.000]   So if the probability is very likely to sample in this one direction,
+[00:04:09.000 --> 00:04:13.000]   then you will have a lot of samples that are going to this direction, right?
+[00:04:13.000 --> 00:04:16.000]   So you kind of assign a smaller weight to them
+[00:04:16.000 --> 00:04:21.000]   because you have a lot of samples with a lot of information about this specific direction.
+[00:04:21.000 --> 00:04:23.000]   So you are going to average them out.
+[00:04:23.000 --> 00:04:27.000]   However, if you shoot in a direction that is very unlikely,
+[00:04:27.000 --> 00:04:31.000]   so you will have not many samples in this one direction,
+[00:04:31.000 --> 00:04:34.000]   then you kind of want to take, you want to get as much information
+[00:04:34.000 --> 00:04:36.000]   from this one single sample as possible
+[00:04:36.000 --> 00:04:41.000]   and therefore you are going to assign a higher weight to it.
+[00:04:41.000 --> 00:04:43.000]   Okay.
+[00:04:43.000 --> 00:04:49.000]   And so this assignment is a bit about how do you actually sample.
+[00:04:49.000 --> 00:04:55.000]   So one approach would be to kind of naively uniformly sample the hemisphere,
+[00:04:55.000 --> 00:04:59.000]   but you have learned in the class that this is not the best approach.
+[00:04:59.000 --> 00:05:02.000]   So why is that?
+[00:05:02.000 --> 00:05:05.000]   Well, if you just sample uniformly a sphere,
+[00:05:05.000 --> 00:05:10.000]   a lot of the times you might have a very small contribution from the function itself.
+[00:05:10.000 --> 00:05:13.000]   For example, if you don't hit the emitter,
+[00:05:13.000 --> 00:05:18.000]   then the radiance term becomes zero basically,
+[00:05:18.000 --> 00:05:22.000]   and your sample is kind of useless.
+[00:05:22.000 --> 00:05:26.000]   If you sample in a direction where the BRDF is very small,
+[00:05:26.000 --> 00:05:30.000]   then also the contribution is kind of small,
+[00:05:30.000 --> 00:05:33.000]   so you don't want to do that too often.
+[00:05:33.000 --> 00:05:36.000]   And so you have learned in the class,
+[00:05:36.000 --> 00:05:41.000]   you have learned that you can apply kind of something called important sampling,
+[00:05:41.000 --> 00:05:47.000]   and you can important sample different parts of the function.
+[00:05:47.000 --> 00:05:51.000]   So one is you can directly important sample the BRDF,
+[00:05:51.000 --> 00:05:55.000]   which basically means you are looking at the distribution of the BRDF
+[00:05:55.000 --> 00:05:57.000]   and to decide in which direction you want to shoot,
+[00:05:57.000 --> 00:06:02.000]   where is the BRDF the largest basically.
+[00:06:02.000 --> 00:06:13.000]   And the other thing that you want to do is only sample kind of on this small,
+[00:06:13.000 --> 00:06:18.000]   solid angle basically, that actually hits an emitter.
+[00:06:18.000 --> 00:06:20.000]   So how do you do this?
+[00:06:20.000 --> 00:06:23.000]   It's very trivial to figure out what the solid angle is,
+[00:06:23.000 --> 00:06:28.000]   so you have seen that you have learned to kind of transform the hemispherical form
+[00:06:28.000 --> 00:06:34.000]   of the integration to the surface area form.
+[00:06:34.000 --> 00:06:36.000]   So you have seen this in class,
+[00:06:36.000 --> 00:06:39.000]   and the most important thing to always keep in mind
+[00:06:39.000 --> 00:06:43.000]   is that you have a change in variables here,
+[00:06:43.000 --> 00:06:46.000]   and you have to account for it.
+[00:06:46.000 --> 00:06:49.000]   And if you do so, you will introduce some additional terms,
+[00:06:49.000 --> 00:06:52.000]   which is this cosine of the outgoing direction
+[00:06:52.000 --> 00:06:57.000]   and the distance between two points on the surface.
+[00:06:57.000 --> 00:06:59.000]   Together with the other cosine,
+[00:06:59.000 --> 00:07:02.000]   we are going to kind of name this geometry term
+[00:07:02.000 --> 00:07:10.000]   because it shows us some kind of geometric properties basically.
+[00:07:10.000 --> 00:07:15.000]   So it tells us that if the point of interest and the light source
+[00:07:15.000 --> 00:07:17.000]   are very far away from each other,
+[00:07:17.000 --> 00:07:19.000]   and we have to account for it,
+[00:07:19.000 --> 00:07:25.000]   we have to reduce the intensity of the light that actually reaches us.
+[00:07:25.000 --> 00:07:33.000]   Do you have any questions about the transformation or anything?
+[00:07:33.000 --> 00:07:36.000]   All clear.
+[00:07:36.000 --> 00:07:38.000]   Great.
+[00:07:38.000 --> 00:07:41.000]   So this, if you do this, it allows you to important sample the emitter
+[00:07:41.000 --> 00:07:45.000]   because what you can do now is instead of integrating over the whole surface,
+[00:07:45.000 --> 00:07:49.000]   we are only interested in integrating over the surface of emitters.
+[00:07:49.000 --> 00:07:51.000]   And to important sample now,
+[00:07:51.000 --> 00:07:56.000]   we can directly sample emitter and a point on the emitter,
+[00:07:56.000 --> 00:07:59.000]   and then together with this new integral that we have,
+[00:07:59.000 --> 00:08:05.000]   we can basically estimate this new integral.
+[00:08:05.000 --> 00:08:08.000]   And in Nori, you have this,
+[00:08:08.000 --> 00:08:13.000]   so Nori keeps track of the light sources in the scene,
+[00:08:13.000 --> 00:08:18.000]   and you have functions that allow you to sample light.
+[00:08:18.000 --> 00:08:23.000]   So you can call scene, sample, or get emitter or so,
+[00:08:23.000 --> 00:08:25.000]   which returns you an emitter,
+[00:08:25.000 --> 00:08:27.000]   and then you have to sample the emitter.
+[00:08:27.000 --> 00:08:30.000]   So you're going to implement the area emitter, for example,
+[00:08:30.000 --> 00:08:35.000]   where you have to implement the logic of how to sample on the surface,
+[00:08:35.000 --> 00:08:47.000]   and you can use this to basically have a better Monte Carlo estimation.
+[00:08:47.000 --> 00:08:51.000]   You also have to account for the visibility stuff.
+[00:08:51.000 --> 00:08:54.000]   And so this is basically the first part of the exercise.
+[00:08:54.000 --> 00:09:01.000]   It's going to be about, you know, to evaluate if you want to do incident radiance,
+[00:09:01.000 --> 00:09:04.000]   and then you have a kind of important sampling,
+[00:09:04.000 --> 00:09:07.000]   or if you want an important sample to be at the F,
+[00:09:07.000 --> 00:09:17.000]   and you are going to look at when is one better than the other and so on.
+[00:09:17.000 --> 00:09:22.000]   So as you know, as you have seen in the class,
+[00:09:22.000 --> 00:09:27.000]   there are sometimes as seen is better for the emitter sampling.
+[00:09:27.000 --> 00:09:29.000]   For example, here, if points are very far away,
+[00:09:29.000 --> 00:09:31.000]   emitter sampling does a very good job,
+[00:09:31.000 --> 00:09:33.000]   because whenever you sample something,
+[00:09:33.000 --> 00:09:37.000]   you're also going to have influence from the radiance, right?
+[00:09:37.000 --> 00:09:40.000]   Because you sample a point, you check where is the emitter,
+[00:09:40.000 --> 00:09:42.000]   you shoot in this direction,
+[00:09:42.000 --> 00:09:45.000]   and then you always, every sample in your Monte Carlo estimator
+[00:09:45.000 --> 00:09:51.000]   has kind of a reasonable value if you don't hit any objects in between.
+[00:09:51.000 --> 00:09:54.000]   However, if you're close to the light source,
+[00:09:54.000 --> 00:09:56.000]   you will have a lot of variance,
+[00:09:56.000 --> 00:10:00.000]   and this shows up as kind of those fireflies,
+[00:10:00.000 --> 00:10:02.000]   which is not so nice.
+[00:10:02.000 --> 00:10:06.000]   This doesn't happen if you use the BSDF sampling,
+[00:10:06.000 --> 00:10:11.000]   but here you have the problem that the points that are very far away from the light,
+[00:10:11.000 --> 00:10:14.000]   you kind of waste a lot of Monte Carlo samples
+[00:10:14.000 --> 00:10:20.000]   because you just shoot over the light or in the wrong direction and so on.
+[00:10:20.000 --> 00:10:27.000]   So you have seen that there is a kind of a strategy to combine the both,
+[00:10:27.000 --> 00:10:31.000]   the two together, which is called the multiple-important sampling,
+[00:10:31.000 --> 00:10:37.000]   and so you will implement basically the emitter sampling and the BRDF sampling,
+[00:10:37.000 --> 00:10:40.000]   and then the MIS, the multiple-important sampling,
+[00:10:40.000 --> 00:10:43.000]   is kind of a combination between both of them,
+[00:10:43.000 --> 00:10:46.000]   and you can almost reuse all your code.
+[00:10:46.000 --> 00:10:50.000]   You basically stack the emitter sampling and the BRDF sampling together,
+[00:10:50.000 --> 00:10:54.000]   and the only thing you have to do here is to account for the weight.
+[00:10:54.000 --> 00:10:58.000]   You have somehow to weight them together.
+[00:10:58.000 --> 00:11:01.000]   And we are going to use the balancing heuristics,
+[00:11:01.000 --> 00:11:07.000]   which is very nice that it has a kind of a simple interpretation,
+[00:11:07.000 --> 00:11:12.000]   so you can think of it as, let's say,
+[00:11:12.000 --> 00:11:16.000]   you sample a direction on the emitter sampling,
+[00:11:16.000 --> 00:11:19.000]   and this direction is very likely for the emitter sampling,
+[00:11:19.000 --> 00:11:25.000]   but very unlikely if you would shoot in this direction during BRDF sampling.
+[00:11:25.000 --> 00:11:30.000]   So what this weight is going to do is it will assign a lot of...
+[00:11:30.000 --> 00:11:33.000]   it will assign more weight on the emitter sampling
+[00:11:33.000 --> 00:11:37.000]   than on the material sampling or the BRDF sampling
+[00:11:37.000 --> 00:11:40.000]   because it knows that in this direction
+[00:11:40.000 --> 00:11:44.000]   I will have a better estimation of the true value than the other strategy,
+[00:11:44.000 --> 00:11:49.000]   and so it's better to use my approach than the other approach.
+[00:11:49.000 --> 00:11:55.000]   So you get this kind of nice balancing between the both strategies.
+[00:11:55.000 --> 00:11:58.000]   Okay, one important hint here is,
+[00:11:58.000 --> 00:12:00.000]   if you want to do what I said,
+[00:12:00.000 --> 00:12:05.000]   like combining the code from the emitter sampling into your MIS,
+[00:12:05.000 --> 00:12:09.000]   you need to only sample a single light source.
+[00:12:09.000 --> 00:12:13.000]   Okay? In MIS, in EMS, in emitter sampling,
+[00:12:13.000 --> 00:12:17.000]   you could also kind of sample all lights in your scene
+[00:12:17.000 --> 00:12:20.000]   and then compute the weight of all of them together
+[00:12:20.000 --> 00:12:22.000]   and use this as the Monte Carlo sample.
+[00:12:22.000 --> 00:12:27.000]   This is possible, but when you do the MIS and try to do the same,
+[00:12:27.000 --> 00:12:29.000]   it becomes very tricky with the weight.
+[00:12:29.000 --> 00:12:33.000]   Okay? And a lot of people have always problems with that,
+[00:12:33.000 --> 00:12:37.000]   but you can mitigate that if you only sample a single light.
+[00:12:37.000 --> 00:12:40.000]   Okay? So that might sound strange,
+[00:12:40.000 --> 00:12:45.000]   but at some point you will start to understand what I just said.
+[00:12:45.000 --> 00:12:53.000]   (audience member speaking)
+[00:12:53.000 --> 00:12:55.000]   No, you are weighting them together, right?
+[00:12:55.000 --> 00:12:58.000]   So it's like they are like one sample at the end.
+[00:12:58.000 --> 00:13:01.000]   (audience member speaking)
+[00:13:01.000 --> 00:13:06.000]   Like if you, the weights, this weight and this weight,
+[00:13:06.000 --> 00:13:10.000]   they sum to one, right? If you add them together.
+[00:13:10.000 --> 00:13:16.000]   So it's kind of like one sample, it's not like you add energy or something.
+[00:13:16.000 --> 00:13:29.000]   (audience member speaking)
+[00:13:29.000 --> 00:13:33.000]   No, you will have multiple emitters per scene,
+[00:13:33.000 --> 00:13:37.000]   but for each sample of the Monte Carlo estimator,
+[00:13:37.000 --> 00:13:39.000]   you are going to sample one light.
+[00:13:39.000 --> 00:13:42.000]   And Nori has already implemented that already.
+[00:13:42.000 --> 00:13:44.000]   You only have to call a specific function,
+[00:13:44.000 --> 00:13:49.000]   get emitter that returns you a light, a random light in the scene.
+[00:13:49.000 --> 00:13:53.000]   Okay?
+[00:13:53.000 --> 00:13:59.000]   Other questions?
+[00:13:59.000 --> 00:14:05.000]   Okay, and so this gives you a better image here.
+[00:14:05.000 --> 00:14:12.000]   So this is one of the scenes that you will render in the assignment.
+[00:14:12.000 --> 00:14:16.000]   Okay, and the last part is the microfaceted PRDF.
+[00:14:16.000 --> 00:14:19.000]   So you have seen that in the real world,
+[00:14:19.000 --> 00:14:22.000]   we don't really have very smooth objects.
+[00:14:22.000 --> 00:14:25.000]   All objects are kind of rough.
+[00:14:25.000 --> 00:14:29.000]   And in the render, you can kind of create those fake objects
+[00:14:29.000 --> 00:14:32.000]   that don't exist in the real world.
+[00:14:32.000 --> 00:14:35.000]   And if you want to have rough objects,
+[00:14:35.000 --> 00:14:38.000]   one thing you could do is you could just take a high poly mesh
+[00:14:38.000 --> 00:14:42.000]   and basically model all the surface of it,
+[00:14:42.000 --> 00:14:46.000]   all the small kind of bumps and so on.
+[00:14:46.000 --> 00:14:51.000]   But that becomes like complex and the render gets slow and so on.
+[00:14:51.000 --> 00:14:54.000]   So what people actually do is they came up with this microfaceted model
+[00:14:54.000 --> 00:15:00.000]   that tries to instead model the roughness heuristically
+[00:15:00.000 --> 00:15:04.000]   or in a statistic way.
+[00:15:04.000 --> 00:15:10.000]   And so you are going to implement one of them.
+[00:15:10.000 --> 00:15:14.000]   So the microfaceted PRDF has those three components
+[00:15:14.000 --> 00:15:21.000]   and the Fresnel coefficient is a very clear term,
+[00:15:21.000 --> 00:15:24.000]   but the microfaceted distribution is something you can actually choose.
+[00:15:24.000 --> 00:15:28.000]   People try to come up with different distributions
+[00:15:28.000 --> 00:15:33.000]   that are more accurate, that represent some objects more precisely and so on.
+[00:15:33.000 --> 00:15:38.000]   And also the shadowing and masking term here is kind of a model.
+[00:15:38.000 --> 00:15:41.000]   People try to model the real world.
+[00:15:41.000 --> 00:15:43.000]   And so you can choose different things here,
+[00:15:43.000 --> 00:15:47.000]   but in this class you are going to implement one specific PRDF,
+[00:15:47.000 --> 00:15:50.000]   which is kind of a combination between a diffused lope
+[00:15:50.000 --> 00:15:54.000]   and the rough, dielectric, microfaceted PRDF.
+[00:15:54.000 --> 00:15:58.000]   And for this you are going to implement the backman distribution
+[00:15:58.000 --> 00:16:04.000]   and the Smith approximation, and you have the Fresnel equation here.
+[00:16:04.000 --> 00:16:06.000]   Yeah.
+[00:16:06.000 --> 00:16:12.000]   Since we've already, I think we've already implemented things for this week's assignment,
+[00:16:12.000 --> 00:16:14.000]   we just have to reuse it.
+[00:16:14.000 --> 00:16:15.000]   Yeah.
+[00:16:15.000 --> 00:16:19.000]   We'll get feedback on whether our implementation of this week's backman is correct.
+[00:16:19.000 --> 00:16:20.000]   That's a good question.
+[00:16:20.000 --> 00:16:24.000]   We are trying to release that as quickly as possible.
+[00:16:24.000 --> 00:16:27.000]   But yeah, it might take some time.
+[00:16:27.000 --> 00:16:33.000]   Okay.
+[00:16:33.000 --> 00:16:35.000]   But I mean if you realize that you have some mistakes or so,
+[00:16:35.000 --> 00:16:38.000]   you can ask us and we can look over the code and so on.
+[00:16:38.000 --> 00:16:40.000]   It's difficult to tell whether you're using it.
+[00:16:40.000 --> 00:16:41.000]   Yeah, that's true.
+[00:16:41.000 --> 00:16:45.000]   There's only protection whether it's coherent or not.
+[00:16:45.000 --> 00:16:46.000]   Yeah.
+[00:16:46.000 --> 00:16:49.000]   Yeah, I mean we are trying to release that as quickly as possible.
+[00:16:49.000 --> 00:16:53.000]   Okay.
+[00:16:53.000 --> 00:17:04.000]   So one thing I want to mention here is the general receipt of how to sample from this PRDF.
+[00:17:04.000 --> 00:17:10.000]   So what you are going to do is after you implemented the distribution or the PDF here,
+[00:17:10.000 --> 00:17:15.000]   you're going to generate so-called half directions
+[00:17:15.000 --> 00:17:18.000]   proportional to this distribution.
+[00:17:18.000 --> 00:17:27.000]   And then if you have this, this fake normal, this kind of this new,
+[00:17:27.000 --> 00:17:31.000]   this half direction is kind of trying to fake the normal of the object.
+[00:17:31.000 --> 00:17:33.000]   So creating this roughness.
+[00:17:33.000 --> 00:17:40.000]   Then you can basically reflect your incident direction over about this half direction
+[00:17:40.000 --> 00:17:43.000]   to get the outgoing direction.
+[00:17:43.000 --> 00:17:48.000]   And because you sample the half vector,
+[00:17:48.000 --> 00:17:52.000]   instead of what you are integrating over, which is the incident direction,
+[00:17:52.000 --> 00:17:56.000]   you basically have to account for the change of variables
+[00:17:56.000 --> 00:18:00.000]   and which is basically this term here.
+[00:18:00.000 --> 00:18:01.000]   Right?
+[00:18:01.000 --> 00:18:08.000]   So you have to multiply the PDF by this before you use it in the Monte Carlo estimator.
+[00:18:08.000 --> 00:18:12.000]   Any questions?
+[00:18:12.000 --> 00:18:18.000]   Okay.
+[00:18:18.000 --> 00:18:22.000]   So I can show you how this looks like.
+[00:18:22.000 --> 00:18:26.000]   After you implemented the MicroFacet BRDF,
+[00:18:26.000 --> 00:18:33.000]   you can basically look at it from different incident and outgoing directions.
+[00:18:33.000 --> 00:18:38.000]   You can increase, decrease the diffuse part and so on.
+[00:18:38.000 --> 00:18:43.000]   And also run your tests to evaluate your implementation.
+[00:18:43.000 --> 00:18:49.000]   Yeah.
+[00:18:49.000 --> 00:18:51.000]   That would be a great time to...
+[00:18:51.000 --> 00:18:59.000]   ...visually confirm the thing that we have is at least resembling the correct distribution.
+[00:18:59.000 --> 00:19:01.000]   I don't know if that's okay.
+[00:19:01.000 --> 00:19:03.000]   Because it wasn't in the slides last time, but I don't know if...
+[00:19:03.000 --> 00:19:04.000]   Aha.
+[00:19:04.000 --> 00:19:05.000]   ...you showed it.
+[00:19:05.000 --> 00:19:06.000]   You mean show the code for it?
+[00:19:06.000 --> 00:19:07.000]   No.
+[00:19:07.000 --> 00:19:09.000]   Just the distribution here.
+[00:19:09.000 --> 00:19:11.000]   The warp?
+[00:19:11.000 --> 00:19:12.000]   Okay.
+[00:19:12.000 --> 00:19:17.000]   So that we can look at it and see whether it resembles what we implemented.
+[00:19:18.000 --> 00:19:19.000]   Okay.
+[00:19:19.000 --> 00:19:23.000]   So you want to see this?
+[00:19:23.000 --> 00:19:28.000]   Or just...
+[00:19:28.000 --> 00:19:29.000]   Yeah, that's great.
+[00:19:29.000 --> 00:19:30.000]   Okay.
+[00:19:30.000 --> 00:19:31.000]   [laughs]
+[00:19:31.000 --> 00:19:41.000]   Okay.
+[00:19:41.000 --> 00:19:45.000]   So some tips and tricks at the end.
+[00:19:45.000 --> 00:19:49.000]   Nory is taking care of the kind of computing the sum at the end, right?
+[00:19:49.000 --> 00:19:53.000]   You only compute the samples of the Monte Carlo estimator.
+[00:19:53.000 --> 00:19:55.000]   So this should be clear.
+[00:19:55.000 --> 00:19:58.000]   Then don't use random, because random is very slow.
+[00:19:58.000 --> 00:20:00.000]   It's not multi-threaded and so on.
+[00:20:00.000 --> 00:20:04.000]   You will see that Nory has kind of its own sampler implemented.
+[00:20:04.000 --> 00:20:07.000]   And you can even reuse samples, right?
+[00:20:07.000 --> 00:20:14.000]   If you only use a sample for a binary decision, you can rescale it and just reuse it again, right?
+[00:20:14.000 --> 00:20:16.000]   That's perfectly fine.
+[00:20:16.000 --> 00:20:19.000]   So you don't have to generate so many random samples.
+[00:20:19.000 --> 00:20:22.000]   Stick with the convention.
+[00:20:22.000 --> 00:20:23.000]   It's always good.
+[00:20:23.000 --> 00:20:25.000]   So it makes our job easier.
+[00:20:25.000 --> 00:20:30.000]   And also very important, a lot of people just start implementing stuff.
+[00:20:30.000 --> 00:20:33.000]   You should first read into Nory.
+[00:20:33.000 --> 00:20:37.000]   Go over all the classes, see what is already there, understand the code.
+[00:20:37.000 --> 00:20:39.000]   It's also very good documented, actually.
+[00:20:39.000 --> 00:20:43.000]   So for everything, you have kind of a small text that tells you what's the return value,
+[00:20:43.000 --> 00:20:47.000]   what's this quantity for, what's that quantity for, and so on.
+[00:20:47.000 --> 00:20:48.000]   So do that.
+[00:20:48.000 --> 00:20:54.000]   Also, for example, last week I've seen people that don't use the ray class properly.
+[00:20:54.000 --> 00:20:56.000]   So you can use the constructor, right?
+[00:20:56.000 --> 00:20:59.000]   You don't have to set every parameter yourself.
+[00:20:59.000 --> 00:21:01.000]   You might miss one, for example.
+[00:21:01.000 --> 00:21:06.000]   And also, if you want to go to a point you're ray is shooting at,
+[00:21:06.000 --> 00:21:13.000]   you can directly call ray T to go at this direction or this position or time.
+[00:21:13.000 --> 00:21:17.000]   It's not really time, but position of the ray.
+[00:21:17.000 --> 00:21:21.000]   Also, read over the helper functions.
+[00:21:21.000 --> 00:21:24.000]   A lot of stuff might already be implemented there and use it also.
+[00:21:24.000 --> 00:21:26.000]   So don't define your own epsilon.
+[00:21:26.000 --> 00:21:28.000]   Don't define your own P.
+[00:21:28.000 --> 00:21:30.000]   Just use whatever is there.
+[00:21:30.000 --> 00:21:31.000]   Please.
+[00:21:32.000 --> 00:21:39.000]   Can we assume that the direction for any ray that we don't generate ourselves is normalized?
+[00:21:39.000 --> 00:21:46.000]   I think if you use the constructor, it will be normalized.
+[00:21:46.000 --> 00:21:51.000]   But yeah, it's always good to do it yourself if you want to be sure.
+[00:21:51.000 --> 00:21:57.000]   Okay.
+[00:21:57.000 --> 00:21:58.000]   Any other question?
+[00:21:58.000 --> 00:21:59.000]   Yes, yes, yes.
+[00:22:01.000 --> 00:22:03.000]   Well, and that's it.
+[00:22:03.000 --> 00:22:09.000]   So here you see kind of the structure of Norian where you're going to spend time.
+[00:22:09.000 --> 00:22:12.000]   So, yeah.
+[00:22:12.000 --> 00:22:16.000]   If there are no further questions, that's it.
+[00:22:16.000 --> 00:22:19.000]   And we are opening the discussion basically.
+[00:22:19.000 --> 00:22:21.000]   Thank you.
+[00:22:21.000 --> 00:22:24.000]   [applause]
+[00:22:24.000 --> 00:22:26.000]   [ Applause ]
+[00:22:26.000 --> 00:22:36.000]   [BLANK_AUDIO]
+

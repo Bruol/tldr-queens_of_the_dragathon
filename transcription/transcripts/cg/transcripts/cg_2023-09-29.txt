@@ -1,0 +1,1009 @@
+
+[00:00:00.000 --> 00:00:03.640]   >> So good morning everybody.
+[00:00:03.640 --> 00:00:06.800]   Thank you very much for joining on a Friday morning.
+[00:00:06.800 --> 00:00:08.660]   It's really interesting.
+[00:00:08.660 --> 00:00:13.380]   This class has I think 160 or 170 registered students.
+[00:00:13.380 --> 00:00:16.400]   It's surprising how few show up.
+[00:00:16.400 --> 00:00:19.960]   It's a result of the COVID phenomenon.
+[00:00:19.960 --> 00:00:26.060]   I've been here for a very long time, 30 years, and I give lectures for 30 years in computer graphics.
+[00:00:26.560 --> 00:00:30.200]   And I never allowed recordings.
+[00:00:30.200 --> 00:00:33.180]   Now they are mandatory, so we have to do it.
+[00:00:33.180 --> 00:00:39.600]   But I think it is so much better to not record the lecture and to give students an opportunity
+[00:00:39.600 --> 00:00:46.580]   to show up because it's so much more immersive, you know, than sitting in front of a computer screen.
+[00:00:46.580 --> 00:00:54.180]   I know it's very tempting, but please tell your friends there is value in showing up.
+[00:00:54.300 --> 00:00:59.160]   You see me in person, you see your friends, you know, there's a completely different way
+[00:00:59.160 --> 00:01:01.680]   of engaging and interacting.
+[00:01:01.680 --> 00:01:03.800]   But anyways, it is what it is.
+[00:01:03.800 --> 00:01:09.980]   Quickly the course roadmap, once again, you see we are getting into the middle of it.
+[00:01:09.980 --> 00:01:17.260]   And one of the technologies we just started a little bit last time is ray tracing.
+[00:01:17.260 --> 00:01:19.360]   It is very fundamental.
+[00:01:19.360 --> 00:01:25.080]   It's very old technology for image synthesis, and it's also very intuitive.
+[00:01:25.080 --> 00:01:31.100]   It's probably the way you would -- if somebody would tell you -- you had no clue of computer graphics,
+[00:01:31.100 --> 00:01:40.260]   and somebody would tell you, can you write a piece of software that displays a three-dimensional sphere
+[00:01:40.260 --> 00:01:45.020]   on the screen, you would probably start thinking about, well, there's -- first of all,
+[00:01:45.020 --> 00:01:47.740]   there's a little bit of mathematics how to represent the sphere.
+[00:01:47.740 --> 00:01:49.760]   It's an implicit function and so forth and so on.
+[00:01:49.760 --> 00:01:50.260]   That's easy.
+[00:01:50.260 --> 00:01:51.380]   We learned that high school.
+[00:01:51.380 --> 00:01:56.520]   So then probably I need to position my camera.
+[00:01:56.520 --> 00:02:02.000]   So if I draw this on a piece of paper, then of course there needs to be --
+[00:02:02.000 --> 00:02:04.740]   there are the laws of projective geometry.
+[00:02:04.740 --> 00:02:06.800]   Maybe we learned even in a drawing class.
+[00:02:06.800 --> 00:02:12.860]   And, you know, in sort of projections, there are different types of projections.
+[00:02:12.860 --> 00:02:22.260]   There is, of course, perspective projection, which has typically one center of sort of the viewpoint,
+[00:02:22.260 --> 00:02:29.140]   if you will, the center where all the rays that sort of come from points being projected
+[00:02:29.140 --> 00:02:31.300]   onto the image plane merge.
+[00:02:31.300 --> 00:02:36.500]   And if you think about this ray type of approach, you could invert this whole projection process
+[00:02:36.500 --> 00:02:42.300]   and say, why don't I, in order to create the image, shoot the rays through each pixel into the scene,
+[00:02:42.620 --> 00:02:49.620]   and then just intersect, compute the intersection with the line that is defined by the ray and the sphere.
+[00:02:49.620 --> 00:02:52.940]   And that gives you the simple most possible image.
+[00:02:52.940 --> 00:02:57.220]   And then you can evaluate a shading model, perhaps, and define a virtual light source
+[00:02:57.220 --> 00:02:58.620]   and the image would look nice.
+[00:02:58.620 --> 00:03:04.500]   So this is ray tracing, shooting a ray essentially through each pixel into the scene
+[00:03:04.500 --> 00:03:09.740]   and computing the intersection with the scene geometry and then you go from there.
+[00:03:09.740 --> 00:03:12.220]   As said, ray tracing is pretty old.
+[00:03:12.420 --> 00:03:13.660]   It was invented.
+[00:03:13.660 --> 00:03:17.780]   I will just skip over those slides because we did these last time.
+[00:03:17.780 --> 00:03:26.820]   So it's pretty old and it had been invented by a guy named Apple in the late '60s.
+[00:03:26.820 --> 00:03:31.860]   And back in the day, just jumps with us.
+[00:03:31.860 --> 00:03:37.900]   As a matter of fact, it is sort of historically, it is very old, you know,
+[00:03:37.900 --> 00:03:43.820]   because it goes back to the divine fire, you know, there was always this imagination,
+[00:03:43.820 --> 00:03:50.300]   how humans view the world and that, you know, they are rays that come from objects or from light sources.
+[00:03:50.300 --> 00:03:54.660]   But it was more formalized by Abrechtürer 1525.
+[00:03:54.660 --> 00:04:02.700]   There is this old troughman image and the idea was that in order to paint for the real image,
+[00:04:02.700 --> 00:04:06.740]   as you can see in the upper right, you had this frame and the canvas.
+[00:04:07.140 --> 00:04:14.700]   And you could basically, for each point on the canvas, just draw a line into the scene
+[00:04:14.700 --> 00:04:22.460]   and look at the exact color, you know, where the line hits the scene from a center of projection
+[00:04:22.460 --> 00:04:25.540]   and then put this color onto the canvas.
+[00:04:25.540 --> 00:04:30.540]   And if you do this for a lot of lines, you get the photo real display,
+[00:04:30.540 --> 00:04:33.260]   basically photo real picture of the scene.
+[00:04:33.740 --> 00:04:40.500]   And a camera does that, literally an analog camera with infinitely many rays.
+[00:04:40.500 --> 00:04:44.220]   In a way, it's also a divide and conquer technique.
+[00:04:44.220 --> 00:04:48.900]   So if you look at the trough, so if I give you a canvas and you draw a three-dimensional scene
+[00:04:48.900 --> 00:04:52.540]   or to paint it in oil, then of course you are overwhelmed
+[00:04:52.540 --> 00:04:56.980]   because there is so much scene complexity here, all the faces, all the chairs, how should I do this?
+[00:04:56.980 --> 00:05:02.620]   And also oftentimes, and this is a little bit illustrated right here.
+[00:05:02.620 --> 00:05:07.020]   And when I painted when I was young in the oil, and the one thing you learn
+[00:05:07.020 --> 00:05:13.620]   is actually you take the canvas and you rasterize it, not necessarily in tiny little pixels,
+[00:05:13.620 --> 00:05:19.620]   but in little squares, so you divide the scene into smaller pieces
+[00:05:19.620 --> 00:05:22.700]   and the individual pieces have less scene complexity.
+[00:05:22.700 --> 00:05:28.460]   If you divide it infinitely many times, then the scene complexity goes to zero,
+[00:05:28.460 --> 00:05:31.500]   literally the local one, because there's only one point to hit.
+[00:05:31.500 --> 00:05:35.500]   So it makes it much easier to draw and to keep proportions
+[00:05:35.500 --> 00:05:39.420]   if you just focus onto the little square and then look into the square and say,
+[00:05:39.420 --> 00:05:41.020]   "Yeah, that's what it is here."
+[00:05:41.020 --> 00:05:44.660]   And then if you do it for all squares, you get the final image.
+[00:05:44.660 --> 00:05:50.220]   You probably have experienced this yourself if you attended ever a drawing class.
+[00:05:50.220 --> 00:05:53.340]   So that's how you get started. It's a very old technique.
+[00:05:53.340 --> 00:05:57.980]   And then Descartes, also in the olden days,
+[00:05:57.980 --> 00:06:03.420]   tried to better understand how rainbows emerge.
+[00:06:03.420 --> 00:06:12.540]   And as you know, rainbows are the result of sort of refractive optics,
+[00:06:12.540 --> 00:06:16.780]   literally rays passing through water droplets.
+[00:06:16.780 --> 00:06:20.460]   And then as they pass through, they're being reflected.
+[00:06:20.460 --> 00:06:22.060]   And this can be modeled by rays.
+[00:06:22.060 --> 00:06:25.820]   And then the angle of reflection is depending on the wavelength,
+[00:06:25.820 --> 00:06:28.860]   which all creates or in the entrance,
+[00:06:28.860 --> 00:06:32.380]   so that and that all creates this rainbow pattern.
+[00:06:32.380 --> 00:06:38.860]   Now, as I said, in modern times, computer-based ray tracing was invented by Apple
+[00:06:38.860 --> 00:06:41.580]   as a way to synthesize images.
+[00:06:41.580 --> 00:06:47.820]   There's always oftentimes this terminology, ray casting.
+[00:06:47.820 --> 00:06:51.580]   And ray casting is the same as ray tracing.
+[00:06:51.580 --> 00:06:54.220]   Literally, it's exactly what you see here on the image.
+[00:06:55.180 --> 00:06:59.420]   The difference between the two is ray tracing usually is being used
+[00:06:59.420 --> 00:07:04.620]   when you think of secondary rays, when you go into recursion,
+[00:07:04.620 --> 00:07:10.380]   when you trace the light back from the eye to the light sources from multiple bounces,
+[00:07:10.380 --> 00:07:11.980]   and we'll see this in a moment.
+[00:07:11.980 --> 00:07:15.900]   So the recursive version of ray casting
+[00:07:15.900 --> 00:07:20.780]   was secondary tertiary, quaternary rays that's called ray tracing.
+[00:07:20.780 --> 00:07:24.540]   And ray casting is usually the way of image synthesis
+[00:07:24.540 --> 00:07:29.340]   by shooting rays into the scene and just having the primary rays intersecting,
+[00:07:29.340 --> 00:07:31.340]   you know, the scene geometry.
+[00:07:31.340 --> 00:07:34.380]   And this is what it is.
+[00:07:34.380 --> 00:07:38.220]   And then it was so he basically invented ray casting,
+[00:07:38.220 --> 00:07:42.380]   and then the second big milestone was about 10 years later by Turner Wittet,
+[00:07:42.380 --> 00:07:48.620]   who really invented the recursive version of ray tracing.
+[00:07:48.620 --> 00:07:57.580]   And you also see refraction is nicely modeled in that version.
+[00:07:57.580 --> 00:08:02.380]   So it requires recursion and secondary rays.
+[00:08:02.380 --> 00:08:07.500]   Now we just want to do a little bit of the basics of ray tracing.
+[00:08:07.500 --> 00:08:09.900]   First of all, there are a couple of assumptions that lie in transport.
+[00:08:09.900 --> 00:08:14.140]   First of all, we are working here with geometrical optics,
+[00:08:14.140 --> 00:08:19.900]   or geometric optics, ray optics, not with wave optics.
+[00:08:19.900 --> 00:08:26.700]   If we want in computer graphics, there's relatively little done on true wave optics.
+[00:08:26.700 --> 00:08:32.460]   Wave optics effects are diffraction patterns, polarization, interference.
+[00:08:32.460 --> 00:08:33.980]   Polarization is important.
+[00:08:33.980 --> 00:08:38.700]   It's being used in computer graphics, sometimes diffraction as well,
+[00:08:38.700 --> 00:08:40.700]   but it's modeled explicitly.
+[00:08:40.700 --> 00:08:46.300]   If you would want to model it really mathematically or physically rigorously,
+[00:08:46.300 --> 00:08:48.460]   you had to solve which equations.
+[00:08:48.460 --> 00:08:54.380]   Does anybody know which equations do govern light transport?
+[00:08:54.380 --> 00:08:57.100]   Exactly.
+[00:08:57.100 --> 00:08:59.180]   You have to solve some Maxwell equations.
+[00:08:59.180 --> 00:09:03.500]   And these are partial differential equations.
+[00:09:03.500 --> 00:09:09.340]   They model the propagation, or they describe the propagation of the electromagnetic field,
+[00:09:09.340 --> 00:09:11.900]   and light is in the electromagnetic field.
+[00:09:11.900 --> 00:09:16.140]   It's just different wavelengths than radio, but it's the same physics.
+[00:09:16.140 --> 00:09:18.940]   And so these are differential equations.
+[00:09:18.940 --> 00:09:23.100]   They are linear, but of course they are more complex to solve.
+[00:09:23.100 --> 00:09:26.860]   And then the poor man's version of it is still to speak.
+[00:09:26.860 --> 00:09:29.740]   This we will look at at the lecture.
+[00:09:29.740 --> 00:09:36.140]   This is linear transport theory, where you still assume geometric optics
+[00:09:36.140 --> 00:09:44.220]   and linear transport of energy, and there you collapse those equations into integral equations,
+[00:09:44.220 --> 00:09:45.500]   so-called Frey-Torne equations.
+[00:09:45.500 --> 00:09:52.140]   That's these are the fundamental equations we solve in modern computer graphics,
+[00:09:52.140 --> 00:09:53.100]   as you would see.
+[00:09:53.100 --> 00:09:58.220]   And the goal of the lecture is essentially to step by step get you to that,
+[00:09:58.220 --> 00:10:02.460]   what we call global illumination and rendering equations.
+[00:10:03.500 --> 00:10:09.980]   So for us so, geometric optics is one, light travels on a straight line in the vacuum,
+[00:10:09.980 --> 00:10:17.740]   so there is no Einstein version of light transport in which gravitation would basically bend the
+[00:10:17.740 --> 00:10:18.380]   rays of light.
+[00:10:18.380 --> 00:10:24.060]   By the way, a very old ray trace is a somewhat theoretical physicist way back 20 years ago.
+[00:10:24.060 --> 00:10:29.740]   They found a lot of fun in building ray traces that ray trace the geodesic.
+[00:10:29.740 --> 00:10:35.260]   So if light doesn't travel on a straight line, but on a curve that is described by the theory
+[00:10:35.260 --> 00:10:41.340]   of relativity, you can create these awesome images and you travel at the speed of light
+[00:10:41.340 --> 00:10:43.980]   and how everything bends around you.
+[00:10:43.980 --> 00:10:46.620]   So that's typically, I have to dig them out.
+[00:10:46.620 --> 00:10:51.580]   Usually I show them in the ray tracing lecture, but this time it's not in this deck.
+[00:10:51.580 --> 00:10:52.700]   I'll show you next time.
+[00:10:52.700 --> 00:10:58.460]   So no atmospheric scattering or diffraction.
+[00:10:58.460 --> 00:11:03.500]   The atmospheric scattering, the initial version of ray tracing, of course assumes a vacuum,
+[00:11:03.500 --> 00:11:09.580]   but as you would see, there is a whole series of little series of lectures within this one
+[00:11:09.580 --> 00:11:12.460]   where we talk about participating media.
+[00:11:12.460 --> 00:11:18.700]   And participating medium is actually, for instance, fog or haze in the atmosphere,
+[00:11:18.700 --> 00:11:19.740]   could also be water.
+[00:11:19.740 --> 00:11:23.660]   And as light travels through water, it's being scattered.
+[00:11:23.660 --> 00:11:27.180]   So there's a lot of forward scattering, back scattering, and so forth.
+[00:11:27.180 --> 00:11:30.060]   And that's also the reason, as you know, why the sky is blue.
+[00:11:30.060 --> 00:11:37.020]   So these effects we modeled, but not in the most simple version of ray tracing that is
+[00:11:37.020 --> 00:11:37.660]   later.
+[00:11:37.660 --> 00:11:40.140]   So there's gravity, as I explained.
+[00:11:40.140 --> 00:11:47.180]   And then, of course, most importantly, we always approximate the spectral,
+[00:11:50.380 --> 00:11:56.780]   so sort of the spectral phenomena and/or the spectral distribution of the energy
+[00:11:56.780 --> 00:12:03.180]   by sampling this energy distribution, usually with three samples, R, G, and B.
+[00:12:03.180 --> 00:12:09.180]   As you know, it's physically incorrect because the spectral energy distribution or the spectral
+[00:12:09.180 --> 00:12:15.340]   dependency of the reflection, for instance, coefficients or of the surface properties,
+[00:12:15.340 --> 00:12:18.060]   that is typically a continuous function.
+[00:12:18.060 --> 00:12:23.820]   And in order to model it correctly, you would have to sample it with many more samples.
+[00:12:23.820 --> 00:12:26.940]   But in computer graphics, typically everything is RGB.
+[00:12:26.940 --> 00:12:30.460]   And RGB works really fine.
+[00:12:30.460 --> 00:12:37.980]   You also know how to convert a real spectral function into RGB through the XYZ system.
+[00:12:37.980 --> 00:12:41.580]   Those who attended the visual computing lecture, there's one lecture on color
+[00:12:41.580 --> 00:12:43.020]   where we discuss all of that.
+[00:12:43.020 --> 00:12:45.260]   You can convert really back and forth.
+[00:12:45.260 --> 00:12:50.140]   But sometimes, of course, you get quantization effects, sampling effects.
+[00:12:50.140 --> 00:12:57.420]   There are phenomena, and you can easily replicate those where the RGB, the three samples, are not
+[00:12:57.420 --> 00:12:58.060]   sufficient.
+[00:12:58.060 --> 00:13:03.420]   And, of course, there are some advanced rendering methods and the rendering systems that allow
+[00:13:03.420 --> 00:13:07.660]   you to add more samples or true spectral distributions.
+[00:13:07.660 --> 00:13:16.700]   But typically, and then also you quantize certain effects, for instance, dispersion and fluorescence
+[00:13:16.700 --> 00:13:19.020]   that require continuous spectrum or so.
+[00:13:19.020 --> 00:13:22.860]   So this is pretty -- and then finally, it's the superposition principle.
+[00:13:22.860 --> 00:13:25.740]   So there's no nonlinear reflecting materials.
+[00:13:25.740 --> 00:13:30.540]   It always assumes superposition and Hamhaut's reciprocity.
+[00:13:30.540 --> 00:13:37.180]   So basically, that you can invert the path of energy, the path of light through this optical system.
+[00:13:37.740 --> 00:13:38.460]   If you will.
+[00:13:38.460 --> 00:13:40.300]   And that's what ray tracing actually does.
+[00:13:40.300 --> 00:13:42.300]   It traces back to a light source.
+[00:13:42.300 --> 00:13:50.700]   Now, very important in ray tracing is the fundamental building block, which is the ray.
+[00:13:50.700 --> 00:13:57.660]   And the ray also stands for the pixel in the end because the ray is this sort of function,
+[00:13:57.660 --> 00:14:05.340]   if you will, by which we poke into the scene and sample the radiance that is transported
+[00:14:05.340 --> 00:14:07.660]   towards the eye through that particular pixel.
+[00:14:07.660 --> 00:14:10.700]   And the ray equation is in parametric forms.
+[00:14:10.700 --> 00:14:11.340]   Very simple.
+[00:14:11.340 --> 00:14:16.780]   You know, it's just a line equation which we use with an origin that's typically the center of
+[00:14:16.780 --> 00:14:23.980]   projection plus a scalar parameter t and a directional vector.
+[00:14:23.980 --> 00:14:25.500]   Easy.
+[00:14:25.500 --> 00:14:34.300]   Then there is -- I mean, if we would want to follow the true physics, then conceptually,
+[00:14:34.300 --> 00:14:39.420]   we would start with a light source because the light source emits photons.
+[00:14:39.420 --> 00:14:42.300]   And let's say each photon has one ray.
+[00:14:42.300 --> 00:14:48.060]   We shoot a certain number of photons, maybe even probabilistically, into the scene.
+[00:14:48.060 --> 00:14:53.420]   And then see where they hit the surface and the photons hit the surface.
+[00:14:53.420 --> 00:14:56.060]   And they are being reflected.
+[00:14:56.060 --> 00:15:02.700]   So energy is transported from irradiance to -- back to the radiance to outgoing radiance.
+[00:15:02.700 --> 00:15:08.460]   As you might remember from visual computing, a set for those who attended the visual computing
+[00:15:08.460 --> 00:15:11.340]   calcimus, this might be a little bit of repetition.
+[00:15:11.340 --> 00:15:17.420]   But then as the light hits the surface, if the surface is not fully specular,
+[00:15:17.420 --> 00:15:23.100]   if the surface would be perfect mirror, then all the light, the incident light,
+[00:15:23.100 --> 00:15:30.540]   is being transported into the direction that is defined by the reflected ray, right?
+[00:15:30.540 --> 00:15:34.140]   Through the surface normal, so it's mirrored with respect to the surface normal,
+[00:15:34.140 --> 00:15:38.220]   you would get all the energy transported along one singular direction.
+[00:15:38.220 --> 00:15:46.300]   However, in real life, most of the materials are a little bit specular and a lot diffuse, right?
+[00:15:46.300 --> 00:15:53.820]   And so the diffuse part says that if basically light hits the surface from a certain direction,
+[00:15:53.820 --> 00:15:58.620]   it's being distributed literally equally in all possible directions,
+[00:15:58.620 --> 00:16:05.100]   which would mean we would have to send out a lot of secondary rays to capture,
+[00:16:05.100 --> 00:16:07.820]   to model this energy propagation.
+[00:16:07.820 --> 00:16:12.460]   And if you do this for a very complex scene and for a lot of rays,
+[00:16:12.460 --> 00:16:15.260]   it becomes prohibitively expensive.
+[00:16:15.260 --> 00:16:22.140]   Even more so, only a very few of those, let's call them photons,
+[00:16:22.140 --> 00:16:25.260]   would literally hit the eye.
+[00:16:25.260 --> 00:16:26.620]   They would hit the pixel.
+[00:16:27.260 --> 00:16:34.220]   A lot of this model would be unnecessary rays that just randomly distributed in the scene.
+[00:16:34.220 --> 00:16:40.140]   So that would be light tracing.
+[00:16:40.140 --> 00:16:44.940]   As a matter of fact, you would see there is a technology called bi-directional path tracing,
+[00:16:44.940 --> 00:16:50.540]   in which we really randomly shoot rays from the light source and shoot rays from the eyes,
+[00:16:50.540 --> 00:16:53.660]   and then sort of recombine them into single paths.
+[00:16:53.660 --> 00:16:57.740]   So it is possible, but in this model it doesn't make sense.
+[00:16:57.740 --> 00:17:02.460]   What does seem to make much more sense is to invert the process,
+[00:17:02.460 --> 00:17:05.660]   because there is the concept of reciprocity.
+[00:17:05.660 --> 00:17:11.260]   We would basically shoot a ray from the eye point into the scene
+[00:17:11.260 --> 00:17:13.980]   and see where it hits the geometry.
+[00:17:13.980 --> 00:17:16.060]   Now compute the intersection.
+[00:17:16.060 --> 00:17:22.940]   At the point of intersection, if the light source is not occluded,
+[00:17:22.940 --> 00:17:27.020]   then there seems to be a direct illumination component,
+[00:17:27.020 --> 00:17:31.660]   because light source sees the surface and we look at the surface.
+[00:17:31.660 --> 00:17:38.380]   So we have to evaluate a local shading model that once we learned visual computing,
+[00:17:38.380 --> 00:17:39.420]   for instance, the Fong model.
+[00:17:39.420 --> 00:17:43.180]   And we do this by shooting a ray to light source.
+[00:17:43.180 --> 00:17:47.260]   And this gives us the geometric relationships of surface-surface-normal,
+[00:17:48.380 --> 00:17:55.660]   basically light ray and the ray to the eye point, literally the camera direction.
+[00:17:55.660 --> 00:17:59.500]   And that would allow us to evaluate light source.
+[00:17:59.500 --> 00:18:02.780]   Now it could also happen that the light source is occluded.
+[00:18:02.780 --> 00:18:07.420]   If we, this means we cannot simply shoot the ray to the light source,
+[00:18:07.420 --> 00:18:12.940]   we have to see if there is a possible intersection of this ray
+[00:18:12.940 --> 00:18:17.580]   from the surface point to the light source with some other geometry.
+[00:18:17.580 --> 00:18:23.340]   And if so, then the point would be in the shadow for this particular light source.
+[00:18:23.340 --> 00:18:25.500]   Makes sense, right?
+[00:18:25.500 --> 00:18:26.780]   So you have to compute these things.
+[00:18:26.780 --> 00:18:28.860]   I'm just telling you conceptually how it works.
+[00:18:28.860 --> 00:18:30.220]   We go into the details.
+[00:18:30.220 --> 00:18:37.980]   So even at this point, you can understand that a lot of ray tracing seem to be to compute
+[00:18:37.980 --> 00:18:43.180]   intersections, just a simple intersection of a ray with geometry.
+[00:18:43.180 --> 00:18:47.020]   And geometry mostly modeled by triangles or maybe spheres.
+[00:18:47.660 --> 00:18:48.940]   They're all by triangles.
+[00:18:48.940 --> 00:18:54.220]   So it's a lot about just computing the intersection with a ray and a triangle.
+[00:18:54.220 --> 00:18:55.260]   Sounds very simple.
+[00:18:55.260 --> 00:18:57.420]   We all learned in high school how to do this.
+[00:18:57.420 --> 00:18:59.260]   Everybody can do it on paper.
+[00:18:59.260 --> 00:19:04.220]   Except, say, if you're seen as 50 million triangles or 100 million,
+[00:19:04.220 --> 00:19:09.100]   and the image is a thousand by a thousand means a million pixels,
+[00:19:09.100 --> 00:19:13.980]   imagine how many intersections we have to compute.
+[00:19:14.540 --> 00:19:18.700]   In particular, if you do it sort of naively, if we run, we have a ray,
+[00:19:18.700 --> 00:19:22.780]   then let's have a linear list of triangles that runs through each triangle and see if there is
+[00:19:22.780 --> 00:19:23.500]   an intersection.
+[00:19:23.500 --> 00:19:25.660]   So that doesn't work.
+[00:19:25.660 --> 00:19:26.220]   Probably.
+[00:19:26.220 --> 00:19:28.300]   But you have to be more smart.
+[00:19:28.300 --> 00:19:33.500]   But anyways, keep in mind, so in this little example it sees,
+[00:19:33.500 --> 00:19:37.740]   so this is all still primary ray.
+[00:19:37.740 --> 00:19:40.540]   What you see here is literally ray casting.
+[00:19:41.180 --> 00:19:45.740]   Now ray tracing, recursive ray tracing begins if you say, well,
+[00:19:45.740 --> 00:19:53.020]   there is also one secondary ray which we trace further into the scene.
+[00:19:53.020 --> 00:19:57.260]   And that's the ray that is being, we call it the reflected ray.
+[00:19:57.260 --> 00:20:01.740]   Basically, it's the direction of perfect reflection.
+[00:20:01.740 --> 00:20:08.060]   And we shoot one more, we generate one more ray that goes into that direction,
+[00:20:08.060 --> 00:20:13.500]   assuming that the light, a lot of the light comes from there somehow,
+[00:20:13.500 --> 00:20:18.940]   meaning assuming that the object is very specular, because in the case of perfectly
+[00:20:18.940 --> 00:20:25.340]   specular object, we can capture the energy transport through a single ray.
+[00:20:25.340 --> 00:20:33.420]   And this also suggests that in terms of what we call global illumination versus local
+[00:20:33.420 --> 00:20:41.180]   illumination, ray tracing is a very good approximation of global illumination when
+[00:20:41.180 --> 00:20:43.260]   the scene is very specular.
+[00:20:43.260 --> 00:20:52.700]   So if the surface materials are more, you know, sort of, if they are diffuse or are
+[00:20:52.700 --> 00:20:58.700]   mixed in reflection, then ray tracing can only capture the specular part, not the diffuse part,
+[00:20:58.700 --> 00:21:00.060]   not the standard ray tracing.
+[00:21:00.700 --> 00:21:08.220]   Anyways, all things to think about once again, local illumination means, this is what we do here,
+[00:21:08.220 --> 00:21:15.740]   we have basically one or multiple light sources and we compute the direct contribution of the
+[00:21:15.740 --> 00:21:22.140]   energy from the light sources to the camera, only the direct part.
+[00:21:22.140 --> 00:21:29.260]   But there's a lot of indirect part, you know, the energy that arrives at the eye at a certain pixel
+[00:21:29.260 --> 00:21:35.740]   is not even composed by, you know, whatever the surface illuminates directly or, you know,
+[00:21:35.740 --> 00:21:40.060]   go, it's the direct illumination part, but there is an interreflective part.
+[00:21:40.060 --> 00:21:44.540]   So light is being, or the photons are being sent out from the light sources, they bounce on the
+[00:21:44.540 --> 00:21:50.780]   surfaces, they go to other surfaces and bounce twice and three and four and infinitely many times.
+[00:21:50.780 --> 00:21:56.220]   And this gives you finally the energy distribution in a closed environment.
+[00:21:57.100 --> 00:22:02.700]   And if you want to capture this correctly, you have to solve what's called a global illumination
+[00:22:02.700 --> 00:22:06.940]   equation and this goes really back to this rendering equation and to the,
+[00:22:06.940 --> 00:22:10.220]   to the, to the integral equations which we will develop.
+[00:22:10.220 --> 00:22:19.100]   Ray tracing is the first approximation of it and it is limited to, standard ray tracing limited
+[00:22:19.100 --> 00:22:23.740]   to the specular part, not to the diffuse part.
+[00:22:23.740 --> 00:22:29.500]   So anyways, if you have only one light source in the scene, this will do it.
+[00:22:29.500 --> 00:22:35.020]   If you have, by the way, multiple light sources in the scene, we would have to shoot this light ray,
+[00:22:35.020 --> 00:22:37.820]   as we call it, to all the light sources, right?
+[00:22:37.820 --> 00:22:43.260]   Because we have to collect all the energy to the distribution, the direct contribution to this
+[00:22:43.260 --> 00:22:45.340]   point from all the sources.
+[00:22:45.340 --> 00:22:46.700]   Here's the reflective ray.
+[00:22:46.700 --> 00:22:48.780]   For the reflected ray, we do the same thing.
+[00:22:49.820 --> 00:22:56.860]   So we once again send, basically, ray to light source and see if it's in the shadow
+[00:22:56.860 --> 00:22:59.740]   or if there's a direct contribution to that point.
+[00:22:59.740 --> 00:23:05.900]   If the object is translucent, then refraction comes into play.
+[00:23:05.900 --> 00:23:11.260]   So it's not a single ray, we shoot into the scene, it's two rays.
+[00:23:11.260 --> 00:23:16.540]   Basically one that models the reflected light, the other one, the refracted light.
+[00:23:17.100 --> 00:23:22.780]   And this is also why ray tracing is so cool to model glass and general refraction,
+[00:23:22.780 --> 00:23:24.300]   as you'll see in other images.
+[00:23:24.300 --> 00:23:26.620]   And this ray, same thing.
+[00:23:26.620 --> 00:23:33.340]   Once it exits the scene, you know, the reflected ray will, at some point, exit the scene
+[00:23:33.340 --> 00:23:35.180]   and then hit another object.
+[00:23:35.180 --> 00:23:41.020]   And at each of those points, we have to shoot rays to the light source to see if there's
+[00:23:41.020 --> 00:23:45.260]   a direct contribution or if these points are in the shadow.
+[00:23:45.260 --> 00:23:52.300]   And then, finally, the pixel color is obtained by collecting bottom up.
+[00:23:52.300 --> 00:23:58.940]   If you think of this as being a binary tree, literally, and a recursive process,
+[00:23:58.940 --> 00:24:05.740]   then you basically sum up all the fractional energy distribution throughout the tree,
+[00:24:05.740 --> 00:24:10.300]   from the leaves up to the root of the tree, which is the pixel.
+[00:24:10.300 --> 00:24:11.980]   This is how it works.
+[00:24:13.820 --> 00:24:16.860]   And we call those light rays or shadow rays.
+[00:24:16.860 --> 00:24:24.140]   And all the ones that are not primary, that are beyond what we call the ray casting process,
+[00:24:24.140 --> 00:24:26.860]   they are called secondary rays for simplicity.
+[00:24:26.860 --> 00:24:30.620]   So no matter whether they are secondary or tertiary or whatever.
+[00:24:30.620 --> 00:24:37.980]   And what's also interesting, this is really an advanced detail of ray tracing.
+[00:24:39.260 --> 00:24:49.500]   If you think about it, there are infinitely many ideas and publications of how to accelerate
+[00:24:49.500 --> 00:24:55.500]   ray tracing because there are so many rays, so many intersections, even for a single pixel,
+[00:24:55.500 --> 00:25:01.180]   you could even end up, if you go deep into the recursion, I mean, you increase the number of
+[00:25:01.180 --> 00:25:02.380]   rays exponentially.
+[00:25:02.380 --> 00:25:08.140]   And if you go to level four, level five, level six, you have lots of rays per pixel.
+[00:25:08.140 --> 00:25:13.260]   And it's getting even more, as you will see in path tracing and global illumination and
+[00:25:13.260 --> 00:25:16.140]   Monte Carlo base rendering.
+[00:25:16.140 --> 00:25:26.700]   So you would think that maybe if we go from one pixel to the next, the primary ray changes only
+[00:25:26.700 --> 00:25:33.500]   a tiny little bit, actually, that maybe with some clever caching, we could reuse some of the
+[00:25:33.500 --> 00:25:36.860]   intersections from the previous round for the next pixel.
+[00:25:36.860 --> 00:25:45.260]   In fact, it's possible except that what we call the ray coherence on the primary ray bundle,
+[00:25:45.260 --> 00:25:50.940]   it is very high, you know, from one pixel to the next, there's only a little angular displacement,
+[00:25:50.940 --> 00:25:53.020]   very similar rays and directions.
+[00:25:53.020 --> 00:26:00.620]   But you can easily imagine that for the secondary rays in deeper recursions, the thing just explodes,
+[00:26:00.620 --> 00:26:01.340]   right?
+[00:26:01.340 --> 00:26:04.140]   It loses coherence very quickly.
+[00:26:04.860 --> 00:26:10.300]   And as such, you cannot because the interest, so little change in the primary ray can lead
+[00:26:10.300 --> 00:26:14.060]   to a large change of the configuration in the secondary rays.
+[00:26:14.060 --> 00:26:21.500]   And this means that simply there is limits to using coherence and cache coherence and so
+[00:26:21.500 --> 00:26:24.140]   forth and so on and ray tracing, but still being done.
+[00:26:24.140 --> 00:26:32.700]   So conceptually, we divide ray tracing in three different parts.
+[00:26:32.700 --> 00:26:36.860]   The first one is simple, it's ray generation, generate the ray.
+[00:26:36.860 --> 00:26:44.620]   Second one, that's the computationally most expensive part that's computing the intersection.
+[00:26:44.620 --> 00:26:48.780]   And then there is last part, which is computing shading.
+[00:26:48.780 --> 00:26:50.940]   The shading itself is not so expensive.
+[00:26:50.940 --> 00:26:53.980]   I mean, you know, this typically font model or whatever model you want.
+[00:26:53.980 --> 00:27:01.820]   And then you recurse and you run through this loop multiple times.
+[00:27:02.380 --> 00:27:07.420]   Also important in this simple model of ray tracing, we use a pinhole camera model.
+[00:27:07.420 --> 00:27:12.460]   Pinhole model is very well known.
+[00:27:12.460 --> 00:27:14.860]   So it's the oldest possible lens.
+[00:27:14.860 --> 00:27:20.940]   It's a perfect lens because everything is in focus except no energy goes through.
+[00:27:20.940 --> 00:27:23.580]   So that's the problem of it.
+[00:27:23.580 --> 00:27:26.700]   So it works very well with a computer in reality.
+[00:27:26.700 --> 00:27:28.940]   It does not work so well.
+[00:27:30.140 --> 00:27:37.020]   But the way it is looked at is that literally we have this pinhole which is sent off projection.
+[00:27:37.020 --> 00:27:43.580]   And then in a physical pinhole camera, the image would be upside down, you know, on the back plane.
+[00:27:43.580 --> 00:27:49.980]   But here in ray tracing, we flip it to a virtual image plane, which you will,
+[00:27:49.980 --> 00:27:52.620]   which is in front of the pinhole.
+[00:27:52.620 --> 00:27:54.220]   So that's the idea fundamentally.
+[00:27:54.220 --> 00:27:55.900]   But it's a pinhole camera model.
+[00:27:57.500 --> 00:28:01.820]   It is interesting that ray tracing and in advanced rendering systems,
+[00:28:01.820 --> 00:28:03.500]   Rachez knows this very well.
+[00:28:03.500 --> 00:28:09.900]   He worked for almost 20 years at the feature animation studios of the Walt Disney Company in Los Angeles.
+[00:28:09.900 --> 00:28:15.020]   And then it was very instrumental in rendering that, you know, the production rendering systems,
+[00:28:15.020 --> 00:28:23.020]   they have certain lens models built in because the beauty of ray tracing is that with this idea of
+[00:28:23.020 --> 00:28:28.940]   following rays, you can also model the path of light through an optically thick medium.
+[00:28:28.940 --> 00:28:30.860]   You can model refraction.
+[00:28:30.860 --> 00:28:34.780]   And if you model refraction properly, you can model a lens of any type.
+[00:28:34.780 --> 00:28:42.940]   So you can basically simulate the behavior of pretty much any lens, at least the linear part of it.
+[00:28:42.940 --> 00:28:48.060]   There is a lot of this chromatic apparition, as you know, and all sorts of other effects.
+[00:28:48.060 --> 00:28:53.340]   But if you want to have a certain lens effect, or also, for instance, depth of field,
+[00:28:53.340 --> 00:28:59.980]   which is cinematographically a very important element of visual storytelling,
+[00:28:59.980 --> 00:29:05.900]   then you would basically pass those rays through a virtual lens that can be done or a lens system.
+[00:29:05.900 --> 00:29:09.660]   And the beauty of it is the lenses would be perfect.
+[00:29:09.660 --> 00:29:14.060]   So you don't lose light as in photography, as you know, with lenses.
+[00:29:14.060 --> 00:29:21.340]   There's always certain absorption effects, and you get, depending on the quality,
+[00:29:21.340 --> 00:29:26.540]   you just have less good effects regarding low lightning conditions.
+[00:29:26.540 --> 00:29:31.980]   So anyways, there's a pinhole camera, virtual image plane.
+[00:29:31.980 --> 00:29:38.060]   Primary ray, usually there are a bunch of parameters for ray tracing.
+[00:29:38.060 --> 00:29:41.180]   One is the image resolution, which you have to determine.
+[00:29:41.180 --> 00:29:46.380]   It would be sort of the size of the image, say 500 by 500 or whatever it is.
+[00:29:46.380 --> 00:29:48.060]   Determines number of pixels.
+[00:29:48.060 --> 00:29:53.980]   Then there's the eye point where all the rays hit the origin center of projection.
+[00:29:53.980 --> 00:30:01.660]   And there is the origin also of the image plane and x and y axis.
+[00:30:01.660 --> 00:30:06.300]   And as you can imagine, as we also know from projective geometry,
+[00:30:06.300 --> 00:30:13.340]   the further the distance from the center of projection from the image plane,
+[00:30:13.340 --> 00:30:18.860]   the more of a sort of zoom effect you get with your rays,
+[00:30:18.860 --> 00:30:22.620]   because then the angle between the rays would be smaller.
+[00:30:22.620 --> 00:30:27.900]   If you put the center of projection closer to the image planes,
+[00:30:27.900 --> 00:30:31.660]   the angular distribution of the rays will increase,
+[00:30:31.660 --> 00:30:33.980]   and you get more like a wide angle effect.
+[00:30:34.700 --> 00:30:40.300]   That's a very simplistic way of modeling the angles.
+[00:30:40.300 --> 00:30:42.460]   And then of course the size of the image plane,
+[00:30:42.460 --> 00:30:45.100]   which is usually a unit area or something.
+[00:30:45.100 --> 00:30:50.140]   And then there is a local image coordinate system, x and y,
+[00:30:50.140 --> 00:30:55.340]   through which you can address and iterate through all the pixels.
+[00:30:55.340 --> 00:30:58.220]   So that's simple.
+[00:30:58.220 --> 00:31:02.540]   Then the next one is the intersection.
+[00:31:02.540 --> 00:31:07.420]   And we will talk a lot about intersections and acceleration data structures in a moment.
+[00:31:07.420 --> 00:31:14.620]   So in ray tracing historically, there have always been a number of surface primitives.
+[00:31:14.620 --> 00:31:20.140]   Ray tracing had been optimized for an unlike forward projection.
+[00:31:20.140 --> 00:31:25.260]   You know the standard graphics pipeline we learned and Rastas-Kenn conversion of triangles.
+[00:31:25.260 --> 00:31:31.180]   That's all as you know optimized for one singular primitive.
+[00:31:31.180 --> 00:31:33.420]   And this is a triangle, right?
+[00:31:33.420 --> 00:31:37.980]   So modern hardware still, NVIDIA hardware is all about Rastas-Kenn,
+[00:31:37.980 --> 00:31:42.380]   I mean they have ray tracing now in, but say the standard part of it
+[00:31:42.380 --> 00:31:47.260]   is all about fast processing and high quality processing of triangles.
+[00:31:47.260 --> 00:31:51.900]   In ray tracing things become a little more flexible,
+[00:31:51.900 --> 00:31:54.860]   because in principle as you can imagine,
+[00:31:54.860 --> 00:31:58.460]   apart from computing the intersection with a triangle,
+[00:31:58.460 --> 00:32:05.340]   you could compute the intersection with a sphere precisely.
+[00:32:05.340 --> 00:32:08.860]   Not approximating a sphere with hundreds of triangles,
+[00:32:08.860 --> 00:32:12.780]   but you can just intersect the ray with a real sphere.
+[00:32:12.780 --> 00:32:19.420]   And the reason why this is for instance practically very important is think of
+[00:32:19.420 --> 00:32:20.620]   molecular modeling.
+[00:32:20.620 --> 00:32:24.140]   There's always my perfect examples if you have in biochemistry,
+[00:32:24.140 --> 00:32:31.500]   you have these super complex proteins and molecules that consist of hundreds of thousands of atoms.
+[00:32:31.500 --> 00:32:36.380]   And then they are all being combined and all being modeled by spheres.
+[00:32:36.380 --> 00:32:40.300]   And if you want to sort of have an interactive performance,
+[00:32:40.300 --> 00:32:44.060]   a triangle representation can get to its limits,
+[00:32:44.060 --> 00:32:47.020]   because in order to approximate a sphere properly,
+[00:32:47.020 --> 00:32:52.540]   you need quite a few triangles as we all know from visual computing.
+[00:32:52.540 --> 00:32:55.660]   But here in ray tracing, there are also special ways to scan,
+[00:32:55.660 --> 00:32:59.900]   convert spheres and all sorts of tricks to accelerate in hardware by the way.
+[00:32:59.900 --> 00:33:05.180]   But conceptually they all boil, most of them boil down to ray casting literally.
+[00:33:05.180 --> 00:33:07.420]   Not necessarily computing secondary rays,
+[00:33:07.420 --> 00:33:13.900]   but just using the concept of shooting rays and computing the intersection with the sphere directly.
+[00:33:13.900 --> 00:33:16.140]   So it is more relevant than you would think.
+[00:33:16.780 --> 00:33:22.780]   And then there are other surface primitives such as implicit functions.
+[00:33:22.780 --> 00:33:29.900]   I mean the sphere is one of the most simple implicit algebraic functions as you know,
+[00:33:29.900 --> 00:33:32.140]   but they are ones of higher order.
+[00:33:32.140 --> 00:33:40.540]   The sphere is a quadratic implicit, also ellipsoids or paraboloids and all these shapes,
+[00:33:40.540 --> 00:33:44.380]   they all belong to the class of second order implicit algebraic functions.
+[00:33:44.380 --> 00:33:47.420]   But then there are higher order polynomials, even in mathematics.
+[00:33:47.420 --> 00:33:57.980]   There had been historically research on computing the so-called zero crossings of these functions,
+[00:33:57.980 --> 00:34:03.820]   and this points down to computing, if you want to shoot a ray through such a function,
+[00:34:03.820 --> 00:34:09.660]   if it's higher order polynomial, then it is not so easy to solve,
+[00:34:09.660 --> 00:34:12.940]   to find the roots, the zero crossings of this function.
+[00:34:13.660 --> 00:34:17.740]   So that's really a thing as the polynomial increases.
+[00:34:17.740 --> 00:34:19.100]   What's an implicit function?
+[00:34:19.100 --> 00:34:22.940]   Who does not know what an implicit function is?
+[00:34:22.940 --> 00:34:25.900]   I think everybody does, that's good.
+[00:34:25.900 --> 00:34:31.340]   So this sphere typically modeled as a second or is a quadratic implicit.
+[00:34:31.340 --> 00:34:39.100]   So you have a point of interest and you have the center of the sphere and the radius.
+[00:34:39.100 --> 00:34:42.860]   So basically, sphere is fully defined by the radius and the center.
+[00:34:42.860 --> 00:34:45.100]   This is four scalar values.
+[00:34:45.100 --> 00:34:51.020]   The center obviously is a point in space and the radius is scalar.
+[00:34:51.020 --> 00:34:58.140]   The beauty of this equation is, and that's in the nature of implicit functions,
+[00:34:58.140 --> 00:35:01.260]   that they give you an inside-outside predicate.
+[00:35:01.260 --> 00:35:09.660]   For if the point lies inside the sphere, this function has a sign.
+[00:35:10.860 --> 00:35:18.540]   And if it's outside the sphere, then literally, so we can actually look at it,
+[00:35:18.540 --> 00:35:26.700]   if the distance between the point and the center is smaller than the radius,
+[00:35:26.700 --> 00:35:30.460]   then the point is inside the sphere.
+[00:35:30.460 --> 00:35:35.340]   And in this case, the sign of this thing is negative.
+[00:35:35.340 --> 00:35:40.540]   So for all points that are inside, you get a negative value of this function.
+[00:35:40.540 --> 00:35:44.300]   For all points that really lie on the sphere surface, you get the zero,
+[00:35:44.300 --> 00:35:47.580]   because it's sort of a zero set implicit.
+[00:35:47.580 --> 00:35:53.580]   And then for all the points that lie outside, you get positive values.
+[00:35:53.580 --> 00:35:57.980]   So this is helpful already.
+[00:35:57.980 --> 00:36:05.260]   Now, if we compute, if I give you the task of computing the intersection
+[00:36:05.260 --> 00:36:12.460]   between a sphere and a line, of course, you simply take the ray equation,
+[00:36:12.460 --> 00:36:18.460]   our parametric equation, and you insert it into sort of the sphere equation.
+[00:36:18.460 --> 00:36:24.620]   And then there's only one unknown left, which is the parameter t.
+[00:36:24.620 --> 00:36:27.820]   That defines the point of intersection.
+[00:36:27.820 --> 00:36:28.940]   So you can solve this.
+[00:36:28.940 --> 00:36:33.740]   Since it's a quadratic function, you can sort of frame this out
+[00:36:33.740 --> 00:36:35.900]   into a single scalar equation.
+[00:36:35.900 --> 00:36:42.540]   And then finally, it reduces to this closed form solution,
+[00:36:42.540 --> 00:36:45.100]   which we all know for solving quadratic equations.
+[00:36:45.100 --> 00:36:50.300]   This is how we learned how to compute ray sphere intersection probably in high school.
+[00:36:50.300 --> 00:36:54.060]   And that would be probably the naive way to do it.
+[00:36:54.060 --> 00:36:59.900]   But there's also another way of doing it, which is actually, it's smart.
+[00:36:59.900 --> 00:37:02.380]   It's a good idea.
+[00:37:02.380 --> 00:37:05.740]   This is why we should think about it.
+[00:37:05.740 --> 00:37:08.220]   And it's a geometric approach.
+[00:37:08.220 --> 00:37:12.780]   And somebody probably sat down and thought about,
+[00:37:12.780 --> 00:37:16.940]   do I need to solve this quadratic equation all the time,
+[00:37:16.940 --> 00:37:19.660]   or do I have to evaluate the closed form solution?
+[00:37:19.660 --> 00:37:22.380]   Because there's a lot of multiplications and division and stuff.
+[00:37:22.380 --> 00:37:27.020]   Can I save time and money to do it?
+[00:37:27.020 --> 00:37:31.820]   And the idea is simply that you go in multiple steps that seem to be,
+[00:37:31.820 --> 00:37:36.220]   in some, computationally more expensive and awkward.
+[00:37:36.220 --> 00:37:42.380]   But they allow you to terminate as early as possible
+[00:37:42.380 --> 00:37:48.300]   if you detect that the ray cannot possibly intersect the surface.
+[00:37:48.300 --> 00:37:49.980]   And here's how it works.
+[00:37:49.980 --> 00:37:58.540]   So first of all, you compute the distance from the ray origin to the sphere center.
+[00:37:59.180 --> 00:38:03.260]   So this is called c minus, so the absolute of c minus o.
+[00:38:03.260 --> 00:38:09.580]   So and then you compute the rate.
+[00:38:09.580 --> 00:38:13.100]   So if you have this distance, this is also a vector,
+[00:38:13.100 --> 00:38:21.260]   then you see immediately that if the dot product of the d vector and this vector
+[00:38:21.260 --> 00:38:26.380]   is larger than zero, then the angle is smaller than 90 degrees.
+[00:38:26.380 --> 00:38:27.740]   That makes sense.
+[00:38:28.780 --> 00:38:32.620]   So you compute also the ray distance, which is close to the sphere center,
+[00:38:32.620 --> 00:38:44.140]   but basically the dot product of these two has to be larger than zero in order to sort of,
+[00:38:44.140 --> 00:38:49.340]   that the ray, because it's a directional line, that it can hit the sphere.
+[00:38:49.340 --> 00:38:53.340]   If this dot product is smaller than zero,
+[00:38:53.340 --> 00:38:58.460]   then obviously the ray points into the opposite direction away from the sphere
+[00:38:58.460 --> 00:39:00.380]   and cannot possibly intersect.
+[00:39:00.380 --> 00:39:08.300]   And this is the first criterion for all such rays or all such fears that literally lie behind
+[00:39:08.300 --> 00:39:14.140]   the camera, whatever, where this dot product is smaller than zero,
+[00:39:14.140 --> 00:39:16.060]   it's illustrated right here.
+[00:39:16.060 --> 00:39:18.300]   You sort of discard those.
+[00:39:18.300 --> 00:39:21.020]   They are outside and point away from the sphere.
+[00:39:21.020 --> 00:39:27.900]   The second one, now this predicate helps us, is obviously
+[00:39:28.620 --> 00:39:32.140]   there is a simple way to compute this distance.
+[00:39:32.140 --> 00:39:39.260]   So this orthogonal projection of the point C onto the ray.
+[00:39:39.260 --> 00:39:43.580]   And if this distance is smaller than the radius,
+[00:39:43.580 --> 00:39:48.620]   then the ray must lie inside the sphere, right?
+[00:39:48.620 --> 00:39:54.860]   Because it's an implicit function, so it gives us easily, we can just compare it with radius,
+[00:39:54.860 --> 00:39:57.500]   and then we get a positive or negative sign.
+[00:39:57.500 --> 00:40:05.100]   So if it's smaller, then literally it's inside and we have to continue with the computation.
+[00:40:05.100 --> 00:40:09.820]   If it's larger, then the ray doesn't hit the sphere.
+[00:40:09.820 --> 00:40:11.740]   Makes sense.
+[00:40:11.740 --> 00:40:17.340]   And it's relatively easy to compute if you have the others already computed,
+[00:40:17.340 --> 00:40:21.820]   so it gives you this D square, and then you can compare it with the radius.
+[00:40:22.380 --> 00:40:24.860]   And either the rays outside or it's inside.
+[00:40:24.860 --> 00:40:28.220]   If it's, so you can also reject it.
+[00:40:28.220 --> 00:40:32.060]   And then finally, I mean it looks pretty, pretty like
+[00:40:32.060 --> 00:40:38.460]   umständlich, this whole computation, but the beauty of it is that each stage of the computation,
+[00:40:38.460 --> 00:40:41.500]   you always get a criteria whether you can stop or not.
+[00:40:41.500 --> 00:40:47.420]   And then finally, if you know that you have to continue, you compute the what's called the
+[00:40:47.420 --> 00:40:48.780]   half-quart distance.
+[00:40:48.780 --> 00:40:56.460]   Since the, and this half-quart distance can be easily computed through Pythagorean walls,
+[00:40:56.460 --> 00:41:03.180]   because we have the radius, we have D, and then it's literally R square minus D square.
+[00:41:03.180 --> 00:41:05.340]   And that's what it is.
+[00:41:05.340 --> 00:41:11.980]   Once you have the half-quart distance, you can really compute the two intersection points.
+[00:41:11.980 --> 00:41:17.260]   That's very easy because you get the parameter immediately.
+[00:41:17.260 --> 00:41:20.060]   And you immediately know which point is relevant.
+[00:41:20.060 --> 00:41:27.340]   See, if it's a solid sphere, it's only the first intersection that is relevant,
+[00:41:27.340 --> 00:41:32.860]   which means you literally have to subtract the screen length,
+[00:41:32.860 --> 00:41:37.100]   the screen scale off from the dot product.
+[00:41:37.100 --> 00:41:41.740]   And in order to get the second, if it's for instance translucent,
+[00:41:41.740 --> 00:41:44.780]   then you would have to compute the second intersection possibly as well.
+[00:41:45.340 --> 00:41:51.820]   If there is no refraction, then you would basically add it to it.
+[00:41:51.820 --> 00:41:54.780]   So this is how it works.
+[00:41:54.780 --> 00:42:01.180]   So that's, I think, a relatively clever idea, which is not so obvious,
+[00:42:01.180 --> 00:42:03.260]   and it's a way to terminate early.
+[00:42:03.260 --> 00:42:03.580]   Please.
+[00:42:14.940 --> 00:42:18.220]   So what would be the, so you check whether...
+[00:42:18.220 --> 00:42:30.060]   Yeah, this is actually, that's typically a border case.
+[00:42:30.060 --> 00:42:34.940]   There is this borderline case in which this length collapses to zero.
+[00:42:34.940 --> 00:42:37.340]   And then you check whether it's equal.
+[00:42:37.340 --> 00:42:40.860]   The tangent typically is a limit case.
+[00:42:40.860 --> 00:42:45.980]   You would get one intersection, and at some point you would probably,
+[00:42:45.980 --> 00:42:49.260]   you have to decide whether you use the tangent or not.
+[00:42:49.260 --> 00:42:52.220]   But the tangent case is also a numerical case.
+[00:42:52.220 --> 00:42:57.180]   So in practice, it's questionable whether you, you literally get it.
+[00:42:57.180 --> 00:42:58.460]   You hit it perfectly.
+[00:42:58.460 --> 00:43:03.820]   In principle, you could check for it, but I think in practice,
+[00:43:03.820 --> 00:43:07.100]   it would not get you a lot of advantage.
+[00:43:07.100 --> 00:43:12.860]   It is probably just to check for inside and outside, which is most of the cases.
+[00:43:12.860 --> 00:43:19.340]   And so that's how it works.
+[00:43:19.340 --> 00:43:22.380]   And it can lead to an enormous acceleration,
+[00:43:22.380 --> 00:43:26.940]   because if you have complex scenes with lots of fear, the cameras in the middle,
+[00:43:26.940 --> 00:43:32.700]   then of course, you get a lot of these cases in which you can terminate things early.
+[00:43:32.700 --> 00:43:36.940]   Now if one minute left, let's do the Ray-Plane intersection.
+[00:43:37.180 --> 00:43:44.220]   As you know, there are two ways to model planes, which are in a way almost equal.
+[00:43:44.220 --> 00:43:45.900]   They are conceptually different.
+[00:43:45.900 --> 00:43:51.340]   And this is the algebraic form, and then the has a geometric form.
+[00:43:51.340 --> 00:43:58.380]   In algebraic form, the plane is also an algebraic implicit.
+[00:43:58.380 --> 00:44:00.700]   It is even more simple than the sphere.
+[00:44:00.700 --> 00:44:03.500]   The sphere is a quadratic, and this is a linear one.
+[00:44:03.500 --> 00:44:07.100]   So basically, there are single powers in x, y, and c.
+[00:44:07.100 --> 00:44:13.820]   Namely, a times x plus 3 times y plus c times c plus d equals 0.
+[00:44:13.820 --> 00:44:17.660]   So all points for which this equation becomes 0 lie on the plane.
+[00:44:17.660 --> 00:44:22.940]   The beauty of the algebraic equation once again is the plane,
+[00:44:22.940 --> 00:44:25.900]   this equation divides space into two halves.
+[00:44:25.900 --> 00:44:31.420]   One half for which all points that lie in one half have a negative.
+[00:44:31.420 --> 00:44:35.020]   So if you insert them into the equation, it will be negative,
+[00:44:35.020 --> 00:44:37.980]   and all the others have a positive sign.
+[00:44:37.980 --> 00:44:41.980]   So once again, you get a predicate that allows you to determine
+[00:44:41.980 --> 00:44:46.380]   on which side of the plane the point lies.
+[00:44:46.380 --> 00:44:51.580]   And that can be very useful for inside-outside tests, for instance.
+[00:44:51.580 --> 00:44:57.740]   And then there is the geometric form.
+[00:44:57.740 --> 00:45:07.020]   And this simply means it's all points for which the dot product of x minus p times n equals 0.
+[00:45:07.020 --> 00:45:12.220]   p would be a point on the plane, and n is the surface normal.
+[00:45:12.220 --> 00:45:15.260]   Now, if you compare very quickly before you go into the break,
+[00:45:15.260 --> 00:45:17.740]   if you compare these two equations, they look different,
+[00:45:17.740 --> 00:45:19.740]   but as a matter of fact, they are very similar.
+[00:45:19.740 --> 00:45:23.740]   If you use homogeneous coordinates, you can see that they are very similar.
+[00:45:23.740 --> 00:45:33.740]   If you use homogeneous coordinates to model the point x and the vectors,
+[00:45:33.740 --> 00:45:37.740]   then you can basically compute the dot product,
+[00:45:37.740 --> 00:45:41.740]   and you would get an expression which looks the same as in the algebraic form.
+[00:45:41.740 --> 00:45:51.740]   So there is ways to convert it, and it's just a different view onto the exact same thing, if you will.
+[00:45:51.740 --> 00:45:54.740]   All right, on that note, we have a break.
+[00:45:54.740 --> 00:46:00.740]   It's only 10 minutes, right, because we finish it, or we restart at 11.10.
+[00:46:00.740 --> 00:46:01.740]   Good.
+[00:46:01.740 --> 00:46:05.740]   Just a quick summary.
+[00:46:05.740 --> 00:46:07.740]   It was an interesting conversation.
+[00:46:07.740 --> 00:46:14.740]   The question was still about this sort of way of capturing the global effects.
+[00:46:14.740 --> 00:46:20.740]   We will go into all of this and actually create mathematical detail.
+[00:46:20.740 --> 00:46:25.740]   That's the most unmathematical part of it, and the first baby step.
+[00:46:25.740 --> 00:46:36.740]   If you want to compute the radiant energy that is emitted from this point on a closed surface,
+[00:46:36.740 --> 00:46:39.740]   closed environment, into my eye,
+[00:46:39.740 --> 00:46:47.740]   then you have to sum up the contributions of all other points in the scene.
+[00:46:47.740 --> 00:46:56.740]   So I have to go, I have to sample the scene, lots of, lots of times, all possible points on all surfaces,
+[00:46:56.740 --> 00:47:02.740]   and I have to compute the incident radiance, the irradiance from all these points,
+[00:47:02.740 --> 00:47:08.740]   the energy that is emitted or reflected through those points, and hit this point,
+[00:47:08.740 --> 00:47:17.740]   which means I have to compute an integral over the entire interior surface in order to solve this.
+[00:47:17.740 --> 00:47:24.740]   And this, unfortunately, all other points, I have to do the same thing,
+[00:47:24.740 --> 00:47:31.740]   so I don't know how much radiant energy is emitted, because it's also an unknown,
+[00:47:31.740 --> 00:47:34.740]   so I can put this equation for each and every point,
+[00:47:34.740 --> 00:47:45.740]   meaning that I have an unknown on the left side, which is computed as an integral over those same unknowns function,
+[00:47:45.740 --> 00:47:51.740]   which means this is an integral equation, which has to be solved,
+[00:47:51.740 --> 00:47:57.740]   and the way we solve it is through Monte Carlo methods, through probabilistic sampling.
+[00:47:57.740 --> 00:48:05.740]   And conceptually, if you want to do it right, you have to shoot rays, for instance,
+[00:48:05.740 --> 00:48:09.740]   you have to do this sample, and then you hit the surface,
+[00:48:09.740 --> 00:48:15.740]   and at this point you have to either compute a whole distribution of new secondary rays
+[00:48:15.740 --> 00:48:20.740]   and shoot them into the scene, and for each intersection once again,
+[00:48:20.740 --> 00:48:25.740]   you're going to do it right, and now you're simple when you hit, you roll the dice,
+[00:48:25.740 --> 00:48:30.740]   and you compute a secondary ray into some sort of intelligent random direction,
+[00:48:30.740 --> 00:48:35.740]   and follow that ray, and you do this each and every time, which creates a path,
+[00:48:35.740 --> 00:48:42.740]   a random walk through the scene, back hopefully to the light source, right?
+[00:48:42.740 --> 00:48:47.740]   If you want to get a high quality image, then, of course,
+[00:48:47.740 --> 00:48:53.740]   you have to shoot a lot of those paths, you have to trace a lot of these paths,
+[00:48:53.740 --> 00:48:57.740]   and then there are difficulties whether these paths hit the light source at all,
+[00:48:57.740 --> 00:49:03.740]   or after how many iterations they hit, or recursions, and so forth, and so on,
+[00:49:03.740 --> 00:49:10.740]   and this is called Monte Carlo path tracing, that's the major topic in this lecture,
+[00:49:10.740 --> 00:49:15.740]   and we now go step by step towards the ray tracing, in a way, it's the first baby step,
+[00:49:15.740 --> 00:49:20.740]   because it makes a greatly simplifying assumption that everything,
+[00:49:20.740 --> 00:49:25.740]   the global illumination part we model is only the specular part,
+[00:49:25.740 --> 00:49:33.740]   so the assumption is that light is being transported all, only along the reflected ray,
+[00:49:33.740 --> 00:49:39.740]   and this is why ray tracing looks so beautiful on objects that are shiny, highly specular,
+[00:49:39.740 --> 00:49:44.740]   and so forth, there we can model all the secondary global illumination effects.
+[00:49:44.740 --> 00:49:50.740]   The diffuse part is still approximated in a local fashion, that's incorrect,
+[00:49:50.740 --> 00:49:57.740]   in standard ray tracing, and I can show you, let me see if I can dig this out,
+[00:49:57.740 --> 00:50:08.740]   the way in product, let me just give me a sec, then I can go into talks, maybe,
+[00:50:08.740 --> 00:50:23.740]   let's see what I have, I can show the IBC, maybe here this one, IBC,
+[00:50:23.740 --> 00:50:28.740]   I just want to show you how those images typically look like,
+[00:50:28.740 --> 00:50:34.740]   because if you do these random works, the nature of those Monte Carlo methods
+[00:50:34.740 --> 00:50:44.740]   is that the resulting image is noisy, so you use a Monte Carlo solution,
+[00:50:44.740 --> 00:50:48.740]   or approximation of the solution of this integral equation,
+[00:50:48.740 --> 00:50:51.740]   you know you can do integration by Monte Carlo, as we all know,
+[00:50:51.740 --> 00:50:56.740]   the disadvantage of Monte Carlo methods is they converge very slowly,
+[00:50:56.740 --> 00:51:00.740]   they typically converge with one by the square root of n,
+[00:51:00.740 --> 00:51:03.740]   where n is the number of samples you take,
+[00:51:03.740 --> 00:51:07.740]   and if you look at this, these are examples from Moana,
+[00:51:07.740 --> 00:51:12.740]   so this is how an image looks like, typically, when it comes out of the rendering system,
+[00:51:12.740 --> 00:51:17.740]   and then we use, this is a Pixar one, see the randomness of it,
+[00:51:17.740 --> 00:51:20.740]   and this comes all from these random walks,
+[00:51:20.740 --> 00:51:24.740]   of course if you do random walks to oblivion, you get the noise to zero,
+[00:51:24.740 --> 00:51:27.740]   but the convergence is very slow, and this is after,
+[00:51:27.740 --> 00:51:31.740]   there's also one image where we show the time progression,
+[00:51:31.740 --> 00:51:36.740]   and we easily compute one to two to three CPU hours for one of these images,
+[00:51:36.740 --> 00:51:38.740]   and it's still noisy, right?
+[00:51:38.740 --> 00:51:41.740]   This is why we stop at some point because time is money,
+[00:51:41.740 --> 00:51:45.740]   and we use the so-called denoiser that goes just over the image,
+[00:51:45.740 --> 00:51:50.740]   which is much cheaper, and it denoises, and it denoises magically,
+[00:51:50.740 --> 00:51:53.740]   look at the input, look at the hair in particular,
+[00:51:53.740 --> 00:51:57.740]   how well this denoiser reconstructs the hair, it's magical,
+[00:51:57.740 --> 00:52:01.740]   and it's all used to be using AI, it's all deep learning,
+[00:52:01.740 --> 00:52:03.740]   so these are neural networks that do the denoising,
+[00:52:03.740 --> 00:52:08.740]   and they are trained on previously denoised data and perfect data sets,
+[00:52:08.740 --> 00:52:12.740]   so that's the one where here you see, seen from frozen, similar,
+[00:52:12.740 --> 00:52:15.740]   can you see the noise on the left, everybody see that,
+[00:52:15.740 --> 00:52:17.740]   and then the result is denoising,
+[00:52:17.740 --> 00:52:20.740]   so since we talked about this, I foreshadow it,
+[00:52:20.740 --> 00:52:26.740]   you will learn this all, bear with us, you will learn it all in this lecture,
+[00:52:26.740 --> 00:52:31.740]   so let's continue a little bit with ray tracing,
+[00:52:31.740 --> 00:52:36.740]   I got sidetracked here, where is it?
+[00:52:36.740 --> 00:52:38.740]   Where's my slides?
+[00:52:38.740 --> 00:52:43.740]   There it was.
+[00:52:43.740 --> 00:52:47.740]   Now for now, we are still a little bit with the basics,
+[00:52:47.740 --> 00:52:50.740]   so we have the algebraic form of the plane,
+[00:52:50.740 --> 00:52:53.740]   and we have geometric form, there's a point of interest,
+[00:52:53.740 --> 00:52:57.740]   point on the plane, there's the normal to the plane,
+[00:52:57.740 --> 00:53:01.740]   and with that for any point x outside,
+[00:53:01.740 --> 00:53:05.740]   we basically get, that's the geometry of it,
+[00:53:05.740 --> 00:53:10.740]   so x minus p times n is the dot product, it's this length,
+[00:53:10.740 --> 00:53:13.740]   and that should equal to zero,
+[00:53:13.740 --> 00:53:16.740]   which is, of course, it's conceptually clear,
+[00:53:16.740 --> 00:53:20.740]   basically for any points in the plane, the dot product must be zero,
+[00:53:20.740 --> 00:53:26.740]   because any vector given by x minus p for points in the plane
+[00:53:26.740 --> 00:53:30.740]   would be orthogonal to the surface normal,
+[00:53:30.740 --> 00:53:33.740]   that's just definition of surface normal, obviously.
+[00:53:33.740 --> 00:53:41.740]   So then you can basically also multiply this out,
+[00:53:41.740 --> 00:53:46.740]   and there's this other equation that says p times,
+[00:53:46.740 --> 00:53:48.740]   minus p times n equals d,
+[00:53:48.740 --> 00:53:50.740]   which is this distance,
+[00:53:50.740 --> 00:53:54.740]   and of course, if you have the plane equation,
+[00:53:54.740 --> 00:53:58.740]   and the ray equation, you just substitute it, you insert it,
+[00:53:58.740 --> 00:54:01.740]   this is also how we learned this at high school,
+[00:54:01.740 --> 00:54:04.740]   I just go through it very quickly, I don't explain it,
+[00:54:04.740 --> 00:54:07.740]   and you can solve for the parameter t.
+[00:54:07.740 --> 00:54:09.740]   So that would be the plane intersection,
+[00:54:09.740 --> 00:54:11.740]   but the plane intersection doesn't help a lot,
+[00:54:11.740 --> 00:54:16.740]   because most of the planar functions we have are triangles,
+[00:54:16.740 --> 00:54:19.740]   and for triangles, it's a little bit more involved,
+[00:54:19.740 --> 00:54:23.740]   because we don't, of course, we start with the plane intersection,
+[00:54:23.740 --> 00:54:29.740]   but then we have to test whether the intersection point is in the convex hull,
+[00:54:29.740 --> 00:54:33.740]   which is inside the triangle, literally,
+[00:54:33.740 --> 00:54:38.740]   and this can be done using barycentric coordinates.
+[00:54:38.740 --> 00:54:42.740]   Does everybody know barycentric coordinates or not?
+[00:54:42.740 --> 00:54:47.740]   You know it's this idea of representing each point inside a triangle,
+[00:54:47.740 --> 00:54:51.740]   or in a plane, you're using three reference points,
+[00:54:51.740 --> 00:54:56.740]   the three p's, and a set of scalar parameters, as one has two, as three.
+[00:54:56.740 --> 00:55:00.740]   It's an overrepresentation, because you literally only need two,
+[00:55:00.740 --> 00:55:04.740]   because the criterion is the partition of unity,
+[00:55:04.740 --> 00:55:08.740]   but these three parameters have to sum up to one,
+[00:55:08.740 --> 00:55:14.740]   and for any point inside the triangle, they have to be positive definite.
+[00:55:14.740 --> 00:55:18.740]   So basically, there are all positive values, and they sum up to one,
+[00:55:18.740 --> 00:55:22.740]   and that can be used as an inside test, symbol one.
+[00:55:22.740 --> 00:55:27.740]   The geometric interpretation is that the barycentric coordinates
+[00:55:27.740 --> 00:55:33.740]   are the ratios of the partial triangles defined here
+[00:55:33.740 --> 00:55:37.740]   through the three vertices that define the triangle,
+[00:55:37.740 --> 00:55:47.740]   and the interior point x with respect to the entire triangle surface area.
+[00:55:47.740 --> 00:55:52.740]   And of course, the obvious approach would be to, first of all,
+[00:55:52.740 --> 00:55:56.740]   compute the intersection with the triangles plane.
+[00:55:56.740 --> 00:55:58.740]   This is how everybody would start,
+[00:55:58.740 --> 00:56:02.740]   and then we get the parameter for the intersection t,
+[00:56:02.740 --> 00:56:05.740]   and then we do the test with the barycentric coordinates.
+[00:56:05.740 --> 00:56:07.740]   Now, how do we do this?
+[00:56:07.740 --> 00:56:10.740]   If you have the three points, first of all, we have to create the surface normal.
+[00:56:10.740 --> 00:56:12.740]   That's actually a task that happens often.
+[00:56:12.740 --> 00:56:13.740]   Very easy.
+[00:56:13.740 --> 00:56:19.740]   You just take two different vectors defined by two of the vertices,
+[00:56:19.740 --> 00:56:24.740]   and you compute a cross product, and you normalize that cross product,
+[00:56:24.740 --> 00:56:26.740]   and this gives you the surface normal,
+[00:56:26.740 --> 00:56:30.740]   because by definition, the cross of the vector defined by the cross product
+[00:56:30.740 --> 00:56:36.740]   is orthogonal to the plane spent by two vectors that are not collinear.
+[00:56:36.740 --> 00:56:38.740]   Right?
+[00:56:38.740 --> 00:56:43.740]   And so then you test and compute these three values.
+[00:56:43.740 --> 00:56:47.740]   What's easier, and then you, when you have three values,
+[00:56:47.740 --> 00:56:50.740]   you still have to make sure that they sum up to one,
+[00:56:50.740 --> 00:56:52.740]   and you test whether they're positive definite.
+[00:56:52.740 --> 00:56:55.740]   But you could also do it directly.
+[00:56:55.740 --> 00:56:59.740]   That would be the smarter way of computing it.
+[00:56:59.740 --> 00:57:05.740]   So basically, you, so the Ray equation equals these barycentric coordinates,
+[00:57:05.740 --> 00:57:08.740]   and then you solve for t.
+[00:57:08.740 --> 00:57:13.740]   Technically, there are four unknowns, and it's three scalar equations.
+[00:57:13.740 --> 00:57:15.740]   This is a vector equation with x, y, c.
+[00:57:15.740 --> 00:57:19.740]   So since there's the collinearity of the three ones,
+[00:57:19.740 --> 00:57:26.740]   that's the side condition, lets you solve for t and s1 and s2,
+[00:57:26.740 --> 00:57:28.740]   which can be much faster.
+[00:57:28.740 --> 00:57:33.740]   But this is the typical way how you would run these intersections.
+[00:57:33.740 --> 00:57:37.740]   And on the internet and in ray tracing literature,
+[00:57:37.740 --> 00:57:43.740]   you find a lot of algorithms for intersecting with other primitive such as cylinders, cones,
+[00:57:43.740 --> 00:57:49.740]   torus, disks, general polygons, and so forth, and so on.
+[00:57:49.740 --> 00:57:56.740]   So, and as said, this is the kind of quality images you can produce with ray tracing.
+[00:57:56.740 --> 00:57:58.740]   There are actually stunning images.
+[00:57:58.740 --> 00:58:05.740]   There are very, very good open source ray traces available on the internet,
+[00:58:05.740 --> 00:58:13.740]   which you can download and extend and play around with sort of very good systems.
+[00:58:13.740 --> 00:58:16.740]   Here's also a very nice one.
+[00:58:16.740 --> 00:58:19.740]   Now, let's talk a little bit about shading.
+[00:58:19.740 --> 00:58:25.740]   I mean, technically, the evaluating a local illumination model was subject to the visual computing
+[00:58:25.740 --> 00:58:35.740]   lecture, but we just want to quickly touch upon it here again to refresh maybe your memory.
+[00:58:35.740 --> 00:58:43.740]   So basically, the, so evaluating these shading models determines the final color of the primary ray,
+[00:58:43.740 --> 00:58:48.740]   and thus the corresponding pixel colors, depending on the hit point.
+[00:58:48.740 --> 00:58:55.740]   And at the heart of it is the surface, the reflection properties of the surface.
+[00:58:55.740 --> 00:59:05.740]   And as you might recall, the physically based way to model the reflective behavior of the surface
+[00:59:05.740 --> 00:59:07.740]   is through what's called the BRDF.
+[00:59:07.740 --> 00:59:14.740]   This is absolutely fundamental to material modeling for computer,
+[00:59:14.740 --> 00:59:17.740]   physically based model for computer graphics.
+[00:59:17.740 --> 00:59:22.740]   This is called the bidirectional reflectance distribution function.
+[00:59:22.740 --> 00:59:28.740]   And basically what it does, it's a four dimensional function, as we might recall,
+[00:59:28.740 --> 00:59:36.740]   and it gives you for each incident direction, so that's not illustrated right here.
+[00:59:36.740 --> 00:59:42.740]   We have more detailed description later on, but maybe I can draw it quickly.
+[00:59:42.740 --> 00:59:49.740]   So what it does, I draw a two dimensional version of it, basically.
+[00:59:49.740 --> 00:59:55.740]   If you think about it, it's a spherical coordinate system and it defines directions on the sphere.
+[00:59:55.740 --> 01:00:03.740]   So there is typically an incident direction, let's call this omega i,
+[01:00:03.740 --> 01:00:09.740]   and omega gets a little arrow, which means it's two scalars on the sphere,
+[01:00:09.740 --> 01:00:13.740]   and then there is an angular scalars that define this direction.
+[01:00:13.740 --> 01:00:18.740]   And then there is an outgoing direction.
+[01:00:18.740 --> 01:00:22.740]   Maybe call this omega r, reflected direction.
+[01:00:22.740 --> 01:00:29.740]   And then there is the radiance LR and the incident radiance,
+[01:00:29.740 --> 01:00:32.740]   or call it sometimes E or I call it Li.
+[01:00:32.740 --> 01:00:43.740]   Basically this function gives you a scalar value for each directional pair, omega i and omega r,
+[01:00:43.740 --> 01:00:51.740]   and this regulates how much of the incident energy or the incident radiance
+[01:00:51.740 --> 01:00:55.740]   is transported into this reflected direction.
+[01:00:55.740 --> 01:00:58.740]   And this function, as you can imagine, it's four dimensional
+[01:00:58.740 --> 01:01:14.740]   because it's a function of the BRDF, this BRDF of omega i and omega r.
+[01:01:14.740 --> 01:01:17.740]   Of course, it's a function of many more parameters,
+[01:01:17.740 --> 01:01:21.740]   a function of RGB, of spectrum, of time, of everything, can it be?
+[01:01:21.740 --> 01:01:25.740]   But in its fundamental form, it is four dimensional
+[01:01:25.740 --> 01:01:31.740]   and it basically regulates the slight transport across the surface.
+[01:01:31.740 --> 01:01:33.740]   This is clear to everybody.
+[01:01:33.740 --> 01:01:35.740]   Important.
+[01:01:35.740 --> 01:01:37.740]   So now...
+[01:01:37.740 --> 01:01:48.740]   So that's the fundamental way of physically based modelling surfaces.
+[01:01:48.740 --> 01:01:52.740]   And then, of course, there are different models for surface reflectance,
+[01:01:52.740 --> 01:01:54.740]   simplified models of those,
+[01:01:54.740 --> 01:01:59.740]   because this function is also very hard to capture for real surfaces.
+[01:01:59.740 --> 01:02:05.740]   And we are doing, to the present day, there is even a Disney BRDF,
+[01:02:05.740 --> 01:02:10.740]   a Disney way in production rendering to define our materials,
+[01:02:10.740 --> 01:02:14.740]   because the BRDF defines the material and the look, really.
+[01:02:14.740 --> 01:02:19.740]   And to the present day, we are still trying to find elegant ways
+[01:02:19.740 --> 01:02:24.740]   to model such, to mathematically describe and approximate such BRDFs,
+[01:02:24.740 --> 01:02:29.740]   because you can imagine, first of all, you have to sample this BRDF,
+[01:02:29.740 --> 01:02:32.740]   you have to build devices to measure it,
+[01:02:32.740 --> 01:02:37.740]   you have to... device can be simple, like source and a receptor,
+[01:02:37.740 --> 01:02:41.740]   but you have to do it for four, in a four dimensional fashion, to sample it.
+[01:02:41.740 --> 01:02:46.740]   And then, sort of, you also want to capture a wide range of materials.
+[01:02:46.740 --> 01:02:50.740]   You have to think about, you know, what it means, how it changes.
+[01:02:50.740 --> 01:02:55.740]   And Racheff's PhD thesis is currently working on this,
+[01:02:55.740 --> 01:03:00.740]   to use neural networks, literally, because they are universal approximators.
+[01:03:00.740 --> 01:03:03.740]   They can approximate such surfaces, and also, in general,
+[01:03:03.740 --> 01:03:07.740]   if AI maybe synthesize new looks, imagine.
+[01:03:07.740 --> 01:03:10.740]   So that's all, that's all the subject of current research,
+[01:03:10.740 --> 01:03:13.740]   but, you know, in historically, in computer graphics,
+[01:03:13.740 --> 01:03:18.740]   we have used simplified models, and the most famous model is basically the FAU model,
+[01:03:18.740 --> 01:03:25.740]   which consists of three parts of the... as soon as this BRDF is made up by a diffuse part,
+[01:03:25.740 --> 01:03:30.740]   which we can model with a simple, you know, diffuse term,
+[01:03:30.740 --> 01:03:34.740]   basically, it's very good distribution, and then there's a specular part,
+[01:03:34.740 --> 01:03:38.740]   which is this perfect mirror, and then there are also...
+[01:03:38.740 --> 01:03:44.740]   So that would... and then there's... typically, the third part would be the ambient light,
+[01:03:44.740 --> 01:03:48.740]   and the ambient light is a poor man's way to model global illumination,
+[01:03:48.740 --> 01:03:53.740]   but it's very bad, you know, it's just a simple scalar, which is, of course, not true.
+[01:03:53.740 --> 01:04:01.740]   But it gives you the ability to get, you know, to basically also non-self-emitting surfaces,
+[01:04:01.740 --> 01:04:06.740]   a basic... even once they are in the shadow, and not illuminated,
+[01:04:06.740 --> 01:04:10.740]   they get a basic ambient light, which is important for the look,
+[01:04:10.740 --> 01:04:14.740]   but it's not physically correct, and then there are more advanced models,
+[01:04:14.740 --> 01:04:18.740]   which are also local, for instance, a micro-facet model,
+[01:04:18.740 --> 01:04:23.740]   and then also measured models or models that use data-driven methods,
+[01:04:23.740 --> 01:04:28.740]   machine learning, and others to approximate these BRDF.
+[01:04:28.740 --> 01:04:33.740]   So the basic one is the diffuse model is known to all of us.
+[01:04:33.740 --> 01:04:37.740]   For any incident direction, the BRDF is a sphere,
+[01:04:37.740 --> 01:04:45.740]   because light is transported equally strong, if you will, in all different directions.
+[01:04:45.740 --> 01:04:52.740]   In the specular, these are basically the theoretical limit cases,
+[01:04:52.740 --> 01:04:57.740]   because there's literally no perfect, perfect diffuse surface,
+[01:04:57.740 --> 01:05:00.740]   much like there is no perfect, perfect mirror,
+[01:05:00.740 --> 01:05:07.740]   because as much as for the diffuse part, the BRDF is a sphere,
+[01:05:07.740 --> 01:05:13.740]   the BRDF for a perfect mirror is a delta distribution.
+[01:05:13.740 --> 01:05:19.740]   It's a function that is zero everywhere except in the direction of the reflected ray.
+[01:05:19.740 --> 01:05:22.740]   There, all the light goes, all the energy goes.
+[01:05:22.740 --> 01:05:25.740]   So, and this is why we model the specular,
+[01:05:25.740 --> 01:05:30.740]   and this is why specular reflections can be modeled so easily, right?
+[01:05:30.740 --> 01:05:34.740]   Because you just need the reflected ray that's this sample,
+[01:05:34.740 --> 01:05:40.740]   you need to sample along this ray, and it gives you all the energy, perfect,
+[01:05:40.740 --> 01:05:43.740]   assuming it's only specular.
+[01:05:43.740 --> 01:05:49.740]   And the same is with refraction, you know, in this sort of geometric optics setting,
+[01:05:49.740 --> 01:05:56.740]   if you have the reflected ray, you can trace this also down, and you get those effects.
+[01:05:56.740 --> 01:06:01.740]   And here, you know, we say the form model, I don't repeat it in those slides.
+[01:06:01.740 --> 01:06:05.740]   Those who are not 100% familiar with those models, they might go back.
+[01:06:05.740 --> 01:06:08.740]   Visual computing slides should be all online.
+[01:06:08.740 --> 01:06:13.740]   If you don't find them, let me know, we can make those available.
+[01:06:13.740 --> 01:06:16.740]   And then once again, this bit of repetition,
+[01:06:16.740 --> 01:06:24.740]   the basic physics uses radiance, which is the amount of radiant energy,
+[01:06:24.740 --> 01:06:29.740]   that is, or the amount of luminous energy that is being transported across the surface
+[01:06:29.740 --> 01:06:32.740]   into a specific direction.
+[01:06:32.740 --> 01:06:37.740]   Then there is, of course, luminous power, so that's the overall power of light source.
+[01:06:37.740 --> 01:06:42.740]   It is not directional, typically, so the assumption is the light source
+[01:06:42.740 --> 01:06:46.740]   is the sense of this power and all sorts of different directions,
+[01:06:46.740 --> 01:06:49.740]   or according to a certain distribution.
+[01:06:49.740 --> 01:06:54.740]   And then there is the irradiance, that's the incident radiance that arrives
+[01:06:54.740 --> 01:06:59.740]   on a certain point on the surface from a certain direction.
+[01:06:59.740 --> 01:07:03.740]   And a ray conceptually, and this is how we think throughout the lecture,
+[01:07:03.740 --> 01:07:06.740]   a ray transports radiance.
+[01:07:06.740 --> 01:07:14.740]   The ray is basically a sample, is how we sample the distribution of energy
+[01:07:14.740 --> 01:07:18.740]   in a closed environment.
+[01:07:18.740 --> 01:07:23.740]   And the light source, of course, illuminates an object with irradiance.
+[01:07:23.740 --> 01:07:30.740]   And if you just want to know how much light hits a point on a triangle,
+[01:07:30.740 --> 01:07:36.740]   so if we have a light source with a luminous flux or a power of phi,
+[01:07:36.740 --> 01:07:43.740]   then the irradiance would be phi by 4 pi times r squared.
+[01:07:43.740 --> 01:07:49.740]   So it's dependent on the distance of light source because this is a quadratic
+[01:07:49.740 --> 01:07:54.740]   geometric attenuation, it's not an atmospheric one,
+[01:07:54.740 --> 01:07:59.740]   simple geometry that says the further the light source, the way the less light arrives.
+[01:07:59.740 --> 01:08:04.740]   And it goes quadratically with the distance, right, that everybody knows from physics.
+[01:08:04.740 --> 01:08:12.740]   And what's more important probably is even that this is dependent on the angle,
+[01:08:12.740 --> 01:08:19.740]   which is here denoted by theta, and we can measure the angle if we know the shadow ray,
+[01:08:19.740 --> 01:08:24.740]   as we call the shadow ray in ray tracing, or the light ray in a classical
+[01:08:24.740 --> 01:08:29.740]   form illumination setting. So this angle can be modeled by a dot product
+[01:08:29.740 --> 01:08:34.740]   between this directional ray and the surface normal, assuming both are normalized,
+[01:08:34.740 --> 01:08:41.740]   most vectors are normalized. And then you get basically this basic shading,
+[01:08:41.740 --> 01:08:49.740]   and you might ask why is this cosine term, it's the lumbersion foreshortening typically.
+[01:08:49.740 --> 01:08:57.740]   So if the light is shining onto the surface orthogonally, of course you can assume
+[01:08:57.740 --> 01:09:05.740]   that the power density per surface unit is higher than if it shines from an angle.
+[01:09:05.740 --> 01:09:12.740]   So basically the illuminated here, this is only conceptual with a limited number of rays,
+[01:09:12.740 --> 01:09:20.740]   but that area is much smaller, the ratio of the areas is one on the left side,
+[01:09:20.740 --> 01:09:28.740]   and here the ratio is smaller than one, and it goes with a cosine of the angle.
+[01:09:28.740 --> 01:09:36.740]   And this leads us literally from this physically based approach to the diffuse part
+[01:09:36.740 --> 01:09:45.740]   of a local illumination model, which simply says that the diffuse part of the radiance
+[01:09:45.740 --> 01:09:52.740]   at a certain point acts on the surface with respect to some direction omega,
+[01:09:52.740 --> 01:09:58.740]   and the direction omega would be the ray, the viewing ray, the ray that goes into the eye
+[01:09:58.740 --> 01:10:09.740]   allegedly, or into the center of projection. That this is a material parameter times e,
+[01:10:09.740 --> 01:10:16.740]   basically the incident, the radiance. And the radiance as we've seen is modeled by this,
+[01:10:16.740 --> 01:10:22.740]   essentially by the stock product of the normal vector and the vector to the light source.
+[01:10:22.740 --> 01:10:28.740]   This is very well known, but it's a slightly different terminology from the visual computing slide
+[01:10:28.740 --> 01:10:37.740]   than from the diffuse part of the fun model. So it's all the lambertion part of diffuse light models
+[01:10:37.740 --> 01:10:48.740]   and diffuse reflection. And KD, this material parameter would actually be a simple approximation
+[01:10:48.740 --> 01:10:55.740]   that's basically a sample of the BIDF because it defines the material, and here we have two,
+[01:10:55.740 --> 01:11:01.740]   the directions are fixed. Let me see, is there still a laser? Yes, there is, but we don't see it.
+[01:11:01.740 --> 01:11:07.740]   I don't know if you guys see the laser, but in this equation we have two directions.
+[01:11:07.740 --> 01:11:14.740]   We have an outgoing direction where light is being transported to a CI, and we have an incident direction
+[01:11:14.740 --> 01:11:21.740]   that's where light's coming from, from the light source. With these two directions we have the four parameters fixed.
+[01:11:21.740 --> 01:11:31.740]   We could basically look up into our BRDF and get a value back, except that in this simple model,
+[01:11:31.740 --> 01:11:39.740]   the BRDF is literally modeled, if you will, by a constant. If you assume it's a purely diffuse model,
+[01:11:39.740 --> 01:11:46.740]   it's actually a spherical distribution, it distributes the light equally into all different directions,
+[01:11:46.740 --> 01:11:54.740]   and the degree to which it is basically the radius of the sphere, if you will, so that's the material, the singular,
+[01:11:54.740 --> 01:12:00.740]   so the BRDF collapses to a single scalar parameter. It doesn't matter.
+[01:12:00.740 --> 01:12:07.740]   So what only matters is the cosine in this equation, and this is also why diffuse shading,
+[01:12:07.740 --> 01:12:17.740]   I mean it looks good, but it's also a little bit poor. The objects look flat, and it's very limited in its description.
+[01:12:17.740 --> 01:12:30.740]   The beauty of it is that, of course, with a diffuse shading, you get a certain independence of camera parameters,
+[01:12:30.740 --> 01:12:36.740]   as no reflected ray is not needed, and so far it's a very simple model.
+[01:12:36.740 --> 01:12:47.740]   And in our visual system, of course, draws a lot of shape, so basically there are different cues that allow us to perceive
+[01:12:47.740 --> 01:12:55.740]   three-dimensional structure of objects, you know, I mean there's stereo two eyes, there's shape from texture,
+[01:12:55.740 --> 01:13:02.740]   shape from shading, shape from shape extraction in our brain for more sorts of different things,
+[01:13:02.740 --> 01:13:12.740]   but shape from motion, but shape from shading is a very important one, and if you add the adding, basically,
+[01:13:12.740 --> 01:13:20.740]   specular dimension to the specularity to an object makes a huge difference in visual perception,
+[01:13:20.740 --> 01:13:29.740]   because the highlights on the object, of a shiny object, they give you very strong shape cues in the perception of how the structure
+[01:13:29.740 --> 01:13:36.740]   of the shape looks like, and how the curvature of the shape looks like.
+[01:13:36.740 --> 01:13:42.740]   Anyways, so this is, next one, it's shadows.
+[01:13:42.740 --> 01:13:50.740]   So shadow computation seems to be simple because we get it implicitly by defining this shadow ray or the light ray,
+[01:13:50.740 --> 01:14:03.740]   and have to compute, but in reality, it is all about computing the, you know, so in reality it's about precision,
+[01:14:03.740 --> 01:14:16.740]   because you have to compute whether the intersect, whether the object is intersected or whether there is no clue to another object in the middle
+[01:14:16.740 --> 01:14:26.740]   that creates a shadow effect, but in reality, the exact computation, of course, would be to find in this section,
+[01:14:26.740 --> 01:14:41.740]   but due to numerical errors, you can always get points either inside or outside, so the actual intersection you compute might not be precisely on the surface, right?
+[01:14:41.740 --> 01:14:50.740]   It might be a little bit inside and out, due to numerical errors, and in order to, so there are different ways to correct for that,
+[01:14:50.740 --> 01:15:01.740]   and here is for instance some solutions. One is of course you accept a certain intersection tolerance,
+[01:15:01.740 --> 01:15:09.740]   so everything within absolute tolerance means it is precise, so that typically solves it.
+[01:15:09.740 --> 01:15:17.740]   There is also the exact arithmetic, but that's typically too costly. I think in most cases you will work with a tolerance.
+[01:15:17.740 --> 01:15:28.740]   If you don't do this, I forgot this one is a very good example. Here you see these numerical errors that could happen when you raycast the U-ter-t-parts here,
+[01:15:28.740 --> 01:15:37.740]   and you probably don't want that, so that can happen in ray tracing. Good.
+[01:15:37.740 --> 01:15:48.740]   Here you see some results of diffuse shading, it's a little impressive. It really depends on the object, you know, some objects are diffuse, and for them it looks good.
+[01:15:48.740 --> 01:15:58.740]   Now, quickly regarding the recursion, when you compute the secondary rays and tertiary rays, and so forth and so on,
+[01:15:58.740 --> 01:16:11.740]   you basically build up a recursion tree, and technically, since if the objects are translucent or refractive, then it becomes literally a binary tree,
+[01:16:11.740 --> 01:16:20.740]   so with each intersection, ray intersection, you split up the previous ray into two new ones, which you have to follow through,
+[01:16:20.740 --> 01:16:33.740]   and you see it here just run the little animation through, and this creates all sorts of rays, it creates the tree structure,
+[01:16:33.740 --> 01:16:41.740]   and you could think of each branch of the tree as being one ray, and each node of the tree being an intersection,
+[01:16:41.740 --> 01:16:49.740]   meaning at each node of the tree, you have to compute those shadow rays, right? This is how it works.
+[01:16:49.740 --> 01:16:58.740]   And then, in order to compute the final contribution to the pixel, you basically traverse the entire tree,
+[01:16:58.740 --> 01:17:12.740]   and go bottom up, take the contributions from each ray and sum them up. This is how it typically works.
+[01:17:12.740 --> 01:17:24.740]   It is very clear that in practical ray tracing, because of this exponential growth of the tree, potentially, with the number of recursions,
+[01:17:24.740 --> 01:17:30.740]   you need to find limits. Where do you end ray tracing? When do you finish?
+[01:17:30.740 --> 01:17:38.740]   Of course, you can set a hard stop on the number of recursions, 6, 7, 8, and bounces.
+[01:17:38.740 --> 01:17:51.740]   There are smarter ways of doing it in a way. It is a little bit about estimating how much energy distribution could come from a subtree underneath,
+[01:17:51.740 --> 01:18:00.740]   which I have to prove, and it's almost like in old chess programs, where you have to compute, so you run the program forward,
+[01:18:00.740 --> 01:18:09.740]   and you estimate what are the best possible moves, and you get this combinatorial complexity of all moves, 2, 3, 4, 5 draws in advance,
+[01:18:09.740 --> 01:18:19.740]   and in order to manage the complexity of the tree, you have to find heuristics to prove the tree said, if I go further, that project cannot lead to a win, to success.
+[01:18:19.740 --> 01:18:24.740]   And this is a little bit the same. It's all about estimating these contributions. Yes?
+[01:18:24.740 --> 01:18:33.740]   I have a question regarding the fused case. The equation you showed us, sort of, assumes that in the fused scenario, we don't...
+[01:18:33.740 --> 01:18:43.740]   the position of the cameras in the green master plate, because we don't use the angle of the viewing ray, could it be for computing the fused part of shading,
+[01:18:43.740 --> 01:18:56.740]   could it be efficient instead of doing camera rays to actually, in this case, to light rays, starting from the light source, to avoid like, helping down on the face of it?
+[01:18:56.740 --> 01:19:01.740]   Is there essentially only to have to do one light pass, to light the information?
+[01:19:01.740 --> 01:19:11.740]   Yes, yeah, yeah, no, it can totally make sense. If you think of a perfect diffuse case, for diffuse, perfectly diffuse global illumination,
+[01:19:11.740 --> 01:19:19.740]   you could think of starting with light source and then shoot it, actually it doesn't matter, in a way, because you have to...
+[01:19:19.740 --> 01:19:31.740]   Once you hit the surface, if you start from the eye, you have to compute a bundle of rays, you have to sample the directional distribution, which is the sphere, equally.
+[01:19:31.740 --> 01:19:40.740]   So you send out, you know, numbers, and then it goes exponentially. And if you start from the light source, it's the same thing, right?
+[01:19:40.740 --> 01:19:48.740]   And then in the end, you could compute all those rays, you'd have to store them, and then basically gather the energy at each pixel.
+[01:19:48.740 --> 01:19:55.740]   So assume you have the distribution, you shoot these rays from the light source, 5, 6, 7 multiple bounces.
+[01:19:55.740 --> 01:20:04.740]   Then you could do a gathering step, and you gather directly, because you have the whole configuration, you just sample each pixel,
+[01:20:04.740 --> 01:20:10.740]   and say, "Hey, how much energy comes here, how much comes there, and so forth, and so on." But you have it, you have distribution.
+[01:20:10.740 --> 01:20:22.740]   But there's a better way of doing it. This is called radiosity. In the perfect diffuse case, you can divide the surface up into surface patches, you know, sort of triangles.
+[01:20:22.740 --> 01:20:34.740]   And then for each triangle, you set up this equation, you said, "You know, if I want to have the diffuse energy here, then I need to collect diffuse energy of all the other ones."
+[01:20:34.740 --> 01:20:43.740]   And instead of, it's also this integral, if you will, but it boils down to a system of equations. We will talk about radiosity.
+[01:20:43.740 --> 01:20:48.740]   I mean, it will come, there's one lecture on it, but that's the more elegant way of doing it.
+[01:20:48.740 --> 01:20:56.740]   But in principle, you are right, you can do it. It would be another way to solve the, you always have to solve this strange integral equation, which we will get to.
+[01:20:56.740 --> 01:21:06.740]   And no matter what you do with Monte Carlo methods back, forth, it's all in a way approximate solutions of this general equation.
+[01:21:06.740 --> 01:21:08.740]   That's true.
+[01:21:08.740 --> 01:21:19.740]   Anyways, here is a very old version. It's in C language. I hope all of you can still hack code in C. It's beautiful language. I love it.
+[01:21:19.740 --> 01:21:32.740]   And the, so this is a minimalistic ray tracer. It should be, we should compile it and it runs. And I think it creates a file with a ray tracer, minimalistically.
+[01:21:32.740 --> 01:21:42.740]   Good. So we are done with ray tracing, not yet in a way, because we have to think of acceleration structures.
+[01:21:42.740 --> 01:21:56.740]   And I will start with this lecture. It's actually subject of the next lecture on Tuesday, but since we are a little early, give me a few minutes to talk about acceleration.
+[01:21:56.740 --> 01:22:10.740]   If we, we have talked about ray tracing and all sorts of things and that at the heart of it computationally, it's computing intersections between rays and surface elements.
+[01:22:10.740 --> 01:22:25.740]   And then it is clear that realism is giving computer graphics through geometric complexity. So this is a very simple picture of maybe like an old Mario games or something.
+[01:22:25.740 --> 01:22:38.740]   A simple picture of a tree and this is a more advanced picture of a tree. And especially in plant modeling and organic structure, the geometric complexity goes up very quickly.
+[01:22:38.740 --> 01:22:50.740]   And even though this picture is very old, it shows, you know, if you want to model a forest, then this very quickly can lead to billions of polygons.
+[01:22:50.740 --> 01:23:01.740]   You don't model, you don't create these models explicitly, by the way. This is part of computer graphics, which is called procedural modeling.
+[01:23:01.740 --> 01:23:15.740]   So you can describe plants, you can synthesize plants very nicely and with very complex geometry using procedural models like alt systems and iterated function systems.
+[01:23:15.740 --> 01:23:21.740]   And so for example, it's almost like a branch of, you know, goes close to actually fractal modeling.
+[01:23:21.740 --> 01:23:32.740]   And that's where you can describe for instance such, so the way the plant is built or the way a building is built using a grammar.
+[01:23:32.740 --> 01:23:40.740]   And that's at the heart of procedural modeling. There is actually a small startup company versus a former computer science student, Joav Parsh.
+[01:23:40.740 --> 01:23:47.740]   He created this company together with Pascal Müller, both former students called procedural.
+[01:23:47.740 --> 01:23:59.740]   And this is, the company became world famous because they did, they modeled cities and also buildings, but in particular entire cities procedurally, very easy.
+[01:23:59.740 --> 01:24:14.740]   And of course in so many computer games and animated films, even for us at Disney, we used the procedural city engine to build our cities in BK6, I think it was used probably.
+[01:24:14.740 --> 01:24:23.740]   But a lot of computer games are using it. The company was sold back in the day to Asri.
+[01:24:23.740 --> 01:24:33.740]   That's a large geo mapping company. And they are still, they have a large facility here. I think there's 60 or 70 or 100 people.
+[01:24:33.740 --> 01:24:42.740]   But if you hear the city engine, that's still a product that comes out of this place and it's all about procedural modeling.
+[01:24:42.740 --> 01:24:50.740]   So that's a way to model this little excursion. And here we also see a city, by the way, that's nice.
+[01:24:50.740 --> 01:25:00.740]   Now in terms of acceleration techniques for ray tracing, there are literally three classes. One is you want to have fewer intersection computations, obviously.
+[01:25:00.740 --> 01:25:08.740]   And this is what we are looking at. Then you want to shoot fewer rays, if possible, right? So you have to terminate rays.
+[01:25:08.740 --> 01:25:16.740]   And then you want to generalize rays. Now, in fewer intersection computations, there are different data structures that support it.
+[01:25:16.740 --> 01:25:26.740]   One is a very simple one, highly effective. Uniform crits. More advanced ones are called trees.
+[01:25:26.740 --> 01:25:36.740]   The most simple one is an arch tree. A better one is a KD tree. And the best in terms of packing is the DSP tree, binary space partitioning tree.
+[01:25:36.740 --> 01:25:48.740]   So these days, I would say in most ray traces, Racheche correct me if I'm wrong, it's KD trees. Is that what you use? What do you use?
+[01:25:48.740 --> 01:26:02.740]   And I period, actually. Ah, okay, good. That's the other one. It's the bounding volume hierarchies because there are two ways you either can subdivide the space hierarchically or you subdivide the geometry.
+[01:26:02.740 --> 01:26:12.740]   And as Racheche said, in this production rendering system, no KD tree, bounding volume hierarchies. And we will look in those all in detail.
+[01:26:12.740 --> 01:26:24.740]   Now, fewer rays means we have to build our oracle, which I talked about, that tells me, hey, when can I terminate? When should I stop? What is the loss?
+[01:26:24.740 --> 01:26:34.740]   What is the error I make if not considering the subtree underneath? Basically pruning the tree at a certain stage.
+[01:26:34.740 --> 01:26:47.740]   The other one is adaptive sampling that if you basically have to sample multiple rays, especially in these, like more advanced forms of ray tracing, you don't want to sample stupidly,
+[01:26:47.740 --> 01:26:55.740]   but you want to sample at places where a lot of energy is transported and where less energy is transported, you don't want to sample. That's another one.
+[01:26:55.740 --> 01:27:12.740]   And then finally, cellulite trees. This is what I mentioned early. It conceptually, it's tempting instead of shooting one ray into the scene, just shoot a little bundle that has a couple of coherent pixels and then trace it down.
+[01:27:12.740 --> 01:27:18.740]   It's also, you know, there's beam tracing and cone tracing.
+[01:27:18.740 --> 01:27:39.740]   But, and then there's all this caching and using cache coherence. But as said, one problem is in primary rays, it makes a lot of sense and you have a lot of coherence as the rays go deeper into the recursion, they disperse and you get less spatial coherence.
+[01:27:39.740 --> 01:27:49.740]   But anyways, we don't look too much into these sort of the middle and the right hand side. We just look into ways to reduce the number of computations.
+[01:27:49.740 --> 01:28:01.740]   And so the, this I've said, I mean, sort of search, but just maybe look at the brute force approach.
+[01:28:01.740 --> 01:28:14.740]   In a brute force way, we would have to intersect every ray with every primitive. And this is, you get many unnecessary ray surface intersection tests, of course.
+[01:28:14.740 --> 01:28:29.740]   And if you do a simple cost analysis, I mean, typically 95% of the entire cost for is the ray surface intersection, literally, and that goes back into the olden days.
+[01:28:29.740 --> 01:28:39.740]   And the cost computing the cost is very simple. So it's simply the number of pixels times the number of objects, which can be a lot.
+[01:28:39.740 --> 01:28:50.740]   See, if I have 50 million triangles and a million pixels, then it is a huge lot, which just one ray per pixel.
+[01:28:50.740 --> 01:28:56.740]   And you if you do recursion, then you have to do the intersections all the time.
+[01:28:56.740 --> 01:29:08.740]   And yeah, I don't go through these examples, you probably all believe me. So in a simple way, whether it permitives on old computer, this couple of years old needed three seconds to generate this image.
+[01:29:08.740 --> 01:29:21.740]   For this image, you would need 50 billion polygons, which is an equivalent of 600 CPU years. We can see how prohibitively expensive this easily becomes.
+[01:29:21.740 --> 01:29:30.740]   Now, with a proper acceleration structure, and this is back in the day, I think that's even at least 10 years old.
+[01:29:30.740 --> 01:29:46.740]   It boils already down to 11 minutes just by putting this all into a proper spatial hierarchical data structure to limit the number of ray surface intersection, which is a speed up of 300 million times.
+[01:29:46.740 --> 01:29:56.740]   And you will quickly see in these examples that as we introduce even very simple data structure, even a uniform crit is already much better.
+[01:29:56.740 --> 01:30:03.740]   This advantage of the crit uniform crits are actually better than you would think, even though they sound like a stupid data structure.
+[01:30:03.740 --> 01:30:12.740]   It's the only downside is that it's not the hierarchy because there is a trade-off in the hierarchy after traverse it and so forth and so on.
+[01:30:12.740 --> 01:30:24.740]   It is more like the crit cell size with respect to the object size. That's the parameter you have to choose if you have lots of objects of very different size than these crits are not very good.
+[01:30:24.740 --> 01:30:30.740]   And this is how we come here to see such a crit. That would be a simple spatial subdivision.
+[01:30:30.740 --> 01:30:40.740]   And as I said, and that's the last thing I would say to Rache's point, in principle, in terms of these acceleration structures, two categories.
+[01:30:40.740 --> 01:30:45.740]   One is spatial subdivision and the other one is object subdivision.
+[01:30:45.740 --> 01:30:53.740]   And both have their trade-offs and pros and cons, and both we will look into in the next lecture.
+[01:30:53.740 --> 01:30:58.740]   Thank you very much. Have a nice weekend. I will see you on Tuesday, right?
+[01:30:58.740 --> 01:31:02.080]   [APPLAUSE]
+
