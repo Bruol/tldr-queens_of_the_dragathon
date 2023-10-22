@@ -2,7 +2,9 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--variable-collection-dark);
+    background-color: white;
+    border-radius: 5px;
+    padding: 0 20px;
 }
 
 .topics-wrapper {

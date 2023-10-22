@@ -209,6 +209,12 @@ body {
     box-shadow: 0 4px 0 0 var(--variable-collection-bright);
 }
 
+
+.button.disabled:active {
+    transform: translateY(0px);
+    box-shadow: 0 4px 0 0 var(--variable-collection-bright);
+}
+
 .link {
     color: var(--variable-collection-accent-green);
     text-decoration: none;
