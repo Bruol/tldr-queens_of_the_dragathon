@@ -116,12 +116,17 @@ def summary(request, summary_id):
         if chunk3 != None:
             chunks.append(chunk3)
 
+        tags = topic.tags.split(",")
+
+
+
         tps.append(
             {
                 "title": topic.title,
                 "bulletpoints": filtered_bps,
                 "summary": topic.summary,
                 "chunks": chunks,
+                "tags": tags,
             }
         )
                
@@ -144,7 +149,7 @@ def summary(request, summary_id):
 
 
 def istitle(str):
-    if(len(str) < 60 and (str.count(":") > 0 or str.count("*")>2)):
+    if(len(str) < 100 and (str.count(":") > 0 or str.count("*")>2)):
         return True
     else:
         return False
