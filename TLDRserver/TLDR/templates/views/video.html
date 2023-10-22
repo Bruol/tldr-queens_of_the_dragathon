@@ -24,12 +24,11 @@
             <a href="/" class="breadcrumb-link">Home</a> » {{ lecture.lecture_name }}
           </div>
         </nav>
-        <div>
+        <div class="search-wrapper">
           <form method="get" class="search-form" action="/search">
             <input type="text" name="query" value="{{ query }}" class="search-input">
-            <button class=".button" type="submit">Search</button>
+            <button class="search-button" type="submit">🔍</button>
         </form>
-        </div>
       </div>
     </header>
     <main class="main">
@@ -44,9 +43,9 @@
                 </div>
                 <div class="lectures-frame">
                   <div class="text-wrapper-2">{{ video.0.presentation_date|date:"D. d M" }}</div>
-                  <div class="text-wrapper-2">
+                  <div class="lecturer-wrapper">
                     {% for presenter in video.1 %}
-                      <div>{{ presenter }}</div>
+                      <span>{{ presenter }}</span>
                     {% endfor %}
                   </div>
                   <div class="text-wrapper-2">
