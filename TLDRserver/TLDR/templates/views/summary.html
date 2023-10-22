@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TLDR; Lecture</title>
+    <title>TLDR;Lecture</title>
     {# TODO: Add Favicon #}
     <link rel="stylesheet" href="{% static 'main.css' %}" />
     <link rel="stylesheet" href="{% static 'summary.css' %}" />
@@ -12,7 +12,7 @@
     <header class="header">
       <div class="first-row">
         <div class="page-title">
-          <a href="/">TLDR; <sub>Lectures</sub></a>
+          <a href="/">TLDR;<sub>Lectures</sub></a>
         </div>
         <div class="account-login-wrapper">
           <div class="welcome-text">Welcome, Patricia ✨</div>
@@ -27,7 +27,7 @@
     </header>
     <main class="main">
       <div class="content">
-        <h1>{{ video.infered_titel }}</h1>
+        <h1 class="title">{{ video.infered_titel }}</h1>
         <!-- List of infomations about lecture -->
         <ul class="lecture-information">
           <li>
@@ -57,8 +57,8 @@
                 <div class="topic-title-wrapper">
                   <span class="topic-title">{{ topic.title }}</span>
                   <div class="button-wrapper">
-                    <button class="less-detailed disabled">Less Details</button>
-                    <button class="more-detailed">More Details</button>
+                    <button class="button less-detailed">Less Details</button>
+                    <button class="button more-detailed">More Details</button>
                   </div>
                 </div>
 
@@ -90,11 +90,12 @@
             topicWrappers = document.getElementsByClassName('topic-wrapper')
             for (let topicWrapper of topicWrappers) {
               // Get buttons
-              lessDetailedButton = topicWrapper.getElementsByClassName('less-detailed')[0]
-              moreDetailedButton = topicWrapper.getElementsByClassName('more-detailed')[0]
+              let lessDetailedButton = topicWrapper.getElementsByClassName('less-detailed')[0]
+              let moreDetailedButton = topicWrapper.getElementsByClassName('more-detailed')[0]
           
               // Set a data state "granularity" for element topicWrapper to 0
               topicWrapper.setAttribute('data-granularity', 0)
+              lessDetailedButton.classList.add('disabled')
           
               // Add event listeners to toggle visibilities
               lessDetailedButton.addEventListener('click', function () {

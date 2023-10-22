@@ -1,0 +1,32 @@
+.lecture-information {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--variable-collection-dark);
+}
+
+.topics-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: auto;
+}
+
+.topic-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.topic-title-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.topic-title-wrapper .topic-title {
+    font-weight: bold;
+}
