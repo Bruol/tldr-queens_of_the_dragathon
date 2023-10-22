@@ -84,7 +84,7 @@
     font-weight: 400;
     color: #000000;
     font-size: var(--variable-collection-font-size-medium);
-    text-align: left;
+    text-align: center;
     letter-spacing: 0;
     line-height: normal;
 }
