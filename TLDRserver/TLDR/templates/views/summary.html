@@ -66,31 +66,107 @@
         <div class="topics-wrapper">
           {% if topic_list %}
             {% for topic in topic_list %}
-              <div class="topic-title-wrapper">
-                <span class="topic-title">{{ topic.title }}</span>
-                <div class="button-wrapper">
-                  <button class="less-detailed disabled">Less Details</button>
-                  <button class="more-detailed">More Details</button>
+              <div class="topic-wrapper">
+                <div class="topic-title-wrapper">
+                  <span class="topic-title">{{ topic.title }}</span>
+                  <div class="button-wrapper">
+                    <button class="less-detailed disabled">Less Details</button>
+                    <button class="more-detailed">More Details</button>
+                  </div>
                 </div>
-              </div>
 
-              {# Short Summary #}
-              <div class="summary short">
-                <ul class="bullet-point-list">
-                  {% for bulletpoint in topic.bulletpoints %}
-                    <li class="bullet-point">{{ bulletpoint }}</li>
+                {# Short Summary #}
+                <div class="summary short">
+                  <ul class="bullet-point-list">
+                    {% for bulletpoint in topic.bulletpoints %}
+                      <li class="bullet-point">{{ bulletpoint }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+
+                {# Medium Summary #}
+                <div class="summary medium" style="display: none;"><p>{{ topic.summary }}</p></div>
+
+                {# Long Summary #}
+                <div class="summary long" style="display: none;">
+                  {% for chunk in topic.chunks %}
+                    <p>{{ chunk }}</p>
                   {% endfor %}
-                </ul>
+                </div>
+                {# TODO: Replace with full implementation #}
               </div>
-
-              {# Medium Summary #}
-              <div class="summary medium" style="display: none;">{{ topic.summary }}</div>
-
-              {# Long Summary #}
-              <div class="summary long" style="display: none;">{{ topic.chunks.0 }}</div> {# TODO: Replace with full implementation #}
             {% endfor %}
           {% endif %}
         </div>
+        <script>
+          window.onload = () => {
+            topicWrappers = document.getElementsByClassName('topic-wrapper')
+            for (let topicWrapper of topicWrappers) {
+              // Get buttons
+              lessDetailedButton = topicWrapper.getElementsByClassName('less-detailed')[0]
+              moreDetailedButton = topicWrapper.getElementsByClassName('more-detailed')[0]
+          
+              // Set a data state "granularity" for element topicWrapper to 0
+              topicWrapper.setAttribute('data-granularity', 0)
+          
+              // Add event listeners to toggle visibilities
+              lessDetailedButton.addEventListener('click', function () {
+                granularity = parseInt(topicWrapper.getAttribute('data-granularity'))
+                switch (granularity) {
+                  case 1:
+                    // hide medium summary
+                    topicWrapper.getElementsByClassName('summary medium')[0].style.display = 'none'
+                    // show short summary
+                    topicWrapper.getElementsByClassName('summary short')[0].style.display = 'block'
+                    // set granularity to 0
+                    topicWrapper.setAttribute('data-granularity', 0)
+                    // disable less detailed button
+                    lessDetailedButton.classList.add('disabled')
+                    break
+                  case 2:
+                    // hide long summary
+                    topicWrapper.getElementsByClassName('summary long')[0].style.display = 'none'
+                    // show medium summary
+                    topicWrapper.getElementsByClassName('summary medium')[0].style.display = 'block'
+                    // set granularity to 1
+                    topicWrapper.setAttribute('data-granularity', 1)
+                    // enable more detailed button
+                    moreDetailedButton.classList.remove('disabled')
+                    break
+                  default:
+                    break
+                }
+              })
+              moreDetailedButton.addEventListener('click', function () {
+                granularity = parseInt(topicWrapper.getAttribute('data-granularity'))
+                switch (granularity) {
+                  case 0:
+                    // hide short summary
+                    topicWrapper.getElementsByClassName('summary short')[0].style.display = 'none'
+                    // show medium summary
+                    topicWrapper.getElementsByClassName('summary medium')[0].style.display = 'block'
+                    // set granularity to 1
+                    topicWrapper.setAttribute('data-granularity', 1)
+                    // enable less detailed button
+                    lessDetailedButton.classList.remove('disabled')
+                    break
+                  case 1:
+                    // hide medium summary
+                    topicWrapper.getElementsByClassName('summary medium')[0].style.display = 'none'
+                    // show long summary
+                    topicWrapper.getElementsByClassName('summary long')[0].style.display = 'block'
+                    // set granularity to 2
+                    topicWrapper.setAttribute('data-granularity', 2)
+                    // disable more detailed button
+                    moreDetailedButton.classList.add('disabled')
+                    break
+                  default:
+                    break
+                }
+              })
+            }
+          }
+        </script>
       </div>
     </main>
     <footer class="footer">
