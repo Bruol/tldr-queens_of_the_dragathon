@@ -74,6 +74,9 @@
 .topic-wrapper .summary p {
     max-width: 600px;
 }
+.topic-wrapper .summary ul {
+    max-width: 600px;
+}
 
 .topic-wrapper .bulletpoint-list {
     list-style: square;

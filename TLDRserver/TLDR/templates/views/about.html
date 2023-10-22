@@ -20,9 +20,17 @@
         <div class="welcome-text">Welcome, Patricia ✨</div>
       </div>
     </div>
-    <nav class="breadcrumbs">
-        <div class="breadcrumbs-text"><a href="/">Home</a> » About </div>
-    </nav>
+    <div class="second-row">
+      <nav class="breadcrumbs">
+        <div class="breadcrumbs-text"><a href="/" class="link">Home</a> » About</div>
+      </nav>
+      <div>
+        <form method="get" class="search-form" action="/search">
+          <input type="text" name="query" value="{{ query }}" class="search-input">
+          <button class=".button" type="submit">Search</button>
+      </form>
+      </div>
+    </div>
   </header>
   <main class="main">
     <div class="content">
