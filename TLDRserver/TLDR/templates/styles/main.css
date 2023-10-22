@@ -12,6 +12,7 @@
     --variable-collection-font-size-medium: 16px;
     --variable-collection-font-size-large: 20px;
     --variable-collection-font-size-xlarge: 24px;
+    --variable-collection-font-size-xxlarge: 32px;
 
     /* Font Families */
     --variable-collection-font-family-sans-serif: 'Work Sans', sans-serif;
@@ -79,6 +80,16 @@ body {
 .header .page-title sub {
     font-family: var(--variable-collection-font-family-serif);
     font-style: italic;
+    background-color: black;
+    overflow: hidden;
+    background: linear-gradient(to right, var(--variable-collection-accent-green), var(--variable-collection-accent-green) 50%, black 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+    padding-right: 5px;
 }
 
 .header .page-title a {
@@ -87,7 +98,7 @@ body {
     font-family: var(--variable-collection-font-family-sans-serif);
     font-weight: 400;
     color: #000000;
-    font-size: var(--variable-collection-font-size-xlarge);
+    font-size: var(--variable-collection-font-size-xxlarge);
     letter-spacing: 0;
     line-height: normal;
     transition: transform 0.1s ease-in-out;
@@ -96,6 +107,10 @@ body {
 
 .header .page-title:hover a {
     transform: scale(1.05);
+}
+
+.header .page-title:hover sub {
+    background-position: 0 100%;
 }
 
 .header .welcome-text {
