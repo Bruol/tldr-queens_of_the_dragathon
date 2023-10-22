@@ -71,6 +71,9 @@
     font-size: var(--variable-collection-font-size-medium);
     font-family: var(--variable-collection-font-family-serif);
 }
+.topic-wrapper .summary p {
+    max-width: 600px;
+}
 
 .topic-wrapper .bulletpoint-list {
     list-style: square;
