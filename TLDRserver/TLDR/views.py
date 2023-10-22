@@ -135,7 +135,7 @@ def summary(request, summary_id):
             summary = summary[:-12]
 
 
-        tags = topic.tags.split(",")
+        tags = [t.lstrip() for t in topic.tags.split(",")]
 
         if len(tags) > 5:
             tags = tags[:5]
