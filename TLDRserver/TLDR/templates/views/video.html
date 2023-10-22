@@ -35,7 +35,7 @@
                   <div class="text-wrapper">{{ video.0.infered_titel }}</div>
                 </div>
                 <div class="lectures-frame">
-                  <div class="text-wrapper-2">{{ video.0.presentation_date }}</div>
+                  <div class="text-wrapper-2">{{ video.0.presentation_date|date:"D. d M" }}</div>
                   <div class="text-wrapper-2">
                     {% for presenter in video.1 %}
                       <div>{{ presenter }}</div>
