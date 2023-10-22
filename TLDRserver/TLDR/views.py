@@ -115,10 +115,15 @@ def summary(request, summary_id):
 
     # Iterate over topic_list by doing for topic in topic_list and then access topic fields with topic.title, topic.bulletpoints, topic.summary, topic.chunks
 
+    lecturer_list = vid.presenters[:-2].split(';')
+    multi_lecture = len(lecturer_list) > 1
+
     context = {
         "lecture": lecture,
         "video": vid,
         "topic_list": tps,
+        "lecturers": lecturer_list,
+        "many_lecturers": multi_lecture,
     }
     
     return HttpResponse(template.render(context, request))
