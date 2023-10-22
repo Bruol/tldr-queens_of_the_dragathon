@@ -25,6 +25,7 @@ def search(request):
     for topic in topics:
         video = topic.discussed_in.all()[0]
         print(video.id)
+        topic.title = re.sub(r'^Topic \d+: ', '', topic.title)
         result.append(
             {
                 "topic": topic,
@@ -147,7 +148,7 @@ def summary(request, summary_id):
 
         tps.append(
             {
-                "title": topic.title,
+                "title": re.sub(r'^Topic \d+: ', '', topic.title),
                 "bulletpoints": filtered_bps,
                 "summary": summary,
                 "chunks": chunks,
