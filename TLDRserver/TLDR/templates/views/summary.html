@@ -25,12 +25,11 @@
             <a href="/" class="breadcrumb-link">Home</a> » <a href="/classes/{{ video.lecture_id.id }}" class="breadcrumb-link">{{ lecture.lecture_name }}</a> » {{ video.infered_titel }}
           </div>
         </nav>
-        <div>
+        <div class="search-wrapper">
           <form method="get" class="search-form" action="/search">
             <input type="text" name="query" value="{{ query }}" class="search-input">
-            <button class=".button" type="submit">Search</button>
+            <button class="search-button" type="submit">🔍</button>
         </form>
-        </div>
       </div>
     </header>
     <main class="main">

@@ -88,3 +88,7 @@
     flex-direction: row;
     gap: 10px;
 }
+
+.tag-wrapper .tag-title {
+    flex-basis: 40px;
+}

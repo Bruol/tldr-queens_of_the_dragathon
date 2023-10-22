@@ -230,3 +230,29 @@ body {
 .link:hover {
     text-decoration: underline;
 }
+
+.search-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    height: 30px;
+    min-width: 200px;
+}
+
+.search-wrapper .search-input {
+    border: none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+    padding: 0;
+    height: 30px;
+}
+
+.search-wrapper .search-button {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    border-radius: 5px;
+}
