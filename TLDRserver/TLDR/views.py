@@ -107,6 +107,7 @@ def summary(request, summary_id):
                 if bp.startswith("-"):
                     bp = bp[1:]
                 bp = bp.replace("\n", "")
+                bp = bp.replace("**", "")
                 filtered_bps.append(bp)
 
         chunk1 = topic.chunk1
