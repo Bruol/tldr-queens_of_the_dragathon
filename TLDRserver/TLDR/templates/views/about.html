@@ -7,14 +7,14 @@
   <title>TLDR; Lecture</title>
   {# TODO: Add Favicon #}
   <link rel="stylesheet" href="{% static 'main.css' %}" />
-  <link rel="stylesheet" href="{% static 'index.css' %}" />
+  <link rel="stylesheet" href="{% static 'about.css' %}" />
 </head>
 
 <body>
   <header class="header">
     <div class="first-row">
         <div class="page-title">
-          <a href="#">TLDR; <sub>Lectures</sub>
+          <a href="/">TLDR; <sub>Lectures</sub>
           </a></div>
       <div class="account-login-wrapper">
         <div class="welcome-text">Welcome, Patricia ✨</div>
@@ -22,32 +22,19 @@
       </div>
     </div>
     <nav class="breadcrumbs">
-      <div class="breadcrumbs-text">Home</div>
+        <div class="breadcrumbs-text"><a href="/">Home</a> » About </div>
     </nav>
   </header>
   <main class="main">
     <div class="content">
-      <div class="cards">
-        {% if lectures %}
-        {# Create Course Cards #}
-        {% for lecture in lectures %}
-        <div class="course-card" , onclick="window.location='/classes/{{lecture.id}}/';">
-          <div class="title-frame">
-            <div class="text-wrapper">{{ lecture.lecture_name }}</div>
-          </div>
-          <div class="lectures-frame">
-            <div class="div">Lectures:</div>
-            <div class="text-wrapper-2">{{ lecture.video_set.count }}</div>
-          </div>
-        </div>
-        {% endfor %}
-        {% endif %}
-      </div>
+        <h1>About TLDR; <sub>Lectures</sub></h1>
+        <p>TLDR; <sub>Lectures</sub> is a web app that provides a text summary of a lecture in customizable granularity. It was  developed in October, 2023, in Viscon
+        Hackathon by five ETHZ students - <a href="https://www.linkedin.com/in/kristijonas-bu%C4%8Di%C5%ABnas-31010b270/" target="_blank">Kristijonas Bučiūnas</a>, Fabius Grünhagen, Jonathan Manz, <a href="https://www.linkedin.com/in/augustronberg/" target="_blank">August Rønberg</a> and <a href="https://www.linkedin.com/in/bruol/" target="_blank">Lorin Urbantat</a>.</p>
     </div>
   </main>
   <footer class="footer">
     <div class="div-wrapper">
-      <div class="text-wrapper"><a href="/about">About</a></div>
+      <div class="text-wrapper"><a href="#">About</a></div>
     </div>
     <div class="div-wrapper">
       <div class="text-wrapper"><a href="#">Impressum</a></div>

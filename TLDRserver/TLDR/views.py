@@ -38,7 +38,9 @@ def search(request):
 
     return render(request, 'views/search.html', context)
 
-
+def about(request):
+    template = loader.get_template("views/about.html")
+    return HttpResponse(template.render({}, request))
 
 def index(request):
     lectures = Lecture.objects.all()

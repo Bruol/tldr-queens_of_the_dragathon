@@ -31,23 +31,23 @@
         <!-- List of infomations about lecture -->
         <ul class="lecture-information">
           <li>
-              Course: <span class="course-name">{{lecture.lecture_name}}</span>
+            Course: <span class="course-name">{{lecture.lecture_name}}</span>
           </li>
           <li>
-              Lecturer{% if many_lecturers %}s{%endif%}: {# TODO: Only display 's' if lecture has multiple lecturers #}
+            Lecturer{% if many_lecturers %}s{%endif%}: {# TODO: Only display 's' if lecture has multiple lecturers #}
             <ul class="professor-list">
-                {%for prof in lecturers %}
+              {%for prof in lecturers %}
               <li class="professor">
-                  {{prof}}
+                {{prof}}
               </li>
-              {% endfor %}
+{% endfor %}
             </ul>
           </li>
           <li>
-              Semester: <span class="semester">{{lecture.semester}} {{video.presentation_date|date:"y"}}</span>
+            Semester: <span class="semester">{{lecture.semester}} {{video.presentation_date|date:"y"}}</span>
           </li>
           <li>
-              <a href={{video.source_url}}>Video Link</a>
+            <a href={{video.source_url}}>Video Link</a>
           </li>
         </ul>
         <div class="topics-wrapper">
@@ -83,7 +83,7 @@
     <footer class="footer">
       <div class="div-wrapper">
         <div class="text-wrapper">
-          <a href="#">About</a>
+          <a href="/about">About</a>
         </div>
       </div>
       <div class="div-wrapper">
