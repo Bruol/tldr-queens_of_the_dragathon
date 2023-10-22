@@ -1,10 +1,36 @@
-.lecture-information {
-    text-align: left;
+.top-wrapper {
     display: flex;
     flex-direction: column;
+    gap: 20px;
+    align-items: left;
     background-color: white;
     border-radius: 5px;
-    padding: 0 20px;
+    padding: 20px;
+}
+
+.lecture-information {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.lecture-information .lecturers {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.lecturer-list {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .topics-wrapper {
@@ -24,6 +50,7 @@
 
 .topic-title-wrapper {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
@@ -31,4 +58,27 @@
 
 .topic-title-wrapper .topic-title {
     font-weight: bold;
+}
+
+.topic-title-wrapper .button-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.topic-wrapper .summary {
+    padding: 0 50px;
+    font-size: var(--variable-collection-font-size-medium);
+    font-family: var(--variable-collection-font-family-serif);
+}
+
+.topic-wrapper .bulletpoint-list {
+    list-style: square;
+    padding-left: 0;
+}
+
+.tag-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
