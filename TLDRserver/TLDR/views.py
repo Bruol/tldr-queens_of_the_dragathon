@@ -118,7 +118,8 @@ def summary(request, summary_id):
 
         tags = topic.tags.split(",")
 
-
+        if len(tags) > 5:
+            tags = tags[:5]
 
         tps.append(
             {
