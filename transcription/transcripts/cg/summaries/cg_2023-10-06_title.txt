@@ -1,1 +1,1 @@
-Title: Exploring Light: Understanding Properties, Quantification, and Behavior
+Title: Bounding Volume Hierarchies and Understanding Light and its Properties
