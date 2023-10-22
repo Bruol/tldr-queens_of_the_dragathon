@@ -16,12 +16,12 @@
         </div>
         <div class="account-login-wrapper">
           <div class="welcome-text">Welcome, Patricia ✨</div>
-          <img class="log-out-icon" src="img/log-out-icon.svg" />
+          <!--<img class="log-out-icon" src="img/log-out-icon.svg" />--> <!-- TODO: Add image -->
         </div>
       </div>
       <nav class="breadcrumbs">
         <div class="breadcrumbs-text">
-          <a href="/">Home</a> » <a href="/classes/{{ video.lecture_id.id }}">{{ lecture.lecture_name }}</a> » {{ video.infered_titel }}
+          <a href="/" class="breadcrumb-link">Home</a> » <a href="/classes/{{ video.lecture_id.id }}" class="breadcrumb-link">{{ lecture.lecture_name }}</a> » {{ video.infered_titel }}
         </div>
       </nav>
     </header>
