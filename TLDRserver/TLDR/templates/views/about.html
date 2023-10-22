@@ -18,12 +18,19 @@
           </a></div>
       <div class="account-login-wrapper">
         <div class="welcome-text">Welcome, Patricia ✨</div>
-        <img class="log-out-icon" src="img/log-out-icon.svg" />
       </div>
     </div>
-    <nav class="breadcrumbs">
-        <div class="breadcrumbs-text"><a href="/">Home</a> » About </div>
-    </nav>
+    <div class="second-row">
+      <nav class="breadcrumbs">
+        <div class="breadcrumbs-text"><a href="/" class="link">Home</a> » About</div>
+      </nav>
+      <div>
+        <form method="get" class="search-form" action="/search">
+          <input type="text" name="query" value="{{ query }}" class="search-input">
+          <button class=".button" type="submit">Search</button>
+      </form>
+      </div>
+    </div>
   </header>
   <main class="main">
     <div class="content">
@@ -35,9 +42,6 @@
   <footer class="footer">
     <div class="div-wrapper">
       <div class="text-wrapper"><a href="#">About</a></div>
-    </div>
-    <div class="div-wrapper">
-      <div class="text-wrapper"><a href="#">Impressum</a></div>
     </div>
     <div class="div-wrapper">
       <div class="text-wrapper"><a href="https://video.ethz.ch/lectures/d-infk.html">Video Portal</a></div>
