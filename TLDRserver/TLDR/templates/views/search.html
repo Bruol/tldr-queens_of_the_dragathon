@@ -14,7 +14,7 @@
   <header class="header">
     <div class="first-row">
         <div class="page-title">
-          <a href="#">TLDR;<sub>Lectures</sub>
+          <a href="/">TLDR;<sub>Lectures</sub>
           </a></div>
       <div class="account-login-wrapper">
         <div class="welcome-text">Welcome, Patricia ✨</div>
@@ -43,6 +43,7 @@
             {% for res in results %}
             <div class="course-card" , onclick="window.location='/transcripts/{{res.videoID}}/';">
                   <div class="text-wrapper-2">{{ res.topic.title }}</div>
+                  <div class="text-wrapper-3">{{ res.lecture }}</div>
             </div>
             {% endfor %}
         {% else %}

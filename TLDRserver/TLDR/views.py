@@ -21,14 +21,18 @@ def search(request):
     else:
         topics = Topic.objects.all()
 
+
     result = []
     for topic in topics:
         video = topic.discussed_in.all()[0]
         print(video.id)
+
+        topic.title = re.sub(r'^Topic \d+: ', '', topic.title)
         result.append(
             {
                 "topic": topic,
                 "videoID": video.id,
+                "lecture": video.lecture_id.lecture_name,
             }
         )
     
@@ -106,6 +110,7 @@ def summary(request, summary_id):
                 if bp.startswith("-"):
                     bp = bp[1:]
                 bp = bp.replace("\n", "")
+                bp = bp.replace("**", "")
                 filtered_bps.append(bp)
 
         chunk1 = topic.chunk1
@@ -147,7 +152,7 @@ def summary(request, summary_id):
 
         tps.append(
             {
-                "title": topic.title,
+                "title": re.sub(r'^Topic \d+: ', '', topic.title),
                 "bulletpoints": filtered_bps,
                 "summary": summary,
                 "chunks": chunks,
