@@ -5,6 +5,7 @@ from django.template import loader
 from .models import *
 from django.template import loader
 
+from django.http import HttpResponse
 from .models import Lecture
 
 # Create your views here.
@@ -39,6 +40,18 @@ def search(request):
     return render(request, 'views/search.html', context)
 
 
+def download_text_file(request, summary_id):
+    vid = Video.objects.get(pk=summary_id)
+    text_content = vid.transcript
+
+    lecture_name = Lecture.objects.get(id=vid.lecture_id.id).lecture_name
+
+    filename = vid.presentation_date.strftime("%Y-%m-%d") + "_" +lecture_name + ".md"
+
+    response = HttpResponse(text_content, content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
+
+    return response
 
 def index(request):
     lectures = Lecture.objects.all()
