@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-aa#m#gjk^lrrzm!9mko^f)uj$!b10t-c&_=%4b-g580u@r+@&3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['team-2.viscon-hackathon.ch', 'localhost']
+ALLOWED_HOSTS = [ 'localhost','127.0.0.1', 'tldrserver-proud-field-9619.fly.dev', 'tldr.bruol.me']
 
 
 # Application definition
