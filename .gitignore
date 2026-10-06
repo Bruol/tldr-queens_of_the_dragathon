@@ -3,3 +3,7 @@
 **/__pycache__/
 static/
 .DS_Store
+node_modules/
+.wrangler/
+cloudflare/dist/
+cloudflare/search.json
