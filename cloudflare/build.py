@@ -48,6 +48,8 @@ def build():
         target.write_bytes(content)
     shutil.copytree(ROOT / "TLDRserver/TLDR/templates/styles", output / "static")
     headers = ["/*", "  X-Content-Type-Options: nosniff", "  X-Frame-Options: DENY", "  Referrer-Policy: same-origin", "  Cross-Origin-Opener-Policy: same-origin", ""]
+    for route in ['/', '/about', '/classes/*', '/transcripts/*', '/search/*']:
+        headers += [route, '  Content-Type: text/html; charset=utf-8', '']
     for video in Video.objects.select_related("lecture_id"):
         filename = f"{video.presentation_date:%Y-%m-%d}_{video.lecture_id.lecture_name}.md"
         fallback = filename.encode('ascii', 'replace').decode().replace('?', '_')

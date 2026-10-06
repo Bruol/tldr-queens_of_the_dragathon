@@ -30,6 +30,7 @@ for path in paths:
         expected = client.get(path, HTTP_HOST='localhost')
     actual = urllib.request.urlopen(base + path, timeout=30)
     assert actual.read() == expected.content, path
+    assert actual.headers.get_content_charset() == 'utf-8', path
     if path.startswith('/download/'):
         disposition = actual.headers['Content-Disposition']
         filename = urllib.parse.unquote(disposition.split("filename*=UTF-8''", 1)[1])
