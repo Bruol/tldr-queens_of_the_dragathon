@@ -32,8 +32,8 @@ python cloudflare/verify.py http://localhost:8787
 python cloudflare/verify.py https://tldr.bruol.me
 ```
 
-## Fly.io rollback and retirement
+## Fly.io retirement
 
-The original Django application, Dockerfile, and Fly configuration remain available for rollback. Before migration, `tldr.bruol.me` resolved to Fly's IPv4 `66.241.124.34` and IPv6 `2a09:8280:1::67:1318:0`, and the Fly app was `tldrserver-proud-field-9619`.
+The production custom domain is `tldr.bruol.me`, served by the `tldr-lectures` Cloudflare Worker. The previous Fly.io app, `tldrserver-proud-field-9619`, was removed after the Cloudflare domain passed verification.
 
-For rollback, remove the Cloudflare Worker custom domain and restore those DNS records, then start the Fly machines if stopped. Keep Fly available until the Cloudflare custom domain passes verification. Retire the Fly app only after saving its machine configuration and checking whether it has volumes or other billable resources.
+The Django source, SQLite content database, Dockerfile, and original Fly configuration remain in the repository. Restoring Fly would require creating a new app, updating `TLDRserver/fly.toml` and Django's allowed hosts, deploying from `TLDRserver/`, allocating IP addresses, and replacing the Cloudflare custom domain with the new Fly DNS records. The old Fly machines and IP addresses are no longer available.
