@@ -1,0 +1,32 @@
+name: Check Cloudflare archive
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r TLDRserver/requirements.txt
+      - run: npm ci
+      - run: npm run build
+      - run: npx wrangler deploy --dry-run
+      - name: Compare Cloudflare with Django
+        run: |
+          npx wrangler dev --port 8787 > /tmp/wrangler.log 2>&1 &
+          worker_pid=$!
+          trap 'kill "$worker_pid"' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://localhost:8787/ > /dev/null; then break; fi
+            sleep 1
+          done
+          python cloudflare/verify.py
